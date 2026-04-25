@@ -4,94 +4,237 @@
 <meta charset="UTF-8">
 <title>Kickstarter China Tracker — 中国背景消费硬件项目实时追踪</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Real-time tracking of China-background consumer-hardware projects on Kickstarter — pre-launch, live, recently ended.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#f6f7f9;--card:#fff;--bd:#e5e7eb;--text:#111827;--muted:#6b7280;
-    --accent:#1f4e78;--ok:#16a34a;
-    --pre:#fde68a;--just:#bbf7d0;--live:#bfdbfe;--ended:#e5e7eb;--late:#e1d5e7;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;padding:24px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",Arial,sans-serif;background:var(--bg);color:var(--text)}
-  h1{margin:0 0 4px 0;font-size:22px;color:var(--accent)}
-  .sub{color:var(--muted);font-size:13px;margin-bottom:18px}
-  .sub a{color:var(--accent)}
-  .card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px;margin-bottom:14px}
-  .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-  .controls input,.controls select{padding:7px 10px;border:1px solid var(--bd);border-radius:6px;font-size:13px;background:#fff}
-  .controls input[type=text]{min-width:280px}
-  .controls label{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px}
-  .badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;line-height:1.5}
-  .badge.high{background:#dcfce7;color:#166534}
-  .badge.med{background:#fef3c7;color:#92400e}
-  .badge.low{background:#fee2e2;color:#991b1b}
-  .pill{display:inline-block;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:600;white-space:nowrap}
-  .pill.prelaunch{background:var(--pre)}
-  .pill.recently_launched{background:var(--just)}
-  .pill.live{background:var(--live)}
-  .pill.recently_ended{background:var(--ended);color:#374151}
-  .pill.late_pledges{background:var(--late)}
-  .pill.successful{background:var(--ended);color:#374151}
-  .pwl{color:#b45f06;font-weight:700}
-  .verified{color:var(--ok);font-weight:700;font-size:13px}
-  .unverified{color:#9ca3af;font-size:11px}
-  table{border-collapse:separate;border-spacing:0;width:100%;background:var(--card);border:1px solid var(--bd);border-radius:10px;overflow:hidden;font-size:13px}
-  thead th{position:sticky;top:0;background:var(--accent);color:#fff;text-align:left;padding:10px 8px;font-weight:600;cursor:pointer;user-select:none;white-space:nowrap;z-index:1}
-  thead th:hover{background:#27649b}
-  tbody td{padding:10px 8px;border-top:1px solid var(--bd);vertical-align:top}
-  tbody tr:hover{background:#f9fafb}
-  .name{font-weight:700;color:var(--accent);font-size:14px}
-  .muted{color:var(--muted);font-size:12px;line-height:1.5}
-  a{color:#1d4ed8;text-decoration:none}
-  a:hover{text-decoration:underline}
-  .stats{display:flex;gap:16px;flex-wrap:wrap;margin-top:6px}
-  .stat{background:#f3f4f6;border-radius:8px;padding:8px 12px;font-size:12px}
-  .stat b{color:var(--accent);font-size:14px}
-  .small{font-size:11px;color:var(--muted)}
-  .legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:6px}
-  .legend span{display:inline-flex;align-items:center;gap:6px}
-  .swatch{width:12px;height:12px;border-radius:3px;display:inline-block}
-  .num{font-variant-numeric:tabular-nums}
-  .funded{font-weight:700;color:var(--ok)}
-  .err{padding:14px;background:#fee2e2;color:#991b1b;border-radius:8px}
+:root{
+  --bg:#fafaf7;
+  --paper:#ffffff;
+  --ink:#0d0d0d;
+  --ink-2:#3a3a3a;
+  --ink-3:#6b6b6b;
+  --ink-4:#9a9a96;
+  --rule:#d6d6d1;
+  --rule-2:#ebebe7;
+  --accent:#c8102e;
+  --accent-bg:#fdf3f3;
+  --live:#1c4ed8;
+  --ok:#0f7a3b;
+  --max-w:1240px;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+  font-family:'Inter',-apple-system,'PingFang SC','Microsoft YaHei',Arial,sans-serif;
+  font-size:14px;line-height:1.5;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.wrap{max-width:var(--max-w);margin:0 auto;padding:0 28px}
+
+/* ── Masthead ─────────────────────────────────────────────────── */
+.mast{padding:36px 0 30px;border-bottom:1px solid var(--ink)}
+.kicker{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:10px}
+.kicker .pulse{display:inline-block;width:7px;height:7px;background:var(--accent);
+  border-radius:50%;margin-right:8px;vertical-align:1px;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.title{font-family:'Inter Tight','Inter',-apple-system,'PingFang SC',sans-serif;
+  font-weight:800;letter-spacing:-.025em;font-size:42px;line-height:1.05;margin:0 0 10px}
+.dek{font-size:14.5px;line-height:1.55;color:var(--ink-2);max-width:62ch;margin:0}
+.byline{margin-top:18px;font-size:11.5px;color:var(--ink-3);letter-spacing:.04em}
+.byline a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule);
+  padding-bottom:1px;transition:color .15s,border-color .15s}
+.byline a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.byline .sep{display:inline-block;margin:0 10px;color:var(--rule)}
+
+/* ── KPI strip ────────────────────────────────────────────────── */
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);
+  border-bottom:1px solid var(--ink)}
+.kpi{padding:24px 20px 22px;border-right:1px solid var(--rule);min-width:0}
+.kpi:last-child{border-right:none}
+.kpi .label{font-size:10.5px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
+.kpi .num{font-family:'Inter Tight','Inter',sans-serif;font-weight:700;font-size:36px;
+  letter-spacing:-.025em;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink)}
+.kpi .delta{margin-top:6px;font-size:11px;color:var(--ink-3);letter-spacing:.02em}
+.kpi.is-live .num{color:var(--live)}
+.kpi.is-pre .num{color:var(--accent)}
+
+/* ── Filter row ───────────────────────────────────────────────── */
+.filter-row{display:flex;align-items:center;gap:0;padding:14px 0;
+  border-bottom:1px solid var(--rule);flex-wrap:wrap;row-gap:10px}
+.filter-group{display:flex;align-items:center;gap:2px;
+  border-right:1px solid var(--rule);padding-right:14px;margin-right:14px}
+.filter-row > .filter-group:last-of-type{border-right:none}
+.filter-label{font-size:10.5px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-3);margin-right:10px}
+.chip{display:inline-block;padding:5px 11px;font-size:12.5px;font-weight:500;
+  font-family:inherit;color:var(--ink-2);border:1px solid transparent;
+  cursor:pointer;background:transparent;border-radius:0;transition:all .15s}
+.chip:hover{color:var(--ink)}
+.chip.active{color:#fff;background:var(--ink)}
+.toggle{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;
+  color:var(--ink-2);cursor:pointer;user-select:none;margin-right:14px}
+.toggle input{accent-color:var(--accent);margin:0}
+.search{flex:1;display:flex;align-items:center;border:1px solid var(--rule);
+  padding:7px 12px;background:var(--paper);min-width:240px;
+  margin-left:auto;transition:border-color .15s}
+.search:focus-within{border-color:var(--ink)}
+.search input{border:none;outline:none;background:transparent;
+  font-family:inherit;font-size:13px;width:100%;color:var(--ink)}
+.search input::placeholder{color:var(--ink-4)}
+.search svg{flex:none;width:14px;height:14px;color:var(--ink-3);margin-right:9px}
+
+/* ── Count line ───────────────────────────────────────────────── */
+.count-line{font-size:11px;color:var(--ink-3);padding:14px 0 12px;
+  letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.count-line b{color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
+
+/* ── Table ────────────────────────────────────────────────────── */
+.table-wrap{background:var(--paper);border:1px solid var(--rule)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{position:sticky;top:0;background:var(--paper);
+  text-align:left;padding:13px 12px;font-weight:600;font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);
+  border-bottom:1px solid var(--ink);cursor:pointer;user-select:none;
+  white-space:nowrap;z-index:1}
+thead th:hover{color:var(--ink)}
+thead th.sort-key{color:var(--ink)}
+thead th.sort-key::after{content:'↓';margin-left:4px;font-size:11px}
+thead th.sort-key.asc::after{content:'↑'}
+thead th.no-sort{cursor:default}
+thead th.no-sort:hover{color:var(--ink-3)}
+thead th.num,tbody td.num{text-align:right;font-variant-numeric:tabular-nums}
+tbody tr{border-bottom:1px solid var(--rule-2);transition:background .12s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:#f4f3ee}
+tbody td{padding:14px 12px;vertical-align:top}
+
+.cell-title{font-size:14px;font-weight:600;color:var(--ink);line-height:1.35;
+  letter-spacing:-.005em}
+.cell-meta{font-size:11.5px;color:var(--ink-3);margin-top:4px;line-height:1.45}
+.dollar{font-family:'Inter Tight','Inter',sans-serif;font-weight:600;
+  font-size:14.5px;color:var(--ink);font-variant-numeric:tabular-nums;
+  letter-spacing:-.01em}
+.goal{font-size:11px;color:var(--ink-4);margin-top:2px;font-variant-numeric:tabular-nums}
+.pct{font-weight:600;font-variant-numeric:tabular-nums;color:var(--ok)}
+.pct.under{color:var(--ink-3)}
+.pct.huge{color:var(--accent)}
+
+/* Status indicator */
+.status{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;
+  font-weight:500;color:var(--ink);white-space:nowrap}
+.status::before{content:'';display:inline-block;width:7px;height:7px;
+  background:var(--ink-4);flex:none}
+.status.prelaunch::before{background:var(--accent)}
+.status.live::before{background:var(--live)}
+.status.successful::before{background:var(--ok)}
+
+/* China confidence */
+.conf{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--ink-3);font-variant-numeric:tabular-nums}
+.conf.high{color:var(--ink)}
+.country{font-size:11px;color:var(--ink-4);margin-top:3px;letter-spacing:.05em;
+  text-transform:uppercase;font-weight:500}
+
+/* PWL star — single editorial accent */
+.pwl{color:var(--accent);font-weight:700;margin-right:5px;letter-spacing:-.02em}
+
+/* Link */
+.link{color:var(--ink-2);font-size:12px;text-decoration:none;
+  border-bottom:1px solid var(--rule);padding-bottom:1px;
+  transition:color .15s,border-color .15s;white-space:nowrap}
+.link:hover{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* Footer */
+.foot{margin:40px 0 28px;padding-top:22px;border-top:1px solid var(--ink);
+  font-size:11.5px;color:var(--ink-3);letter-spacing:.04em;display:flex;
+  flex-wrap:wrap;gap:14px;align-items:baseline}
+.foot a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule)}
+.foot a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.foot .sep{color:var(--rule)}
+
+/* Error / empty */
+.err{margin-top:24px;padding:18px 20px;background:var(--accent-bg);
+  border-left:3px solid var(--accent);font-size:13.5px;line-height:1.6;color:var(--ink)}
+.err code{background:rgba(0,0,0,.07);padding:1px 6px;
+  font-family:'SF Mono',ui-monospace,Menlo,monospace;font-size:12.5px}
+
+/* Responsive */
+.hide-md,.hide-sm{display:table-cell}
+@media (max-width:1024px){
+  .title{font-size:34px}
+  .kpi{padding:20px 14px 18px}
+  .kpi .num{font-size:30px}
+  .hide-md{display:none}
+}
+@media (max-width:680px){
+  .wrap{padding:0 18px}
+  .mast{padding:28px 0 22px}
+  .title{font-size:26px}
+  .dek{font-size:13.5px}
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+  .kpi:nth-child(2n){border-right:none}
+  .kpi:nth-child(n+3){border-top:1px solid var(--rule)}
+  .kpi .num{font-size:26px}
+  .filter-row{padding:12px 0}
+  .filter-group{border-right:none;padding-right:0;margin-right:0;width:100%}
+  .filter-label{margin-right:6px}
+  .toggle{margin-right:0}
+  .search{width:100%;margin-left:0}
+  .hide-sm{display:none}
+  thead th,tbody td{padding:10px 8px}
+}
 </style>
 </head>
 <body>
-  <h1>Kickstarter China Tracker</h1>
-  <div class="sub">
-    实时追踪 Kickstarter 上中国背景的消费硬件项目（pre-launch + live）。
-    数据每 4 小时自动刷新一次（GitHub Actions cron）。
-    源码：<a href="https://github.com/YOUR_HANDLE/kickstarter-china-tracker" id="repoLink">GitHub</a>
-    · <span id="updated">加载中…</span>
-  </div>
+<div class="wrap">
 
-  <div class="card">
-    <div class="controls">
-      <input id="q" type="text" placeholder="搜索：产品名 / 公司 / 城市 / 品类 …">
-      <select id="status">
-        <option value="">全部状态</option>
-        <option value="prelaunch">仅未发布 (prelaunch)</option>
-        <option value="live">仅在筹</option>
-        <option value="successful">仅成功结束</option>
-      </select>
-      <select id="china">
-        <option value="">全部置信度</option>
-        <option value="高">置信度 高</option>
-        <option value="中">置信度 中</option>
-      </select>
-      <label><input id="onlyPwl" type="checkbox"> 只看 ★ Project We Love</label>
-      <span class="muted" id="count"></span>
+  <header class="mast">
+    <div class="kicker"><span class="pulse"></span>实时数据 · cron 每 4 小时刷新</div>
+    <h1 class="title">Kickstarter China Tracker</h1>
+    <p class="dek">追踪 Kickstarter 上中国背景的消费硬件项目，覆盖 pre-launch / live / 已结束三个阶段。数据通过 KS Discover JSON 直连，每 4 小时由 GitHub Actions 重抓一次。</p>
+    <div class="byline">
+      <span id="updated">加载中…</span>
+      <span class="sep">/</span>
+      <a id="repoLink" href="https://github.com/Chen17-sq/kickstarter-china-tracker" target="_blank" rel="noopener">GitHub 源码</a>
+      <span class="sep">/</span>
+      <a id="dataLink" href="./data/projects.json" target="_blank" rel="noopener">JSON 数据</a>
     </div>
-    <div class="stats" id="kpis"></div>
-    <div class="legend">
-      <span><span class="swatch" style="background:var(--pre)"></span>未发布</span>
-      <span><span class="swatch" style="background:var(--live)"></span>在筹</span>
-      <span><span class="swatch" style="background:var(--ended)"></span>已结束</span>
-      <span style="margin-left:14px"><span class="swatch" style="background:#dcfce7"></span>中国 高</span>
-      <span><span class="swatch" style="background:#fef3c7"></span>中</span>
+  </header>
+
+  <section class="kpi-row" id="kpis"></section>
+
+  <section class="filter-row">
+    <div class="filter-group">
+      <span class="filter-label">状态</span>
+      <div id="statusChips"></div>
     </div>
-  </div>
+    <div class="filter-group">
+      <span class="filter-label">置信度</span>
+      <div id="confChips"></div>
+    </div>
+    <label class="toggle"><input id="onlyPwl" type="checkbox"> ★ 仅看 KS 精选</label>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
+      <input id="q" type="text" placeholder="搜索 产品 / 公司 / 城市 / 品类">
+    </div>
+  </section>
 
-  <div id="table-host"></div>
+  <div class="count-line" id="count">加载中…</div>
 
+  <div class="table-wrap" id="table-host"></div>
+
+  <footer class="foot">
+    <span>数据：Kickstarter Discover JSON</span>
+    <span class="sep">/</span>
+    <span>代码：<a href="https://github.com/Chen17-sq/kickstarter-china-tracker" target="_blank" rel="noopener">GitHub</a></span>
+    <span class="sep">/</span>
+    <span>设计：Editorial / Swiss</span>
+  </footer>
+
+</div>
 <script src="./app.js"></script>
-</body></html>
+</body>
+</html>

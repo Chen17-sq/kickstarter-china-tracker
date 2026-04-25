@@ -1,147 +1,283 @@
-// Kickstarter China Tracker — front-end
-// Loads ./data/projects.json (deployed by .github/workflows/deploy.yml)
+// Kickstarter China Tracker — Editorial frontend
+// Loads ./data/projects.json (committed every 4h by .github/workflows/scrape.yml)
 
 const $ = (q) => document.querySelector(q);
-const STATUS_LABEL = {
+const $$ = (q) => document.querySelectorAll(q);
+
+const STATUS_ZH = {
   prelaunch: "未发布",
   live: "在筹中",
-  successful: "已结束（成功）",
-  failed: "已结束（未达标）",
+  successful: "已成功",
+  failed: "未达标",
+  canceled: "已取消",
+  suspended: "已暂停",
   unknown: "—",
 };
-const ORDER = { prelaunch: 0, live: 1, successful: 2, failed: 3, unknown: 9 };
+const STATUS_ORDER = {
+  prelaunch: 0, live: 1, successful: 2, failed: 3,
+  canceled: 4, suspended: 5, unknown: 9,
+};
 
-function parseInt0(x) {
-  const n = parseInt(String(x ?? "").replace(/[^0-9]/g, ""), 10);
-  return Number.isFinite(n) ? n : 0;
-}
-
-function chinaBadge(v) {
-  const cls = v === "高" ? "high" : v === "中" ? "med" : "low";
-  return `<span class="badge ${cls}">${v || "?"}</span>`;
-}
-function statusPill(s) {
-  return `<span class="pill ${s}">${STATUS_LABEL[s] || s}</span>`;
-}
-
+// ─── State ─────────────────────────────────────────────────────
 let DATA = [];
-let GENERATED_AT = "";
+let FILTERS = { status: "", conf: "", pwl: false, q: "" };
+let SORT = { k: null, dir: "desc" };
 
+// ─── Formatters ────────────────────────────────────────────────
+function fmtUSD(n) {
+  if (n == null || n === "" || isNaN(Number(n))) return "—";
+  const v = Number(n);
+  if (v >= 1e6) return "$" + (v / 1e6).toFixed(2).replace(/\.?0+$/, "") + "M";
+  if (v >= 1e4) return "$" + Math.round(v / 1e3) + "K";
+  if (v >= 1e3) return "$" + (v / 1e3).toFixed(1) + "K";
+  return "$" + Math.round(v).toLocaleString();
+}
+function fmtPct(p) {
+  if (p == null || p === "" || isNaN(Number(p))) return "—";
+  const v = Number(p) * 100;
+  if (v >= 1000) return Math.round(v).toLocaleString() + "%";
+  return v.toFixed(0) + "%";
+}
+function fmtNum(n) {
+  if (n == null || n === "" || isNaN(Number(n))) return "—";
+  return Number(n).toLocaleString();
+}
+function fmtDate(iso) {
+  if (!iso) return "";
+  return iso.replace("T", " ").replace("Z", " UTC");
+}
+function escapeHtml(s) {
+  return String(s ?? "").replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[c]));
+}
+
+// ─── Sort ──────────────────────────────────────────────────────
+function defaultSort(a, b) {
+  const oa = STATUS_ORDER[a.status] ?? 9;
+  const ob = STATUS_ORDER[b.status] ?? 9;
+  if (oa !== ob) return oa - ob;
+  // Within prelaunch: followers (when we have them) then PWL
+  if (a.status === "prelaunch") {
+    const fa = Number(a.followers || 0), fb = Number(b.followers || 0);
+    if (fa !== fb) return fb - fa;
+    if (!!b.project_we_love !== !!a.project_we_love) {
+      return (b.project_we_love ? 1 : 0) - (a.project_we_love ? 1 : 0);
+    }
+  }
+  // Within live/ended: dollars pledged
+  const pa = Number(a.pledged_usd || 0), pb = Number(b.pledged_usd || 0);
+  if (pa !== pb) return pb - pa;
+  return (a.title || "").localeCompare(b.title || "", "zh");
+}
+
+function applySort() {
+  if (!SORT.k) {
+    DATA.sort(defaultSort);
+    return;
+  }
+  const k = SORT.k, dir = SORT.dir === "asc" ? 1 : -1;
+  DATA.sort((a, b) => {
+    const av = a[k], bv = b[k];
+    const an = Number(av), bn = Number(bv);
+    if (!isNaN(an) && !isNaN(bn) && av !== "" && bv !== "" && av != null && bv != null) {
+      return (an - bn) * dir;
+    }
+    return String(av ?? "").localeCompare(String(bv ?? ""), "zh") * dir;
+  });
+}
+
+// ─── Render ────────────────────────────────────────────────────
+function rowHtml(d) {
+  const pwl = d.project_we_love ? '<span class="pwl">★</span>' : "";
+  const title = escapeHtml(d.title || "(untitled)");
+  const company = escapeHtml(d.matched_brand || d.creator || d.creator_name || "");
+  const loc = escapeHtml(d.location || "");
+  const cat = escapeHtml(d.category || "");
+  const meta = [company, loc, cat].filter(Boolean).join(" · ");
+  const status = d.status || "unknown";
+  const pctVal = Number(d.percent_funded || 0) * 100;
+  let pctCls = "pct under";
+  if (pctVal >= 100 && pctVal < 1000) pctCls = "pct";
+  else if (pctVal >= 1000) pctCls = "pct huge";
+  const url = d.url || "";
+
+  return `<tr>
+    <td>
+      <div class="cell-title">${pwl}${title}</div>
+      <div class="cell-meta">${meta}</div>
+    </td>
+    <td><span class="status ${status}">${STATUS_ZH[status] || status}</span></td>
+    <td class="hide-sm">
+      <span class="conf ${d.china_confidence === "高" ? "high" : ""}">${escapeHtml(d.china_confidence || "?")}</span>
+      <div class="country">${escapeHtml(d.country || "")}</div>
+    </td>
+    <td class="num">
+      <div class="dollar">${fmtUSD(d.pledged_usd)}</div>
+      ${d.goal_usd ? `<div class="goal">/ ${fmtUSD(d.goal_usd)}</div>` : ""}
+    </td>
+    <td class="num hide-md">${fmtNum(d.backers)}</td>
+    <td class="num hide-md">${fmtNum(d.followers)}</td>
+    <td class="num hide-md"><span class="${pctCls}">${fmtPct(d.percent_funded)}</span></td>
+    <td>${url ? `<a class="link" href="${escapeHtml(url)}" target="_blank" rel="noopener">KS →</a>` : ""}</td>
+  </tr>`;
+}
+
+function renderTable(rows) {
+  $("#table-host").innerHTML = `
+    <table>
+      <thead><tr>
+        <th data-k="title">项目 / 创作者</th>
+        <th data-k="status">状态</th>
+        <th data-k="china_confidence" class="hide-sm">置信度</th>
+        <th data-k="pledged_usd" class="num">已筹</th>
+        <th data-k="backers" class="num hide-md">Backers</th>
+        <th data-k="followers" class="num hide-md">Followers</th>
+        <th data-k="percent_funded" class="num hide-md">完成率</th>
+        <th class="no-sort">链接</th>
+      </tr></thead>
+      <tbody>${rows.map(rowHtml).join("")}</tbody>
+    </table>`;
+
+  // sort indicators
+  $$("thead th[data-k]").forEach((th) => {
+    if (SORT.k === th.dataset.k) {
+      th.classList.add("sort-key");
+      if (SORT.dir === "asc") th.classList.add("asc");
+    }
+    th.addEventListener("click", () => {
+      const k = th.dataset.k;
+      if (SORT.k === k) SORT.dir = SORT.dir === "asc" ? "desc" : "asc";
+      else { SORT.k = k; SORT.dir = "desc"; }
+      applySort();
+      render();
+    });
+  });
+}
+
+function renderKpis() {
+  const counts = { prelaunch: 0, live: 0, successful: 0, failed: 0 };
+  let pwl = 0, high = 0, totalUsd = 0;
+  DATA.forEach((d) => {
+    counts[d.status] = (counts[d.status] || 0) + 1;
+    if (d.project_we_love) pwl++;
+    if (d.china_confidence === "高") high++;
+    if (d.status === "live") totalUsd += Number(d.pledged_usd || 0);
+  });
+
+  $("#kpis").innerHTML = `
+    <div class="kpi"><div class="label">追踪总数</div>
+      <div class="num">${DATA.length}</div>
+      <div class="delta">中国背景 高 · ${high}</div></div>
+    <div class="kpi is-pre"><div class="label">未发布</div>
+      <div class="num">${counts.prelaunch}</div>
+      <div class="delta">prelaunch</div></div>
+    <div class="kpi is-live"><div class="label">在筹中</div>
+      <div class="num">${counts.live}</div>
+      <div class="delta">已筹 ${fmtUSD(totalUsd)}</div></div>
+    <div class="kpi"><div class="label">已成功</div>
+      <div class="num">${counts.successful}</div>
+      <div class="delta">successful</div></div>
+    <div class="kpi"><div class="label">★ KS 精选</div>
+      <div class="num">${pwl}</div>
+      <div class="delta">project we love</div></div>`;
+}
+
+function applyFilters(rows) {
+  return rows.filter((d) => {
+    if (FILTERS.status && d.status !== FILTERS.status) return false;
+    if (FILTERS.conf && d.china_confidence !== FILTERS.conf) return false;
+    if (FILTERS.pwl && !d.project_we_love) return false;
+    if (FILTERS.q) {
+      const hay = [
+        d.title, d.creator, d.creator_name, d.matched_brand,
+        d.location, d.country, d.category, d.blurb,
+      ].filter(Boolean).join(" ").toLowerCase();
+      if (!hay.includes(FILTERS.q)) return false;
+    }
+    return true;
+  });
+}
+
+function render() {
+  const visible = applyFilters(DATA);
+  $("#count").innerHTML =
+    `显示 <b>${visible.length.toLocaleString()}</b> / ${DATA.length.toLocaleString()} 个项目` +
+    (FILTERS.q || FILTERS.status || FILTERS.conf || FILTERS.pwl
+      ? ` · <a href="#" id="clearF" style="color:inherit;border-bottom:1px solid currentColor;text-decoration:none">清除筛选</a>`
+      : "");
+  if ($("#clearF")) {
+    $("#clearF").addEventListener("click", (e) => {
+      e.preventDefault();
+      FILTERS = { status: "", conf: "", pwl: false, q: "" };
+      $("#q").value = ""; $("#onlyPwl").checked = false;
+      buildChips();
+      render();
+    });
+  }
+  renderTable(visible);
+}
+
+// ─── Chips & filters ────────────────────────────────────────────
+function makeChips(hostId, options, key) {
+  const el = $(hostId);
+  el.innerHTML = options.map((o) =>
+    `<button class="chip${FILTERS[key] === o.value ? " active" : ""}" data-v="${escapeHtml(o.value)}">${escapeHtml(o.label)}</button>`
+  ).join("");
+  el.querySelectorAll(".chip").forEach((c) => {
+    c.addEventListener("click", () => {
+      FILTERS[key] = c.dataset.v;
+      makeChips(hostId, options, key);
+      render();
+    });
+  });
+}
+
+function buildChips() {
+  makeChips("#statusChips", [
+    { value: "", label: "全部" },
+    { value: "prelaunch", label: "未发布" },
+    { value: "live", label: "在筹" },
+    { value: "successful", label: "已成功" },
+  ], "status");
+  makeChips("#confChips", [
+    { value: "", label: "全部" },
+    { value: "高", label: "高" },
+    { value: "中", label: "中" },
+  ], "conf");
+}
+
+// ─── Boot ──────────────────────────────────────────────────────
 async function load() {
   try {
     const r = await fetch("./data/projects.json", { cache: "no-store" });
     if (!r.ok) throw new Error("HTTP " + r.status);
     const j = await r.json();
     DATA = j.projects || [];
-    GENERATED_AT = j.generated_at || "";
-    DATA.sort((a, b) => {
-      const oa = ORDER[a.status] ?? 9, ob = ORDER[b.status] ?? 9;
-      if (oa !== ob) return oa - ob;
-      const fa = parseInt0(a.followers), fb = parseInt0(b.followers);
-      if (fa !== fb) return fb - fa;
-      return (a.title || a.name || "").localeCompare(b.title || b.name || "");
-    });
-    $("#updated").textContent = "更新于 " + GENERATED_AT;
+    applySort();
+    $("#updated").textContent = "更新于 " + fmtDate(j.generated_at);
     boot();
   } catch (e) {
     document.body.insertAdjacentHTML("beforeend",
-      `<div class="err">加载 data/projects.json 失败：${e.message}<br>
-       这通常意味着第一次 GitHub Actions cron 还没跑完。运行
-       <code>python -m scraper.run</code> 本地试一下，或者去 Actions 页面手动触发一次。</div>`);
+      `<div class="wrap"><div class="err">
+        加载 <code>./data/projects.json</code> 失败：${escapeHtml(e.message)}<br>
+        本地试 <code>python -m scraper.run</code>，或者去 GitHub Actions 手动触发一次 scrape。
+      </div></div>`);
   }
 }
 
-function render(rows) {
-  const host = $("#table-host");
-  host.innerHTML = `
-    <table>
-      <thead><tr>
-        <th data-k="title">产品 / 公司</th>
-        <th data-k="china_confidence">中国</th>
-        <th data-k="location">总部</th>
-        <th data-k="status">状态</th>
-        <th data-k="followers">Followers</th>
-        <th data-k="backers">Backers</th>
-        <th data-k="pledged_native">已筹</th>
-        <th data-k="funded_pct">完成率</th>
-        <th data-k="days_to_go">剩余</th>
-        <th data-k="title">链接</th>
-      </tr></thead>
-      <tbody>${rows.map(rowHtml).join("")}</tbody>
-    </table>`;
-  $("#count").textContent = `显示 ${rows.length} / ${DATA.length}`;
-  const counts = { prelaunch: 0, live: 0, successful: 0 };
-  let high = 0, pwl = 0;
-  rows.forEach(r => {
-    counts[r.status] = (counts[r.status] || 0) + 1;
-    if (r.china_confidence === "高") high++;
-    if (r.project_we_love) pwl++;
-  });
-  $("#kpis").innerHTML = `
-    <div class="stat">未发布 <b>${counts.prelaunch}</b></div>
-    <div class="stat">在筹 <b>${counts.live}</b></div>
-    <div class="stat">已结束 <b>${counts.successful}</b></div>
-    <div class="stat">中国背景 高 <b>${high}</b></div>
-    <div class="stat">★ KS 精选 <b>${pwl}</b></div>`;
-
-  document.querySelectorAll("thead th").forEach(th => {
-    th.addEventListener("click", () => {
-      const k = th.dataset.k;
-      DATA.sort((a, b) => {
-        const av = (a[k] ?? "").toString();
-        const bv = (b[k] ?? "").toString();
-        const an = parseFloat(av.replace(/[^0-9.]/g, ""));
-        const bn = parseFloat(bv.replace(/[^0-9.]/g, ""));
-        if (!isNaN(an) && !isNaN(bn)) return bn - an;
-        return av.localeCompare(bv, "zh");
-      });
-      apply();
-    });
-  });
-}
-
-function rowHtml(d) {
-  const pwl = d.project_we_love ? `<span class="pwl" title="Project We Love">★</span> ` : "";
-  const url = d.url || d.ks_url || "";
-  const title = d.title || d.name || "(untitled)";
-  const subtitle = d.subtitle || d.subcategory || "";
-  const company = d.matched_brand || d.creator || d.company || "";
-  return `<tr>
-    <td>${pwl}<span class="name">${title}</span><div class="muted">${company} · ${subtitle}</div></td>
-    <td>${chinaBadge(d.china_confidence)}</td>
-    <td>${d.location || d.hq || "—"}</td>
-    <td>${statusPill(d.status)}</td>
-    <td><div class="num">${d.followers ?? "—"}</div></td>
-    <td><div class="num">${d.backers ?? "—"}</div></td>
-    <td>${d.pledged_native || d.raised_native || "—"}<div class="small">${d.goal_native ? "of " + d.goal_native : ""}</div></td>
-    <td>${d.funded_pct ? `<span class="funded">${typeof d.funded_pct === 'number' ? d.funded_pct + '%' : d.funded_pct}</span>` : "—"}</td>
-    <td>${d.days_to_go ?? "—"}</td>
-    <td>${url ? `<a href="${url}" target="_blank" rel="noopener">KS ↗</a>` : ""}</td>
-  </tr>`;
-}
-
-function apply() {
-  const q = $("#q").value.trim().toLowerCase();
-  const s = $("#status").value;
-  const c = $("#china").value;
-  const op = $("#onlyPwl").checked;
-  const out = DATA.filter(d => {
-    if (s && d.status !== s) return false;
-    if (c && d.china_confidence !== c) return false;
-    if (op && !d.project_we_love) return false;
-    if (q) {
-      const hay = `${d.title || d.name || ""} ${d.creator || d.company || ""} ${d.location || d.hq || ""} ${d.category || ""} ${d.subtitle || d.subcategory || ""} ${d.highlight || ""}`.toLowerCase();
-      if (!hay.includes(q)) return false;
-    }
-    return true;
-  });
-  render(out);
-}
-
 function boot() {
-  ["q", "status", "china"].forEach(id => $("#" + id).addEventListener("input", apply));
-  $("#onlyPwl").addEventListener("change", apply);
-  apply();
+  buildChips();
+  $("#q").addEventListener("input", (e) => {
+    FILTERS.q = e.target.value.trim().toLowerCase();
+    render();
+  });
+  $("#onlyPwl").addEventListener("change", (e) => {
+    FILTERS.pwl = e.target.checked;
+    render();
+  });
+  renderKpis();
+  render();
 }
 
 load();
