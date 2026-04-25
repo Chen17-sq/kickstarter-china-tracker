@@ -151,10 +151,12 @@ function fmtUSD(n) {
   return "$" + Math.round(v).toLocaleString();
 }
 function fmtPct(p) {
+  // KS's `percent_funded` is already a percentage where 100 = 100% goal met.
   if (p == null || p === "" || isNaN(Number(p))) return "—";
-  const v = Number(p) * 100;
+  const v = Number(p);
+  if (v >= 10000) return Math.round(v / 100).toLocaleString() + "× goal";
   if (v >= 1000) return Math.round(v).toLocaleString() + "%";
-  return v.toFixed(0) + "%";
+  return Math.round(v) + "%";
 }
 function fmtNum(n) {
   if (n == null || n === "" || isNaN(Number(n))) return "—";
@@ -218,7 +220,7 @@ function rowHtml(d) {
     ? `<div class="cell-blurb${b.fallback ? " is-fallback" : ""}">${escapeHtml(b.text)}</div>`
     : "";
   const status = d.status || "unknown";
-  const pctVal = Number(d.percent_funded || 0) * 100;
+  const pctVal = Number(d.percent_funded || 0);  // already 100 = 100%
   let pctCls = "pct under";
   if (pctVal >= 100 && pctVal < 1000) pctCls = "pct";
   else if (pctVal >= 1000) pctCls = "pct huge";

@@ -2,7 +2,8 @@ name: scrape
 
 on:
   schedule:
-    - cron: "0 */4 * * *"   # every 4 hours UTC
+    # 01:00 UTC = 09:00 Beijing — fresh for morning. One snapshot/day.
+    - cron: "0 1 * * *"
   workflow_dispatch:        # manual run from Actions tab
 
 permissions:
@@ -29,6 +30,10 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run scraper
+        env:
+          # If the secret is unset, scraper.translate logs a warning and skips
+          # auto-translation — pipeline still produces correct projects.json.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python -m scraper.run
 
       - name: Commit changes
@@ -37,7 +42,7 @@ jobs:
         run: |
           git config user.name "ks-tracker-bot"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/
+          git add data/ reports/
           [ -f CHANGELOG.md ] && git add CHANGELOG.md || true
           if git diff --staged --quiet; then
             echo "No changes."

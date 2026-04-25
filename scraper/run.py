@@ -27,6 +27,8 @@ from .http import RateLimiter
 from .discover import crawl_discover, DiscoverHit
 from .classify import classify
 from .diff import diff_snapshots, changes_to_markdown
+from .translate import fill_missing as translate_fill_missing
+from .report import make_report, REPORTS
 
 # TODO(followers): KS prelaunch pages don't include the follower count in SSR
 # HTML — it's fetched client-side via GraphQL after page mount. Two paths to
@@ -152,6 +154,10 @@ def run() -> int:
     matched = sum(1 for r in rows if r.get("blurb_zh"))
     print(f"  classified {len(rows)} as China-background ({matched} with curated zh blurb)")
 
+    # Auto-translate any rows still missing blurb_zh (no-op if no API key).
+    # Mutates rows in-place to add blurb_zh; updates data/blurbs_zh.json.
+    translate_fill_missing(rows)
+
     finished = now_iso()
     out = {
         "generated_at": finished,
@@ -196,6 +202,23 @@ def run() -> int:
                 print("  no changes since last run")
         except Exception as e:
             print(f"  diff skipped: {e}")
+
+    # Generate today's Markdown report (compares against snaps[-2])
+    try:
+        REPORTS.mkdir(parents=True, exist_ok=True)
+        prev_for_report = None
+        if len(snaps) >= 2:
+            try:
+                prev_for_report = json.loads(snaps[-2].read_text(encoding="utf-8"))
+            except Exception:
+                prev_for_report = None
+        md = make_report(out, prev_for_report)
+        today = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
+        report_path = REPORTS / f"{today}.md"
+        report_path.write_text(md, encoding="utf-8")
+        print(f"  wrote reports/{today}.md")
+    except Exception as e:
+        print(f"  report skipped: {e}")
 
     print(f"done. kept {len(rows)}/{len(hits)}")
     return 0
