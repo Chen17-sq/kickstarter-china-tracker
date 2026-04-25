@@ -127,6 +127,13 @@ function categoryLabel(c) {
   if (!c) return "";
   return LANG === "zh" ? (CATEGORY_ZH[c] || c) : c;
 }
+// Returns { text, fallback } — fallback=true means the curated zh blurb is
+// missing and we're falling back to the KS English blurb (rendered in italic).
+function blurbInfo(d) {
+  if (LANG === "zh" && d.blurb_zh) return { text: d.blurb_zh, fallback: false };
+  if (d.blurb) return { text: d.blurb, fallback: LANG === "zh" };
+  return { text: "", fallback: false };
+}
 
 // ─── State ─────────────────────────────────────────────────────
 let DATA = [];
@@ -203,7 +210,13 @@ function rowHtml(d) {
   const company = escapeHtml(brandLabel(d));
   const loc = escapeHtml(d.location || "");
   const cat = escapeHtml(categoryLabel(d.category));
+  // Meta line: just company · location · category (small, secondary)
   const meta = [company, loc, cat].filter(Boolean).join(" · ");
+  // Blurb line: the actual product description (中文 if curated, else English)
+  const b = blurbInfo(d);
+  const blurbHtml = b.text
+    ? `<div class="cell-blurb${b.fallback ? " is-fallback" : ""}">${escapeHtml(b.text)}</div>`
+    : "";
   const status = d.status || "unknown";
   const pctVal = Number(d.percent_funded || 0) * 100;
   let pctCls = "pct under";
@@ -214,6 +227,7 @@ function rowHtml(d) {
   return `<tr>
     <td>
       <div class="cell-title">${pwl}${title}</div>
+      ${blurbHtml}
       <div class="cell-meta">${meta}</div>
     </td>
     <td><span class="status ${status}">${escapeHtml(t().statuses[status] || status)}</span></td>
@@ -301,7 +315,7 @@ function applyFilters(rows) {
     if (FILTERS.q) {
       const hay = [
         d.title, d.creator, d.creator_name, d.matched_brand, d.matched_brand_zh,
-        d.location, d.country, d.category, d.blurb,
+        d.location, d.country, d.category, d.blurb, d.blurb_zh,
       ].filter(Boolean).join(" ").toLowerCase();
       if (!hay.includes(FILTERS.q)) return false;
     }

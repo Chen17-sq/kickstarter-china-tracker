@@ -38,6 +38,7 @@ from .diff import diff_snapshots, changes_to_markdown
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA = REPO_ROOT / "data"
 HISTORY = DATA / "history"
+BLURBS_ZH = DATA / "blurbs_zh.json"
 
 # If China-matched count drops below this floor, treat the run as compromised
 # (likely Cloudflare blocked the runner, KS changed schema, etc.) and do NOT
@@ -68,15 +69,34 @@ def normalize_status(state: str | None) -> str:
     return "unknown"
 
 
+def load_blurbs_zh() -> dict[str, str]:
+    """Load curated Chinese product one-liners keyed by KS pathname.
+
+    File format: flat dict { '/projects/x/y': '中文一句话', ... } with an
+    optional '_meta' key (skipped). Future: extend to LLM-translated entries.
+    """
+    if not BLURBS_ZH.exists():
+        return {}
+    try:
+        raw = json.loads(BLURBS_ZH.read_text(encoding="utf-8"))
+        return {k: v for k, v in raw.items()
+                if isinstance(v, str) and not k.startswith("_")}
+    except Exception as e:
+        print(f"  warn: blurbs_zh.json failed to load ({e}); continuing without")
+        return {}
+
+
 def build_row(hit: DiscoverHit, *, followers: int | None,
               confidence: str, reason: str,
-              matched_brand: str | None, matched_brand_zh: str | None) -> dict:
+              matched_brand: str | None, matched_brand_zh: str | None,
+              blurb_zh: str | None) -> dict:
     status = normalize_status(hit.state)
     return {
         "pathname": hit.pathname,
         "url": hit.url,
         "title": hit.title,
         "blurb": hit.blurb,
+        "blurb_zh": blurb_zh,
         "creator": hit.creator_name,  # alias for site/app.js compatibility
         "creator_slug": hit.creator_slug,
         "creator_name": hit.creator_name,
@@ -112,6 +132,9 @@ def run() -> int:
         print("FATAL: zero discovered. Likely Cloudflare blocked all seeds. Aborting write.", file=sys.stderr)
         return 1
 
+    blurbs_zh = load_blurbs_zh()
+    print(f"  loaded {len(blurbs_zh)} curated Chinese blurbs")
+
     rows: list[dict] = []
     for path, hit in hits.items():
         cls = classify(creator_slug=hit.creator_slug, location=hit.location, title=hit.title)
@@ -124,8 +147,10 @@ def run() -> int:
             reason=cls.reason,
             matched_brand=cls.matched_brand,
             matched_brand_zh=cls.matched_brand_zh,
+            blurb_zh=blurbs_zh.get(path),
         ))
-    print(f"  classified {len(rows)} as China-background")
+    matched = sum(1 for r in rows if r.get("blurb_zh"))
+    print(f"  classified {len(rows)} as China-background ({matched} with curated zh blurb)")
 
     finished = now_iso()
     out = {
