@@ -42,11 +42,21 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
 .title{font-family:'Inter Tight','Inter',-apple-system,'PingFang SC',sans-serif;
   font-weight:800;letter-spacing:-.025em;font-size:42px;line-height:1.05;margin:0 0 10px}
 .dek{font-size:14.5px;line-height:1.55;color:var(--ink-2);max-width:62ch;margin:0}
-.byline{margin-top:18px;font-size:11.5px;color:var(--ink-3);letter-spacing:.04em}
+.byline{margin-top:18px;font-size:11.5px;color:var(--ink-3);letter-spacing:.04em;
+  display:flex;align-items:baseline;gap:0;flex-wrap:wrap;row-gap:8px}
 .byline a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule);
   padding-bottom:1px;transition:color .15s,border-color .15s}
 .byline a:hover{color:var(--accent);border-bottom-color:var(--accent)}
 .byline .sep{display:inline-block;margin:0 10px;color:var(--rule)}
+.byline .lang-toggle{margin-left:auto;display:inline-flex;border:1px solid var(--rule);
+  font-family:inherit;font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;font-weight:600}
+.byline .lang-toggle button{background:transparent;border:none;font-family:inherit;
+  font-size:inherit;letter-spacing:inherit;font-weight:inherit;color:var(--ink-3);
+  padding:5px 11px;cursor:pointer;transition:all .12s}
+.byline .lang-toggle button:hover{color:var(--ink)}
+.byline .lang-toggle button.active{background:var(--ink);color:#fff}
+.byline .lang-toggle button + button{border-left:1px solid var(--rule)}
 
 /* ── KPI strip ────────────────────────────────────────────────── */
 .kpi-row{display:grid;grid-template-columns:repeat(5,1fr);
@@ -192,15 +202,18 @@ tbody td{padding:14px 12px;vertical-align:top}
 <div class="wrap">
 
   <header class="mast">
-    <div class="kicker"><span class="pulse"></span>实时数据 · cron 每 4 小时刷新</div>
+    <div class="kicker"><span class="pulse"></span><span id="kicker">实时数据 · cron 每 4 小时刷新</span></div>
     <h1 class="title">Kickstarter China Tracker</h1>
-    <p class="dek">追踪 Kickstarter 上中国背景的消费硬件项目，覆盖 pre-launch / live / 已结束三个阶段。数据通过 KS Discover JSON 直连，每 4 小时由 GitHub Actions 重抓一次。</p>
+    <p class="dek" id="dek">追踪 Kickstarter 上中国背景的消费硬件项目，覆盖 pre-launch / live / 已结束三个阶段。数据通过 KS Discover JSON 直连，每 4 小时由 GitHub Actions 重抓一次。</p>
     <div class="byline">
       <span id="updated">加载中…</span>
       <span class="sep">/</span>
       <a id="repoLink" href="https://github.com/Chen17-sq/kickstarter-china-tracker" target="_blank" rel="noopener">GitHub 源码</a>
       <span class="sep">/</span>
       <a id="dataLink" href="./data/projects.json" target="_blank" rel="noopener">JSON 数据</a>
+      <span class="lang-toggle" id="langToggle">
+        <button data-l="zh" class="active">中</button><button data-l="en">EN</button>
+      </span>
     </div>
   </header>
 
@@ -208,14 +221,14 @@ tbody td{padding:14px 12px;vertical-align:top}
 
   <section class="filter-row">
     <div class="filter-group">
-      <span class="filter-label">状态</span>
+      <span class="filter-label" id="lblStatus">状态</span>
       <div id="statusChips"></div>
     </div>
     <div class="filter-group">
-      <span class="filter-label">置信度</span>
+      <span class="filter-label" id="lblConf">置信度</span>
       <div id="confChips"></div>
     </div>
-    <label class="toggle"><input id="onlyPwl" type="checkbox"> ★ 仅看 KS 精选</label>
+    <label class="toggle"><input id="onlyPwl" type="checkbox"> <span id="lblPwl">★ 仅看 KS 精选</span></label>
     <div class="search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
       <input id="q" type="text" placeholder="搜索 产品 / 公司 / 城市 / 品类">
@@ -226,7 +239,7 @@ tbody td{padding:14px 12px;vertical-align:top}
 
   <div class="table-wrap" id="table-host"></div>
 
-  <footer class="foot">
+  <footer class="foot" id="foot">
     <span>数据：Kickstarter Discover JSON</span>
     <span class="sep">/</span>
     <span>代码：<a href="https://github.com/Chen17-sq/kickstarter-china-tracker" target="_blank" rel="noopener">GitHub</a></span>

@@ -12,36 +12,36 @@ last_updated: 2026-04-25
 
 high_confidence:
   # ===== 3D 打印 / DIY 工具 =====
-  - {brand: "Snapmaker",        creator_slugs: ["snapmaker"],            hq: "深圳",      source: "official-site"}
-  - {brand: "Bambu Lab",        creator_slugs: [],                        hq: "深圳",      source: "official-site"}
-  - {brand: "Anycubic",         creator_slugs: ["anycubic-official"],     hq: "深圳",      source: "official-site"}
-  - {brand: "Sovol",            creator_slugs: ["sovol"],                 hq: "深圳",      source: "official-site"}
-  - {brand: "Phrozen",          creator_slugs: ["phrozenmake"],           hq: "台湾",      source: "official-site"}
-  - {brand: "Zhuhai CTC",       creator_slugs: ["2141865151"],            hq: "珠海",      source: "direct-verification"}
-  - {brand: "SainSmart Genmitsu", creator_slugs: ["genmitsu"],            hq: "南京",      source: "direct-verification"}
-  - {brand: "TwoTrees",         creator_slugs: ["twotrees"],              hq: "中国",      source: "direct-verification"}
-  - {brand: "Tyvok",            creator_slugs: ["1295051943"],            hq: "中国",      source: "direct-verification"}
-  - {brand: "ACMER Laser",      creator_slugs: ["acmerlaser"],            hq: "中国",      source: "direct-verification"}
-  - {brand: "Gweike Laser",     creator_slugs: ["gweikelaser"],           hq: "济南",      source: "direct-verification"}
-  - {brand: "WeCreat (xTool 系)", creator_slugs: ["wecreat"],             hq: "深圳",      source: "direct-verification"}
-  - {brand: "xTool / Makeblock", creator_slugs: ["makeblock"],            hq: "深圳",      source: "direct-verification"}
-  - {brand: "Revopoint 3D",     creator_slugs: ["revopoint3d"],           hq: "深圳",      source: "direct-verification"}
-  - {brand: "AICXL3D / 超系视觉", creator_slugs: ["1059314484"],          hq: "Hong Kong", source: "direct-verification"}
-  - {brand: "XtraMaker",        creator_slugs: [],                        hq: "深圳",      source: "news"}
-  - {brand: "FlashForge",       creator_slugs: [],                        hq: "金华",      source: "official-site"}
-  - {brand: "Elegoo",           creator_slugs: [],                        hq: "深圳",      source: "official-site"}
-  - {brand: "Creality",         creator_slugs: [],                        hq: "深圳",      source: "official-site"}
+  - {brand: "Snapmaker",        brand_zh: "Snapmaker",     creator_slugs: ["snapmaker"],            hq: "深圳",      source: "official-site"}
+  - {brand: "Bambu Lab",        brand_zh: "拓竹",          creator_slugs: [],                        hq: "深圳",      source: "official-site"}
+  - {brand: "Anycubic",         brand_zh: "纵维立方",      creator_slugs: ["anycubic-official"],     hq: "深圳",      source: "official-site"}
+  - {brand: "Sovol",            brand_zh: "索尔",          creator_slugs: ["sovol"],                 hq: "深圳",      source: "official-site"}
+  - {brand: "Phrozen",          brand_zh: "三緯國際",      creator_slugs: ["phrozenmake"],           hq: "台湾",      source: "official-site"}
+  - {brand: "Zhuhai CTC",       brand_zh: "珠海 CTC",      creator_slugs: ["2141865151"],            hq: "珠海",      source: "direct-verification"}
+  - {brand: "SainSmart Genmitsu", brand_zh: "金米兔",      creator_slugs: ["genmitsu"],              hq: "南京",      source: "direct-verification"}
+  - {brand: "TwoTrees",         brand_zh: "两棵树",        creator_slugs: ["twotrees"],              hq: "中国",      source: "direct-verification"}
+  - {brand: "Tyvok",            brand_zh: "Tyvok",         creator_slugs: ["1295051943"],            hq: "中国",      source: "direct-verification"}
+  - {brand: "ACMER Laser",      brand_zh: "ACMER 激光",    creator_slugs: ["acmerlaser"],            hq: "中国",      source: "direct-verification"}
+  - {brand: "Gweike Laser",     brand_zh: "光韵达激光",    creator_slugs: ["gweikelaser"],           hq: "济南",      source: "direct-verification"}
+  - {brand: "WeCreat (xTool 系)", brand_zh: "WeCreat",     creator_slugs: ["wecreat"],               hq: "深圳",      source: "direct-verification"}
+  - {brand: "xTool / Makeblock", brand_zh: "童心制物",     creator_slugs: ["makeblock"],             hq: "深圳",      source: "direct-verification"}
+  - {brand: "Revopoint 3D",     brand_zh: "复志",          creator_slugs: ["revopoint3d"],           hq: "深圳",      source: "direct-verification"}
+  - {brand: "AICXL3D / 超系视觉", brand_zh: "超系视觉",    creator_slugs: ["1059314484"],            hq: "Hong Kong", source: "direct-verification"}
+  - {brand: "XtraMaker",        brand_zh: "XtraMaker",     creator_slugs: [],                        hq: "深圳",      source: "news"}
+  - {brand: "FlashForge",       brand_zh: "闪铸科技",      creator_slugs: [],                        hq: "金华",      source: "official-site"}
+  - {brand: "Elegoo",           brand_zh: "Elegoo",        creator_slugs: [],                        hq: "深圳",      source: "official-site"}
+  - {brand: "Creality",         brand_zh: "创想三维",      creator_slugs: [],                        hq: "深圳",      source: "official-site"}
 
   # ===== 智能眼镜 / AR / XR =====
-  - {brand: "Rokid",            creator_slugs: ["rokid"],                 hq: "杭州",      source: "official-site"}
-  - {brand: "Halliday",         creator_slugs: ["halliday-ai-glasses"],   hq: "深圳/上海", source: "news"}
-  - {brand: "Looktech",         creator_slugs: [],                        hq: "杭州",      source: "news"}
+  - {brand: "Rokid",            brand_zh: "Rokid 若琪",    creator_slugs: ["rokid"],                 hq: "杭州",      source: "official-site"}
+  - {brand: "Halliday",         brand_zh: "Halliday",      creator_slugs: ["halliday-ai-glasses"],   hq: "深圳/上海", source: "news"}
+  - {brand: "Looktech",         brand_zh: "Looktech",      creator_slugs: [],                        hq: "杭州",      source: "news"}
 
   # ===== 机器人 / 家居清洁 =====
-  - {brand: "xLean Robotics",   creator_slugs: ["xlean"],                 hq: "深圳",      source: "direct-verification"}
-  - {brand: "Keyi Technology / 可以科技", creator_slugs: ["keyitechnology"], hq: "北京",   source: "direct-verification"}
-  - {brand: "Airseekers",       creator_slugs: ["airseekerstron"],        hq: "深圳",      source: "official-site"}
-  - {brand: "Keenon Robotics",  creator_slugs: [],                        hq: "上海/深圳", source: "news"}
+  - {brand: "xLean Robotics",   brand_zh: "xLean",         creator_slugs: ["xlean"],                 hq: "深圳",      source: "direct-verification"}
+  - {brand: "Keyi Technology / 可以科技", brand_zh: "可以科技", creator_slugs: ["keyitechnology"],   hq: "北京",   source: "direct-verification"}
+  - {brand: "Airseekers",       brand_zh: "Airseekers",    creator_slugs: ["airseekerstron"],        hq: "深圳",      source: "official-site"}
+  - {brand: "Keenon Robotics",  brand_zh: "擎朗智能",      creator_slugs: [],                        hq: "上海/深圳", source: "news"}
   - {brand: "UBHOME",           creator_slugs: ["ubhome-m10"],            hq: "中国",      source: "direct-verification"}
   - {brand: "Yarbo",            creator_slugs: ["yarbo"],                 hq: "中国",      source: "official-site"}
   - {brand: "Wonder Tech / SwitchBot", creator_slugs: ["switchbot"],      hq: "深圳",      source: "official-site"}
@@ -54,24 +54,24 @@ high_confidence:
   - {brand: "Kynooe",           creator_slugs: ["925044833"],             hq: "中国",      source: "direct-verification"}
 
   # ===== 投影 / 显示 / 影音 =====
-  - {brand: "XGIMI",            creator_slugs: ["xgimititannoir"],        hq: "成都",      source: "direct-verification"}
-  - {brand: "Ultimea",          creator_slugs: ["ultimea"],               hq: "深圳",      source: "direct-verification"}
-  - {brand: "JSAUX",            creator_slugs: ["jsaux"],                 hq: "深圳",      source: "direct-verification"}
+  - {brand: "XGIMI",            brand_zh: "极米",          creator_slugs: ["xgimititannoir"],        hq: "成都",      source: "direct-verification"}
+  - {brand: "Ultimea",          brand_zh: "Ultimea",       creator_slugs: ["ultimea"],               hq: "深圳",      source: "direct-verification"}
+  - {brand: "JSAUX",            brand_zh: "几素",          creator_slugs: ["jsaux"],                 hq: "深圳",      source: "direct-verification"}
   - {brand: "Aceele",           creator_slugs: ["1012563810"],            hq: "中国",      source: "direct-verification"}
   - {brand: "TAIHE / UNICK",    creator_slugs: ["921065126"],             hq: "中国",      source: "direct-verification"}
   - {brand: "WUAWE",            creator_slugs: ["wuawe"],                 hq: "中国",      source: "direct-verification"}
   - {brand: "Bluegen",          creator_slugs: ["bluegen"],               hq: "Hong Kong/深圳", source: "direct-verification"}
-  - {brand: "moaan / 文石",     creator_slugs: ["427243560"],             hq: "深圳",      source: "official-site"}
+  - {brand: "moaan / 文石",     brand_zh: "文石",          creator_slugs: ["427243560"],             hq: "深圳",      source: "official-site"}
   - {brand: "Eyemoo",           creator_slugs: [],                        hq: "中国",      source: "news"}
   - {brand: "WEJOY",            creator_slugs: ["wejoy"],                 hq: "中国",      source: "direct-verification"}
   - {brand: "Zondision",        creator_slugs: [],                        hq: "中国",      source: "news"}
   - {brand: "Miniproca",        creator_slugs: ["91388361"],              hq: "中国",      source: "direct-verification"}
 
   # ===== 移动设备 / 游戏掌机 =====
-  - {brand: "AYANEO",           creator_slugs: ["ayaneo-offical"],        hq: "深圳",      source: "direct-verification"}
-  - {brand: "Unihertz",         creator_slugs: ["jellyphone"],            hq: "Shanghai",  source: "direct-verification"}
-  - {brand: "iKKO Audio",       creator_slugs: ["ikko"],                  hq: "Hong Kong", source: "direct-verification"}
-  - {brand: "TCL",              creator_slugs: [],                        hq: "惠州",      source: "official-site"}
+  - {brand: "AYANEO",           brand_zh: "AYANEO",        creator_slugs: ["ayaneo-offical"],        hq: "深圳",      source: "direct-verification"}
+  - {brand: "Unihertz",         brand_zh: "Unihertz",      creator_slugs: ["jellyphone"],            hq: "Shanghai",  source: "direct-verification"}
+  - {brand: "iKKO Audio",       brand_zh: "iKKO 音频",     creator_slugs: ["ikko"],                  hq: "Hong Kong", source: "direct-verification"}
+  - {brand: "TCL",              brand_zh: "TCL",           creator_slugs: [],                        hq: "惠州",      source: "official-site"}
   - {brand: "abxylute",         creator_slugs: ["abxylute"],              hq: "深圳",      source: "direct-verification"}
   - {brand: "Game Kiddy",       creator_slugs: ["gkd-pro"],               hq: "中国",      source: "direct-verification"}
 
@@ -81,25 +81,25 @@ high_confidence:
   - {brand: "Cyberblade",       creator_slugs: [],                        hq: "中国",      source: "news"}
 
   # ===== 输入设备 / 键盘 =====
-  - {brand: "Lofree",           creator_slugs: [],                        hq: "Hong Kong/深圳", source: "official-site"}
-  - {brand: "Keychron",         creator_slugs: ["keytron"],               hq: "深圳",      source: "official-site"}
-  - {brand: "Womier",           creator_slugs: ["womier"],                hq: "深圳",      source: "direct-verification"}
+  - {brand: "Lofree",           brand_zh: "洛斐",          creator_slugs: [],                        hq: "Hong Kong/深圳", source: "official-site"}
+  - {brand: "Keychron",         brand_zh: "Keychron",      creator_slugs: ["keytron"],               hq: "深圳",      source: "official-site"}
+  - {brand: "Womier",           brand_zh: "Womier",        creator_slugs: ["womier"],                hq: "深圳",      source: "direct-verification"}
 
   # ===== 充电 / 电源 =====
-  - {brand: "SHARGE / Shargeek / STORM 2", creator_slugs: ["edc-power-bank"], hq: "深圳", source: "direct-verification"}
-  - {brand: "Anker / eufyMake", creator_slugs: ["ankermake"],             hq: "深圳",      source: "official-site"}
-  - {brand: "Baseus",           creator_slugs: [],                        hq: "深圳",      source: "official-site"}
-  - {brand: "UGREEN",           creator_slugs: [],                        hq: "深圳",      source: "official-site"}
-  - {brand: "BLUETTI",          creator_slugs: [],                        hq: "深圳",      source: "official-site"}
-  - {brand: "EcoFlow",          creator_slugs: [],                        hq: "深圳",      source: "official-site"}
+  - {brand: "SHARGE / Shargeek / STORM 2", brand_zh: "闪极", creator_slugs: ["edc-power-bank"],     hq: "深圳",      source: "direct-verification"}
+  - {brand: "Anker / eufyMake", brand_zh: "安克 / eufyMake", creator_slugs: ["ankermake"],           hq: "深圳",      source: "official-site"}
+  - {brand: "Baseus",           brand_zh: "倍思",          creator_slugs: [],                        hq: "深圳",      source: "official-site"}
+  - {brand: "UGREEN",           brand_zh: "绿联",          creator_slugs: [],                        hq: "深圳",      source: "official-site"}
+  - {brand: "BLUETTI",          brand_zh: "BLUETTI",       creator_slugs: [],                        hq: "深圳",      source: "official-site"}
+  - {brand: "EcoFlow",          brand_zh: "正浩",          creator_slugs: [],                        hq: "深圳",      source: "official-site"}
   - {brand: "TICOVIS",          creator_slugs: ["835736625"],             hq: "中国",      source: "direct-verification"}
   - {brand: "Walkingboy",       creator_slugs: ["360776290"],             hq: "中国",      source: "direct-verification"}
   - {brand: "UAARPOWRISE",      creator_slugs: ["uaarpowrise"],           hq: "中国",      source: "direct-verification"}
 
   # ===== 影像 / 相机 =====
-  - {brand: "PGYTECH",          creator_slugs: ["pgytech"],               hq: "深圳",      source: "official-site"}
-  - {brand: "FeiyuTech",        creator_slugs: [],                        hq: "桂林/上海", source: "official-site"}
-  - {brand: "Insta360",         creator_slugs: [],                        hq: "深圳",      source: "official-site"}
+  - {brand: "PGYTECH",          brand_zh: "蒲公英",        creator_slugs: ["pgytech"],               hq: "深圳",      source: "official-site"}
+  - {brand: "FeiyuTech",        brand_zh: "飞宇",          creator_slugs: [],                        hq: "桂林/上海", source: "official-site"}
+  - {brand: "Insta360",         brand_zh: "影石",          creator_slugs: [],                        hq: "深圳",      source: "official-site"}
   - {brand: "Yingling",         creator_slugs: [],                        hq: "深圳",      source: "news"}
   - {brand: "Smartflex (Zhuoyao Chen)", creator_slugs: ["smartflexcamera"], hq: "深圳",   source: "direct-verification"}
 
@@ -108,13 +108,13 @@ high_confidence:
   - {brand: "UnifyDrive",       creator_slugs: ["1945743381"],            hq: "中国",      source: "direct-verification"}
 
   # ===== 智能家居 / 健康 / 厨房 =====
-  - {brand: "Smartmi 智米",     creator_slugs: ["1945327627"],            hq: "北京",      source: "official-site"}
-  - {brand: "Vantrue",          creator_slugs: [],                        hq: "深圳",      source: "official-site"}
-  - {brand: "Netvue",           creator_slugs: [],                        hq: "深圳",      source: "official-site"}
-  - {brand: "Aeke",             creator_slugs: [],                        hq: "中国",      source: "news"}
-  - {brand: "TIMEMORE 泰摩",    creator_slugs: ["timemore"],              hq: "中国",      source: "official-site"}
-  - {brand: "HiBREW",           creator_slugs: [],                        hq: "中国",      source: "official-site"}
-  - {brand: "IKAPE",            creator_slugs: [],                        hq: "深圳",      source: "news"}
+  - {brand: "Smartmi 智米",     brand_zh: "智米",          creator_slugs: ["1945327627"],            hq: "北京",      source: "official-site"}
+  - {brand: "Vantrue",          brand_zh: "凡卓",          creator_slugs: [],                        hq: "深圳",      source: "official-site"}
+  - {brand: "Netvue",           brand_zh: "Netvue",        creator_slugs: [],                        hq: "深圳",      source: "official-site"}
+  - {brand: "Aeke",             brand_zh: "Aeke",          creator_slugs: [],                        hq: "中国",      source: "news"}
+  - {brand: "TIMEMORE 泰摩",    brand_zh: "泰摩",          creator_slugs: ["timemore"],              hq: "中国",      source: "official-site"}
+  - {brand: "HiBREW",           brand_zh: "HiBREW",        creator_slugs: [],                        hq: "中国",      source: "official-site"}
+  - {brand: "IKAPE",            brand_zh: "IKAPE",         creator_slugs: [],                        hq: "深圳",      source: "news"}
   - {brand: "Maxims (La Seine)", creator_slugs: ["336547084"],            hq: "Beijing",   source: "direct-verification"}
   - {brand: "BLAST Studio (IRONIQ)", creator_slugs: ["blast-by-magpie"],  hq: "中国",      source: "news"}
   - {brand: "Moonlex",          creator_slugs: ["261716880"],             hq: "Hong Kong", source: "direct-verification"}
@@ -122,7 +122,7 @@ high_confidence:
   - {brand: "Dayoo",            creator_slugs: ["dayoosmart"],            hq: "中国",      source: "direct-verification"}
   - {brand: "Lapi Pet",         creator_slugs: ["lapipet"],               hq: "中国",      source: "direct-verification"}
   - {brand: "Popur",            creator_slugs: ["popur"],                 hq: "中国",      source: "direct-verification"}
-  - {brand: "PETKIT",           creator_slugs: [],                        hq: "上海",      source: "official-site"}
+  - {brand: "PETKIT",           brand_zh: "小佩",          creator_slugs: [],                        hq: "上海",      source: "official-site"}
 
   # ===== EDC / 工具 =====
   - {brand: "KIZER",            creator_slugs: [],                        hq: "Guangzhou", source: "official-site"}

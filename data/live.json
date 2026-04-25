@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-25T14:29:05Z",
-  "started_at": "2026-04-25T14:28:18Z",
+  "generated_at": "2026-04-25T14:54:17Z",
+  "started_at": "2026-04-25T14:53:23Z",
   "total_candidates": 296,
   "kept": 138,
   "projects": [
@@ -29,7 +29,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand name in title: AGELOCER",
-      "matched_brand": "AGELOCER"
+      "matched_brand": "AGELOCER",
+      "matched_brand_zh": "AGELOCER"
     },
     {
       "pathname": "/projects/tangiblenarrative/the-art-of-war",
@@ -56,7 +57,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Shanghai, China",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/-kizer/shark-fin-blade-pocket-knife-in-titanium-and-damascus",
@@ -83,7 +85,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Guangzhou, China",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/jellyphone/titan-2-elite-the-5g-keyboard-phone-youve-been-waiting-for",
@@ -100,17 +103,18 @@
       "raw_state": "live",
       "project_we_love": true,
       "followers": null,
-      "backers": 7500,
-      "pledged_usd": "3482928.91312384",
+      "backers": 7498,
+      "pledged_usd": "3482096.37275904",
       "goal_usd": 100045.9414912,
-      "percent_funded": 3481.329538420304,
+      "percent_funded": 3480.497380361325,
       "deadline": 1778673601,
       "launched_at": 1774353601,
       "created_at": 1770082492,
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: Unihertz",
-      "matched_brand": "Unihertz"
+      "matched_brand": "Unihertz",
+      "matched_brand_zh": "Unihertz"
     },
     {
       "pathname": "/projects/xgimititannoir/xgimi-titan-noir-series-4k-projector",
@@ -127,17 +131,18 @@
       "raw_state": "live",
       "project_we_love": true,
       "followers": null,
-      "backers": 2890,
-      "pledged_usd": "8999504.0",
+      "backers": 2892,
+      "pledged_usd": "9006701.0",
       "goal_usd": 100000.0,
-      "percent_funded": 8999.504,
+      "percent_funded": 9006.701,
       "deadline": 1781017200,
       "launched_at": 1776956109,
       "created_at": 1772167141,
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: XGIMI",
-      "matched_brand": "XGIMI"
+      "matched_brand": "XGIMI",
+      "matched_brand_zh": "极米"
     },
     {
       "pathname": "/projects/wecreat/lumos-ultra-worlds-first-one-stop-uv-mopa-laser",
@@ -164,7 +169,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: WeCreat (xTool 系)",
-      "matched_brand": "WeCreat (xTool 系)"
+      "matched_brand": "WeCreat (xTool 系)",
+      "matched_brand_zh": "WeCreat"
     },
     {
       "pathname": "/projects/1312001986/igarden-x-series-worlds-1st-ai-powered-portable-swim-jet",
@@ -191,7 +197,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand name in title: iGarden",
-      "matched_brand": "iGarden"
+      "matched_brand": "iGarden",
+      "matched_brand_zh": "iGarden"
     },
     {
       "pathname": "/projects/ultimea/ultimea-skywave-x100-dual-926-wireless-surround-system",
@@ -209,16 +216,17 @@
       "project_we_love": true,
       "followers": null,
       "backers": 1969,
-      "pledged_usd": "2057925.0",
+      "pledged_usd": "2058125.0",
       "goal_usd": 5000.0,
-      "percent_funded": 41158.5,
+      "percent_funded": 41162.5,
       "deadline": 1778515208,
       "launched_at": 1773331208,
       "created_at": 1761538168,
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: Ultimea",
-      "matched_brand": "Ultimea"
+      "matched_brand": "Ultimea",
+      "matched_brand_zh": "Ultimea"
     },
     {
       "pathname": "/projects/bluetti/fridgepower",
@@ -245,7 +253,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand name in title: BLUETTI",
-      "matched_brand": "BLUETTI"
+      "matched_brand": "BLUETTI",
+      "matched_brand_zh": "BLUETTI"
     },
     {
       "pathname": "/projects/lofree/hyzen-worlds-first-mechanical-magnetic-keyboard",
@@ -262,17 +271,18 @@
       "raw_state": "live",
       "project_we_love": false,
       "followers": null,
-      "backers": 3246,
-      "pledged_usd": "796876.75347843",
+      "backers": 3250,
+      "pledged_usd": "798138.62667345",
       "goal_usd": 10215.5288,
-      "percent_funded": 7800.64125,
+      "percent_funded": 7812.99375,
       "deadline": 1779542503,
       "launched_at": 1776950503,
       "created_at": 1773227995,
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Kowloon, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/xlean/xlean-tr1-dual-form-transformable-floor-washing-robot",
@@ -289,17 +299,18 @@
       "raw_state": "live",
       "project_we_love": true,
       "followers": null,
-      "backers": 727,
-      "pledged_usd": "710126.0",
+      "backers": 728,
+      "pledged_usd": "711233.0",
       "goal_usd": 100000.0,
-      "percent_funded": 710.126,
+      "percent_funded": 711.233,
       "deadline": 1781974934,
       "launched_at": 1776790934,
       "created_at": 1756379075,
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: xLean Robotics",
-      "matched_brand": "xLean Robotics"
+      "matched_brand": "xLean Robotics",
+      "matched_brand_zh": "xLean"
     },
     {
       "pathname": "/projects/keyitechnology/loona-deskmate-the-worlds-first-screen-aware-ai-co-worker",
@@ -316,17 +327,18 @@
       "raw_state": "live",
       "project_we_love": true,
       "followers": null,
-      "backers": 2787,
-      "pledged_usd": "626560.0",
+      "backers": 2791,
+      "pledged_usd": "627280.0",
       "goal_usd": 10000.0,
-      "percent_funded": 6265.599999999999,
+      "percent_funded": 6272.8,
       "deadline": 1777729516,
       "launched_at": 1775137516,
       "created_at": 1773043102,
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: Keyi Technology / 可以科技",
-      "matched_brand": "Keyi Technology / 可以科技"
+      "matched_brand": "Keyi Technology / 可以科技",
+      "matched_brand_zh": "可以科技"
     },
     {
       "pathname": "/projects/anylaser/anylaser-x1-the-worlds-smallest-desktop-laser-engraver",
@@ -343,17 +355,18 @@
       "raw_state": "live",
       "project_we_love": true,
       "followers": null,
-      "backers": 3638,
-      "pledged_usd": "509290.79791409",
+      "backers": 3644,
+      "pledged_usd": "510283.05515622",
       "goal_usd": 5001.476648,
-      "percent_funded": 10182.808673469388,
+      "percent_funded": 10202.647959183672,
       "deadline": 1778162406,
       "launched_at": 1775570406,
       "created_at": 1768483106,
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/infplane/hilbert-agentic-computer",
@@ -380,7 +393,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/hoorii/hoorii-stage-your-proactive-smart-personalized-companion-hub",
@@ -407,7 +421,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Wan Chai, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/keenmow-robot-mower/keenmow-k1-the-new-generation-of-3d-lidar-vision-robot-mower",
@@ -424,17 +439,18 @@
       "raw_state": "live",
       "project_we_love": false,
       "followers": null,
-      "backers": 277,
-      "pledged_usd": "306108.96484768",
+      "backers": 278,
+      "pledged_usd": "307006.12339478",
       "goal_usd": 29919.280406509995,
-      "percent_funded": 1023.1160665918795,
+      "percent_funded": 1026.1146632656978,
       "deadline": 1779368400,
       "launched_at": 1775912406,
       "created_at": 1764572706,
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/cozytime/cozytime-lumo-first-ai-infrared-indoor-grill-smoke-free",
@@ -461,7 +477,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/wavkong/wavkong-v2700-worlds-1st-rpu-powered-wi-fi-router",
@@ -488,7 +505,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/vitalink/vitalink-20mm-thin-180-foldable-keyboard-and-4k-touchscreen",
@@ -505,17 +523,18 @@
       "raw_state": "live",
       "project_we_love": false,
       "followers": null,
-      "backers": 560,
-      "pledged_usd": "178429.52831304",
+      "backers": 559,
+      "pledged_usd": "178100.60737712",
       "goal_usd": 3827.6292,
-      "percent_funded": 4661.62,
+      "percent_funded": 4653.026666666667,
       "deadline": 1778932063,
       "launched_at": 1776340063,
       "created_at": 1774318751,
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/robonovaworld/evai-not-just-a-robot-a-bionic-embodied-ai-companion-app",
@@ -542,7 +561,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/blast-by-magpie/ironiq-next-gen-vacuum-steamer-all-in-one-garment-care",
@@ -569,7 +589,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: BLAST Studio (IRONIQ)",
-      "matched_brand": "BLAST Studio (IRONIQ)"
+      "matched_brand": "BLAST Studio (IRONIQ)",
+      "matched_brand_zh": "BLAST Studio (IRONIQ)"
     },
     {
       "pathname": "/projects/gogobot/gogobot-d1-ai-robot-dog-for-real-conversation",
@@ -586,17 +607,18 @@
       "raw_state": "live",
       "project_we_love": true,
       "followers": null,
-      "backers": 426,
-      "pledged_usd": "123253.30350144",
+      "backers": 427,
+      "pledged_usd": "123521.08682682",
       "goal_usd": 5000.49319752,
-      "percent_funded": 2464.8229411164402,
+      "percent_funded": 2470.1780793958565,
       "deadline": 1777816839,
       "launched_at": 1773928839,
       "created_at": 1770822969,
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/874801633/duroxen-compact-cnc-lathe-built-for-precision-makers",
@@ -613,17 +635,18 @@
       "raw_state": "live",
       "project_we_love": false,
       "followers": null,
-      "backers": 108,
-      "pledged_usd": "109959.0",
+      "backers": 111,
+      "pledged_usd": "112885.0",
       "goal_usd": 10000.0,
-      "percent_funded": 1099.5900000000001,
+      "percent_funded": 1128.8500000000001,
       "deadline": 1779804112,
       "launched_at": 1776780112,
       "created_at": 1775369259,
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/veetra/veetra-alpha-neurofeedback-earbuds-for-everyday-life",
@@ -650,7 +673,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Kowloon, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/senserobotchess/senserobot-robotic-chess-companion-ai-powered-device",
@@ -677,7 +701,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/petalas/petalas-worlds-1st-ai-powered-self-flushing-cat-litter-box",
@@ -704,7 +729,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/zondision/zondision-m1-the-debut-interactive-glasses-free-3d-monitor",
@@ -721,17 +747,18 @@
       "raw_state": "live",
       "project_we_love": true,
       "followers": null,
-      "backers": 67,
-      "pledged_usd": "67918.65784956",
+      "backers": 68,
+      "pledged_usd": "68918.55057108",
       "goal_usd": 4979.036789999999,
-      "percent_funded": 1364.0923076923077,
+      "percent_funded": 1384.174358974359,
       "deadline": 1779372006,
       "launched_at": 1776780006,
       "created_at": 1764572481,
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/pettichat/pettichat-real-time-pet-translator",
@@ -748,17 +775,18 @@
       "raw_state": "live",
       "project_we_love": true,
       "followers": null,
-      "backers": 401,
-      "pledged_usd": "62084.9416876",
+      "backers": 402,
+      "pledged_usd": "62204.0630224",
       "goal_usd": 5000.6702252000005,
-      "percent_funded": 1241.5324124901065,
+      "percent_funded": 1243.9145198764265,
       "deadline": 1778767210,
       "launched_at": 1776175210,
       "created_at": 1770521897,
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/1221680007/4k-wireless-hub",
@@ -785,7 +813,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/2000949694/mechtron-pistol-grip-foldable-cordless-pressure-washer",
@@ -812,7 +841,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/cera-cafe/cera-et58-electric-tamper",
@@ -839,7 +869,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/2087613787/wireless-usb-c-transmitter-and-hdmi-receiver-no-wifi-needed",
@@ -866,7 +897,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/innogek-powertag/powertag-all-in-one-travel-adapter-with-find-my",
@@ -893,7 +925,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/1053593589/parkable-automatic-parking-garage-for-64-scale-model-cars",
@@ -920,7 +953,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Cheung Sha Wan, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/titaner-yg/titaner-heron-the-ultimate-m390-and-cnc-titanium-edc-knife",
@@ -947,7 +981,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/1147931066/coolgeek-ts01-ultra-slim-fully-automatic-turntable",
@@ -974,7 +1009,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/ultranixie01/ultranixie-a-nixie-tube-watch-not-a-smartwatch-by-design",
@@ -991,17 +1027,18 @@
       "raw_state": "live",
       "project_we_love": false,
       "followers": null,
-      "backers": 267,
-      "pledged_usd": "75218.5476328",
+      "backers": 268,
+      "pledged_usd": "75467.6427284",
       "goal_usd": 6383.78,
-      "percent_funded": 1178.276,
+      "percent_funded": 1182.178,
       "deadline": 1779249540,
       "launched_at": 1776174638,
       "created_at": 1769666180,
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/delione-kitchenware/delione-rovecup-engineered-for-leakproof-excellence",
@@ -1028,7 +1065,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/revboard/revboard-the-future-of-work-simplified",
@@ -1055,7 +1093,8 @@
       "prelaunch_activated": false,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/cinomadistbackpack/cinomadist-motion-a-backpack-for-work-transit-and-travel",
@@ -1082,7 +1121,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/866913304/karo-3-layer-titanium-tray-for-better-cooking-anywhere",
@@ -1099,17 +1139,18 @@
       "raw_state": "live",
       "project_we_love": false,
       "followers": null,
-      "backers": 278,
-      "pledged_usd": "36840.80346236",
+      "backers": 279,
+      "pledged_usd": "36947.59431704",
       "goal_usd": 1275.8764,
-      "percent_funded": 2887.4900000000002,
+      "percent_funded": 2895.86,
       "deadline": 1778929289,
       "launched_at": 1776337289,
       "created_at": 1768443036,
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/acaladesign/acala-dream-series-titanium-folding-knife-m390-blade",
@@ -1136,7 +1177,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/1047328959/semicolon-asymmetrical-jumping-hour-watch-ana-chron",
@@ -1163,7 +1205,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     }
   ]
 }

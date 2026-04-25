@@ -1,25 +1,136 @@
-// Kickstarter China Tracker — Editorial frontend
+// Kickstarter China Tracker — Editorial frontend with ZH / EN toggle
 // Loads ./data/projects.json (committed every 4h by .github/workflows/scrape.yml)
 
 const $ = (q) => document.querySelector(q);
 const $$ = (q) => document.querySelectorAll(q);
 
-const STATUS_ZH = {
-  prelaunch: "未发布",
-  live: "在筹中",
-  successful: "已成功",
-  failed: "未达标",
-  canceled: "已取消",
-  suspended: "已暂停",
-  unknown: "—",
+// ─── i18n ──────────────────────────────────────────────────────
+const LANG_KEY = "ks-tracker-lang";
+let LANG = localStorage.getItem(LANG_KEY) || "zh"; // default Chinese
+
+const I18N = {
+  zh: {
+    kicker: "实时数据 · cron 每 4 小时刷新",
+    dek: "追踪 Kickstarter 上中国背景的消费硬件项目，覆盖 pre-launch / live / 已结束三个阶段。数据通过 KS Discover JSON 直连，每 4 小时由 GitHub Actions 重抓一次。",
+    updated: (t) => "更新于 " + t,
+    loading: "加载中…",
+    repoSrc: "GitHub 源码",
+    jsonData: "JSON 数据",
+    statusLabel: "状态",
+    confLabel: "置信度",
+    pwlLabel: "★ 仅看 KS 精选",
+    searchPh: "搜索 产品 / 公司 / 城市 / 品类",
+    countShow: (n, t) => `显示 <b>${n}</b> / ${t} 个项目`,
+    clearFilters: "清除筛选",
+    kpi: {
+      total: "追踪总数", totalDelta: (h) => `中国背景 高 · ${h}`,
+      prelaunch: "未发布", prelaunchDelta: "prelaunch",
+      live: "在筹中", liveDelta: (s) => `已筹 ${s}`,
+      success: "已成功", successDelta: "successful",
+      pwl: "★ KS 精选", pwlDelta: "project we love",
+    },
+    chips: { all: "全部", prelaunch: "未发布", live: "在筹", successful: "已成功", high: "高", med: "中" },
+    statuses: {
+      prelaunch: "未发布", live: "在筹中", successful: "已成功",
+      failed: "未达标", canceled: "已取消", suspended: "已暂停", unknown: "—",
+    },
+    th: {
+      project: "项目 / 创作者", status: "状态", conf: "置信度",
+      pledged: "已筹", backers: "Backers", followers: "Followers",
+      percent: "完成率", link: "链接",
+    },
+    foot: '数据：Kickstarter Discover JSON · 代码：<a href="https://github.com/Chen17-sq/kickstarter-china-tracker" target="_blank" rel="noopener">GitHub</a> · 设计：Editorial / Swiss',
+  },
+  en: {
+    kicker: "Live data · refreshed every 4h via cron",
+    dek: "Tracking China-background consumer-hardware projects on Kickstarter — pre-launch, live, and recently ended. Data fetched directly from KS Discover JSON every 4 hours by GitHub Actions.",
+    updated: (t) => "Updated " + t,
+    loading: "Loading…",
+    repoSrc: "Source",
+    jsonData: "JSON",
+    statusLabel: "Status",
+    confLabel: "Confidence",
+    pwlLabel: "★ KS Picks only",
+    searchPh: "Search product / company / city / category",
+    countShow: (n, t) => `Showing <b>${n}</b> of ${t}`,
+    clearFilters: "Clear filters",
+    kpi: {
+      total: "Tracked", totalDelta: (h) => `High confidence · ${h}`,
+      prelaunch: "Pre-launch", prelaunchDelta: "prelaunch",
+      live: "Live", liveDelta: (s) => `Pledged ${s}`,
+      success: "Successful", successDelta: "successful",
+      pwl: "★ KS Picks", pwlDelta: "project we love",
+    },
+    chips: { all: "All", prelaunch: "Pre", live: "Live", successful: "Ended", high: "High", med: "Med" },
+    statuses: {
+      prelaunch: "Pre-launch", live: "Live", successful: "Successful",
+      failed: "Failed", canceled: "Canceled", suspended: "Suspended", unknown: "—",
+    },
+    th: {
+      project: "Project / Creator", status: "Status", conf: "Conf.",
+      pledged: "Pledged", backers: "Backers", followers: "Followers",
+      percent: "Funded", link: "Link",
+    },
+    foot: 'Data: Kickstarter Discover JSON · Code: <a href="https://github.com/Chen17-sq/kickstarter-china-tracker" target="_blank" rel="noopener">GitHub</a> · Design: Editorial / Swiss',
+  },
 };
+
+// Country (KS reports ISO-2)
+const COUNTRY_ZH = {
+  HK: "香港", CN: "中国大陆", TW: "台湾", MO: "澳门",
+  US: "美国 (出海)", GB: "英国 (出海)", DE: "德国 (出海)",
+  JP: "日本 (出海)", SG: "新加坡 (出海)", CA: "加拿大 (出海)",
+  AU: "澳洲 (出海)", FR: "法国 (出海)", NL: "荷兰 (出海)",
+  KR: "韩国 (出海)", ES: "西班牙 (出海)", IT: "意大利 (出海)",
+};
+
+// KS category names
+const CATEGORY_ZH = {
+  "Hardware": "智能硬件",
+  "Product Design": "产品设计",
+  "Gadgets": "电子配件",
+  "3D Printing": "3D 打印",
+  "Sound": "音频",
+  "Wearables": "可穿戴",
+  "DIY Electronics": "DIY 电子",
+  "Robots": "机器人",
+  "Fabrication Tools": "制造工具",
+  "Camera Equipment": "摄影器材",
+  "Web": "网络应用",
+  "Apps": "应用",
+  "Software": "软件",
+  "Mobile Games": "手机游戏",
+  "Tabletop Games": "桌游",
+  "Video Games": "电子游戏",
+  "Design": "设计",
+  "Technology": "科技",
+  "Crafts": "手作",
+  "Fashion": "时装",
+  "Accessories": "配饰",
+};
+
 const STATUS_ORDER = {
   prelaunch: 0, live: 1, successful: 2, failed: 3,
   canceled: 4, suspended: 5, unknown: 9,
 };
 
+function t() { return I18N[LANG]; }
+function brandLabel(d) {
+  if (LANG === "zh") return d.matched_brand_zh || d.matched_brand || d.creator || d.creator_name || "";
+  return d.matched_brand || d.creator || d.creator_name || "";
+}
+function countryLabel(c) {
+  if (!c) return "";
+  return LANG === "zh" ? (COUNTRY_ZH[c] || c) : c;
+}
+function categoryLabel(c) {
+  if (!c) return "";
+  return LANG === "zh" ? (CATEGORY_ZH[c] || c) : c;
+}
+
 // ─── State ─────────────────────────────────────────────────────
 let DATA = [];
+let GENERATED_AT = "";
 let FILTERS = { status: "", conf: "", pwl: false, q: "" };
 let SORT = { k: null, dir: "desc" };
 
@@ -57,7 +168,6 @@ function defaultSort(a, b) {
   const oa = STATUS_ORDER[a.status] ?? 9;
   const ob = STATUS_ORDER[b.status] ?? 9;
   if (oa !== ob) return oa - ob;
-  // Within prelaunch: followers (when we have them) then PWL
   if (a.status === "prelaunch") {
     const fa = Number(a.followers || 0), fb = Number(b.followers || 0);
     if (fa !== fb) return fb - fa;
@@ -65,7 +175,6 @@ function defaultSort(a, b) {
       return (b.project_we_love ? 1 : 0) - (a.project_we_love ? 1 : 0);
     }
   }
-  // Within live/ended: dollars pledged
   const pa = Number(a.pledged_usd || 0), pb = Number(b.pledged_usd || 0);
   if (pa !== pb) return pb - pa;
   return (a.title || "").localeCompare(b.title || "", "zh");
@@ -91,9 +200,9 @@ function applySort() {
 function rowHtml(d) {
   const pwl = d.project_we_love ? '<span class="pwl">★</span>' : "";
   const title = escapeHtml(d.title || "(untitled)");
-  const company = escapeHtml(d.matched_brand || d.creator || d.creator_name || "");
+  const company = escapeHtml(brandLabel(d));
   const loc = escapeHtml(d.location || "");
-  const cat = escapeHtml(d.category || "");
+  const cat = escapeHtml(categoryLabel(d.category));
   const meta = [company, loc, cat].filter(Boolean).join(" · ");
   const status = d.status || "unknown";
   const pctVal = Number(d.percent_funded || 0) * 100;
@@ -107,10 +216,10 @@ function rowHtml(d) {
       <div class="cell-title">${pwl}${title}</div>
       <div class="cell-meta">${meta}</div>
     </td>
-    <td><span class="status ${status}">${STATUS_ZH[status] || status}</span></td>
+    <td><span class="status ${status}">${escapeHtml(t().statuses[status] || status)}</span></td>
     <td class="hide-sm">
       <span class="conf ${d.china_confidence === "高" ? "high" : ""}">${escapeHtml(d.china_confidence || "?")}</span>
-      <div class="country">${escapeHtml(d.country || "")}</div>
+      <div class="country">${escapeHtml(countryLabel(d.country))}</div>
     </td>
     <td class="num">
       <div class="dollar">${fmtUSD(d.pledged_usd)}</div>
@@ -124,22 +233,22 @@ function rowHtml(d) {
 }
 
 function renderTable(rows) {
+  const th = t().th;
   $("#table-host").innerHTML = `
     <table>
       <thead><tr>
-        <th data-k="title">项目 / 创作者</th>
-        <th data-k="status">状态</th>
-        <th data-k="china_confidence" class="hide-sm">置信度</th>
-        <th data-k="pledged_usd" class="num">已筹</th>
-        <th data-k="backers" class="num hide-md">Backers</th>
-        <th data-k="followers" class="num hide-md">Followers</th>
-        <th data-k="percent_funded" class="num hide-md">完成率</th>
-        <th class="no-sort">链接</th>
+        <th data-k="title">${escapeHtml(th.project)}</th>
+        <th data-k="status">${escapeHtml(th.status)}</th>
+        <th data-k="china_confidence" class="hide-sm">${escapeHtml(th.conf)}</th>
+        <th data-k="pledged_usd" class="num">${escapeHtml(th.pledged)}</th>
+        <th data-k="backers" class="num hide-md">${escapeHtml(th.backers)}</th>
+        <th data-k="followers" class="num hide-md">${escapeHtml(th.followers)}</th>
+        <th data-k="percent_funded" class="num hide-md">${escapeHtml(th.percent)}</th>
+        <th class="no-sort">${escapeHtml(th.link)}</th>
       </tr></thead>
       <tbody>${rows.map(rowHtml).join("")}</tbody>
     </table>`;
 
-  // sort indicators
   $$("thead th[data-k]").forEach((th) => {
     if (SORT.k === th.dataset.k) {
       th.classList.add("sort-key");
@@ -165,22 +274,23 @@ function renderKpis() {
     if (d.status === "live") totalUsd += Number(d.pledged_usd || 0);
   });
 
+  const k = t().kpi;
   $("#kpis").innerHTML = `
-    <div class="kpi"><div class="label">追踪总数</div>
+    <div class="kpi"><div class="label">${escapeHtml(k.total)}</div>
       <div class="num">${DATA.length}</div>
-      <div class="delta">中国背景 高 · ${high}</div></div>
-    <div class="kpi is-pre"><div class="label">未发布</div>
+      <div class="delta">${escapeHtml(k.totalDelta(high))}</div></div>
+    <div class="kpi is-pre"><div class="label">${escapeHtml(k.prelaunch)}</div>
       <div class="num">${counts.prelaunch}</div>
-      <div class="delta">prelaunch</div></div>
-    <div class="kpi is-live"><div class="label">在筹中</div>
+      <div class="delta">${escapeHtml(k.prelaunchDelta)}</div></div>
+    <div class="kpi is-live"><div class="label">${escapeHtml(k.live)}</div>
       <div class="num">${counts.live}</div>
-      <div class="delta">已筹 ${fmtUSD(totalUsd)}</div></div>
-    <div class="kpi"><div class="label">已成功</div>
+      <div class="delta">${escapeHtml(k.liveDelta(fmtUSD(totalUsd)))}</div></div>
+    <div class="kpi"><div class="label">${escapeHtml(k.success)}</div>
       <div class="num">${counts.successful}</div>
-      <div class="delta">successful</div></div>
-    <div class="kpi"><div class="label">★ KS 精选</div>
+      <div class="delta">${escapeHtml(k.successDelta)}</div></div>
+    <div class="kpi"><div class="label">${escapeHtml(k.pwl)}</div>
       <div class="num">${pwl}</div>
-      <div class="delta">project we love</div></div>`;
+      <div class="delta">${escapeHtml(k.pwlDelta)}</div></div>`;
 }
 
 function applyFilters(rows) {
@@ -190,7 +300,7 @@ function applyFilters(rows) {
     if (FILTERS.pwl && !d.project_we_love) return false;
     if (FILTERS.q) {
       const hay = [
-        d.title, d.creator, d.creator_name, d.matched_brand,
+        d.title, d.creator, d.creator_name, d.matched_brand, d.matched_brand_zh,
         d.location, d.country, d.category, d.blurb,
       ].filter(Boolean).join(" ").toLowerCase();
       if (!hay.includes(FILTERS.q)) return false;
@@ -201,10 +311,11 @@ function applyFilters(rows) {
 
 function render() {
   const visible = applyFilters(DATA);
+  const hasFilter = FILTERS.q || FILTERS.status || FILTERS.conf || FILTERS.pwl;
   $("#count").innerHTML =
-    `显示 <b>${visible.length.toLocaleString()}</b> / ${DATA.length.toLocaleString()} 个项目` +
-    (FILTERS.q || FILTERS.status || FILTERS.conf || FILTERS.pwl
-      ? ` · <a href="#" id="clearF" style="color:inherit;border-bottom:1px solid currentColor;text-decoration:none">清除筛选</a>`
+    t().countShow(visible.length.toLocaleString(), DATA.length.toLocaleString()) +
+    (hasFilter
+      ? ` · <a href="#" id="clearF" style="color:inherit;border-bottom:1px solid currentColor;text-decoration:none">${escapeHtml(t().clearFilters)}</a>`
       : "");
   if ($("#clearF")) {
     $("#clearF").addEventListener("click", (e) => {
@@ -218,7 +329,7 @@ function render() {
   renderTable(visible);
 }
 
-// ─── Chips & filters ────────────────────────────────────────────
+// ─── Chips ─────────────────────────────────────────────────────
 function makeChips(hostId, options, key) {
   const el = $(hostId);
   el.innerHTML = options.map((o) =>
@@ -234,34 +345,70 @@ function makeChips(hostId, options, key) {
 }
 
 function buildChips() {
+  const c = t().chips;
   makeChips("#statusChips", [
-    { value: "", label: "全部" },
-    { value: "prelaunch", label: "未发布" },
-    { value: "live", label: "在筹" },
-    { value: "successful", label: "已成功" },
+    { value: "", label: c.all },
+    { value: "prelaunch", label: c.prelaunch },
+    { value: "live", label: c.live },
+    { value: "successful", label: c.successful },
   ], "status");
   makeChips("#confChips", [
-    { value: "", label: "全部" },
-    { value: "高", label: "高" },
-    { value: "中", label: "中" },
+    { value: "", label: c.all },
+    { value: "高", label: c.high },
+    { value: "中", label: c.med },
   ], "conf");
+}
+
+// ─── Apply chrome (static labels) for current LANG ─────────────
+function applyChrome() {
+  const T = t();
+  $("#kicker").textContent = T.kicker;
+  $("#dek").textContent = T.dek;
+  $("#repoLink").textContent = T.repoSrc;
+  $("#dataLink").textContent = T.jsonData;
+  $("#lblStatus").textContent = T.statusLabel;
+  $("#lblConf").textContent = T.confLabel;
+  $("#lblPwl").textContent = T.pwlLabel;
+  $("#q").placeholder = T.searchPh;
+  $("#foot").innerHTML = T.foot;
+  $("#updated").textContent = GENERATED_AT
+    ? T.updated(fmtDate(GENERATED_AT))
+    : T.loading;
+  document.documentElement.lang = LANG === "zh" ? "zh-CN" : "en";
+  // toggle button states
+  $$("#langToggle button").forEach((b) =>
+    b.classList.toggle("active", b.dataset.l === LANG));
+}
+
+function setLang(lang) {
+  if (lang === LANG) return;
+  LANG = lang;
+  localStorage.setItem(LANG_KEY, LANG);
+  applyChrome();
+  buildChips();
+  renderKpis();
+  render();
 }
 
 // ─── Boot ──────────────────────────────────────────────────────
 async function load() {
+  applyChrome();
+  $$("#langToggle button").forEach((b) =>
+    b.addEventListener("click", () => setLang(b.dataset.l)));
+
   try {
     const r = await fetch("./data/projects.json", { cache: "no-store" });
     if (!r.ok) throw new Error("HTTP " + r.status);
     const j = await r.json();
     DATA = j.projects || [];
+    GENERATED_AT = j.generated_at || "";
     applySort();
-    $("#updated").textContent = "更新于 " + fmtDate(j.generated_at);
+    applyChrome();
     boot();
   } catch (e) {
     document.body.insertAdjacentHTML("beforeend",
       `<div class="wrap"><div class="err">
-        加载 <code>./data/projects.json</code> 失败：${escapeHtml(e.message)}<br>
-        本地试 <code>python -m scraper.run</code>，或者去 GitHub Actions 手动触发一次 scrape。
+        ${LANG === "zh" ? "加载" : "Failed to load"} <code>./data/projects.json</code>: ${escapeHtml(e.message)}
       </div></div>`);
   }
 }

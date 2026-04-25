@@ -69,7 +69,8 @@ def normalize_status(state: str | None) -> str:
 
 
 def build_row(hit: DiscoverHit, *, followers: int | None,
-              confidence: str, reason: str, matched_brand: str | None) -> dict:
+              confidence: str, reason: str,
+              matched_brand: str | None, matched_brand_zh: str | None) -> dict:
     status = normalize_status(hit.state)
     return {
         "pathname": hit.pathname,
@@ -97,6 +98,7 @@ def build_row(hit: DiscoverHit, *, followers: int | None,
         "china_confidence": confidence,
         "china_reason": reason,
         "matched_brand": matched_brand,
+        "matched_brand_zh": matched_brand_zh,
     }
 
 
@@ -121,6 +123,7 @@ def run() -> int:
             confidence=cls.confidence,
             reason=cls.reason,
             matched_brand=cls.matched_brand,
+            matched_brand_zh=cls.matched_brand_zh,
         ))
     print(f"  classified {len(rows)} as China-background")
 

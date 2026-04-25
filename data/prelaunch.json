@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-25T14:29:05Z",
-  "started_at": "2026-04-25T14:28:18Z",
+  "generated_at": "2026-04-25T14:54:17Z",
+  "started_at": "2026-04-25T14:53:23Z",
   "total_candidates": 296,
   "kept": 138,
   "projects": [
@@ -29,7 +29,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Shenzhen, China",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/98851/everkey-edc-the-tc4-keychain-knife-that-outlasts-your-keys",
@@ -56,7 +57,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Shenzhen, China",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/yangyuanjie/lone-city",
@@ -83,7 +85,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Chongqing, China",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/c-h/ido-claw",
@@ -110,7 +113,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: Wireless-Tag (IDO Claw)",
-      "matched_brand": "Wireless-Tag (IDO Claw)"
+      "matched_brand": "Wireless-Tag (IDO Claw)",
+      "matched_brand_zh": "Wireless-Tag (IDO Claw)"
     },
     {
       "pathname": "/projects/dalkomm/the-ascendant-loong-tourbillon-the-art-of-power-in-motion",
@@ -137,7 +141,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Guangzhou, China",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/jiehai/jiehai-the-seven-spirits-myth-punk-art-statues",
@@ -164,7 +169,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Guangzhou, China",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/meowjito/circle-mountain-circle-sea",
@@ -191,7 +197,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Shanghai, China",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/ayaneo-offical/ayaneo-pocket-play-mobile-phone-and-gaming-handheld-in-one",
@@ -218,7 +225,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: AYANEO",
-      "matched_brand": "AYANEO"
+      "matched_brand": "AYANEO",
+      "matched_brand_zh": "AYANEO"
     },
     {
       "pathname": "/projects/eleganc/elegance-re-imagined",
@@ -245,7 +253,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Shanghai, China",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/336547084/la-seine-espresso-machine",
@@ -272,7 +281,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Beijing, China",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/lovefortp/twirling-puppies",
@@ -299,7 +309,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Shanghai, China",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/litchitown/litchi-town",
@@ -326,7 +337,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Chengdu, China",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/blafili/blafili-b3-true-hi-fi-bluetooth-audio-receiver-and-usb-dac",
@@ -353,7 +365,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: BLAFILI",
-      "matched_brand": "BLAFILI"
+      "matched_brand": "BLAFILI",
+      "matched_brand_zh": "BLAFILI"
     },
     {
       "pathname": "/projects/aguidebookofbabel/a-guidebook-of-babel-an-afterlife-adventure",
@@ -380,7 +393,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Shanghai, China",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/dotoyou/breaking-box-create-your-own-3d-platformer-stages",
@@ -407,7 +421,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Tianjin, China",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/1410951490/deoum-z2-fast-precision-laser-marking-machine",
@@ -434,7 +449,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand name in title: Deoum",
-      "matched_brand": "Deoum"
+      "matched_brand": "Deoum",
+      "matched_brand_zh": "Deoum"
     },
     {
       "pathname": "/projects/kiwiears/kiwi-ears-halcyon-worlds-first-mems-1dd-3ba-tribrid-iem",
@@ -461,7 +477,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: Kiwi Ears",
-      "matched_brand": "Kiwi Ears"
+      "matched_brand": "Kiwi Ears",
+      "matched_brand_zh": "Kiwi Ears"
     },
     {
       "pathname": "/projects/sousic/sousic-s02-auto-tuning-wireless-ultrasonic-cutter",
@@ -488,7 +505,8 @@
       "prelaunch_activated": true,
       "china_confidence": "中",
       "china_reason": "KS 地址 Denver，文案/产品风格疑似中国",
-      "matched_brand": "SOUSIC TECH"
+      "matched_brand": "SOUSIC TECH",
+      "matched_brand_zh": "SOUSIC TECH"
     },
     {
       "pathname": "/projects/pongbot/aura-the-worlds-first-ultra-light-ai-multi-sport-robot",
@@ -515,7 +533,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: PongBot",
-      "matched_brand": "PongBot"
+      "matched_brand": "PongBot",
+      "matched_brand_zh": "PongBot"
     },
     {
       "pathname": "/projects/vastnaut/vastnaut-one-worlds-first-ai-powered-4x4-exoskeleton",
@@ -542,7 +561,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: Vastnaut",
-      "matched_brand": "Vastnaut"
+      "matched_brand": "Vastnaut",
+      "matched_brand_zh": "Vastnaut"
     },
     {
       "pathname": "/projects/gweikelaser/gweike-mcore-desktop-400w-fiber-and-80w-co2-laser-cutter",
@@ -569,7 +589,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: Gweike Laser",
-      "matched_brand": "Gweike Laser"
+      "matched_brand": "Gweike Laser",
+      "matched_brand_zh": "光韵达激光"
     },
     {
       "pathname": "/projects/trantor/neurohud-add-the-hud-tesla-forgot",
@@ -596,7 +617,8 @@
       "prelaunch_activated": true,
       "china_confidence": "中",
       "china_reason": "团队疑似华人，KS 地址 San Jose",
-      "matched_brand": "TrantorVision (NeuroHUD)"
+      "matched_brand": "TrantorVision (NeuroHUD)",
+      "matched_brand_zh": "TrantorVision (NeuroHUD)"
     },
     {
       "pathname": "/projects/1059314484/aiscan-o1-3d-gaussian-all-in-one-3d-scanner",
@@ -623,7 +645,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/cybopal/cybopal-worlds-first-active-tracking-ai-robotic-monitor",
@@ -650,7 +673,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: CyboPal",
-      "matched_brand": "CyboPal"
+      "matched_brand": "CyboPal",
+      "matched_brand_zh": "CyboPal"
     },
     {
       "pathname": "/projects/nexxtpercent/energylink-gen-2-charge-faster-wear-lighter-go-further",
@@ -677,7 +701,8 @@
       "prelaunch_activated": true,
       "china_confidence": "中",
       "china_reason": "Apple Watch 充电带，团队不明",
-      "matched_brand": "NEXXTPERCENT (EnergyLink)"
+      "matched_brand": "NEXXTPERCENT (EnergyLink)",
+      "matched_brand_zh": "NEXXTPERCENT (EnergyLink)"
     },
     {
       "pathname": "/projects/revopoint3d/revopoint-pop-4-3d-scanner",
@@ -704,7 +729,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: Revopoint 3D",
-      "matched_brand": "Revopoint 3D"
+      "matched_brand": "Revopoint 3D",
+      "matched_brand_zh": "复志"
     },
     {
       "pathname": "/projects/womier/womier-duo87",
@@ -731,7 +757,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: Womier",
-      "matched_brand": "Womier"
+      "matched_brand": "Womier",
+      "matched_brand_zh": "Womier"
     },
     {
       "pathname": "/projects/makeblock/xtool-wonderpress-the-most-creative-3d-auto-heat-press-ever",
@@ -758,7 +785,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: xTool / Makeblock",
-      "matched_brand": "xTool / Makeblock"
+      "matched_brand": "xTool / Makeblock",
+      "matched_brand_zh": "童心制物"
     },
     {
       "pathname": "/projects/925044833/kynooe-one-worlds-1st-modular-personal-ai-robot-arm",
@@ -785,7 +813,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand name in title: Kynooe",
-      "matched_brand": "Kynooe"
+      "matched_brand": "Kynooe",
+      "matched_brand_zh": "Kynooe"
     },
     {
       "pathname": "/projects/261716880/sunflower-x-smarter-sleep-with-ai-sensing-and-sunrise-light",
@@ -812,7 +841,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/procolored/procolored-x-one-full-color-uv-laser-in-one-system",
@@ -839,7 +869,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/inkwonprinting/inkwon-tag-worlds-1st-4-in-1-pocket-color-inkjet-printer",
@@ -866,7 +897,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand whitelist: INKWON Printing",
-      "matched_brand": "INKWON Printing"
+      "matched_brand": "INKWON Printing",
+      "matched_brand_zh": "INKWON Printing"
     },
     {
       "pathname": "/projects/xhorse3d/xhorse3d-xmachine-wm-100-desktop-simultaneous-5-axis-cnc",
@@ -893,7 +925,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/topfab/topfab-tf500-5-axis-ai-cnc-your-desktop-your-fabrication",
@@ -920,7 +953,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/1808560079/robobooster-panther-lawn-care-robot",
@@ -947,7 +981,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/cyplore/cyplore-the-lightest-e-bike-kit-for-thru-axle-bikes",
@@ -974,7 +1009,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/innodigym/omni-x1-best-all-in-one-smart-cable-training-machine",
@@ -1001,7 +1037,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/465535565/linyo-h1-car-wash-machine",
@@ -1028,7 +1065,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/spinos1pro/spino-s1-pro-self-docking-cordless-robotic-pool-cleaner",
@@ -1055,7 +1093,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/miixpro/miixkey",
@@ -1082,7 +1121,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/homiq/homiq-w11-worlds-first-cordless-window-see-through-cam",
@@ -1109,7 +1149,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/cubiio/gordix-large-format-desktop-cnc-without-rails",
@@ -1136,7 +1177,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Taipei City, Taiwan",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/2085886764/phantomx-four-arm-wandering-hour-watch",
@@ -1163,7 +1205,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/angles/redefining-wandering-hour-watches-by-angles",
@@ -1190,7 +1233,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/voguemech/axiglide-next-gen-pivoting-vise-for-smooth-precise-control",
@@ -1217,7 +1261,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Kowloon, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/magmoflex/magmoflex-flexible-magnetic-organization-for-any-space",
@@ -1244,7 +1289,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/makerpihk/makerpi-tiwrench-better-adjustable-wrench",
@@ -1271,7 +1317,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/698611014/memoir-a-paper-like-e-ink-digital-frame",
@@ -1298,7 +1345,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Central, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/aeke/aeke-s1-pro-full-body-ai-home-gym",
@@ -1325,7 +1373,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "brand name in title: Aeke",
-      "matched_brand": "Aeke"
+      "matched_brand": "Aeke",
+      "matched_brand_zh": "Aeke"
     },
     {
       "pathname": "/projects/inmo-go3-ai-glasses/everyday-wear-ai-glasses",
@@ -1352,7 +1401,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/1535000764/chrono-tri-core-time-in-motion-shaped-by-structure",
@@ -1379,7 +1429,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/647981696/black-whalem390-titanium-folding-knife-portable-edc",
@@ -1406,7 +1457,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/keychain/titaner-worlds-first-titanium-keychain-security-matrix",
@@ -1433,7 +1485,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/orphicwatches/orphic-project-0-wandering-hour-watch",
@@ -1460,7 +1513,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Mount Davis, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/wonderfour/pocket-g1-coffee-grinder-oneclick-fold-grind-anywhere",
@@ -1487,7 +1541,8 @@
       "prelaunch_activated": true,
       "china_confidence": "高",
       "china_reason": "KS location: Kowloon, Hong Kong",
-      "matched_brand": null
+      "matched_brand": null,
+      "matched_brand_zh": null
     }
   ]
 }

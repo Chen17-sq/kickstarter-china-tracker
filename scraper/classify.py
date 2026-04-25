@@ -20,6 +20,7 @@ class ClassifyResult:
     confidence: str   # 高 / 中 / 低 / 未知
     reason: str
     matched_brand: str | None = None
+    matched_brand_zh: str | None = None   # Chinese display name (falls back to brand)
 
 
 def _load_brands() -> dict:
@@ -43,10 +44,11 @@ def classify(*, creator_slug: str | None, location: str | None,
     # 1. Brand whitelist hit (highest priority — covers brands listed in US)
     for entry in b.get("high_confidence", []):
         slugs = entry.get("creator_slugs") or []
+        zh = entry.get("brand_zh") or entry["brand"]
         if creator_slug and creator_slug in slugs:
-            return ClassifyResult("高", f"brand whitelist: {entry['brand']}", entry["brand"])
+            return ClassifyResult("高", f"brand whitelist: {entry['brand']}", entry["brand"], zh)
         if title and entry["brand"].lower() in (title or "").lower():
-            return ClassifyResult("高", f"brand name in title: {entry['brand']}", entry["brand"])
+            return ClassifyResult("高", f"brand name in title: {entry['brand']}", entry["brand"], zh)
 
     # 2. KS-reported location is China
     if location:
@@ -57,14 +59,15 @@ def classify(*, creator_slug: str | None, location: str | None,
     # 3. Medium confidence whitelist
     for entry in b.get("medium_confidence", []):
         slugs = entry.get("creator_slugs") or []
+        zh = entry.get("brand_zh") or entry["brand"]
         if creator_slug and creator_slug in slugs:
-            return ClassifyResult("中", entry.get("reason", "medium-confidence list"), entry["brand"])
+            return ClassifyResult("中", entry.get("reason", "medium-confidence list"), entry["brand"], zh)
 
     # 4. Explicit blacklist
     for entry in b.get("not_china", []):
         slugs = entry.get("creator_slugs") or []
         if creator_slug and creator_slug in slugs:
-            return ClassifyResult("否", f"blacklisted: {entry['brand']}", entry["brand"])
+            return ClassifyResult("否", f"blacklisted: {entry['brand']}", entry["brand"], entry["brand"])
 
     return ClassifyResult("未知", "no rule matched")
 
