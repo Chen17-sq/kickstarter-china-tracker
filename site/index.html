@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Kickstarter China Tracker — 中国背景消费硬件项目实时追踪</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root{
+    --bg:#f6f7f9;--card:#fff;--bd:#e5e7eb;--text:#111827;--muted:#6b7280;
+    --accent:#1f4e78;--ok:#16a34a;
+    --pre:#fde68a;--just:#bbf7d0;--live:#bfdbfe;--ended:#e5e7eb;--late:#e1d5e7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",Arial,sans-serif;background:var(--bg);color:var(--text)}
+  h1{margin:0 0 4px 0;font-size:22px;color:var(--accent)}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:18px}
+  .sub a{color:var(--accent)}
+  .card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px;margin-bottom:14px}
+  .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .controls input,.controls select{padding:7px 10px;border:1px solid var(--bd);border-radius:6px;font-size:13px;background:#fff}
+  .controls input[type=text]{min-width:280px}
+  .controls label{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px}
+  .badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;line-height:1.5}
+  .badge.high{background:#dcfce7;color:#166534}
+  .badge.med{background:#fef3c7;color:#92400e}
+  .badge.low{background:#fee2e2;color:#991b1b}
+  .pill{display:inline-block;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:600;white-space:nowrap}
+  .pill.prelaunch{background:var(--pre)}
+  .pill.recently_launched{background:var(--just)}
+  .pill.live{background:var(--live)}
+  .pill.recently_ended{background:var(--ended);color:#374151}
+  .pill.late_pledges{background:var(--late)}
+  .pill.successful{background:var(--ended);color:#374151}
+  .pwl{color:#b45f06;font-weight:700}
+  .verified{color:var(--ok);font-weight:700;font-size:13px}
+  .unverified{color:#9ca3af;font-size:11px}
+  table{border-collapse:separate;border-spacing:0;width:100%;background:var(--card);border:1px solid var(--bd);border-radius:10px;overflow:hidden;font-size:13px}
+  thead th{position:sticky;top:0;background:var(--accent);color:#fff;text-align:left;padding:10px 8px;font-weight:600;cursor:pointer;user-select:none;white-space:nowrap;z-index:1}
+  thead th:hover{background:#27649b}
+  tbody td{padding:10px 8px;border-top:1px solid var(--bd);vertical-align:top}
+  tbody tr:hover{background:#f9fafb}
+  .name{font-weight:700;color:var(--accent);font-size:14px}
+  .muted{color:var(--muted);font-size:12px;line-height:1.5}
+  a{color:#1d4ed8;text-decoration:none}
+  a:hover{text-decoration:underline}
+  .stats{display:flex;gap:16px;flex-wrap:wrap;margin-top:6px}
+  .stat{background:#f3f4f6;border-radius:8px;padding:8px 12px;font-size:12px}
+  .stat b{color:var(--accent);font-size:14px}
+  .small{font-size:11px;color:var(--muted)}
+  .legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:6px}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .swatch{width:12px;height:12px;border-radius:3px;display:inline-block}
+  .num{font-variant-numeric:tabular-nums}
+  .funded{font-weight:700;color:var(--ok)}
+  .err{padding:14px;background:#fee2e2;color:#991b1b;border-radius:8px}
+</style>
+</head>
+<body>
+  <h1>Kickstarter China Tracker</h1>
+  <div class="sub">
+    实时追踪 Kickstarter 上中国背景的消费硬件项目（pre-launch + live）。
+    数据每 4 小时自动刷新一次（GitHub Actions cron）。
+    源码：<a href="https://github.com/YOUR_HANDLE/kickstarter-china-tracker" id="repoLink">GitHub</a>
+    · <span id="updated">加载中…</span>
+  </div>
+
+  <div class="card">
+    <div class="controls">
+      <input id="q" type="text" placeholder="搜索：产品名 / 公司 / 城市 / 品类 …">
+      <select id="status">
+        <option value="">全部状态</option>
+        <option value="prelaunch">仅未发布 (prelaunch)</option>
+        <option value="live">仅在筹</option>
+        <option value="successful">仅成功结束</option>
+      </select>
+      <select id="china">
+        <option value="">全部置信度</option>
+        <option value="高">置信度 高</option>
+        <option value="中">置信度 中</option>
+      </select>
+      <label><input id="onlyPwl" type="checkbox"> 只看 ★ Project We Love</label>
+      <span class="muted" id="count"></span>
+    </div>
+    <div class="stats" id="kpis"></div>
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--pre)"></span>未发布</span>
+      <span><span class="swatch" style="background:var(--live)"></span>在筹</span>
+      <span><span class="swatch" style="background:var(--ended)"></span>已结束</span>
+      <span style="margin-left:14px"><span class="swatch" style="background:#dcfce7"></span>中国 高</span>
+      <span><span class="swatch" style="background:#fef3c7"></span>中</span>
+    </div>
+  </div>
+
+  <div id="table-host"></div>
+
+<script src="./app.js"></script>
+</body></html>
