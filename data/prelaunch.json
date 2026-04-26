@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-26T12:08:45Z",
-  "started_at": "2026-04-26T12:07:45Z",
+  "generated_at": "2026-04-26T12:13:05Z",
+  "started_at": "2026-04-26T12:12:16Z",
   "total_candidates": 297,
   "kept": 143,
   "projects": [
@@ -646,7 +646,7 @@
       "china_reason": "brand whitelist: Vastnaut",
       "matched_brand": "Vastnaut",
       "matched_brand_zh": "Vastnaut",
-      "delta_followers": 2,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -680,7 +680,7 @@
       "china_reason": "brand whitelist: Gweike Laser",
       "matched_brand": "Gweike Laser",
       "matched_brand_zh": "光韵达激光",
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -714,7 +714,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 4,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -782,7 +782,7 @@
       "china_reason": "brand whitelist: PongBot",
       "matched_brand": "PongBot",
       "matched_brand_zh": "PongBot",
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -850,7 +850,7 @@
       "china_reason": "brand whitelist: Revopoint 3D",
       "matched_brand": "Revopoint 3D",
       "matched_brand_zh": "复志",
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -904,7 +904,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 3148,
+      "followers": 3149,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -918,7 +918,7 @@
       "china_reason": "团队疑似华人，KS 地址 San Jose",
       "matched_brand": "TrantorVision (NeuroHUD)",
       "matched_brand_zh": "TrantorVision (NeuroHUD)",
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -952,7 +952,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1020,7 +1020,7 @@
       "china_reason": "brand name in title: Kynooe",
       "matched_brand": "Kynooe",
       "matched_brand_zh": "Kynooe",
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1428,7 +1428,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1564,7 +1564,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 2,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1598,7 +1598,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 2,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1768,7 +1768,7 @@
       "china_reason": "KS location: Central, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1802,7 +1802,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
