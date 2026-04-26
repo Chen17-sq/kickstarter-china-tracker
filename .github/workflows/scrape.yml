@@ -51,9 +51,17 @@ jobs:
           git commit -m "snapshot $(date -u +%FT%TZ)"
           git push
 
-      - name: Notify (optional)
+      - name: Slack / Discord notify (optional)
         if: env.SLACK_WEBHOOK != '' || env.DISCORD_WEBHOOK != ''
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: python -m scraper.notify
+
+      - name: Email notify (optional)
+        if: env.RESEND_API_KEY != '' && env.NOTIFY_EMAIL_TO != ''
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NOTIFY_EMAIL_TO: ${{ secrets.NOTIFY_EMAIL_TO }}
+          NOTIFY_EMAIL_FROM: ${{ secrets.NOTIFY_EMAIL_FROM }}
+        run: python -m scraper.email_notify

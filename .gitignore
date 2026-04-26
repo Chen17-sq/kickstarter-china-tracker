@@ -11,3 +11,4 @@ _site/
 *.egg-info/
 build/
 dist/
+data/.tmp/

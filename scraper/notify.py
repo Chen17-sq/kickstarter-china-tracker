@@ -109,10 +109,10 @@ def parse_changelog_signals(max_items: int = 6) -> list[str]:
     return out
 
 
-def build_summary(curr: dict, *, dialect: str = "slack") -> str:
-    """Build the daily summary message in either 'slack' or 'discord' dialect.
+def get_summary_data(curr: dict) -> dict:
+    """Pull a structured summary from the snapshot, reusable across notifiers.
 
-    Both flavours use the same structure but slightly different link syntax.
+    Returns: {today, total, counts, pwl, high, total_live_usd, prelaunch, live, signals}
     """
     today = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
     projects = curr.get("projects", []) or []
@@ -134,8 +134,6 @@ def build_summary(curr: dict, *, dialect: str = "slack") -> str:
             except (TypeError, ValueError):
                 pass
 
-    fmt_link = link if dialect == "slack" else discord_link
-
     prelaunch = sorted(
         [p for p in projects if p.get("status") == "prelaunch"],
         key=lambda x: (
@@ -148,17 +146,45 @@ def build_summary(curr: dict, *, dialect: str = "slack") -> str:
         key=lambda x: -float(x.get("pledged_usd") or 0),
     )
 
+    return {
+        "today": today,
+        "total": len(projects),
+        "counts": counts,
+        "pwl": pwl,
+        "high": high,
+        "total_live_usd": total_live_usd,
+        "prelaunch": prelaunch,
+        "live": live,
+        "signals": parse_changelog_signals(),
+    }
+
+
+def build_summary(curr: dict, *, dialect: str = "slack") -> str:
+    """Build the daily summary message in either 'slack' or 'discord' dialect.
+
+    Both flavours use the same structure but slightly different link syntax.
+    """
+    data = get_summary_data(curr)
+    today = data["today"]
+    counts = data["counts"]
+    prelaunch = data["prelaunch"]
+    live = data["live"]
+    pwl = data["pwl"]
+    total_live_usd = data["total_live_usd"]
+
+    fmt_link = link if dialect == "slack" else discord_link
+
     lines: list[str] = []
     lines.append(f"*📊 Kickstarter China Tracker · {today}*")
     lines.append(
-        f"`{len(projects)}` 项追踪 · "
+        f"`{data['total']}` 项追踪 · "
         f"`{counts['prelaunch']}` 未发布 · "
         f"`{counts['live']}` 在筹 ({fmt_usd(total_live_usd)} 合计) · "
         f"`{counts['successful']}` 成功 · "
         f"★ `{pwl}` KS 精选"
     )
 
-    signals = parse_changelog_signals()
+    signals = data["signals"]
     if signals:
         lines.append("")
         lines.append("*🔥 24h 异动*")
