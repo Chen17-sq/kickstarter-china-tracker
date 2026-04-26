@@ -305,7 +305,7 @@ def _hero_image_block(image_url: str | None) -> str:
                 border-bottom:4px solid {INK}">
       <img src="{_esc(image_url)}"
            style="width:100%;height:100%;object-fit:cover;display:block;
-                  /* original product colors preserved per user spec */"
+                  "
            alt=""/>
     </div>"""
 
@@ -344,10 +344,14 @@ def _detail_row(rank: int, p: dict, *, kind: str, hl_map: dict) -> str:
         big_label = f'{fmt_int(p.get("backers"))} Backers'
         big_color = INK
 
+    # object-fit:contain → preserves entire product image with no crop;
+    # paper-colored letterbox bars hide on Newsprint background. KS hero
+    # photos vary in aspect (16:9 / 4:3 / square), so cover-cropping a
+    # square container kept slicing off product features. Per user spec:
+    # 'product image colors / aspect must not be modified'.
     image_html = (
         f'<img src="{_esc(image_url)}" style="width:100%;height:100%;'
-        f'object-fit:cover;display:block;'
-        f'/* original product colors preserved per user spec */" alt=""/>'
+        f'object-fit:contain;display:block" alt=""/>'
         if image_url else
         f'<div style="width:100%;height:100%;background:{MUTED};display:flex;'
         f'align-items:center;justify-content:center;font-family:Lora,serif;'
@@ -358,11 +362,12 @@ def _detail_row(rank: int, p: dict, *, kind: str, hl_map: dict) -> str:
     <div style="display:flex;gap:24px;padding:22px 36px;border-bottom:1px solid {INK};
                 flex:1;min-height:0;align-items:stretch">
 
-      <!-- Left: image with rank badge below -->
-      <div style="flex:none;display:flex;flex-direction:column;gap:8px">
-        <div style="width:260px;height:260px;overflow:hidden;background:#000;
+      <!-- Left: image (4:3 ratio for KS hero photos, smaller to avoid heavy crop)
+           with rank badge below. No filter — original product colors preserved. -->
+      <div style="flex:none;display:flex;flex-direction:column;gap:10px;width:280px">
+        <div style="width:280px;height:210px;overflow:hidden;background:{PAPER};
                     border:1px solid {INK}">{image_html}</div>
-        <div style="font-family:'Playfair Display',serif;font-size:34px;font-weight:900;
+        <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:900;
              color:{INK};letter-spacing:-1px;line-height:1;text-align:center">No. {rank:02d}</div>
       </div>
 

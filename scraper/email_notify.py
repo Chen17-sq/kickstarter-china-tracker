@@ -69,6 +69,100 @@ def _esc(s: str) -> str:
             .replace('"', "&quot;"))
 
 
+def _load_highlights_zh() -> dict[str, list[str]]:
+    """Curated 4-bullet Chinese highlights (same source as social.py)."""
+    f = REPO_ROOT / "data" / "highlights_zh.json"
+    if not f.exists():
+        return {}
+    try:
+        raw = json.loads(f.read_text(encoding="utf-8"))
+        return {k: v for k, v in raw.items()
+                if isinstance(v, list) and not k.startswith("_")}
+    except Exception:
+        return {}
+
+
+def _detail_card(p: dict, *, kind: str, hl_map: dict, rank: int) -> str:
+    """Top-3 detail card for email — KS hero image + brand line + Chinese
+    highlight bullets + big metric. Visual rules per user spec:
+      - product image colors must NOT be filtered
+      - 4:3 container with object-fit:contain so the product is never cropped
+    """
+    image_url = p.get("image_url") or ""
+    title = _esc(p.get("title") or "(untitled)")
+    blurb_zh = _esc(p.get("blurb_zh") or "")
+    url = _esc(p.get("url") or "#")
+    brand = _esc(p.get("matched_brand_zh") or p.get("matched_brand") or p.get("creator_name") or "")
+    country = _esc(p.get("country") or "")
+    star = (f'<span style="display:inline-block;background:{RED};color:{PAPER};'
+            f'font-family:{SANS};font-size:9px;font-weight:700;letter-spacing:.2em;'
+            f'text-transform:uppercase;padding:2px 6px;margin-right:6px;'
+            f'vertical-align:2px">✦ KS PICK</span>'
+           ) if p.get("project_we_love") else ""
+
+    highlights = hl_map.get(p.get("pathname")) or []
+    if not highlights and p.get("blurb"):
+        # Fall back to splitting English blurb on '|' so empty entries
+        # in highlights_zh.json still produce something readable.
+        highlights = [s.strip() for s in p["blurb"].split("|") if s.strip()][:4]
+    bullets = "".join(
+        f"""<li style="margin:6px 0;font-family:{BODY};font-size:13.5px;line-height:1.5;
+              color:{INK};list-style:none;padding-left:18px;position:relative">
+          <span style="position:absolute;left:0;color:{RED};font-weight:900">▸</span>
+          {_esc(h)}</li>"""
+        for h in highlights[:4]
+    )
+
+    if kind == "prelaunch":
+        big_value = fmt_int(p.get("followers"))
+        big_label = "WATCHERS · 关注"
+        big_color = RED
+    else:
+        big_value = fmt_usd(p.get("pledged_usd"))
+        big_label = f"{fmt_int(p.get('backers'))} BACKERS"
+        big_color = INK
+
+    img_block = (
+        f'<img src="{image_url}" width="240" height="180" '
+        f'style="display:block;width:240px;height:180px;object-fit:contain;'
+        f'background:{PAPER};border:1px solid {INK}" alt=""/>'
+        if image_url else
+        f'<div style="width:240px;height:180px;background:{MUTED};'
+        f'border:1px solid {INK}"></div>'
+    )
+
+    return f'''
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0"
+           style="width:100%;margin:18px 0;border-top:1px solid {INK};
+                  border-collapse:collapse">
+      <tr>
+        <td style="padding:18px 0 0;width:240px;vertical-align:top">
+          {img_block}
+          <div style="text-align:center;margin-top:6px;font-family:{SERIF};
+                      font-size:24px;font-weight:900;color:{INK};letter-spacing:-.5px">
+            No. {rank:02d}</div>
+        </td>
+        <td style="padding:18px 0 0 18px;vertical-align:top">
+          <div style="font-family:{MONO};font-size:10px;font-weight:700;color:{N500};
+               letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px">
+            {star}{brand} &nbsp;·&nbsp; {country}</div>
+          <a href="{url}" style="text-decoration:none;color:{INK};
+             font-family:{SERIF};font-size:18px;font-weight:700;line-height:1.2;
+             letter-spacing:-.3px;display:block">{title}</a>
+          <div style="margin-top:6px;font-family:{BODY};font-style:italic;
+               font-size:13px;color:{N700};line-height:1.4">{blurb_zh}</div>
+          <ul style="list-style:none;padding:0;margin:10px 0 0">{bullets}</ul>
+          <div style="margin-top:10px">
+            <span style="font-family:{MONO};font-size:24px;font-weight:700;
+                  color:{big_color};letter-spacing:-.3px">{big_value}</span>
+            <span style="margin-left:8px;font-family:{SANS};font-size:9px;
+                  font-weight:700;color:{N500};letter-spacing:.2em">{big_label}</span>
+          </div>
+        </td>
+      </tr>
+    </table>'''
+
+
 def _row(p: dict, *, kind: str) -> str:
     star = (f'<span style="color:{RED};font-family:{SERIF};font-weight:900;'
             f'margin-right:6px">✦</span>') if p.get("project_we_love") else ""
@@ -247,8 +341,19 @@ def build_html(curr: dict) -> tuple[str, str]:
           </div>
         </div>'''
 
-    pre_rows = "".join(_row(p, kind="prelaunch") for p in d["prelaunch"][:5])
-    live_rows = "".join(_row(p, kind="live") for p in d["live"][:5])
+    # Top 3 of each track get FULL detail cards (KS hero image + brand line +
+    # 4 Chinese highlights from data/highlights_zh.json + big metric). Each
+    # card is its own <table>, so they're concatenated as block siblings —
+    # no outer wrapping table (otherwise Outlook nested-table fragility).
+    hl_map = _load_highlights_zh()
+    pre_detail = "".join(
+        _detail_card(p, kind="prelaunch", hl_map=hl_map, rank=i + 1)
+        for i, p in enumerate(d["prelaunch"][:3])
+    )
+    live_detail = "".join(
+        _detail_card(p, kind="live", hl_map=hl_map, rank=i + 1)
+        for i, p in enumerate(d["live"][:3])
+    )
 
     return subject, f'''<!DOCTYPE html>
 <html lang="zh-CN">
@@ -335,14 +440,13 @@ def build_html(curr: dict) -> tuple[str, str]:
           <div style="font-family:{MONO};font-size:11px;font-weight:500;color:{N500};
                       letter-spacing:2.5px;margin-bottom:6px">SECTION B</div>
           <h2 style="margin:0 0 4px;font-family:{SERIF};font-weight:900;font-size:28px;
-                     letter-spacing:-.5px;color:{INK}">⏳ Prelaunch</h2>
-          <p style="margin:0 0 12px;font-family:{BODY};font-style:italic;font-size:13px;color:{N500}">
-            Top 5 by watcher count — KS Editor's Picks ranked first.
+                     letter-spacing:-.5px;color:{INK}">⏳ Prelaunch · Top 3</h2>
+          <p style="margin:0 0 4px;font-family:{BODY};font-style:italic;font-size:13px;color:{N500}">
+            按关注数排序 · KS Editor's Picks 优先 · 含 4 条中文产品亮点
           </p>
-          <table role="presentation" cellspacing="0" cellpadding="0" border="0"
-                 style="width:100%;border-top:4px solid {INK};border-collapse:collapse">
-            {pre_rows or '<tr><td style="padding:14px 0;color:'+N400+'">暂无</td></tr>'}
-          </table>
+          <div style="border-top:4px solid {INK}">
+            {pre_detail or '<p style="padding:14px 0;color:'+N400+'">暂无</p>'}
+          </div>
         </div>
 
         <!-- Live section -->
@@ -350,14 +454,13 @@ def build_html(curr: dict) -> tuple[str, str]:
           <div style="font-family:{MONO};font-size:11px;font-weight:500;color:{N500};
                       letter-spacing:2.5px;margin-bottom:6px">SECTION C</div>
           <h2 style="margin:0 0 4px;font-family:{SERIF};font-weight:900;font-size:28px;
-                     letter-spacing:-.5px;color:{INK}">🔴 Live · By USD Raised</h2>
-          <p style="margin:0 0 12px;font-family:{BODY};font-style:italic;font-size:13px;color:{N500}">
-            Top 5 of the {counts['live']} active campaigns this morning.
+                     letter-spacing:-.5px;color:{INK}">🔴 Live · Top 3 by USD Raised</h2>
+          <p style="margin:0 0 4px;font-family:{BODY};font-style:italic;font-size:13px;color:{N500}">
+            按已筹排序 · {counts['live']} 个 live 项目中的前 3
           </p>
-          <table role="presentation" cellspacing="0" cellpadding="0" border="0"
-                 style="width:100%;border-top:4px solid {INK};border-collapse:collapse">
-            {live_rows or '<tr><td style="padding:14px 0;color:'+N400+'">暂无</td></tr>'}
-          </table>
+          <div style="border-top:4px solid {INK}">
+            {live_detail or '<p style="padding:14px 0;color:'+N400+'">暂无</p>'}
+          </div>
         </div>
 
         <!-- Ornament -->

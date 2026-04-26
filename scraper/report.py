@@ -312,52 +312,140 @@ def make_report(curr: dict, prev: dict | None) -> str:
         ),
     )
     if prelaunch:
+        # Load curated 4-bullet Chinese highlights for the top-3 detail blocks
+        try:
+            from .social import load_highlights_zh as _load_zh
+            hl_map = _load_zh()
+        except Exception:
+            hl_map = {}
+
         out.append("✦ &nbsp; ✦ &nbsp; ✦")
         out.append("")
-        out.append(f"## Section D · ⏳ Prelaunch · {len(prelaunch)} 项")
+        out.append(f"## Section D · ⏳ Prelaunch · Top 3 详情")
         out.append("")
-        out.append("| | 项目 / 一句话 | 公司 | 国家 | Followers | 时间 |")
-        out.append("| - | --- | --- | --- | ---: | --- |")
-        for p in prelaunch[:30]:
-            star = PWL if p.get("project_we_love") else ""
+        # Top 3 = full detail (product image + 4 Chinese highlights), per
+        # design rules in docs/DESIGN_RULES.md.
+        for i, p in enumerate(prelaunch[:3]):
+            rank = f"{i+1:02d}"
+            star = PWL if p.get("project_we_love") else " "
             brand = p.get("matched_brand_zh") or p.get("matched_brand") or p.get("creator_name") or ""
-            out.append(
-                f"| {star} | {project_link(p)} | {brand} | {p.get('country','?')} "
-                f"| {fmt_int(p.get('followers'))} | {timeline_text(p)} |"
-            )
-        if len(prelaunch) > 30:
-            out.append(f"| | _…and {len(prelaunch)-30} more in [JSON](../data/projects.json)_ | | | | |")
-        out.append("")
+            country = p.get("country", "?")
+            blurb_zh = p.get("blurb_zh") or ""
+            url = p.get("url") or ""
+            title = (p.get("title") or "").replace("|", "\\|")
+            out.append(f"### No. {rank} · {star} {title}")
+            out.append("")
+            if p.get("image_url"):
+                # KS hero photo, no filter, max 360px wide for GitHub Markdown
+                out.append(f'<img src="{p["image_url"]}" alt="" width="360" />')
+                out.append("")
+            out.append(f"**{brand}** · {country} · **{fmt_int(p.get('followers'))}** watchers · {timeline_text(p)}")
+            out.append("")
+            if blurb_zh:
+                out.append(f"*{blurb_zh}*")
+                out.append("")
+            highlights = hl_map.get(p.get("pathname")) or []
+            if not highlights and p.get("blurb"):
+                highlights = [s.strip() for s in p["blurb"].split("|") if s.strip()][:4]
+            for h in highlights[:4]:
+                out.append(f"- ▸ {h}")
+            out.append("")
+            out.append(f"→ [在 Kickstarter 看完整页面]({url})")
+            out.append("")
+            out.append("---")
+            out.append("")
+
+        # Slots 4 onwards in compact list form
+        if len(prelaunch) > 3:
+            out.append("**剩余 prelaunch · 列表形式**")
+            out.append("")
+            out.append("| | 项目 / 一句话 | 公司 | 国家 | Followers | 时间 |")
+            out.append("| - | --- | --- | --- | ---: | --- |")
+            for p in prelaunch[3:30]:
+                star = PWL if p.get("project_we_love") else ""
+                brand = p.get("matched_brand_zh") or p.get("matched_brand") or p.get("creator_name") or ""
+                out.append(
+                    f"| {star} | {project_link(p)} | {brand} | {p.get('country','?')} "
+                    f"| {fmt_int(p.get('followers'))} | {timeline_text(p)} |"
+                )
+            if len(prelaunch) > 30:
+                out.append(f"| | _…and {len(prelaunch)-30} more in [JSON](../data/projects.json)_ | | | | |")
+            out.append("")
 
     live = sorted(
         [p for p in projects if p.get("status") == "live"],
         key=lambda x: -float(x.get("pledged_usd") or 0),
     )
     if live:
+        from .momentum import conversion_per_watcher, projected_total
+
         out.append("✦ &nbsp; ✦ &nbsp; ✦")
         out.append("")
-        out.append(f"## Section E · 🔴 在筹 · 按已筹排序 Top {min(20, len(live))}")
+        out.append(f"## Section E · 🔴 Live · Top 3 详情")
         out.append("")
-        out.append("| | 项目 / 一句话 | 已筹 (Δ) | Backers | $/Watcher | 完成率 | 预计总额 | 时间 |")
-        out.append("| - | --- | ---: | ---: | ---: | ---: | ---: | --- |")
-        for p in live[:20]:
-            star = PWL if p.get("project_we_love") else ""
-            from .momentum import conversion_per_watcher, projected_total
-            d_p = p.get("delta_pledged_usd")
-            pledged_cell = fmt_usd(p.get("pledged_usd"))
-            if d_p and d_p > 0:
-                pledged_cell += f" *(+{fmt_usd(d_p)})*"
+        # Top 3 detail blocks
+        for i, p in enumerate(live[:3]):
+            rank = f"{i+1:02d}"
+            star = PWL if p.get("project_we_love") else " "
+            brand = p.get("matched_brand_zh") or p.get("matched_brand") or p.get("creator_name") or ""
+            country = p.get("country", "?")
+            blurb_zh = p.get("blurb_zh") or ""
+            url = p.get("url") or ""
+            title = (p.get("title") or "").replace("|", "\\|")
+            out.append(f"### No. {rank} · {star} {title}")
+            out.append("")
+            if p.get("image_url"):
+                out.append(f'<img src="{p["image_url"]}" alt="" width="360" />')
+                out.append("")
             cpw = conversion_per_watcher(p)
-            cpw_cell = fmt_usd(cpw) if cpw else "—"
             proj = projected_total(p)
-            proj_cell = fmt_usd(proj) if proj else "—"
-            out.append(
-                f"| {star} | {project_link(p)} | {pledged_cell} | "
-                f"{fmt_int(p.get('backers'))} | {cpw_cell} | "
-                f"{fmt_pct(p.get('percent_funded'))} | {proj_cell} | "
-                f"{timeline_text(p)} |"
-            )
-        out.append("")
+            d_p = p.get("delta_pledged_usd")
+            stat_parts = [
+                f"**{brand}** · {country}",
+                f"已筹 **{fmt_usd(p.get('pledged_usd'))}**" + (f" *(+{fmt_usd(d_p)})*" if d_p and d_p > 0 else ""),
+                f"{fmt_int(p.get('backers'))} backers",
+                f"完成率 **{fmt_pct(p.get('percent_funded'))}**",
+            ]
+            if cpw is not None:
+                stat_parts.append(f"\\${cpw:.0f}/watcher")
+            if proj is not None:
+                stat_parts.append(f"预计总额 {fmt_usd(proj)}")
+            stat_parts.append(timeline_text(p))
+            out.append(" · ".join(s for s in stat_parts if s))
+            out.append("")
+            if blurb_zh:
+                out.append(f"*{blurb_zh}*")
+                out.append("")
+            highlights = hl_map.get(p.get("pathname")) or []
+            if not highlights and p.get("blurb"):
+                highlights = [s.strip() for s in p["blurb"].split("|") if s.strip()][:4]
+            for h in highlights[:4]:
+                out.append(f"- ▸ {h}")
+            out.append("")
+            out.append(f"→ [在 Kickstarter 看完整页面]({url})")
+            out.append("")
+            out.append("---")
+            out.append("")
+
+        # Slots 4 onwards as compact table
+        if len(live) > 3:
+            out.append(f"**剩余 live · 列表形式 (Top {min(20, len(live))-3} 条)**")
+            out.append("")
+            out.append("| | 项目 / 一句话 | 已筹 (Δ) | Backers | 完成率 | 时间 |")
+            out.append("| - | --- | ---: | ---: | ---: | --- |")
+            for p in live[3:20]:
+                star = PWL if p.get("project_we_love") else ""
+                d_p = p.get("delta_pledged_usd")
+                pledged_cell = fmt_usd(p.get("pledged_usd"))
+                if d_p and d_p > 0:
+                    pledged_cell += f" *(+{fmt_usd(d_p)})*"
+                out.append(
+                    f"| {star} | {project_link(p)} | {pledged_cell} | "
+                    f"{fmt_int(p.get('backers'))} | "
+                    f"{fmt_pct(p.get('percent_funded'))} | "
+                    f"{timeline_text(p)} |"
+                )
+            out.append("")
 
     successful = sorted(
         [p for p in projects if p.get("status") == "successful"],
