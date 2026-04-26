@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-26T05:25:17Z",
-  "started_at": "2026-04-26T05:24:28Z",
+  "generated_at": "2026-04-26T05:28:09Z",
+  "started_at": "2026-04-26T05:27:20Z",
   "total_candidates": 297,
   "kept": 142,
   "projects": [
@@ -499,7 +499,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 551,
+      "followers": 552,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
