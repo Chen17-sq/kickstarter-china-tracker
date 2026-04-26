@@ -160,7 +160,16 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
       <li><strong>Live Top 5</strong> — 按已筹排序，含 \$/watcher 转化率与预测总额</li>
     </ul>
 
-    <form class="form-card" id="subForm" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+    <!--
+      Backend priority (in subscribe.js logic below):
+      1. data-worker-url on this form  → Cloudflare Worker → commits to GitHub
+      2. action != REPLACE_WITH_FORMSPREE_ID → real Formspree → emails owner
+      3. else → mailto: → owner inbox, manual processing
+      Switch by editing the data-worker-url attribute below.
+    -->
+    <form class="form-card" id="subForm"
+          data-worker-url="REPLACE_WITH_WORKER_URL"
+          action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
       <span class="fc-label">订阅 · Subscribe</span>
       <label for="email">邮箱 · Email</label>
       <input id="email" type="email" name="email" required placeholder="your@email.com" autocomplete="email">
@@ -193,14 +202,23 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
 
 </div>
 <script>
-// Two paths:
-//  (1) If a real Formspree ID is set → POST + show in-page success
-//  (2) If still on placeholder URL    → fall back to mailto: which opens
-//      the visitor's email client with email+nickname pre-filled. The
-//      message lands in the owner's inbox; owner runs `python -m
-//      scraper.subscribers add EMAIL NICK` to add. Always works without
-//      any third-party signup.
+// Backend priority (configured by attributes on #subForm):
+//   1. data-worker-url is a real URL → Cloudflare Worker → commits to GitHub
+//   2. action contains a real Formspree ID → Formspree → emails owner
+//   3. else → mailto: opens visitor's mail client to owner inbox
 const OWNER_EMAIL = "schen.aldrich@gmail.com";
+const PLACEHOLDER_WORKER = "REPLACE_WITH_WORKER_URL";
+const PLACEHOLDER_FORMSPREE = "REPLACE_WITH_FORMSPREE_ID";
+
+function showSuccess(form) {
+  form.style.display = "none";
+  document.getElementById("success").classList.add("is-on");
+}
+function showAlreadySubscribed() {
+  const success = document.getElementById("success");
+  success.querySelector("h2").textContent = "✦ 已订阅 · Already subscribed.";
+  success.querySelector("p").innerHTML = "这个邮箱已经在订阅列表里了。下一份头版还是会照常送达。<a href='./' style='color:var(--accent);font-weight:700'>看今日头版</a>。";
+}
 
 document.getElementById("subForm").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -213,44 +231,74 @@ document.getElementById("subForm").addEventListener("submit", async (e) => {
     return;
   }
 
-  // Path 2: Formspree placeholder still present → mailto: fallback
-  if (!form.action || form.action.includes("REPLACE_WITH_FORMSPREE_ID")) {
-    const subject = "[KS Tracker] 订阅 · New subscriber";
-    const body = `邮箱 / Email: ${email}\n昵称 / Nickname: ${nickname || "(none)"}\n\n— Sent from subscribe.html`;
-    const href = `mailto:${OWNER_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = href;
-    // After the mail client opens, optimistically show success.
-    setTimeout(() => {
-      form.style.display = "none";
-      document.getElementById("success").classList.add("is-on");
-    }, 400);
+  const workerUrl = form.dataset.workerUrl || "";
+  const useWorker = workerUrl && !workerUrl.includes(PLACEHOLDER_WORKER);
+  const useFormspree = !useWorker && form.action && !form.action.includes(PLACEHOLDER_FORMSPREE);
+
+  // Path 1: Cloudflare Worker → writes directly to GitHub data/subscribers.json
+  if (useWorker) {
+    btn.disabled = true;
+    btn.textContent = "提交中…";
+    try {
+      const r = await fetch(workerUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, nickname }),
+      });
+      const j = await r.json().catch(() => ({}));
+      if (r.ok && j.ok) {
+        if (j.duplicate) {
+          showAlreadySubscribed();
+          showSuccess(form);
+        } else {
+          showSuccess(form);
+        }
+      } else {
+        btn.disabled = false;
+        btn.textContent = "重试 / Try again";
+        alert("提交失败：" + (j.error || `HTTP ${r.status}`));
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = "重试 / Try again";
+      alert("网络错误：" + err.message);
+    }
     return;
   }
 
-  // Path 1: real Formspree endpoint → background POST
-  btn.disabled = true;
-  btn.textContent = "提交中…";
-  const data = new FormData(form);
-  try {
-    const r = await fetch(form.action, {
-      method: "POST",
-      headers: { Accept: "application/json" },
-      body: data,
-    });
-    if (r.ok) {
-      form.style.display = "none";
-      document.getElementById("success").classList.add("is-on");
-    } else {
+  // Path 2: Formspree → emails owner (owner manually adds via CLI)
+  if (useFormspree) {
+    btn.disabled = true;
+    btn.textContent = "提交中…";
+    const data = new FormData(form);
+    try {
+      const r = await fetch(form.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
+      if (r.ok) {
+        showSuccess(form);
+      } else {
+        btn.disabled = false;
+        btn.textContent = "重试 / Try again";
+        const txt = await r.text().catch(() => "");
+        alert("提交失败：" + (txt.slice(0, 200) || `HTTP ${r.status}`));
+      }
+    } catch (err) {
       btn.disabled = false;
       btn.textContent = "重试 / Try again";
-      const txt = await r.text().catch(() => "");
-      alert("提交失败：" + (txt.slice(0, 200) || `HTTP ${r.status}`));
+      alert("网络错误：" + err.message);
     }
-  } catch (err) {
-    btn.disabled = false;
-    btn.textContent = "重试 / Try again";
-    alert("网络错误：" + err.message);
+    return;
   }
+
+  // Path 3: mailto: fallback (no backend configured)
+  const subject = "[KS Tracker] 订阅 · New subscriber";
+  const body = `邮箱 / Email: ${email}\n昵称 / Nickname: ${nickname || "(none)"}\n\n— Sent from subscribe.html`;
+  const href = `mailto:${OWNER_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = href;
+  setTimeout(() => showSuccess(form), 400);
 });
 </script>
 </body>
