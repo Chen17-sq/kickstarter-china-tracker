@@ -35,6 +35,7 @@ from .momentum import compute_deltas
 from .email_notify import build_html as build_email_html, write_archive as write_email_archive
 from .sitemap import write_sitemap
 from .pdf import render_today as render_pdf_today
+from .social import generate_carousel
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA = REPO_ROOT / "data"
@@ -255,6 +256,14 @@ def run() -> int:
             print(f"  rendered {pdf.relative_to(REPO_ROOT)} (+ latest.pdf)")
     except Exception as e:
         print(f"  pdf skipped: {e}")
+
+    # Generate 9 portrait PNGs for 小红书 carousel
+    try:
+        slides = generate_carousel()
+        if slides:
+            print(f"  generated {len(slides)} carousel slides → site/social/latest/")
+    except Exception as e:
+        print(f"  carousel skipped: {e}")
 
     # Generate today's Markdown report (compares against snaps[-2])
     try:

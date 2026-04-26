@@ -45,7 +45,7 @@ jobs:
         run: |
           git config user.name "ks-tracker-bot"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/ reports/ assets/ site/editions/ site/sitemap.xml site/robots.txt
+          git add data/ reports/ assets/ site/editions/ site/social/ site/sitemap.xml site/robots.txt
           [ -f CHANGELOG.md ] && git add CHANGELOG.md || true
           if git diff --staged --quiet; then
             echo "No changes."
