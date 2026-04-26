@@ -32,6 +32,7 @@ from .report import make_report, REPORTS
 from .project import fetch_watches_counts, slug_from_pathname
 from .banner import write_banner
 from .momentum import compute_deltas
+from .email_notify import build_html as build_email_html, write_archive as write_email_archive
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA = REPO_ROOT / "data"
@@ -227,6 +228,16 @@ def run() -> int:
         print(f"  refreshed {banner_path.relative_to(REPO_ROOT)}")
     except Exception as e:
         print(f"  banner skipped: {e}")
+
+    # Archive today's email-formatted HTML edition under site/editions/.
+    # Pages serves it permanently at /editions/<date>.html.
+    try:
+        _, archive_html = build_email_html(out)
+        write_email_archive(archive_html)
+        today_date = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
+        print(f"  archived site/editions/{today_date}.html (+ latest.html)")
+    except Exception as e:
+        print(f"  archive skipped: {e}")
 
     # Generate today's Markdown report (compares against snaps[-2])
     try:

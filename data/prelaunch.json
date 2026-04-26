@@ -1,8 +1,15 @@
 {
+<<<<<<< Updated upstream
   "generated_at": "2026-04-26T10:24:00Z",
   "started_at": "2026-04-26T10:23:00Z",
   "total_candidates": 265,
   "kept": 111,
+=======
+  "generated_at": "2026-04-26T10:30:06Z",
+  "started_at": "2026-04-26T10:29:13Z",
+  "total_candidates": 297,
+  "kept": 143,
+>>>>>>> Stashed changes
   "projects": [
     {
       "pathname": "/projects/ayaneo-offical/ayaneo-pocket-play-mobile-phone-and-gaming-handheld-in-one",
@@ -547,7 +554,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 564,
+      "followers": 565,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -561,7 +568,7 @@
       "china_reason": "brand whitelist: Kiwi Ears",
       "matched_brand": "Kiwi Ears",
       "matched_brand_zh": "Kiwi Ears",
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1174,7 +1181,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 183,
+      "followers": 184,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1188,7 +1195,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1471,7 +1478,11 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
+<<<<<<< Updated upstream
       "followers": 281,
+=======
+      "followers": 282,
+>>>>>>> Stashed changes
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1485,7 +1496,11 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
+<<<<<<< Updated upstream
       "delta_followers": 1,
+=======
+      "delta_followers": 2,
+>>>>>>> Stashed changes
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1504,7 +1519,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 527,
+      "followers": 528,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1518,7 +1533,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },

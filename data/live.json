@@ -1,8 +1,15 @@
 {
+<<<<<<< Updated upstream
   "generated_at": "2026-04-26T10:24:00Z",
   "started_at": "2026-04-26T10:23:00Z",
   "total_candidates": 265,
   "kept": 111,
+=======
+  "generated_at": "2026-04-26T10:30:06Z",
+  "started_at": "2026-04-26T10:29:13Z",
+  "total_candidates": 297,
+  "kept": 143,
+>>>>>>> Stashed changes
   "projects": [
     {
       "pathname": "/projects/agelocerwatch/agelocer-in-house-premium-independent-horology-watch",
@@ -152,10 +159,17 @@
       "raw_state": "live",
       "project_we_love": true,
       "followers": 3584,
+<<<<<<< Updated upstream
       "backers": 3013,
       "pledged_usd": "9394395.0",
       "goal_usd": 100000.0,
       "percent_funded": 9394.395,
+=======
+      "backers": 3015,
+      "pledged_usd": "9400592.0",
+      "goal_usd": 100000.0,
+      "percent_funded": 9400.592,
+>>>>>>> Stashed changes
       "deadline": 1781017200,
       "launched_at": 1776956109,
       "created_at": 1772167141,
@@ -166,8 +180,13 @@
       "matched_brand": "XGIMI",
       "matched_brand_zh": "极米",
       "delta_followers": 0,
+<<<<<<< Updated upstream
       "delta_backers": 1,
       "delta_pledged_usd": 3198.0
+=======
+      "delta_backers": 3,
+      "delta_pledged_usd": 9395.0
+>>>>>>> Stashed changes
     },
     {
       "pathname": "/projects/wecreat/lumos-ultra-worlds-first-one-stop-uv-mopa-laser",
@@ -316,11 +335,15 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": false,
+<<<<<<< Updated upstream
       "followers": 2992,
+=======
+      "followers": 2993,
+>>>>>>> Stashed changes
       "backers": 3361,
-      "pledged_usd": "827916.89312545",
+      "pledged_usd": "827949.19973528",
       "goal_usd": 10215.5288,
-      "percent_funded": 8104.493750000001,
+      "percent_funded": 8104.81,
       "deadline": 1779542503,
       "launched_at": 1776950503,
       "created_at": 1773227995,
@@ -330,9 +353,15 @@
       "china_reason": "KS location: Kowloon, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
+<<<<<<< Updated upstream
       "delta_followers": 2,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
+=======
+      "delta_followers": 3,
+      "delta_backers": 0,
+      "delta_pledged_usd": 32.30660983000416
+>>>>>>> Stashed changes
     },
     {
       "pathname": "/projects/xlean/xlean-tr1-dual-form-transformable-floor-washing-robot",
@@ -415,7 +444,11 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": true,
+<<<<<<< Updated upstream
       "followers": 4574,
+=======
+      "followers": 4575,
+>>>>>>> Stashed changes
       "backers": 3755,
       "pledged_usd": "525921.8560669",
       "goal_usd": 5001.476648,
@@ -811,7 +844,11 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": true,
+<<<<<<< Updated upstream
       "followers": 671,
+=======
+      "followers": 672,
+>>>>>>> Stashed changes
       "backers": 218,
       "pledged_usd": "89871.86939472",
       "goal_usd": 9998.033541929999,
@@ -825,7 +862,11 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
+<<<<<<< Updated upstream
       "delta_followers": 1,
+=======
+      "delta_followers": 2,
+>>>>>>> Stashed changes
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1075,7 +1116,11 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": false,
+<<<<<<< Updated upstream
       "followers": 611,
+=======
+      "followers": 612,
+>>>>>>> Stashed changes
       "backers": 433,
       "pledged_usd": "45088.5104644",
       "goal_usd": 2553.512,
@@ -1089,7 +1134,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 1,
       "delta_pledged_usd": 67.54039240000566
     },
@@ -1406,10 +1451,15 @@
       "raw_state": "live",
       "project_we_love": false,
       "followers": 451,
+<<<<<<< Updated upstream
       "backers": 228,
       "pledged_usd": "36074.8630161",
+=======
+      "backers": 229,
+      "pledged_usd": "36261.67949903",
+>>>>>>> Stashed changes
       "goal_usd": 4999.2244064999995,
-      "percent_funded": 721.6091954022988,
+      "percent_funded": 725.3461047254151,
       "deadline": 1779541066,
       "launched_at": 1776949066,
       "created_at": 1775533911,
@@ -1420,8 +1470,13 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 1,
+<<<<<<< Updated upstream
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
+=======
+      "delta_backers": 1,
+      "delta_pledged_usd": 186.81648293000035
+>>>>>>> Stashed changes
     },
     {
       "pathname": "/projects/seagullwatches/the-legend-evolves-the-all-new-genuine-sea-gull-1963",

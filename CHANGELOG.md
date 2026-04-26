@@ -2,6 +2,7 @@
 
 ## new (1)
 - **Finally! The Holy Grail of Spatulas Is Here. Meet Turnula.** — Discovered (live, 402 followers)  
+<<<<<<< Updated upstream
   `/projects/turnula/turnula-smarter-and-easier-way-to-cook`
 
 ## ended (32)
@@ -69,3 +70,6 @@
   `/projects/uchart/ubible-hold-the-whole-bible-on-the-size-of-a-card`
 - **Keebmon : Powerful Core + Touch Screen + Mechanical Keyboard** — No longer in discovery (likely ended)  
   `/projects/332313376/keebmon-powerful-core-touch-screen-mechanical-keyboard`
+=======
+  `/projects/turnula/turnula-smarter-and-easier-way-to-cook`
+>>>>>>> Stashed changes

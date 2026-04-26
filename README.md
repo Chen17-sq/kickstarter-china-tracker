@@ -8,8 +8,9 @@
 
 <p align="center">
   <a href="https://chen17-sq.github.io/kickstarter-china-tracker/"><img alt="完整看板 · Full Paper" src="https://img.shields.io/badge/%E5%AE%8C%E6%95%B4%E7%9C%8B%E6%9D%BF-Full%20Paper-111111?style=for-the-badge&labelColor=CC0000"></a>
-  <a href="https://chen17-sq.github.io/kickstarter-china-tracker/subscribe.html"><img alt="订阅每日邮件" src="https://img.shields.io/badge/%E8%AE%A2%E9%98%85%E6%97%A5%E6%8A%A5-Subscribe-111111?style=for-the-badge"></a>
-  <a href="reports/latest.md"><img alt="今日头版" src="https://img.shields.io/badge/%E4%BB%8A%E6%97%A5%E5%A4%B4%E7%89%88-Today%27s%20Edition-111111?style=for-the-badge"></a>
+  <a href="https://chen17-sq.github.io/kickstarter-china-tracker/subscribe.html"><img alt="订阅每日邮件" src="https://img.shields.io/badge/%E8%AE%A2%E9%98%85%E6%97%A5%E6%8A%A5-Subscribe-111111?style=for-the-badge&labelColor=CC0000"></a>
+  <a href="https://chen17-sq.github.io/kickstarter-china-tracker/editions/latest.html"><img alt="今日头版 视觉版" src="https://img.shields.io/badge/%E4%BB%8A%E6%97%A5%E5%A4%B4%E7%89%88-Today%27s%20Edition-111111?style=for-the-badge&labelColor=CC0000"></a>
+  <a href="https://chen17-sq.github.io/kickstarter-china-tracker/editions/"><img alt="过往日报存档" src="https://img.shields.io/badge/%E5%AD%98%E6%A1%A3-Archive-111111?style=for-the-badge&labelColor=737373"></a>
 </p>
 
 ![Inside this issue — top prelaunch + top live](assets/snapshot.svg)
@@ -23,8 +24,10 @@
 
 | Section | What it shows |
 | :--- | :--- |
-| **完整看板** ([Pages](https://chen17-sq.github.io/kickstarter-china-tracker/)) | 142 项可筛选 / 排序的项目大表 + 今日头版 hero |
-| **今日头版** (`reports/latest.md`) | 当日 KPI · Top Movers · Top Prelaunch · Top Live · Funded |
+| **完整看板** ([Pages](https://chen17-sq.github.io/kickstarter-china-tracker/)) | 140+ 项可筛选 / 排序的项目大表 + 今日头版 hero |
+| **今日头版 · 视觉版** ([editions/latest.html](https://chen17-sq.github.io/kickstarter-china-tracker/editions/latest.html)) | 完整 Newsprint 视觉，跟订阅邮件**像素级一致**——可分享 |
+| **过往日报存档** ([editions/](https://chen17-sq.github.io/kickstarter-china-tracker/editions/)) | 永久存档每天发出去的报纸，按日期浏览 |
+| **今日头版 · Markdown** (`reports/latest.md`) | KPI · Top Movers · Top Prelaunch · Top Live · Funded（GitHub markdown 灰色） |
 | **JSON 数据** (`data/projects.json`) | 完整结构化数据，可被任意第三方仪表盘消费 |
 | **历史快照** (`data/history/`) | 每日 cron 一份时间戳快照，用于算 Δ |
 | **品牌库** (`brands/china_brands.yaml`) | 可 PR 维护的品牌白名单 |

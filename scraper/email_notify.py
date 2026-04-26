@@ -404,6 +404,114 @@ def post_resend(api_key: str, sender: str, to: list[str], subject: str, html: st
         resp.raise_for_status()
 
 
+def write_archive(html: str) -> None:
+    """Save today's HTML edition to site/editions/ + rebuild the index page.
+
+    Pages URL pattern:
+      https://chen17-sq.github.io/kickstarter-china-tracker/editions/
+      https://chen17-sq.github.io/kickstarter-china-tracker/editions/2026-04-26.html
+      https://chen17-sq.github.io/kickstarter-china-tracker/editions/latest.html
+    """
+    today = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
+    out_dir = REPO_ROOT / "site" / "editions"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / f"{today}.html").write_text(html, encoding="utf-8")
+    (out_dir / "latest.html").write_text(html, encoding="utf-8")
+    # Rebuild the directory index from disk so it always matches the file list
+    _write_editions_index(out_dir)
+
+
+def _write_editions_index(out_dir: Path) -> None:
+    """Generate site/editions/index.html — a Newsprint-styled archive list."""
+    dated = sorted(
+        (f.stem for f in out_dir.glob("*.html") if f.stem not in ("latest", "index")),
+        reverse=True,
+    )
+    rows = []
+    for stem in dated:
+        try:
+            d = dt.datetime.strptime(stem, "%Y-%m-%d")
+            label = d.strftime("%A · %B %d, %Y")
+            edition = (d - dt.datetime(2026, 4, 25)).days + 1
+        except ValueError:
+            label = stem
+            edition = "—"
+        rows.append(
+            f'<li style="display:flex;justify-content:space-between;align-items:baseline;'
+            f'padding:14px 0;border-bottom:1px solid {INK}">'
+            f'<a href="./{stem}.html" style="font-family:{SERIF};font-weight:700;'
+            f'font-size:20px;color:{INK};text-decoration:none">{label}</a>'
+            f'<span style="font-family:{MONO};font-size:11px;color:{N500};'
+            f'letter-spacing:.18em">VOL. 1 · NO. {edition}</span>'
+            f'</li>'
+        )
+    items = "".join(rows) or (
+        f'<li style="font-family:{BODY};font-style:italic;color:{N500};'
+        f'padding:24px 0">No editions archived yet — first one ships tomorrow.</li>'
+    )
+
+    page = f"""<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><title>Editions · Kickstarter China Tracker</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*{{box-sizing:border-box;border-radius:0!important}}
+body{{margin:0;padding:0;background:{PAPER};color:{INK};font-family:{BODY};font-size:15px;line-height:1.625;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Cpath fill='%23111111' fill-opacity='0.05' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'/%3E%3C/svg%3E")}}
+.wrap{{max-width:840px;margin:0 auto;background:{PAPER};border-left:1px solid {INK};border-right:1px solid {INK};min-height:100vh}}
+.strip{{display:flex;justify-content:space-between;padding:8px 28px;background:{INK};color:{PAPER};
+  font-family:{SANS};font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}}
+.strip .dot{{display:inline-block;width:6px;height:6px;background:{RED};margin-right:8px;vertical-align:1px}}
+.mast{{padding:36px 28px 22px;border-bottom:4px solid {INK};text-align:center}}
+.mast h1{{margin:0;font-family:{SERIF};font-weight:900;font-size:42px;line-height:.95;
+  letter-spacing:-1.2px;color:{INK}}}
+.mast .tag{{display:flex;justify-content:space-between;border-top:1px solid {INK};
+  border-bottom:1px solid {INK};padding:8px 0;margin-top:14px;
+  font-family:{MONO};font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500}}
+.mast .center{{flex:1;text-align:center;font-style:italic;letter-spacing:0;
+  font-family:{SERIF};font-size:13px;font-weight:400;text-transform:none}}
+.section-h{{padding:28px 28px 12px;border-bottom:1px solid {INK}}}
+.section-h .label{{font-family:{MONO};font-size:11px;letter-spacing:2.5px;color:{N500}}}
+.section-h h2{{margin:6px 0 0;font-family:{SERIF};font-weight:900;font-size:32px;
+  letter-spacing:-1px;color:{INK}}}
+ul{{list-style:none;margin:0;padding:0 28px}}
+.foot{{margin-top:auto;padding:24px 28px 36px;border-top:4px solid {INK};
+  font-family:{MONO};font-size:10.5px;color:{N500};letter-spacing:.1em;text-transform:uppercase;text-align:center}}
+.foot a{{color:{INK};text-decoration:none;border-bottom:2px solid {RED};padding-bottom:1px;font-weight:700}}
+@media (max-width:680px){{
+  .wrap{{border:0}}
+  .mast h1{{font-size:30px}}
+  .mast .tag{{flex-direction:column;gap:4px}}
+}}
+</style></head>
+<body><div class="wrap">
+<div class="strip"><span><span class="dot"></span>EDITIONS · 永久存档</span><span style="font-family:{MONO};letter-spacing:.18em">{len(dated)} ISSUES</span></div>
+<header class="mast">
+  <h1>Kickstarter China Tracker</h1>
+  <div class="tag">
+    <span style="padding:0 14px">Editions Archive</span>
+    <span class="center">All The Crowd-Funded Hardware Fit To Print</span>
+    <span style="padding:0 14px">{len(dated)} 期已发刊</span>
+  </div>
+</header>
+<div class="section-h">
+  <div class="label">SECTION · BACK ISSUES</div>
+  <h2>过往日报 · Daily Editions</h2>
+</div>
+<ul>{items}</ul>
+<footer class="foot">
+  <a href="../">完整看板</a> &nbsp;·&nbsp;
+  <a href="../subscribe.html">订阅</a> &nbsp;·&nbsp;
+  <a href="../stats.html">公开数据</a> &nbsp;·&nbsp;
+  <a href="https://github.com/Chen17-sq/kickstarter-china-tracker">GitHub</a>
+</footer>
+</div></body></html>"""
+    (out_dir / "index.html").write_text(page, encoding="utf-8")
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true",
@@ -415,6 +523,10 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     curr = json.loads(PROJECTS.read_text(encoding="utf-8"))
     subject, html = build_html(curr)
+
+    # Always archive — even on dry-run / no-API-key — so Pages always has the
+    # latest visual edition viewable at /editions/<date>.html.
+    write_archive(html)
 
     if args.dry_run:
         preview = REPO_ROOT / "data" / ".tmp" / "email_preview.html"
