@@ -29,22 +29,29 @@ from typing import Any, Iterable, Iterator
 from .http import fetch, RateLimiter
 
 DISCOVER_SEEDS = [
-    # China-labeled, all states
+    # ── China-labeled (woe_id=23424781) — 5 sort/state slices ──────────────
     "https://www.kickstarter.com/discover/advanced?woe_id=23424781&sort=newest",
-    "https://www.kickstarter.com/discover/advanced?woe_id=23424781&sort=most_funded&state=live",
+    "https://www.kickstarter.com/discover/advanced?woe_id=23424781&state=live&sort=newest",
+    "https://www.kickstarter.com/discover/advanced?woe_id=23424781&state=live&sort=most_funded",
+    "https://www.kickstarter.com/discover/advanced?woe_id=23424781&state=live&sort=most_backed",
     "https://www.kickstarter.com/discover/advanced?woe_id=23424781&state=upcoming&sort=popularity",
-    "https://www.kickstarter.com/discover/advanced?woe_id=23424781&sort=most_backed&state=live",
-    # Global Tech category (catches Chinese brands listed in US)
-    "https://www.kickstarter.com/discover/advanced?state=upcoming&category_id=16&sort=popularity",
-    "https://www.kickstarter.com/discover/advanced?state=live&category_id=16&sort=most_funded",
-    # Global Design category (Product Design hardware)
-    "https://www.kickstarter.com/discover/advanced?state=upcoming&category_id=7&sort=popularity",
-    "https://www.kickstarter.com/discover/advanced?state=live&category_id=7&sort=most_funded",
+    # ── Global Tech (category_id=16) — 4 slices, catches CN brands listed in US ──
+    "https://www.kickstarter.com/discover/advanced?category_id=16&state=upcoming&sort=popularity",
+    "https://www.kickstarter.com/discover/advanced?category_id=16&state=upcoming&sort=newest",
+    "https://www.kickstarter.com/discover/advanced?category_id=16&state=live&sort=most_funded",
+    "https://www.kickstarter.com/discover/advanced?category_id=16&state=live&sort=newest",
+    # ── Global Design / Product Design (category_id=7) — 4 slices ─────────
+    "https://www.kickstarter.com/discover/advanced?category_id=7&state=upcoming&sort=popularity",
+    "https://www.kickstarter.com/discover/advanced?category_id=7&state=upcoming&sort=newest",
+    "https://www.kickstarter.com/discover/advanced?category_id=7&state=live&sort=most_funded",
+    "https://www.kickstarter.com/discover/advanced?category_id=7&state=live&sort=newest",
+    # ── Keyword search — picks up off-category Chinese hardware (Shenzhen) ──
+    "https://www.kickstarter.com/discover/advanced?term=shenzhen&state=upcoming&sort=popularity",
 ]
 
 # Cap pages per seed to avoid pulling thousands of rows. The signal lives near
 # the top of each sort order; tail is mostly noise we'd filter out anyway.
-MAX_PAGES_PER_SEED = 5
+MAX_PAGES_PER_SEED = 8
 
 
 @dataclass
