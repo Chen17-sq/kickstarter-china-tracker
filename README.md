@@ -1,9 +1,9 @@
-# Kickstarter China Tracker
+![Kickstarter China Tracker — daily editorial briefing](assets/banner.svg)
+
+**[→ 在线看板 chen17-sq.github.io/kickstarter-china-tracker](https://chen17-sq.github.io/kickstarter-china-tracker/)** · **[今日报告](reports/latest.md)** · **[原始 JSON](data/projects.json)**
 
 > 实时追踪 **Kickstarter 上中国背景的消费硬件项目** —— 覆盖 *prelaunch* / *live* / *已结束* 三个阶段。
 > Live data refreshed daily at 01:00 UTC (09:00 Beijing).
-
-**[→ 在线看板 chen17-sq.github.io/kickstarter-china-tracker](https://chen17-sq.github.io/kickstarter-china-tracker/)** · **[今日报告](reports/)** · **[原始 JSON](data/projects.json)**
 
 ---
 

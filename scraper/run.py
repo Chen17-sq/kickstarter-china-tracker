@@ -30,6 +30,7 @@ from .diff import diff_snapshots, changes_to_markdown
 from .translate import fill_missing as translate_fill_missing
 from .report import make_report, REPORTS
 from .project import fetch_watches_counts, slug_from_pathname
+from .banner import write_banner
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA = REPO_ROOT / "data"
@@ -210,6 +211,13 @@ def run() -> int:
                 print("  no changes since last run")
         except Exception as e:
             print(f"  diff skipped: {e}")
+
+    # Refresh the editorial banner SVG with current KPIs (rendered at top of README)
+    try:
+        banner_path = write_banner()
+        print(f"  refreshed {banner_path.relative_to(REPO_ROOT)}")
+    except Exception as e:
+        print(f"  banner skipped: {e}")
 
     # Generate today's Markdown report (compares against snaps[-2])
     try:
