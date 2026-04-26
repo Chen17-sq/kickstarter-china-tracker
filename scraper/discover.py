@@ -69,6 +69,7 @@ class DiscoverHit:
     state_changed_at: int | None = None  # last state transition (= prelaunch start for "submitted")
     prelaunch_activated: bool | None = None
     category: str | None = None
+    image_url: str | None = None        # photo.full from KS Discover JSON
     raw: dict[str, Any] = field(default_factory=dict)
 
 
@@ -100,6 +101,7 @@ def _hit_from_proj(p: dict[str, Any]) -> DiscoverHit:
         state_changed_at=p.get("state_changed_at"),
         prelaunch_activated=p.get("prelaunch_activated"),
         category=category.get("name"),
+        image_url=(p.get("photo") or {}).get("full"),
         raw=p,
     )
 

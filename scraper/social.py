@@ -250,81 +250,206 @@ def slide_movers(d: dict, *, kind: str) -> str:
     <div style="padding:8px 56px">{cards}</div>"""
 
 
-# ── Slide 04 · Featured Pre-launch ──────────────────────────────
+# ── Highlights extraction (parses '|'-separated KS feature blurbs) ──
+def _extract_highlights(p: dict, *, max_n: int = 4) -> list[str]:
+    """Pull short bullet-style highlights from KS English blurb.
+
+    KS creators often write blurbs like 'Dual Iris | 4K | RGB Laser | 7000 Lumens'.
+    Split on '|' (or '·'), trim to short feature phrases. Fall back to the
+    Chinese 一句话 if no English blurb has separators.
+    """
+    raw = p.get("blurb") or ""
+    parts: list[str] = []
+    if raw:
+        for sep in ["|", "｜", "·", "•"]:
+            if sep in raw:
+                parts = [s.strip() for s in raw.split(sep) if s.strip()]
+                break
+    if not parts and raw:
+        # No separators — single sentence; try to split on commas/periods
+        parts = [raw[:80]]
+    if not parts:
+        zh = p.get("blurb_zh")
+        if zh:
+            parts = [zh]
+    # Cap each highlight length so they fit nicely
+    return [_truncate(s, 38) for s in parts[:max_n]]
+
+
+def _hero_image_block(image_url: str | None) -> str:
+    """Top product image — full width, fixed height, grayscale Newsprint look."""
+    if not image_url:
+        # Placeholder: dot pattern (matches Newsprint paper)
+        return f"""
+        <div style="height:380px;background:{MUTED};display:flex;align-items:center;
+                    justify-content:center;font-family:{PAPER};color:{N400};
+                    background-image:radial-gradient(#000 1px, transparent 1px);
+                    background-size:14px 14px;background-position:0 0">
+          <span class="serif" style="font-size:64px;color:{N400};font-style:italic">No image</span>
+        </div>"""
+    return f"""
+    <div style="height:380px;overflow:hidden;background:#000;
+                border-bottom:4px solid {INK}">
+      <img src="{_esc(image_url)}"
+           style="width:100%;height:100%;object-fit:cover;display:block;
+                  filter:grayscale(0.85) contrast(1.1) brightness(.96)"
+           alt=""/>
+    </div>"""
+
+
+# ── Slide 04 · Pre-launch #1 PRODUCT DETAIL ─────────────────────
 def slide_prelaunch_feature(d: dict) -> str:
     pre = sorted(
         [p for p in d["prelaunch"]],
         key=lambda x: (0 if x.get("project_we_love") else 1, -(int(x.get("followers") or 0))),
     )
     if not pre:
-        return _empty_section("⏳ PRE-LAUNCH · FEATURED", "暂无 prelaunch 项目")
+        return _empty_section("⏳ PRELAUNCH · FEATURED", "暂无 prelaunch 项目")
     p = pre[0]
-    title = _esc(p.get("title") or "")
-    blurb = _esc(p.get("blurb_zh") or p.get("blurb") or "")
+    title = _esc(_truncate(p.get("title") or "", 56))
+    blurb_zh = _esc(p.get("blurb_zh") or "")
     brand = _esc(p.get("matched_brand_zh") or p.get("matched_brand") or p.get("creator_name") or "")
     country = _esc(p.get("country") or "")
-    star = ('<span style="display:inline-block;background:'+RED+';color:'+PAPER+
-            ';font-family:Inter;font-size:13px;font-weight:700;letter-spacing:.18em;'
-            'text-transform:uppercase;padding:6px 12px;margin-bottom:24px">✦ KS Editor\'s Pick</span>'
+    star = (f'<span style="display:inline-block;background:{RED};color:{PAPER};'
+            f'font-family:Inter;font-size:11px;font-weight:700;letter-spacing:.22em;'
+            f'text-transform:uppercase;padding:5px 10px;margin-right:10px;vertical-align:3px">✦ KS PICK</span>'
            ) if p.get("project_we_love") else ""
 
+    highlights = _extract_highlights(p)
+    bullets = "".join(
+        f"""<li style="display:flex;gap:14px;margin:10px 0;font-family:{{body_f}};
+            font-size:18px;line-height:1.4;color:{INK}">
+          <span style="color:{RED};font-weight:900;flex:none">▸</span>
+          <span>{_esc(h)}</span></li>""".replace("{body_f}", "'Lora','Songti SC',serif")
+        for h in highlights
+    )
+
     return f"""
-    <div class="section">
-      <div class="kicker">⏳ PRE-LAUNCH · FEATURED</div>
-      <h2>今日头条 · 未发布</h2>
-      <div class="dek">关注数排名第一 · {brand} · {country}</div>
-    </div>
-    <div style="padding:48px 56px;display:flex;flex-direction:column;justify-content:center;
-                height:calc(100% - 54px - 64px - 240px)">
-      {star}
-      <h3 class="serif" style="font-size:54px;font-weight:900;line-height:1.05;
-          letter-spacing:-1.5px;color:{INK};margin-bottom:24px">{title}</h3>
-      <p class="body" style="font-size:24px;font-style:italic;line-height:1.45;color:{N700}">
-        {blurb}</p>
-      <div style="margin-top:48px;display:flex;align-items:baseline;gap:24px">
-        <span class="mono" style="font-size:78px;font-weight:700;color:{RED};letter-spacing:-2px">{fmt_int(p.get("followers"))}</span>
-        <span class="sans" style="font-size:14px;font-weight:700;color:{N500};letter-spacing:.22em;text-transform:uppercase">Watchers</span>
+    <div style="position:absolute;top:54px;left:0;right:0;bottom:64px;
+                display:flex;flex-direction:column">
+
+      <!-- Section header band -->
+      <div style="padding:24px 56px 18px;border-bottom:1px solid {INK}">
+        <div class="kicker mono" style="font-family:{('JetBrains Mono', 'monospace')[0]},monospace;font-size:12px;
+             font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:{RED};margin-bottom:6px">
+          ⏳ TODAY'S TOP PRE-LAUNCH · #1 BY WATCHERS</div>
+        <h2 class="serif" style="font-family:'Playfair Display',serif;font-weight:900;
+            font-size:42px;letter-spacing:-1.2px;color:{INK};line-height:1">未发布 · 头条</h2>
+      </div>
+
+      <!-- Product hero image -->
+      {_hero_image_block(p.get("image_url"))}
+
+      <!-- Title + brand line -->
+      <div style="padding:24px 56px 0;flex:1;display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <div class="mono" style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
+               color:{N500};letter-spacing:.22em;text-transform:uppercase;margin-bottom:10px">
+            {star}{brand} &nbsp;·&nbsp; {country}
+          </div>
+          <h3 class="serif" style="font-family:'Playfair Display',serif;font-size:30px;font-weight:900;
+              line-height:1.1;letter-spacing:-.6px;color:{INK};margin-bottom:14px">{title}</h3>
+          <div class="body" style="font-family:'Lora','Songti SC',serif;font-style:italic;
+               font-size:17px;color:{N700};line-height:1.4">{blurb_zh}</div>
+
+          <!-- Highlights -->
+          <ul style="list-style:none;padding:0;margin:18px 0 0">{bullets}</ul>
+        </div>
+
+        <!-- Big metric -->
+        <div style="border-top:1px solid {INK};padding-top:18px;display:flex;
+                    align-items:baseline;justify-content:space-between">
+          <div>
+            <span class="mono" style="font-family:'JetBrains Mono',monospace;font-size:60px;
+                  font-weight:700;color:{RED};letter-spacing:-1.5px">{fmt_int(p.get("followers"))}</span>
+            <span class="sans" style="font-family:'Inter',sans-serif;font-size:13px;font-weight:700;
+                  color:{N500};letter-spacing:.22em;text-transform:uppercase;margin-left:14px">Watchers</span>
+          </div>
+          <div class="serif" style="font-family:'Playfair Display',serif;font-size:18px;font-style:italic;
+               color:{N400}">扫码订阅每日报</div>
+        </div>
       </div>
     </div>"""
 
 
-# ── Slide 06 · Featured Live ────────────────────────────────────
+# ── Slide 06 · Live #1 PRODUCT DETAIL ───────────────────────────
 def slide_live_feature(d: dict) -> str:
     live = sorted([p for p in d["live"]], key=lambda x: -float(x.get("pledged_usd") or 0))
     if not live:
         return _empty_section("🔴 LIVE · FEATURED", "暂无 live 项目")
     p = live[0]
-    title = _esc(p.get("title") or "")
-    blurb = _esc(p.get("blurb_zh") or p.get("blurb") or "")
+    title = _esc(_truncate(p.get("title") or "", 56))
+    blurb_zh = _esc(p.get("blurb_zh") or "")
     brand = _esc(p.get("matched_brand_zh") or p.get("matched_brand") or p.get("creator_name") or "")
     country = _esc(p.get("country") or "")
-    star = ('<span style="display:inline-block;background:'+RED+';color:'+PAPER+
-            ';font-family:Inter;font-size:13px;font-weight:700;letter-spacing:.18em;'
-            'text-transform:uppercase;padding:6px 12px;margin-bottom:24px">✦ KS Editor\'s Pick</span>'
+    star = (f'<span style="display:inline-block;background:{RED};color:{PAPER};'
+            f'font-family:Inter;font-size:11px;font-weight:700;letter-spacing:.22em;'
+            f'text-transform:uppercase;padding:5px 10px;margin-right:10px;vertical-align:3px">✦ KS PICK</span>'
            ) if p.get("project_we_love") else ""
     pct = float(p.get("percent_funded") or 0)
     pct_str = (f'{round(pct/100):,}× goal' if pct >= 10000 else
                f'{round(pct):,}% funded' if pct >= 1000 else
                f'{round(pct)}% funded')
+
+    highlights = _extract_highlights(p)
+    bullets = "".join(
+        f"""<li style="display:flex;gap:14px;margin:10px 0;font-family:'Lora','Songti SC',serif;
+            font-size:18px;line-height:1.4;color:{INK}">
+          <span style="color:{RED};font-weight:900;flex:none">▸</span>
+          <span>{_esc(h)}</span></li>"""
+        for h in highlights
+    )
+
     return f"""
-    <div class="section">
-      <div class="kicker">🔴 LIVE · FEATURED</div>
-      <h2>今日头条 · 在筹中</h2>
-      <div class="dek">已筹排名第一 · {brand} · {country}</div>
-    </div>
-    <div style="padding:48px 56px;display:flex;flex-direction:column;justify-content:center;
-                height:calc(100% - 54px - 64px - 240px)">
-      {star}
-      <h3 class="serif" style="font-size:54px;font-weight:900;line-height:1.05;
-          letter-spacing:-1.5px;color:{INK};margin-bottom:24px">{title}</h3>
-      <p class="body" style="font-size:24px;font-style:italic;line-height:1.45;color:{N700}">
-        {blurb}</p>
-      <div style="margin-top:48px;display:flex;align-items:baseline;gap:24px;flex-wrap:wrap">
-        <span class="mono" style="font-size:84px;font-weight:700;color:{INK};letter-spacing:-2.5px">{fmt_usd(p.get("pledged_usd"))}</span>
+    <div style="position:absolute;top:54px;left:0;right:0;bottom:64px;
+                display:flex;flex-direction:column">
+
+      <div style="padding:24px 56px 18px;border-bottom:1px solid {INK}">
+        <div class="kicker mono" style="font-family:'JetBrains Mono',monospace;font-size:12px;
+             font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:{INK};margin-bottom:6px">
+          🔴 TODAY'S TOP LIVE · #1 BY USD RAISED</div>
+        <h2 class="serif" style="font-family:'Playfair Display',serif;font-weight:900;
+            font-size:42px;letter-spacing:-1.2px;color:{INK};line-height:1">在筹中 · 头条</h2>
       </div>
-      <div style="margin-top:8px;display:flex;gap:24px;font-family:'Inter';font-size:14px;font-weight:700;color:{N500};letter-spacing:.18em;text-transform:uppercase">
-        <span>{fmt_int(p.get("backers"))} Backers</span>
-        <span>{pct_str}</span>
+
+      {_hero_image_block(p.get("image_url"))}
+
+      <div style="padding:24px 56px 0;flex:1;display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <div class="mono" style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
+               color:{N500};letter-spacing:.22em;text-transform:uppercase;margin-bottom:10px">
+            {star}{brand} &nbsp;·&nbsp; {country}
+          </div>
+          <h3 class="serif" style="font-family:'Playfair Display',serif;font-size:30px;font-weight:900;
+              line-height:1.1;letter-spacing:-.6px;color:{INK};margin-bottom:14px">{title}</h3>
+          <div class="body" style="font-family:'Lora','Songti SC',serif;font-style:italic;
+               font-size:17px;color:{N700};line-height:1.4">{blurb_zh}</div>
+
+          <ul style="list-style:none;padding:0;margin:18px 0 0">{bullets}</ul>
+        </div>
+
+        <!-- Live KPIs row -->
+        <div style="border-top:1px solid {INK};padding-top:18px;display:flex;align-items:baseline;
+                    gap:34px;flex-wrap:wrap">
+          <div>
+            <span class="mono" style="font-family:'JetBrains Mono',monospace;font-size:54px;
+                  font-weight:700;color:{INK};letter-spacing:-1.5px">{fmt_usd(p.get("pledged_usd"))}</span>
+            <div class="sans" style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;
+                 color:{N500};letter-spacing:.22em;text-transform:uppercase;margin-top:4px">Pledged</div>
+          </div>
+          <div>
+            <span class="mono" style="font-family:'JetBrains Mono',monospace;font-size:30px;
+                  font-weight:700;color:{INK};letter-spacing:-.5px">{fmt_int(p.get("backers"))}</span>
+            <div class="sans" style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;
+                 color:{N500};letter-spacing:.22em;text-transform:uppercase;margin-top:4px">Backers</div>
+          </div>
+          <div>
+            <span class="mono" style="font-family:'JetBrains Mono',monospace;font-size:30px;
+                  font-weight:700;color:{RED};letter-spacing:-.5px">{pct_str}</span>
+            <div class="sans" style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;
+                 color:{N500};letter-spacing:.22em;text-transform:uppercase;margin-top:4px">Funded</div>
+          </div>
+        </div>
       </div>
     </div>"""
 
