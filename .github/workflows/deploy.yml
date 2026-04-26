@@ -6,6 +6,8 @@ on:
     paths:
       - "site/**"
       - "data/**"
+      - "assets/**"
+      - "reports/**"
   workflow_dispatch:
 
 permissions:
@@ -26,10 +28,19 @@ jobs:
         run: |
           mkdir -p _site
           cp -r site/* _site/
+          # data/ — projects.json + slices + subscribers + blurbs (stats.html reads these)
           mkdir -p _site/data
           cp data/projects.json _site/data/
           cp data/prelaunch.json _site/data/ 2>/dev/null || true
           cp data/live.json _site/data/ 2>/dev/null || true
+          cp data/subscribers.json _site/data/ 2>/dev/null || true
+          cp data/blurbs_zh.json _site/data/ 2>/dev/null || true
+          # assets/ — banner / snapshot / og-card SVGs (og:image meta points here)
+          mkdir -p _site/assets
+          cp -r assets/* _site/assets/ 2>/dev/null || true
+          # reports/ — Markdown daily reports (linked from README, served raw)
+          mkdir -p _site/reports
+          cp -r reports/* _site/reports/ 2>/dev/null || true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

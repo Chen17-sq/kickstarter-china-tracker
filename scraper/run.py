@@ -33,6 +33,7 @@ from .project import fetch_watches_counts, slug_from_pathname
 from .banner import write_banner
 from .momentum import compute_deltas
 from .email_notify import build_html as build_email_html, write_archive as write_email_archive
+from .sitemap import write_sitemap
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA = REPO_ROOT / "data"
@@ -238,6 +239,13 @@ def run() -> int:
         print(f"  archived site/editions/{today_date}.html (+ latest.html)")
     except Exception as e:
         print(f"  archive skipped: {e}")
+
+    # Refresh sitemap.xml so newly-archived editions get crawled
+    try:
+        sm = write_sitemap()
+        print(f"  refreshed {sm.relative_to(REPO_ROOT)}")
+    except Exception as e:
+        print(f"  sitemap skipped: {e}")
 
     # Generate today's Markdown report (compares against snaps[-2])
     try:

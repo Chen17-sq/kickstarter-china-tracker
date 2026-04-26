@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /data/.tmp/
+
+Sitemap: https://chen17-sq.github.io/kickstarter-china-tracker/sitemap.xml

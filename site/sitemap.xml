@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://chen17-sq.github.io/kickstarter-china-tracker/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://chen17-sq.github.io/kickstarter-china-tracker/subscribe.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://chen17-sq.github.io/kickstarter-china-tracker/stats.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://chen17-sq.github.io/kickstarter-china-tracker/editions/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://chen17-sq.github.io/kickstarter-china-tracker/editions/latest.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://chen17-sq.github.io/kickstarter-china-tracker/editions/2026-04-26.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+</urlset>

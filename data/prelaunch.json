@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-26T10:52:36Z",
-  "started_at": "2026-04-26T10:51:39Z",
+  "generated_at": "2026-04-26T10:58:57Z",
+  "started_at": "2026-04-26T10:58:02Z",
   "total_candidates": 297,
   "kept": 143,
   "projects": [
@@ -613,7 +613,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": true,
-      "followers": 880,
+      "followers": 881,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -627,7 +627,7 @@
       "china_reason": "brand whitelist: Vastnaut",
       "matched_brand": "Vastnaut",
       "matched_brand_zh": "Vastnaut",
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -693,7 +693,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -745,7 +745,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": true,
-      "followers": 606,
+      "followers": 607,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -759,7 +759,7 @@
       "china_reason": "brand whitelist: PongBot",
       "matched_brand": "PongBot",
       "matched_brand_zh": "PongBot",
-      "delta_followers": 2,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -825,7 +825,7 @@
       "china_reason": "brand whitelist: Revopoint 3D",
       "matched_brand": "Revopoint 3D",
       "matched_brand_zh": "复志",
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -891,7 +891,7 @@
       "china_reason": "团队疑似华人，KS 地址 San Jose",
       "matched_brand": "TrantorVision (NeuroHUD)",
       "matched_brand_zh": "TrantorVision (NeuroHUD)",
-      "delta_followers": 2,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1023,7 +1023,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1056,7 +1056,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1471,7 +1471,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 282,
+      "followers": 283,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1485,7 +1485,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1584,7 +1584,7 @@
       "china_reason": "KS location: Kowloon, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
