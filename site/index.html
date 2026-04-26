@@ -271,6 +271,45 @@ tbody td{padding:14px 14px;vertical-align:top}
   font-size:11px;font-weight:700;letter-spacing:.02em;margin-left:4px;
   font-variant-numeric:tabular-nums;white-space:nowrap}
 
+/* Floating "Download PDF" button — opens browser's print-to-PDF dialog */
+.pdf-fab{position:fixed;bottom:24px;right:24px;z-index:100;
+  background:var(--ink);color:var(--paper);
+  border:1px solid var(--ink);padding:11px 18px;cursor:pointer;
+  font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;
+  box-shadow:5px 5px 0 var(--accent);
+  transition:transform .12s,box-shadow .12s}
+.pdf-fab:hover{background:var(--paper);color:var(--ink);
+  transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--accent)}
+.pdf-fab:active{transform:translate(2px,2px);box-shadow:none}
+
+/* Print rules — hide interactive UI, optimize layout for paper */
+@media print{
+  body{background:none!important}
+  .wrap{border:none!important;max-width:none!important}
+  .edition-strip{padding:6px 16px!important}
+  .filter-row,.count-line,.lang-toggle,.pdf-fab{display:none!important}
+  .mast{padding:18px 16px 14px!important}
+  .mast .nameplate{font-size:48px!important}
+  .kpi{padding:14px 12px!important}
+  .kpi .num{font-size:32px!important}
+  /* Table: repeat thead, avoid row split */
+  thead{display:table-header-group}
+  tr{page-break-inside:avoid}
+  table{font-size:11px!important}
+  tbody td{padding:8px 10px!important}
+  .cell-title{font-size:13px!important}
+  .cell-blurb{font-size:11px!important}
+  .cell-meta{font-size:10px!important}
+  /* Hide hero band on print — table is the focus */
+  .hero{display:none!important}
+  /* Remove heavy section background tints */
+  thead th{background:#fff!important}
+  tbody tr:hover{background:none!important}
+  a{color:inherit!important;text-decoration:none!important}
+  .ornament,.foot{display:none!important}
+}
+
 /* Link → red underline (signature touch) */
 .link{font-family:'Inter',sans-serif;color:var(--ink);font-size:11px;font-weight:700;
   letter-spacing:.18em;text-transform:uppercase;text-decoration:none;
@@ -399,6 +438,11 @@ tbody td{padding:14px 14px;vertical-align:top}
 
   <!-- Main feature table -->
   <div class="table-wrap" id="table-host"></div>
+
+  <!-- Floating "Download PDF" — calls native print-to-PDF -->
+  <button class="pdf-fab" onclick="window.print()" aria-label="下载 PDF / Download PDF">
+    ↓ PDF
+  </button>
 
   <!-- Ornament -->
   <div class="ornament">&#x2727; &#x2727; &#x2727;</div>
