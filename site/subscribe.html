@@ -192,12 +192,41 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
 
 </div>
 <script>
-// Formspree returns 200 on success. We intercept to show the success card
-// instead of redirecting to formspree.io's own thank-you page.
+// Two paths:
+//  (1) If a real Formspree ID is set → POST + show in-page success
+//  (2) If still on placeholder URL    → fall back to mailto: which opens
+//      the visitor's email client with email+nickname pre-filled. The
+//      message lands in the owner's inbox; owner runs `python -m
+//      scraper.subscribers add EMAIL NICK` to add. Always works without
+//      any third-party signup.
+const OWNER_EMAIL = "schen.aldrich@gmail.com";
+
 document.getElementById("subForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const form = e.target;
   const btn = document.getElementById("subBtn");
+  const email = (form.email.value || "").trim();
+  const nickname = (form.nickname.value || "").trim();
+  if (!email) {
+    alert("请填写邮箱 · Email is required");
+    return;
+  }
+
+  // Path 2: Formspree placeholder still present → mailto: fallback
+  if (!form.action || form.action.includes("REPLACE_WITH_FORMSPREE_ID")) {
+    const subject = "[KS Tracker] 订阅 · New subscriber";
+    const body = `邮箱 / Email: ${email}\n昵称 / Nickname: ${nickname || "(none)"}\n\n— Sent from subscribe.html`;
+    const href = `mailto:${OWNER_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = href;
+    // After the mail client opens, optimistically show success.
+    setTimeout(() => {
+      form.style.display = "none";
+      document.getElementById("success").classList.add("is-on");
+    }, 400);
+    return;
+  }
+
+  // Path 1: real Formspree endpoint → background POST
   btn.disabled = true;
   btn.textContent = "提交中…";
   const data = new FormData(form);
@@ -213,12 +242,13 @@ document.getElementById("subForm").addEventListener("submit", async (e) => {
     } else {
       btn.disabled = false;
       btn.textContent = "重试 / Try again";
-      alert("提交失败，请稍后再试。");
+      const txt = await r.text().catch(() => "");
+      alert("提交失败：" + (txt.slice(0, 200) || `HTTP ${r.status}`));
     }
   } catch (err) {
     btn.disabled = false;
     btn.textContent = "重试 / Try again";
-    alert("Network error: " + err.message);
+    alert("网络错误：" + err.message);
   }
 });
 </script>

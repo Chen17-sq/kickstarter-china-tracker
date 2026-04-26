@@ -196,17 +196,20 @@ def build_snapshot_svg(curr: dict) -> str:
     )[:3]
     today = dt.datetime.now(dt.timezone.utc).strftime("%a, %b %d").upper()
 
-    W, H = 1280, 480
+    # Layout — section header on top, then column labels, then 3 rows.
+    # Y math: rule at 110, column label at 144, row 0 at 184 (title at 178).
+    # No element baseline overlaps a horizontal rule anymore.
+    W, H = 1280, 540
     serif = "Playfair Display, Times New Roman, serif"
     sans = "Inter, Helvetica, sans-serif"
     mono = "JetBrains Mono, Courier New, monospace"
 
     pre_rows = "\n  ".join(
-        _highlight_row(120 + i * 100, i + 1, p, kind="prelaunch", col_x=0)
+        _highlight_row(184 + i * 110, i + 1, p, kind="prelaunch", col_x=0)
         for i, p in enumerate(prelaunch)
     )
     live_rows = "\n  ".join(
-        _highlight_row(120 + i * 100, i + 1, p, kind="live", col_x=640)
+        _highlight_row(184 + i * 110, i + 1, p, kind="live", col_x=640)
         for i, p in enumerate(live)
     )
 
@@ -220,18 +223,18 @@ def build_snapshot_svg(curr: dict) -> str:
   <text x="40" y="86" font-family="{serif}" font-size="36" font-weight="900"
         fill="{INK}" letter-spacing="-1">Today's Top Stories</text>
 
-  <line x1="40" y1="108" x2="{W-40}" y2="108" stroke="{INK}" stroke-width="4"/>
+  <line x1="40" y1="110" x2="{W-40}" y2="110" stroke="{INK}" stroke-width="4"/>
 
-  <!-- Left column: Prelaunch -->
-  <text x="40" y="148" font-family="{sans}" font-size="11" font-weight="700"
+  <!-- Left column: Prelaunch (label sits ABOVE the first row) -->
+  <text x="40" y="146" font-family="{sans}" font-size="11" font-weight="700"
         fill="{RED}" letter-spacing="3">⏳ PRELAUNCH · TOP BY WATCHERS</text>
   {pre_rows}
 
   <!-- Vertical divider between columns -->
-  <line x1="640" y1="124" x2="640" y2="{H-40}" stroke="{INK}" stroke-width="1"/>
+  <line x1="640" y1="126" x2="640" y2="{H-40}" stroke="{INK}" stroke-width="1"/>
 
   <!-- Right column: Live -->
-  <text x="680" y="148" font-family="{sans}" font-size="11" font-weight="700"
+  <text x="680" y="146" font-family="{sans}" font-size="11" font-weight="700"
         fill="{INK}" letter-spacing="3">🔴 LIVE · TOP BY USD RAISED</text>
   {live_rows}
 
