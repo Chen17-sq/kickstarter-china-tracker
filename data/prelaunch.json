@@ -1,6 +1,11 @@
 {
+<<<<<<< Updated upstream
   "generated_at": "2026-04-26T05:59:11Z",
   "started_at": "2026-04-26T05:58:23Z",
+=======
+  "generated_at": "2026-04-26T10:02:40Z",
+  "started_at": "2026-04-26T10:01:45Z",
+>>>>>>> Stashed changes
   "total_candidates": 297,
   "kept": 142,
   "projects": [
@@ -32,7 +37,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Shenzhen, China",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/98851/everkey-edc-the-tc4-keychain-knife-that-outlasts-your-keys",
@@ -62,7 +70,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Shenzhen, China",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/yangyuanjie/lone-city",
@@ -92,7 +103,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Chongqing, China",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/c-h/ido-claw",
@@ -122,7 +136,10 @@
       "china_confidence": "高",
       "china_reason": "brand whitelist: Wireless-Tag (IDO Claw)",
       "matched_brand": "Wireless-Tag (IDO Claw)",
-      "matched_brand_zh": "Wireless-Tag (IDO Claw)"
+      "matched_brand_zh": "Wireless-Tag (IDO Claw)",
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/dalkomm/the-ascendant-loong-tourbillon-the-art-of-power-in-motion",
@@ -152,7 +169,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Guangzhou, China",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/jiehai/jiehai-the-seven-spirits-myth-punk-art-statues",
@@ -182,7 +202,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Guangzhou, China",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/meowjito/circle-mountain-circle-sea",
@@ -212,7 +235,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Shanghai, China",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/ayaneo-offical/ayaneo-pocket-play-mobile-phone-and-gaming-handheld-in-one",
@@ -229,7 +255,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": true,
-      "followers": 7461,
+      "followers": 7462,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -242,7 +268,10 @@
       "china_confidence": "高",
       "china_reason": "brand whitelist: AYANEO",
       "matched_brand": "AYANEO",
-      "matched_brand_zh": "AYANEO"
+      "matched_brand_zh": "AYANEO",
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/eleganc/elegance-re-imagined",
@@ -272,7 +301,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Shanghai, China",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/336547084/la-seine-espresso-machine",
@@ -302,7 +334,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Beijing, China",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/lovefortp/twirling-puppies",
@@ -332,7 +367,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Shanghai, China",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/litchitown/litchi-town",
@@ -362,7 +400,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Chengdu, China",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/blafili/blafili-b3-true-hi-fi-bluetooth-audio-receiver-and-usb-dac",
@@ -392,7 +433,10 @@
       "china_confidence": "高",
       "china_reason": "brand whitelist: BLAFILI",
       "matched_brand": "BLAFILI",
-      "matched_brand_zh": "BLAFILI"
+      "matched_brand_zh": "BLAFILI",
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/aguidebookofbabel/a-guidebook-of-babel-an-afterlife-adventure",
@@ -422,7 +466,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Shanghai, China",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/dotoyou/breaking-box-create-your-own-3d-platformer-stages",
@@ -452,7 +499,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Tianjin, China",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/1410951490/deoum-z2-fast-precision-laser-marking-machine",
@@ -482,7 +532,10 @@
       "china_confidence": "高",
       "china_reason": "brand name in title: Deoum",
       "matched_brand": "Deoum",
-      "matched_brand_zh": "Deoum"
+      "matched_brand_zh": "Deoum",
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/kiwiears/kiwi-ears-halcyon-worlds-first-mems-1dd-3ba-tribrid-iem",
@@ -499,7 +552,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 553,
+      "followers": 564,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -512,7 +565,10 @@
       "china_confidence": "高",
       "china_reason": "brand whitelist: Kiwi Ears",
       "matched_brand": "Kiwi Ears",
-      "matched_brand_zh": "Kiwi Ears"
+      "matched_brand_zh": "Kiwi Ears",
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/sousic/sousic-s02-auto-tuning-wireless-ultrasonic-cutter",
@@ -529,7 +585,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 393,
+      "followers": 404,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -542,7 +598,10 @@
       "china_confidence": "中",
       "china_reason": "KS 地址 Denver，文案/产品风格疑似中国",
       "matched_brand": "SOUSIC TECH",
-      "matched_brand_zh": "SOUSIC TECH"
+      "matched_brand_zh": "SOUSIC TECH",
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/vastnaut/vastnaut-one-worlds-first-ai-powered-4x4-exoskeleton",
@@ -559,7 +618,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": true,
-      "followers": 872,
+      "followers": 880,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -572,7 +631,10 @@
       "china_confidence": "高",
       "china_reason": "brand whitelist: Vastnaut",
       "matched_brand": "Vastnaut",
-      "matched_brand_zh": "Vastnaut"
+      "matched_brand_zh": "Vastnaut",
+      "delta_followers": 1,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/gweikelaser/gweike-mcore-desktop-400w-fiber-and-80w-co2-laser-cutter",
@@ -589,7 +651,11 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
+<<<<<<< Updated upstream
       "followers": 711,
+=======
+      "followers": 716,
+>>>>>>> Stashed changes
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -602,7 +668,10 @@
       "china_confidence": "高",
       "china_reason": "brand whitelist: Gweike Laser",
       "matched_brand": "Gweike Laser",
-      "matched_brand_zh": "光韵达激光"
+      "matched_brand_zh": "光韵达激光",
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/1059314484/aiscan-o1-3d-gaussian-all-in-one-3d-scanner",
@@ -619,7 +688,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 195,
+      "followers": 208,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -632,37 +701,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
-    },
-    {
-      "pathname": "/projects/trantor/neurohud-add-the-hud-tesla-forgot",
-      "url": "https://www.kickstarter.com/projects/trantor/neurohud-add-the-hud-tesla-forgot",
-      "title": "NeuroHUD: The Heads-Up Display Tesla Forgot",
-      "blurb": "No Wiring Modification | Tesla Navigation Integrated | Blindspot Alert | Windshield Projection | Customizable UI | HomeControl",
-      "blurb_zh": "特斯拉专用免改装抬头显示器",
-      "creator": "TrantorVision",
-      "creator_slug": "trantor",
-      "creator_name": "TrantorVision",
-      "location": "San Jose, CA",
-      "country": "US",
-      "category": "Hardware",
-      "status": "prelaunch",
-      "raw_state": "submitted",
-      "project_we_love": false,
-      "followers": 3132,
-      "backers": 0,
-      "pledged_usd": null,
-      "goal_usd": null,
-      "percent_funded": 0.0,
-      "deadline": 0,
-      "launched_at": 0,
-      "created_at": 1759562274,
-      "state_changed_at": 1760460529,
-      "prelaunch_activated": true,
-      "china_confidence": "中",
-      "china_reason": "团队疑似华人，KS 地址 San Jose",
-      "matched_brand": "TrantorVision (NeuroHUD)",
-      "matched_brand_zh": "TrantorVision (NeuroHUD)"
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/cybopal/cybopal-worlds-first-active-tracking-ai-robotic-monitor",
@@ -679,7 +721,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": true,
-      "followers": 983,
+      "followers": 985,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -692,7 +734,10 @@
       "china_confidence": "高",
       "china_reason": "brand whitelist: CyboPal",
       "matched_brand": "CyboPal",
-      "matched_brand_zh": "CyboPal"
+      "matched_brand_zh": "CyboPal",
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/pongbot/aura-the-worlds-first-ultra-light-ai-multi-sport-robot",
@@ -709,7 +754,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": true,
-      "followers": 597,
+      "followers": 604,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -722,7 +767,10 @@
       "china_confidence": "高",
       "china_reason": "brand whitelist: PongBot",
       "matched_brand": "PongBot",
-      "matched_brand_zh": "PongBot"
+      "matched_brand_zh": "PongBot",
+      "delta_followers": 1,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/nexxtpercent/energylink-gen-2-charge-faster-wear-lighter-go-further",
@@ -739,7 +787,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 430,
+      "followers": 435,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -752,7 +800,10 @@
       "china_confidence": "中",
       "china_reason": "Apple Watch 充电带，团队不明",
       "matched_brand": "NEXXTPERCENT (EnergyLink)",
-      "matched_brand_zh": "NEXXTPERCENT (EnergyLink)"
+      "matched_brand_zh": "NEXXTPERCENT (EnergyLink)",
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/revopoint3d/revopoint-pop-4-3d-scanner",
@@ -769,7 +820,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": true,
-      "followers": 123,
+      "followers": 133,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -782,7 +833,10 @@
       "china_confidence": "高",
       "china_reason": "brand whitelist: Revopoint 3D",
       "matched_brand": "Revopoint 3D",
-      "matched_brand_zh": "复志"
+      "matched_brand_zh": "复志",
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/makeblock/xtool-wonderpress-the-most-creative-3d-auto-heat-press-ever",
@@ -799,7 +853,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": true,
-      "followers": 919,
+      "followers": 921,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -812,7 +866,43 @@
       "china_confidence": "高",
       "china_reason": "brand whitelist: xTool / Makeblock",
       "matched_brand": "xTool / Makeblock",
-      "matched_brand_zh": "童心制物"
+      "matched_brand_zh": "童心制物",
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
+    },
+    {
+      "pathname": "/projects/trantor/neurohud-add-the-hud-tesla-forgot",
+      "url": "https://www.kickstarter.com/projects/trantor/neurohud-add-the-hud-tesla-forgot",
+      "title": "NeuroHUD: The Heads-Up Display Tesla Forgot",
+      "blurb": "No Wiring Modification | Tesla Navigation Integrated | Blindspot Alert | Windshield Projection | Customizable UI | HomeControl",
+      "blurb_zh": "特斯拉专用免改装抬头显示器",
+      "creator": "TrantorVision",
+      "creator_slug": "trantor",
+      "creator_name": "TrantorVision",
+      "location": "San Jose, CA",
+      "country": "US",
+      "category": "Hardware",
+      "status": "prelaunch",
+      "raw_state": "submitted",
+      "project_we_love": false,
+      "followers": 3142,
+      "backers": 0,
+      "pledged_usd": null,
+      "goal_usd": null,
+      "percent_funded": 0.0,
+      "deadline": 0,
+      "launched_at": 0,
+      "created_at": 1759562274,
+      "state_changed_at": 1760460529,
+      "prelaunch_activated": true,
+      "china_confidence": "中",
+      "china_reason": "团队疑似华人，KS 地址 San Jose",
+      "matched_brand": "TrantorVision (NeuroHUD)",
+      "matched_brand_zh": "TrantorVision (NeuroHUD)",
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/procolored/procolored-x-one-full-color-uv-laser-in-one-system",
@@ -829,7 +919,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": true,
-      "followers": 902,
+      "followers": 905,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -842,67 +932,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
-    },
-    {
-      "pathname": "/projects/925044833/kynooe-one-worlds-1st-modular-personal-ai-robot-arm",
-      "url": "https://www.kickstarter.com/projects/925044833/kynooe-one-worlds-1st-modular-personal-ai-robot-arm",
-      "title": "Kynooe: Not Just a Robotic Arm—Your AI Companion",
-      "blurb": "A fully modular AI robotic arm—ready to use right out of the box, no coding required. Build it, customize it, and bring ideas to life.",
-      "blurb_zh": "模块化个人 AI 机械臂（即开即用免编程）",
-      "creator": "Kynooe",
-      "creator_slug": null,
-      "creator_name": "Kynooe",
-      "location": "Dover, DE",
-      "country": "US",
-      "category": "Robots",
-      "status": "prelaunch",
-      "raw_state": "submitted",
-      "project_we_love": false,
-      "followers": 948,
-      "backers": 0,
-      "pledged_usd": null,
-      "goal_usd": null,
-      "percent_funded": 0.0,
-      "deadline": 0,
-      "launched_at": 0,
-      "created_at": 1774400601,
-      "state_changed_at": 1774515812,
-      "prelaunch_activated": true,
-      "china_confidence": "高",
-      "china_reason": "brand name in title: Kynooe",
-      "matched_brand": "Kynooe",
-      "matched_brand_zh": "Kynooe"
-    },
-    {
-      "pathname": "/projects/xhorse3d/xhorse3d-xmachine-wm-100-desktop-simultaneous-5-axis-cnc",
-      "url": "https://www.kickstarter.com/projects/xhorse3d/xhorse3d-xmachine-wm-100-desktop-simultaneous-5-axis-cnc",
-      "title": "Xhorse3D Xmachine WM-100 Desktop Simultaneous 5-Axis CNC",
-      "blurb": "Simultaneous 5-axis|1500W, 20,000RPM Spindle|±0.01mm High-Precise|Auto Tool Charger| AI CAM|Smart Camera|Dust Collection",
-      "blurb_zh": "桌面五轴联动 CNC 雕铣机（20000RPM）",
-      "creator": "Xhorse3D",
-      "creator_slug": "xhorse3d",
-      "creator_name": "Xhorse3D",
-      "location": "Hong Kong, Hong Kong",
-      "country": "HK",
-      "category": "Fabrication Tools",
-      "status": "prelaunch",
-      "raw_state": "submitted",
-      "project_we_love": false,
-      "followers": 1310,
-      "backers": 0,
-      "pledged_usd": null,
-      "goal_usd": null,
-      "percent_funded": 0.0,
-      "deadline": 0,
-      "launched_at": 0,
-      "created_at": 1772079125,
-      "state_changed_at": 1773388263,
-      "prelaunch_activated": true,
-      "china_confidence": "高",
-      "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/inkwonprinting/inkwon-tag-worlds-1st-4-in-1-pocket-color-inkjet-printer",
@@ -919,7 +952,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 423,
+      "followers": 427,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -932,7 +965,76 @@
       "china_confidence": "高",
       "china_reason": "brand whitelist: INKWON Printing",
       "matched_brand": "INKWON Printing",
-      "matched_brand_zh": "INKWON Printing"
+      "matched_brand_zh": "INKWON Printing",
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
+    },
+    {
+      "pathname": "/projects/925044833/kynooe-one-worlds-1st-modular-personal-ai-robot-arm",
+      "url": "https://www.kickstarter.com/projects/925044833/kynooe-one-worlds-1st-modular-personal-ai-robot-arm",
+      "title": "Kynooe: Not Just a Robotic Arm—Your AI Companion",
+      "blurb": "A fully modular AI robotic arm—ready to use right out of the box, no coding required. Build it, customize it, and bring ideas to life.",
+      "blurb_zh": "模块化个人 AI 机械臂（即开即用免编程）",
+      "creator": "Kynooe",
+      "creator_slug": null,
+      "creator_name": "Kynooe",
+      "location": "Dover, DE",
+      "country": "US",
+      "category": "Robots",
+      "status": "prelaunch",
+      "raw_state": "submitted",
+      "project_we_love": false,
+      "followers": 951,
+      "backers": 0,
+      "pledged_usd": null,
+      "goal_usd": null,
+      "percent_funded": 0.0,
+      "deadline": 0,
+      "launched_at": 0,
+      "created_at": 1774400601,
+      "state_changed_at": 1774515812,
+      "prelaunch_activated": true,
+      "china_confidence": "高",
+      "china_reason": "brand name in title: Kynooe",
+      "matched_brand": "Kynooe",
+      "matched_brand_zh": "Kynooe",
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
+    },
+    {
+      "pathname": "/projects/xhorse3d/xhorse3d-xmachine-wm-100-desktop-simultaneous-5-axis-cnc",
+      "url": "https://www.kickstarter.com/projects/xhorse3d/xhorse3d-xmachine-wm-100-desktop-simultaneous-5-axis-cnc",
+      "title": "Xhorse3D Xmachine WM-100 Desktop Simultaneous 5-Axis CNC",
+      "blurb": "Simultaneous 5-axis|1500W, 20,000RPM Spindle|±0.01mm High-Precise|Auto Tool Charger| AI CAM|Smart Camera|Dust Collection",
+      "blurb_zh": "桌面五轴联动 CNC 雕铣机（20000RPM）",
+      "creator": "Xhorse3D",
+      "creator_slug": "xhorse3d",
+      "creator_name": "Xhorse3D",
+      "location": "Hong Kong, Hong Kong",
+      "country": "HK",
+      "category": "Fabrication Tools",
+      "status": "prelaunch",
+      "raw_state": "submitted",
+      "project_we_love": false,
+      "followers": 1320,
+      "backers": 0,
+      "pledged_usd": null,
+      "goal_usd": null,
+      "percent_funded": 0.0,
+      "deadline": 0,
+      "launched_at": 0,
+      "created_at": 1772079125,
+      "state_changed_at": 1773388263,
+      "prelaunch_activated": true,
+      "china_confidence": "高",
+      "china_reason": "KS location: Hong Kong, Hong Kong",
+      "matched_brand": null,
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/261716880/sunflower-x-smarter-sleep-with-ai-sensing-and-sunrise-light",
@@ -949,7 +1051,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": true,
-      "followers": 2451,
+      "followers": 2452,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -962,7 +1064,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/womier/womier-duo87",
@@ -979,7 +1084,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 264,
+      "followers": 265,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -992,7 +1097,10 @@
       "china_confidence": "高",
       "china_reason": "brand whitelist: Womier",
       "matched_brand": "Womier",
-      "matched_brand_zh": "Womier"
+      "matched_brand_zh": "Womier",
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/topfab/topfab-tf500-5-axis-ai-cnc-your-desktop-your-fabrication",
@@ -1009,7 +1117,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 141,
+      "followers": 143,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1022,7 +1130,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/1808560079/robobooster-panther-lawn-care-robot",
@@ -1039,7 +1150,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 223,
+      "followers": 225,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1052,7 +1163,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/innodigym/omni-x1-best-all-in-one-smart-cable-training-machine",
@@ -1069,7 +1183,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 181,
+      "followers": 183,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1082,7 +1196,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/nexdisplay/nexdisplay-mini-pro-the-16-25k-mini-led-portable-display",
@@ -1099,7 +1216,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 139,
+      "followers": 140,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1112,7 +1229,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/kitto/kitto-true-ai-agent-toy",
@@ -1142,7 +1262,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/atumanofficial/atuman-x3-precision-toolkit-no-stripping-full-control",
@@ -1159,7 +1282,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 20,
+      "followers": 24,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1172,7 +1295,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Kowloon, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/homiq/homiq-w11-worlds-first-cordless-window-see-through-cam",
@@ -1189,7 +1315,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 223,
+      "followers": 224,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1202,7 +1328,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/465535565/linyo-h1-car-wash-machine",
@@ -1232,7 +1361,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/cyplore/cyplore-the-lightest-e-bike-kit-for-thru-axle-bikes",
@@ -1249,7 +1381,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": true,
-      "followers": 127,
+      "followers": 128,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1262,7 +1394,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/spinos1pro/spino-s1-pro-self-docking-cordless-robotic-pool-cleaner",
@@ -1279,7 +1414,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": true,
-      "followers": 43,
+      "followers": 44,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1292,7 +1427,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/235685896/atelier-blue-engraver-with-built-in-cameraandclass-1-safety",
@@ -1322,37 +1460,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
-    },
-    {
-      "pathname": "/projects/miixpro/miixkey",
-      "url": "https://www.kickstarter.com/projects/miixpro/miixkey",
-      "title": "MiixKey丨The World's First Security Key with a Touchscreen.",
-      "blurb": "Smart Screen | Manages 3,000+ Passwords | 5 FIDO+PIV+OpenPGP Slots | Auto-Fill | Up to 8 NFC Cards",
-      "blurb_zh": "全球首款触摸屏 FIDO 安全密钥（管理 3000+ 密码）",
-      "creator": "MiixPro",
-      "creator_slug": "miixpro",
-      "creator_name": "MiixPro",
-      "location": "Hong Kong, Hong Kong",
-      "country": "HK",
-      "category": "DIY Electronics",
-      "status": "prelaunch",
-      "raw_state": "submitted",
-      "project_we_love": false,
-      "followers": 82,
-      "backers": 0,
-      "pledged_usd": null,
-      "goal_usd": null,
-      "percent_funded": 0.0,
-      "deadline": 0,
-      "launched_at": 0,
-      "created_at": 1773821929,
-      "state_changed_at": 1775892760,
-      "prelaunch_activated": true,
-      "china_confidence": "高",
-      "china_reason": "KS location: Hong Kong, Hong Kong",
-      "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/inmo-go3-ai-glasses/everyday-wear-ai-glasses",
@@ -1369,7 +1480,11 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
+<<<<<<< Updated upstream
       "followers": 255,
+=======
+      "followers": 280,
+>>>>>>> Stashed changes
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1382,7 +1497,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/2085886764/phantomx-four-arm-wandering-hour-watch",
@@ -1399,7 +1517,11 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
+<<<<<<< Updated upstream
       "followers": 525,
+=======
+      "followers": 527,
+>>>>>>> Stashed changes
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1412,7 +1534,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/angles/redefining-wandering-hour-watches-by-angles",
@@ -1429,7 +1554,7 @@
       "status": "prelaunch",
       "raw_state": "started",
       "project_we_love": false,
-      "followers": 119,
+      "followers": 120,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": 100000.0,
@@ -1442,7 +1567,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/voguemech/axiglide-next-gen-pivoting-vise-for-smooth-precise-control",
@@ -1459,7 +1587,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 465,
+      "followers": 467,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1472,7 +1600,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Kowloon, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/magmoflex/magmoflex-flexible-magnetic-organization-for-any-space",
@@ -1489,7 +1620,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 424,
+      "followers": 427,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1502,7 +1633,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/makerpihk/makerpi-tiwrench-better-adjustable-wrench",
@@ -1519,7 +1653,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 43,
+      "followers": 44,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1532,7 +1666,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/aeke/aeke-s1-pro-full-body-ai-home-gym",
@@ -1549,7 +1686,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": true,
-      "followers": 102,
+      "followers": 105,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1562,7 +1699,10 @@
       "china_confidence": "高",
       "china_reason": "brand name in title: Aeke",
       "matched_brand": "Aeke",
-      "matched_brand_zh": "Aeke"
+      "matched_brand_zh": "Aeke",
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/698611014/memoir-a-paper-like-e-ink-digital-frame",
@@ -1579,7 +1719,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 1281,
+      "followers": 1282,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1592,7 +1732,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Central, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/1535000764/chrono-tri-core-time-in-motion-shaped-by-structure",
@@ -1622,7 +1765,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/orphicwatches/orphic-project-0-wandering-hour-watch",
@@ -1652,7 +1798,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Mount Davis, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/keychain/titaner-worlds-first-titanium-keychain-security-matrix",
@@ -1669,7 +1818,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 12,
+      "followers": 13,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1682,7 +1831,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/zosray/greensky",
@@ -1712,7 +1864,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Kowloon, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/647981696/black-whalem390-titanium-folding-knife-portable-edc",
@@ -1742,7 +1897,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     }
   ]
 }

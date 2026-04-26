@@ -1,11 +1,6 @@
 {
-<<<<<<< Updated upstream
-  "generated_at": "2026-04-26T05:59:11Z",
-  "started_at": "2026-04-26T05:58:23Z",
-=======
   "generated_at": "2026-04-26T10:02:40Z",
   "started_at": "2026-04-26T10:01:45Z",
->>>>>>> Stashed changes
   "total_candidates": 297,
   "kept": 142,
   "projects": [
@@ -2103,11 +2098,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-<<<<<<< Updated upstream
-      "followers": 711,
-=======
       "followers": 716,
->>>>>>> Stashed changes
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -3889,11 +3880,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-<<<<<<< Updated upstream
-      "followers": 255,
-=======
       "followers": 280,
->>>>>>> Stashed changes
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -3926,11 +3913,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-<<<<<<< Updated upstream
-      "followers": 525,
-=======
       "followers": 527,
->>>>>>> Stashed changes
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,

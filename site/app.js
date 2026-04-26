@@ -149,6 +149,39 @@ function escapeHtml(s) {
   }[c]));
 }
 
+// $/watcher — meaningful for live + ended; null when no watchers data.
+function conversionPerWatcher(d) {
+  const f = Number(d.followers || 0);
+  const p = Number(d.pledged_usd || 0);
+  if (f <= 0 || p <= 0) return null;
+  return p / f;
+}
+
+// Naïve linear projection for live: $/day × total_campaign_days.
+function projectedTotal(d) {
+  if (d.status !== "live") return null;
+  const launched = Number(d.launched_at || 0);
+  const deadline = Number(d.deadline || 0);
+  const pledged = Number(d.pledged_usd || 0);
+  if (launched <= 0 || deadline <= launched) return null;
+  const now = Date.now() / 1000;
+  const daysIn = (now - launched) / 86400;
+  const totalDays = (deadline - launched) / 86400;
+  if (daysIn < 0.5) return null;
+  return (pledged / daysIn) * totalDays;
+}
+
+function fmtDeltaInt(n) {
+  if (n == null || n === 0 || isNaN(Number(n))) return "";
+  const v = Number(n);
+  return (v > 0 ? "+" : "") + v.toLocaleString();
+}
+function fmtDeltaUSD(n) {
+  if (n == null || isNaN(Number(n)) || Math.abs(Number(n)) < 1) return "";
+  const v = Number(n);
+  return (v > 0 ? "+" : "−") + fmtUSD(Math.abs(v));
+}
+
 function fmtTimeline(d) {
   const now = Date.now() / 1000;
   if (d.status === "prelaunch") {
@@ -221,7 +254,13 @@ function rowHtml(d) {
   const loc = escapeHtml(d.location || "");
   const cat = escapeHtml(categoryLabel(d.category));
   const tl = escapeHtml(fmtTimeline(d));
-  const meta = [tl, company, loc, cat].filter(Boolean).join(" · ");
+  // Conversion + projection (meta line, only for live/ended where it makes sense)
+  const cpw = conversionPerWatcher(d);
+  const proj = projectedTotal(d);
+  const cpwStr = (cpw && (d.status === "live" || d.status === "successful"))
+    ? `${fmtUSD(cpw)}/W` : "";
+  const projStr = proj ? `Proj. ${fmtUSD(proj)}` : "";
+  const meta = [tl, company, loc, cat, cpwStr, projStr].filter(Boolean).join(" · ");
   const b = blurbInfo(d);
   const blurbHtml = b.text
     ? `<div class="cell-blurb${b.fallback ? " is-fallback" : ""}">${escapeHtml(b.text)}</div>`
@@ -232,6 +271,14 @@ function rowHtml(d) {
   if (pctVal >= 100 && pctVal < 1000) pctCls = "pct";
   else if (pctVal >= 1000) pctCls = "pct huge";
   const url = d.url || "";
+
+  // Inline deltas (red, JetBrains Mono, only when positive)
+  const dPledged = fmtDeltaUSD(d.delta_pledged_usd);
+  const dBackers = fmtDeltaInt(d.delta_backers);
+  const dFollowers = fmtDeltaInt(d.delta_followers);
+  const dPledgedHtml = dPledged ? ` <span class="delta">${dPledged}</span>` : "";
+  const dBackersHtml = dBackers ? ` <span class="delta">${dBackers}</span>` : "";
+  const dFollowersHtml = dFollowers ? ` <span class="delta">${dFollowers}</span>` : "";
 
   return `<tr>
     <td>
@@ -245,11 +292,11 @@ function rowHtml(d) {
       <div class="country">${escapeHtml(countryLabel(d.country))}</div>
     </td>
     <td class="num">
-      <div class="dollar">${fmtUSD(d.pledged_usd)}</div>
+      <div class="dollar">${fmtUSD(d.pledged_usd)}${dPledgedHtml}</div>
       ${d.goal_usd ? `<div class="goal">/ ${fmtUSD(d.goal_usd)}</div>` : ""}
     </td>
-    <td class="num hide-md">${fmtNum(d.backers)}</td>
-    <td class="num hide-md">${fmtNum(d.followers)}</td>
+    <td class="num hide-md">${fmtNum(d.backers)}${dBackersHtml}</td>
+    <td class="num hide-md">${fmtNum(d.followers)}${dFollowersHtml}</td>
     <td class="num hide-md"><span class="${pctCls}">${fmtPct(d.percent_funded)}</span></td>
     <td>${url ? `<a class="link" href="${escapeHtml(url)}" target="_blank" rel="noopener">KS →</a>` : ""}</td>
   </tr>`;

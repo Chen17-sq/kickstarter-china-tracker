@@ -31,12 +31,12 @@
         font-weight="700" fill="#737373" letter-spacing="3">TRACKED</text>
 
   <text x="380" y="544" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="64"
-        font-weight="900" fill="#CC0000" letter-spacing="-2">58</text>
+        font-weight="900" fill="#CC0000" letter-spacing="-2">57</text>
   <text x="380" y="582" text-anchor="middle" font-family="Inter, Helvetica, sans-serif" font-size="13"
         font-weight="700" fill="#737373" letter-spacing="3">PRELAUNCH</text>
 
   <text x="600" y="544" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="64"
-        font-weight="900" fill="#111111" letter-spacing="-2">44</text>
+        font-weight="900" fill="#111111" letter-spacing="-2">45</text>
   <text x="600" y="582" text-anchor="middle" font-family="Inter, Helvetica, sans-serif" font-size="13"
         font-weight="700" fill="#737373" letter-spacing="3">LIVE</text>
 

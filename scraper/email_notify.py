@@ -33,6 +33,9 @@ from .notify import (
     get_summary_data, fmt_usd, fmt_int,
     PAGES_URL, LATEST_URL, REPO_ROOT, PROJECTS,
 )
+from .momentum import (
+    conversion_per_watcher, projected_total, top_movers_from_rows,
+)
 
 RESEND_API_URL = "https://api.resend.com/emails"
 
@@ -74,14 +77,30 @@ def _row(p: dict, *, kind: str) -> str:
     url = _esc(p.get("url") or "#")
     brand = _esc(p.get("matched_brand_zh") or p.get("matched_brand") or p.get("creator_name") or "")
     country = _esc(p.get("country") or "")
-    meta = " · ".join(x for x in (brand, country) if x)
 
+    # Meta line: brand · country · [conversion ratio | projection]
+    meta_parts = [x for x in (brand, country) if x]
+    cpw = conversion_per_watcher(p)
+    if cpw is not None and kind == "live":
+        meta_parts.append(f"{fmt_usd(cpw)}/watcher")
+    proj = projected_total(p) if kind == "live" else None
+    if proj is not None:
+        meta_parts.append(f"PROJ {fmt_usd(proj)}")
+    meta = " · ".join(meta_parts)
+
+    # Right column with optional 24h delta in red
     if kind == "prelaunch":
-        right_value = f"{int(p.get('followers') or 0):,}"
-        right_label = "WATCHING"
+        main_value = f"{int(p.get('followers') or 0):,}"
+        main_label = "WATCHING"
+        delta = p.get("delta_followers")
+        delta_str = (f' <span style="color:{RED};font-family:{MONO};font-size:13px;'
+                     f'font-weight:700">+{int(delta):,}</span>') if delta and delta > 0 else ""
     else:
-        right_value = fmt_usd(p.get("pledged_usd"))
-        right_label = f"{int(p.get('backers') or 0):,} BACKERS"
+        main_value = fmt_usd(p.get("pledged_usd"))
+        main_label = f"{int(p.get('backers') or 0):,} BACKERS"
+        delta = p.get("delta_pledged_usd")
+        delta_str = (f' <span style="color:{RED};font-family:{MONO};font-size:13px;'
+                     f'font-weight:700">+{fmt_usd(delta)}</span>') if delta and delta > 0 else ""
 
     return f'''
     <tr>
@@ -95,11 +114,11 @@ def _row(p: dict, *, kind: str) -> str:
                     letter-spacing:.08em;text-transform:uppercase;font-weight:500">{meta}</div>
       </td>
       <td style="padding:14px 0 14px 14px;border-bottom:1px solid {INK};
-                 vertical-align:top;text-align:right;white-space:nowrap;width:160px">
+                 vertical-align:top;text-align:right;white-space:nowrap;width:170px">
         <div style="font-family:{MONO};font-size:22px;font-weight:700;color:{INK};
-                    letter-spacing:-.02em">{right_value}</div>
+                    letter-spacing:-.02em">{main_value}{delta_str}</div>
         <div style="margin-top:4px;font-family:{SANS};font-size:9.5px;font-weight:700;
-                    color:{N500};letter-spacing:2px">{right_label}</div>
+                    color:{N500};letter-spacing:2px">{main_label}</div>
       </td>
     </tr>'''
 
@@ -161,18 +180,70 @@ def build_html(curr: dict) -> tuple[str, str]:
         f"获 KS Editor's Pick 标签 <strong>{d['pwl']}</strong> 项。"
     )
 
+    # Top Movers: real Δ since prev snapshot, replaces the old CHANGELOG dump
+    movers_pledged = top_movers_from_rows(d["prelaunch"] + d["live"], "delta_pledged_usd", 3)
+    movers_followers = top_movers_from_rows(d["prelaunch"] + d["live"], "delta_followers", 3)
+    movers_backers = top_movers_from_rows(d["prelaunch"] + d["live"], "delta_backers", 3)
+
+    def _mover_line(p, *, value):
+        url = _esc(p.get("url") or "#")
+        title = _esc(p.get("title") or "")
+        blurb = _esc(p.get("blurb_zh") or "")
+        return (f'<li style="margin:8px 0;font-family:{BODY};font-size:14px;'
+                f'line-height:1.55;color:{INK};list-style:none;padding-left:18px;'
+                f'position:relative">'
+                f'<span style="position:absolute;left:0;color:{RED};font-weight:900">▸</span>'
+                f'<a href="{url}" style="color:{INK};text-decoration:none;'
+                f'font-family:{SERIF};font-weight:700">{title}</a>'
+                f'{(" — <i>" + blurb + "</i>") if blurb else ""}'
+                f' <span style="color:{RED};font-family:{MONO};font-weight:700">{value}</span>'
+                f'</li>')
+
+    movers_html_parts = []
+    if movers_pledged:
+        items = "".join(
+            _mover_line(p, value=f'+{fmt_usd(p.get("delta_pledged_usd"))}')
+            for p in movers_pledged
+        )
+        movers_html_parts.append(
+            f'<div style="margin-top:18px"><div style="font-family:{SANS};font-size:10px;'
+            f'font-weight:700;color:{N500};letter-spacing:2.5px;margin-bottom:6px">'
+            f'💰 USD GAINERS</div><ul style="margin:0;padding:0">{items}</ul></div>'
+        )
+    if movers_followers:
+        items = "".join(
+            _mover_line(p, value=f'+{int(p.get("delta_followers") or 0):,} watch')
+            for p in movers_followers
+        )
+        movers_html_parts.append(
+            f'<div style="margin-top:18px"><div style="font-family:{SANS};font-size:10px;'
+            f'font-weight:700;color:{N500};letter-spacing:2.5px;margin-bottom:6px">'
+            f'👀 WATCHER GAINERS</div><ul style="margin:0;padding:0">{items}</ul></div>'
+        )
+    if movers_backers:
+        items = "".join(
+            _mover_line(p, value=f'+{int(p.get("delta_backers") or 0):,} backers')
+            for p in movers_backers
+        )
+        movers_html_parts.append(
+            f'<div style="margin-top:18px"><div style="font-family:{SANS};font-size:10px;'
+            f'font-weight:700;color:{N500};letter-spacing:2.5px;margin-bottom:6px">'
+            f'👥 BACKER GAINERS</div><ul style="margin:0;padding:0">{items}</ul></div>'
+        )
+
     signals_html = ""
-    if d["signals"]:
-        signals_items = "".join(_signal_line(s) for s in d["signals"])
+    if movers_html_parts:
         signals_html = f'''
         <div style="margin-top:48px">
           <div style="font-family:{MONO};font-size:11px;font-weight:500;color:{N500};
                       letter-spacing:2.5px;margin-bottom:6px">SECTION A</div>
-          <h2 style="margin:0 0 12px;font-family:{SERIF};font-weight:900;font-size:28px;
-                     letter-spacing:-.5px;color:{INK}">Breaking · 24h 异动</h2>
-          <div style="border-top:4px solid {INK};border-bottom:1px solid {INK};
-                      padding:14px 0">
-            <ul style="margin:0;padding:0">{signals_items}</ul>
+          <h2 style="margin:0 0 4px;font-family:{SERIF};font-weight:900;font-size:28px;
+                     letter-spacing:-.5px;color:{INK}">Breaking · Top Movers</h2>
+          <p style="margin:0 0 12px;font-family:{BODY};font-style:italic;font-size:13px;color:{N500}">
+            Δ since previous snapshot · biggest jumps in pledged $, watcher count, and backer count.
+          </p>
+          <div style="border-top:4px solid {INK};border-bottom:1px solid {INK};padding:14px 0">
+            {"".join(movers_html_parts)}
           </div>
         </div>'''
 

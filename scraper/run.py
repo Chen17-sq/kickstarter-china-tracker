@@ -31,6 +31,7 @@ from .translate import fill_missing as translate_fill_missing
 from .report import make_report, REPORTS
 from .project import fetch_watches_counts, slug_from_pathname
 from .banner import write_banner
+from .momentum import compute_deltas
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA = REPO_ROOT / "data"
@@ -166,6 +167,14 @@ def run() -> int:
     # Auto-translate any rows still missing blurb_zh (no-op if no API key).
     # Mutates rows in-place to add blurb_zh; updates data/blurbs_zh.json.
     translate_fill_missing(rows)
+
+    # Compute Δ since previous snapshot (mutates rows in-place; no-op on
+    # first run when no history exists yet).
+    momentum_summary = compute_deltas(rows)
+    if momentum_summary.get("delta_seconds"):
+        hrs = momentum_summary["delta_seconds"] / 3600
+        n_with_delta = sum(1 for r in rows if "delta_pledged_usd" in r)
+        print(f"  computed Δ vs snapshot {hrs:.1f}h ago for {n_with_delta} projects")
 
     finished = now_iso()
     out = {

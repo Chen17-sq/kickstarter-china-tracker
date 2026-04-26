@@ -1,11 +1,6 @@
 {
-<<<<<<< Updated upstream
-  "generated_at": "2026-04-26T05:59:11Z",
-  "started_at": "2026-04-26T05:58:23Z",
-=======
-  "generated_at": "2026-04-26T10:02:40Z",
-  "started_at": "2026-04-26T10:01:45Z",
->>>>>>> Stashed changes
+  "generated_at": "2026-04-26T09:58:05Z",
+  "started_at": "2026-04-26T09:57:08Z",
   "total_candidates": 297,
   "kept": 142,
   "projects": [
@@ -38,9 +33,9 @@
       "china_reason": "brand name in title: AGELOCER",
       "matched_brand": "AGELOCER",
       "matched_brand_zh": "AGELOCER",
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 6,
+      "delta_backers": 1,
+      "delta_pledged_usd": 368.73279327999626
     },
     {
       "pathname": "/projects/tangiblenarrative/the-art-of-war",
@@ -71,9 +66,9 @@
       "china_reason": "KS location: Shanghai, China",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 1,
+      "delta_backers": 1,
+      "delta_pledged_usd": 189.0972197200026
     },
     {
       "pathname": "/projects/-kizer/shark-fin-blade-pocket-knife-in-titanium-and-damascus",
@@ -137,9 +132,9 @@
       "china_reason": "brand whitelist: Unihertz",
       "matched_brand": "Unihertz",
       "matched_brand_zh": "Unihertz",
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 9,
+      "delta_backers": 1,
+      "delta_pledged_usd": 495.43813120014966
     },
     {
       "pathname": "/projects/xunmusic/master-zhiyang-ancient-xun-music-for-inner-harmony",
@@ -237,8 +232,8 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_backers": 1,
+      "delta_pledged_usd": 92.02192681000452
     },
     {
       "pathname": "/projects/egryphon/egryphone-desktop-class-portable-egpu-thunderbolt-5-oculink",
@@ -302,7 +297,7 @@
       "china_reason": "KS location: Shenzhen, China",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -435,8 +430,8 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_backers": 1,
+      "delta_pledged_usd": 58.20037545000014
     },
     {
       "pathname": "/projects/uchart/ubible-hold-the-whole-bible-on-the-size-of-a-card",
@@ -500,9 +495,9 @@
       "china_reason": "KS location: Beijing, China",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 1,
+      "delta_backers": 2,
+      "delta_pledged_usd": 4468.225242000073
     },
     {
       "pathname": "/projects/706941461/real-young-the-worlds-first-jws-jewelry-wearable-stereo",
@@ -665,7 +660,7 @@
       "china_reason": "KS location: Shenzhen, China",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -995,7 +990,7 @@
       "china_reason": "brand whitelist: AYANEO",
       "matched_brand": "AYANEO",
       "matched_brand_zh": "AYANEO",
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2018,7 +2013,7 @@
       "china_reason": "brand whitelist: Kiwi Ears",
       "matched_brand": "Kiwi Ears",
       "matched_brand_zh": "Kiwi Ears",
-      "delta_followers": 0,
+      "delta_followers": 11,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2051,7 +2046,7 @@
       "china_reason": "KS 地址 Denver，文案/产品风格疑似中国",
       "matched_brand": "SOUSIC TECH",
       "matched_brand_zh": "SOUSIC TECH",
-      "delta_followers": 0,
+      "delta_followers": 11,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2070,7 +2065,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": true,
-      "followers": 880,
+      "followers": 879,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -2084,7 +2079,7 @@
       "china_reason": "brand whitelist: Vastnaut",
       "matched_brand": "Vastnaut",
       "matched_brand_zh": "Vastnaut",
-      "delta_followers": 1,
+      "delta_followers": 7,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2103,11 +2098,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-<<<<<<< Updated upstream
-      "followers": 711,
-=======
       "followers": 716,
->>>>>>> Stashed changes
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -2121,7 +2112,7 @@
       "china_reason": "brand whitelist: Gweike Laser",
       "matched_brand": "Gweike Laser",
       "matched_brand_zh": "光韵达激光",
-      "delta_followers": 0,
+      "delta_followers": 6,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2154,7 +2145,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 13,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2187,7 +2178,7 @@
       "china_reason": "brand whitelist: CyboPal",
       "matched_brand": "CyboPal",
       "matched_brand_zh": "CyboPal",
-      "delta_followers": 0,
+      "delta_followers": 2,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2206,7 +2197,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": true,
-      "followers": 604,
+      "followers": 603,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -2220,7 +2211,7 @@
       "china_reason": "brand whitelist: PongBot",
       "matched_brand": "PongBot",
       "matched_brand_zh": "PongBot",
-      "delta_followers": 1,
+      "delta_followers": 6,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2253,7 +2244,7 @@
       "china_reason": "Apple Watch 充电带，团队不明",
       "matched_brand": "NEXXTPERCENT (EnergyLink)",
       "matched_brand_zh": "NEXXTPERCENT (EnergyLink)",
-      "delta_followers": 0,
+      "delta_followers": 5,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2286,7 +2277,7 @@
       "china_reason": "brand whitelist: Revopoint 3D",
       "matched_brand": "Revopoint 3D",
       "matched_brand_zh": "复志",
-      "delta_followers": 0,
+      "delta_followers": 10,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2319,7 +2310,7 @@
       "china_reason": "brand whitelist: xTool / Makeblock",
       "matched_brand": "xTool / Makeblock",
       "matched_brand_zh": "童心制物",
-      "delta_followers": 0,
+      "delta_followers": 2,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2352,7 +2343,7 @@
       "china_reason": "团队疑似华人，KS 地址 San Jose",
       "matched_brand": "TrantorVision (NeuroHUD)",
       "matched_brand_zh": "TrantorVision (NeuroHUD)",
-      "delta_followers": 0,
+      "delta_followers": 10,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2385,7 +2376,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 3,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2418,7 +2409,7 @@
       "china_reason": "brand whitelist: INKWON Printing",
       "matched_brand": "INKWON Printing",
       "matched_brand_zh": "INKWON Printing",
-      "delta_followers": 0,
+      "delta_followers": 4,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2451,7 +2442,7 @@
       "china_reason": "brand name in title: Kynooe",
       "matched_brand": "Kynooe",
       "matched_brand_zh": "Kynooe",
-      "delta_followers": 0,
+      "delta_followers": 3,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2484,7 +2475,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 10,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2517,7 +2508,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2550,7 +2541,7 @@
       "china_reason": "brand whitelist: Womier",
       "matched_brand": "Womier",
       "matched_brand_zh": "Womier",
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2583,7 +2574,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 2,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2616,7 +2607,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 2,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2649,7 +2640,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 2,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2682,7 +2673,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2748,7 +2739,7 @@
       "china_reason": "KS location: Kowloon, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 4,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2781,7 +2772,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2847,7 +2838,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2880,7 +2871,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -2932,7 +2923,7 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": true,
-      "followers": 3583,
+      "followers": 3582,
       "backers": 3011,
       "pledged_usd": "9388198.0",
       "goal_usd": 100000.0,
@@ -2946,9 +2937,9 @@
       "china_reason": "brand whitelist: XGIMI",
       "matched_brand": "XGIMI",
       "matched_brand_zh": "极米",
-      "delta_followers": 1,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 7,
+      "delta_backers": 13,
+      "delta_pledged_usd": 43154.0
     },
     {
       "pathname": "/projects/wecreat/lumos-ultra-worlds-first-one-stop-uv-mopa-laser",
@@ -2979,9 +2970,9 @@
       "china_reason": "brand whitelist: WeCreat (xTool 系)",
       "matched_brand": "WeCreat (xTool 系)",
       "matched_brand_zh": "WeCreat",
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 4,
+      "delta_backers": -1,
+      "delta_pledged_usd": -5790.0
     },
     {
       "pathname": "/projects/1312001986/igarden-x-series-worlds-1st-ai-powered-portable-swim-jet",
@@ -3012,9 +3003,9 @@
       "china_reason": "brand name in title: iGarden",
       "matched_brand": "iGarden",
       "matched_brand_zh": "iGarden",
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 1,
+      "delta_backers": -1,
+      "delta_pledged_usd": -2624.0
     },
     {
       "pathname": "/projects/ultimea/ultimea-skywave-x100-dual-926-wireless-surround-system",
@@ -3045,7 +3036,7 @@
       "china_reason": "brand whitelist: Ultimea",
       "matched_brand": "Ultimea",
       "matched_brand_zh": "Ultimea",
-      "delta_followers": 0,
+      "delta_followers": 7,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -3078,9 +3069,9 @@
       "china_reason": "brand name in title: BLUETTI",
       "matched_brand": "BLUETTI",
       "matched_brand_zh": "BLUETTI",
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 5,
+      "delta_backers": 1,
+      "delta_pledged_usd": 1006.0
     },
     {
       "pathname": "/projects/lofree/hyzen-worlds-first-mechanical-magnetic-keyboard",
@@ -3097,7 +3088,7 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": false,
-      "followers": 2986,
+      "followers": 2985,
       "backers": 3360,
       "pledged_usd": "827666.48497574",
       "goal_usd": 10215.5288,
@@ -3111,9 +3102,9 @@
       "china_reason": "KS location: Kowloon, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 24,
+      "delta_backers": 19,
+      "delta_pledged_usd": 4814.961805769941
     },
     {
       "pathname": "/projects/xlean/xlean-tr1-dual-form-transformable-floor-washing-robot",
@@ -3144,9 +3135,9 @@
       "china_reason": "brand whitelist: xLean Robotics",
       "matched_brand": "xLean Robotics",
       "matched_brand_zh": "xLean",
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 5,
+      "delta_backers": -1,
+      "delta_pledged_usd": -949.0
     },
     {
       "pathname": "/projects/keyitechnology/loona-deskmate-the-worlds-first-screen-aware-ai-co-worker",
@@ -3163,7 +3154,7 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": true,
-      "followers": 3905,
+      "followers": 3906,
       "backers": 2832,
       "pledged_usd": "638168.0",
       "goal_usd": 10000.0,
@@ -3177,9 +3168,9 @@
       "china_reason": "brand whitelist: Keyi Technology / 可以科技",
       "matched_brand": "Keyi Technology / 可以科技",
       "matched_brand_zh": "可以科技",
-      "delta_followers": -1,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 5,
+      "delta_backers": 8,
+      "delta_pledged_usd": 2149.0
     },
     {
       "pathname": "/projects/anylaser/anylaser-x1-the-worlds-smallest-desktop-laser-engraver",
@@ -3196,7 +3187,7 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": true,
-      "followers": 4571,
+      "followers": 4570,
       "backers": 3753,
       "pledged_usd": "525634.90910309",
       "goal_usd": 5001.476648,
@@ -3210,9 +3201,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 22,
+      "delta_backers": 20,
+      "delta_pledged_usd": 2708.580300009926
     },
     {
       "pathname": "/projects/infplane/hilbert-agentic-computer",
@@ -3243,7 +3234,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 3,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -3276,9 +3267,9 @@
       "china_reason": "KS location: Wan Chai, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 8,
+      "delta_backers": -1,
+      "delta_pledged_usd": -319.45773200003896
     },
     {
       "pathname": "/projects/keenmow-robot-mower/keenmow-k1-the-new-generation-of-3d-lidar-vision-robot-mower",
@@ -3309,9 +3300,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 1,
+      "delta_backers": 1,
+      "delta_pledged_usd": 1010.866692969983
     },
     {
       "pathname": "/projects/cozytime/cozytime-lumo-first-ai-infrared-indoor-grill-smoke-free",
@@ -3342,9 +3333,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 3,
+      "delta_backers": 3,
+      "delta_pledged_usd": 1378.085440689989
     },
     {
       "pathname": "/projects/wavkong/wavkong-v2700-worlds-1st-rpu-powered-wi-fi-router",
@@ -3375,9 +3366,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 8,
+      "delta_backers": 2,
+      "delta_pledged_usd": 597.2335839899897
     },
     {
       "pathname": "/projects/vitalink/vitalink-20mm-thin-180-foldable-keyboard-and-4k-touchscreen",
@@ -3408,9 +3399,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 9,
+      "delta_backers": 10,
+      "delta_pledged_usd": 3079.2001037599985
     },
     {
       "pathname": "/projects/robonovaworld/evai-not-just-a-robot-a-bionic-embodied-ai-companion-app",
@@ -3441,9 +3432,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 1,
+      "delta_backers": 1,
+      "delta_pledged_usd": 10.227021600003354
     },
     {
       "pathname": "/projects/blast-by-magpie/ironiq-next-gen-vacuum-steamer-all-in-one-garment-care",
@@ -3474,9 +3465,9 @@
       "china_reason": "brand whitelist: BLAST Studio (IRONIQ)",
       "matched_brand": "BLAST Studio (IRONIQ)",
       "matched_brand_zh": "BLAST Studio (IRONIQ)",
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 8,
+      "delta_backers": 1,
+      "delta_pledged_usd": 69.0
     },
     {
       "pathname": "/projects/874801633/duroxen-compact-cnc-lathe-built-for-precision-makers",
@@ -3493,7 +3484,7 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": false,
-      "followers": 520,
+      "followers": 519,
       "backers": 128,
       "pledged_usd": "132372.0",
       "goal_usd": 10000.0,
@@ -3507,9 +3498,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 8,
+      "delta_backers": 2,
+      "delta_pledged_usd": 1988.0
     },
     {
       "pathname": "/projects/gogobot/gogobot-d1-ai-robot-dog-for-real-conversation",
@@ -3540,7 +3531,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 2,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -3573,9 +3564,9 @@
       "china_reason": "KS location: Kowloon, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 2,
+      "delta_backers": -1,
+      "delta_pledged_usd": -348.92692505999
     },
     {
       "pathname": "/projects/senserobotchess/senserobot-robotic-chess-companion-ai-powered-device",
@@ -3606,9 +3597,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 4,
+      "delta_backers": 2,
+      "delta_pledged_usd": 797.9225624999963
     },
     {
       "pathname": "/projects/petalas/petalas-worlds-1st-ai-powered-self-flushing-cat-litter-box",
@@ -3639,7 +3630,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -3672,9 +3663,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 2,
+      "delta_backers": 1,
+      "delta_pledged_usd": 999.8927215200092
     },
     {
       "pathname": "/projects/pettichat/pettichat-real-time-pet-translator",
@@ -3705,9 +3696,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 5,
+      "delta_backers": 1,
+      "delta_pledged_usd": 238.24266960000386
     },
     {
       "pathname": "/projects/2000949694/mechtron-pistol-grip-foldable-cordless-pressure-washer",
@@ -3738,7 +3729,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 6,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -3772,8 +3763,8 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_backers": 2,
+      "delta_pledged_usd": 155.7864864600051
     },
     {
       "pathname": "/projects/cera-cafe/cera-et58-electric-tamper",
@@ -3823,7 +3814,7 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": false,
-      "followers": 1227,
+      "followers": 1226,
       "backers": 461,
       "pledged_usd": "50631.10966906",
       "goal_usd": 2554.9718,
@@ -3837,9 +3828,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 5,
       "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_pledged_usd": 98.7496600700033
     },
     {
       "pathname": "/projects/innogek-powertag/powertag-all-in-one-travel-adapter-with-find-my",
@@ -3870,9 +3861,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 8,
+      "delta_backers": 1,
+      "delta_pledged_usd": 72.64741640000284
     },
     {
       "pathname": "/projects/inmo-go3-ai-glasses/everyday-wear-ai-glasses",
@@ -3889,11 +3880,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-<<<<<<< Updated upstream
-      "followers": 255,
-=======
       "followers": 280,
->>>>>>> Stashed changes
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -3907,7 +3894,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 26,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -3926,11 +3913,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-<<<<<<< Updated upstream
-      "followers": 525,
-=======
       "followers": 527,
->>>>>>> Stashed changes
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -3944,7 +3927,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 3,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -3977,7 +3960,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -4010,7 +3993,7 @@
       "china_reason": "KS location: Kowloon, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 2,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -4043,7 +4026,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 3,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -4076,7 +4059,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -4109,7 +4092,7 @@
       "china_reason": "brand name in title: Aeke",
       "matched_brand": "Aeke",
       "matched_brand_zh": "Aeke",
-      "delta_followers": 0,
+      "delta_followers": 3,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -4142,7 +4125,7 @@
       "china_reason": "KS location: Central, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -4241,7 +4224,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -4341,8 +4324,8 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_backers": 1,
+      "delta_pledged_usd": 260.02575021999655
     },
     {
       "pathname": "/projects/titaner-yg/titaner-heron-the-ultimate-m390-and-cnc-titanium-edc-knife",
@@ -4373,9 +4356,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 4,
+      "delta_backers": 1,
+      "delta_pledged_usd": 187.3001969199977
     },
     {
       "pathname": "/projects/1147931066/coolgeek-ts01-ultra-slim-fully-automatic-turntable",
@@ -4406,9 +4389,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 5,
+      "delta_backers": 4,
+      "delta_pledged_usd": 935.4773110399838
     },
     {
       "pathname": "/projects/ultranixie01/ultranixie-a-nixie-tube-watch-not-a-smartwatch-by-design",
@@ -4439,9 +4422,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 6,
+      "delta_backers": 2,
+      "delta_pledged_usd": 498.190191200003
     },
     {
       "pathname": "/projects/delione-kitchenware/delione-rovecup-engineered-for-leakproof-excellence",
@@ -4472,9 +4455,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 2,
+      "delta_backers": 1,
+      "delta_pledged_usd": 81.84944384000846
     },
     {
       "pathname": "/projects/revboard/revboard-the-future-of-work-simplified",
@@ -4505,7 +4488,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -4538,9 +4521,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 12,
+      "delta_backers": 2,
+      "delta_pledged_usd": 362.70368001000315
     },
     {
       "pathname": "/projects/866913304/karo-3-layer-titanium-tray-for-better-cooking-anywhere",
@@ -4571,9 +4554,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 6,
+      "delta_backers": 4,
+      "delta_pledged_usd": 508.4367454000021
     },
     {
       "pathname": "/projects/acaladesign/acala-dream-series-titanium-folding-knife-m390-blade",
@@ -4604,7 +4587,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -4637,9 +4620,9 @@
       "china_reason": "KS location: Central, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_followers": 17,
+      "delta_backers": 9,
+      "delta_pledged_usd": 1136.0944966699972
     },
     {
       "pathname": "/projects/seagullwatches/the-legend-evolves-the-all-new-genuine-sea-gull-1963",
@@ -4669,10 +4652,7 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null,
-      "delta_followers": 0,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "matched_brand_zh": null
     },
     {
       "pathname": "/projects/1047328959/semicolon-asymmetrical-jumping-hour-watch-ana-chron",
