@@ -1,20 +1,19 @@
-"""Send a daily HTML-email summary via Resend.
+"""Send a daily HTML-email summary via Resend, in Newsprint design.
 
 Drives off two env vars (set as repo secrets):
-  - RESEND_API_KEY     — get one at https://resend.com (free tier 3000/mo)
+  - RESEND_API_KEY     — get one at https://resend.com (free 3000/mo)
   - NOTIFY_EMAIL_TO    — recipient address(es), comma-separated
 
 Optional:
-  - NOTIFY_EMAIL_FROM  — default 'KS Tracker <onboarding@resend.dev>'.
-                         Resend's sandbox sender works only to addresses
-                         verified in the Resend dashboard. To send to
-                         arbitrary addresses, verify your own domain at
-                         https://resend.com/domains and set this to
-                         'KS Tracker <reports@yourdomain.com>'.
+  - NOTIFY_EMAIL_FROM  — default 'KS China Tracker <onboarding@resend.dev>'.
 
-Style aligned with the Pages site (Editorial / Swiss): Inter typography,
-warm off-white background, near-black ink, single restrained accent red,
-hairline rules, tabular numerals.
+Visual rules echo the Pages site / banner SVG exactly:
+  - Newsprint off-white #F9F9F7 paper, ink black #111111
+  - Playfair Display 900 nameplate centered, Lora italic dek
+  - Vol. 1 / No. N edition number, BEIJING EDITION metadata bar
+  - Ornamental ✦ ✦ ✦ section dividers
+  - JetBrains Mono for all numbers, Inter for labels
+  - Sharp 0-radius corners, 1px solid borders, no shadows
 
 Run locally:
   python -m scraper.email_notify --dry-run    # writes preview to data/.tmp/
@@ -22,6 +21,7 @@ Run locally:
 """
 from __future__ import annotations
 import argparse
+import datetime as dt
 import json
 import os
 import sys
@@ -36,170 +36,299 @@ from .notify import (
 
 RESEND_API_URL = "https://api.resend.com/emails"
 
+# Project birthday — same as banner.py
+EPOCH = dt.datetime(2026, 4, 25, tzinfo=dt.timezone.utc)
 
-def _row_html(p: dict, *, kind: str) -> str:
-    """Render one project row as a table row.
-    kind ∈ {'prelaunch', 'live'} — controls which numeric columns to show.
-    """
-    star = '<span style="color:#c8102e;font-weight:700">★</span>' if p.get("project_we_love") else ""
-    title = (p.get("title") or "(untitled)").replace("<", "&lt;").replace(">", "&gt;")
-    blurb_zh = (p.get("blurb_zh") or "").replace("<", "&lt;").replace(">", "&gt;")
-    url = p.get("url") or "#"
-    brand = p.get("matched_brand_zh") or p.get("matched_brand") or p.get("creator_name") or ""
-    country = p.get("country") or ""
-    head = (
-        f'<a href="{url}" style="color:#0d0d0d;text-decoration:none;font-weight:600">'
-        f'{star} {title}</a>'
-    )
-    sub_parts = []
-    if blurb_zh:
-        sub_parts.append(f'<span style="color:#3a3a3a">{blurb_zh}</span>')
-    meta_parts = [x for x in (brand, country) if x]
-    if meta_parts:
-        sub_parts.append(f'<span style="color:#9a9a96;font-size:12px">{" · ".join(meta_parts)}</span>')
+
+def edition_number() -> int:
+    days = (dt.datetime.now(dt.timezone.utc) - EPOCH).days + 1
+    return max(1, days)
+
+
+# ── Newsprint design tokens (mirror site CSS) ────────────────────
+PAPER = "#F9F9F7"
+INK = "#111111"
+RED = "#CC0000"
+N400 = "#A3A3A3"
+N500 = "#737373"
+N600 = "#525252"
+N700 = "#404040"
+
+SERIF = "'Playfair Display', 'Times New Roman', 'Songti SC', serif"
+BODY = "'Lora', Georgia, 'Songti SC', serif"
+SANS = "'Inter', 'Helvetica Neue', 'PingFang SC', sans-serif"
+MONO = "'JetBrains Mono', 'Courier New', monospace"
+
+
+def _esc(s: str) -> str:
+    return (str(s or "").replace("&", "&amp;")
+            .replace("<", "&lt;").replace(">", "&gt;")
+            .replace('"', "&quot;"))
+
+
+def _row(p: dict, *, kind: str) -> str:
+    star = (f'<span style="color:{RED};font-family:{SERIF};font-weight:900;'
+            f'margin-right:6px">✦</span>') if p.get("project_we_love") else ""
+    title = _esc(p.get("title") or "(untitled)")
+    blurb_zh = _esc(p.get("blurb_zh") or p.get("blurb") or "")
+    url = _esc(p.get("url") or "#")
+    brand = _esc(p.get("matched_brand_zh") or p.get("matched_brand") or p.get("creator_name") or "")
+    country = _esc(p.get("country") or "")
+    meta = " · ".join(x for x in (brand, country) if x)
 
     if kind == "prelaunch":
-        right = f'<div style="font-family:monospace;font-variant-numeric:tabular-nums;font-weight:600">{fmt_int(p.get("followers"))}</div>'
-        right_label = '<div style="color:#9a9a96;font-size:11px;letter-spacing:.05em;text-transform:uppercase">followers</div>'
-    else:  # live
-        right = f'<div style="font-family:monospace;font-variant-numeric:tabular-nums;font-weight:600">{fmt_usd(p.get("pledged_usd"))}</div>'
-        right_label = f'<div style="color:#9a9a96;font-size:11px;letter-spacing:.05em">{fmt_int(p.get("backers"))} backers</div>'
+        right_value = f"{int(p.get('followers') or 0):,}"
+        right_label = "WATCHING"
+    else:
+        right_value = fmt_usd(p.get("pledged_usd"))
+        right_label = f"{int(p.get('backers') or 0):,} BACKERS"
 
-    return (
-        '<tr>'
-        '<td style="padding:11px 0;border-bottom:1px solid #ebebe7;vertical-align:top">'
-        f'{head}'
-        f'<div style="margin-top:3px;line-height:1.45">{"<br>".join(sub_parts)}</div>'
-        '</td>'
-        '<td style="padding:11px 0 11px 12px;border-bottom:1px solid #ebebe7;vertical-align:top;text-align:right;white-space:nowrap">'
-        f'{right}{right_label}'
-        '</td>'
-        '</tr>'
-    )
+    return f'''
+    <tr>
+      <td style="padding:14px 0;border-bottom:1px solid {INK};vertical-align:top">
+        <a href="{url}" style="color:{INK};text-decoration:none;
+                font-family:{SERIF};font-weight:700;font-size:17px;line-height:1.25;
+                letter-spacing:-.005em">{star}{title}</a>
+        <div style="margin-top:6px;font-family:{BODY};font-style:italic;font-size:13px;
+                    color:{N700};line-height:1.5;text-align:justify">{blurb_zh}</div>
+        <div style="margin-top:8px;font-family:{MONO};font-size:10.5px;color:{N500};
+                    letter-spacing:.08em;text-transform:uppercase;font-weight:500">{meta}</div>
+      </td>
+      <td style="padding:14px 0 14px 14px;border-bottom:1px solid {INK};
+                 vertical-align:top;text-align:right;white-space:nowrap;width:160px">
+        <div style="font-family:{MONO};font-size:22px;font-weight:700;color:{INK};
+                    letter-spacing:-.02em">{right_value}</div>
+        <div style="margin-top:4px;font-family:{SANS};font-size:9.5px;font-weight:700;
+                    color:{N500};letter-spacing:2px">{right_label}</div>
+      </td>
+    </tr>'''
 
 
-def _signal_html(line: str) -> str:
-    """Convert a CHANGELOG.md '- **Title** — detail' line into HTML."""
+def _kpi_cell(label: str, value: str, color: str = INK, *, last: bool = False) -> str:
+    border = "" if last else f"border-right:1px solid {INK};"
+    return f'''
+    <td style="padding:24px 18px 20px;{border}vertical-align:top;text-align:left">
+      <div style="font-family:{SERIF};font-weight:900;font-size:48px;letter-spacing:-1px;
+                  line-height:1;color:{color}">{value}</div>
+      <div style="margin-top:8px;font-family:{SANS};font-size:10px;font-weight:700;
+                  color:{N500};letter-spacing:2.5px">{label}</div>
+    </td>'''
+
+
+def _signal_line(line: str) -> str:
+    """Convert a CHANGELOG '- **Title** — detail' line into a newsprint bullet."""
     s = line.lstrip("- ").rstrip()
-    # "**Title** — detail" → bold + light text
     if s.startswith("**"):
         end = s.find("**", 2)
         if end > 0:
-            title = s[2:end]
-            rest = s[end + 2:].lstrip(" —")
-            return (
-                f'<li style="margin:4px 0;line-height:1.5">'
-                f'<span style="font-weight:600">{title}</span>'
-                f'<span style="color:#6b6b6b"> — {rest}</span>'
-                f'</li>'
-            )
-    return f'<li style="margin:4px 0">{s}</li>'
+            title = _esc(s[2:end])
+            rest = _esc(s[end + 2:].lstrip(" —"))
+            return (f'<li style="margin:10px 0;font-family:{BODY};font-size:14px;'
+                    f'line-height:1.55;color:{INK};list-style:none;padding-left:18px;'
+                    f'position:relative">'
+                    f'<span style="position:absolute;left:0;color:{RED};font-weight:900">▸</span>'
+                    f'<span style="font-family:{SERIF};font-weight:700">{title}</span>'
+                    f' <span style="color:{N600};font-style:italic"> — {rest}</span>'
+                    f'</li>')
+    return (f'<li style="margin:10px 0;font-family:{BODY};font-size:14px;'
+            f'line-height:1.55;color:{INK};list-style:none;padding-left:18px;'
+            f'position:relative">'
+            f'<span style="position:absolute;left:0;color:{RED};font-weight:900">▸</span>'
+            f'{_esc(s)}</li>')
 
 
 def build_html(curr: dict) -> tuple[str, str]:
-    """Returns (subject, html_body)."""
     d = get_summary_data(curr)
     today = d["today"]
     counts = d["counts"]
+    edition = edition_number()
+    today_long = dt.datetime.now(dt.timezone.utc).strftime("%A, %B %d, %Y").upper()
+
     subject = (
-        f"[KS China Tracker] {today} · "
+        f"[Vol. 1, No. {edition}] {today} · "
         f"{d['total']} 项 · {counts['live']} 在筹 · "
         f"{counts['prelaunch']} 未发布"
     )
 
-    kpi_cell = lambda label, value, color="#0d0d0d": (
-        '<td style="padding:18px 14px;border-right:1px solid #d6d6d1;vertical-align:top;width:25%">'
-        f'<div style="font-family:Inter Tight,Inter,sans-serif;font-weight:700;font-size:30px;letter-spacing:-.02em;color:{color};line-height:1">{value}</div>'
-        f'<div style="margin-top:6px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#6b6b6b">{label}</div>'
-        '</td>'
+    # Drop cap on the lede paragraph (first paragraph after the masthead)
+    lede_text = (
+        f"今日（{today}）追踪到 <strong>{d['total']}</strong> 个中国背景消费硬件项目。"
+        f"其中 <strong style=\"color:{RED}\">{counts['prelaunch']}</strong> 个 prelaunch、"
+        f"<strong>{counts['live']}</strong> 个 live、"
+        f"<strong>{counts['successful']}</strong> 个 successful。"
+        f"在筹合计已筹 <strong>{fmt_usd(d['total_live_usd'])}</strong>，"
+        f"中国背景置信度高 <strong>{d['high']}</strong> / {d['total']}，"
+        f"获 KS Editor's Pick 标签 <strong>{d['pwl']}</strong> 项。"
     )
 
     signals_html = ""
     if d["signals"]:
-        signals_html = (
-            '<h2 style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#6b6b6b;margin:32px 0 10px">🔥 24 小时异动</h2>'
-            f'<ul style="list-style:none;padding:0;margin:0 0 0 0;font-size:13px">'
-            + "".join(_signal_html(s) for s in d["signals"])
-            + '</ul>'
-        )
+        signals_items = "".join(_signal_line(s) for s in d["signals"])
+        signals_html = f'''
+        <div style="margin-top:48px">
+          <div style="font-family:{MONO};font-size:11px;font-weight:500;color:{N500};
+                      letter-spacing:2.5px;margin-bottom:6px">SECTION A</div>
+          <h2 style="margin:0 0 12px;font-family:{SERIF};font-weight:900;font-size:28px;
+                     letter-spacing:-.5px;color:{INK}">Breaking · 24h 异动</h2>
+          <div style="border-top:4px solid {INK};border-bottom:1px solid {INK};
+                      padding:14px 0">
+            <ul style="margin:0;padding:0">{signals_items}</ul>
+          </div>
+        </div>'''
 
-    prelaunch_rows = "".join(_row_html(p, kind="prelaunch") for p in d["prelaunch"][:5])
-    live_rows = "".join(_row_html(p, kind="live") for p in d["live"][:5])
+    pre_rows = "".join(_row(p, kind="prelaunch") for p in d["prelaunch"][:5])
+    live_rows = "".join(_row(p, kind="live") for p in d["live"][:5])
 
-    html = f"""<!DOCTYPE html>
+    return subject, f'''<!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta charset="UTF-8"><title>{subject}</title></head>
-<body style="margin:0;padding:24px 16px;background:#fafaf7;font-family:Inter,-apple-system,'PingFang SC',sans-serif;color:#0d0d0d;line-height:1.5">
+<head><meta charset="UTF-8"><title>{_esc(subject)}</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@500;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lora:ital,wght@0,400;1,400&display=swap');
+</style></head>
+<body style="margin:0;padding:24px 12px;background:{PAPER};
+             background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Cpath fill='%23111111' fill-opacity='0.05' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'/%3E%3C/svg%3E\");
+             font-family:{BODY};color:{INK};line-height:1.6">
 
-<div style="max-width:680px;margin:0 auto;background:#ffffff;padding:32px 28px 28px;border:1px solid #d6d6d1">
+<table role="presentation" cellspacing="0" cellpadding="0" border="0"
+       style="max-width:680px;margin:0 auto;background:{PAPER};
+              border-left:1px solid {INK};border-right:1px solid {INK}">
+  <tr>
+    <td style="padding:0">
 
-  <div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6b6b6b;margin-bottom:8px">
-    <span style="display:inline-block;width:7px;height:7px;background:#c8102e;border-radius:50%;vertical-align:1px;margin-right:8px"></span>
-    Daily Briefing · 北京时间 09:30 自动发送
-  </div>
-  <h1 style="font-family:Inter Tight,Inter,sans-serif;font-weight:800;letter-spacing:-.025em;font-size:32px;line-height:1.05;margin:0 0 12px;color:#0d0d0d">
-    Kickstarter China Tracker
-  </h1>
-  <p style="font-size:13.5px;color:#3a3a3a;margin:0 0 24px">
-    今日（{today}）追踪到 <b>{d['total']}</b> 个中国背景消费硬件项目。
-  </p>
+      <!-- Edition strip -->
+      <div style="background:{INK};color:{PAPER};padding:10px 28px;
+                  font-family:{SANS};font-size:10px;font-weight:700;
+                  letter-spacing:2.5px;display:flex;justify-content:space-between">
+        <span>
+          <span style="display:inline-block;width:6px;height:6px;background:{RED};
+                       margin-right:8px;vertical-align:1px"></span>
+          DAILY · LIVE EDITION · {today_long}
+        </span>
+        <span style="font-family:{MONO};font-weight:500">VOL. 1 · NO. {edition}</span>
+      </div>
 
-  <table style="width:100%;border-collapse:collapse;border-top:1px solid #0d0d0d;border-bottom:1px solid #0d0d0d;margin-bottom:0">
-    <tr>
-      {kpi_cell("未发布", counts['prelaunch'], "#c8102e")}
-      {kpi_cell("在筹中", counts['live'], "#1c4ed8")}
-      {kpi_cell("已成功", counts['successful'])}
-      <td style="padding:18px 14px;vertical-align:top;width:25%">
-        <div style="font-family:Inter Tight,Inter,sans-serif;font-weight:700;font-size:30px;letter-spacing:-.02em;line-height:1">★ {d['pwl']}</div>
-        <div style="margin-top:6px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#6b6b6b">KS 精选</div>
-      </td>
-    </tr>
-  </table>
-  <p style="font-size:12px;color:#6b6b6b;margin:10px 0 0">
-    在筹合计已筹 <b style="color:#0d0d0d">{fmt_usd(d['total_live_usd'])}</b> · 中国背景置信度高 <b style="color:#0d0d0d">{d['high']}</b> / {d['total']}
-  </p>
+      <!-- Masthead -->
+      <div style="padding:38px 28px 22px;border-bottom:4px solid {INK};text-align:center">
+        <h1 style="margin:0;font-family:{SERIF};font-weight:900;
+                   font-size:54px;line-height:.95;letter-spacing:-2px;color:{INK}">Kickstarter China Tracker</h1>
+        <div style="margin-top:16px;border-top:1px solid {INK};border-bottom:1px solid {INK};
+                    padding:6px 0;display:flex;justify-content:space-between;
+                    font-family:{MONO};font-size:10.5px;font-weight:500;
+                    letter-spacing:2px;text-transform:uppercase;color:{INK}">
+          <span style="padding:0 4px">BEIJING EDITION</span>
+          <span style="font-family:{SERIF};font-weight:400;font-style:italic;
+                       letter-spacing:0;text-transform:none;font-size:13px">
+            All The Crowd-Funded Hardware Fit To Print
+          </span>
+          <span style="padding:0 4px">PLEDGED · {fmt_usd(d['total_live_usd'])}</span>
+        </div>
+        <p style="margin:18px auto 0;max-width:50ch;font-family:{BODY};font-style:italic;
+                  font-size:14.5px;color:{N700};line-height:1.5">
+          每日追踪 Kickstarter 上中国背景的消费硬件项目 · pre-launch · live · 已结束
+        </p>
+      </div>
 
-  {signals_html}
+      <!-- Lede paragraph with drop cap -->
+      <div style="padding:28px 28px 8px">
+        <span style="float:left;font-family:{SERIF};font-weight:900;font-size:64px;
+                     line-height:.85;color:{INK};margin:6px 10px 0 0">今</span>
+        <p style="margin:0;font-family:{BODY};font-size:15px;line-height:1.7;
+                  color:{INK};text-align:justify">{lede_text}</p>
+        <div style="clear:both"></div>
+      </div>
 
-  <h2 style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#6b6b6b;margin:32px 0 6px">⏳ Prelaunch · Top 5 by followers</h2>
-  <table style="width:100%;border-collapse:collapse;font-size:13.5px">
-    {prelaunch_rows or '<tr><td style="color:#9a9a96;padding:14px 0">暂无</td></tr>'}
-  </table>
+      <!-- KPI band -->
+      <table role="presentation" cellspacing="0" cellpadding="0" border="0"
+             style="width:100%;margin-top:24px;border-top:4px solid {INK};
+                    border-bottom:4px solid {INK};border-collapse:collapse">
+        <tr>
+          {_kpi_cell("TRACKED", str(d['total']))}
+          {_kpi_cell("PRELAUNCH", str(counts['prelaunch']), RED)}
+          {_kpi_cell("LIVE", str(counts['live']))}
+          {_kpi_cell("FUNDED", str(counts['successful']))}
+          {_kpi_cell("EDITOR'S", f"★ {d['pwl']}", last=True)}
+        </tr>
+      </table>
 
-  <h2 style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#6b6b6b;margin:32px 0 6px">🔴 Live · Top 5 by USD raised</h2>
-  <table style="width:100%;border-collapse:collapse;font-size:13.5px">
-    {live_rows or '<tr><td style="color:#9a9a96;padding:14px 0">暂无</td></tr>'}
-  </table>
+      <div style="padding:0 28px">
 
-  <p style="margin:32px 0 0;padding-top:20px;border-top:1px solid #0d0d0d;font-size:12px;color:#6b6b6b">
-    <a href="{PAGES_URL}" style="color:#0d0d0d;border-bottom:1px solid #d6d6d1;text-decoration:none">完整看板</a>
-    &nbsp;·&nbsp;
-    <a href="{LATEST_URL}" style="color:#0d0d0d;border-bottom:1px solid #d6d6d1;text-decoration:none">完整 Markdown 报告</a>
-    &nbsp;·&nbsp;
-    <a href="https://github.com/Chen17-sq/kickstarter-china-tracker" style="color:#0d0d0d;border-bottom:1px solid #d6d6d1;text-decoration:none">GitHub</a>
-  </p>
-  <p style="margin:8px 0 0;font-size:11px;color:#9a9a96">
-    退订：在仓库 Settings → Secrets → Actions 把 NOTIFY_EMAIL_TO 删掉或者改一下。
-  </p>
+        {signals_html}
 
-</div>
+        <!-- Prelaunch section -->
+        <div style="margin-top:48px">
+          <div style="font-family:{MONO};font-size:11px;font-weight:500;color:{N500};
+                      letter-spacing:2.5px;margin-bottom:6px">SECTION B</div>
+          <h2 style="margin:0 0 4px;font-family:{SERIF};font-weight:900;font-size:28px;
+                     letter-spacing:-.5px;color:{INK}">⏳ Prelaunch</h2>
+          <p style="margin:0 0 12px;font-family:{BODY};font-style:italic;font-size:13px;color:{N500}">
+            Top 5 by watcher count — KS Editor's Picks ranked first.
+          </p>
+          <table role="presentation" cellspacing="0" cellpadding="0" border="0"
+                 style="width:100%;border-top:4px solid {INK};border-collapse:collapse">
+            {pre_rows or '<tr><td style="padding:14px 0;color:'+N400+'">暂无</td></tr>'}
+          </table>
+        </div>
+
+        <!-- Live section -->
+        <div style="margin-top:48px">
+          <div style="font-family:{MONO};font-size:11px;font-weight:500;color:{N500};
+                      letter-spacing:2.5px;margin-bottom:6px">SECTION C</div>
+          <h2 style="margin:0 0 4px;font-family:{SERIF};font-weight:900;font-size:28px;
+                     letter-spacing:-.5px;color:{INK}">🔴 Live · By USD Raised</h2>
+          <p style="margin:0 0 12px;font-family:{BODY};font-style:italic;font-size:13px;color:{N500}">
+            Top 5 of the {counts['live']} active campaigns this morning.
+          </p>
+          <table role="presentation" cellspacing="0" cellpadding="0" border="0"
+                 style="width:100%;border-top:4px solid {INK};border-collapse:collapse">
+            {live_rows or '<tr><td style="padding:14px 0;color:'+N400+'">暂无</td></tr>'}
+          </table>
+        </div>
+
+        <!-- Ornament -->
+        <div style="padding:40px 0 16px;text-align:center;
+                    font-family:{SERIF};font-size:20px;color:{N400};letter-spacing:14px">
+          ✦ &nbsp; ✦ &nbsp; ✦
+        </div>
+
+        <!-- Footer -->
+        <div style="border-top:4px solid {INK};padding:22px 0 32px;
+                    font-family:{MONO};font-size:10.5px;color:{N500};
+                    letter-spacing:1.5px;text-transform:uppercase">
+          <a href="{PAGES_URL}" style="color:{INK};text-decoration:none;
+              border-bottom:2px solid {RED};padding-bottom:1px;font-weight:700">FULL PAPER</a>
+          &nbsp;·&nbsp;
+          <a href="{LATEST_URL}" style="color:{INK};text-decoration:none;
+              border-bottom:2px solid {RED};padding-bottom:1px;font-weight:700">LATEST REPORT</a>
+          &nbsp;·&nbsp;
+          <a href="https://github.com/Chen17-sq/kickstarter-china-tracker"
+             style="color:{INK};text-decoration:none;border-bottom:2px solid {RED};
+             padding-bottom:1px;font-weight:700">GITHUB</a>
+          <div style="margin-top:14px;font-family:{SERIF};font-style:italic;
+                      font-size:13px;color:{N500};letter-spacing:0;text-transform:none">
+            All the news that's fit to print, every morning at 09:00 Beijing.
+          </div>
+          <div style="margin-top:10px;font-size:10px">
+            退订 · 在仓库 SETTINGS → SECRETS → ACTIONS 把 NOTIFY_EMAIL_TO 删掉
+          </div>
+        </div>
+
+      </div>
+    </td>
+  </tr>
+</table>
+
 </body>
-</html>"""
-    return subject, html
+</html>'''
 
 
 def post_resend(api_key: str, sender: str, to: list[str], subject: str, html: str) -> None:
     resp = httpx.post(
         RESEND_API_URL,
-        headers={
-            "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json",
-        },
+        headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
         json={"from": sender, "to": to, "subject": subject, "html": html},
         timeout=30,
     )
     if resp.status_code >= 400:
-        # Surface the Resend error verbatim so debugging is fast in CI.
         print(f"Resend error {resp.status_code}: {resp.text}", file=sys.stderr)
         resp.raise_for_status()
 
@@ -222,8 +351,7 @@ def main(argv: list[str] | None = None) -> int:
         preview.write_text(html, encoding="utf-8")
         print(f"Subject: {subject}")
         print(f"HTML: {len(html):,} chars")
-        print(f"Preview written to {preview}")
-        print(f"Open: file://{preview}")
+        print(f"Preview: file://{preview}")
         return 0
 
     api_key = os.environ.get("RESEND_API_KEY")
@@ -237,11 +365,8 @@ def main(argv: list[str] | None = None) -> int:
         print("NOTIFY_EMAIL_TO empty — no recipients, skipping")
         return 0
 
-    # Use 'or' (not get's 2nd arg) — GH Actions injects empty string for
-    # unset secrets, and os.environ.get only honours the default when the
-    # key is missing entirely, not when it's present-but-empty.
     sender = (os.environ.get("NOTIFY_EMAIL_FROM") or
-              "KS Tracker <onboarding@resend.dev>")
+              "KS China Tracker <onboarding@resend.dev>")
     post_resend(api_key, sender, to, subject, html)
     print(f"Email sent: subject={subject!r}, to={to}, from={sender}")
     return 0

@@ -1,11 +1,12 @@
-![Kickstarter China Tracker — daily editorial briefing](assets/banner.svg)
+![Kickstarter China Tracker — Vol. 1 · Beijing Edition](assets/banner.svg)
 
-**[→ 在线看板](https://chen17-sq.github.io/kickstarter-china-tracker/)** · **[今日报告](reports/latest.md)** · **[原始 JSON](data/projects.json)** · **[订阅每日邮件](#部署到自己的-github)**
+> ***All The Crowd-Funded Hardware Fit To Print.***
+> 一份每日发行的报纸 —— 追踪 Kickstarter 上中国背景的消费硬件项目，覆盖 *prelaunch* · *live* · *已结束*。
+> Printed every morning at 09:00 Beijing (01:00 UTC) via GitHub Actions.
 
-> 实时追踪 **Kickstarter 上中国背景的消费硬件项目** —— 覆盖 *prelaunch* / *live* / *已结束* 三个阶段。
-> Live data refreshed daily at 01:00 UTC (09:00 Beijing).
+**[→ 完整看板](https://chen17-sq.github.io/kickstarter-china-tracker/)** · **[今日头版](reports/latest.md)** · **[原始 JSON](data/projects.json)** · **[订阅每日邮件](#deploy)**
 
-![Today's snapshot — top prelaunch + top live](assets/snapshot.svg)
+![Inside this issue — top prelaunch + top live](assets/snapshot.svg)
 
 ---
 
@@ -113,6 +114,7 @@ python -m http.server 8000 -d site
 
 ---
 
+<a id="deploy"></a>
 ## 部署到自己的 GitHub
 
 Fork 这个仓库后：

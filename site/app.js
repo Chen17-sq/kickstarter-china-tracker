@@ -1,81 +1,80 @@
-// Kickstarter China Tracker — Editorial frontend with ZH / EN toggle
-// Loads ./data/projects.json (committed every 4h by .github/workflows/scrape.yml)
+// Kickstarter China Tracker — Newsprint frontend
+// Loads ./data/projects.json (committed daily by .github/workflows/scrape.yml)
 
 const $ = (q) => document.querySelector(q);
 const $$ = (q) => document.querySelectorAll(q);
 
 // ─── i18n ──────────────────────────────────────────────────────
 const LANG_KEY = "ks-tracker-lang";
-let LANG = localStorage.getItem(LANG_KEY) || "zh"; // default Chinese
+let LANG = localStorage.getItem(LANG_KEY) || "zh";
 
 const I18N = {
   zh: {
-    kicker: "实时数据 · cron 每 4 小时刷新",
-    dek: "追踪 Kickstarter 上中国背景的消费硬件项目，覆盖 pre-launch / live / 已结束三个阶段。数据通过 KS Discover JSON 直连，每 4 小时由 GitHub Actions 重抓一次。",
-    updated: (t) => "更新于 " + t,
+    kicker: "实时数据 · cron 每日北京时间 09:00 刷新",
+    motto: "All The Crowd-Funded Hardware Fit To Print",
+    editionLeft: "北京版",
+    editionRightPrefix: "更新于 ",
+    dek: "追踪 Kickstarter 上中国背景的消费硬件项目，覆盖 pre-launch / live / 已结束三个阶段。数据通过 KS Discover JSON 直连，每日由 GitHub Actions 重抓一次。",
     loading: "加载中…",
-    repoSrc: "GitHub 源码",
-    jsonData: "JSON 数据",
     statusLabel: "状态",
     confLabel: "置信度",
-    pwlLabel: "★ 仅看 KS 精选",
-    searchPh: "搜索 产品 / 公司 / 城市 / 品类",
-    countShow: (n, t) => `显示 <b>${n}</b> / ${t} 个项目`,
+    pwlLabel: "★ 仅看 KS 编辑精选",
+    searchPh: "搜索 · 产品 · 公司 · 城市",
+    countShow: (n, t) => `共 <b>${t}</b> 项 · 显示 <b>${n}</b> 项`,
     clearFilters: "清除筛选",
     kpi: {
       total: "追踪总数", totalDelta: (h) => `中国背景 高 · ${h}`,
-      prelaunch: "未发布", prelaunchDelta: "prelaunch",
-      live: "在筹中", liveDelta: (s) => `已筹 ${s}`,
-      success: "已成功", successDelta: "successful",
-      pwl: "★ KS 精选", pwlDelta: "project we love",
+      prelaunch: "未发布", prelaunchDelta: "PRELAUNCH",
+      live: "在筹中", liveDelta: (s) => `合计 ${s}`,
+      success: "已成功", successDelta: "SUCCESSFUL",
+      pwl: "★ 编辑精选", pwlDelta: "PROJECT WE LOVE",
     },
     chips: { all: "全部", prelaunch: "未发布", live: "在筹", successful: "已成功", high: "高", med: "中" },
     statuses: {
-      prelaunch: "未发布", live: "在筹中", successful: "已成功",
-      failed: "未达标", canceled: "已取消", suspended: "已暂停", unknown: "—",
+      prelaunch: "PRELAUNCH", live: "LIVE", successful: "FUNDED",
+      failed: "FAILED", canceled: "CANCELED", suspended: "SUSPENDED", unknown: "—",
     },
     th: {
-      project: "项目 / 创作者", status: "状态", conf: "置信度",
-      pledged: "已筹", backers: "Backers", followers: "Followers",
-      percent: "完成率", link: "链接",
+      project: "PROJECT · 产品 / 创作者", status: "STATUS",
+      conf: "CN", pledged: "RAISED",
+      backers: "BACKERS", followers: "WATCH",
+      percent: "FUNDED", link: "READ",
     },
-    foot: '数据：Kickstarter Discover JSON · 代码：<a href="https://github.com/Chen17-sq/kickstarter-china-tracker" target="_blank" rel="noopener">GitHub</a> · 设计：Editorial / Swiss',
   },
   en: {
-    kicker: "Live data · refreshed every 4h via cron",
-    dek: "Tracking China-background consumer-hardware projects on Kickstarter — pre-launch, live, and recently ended. Data fetched directly from KS Discover JSON every 4 hours by GitHub Actions.",
-    updated: (t) => "Updated " + t,
+    kicker: "Live · cron refreshes daily at 09:00 Beijing",
+    motto: "All The Crowd-Funded Hardware Fit To Print",
+    editionLeft: "Beijing Edition",
+    editionRightPrefix: "Updated ",
+    dek: "The morning newspaper for China-background Kickstarter consumer-hardware projects — pre-launch, live, and recently funded. Data fetched from KS Discover JSON every day by GitHub Actions.",
     loading: "Loading…",
-    repoSrc: "Source",
-    jsonData: "JSON",
     statusLabel: "Status",
     confLabel: "Confidence",
-    pwlLabel: "★ KS Picks only",
-    searchPh: "Search product / company / city / category",
-    countShow: (n, t) => `Showing <b>${n}</b> of ${t}`,
+    pwlLabel: "★ Editor's Picks Only",
+    searchPh: "Search · product · brand · city",
+    countShow: (n, t) => `<b>${t}</b> total · <b>${n}</b> on view`,
     clearFilters: "Clear filters",
     kpi: {
-      total: "Tracked", totalDelta: (h) => `High confidence · ${h}`,
-      prelaunch: "Pre-launch", prelaunchDelta: "prelaunch",
+      total: "Tracked", totalDelta: (h) => `High Confidence · ${h}`,
+      prelaunch: "Pre-launch", prelaunchDelta: "PRELAUNCH",
       live: "Live", liveDelta: (s) => `Pledged ${s}`,
-      success: "Successful", successDelta: "successful",
-      pwl: "★ KS Picks", pwlDelta: "project we love",
+      success: "Funded", successDelta: "SUCCESSFUL",
+      pwl: "★ Editor's Picks", pwlDelta: "PROJECT WE LOVE",
     },
-    chips: { all: "All", prelaunch: "Pre", live: "Live", successful: "Ended", high: "High", med: "Med" },
+    chips: { all: "All", prelaunch: "Pre", live: "Live", successful: "Funded", high: "High", med: "Med" },
     statuses: {
-      prelaunch: "Pre-launch", live: "Live", successful: "Successful",
-      failed: "Failed", canceled: "Canceled", suspended: "Suspended", unknown: "—",
+      prelaunch: "PRELAUNCH", live: "LIVE", successful: "FUNDED",
+      failed: "FAILED", canceled: "CANCELED", suspended: "SUSPENDED", unknown: "—",
     },
     th: {
-      project: "Project / Creator", status: "Status", conf: "Conf.",
-      pledged: "Pledged", backers: "Backers", followers: "Followers",
-      percent: "Funded", link: "Link",
+      project: "PROJECT · BRAND", status: "STATUS",
+      conf: "CN", pledged: "RAISED",
+      backers: "BACKERS", followers: "WATCH",
+      percent: "FUNDED", link: "READ",
     },
-    foot: 'Data: Kickstarter Discover JSON · Code: <a href="https://github.com/Chen17-sq/kickstarter-china-tracker" target="_blank" rel="noopener">GitHub</a> · Design: Editorial / Swiss',
   },
 };
 
-// Country (KS reports ISO-2)
 const COUNTRY_ZH = {
   HK: "香港", CN: "中国大陆", TW: "台湾", MO: "澳门",
   US: "美国 (出海)", GB: "英国 (出海)", DE: "德国 (出海)",
@@ -83,30 +82,15 @@ const COUNTRY_ZH = {
   AU: "澳洲 (出海)", FR: "法国 (出海)", NL: "荷兰 (出海)",
   KR: "韩国 (出海)", ES: "西班牙 (出海)", IT: "意大利 (出海)",
 };
-
-// KS category names
 const CATEGORY_ZH = {
-  "Hardware": "智能硬件",
-  "Product Design": "产品设计",
-  "Gadgets": "电子配件",
-  "3D Printing": "3D 打印",
-  "Sound": "音频",
-  "Wearables": "可穿戴",
-  "DIY Electronics": "DIY 电子",
-  "Robots": "机器人",
-  "Fabrication Tools": "制造工具",
-  "Camera Equipment": "摄影器材",
-  "Web": "网络应用",
-  "Apps": "应用",
-  "Software": "软件",
-  "Mobile Games": "手机游戏",
-  "Tabletop Games": "桌游",
-  "Video Games": "电子游戏",
-  "Design": "设计",
-  "Technology": "科技",
-  "Crafts": "手作",
-  "Fashion": "时装",
-  "Accessories": "配饰",
+  "Hardware": "智能硬件", "Product Design": "产品设计", "Gadgets": "电子配件",
+  "3D Printing": "3D 打印", "Sound": "音频", "Wearables": "可穿戴",
+  "DIY Electronics": "DIY 电子", "Robots": "机器人",
+  "Fabrication Tools": "制造工具", "Camera Equipment": "摄影器材",
+  "Web": "网络应用", "Apps": "应用", "Software": "软件",
+  "Mobile Games": "手机游戏", "Tabletop Games": "桌游", "Video Games": "电子游戏",
+  "Design": "设计", "Technology": "科技", "Crafts": "手作",
+  "Fashion": "时装", "Accessories": "配饰",
 };
 
 const STATUS_ORDER = {
@@ -127,8 +111,6 @@ function categoryLabel(c) {
   if (!c) return "";
   return LANG === "zh" ? (CATEGORY_ZH[c] || c) : c;
 }
-// Returns { text, fallback } — fallback=true means the curated zh blurb is
-// missing and we're falling back to the KS English blurb (rendered in italic).
 function blurbInfo(d) {
   if (LANG === "zh" && d.blurb_zh) return { text: d.blurb_zh, fallback: false };
   if (d.blurb) return { text: d.blurb, fallback: LANG === "zh" };
@@ -151,7 +133,6 @@ function fmtUSD(n) {
   return "$" + Math.round(v).toLocaleString();
 }
 function fmtPct(p) {
-  // KS's `percent_funded` is already a percentage where 100 = 100% goal met.
   if (p == null || p === "" || isNaN(Number(p))) return "—";
   const v = Number(p);
   if (v >= 10000) return Math.round(v / 100).toLocaleString() + "× goal";
@@ -162,23 +143,15 @@ function fmtNum(n) {
   if (n == null || n === "" || isNaN(Number(n))) return "—";
   return Number(n).toLocaleString();
 }
-function fmtDate(iso) {
-  if (!iso) return "";
-  return iso.replace("T", " ").replace("Z", " UTC");
+function escapeHtml(s) {
+  return String(s ?? "").replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[c]));
 }
 
-// epoch (seconds) → "YYYY-MM-DD"
-function fmtEpochDate(epoch) {
-  if (!epoch) return "";
-  return new Date(Number(epoch) * 1000).toISOString().slice(0, 10);
-}
-
-// Compose a per-status timeline string (no sort key — display only).
 function fmtTimeline(d) {
   const now = Date.now() / 1000;
   if (d.status === "prelaunch") {
-    // Prefer state_changed_at (when project entered "submitted") over
-    // created_at (creators sometimes draft years before activating).
     const start = d.state_changed_at || d.created_at;
     if (!start) return "";
     const days = Math.max(0, Math.floor((now - Number(start)) / 86400));
@@ -202,14 +175,10 @@ function fmtTimeline(d) {
     if (ago < 0) return "";
     if (ago < 1) return LANG === "zh" ? "今日结束" : "ended today";
     if (ago < 60) return LANG === "zh" ? `${ago} 天前结束` : `ended ${ago}d ago`;
-    return (LANG === "zh" ? "结束于 " : "ended ") + fmtEpochDate(d.deadline);
+    const dt = new Date(Number(d.deadline) * 1000);
+    return (LANG === "zh" ? "结束于 " : "ended ") + dt.toISOString().slice(0, 10);
   }
   return "";
-}
-function escapeHtml(s) {
-  return String(s ?? "").replace(/[&<>"']/g, (c) => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
-  }[c]));
 }
 
 // ─── Sort ──────────────────────────────────────────────────────
@@ -228,7 +197,6 @@ function defaultSort(a, b) {
   if (pa !== pb) return pb - pa;
   return (a.title || "").localeCompare(b.title || "", "zh");
 }
-
 function applySort() {
   if (!SORT.k) {
     DATA.sort(defaultSort);
@@ -247,21 +215,19 @@ function applySort() {
 
 // ─── Render ────────────────────────────────────────────────────
 function rowHtml(d) {
-  const pwl = d.project_we_love ? '<span class="pwl">★</span>' : "";
+  const pwl = d.project_we_love ? '<span class="pwl">✦</span>' : "";
   const title = escapeHtml(d.title || "(untitled)");
   const company = escapeHtml(brandLabel(d));
   const loc = escapeHtml(d.location || "");
   const cat = escapeHtml(categoryLabel(d.category));
-  // Meta line: timeline · company · location · category (small, secondary)
-  const timeline = escapeHtml(fmtTimeline(d));
-  const meta = [timeline, company, loc, cat].filter(Boolean).join(" · ");
-  // Blurb line: the actual product description (中文 if curated, else English)
+  const tl = escapeHtml(fmtTimeline(d));
+  const meta = [tl, company, loc, cat].filter(Boolean).join(" · ");
   const b = blurbInfo(d);
   const blurbHtml = b.text
     ? `<div class="cell-blurb${b.fallback ? " is-fallback" : ""}">${escapeHtml(b.text)}</div>`
     : "";
   const status = d.status || "unknown";
-  const pctVal = Number(d.percent_funded || 0);  // already 100 = 100%
+  const pctVal = Number(d.percent_funded || 0);
   let pctCls = "pct under";
   if (pctVal >= 100 && pctVal < 1000) pctCls = "pct";
   else if (pctVal >= 1000) pctCls = "pct huge";
@@ -330,7 +296,6 @@ function renderKpis() {
     if (d.china_confidence === "高") high++;
     if (d.status === "live") totalUsd += Number(d.pledged_usd || 0);
   });
-
   const k = t().kpi;
   $("#kpis").innerHTML = `
     <div class="kpi"><div class="label">${escapeHtml(k.total)}</div>
@@ -372,15 +337,14 @@ function render() {
   $("#count").innerHTML =
     t().countShow(visible.length.toLocaleString(), DATA.length.toLocaleString()) +
     (hasFilter
-      ? ` · <a href="#" id="clearF" style="color:inherit;border-bottom:1px solid currentColor;text-decoration:none">${escapeHtml(t().clearFilters)}</a>`
+      ? ` · <a href="#" id="clearF" style="color:inherit;border-bottom:2px solid var(--accent);text-decoration:none;font-weight:700">${escapeHtml(t().clearFilters)}</a>`
       : "");
   if ($("#clearF")) {
     $("#clearF").addEventListener("click", (e) => {
       e.preventDefault();
       FILTERS = { status: "", conf: "", pwl: false, q: "" };
       $("#q").value = ""; $("#onlyPwl").checked = false;
-      buildChips();
-      render();
+      buildChips(); render();
     });
   }
   renderTable(visible);
@@ -395,12 +359,10 @@ function makeChips(hostId, options, key) {
   el.querySelectorAll(".chip").forEach((c) => {
     c.addEventListener("click", () => {
       FILTERS[key] = c.dataset.v;
-      makeChips(hostId, options, key);
-      render();
+      makeChips(hostId, options, key); render();
     });
   });
 }
-
 function buildChips() {
   const c = t().chips;
   makeChips("#statusChips", [
@@ -416,23 +378,32 @@ function buildChips() {
   ], "conf");
 }
 
-// ─── Apply chrome (static labels) for current LANG ─────────────
+// ─── Edition number = days since 2026-04-25 (project birthday) ──
+function editionNumber() {
+  const start = new Date("2026-04-25T00:00:00Z");
+  const now = new Date();
+  const days = Math.max(1, Math.floor((now - start) / 86400000) + 1);
+  return String(days);
+}
+
+// ─── Apply masthead text per LANG ─────────────────────────────
 function applyChrome() {
   const T = t();
   $("#kicker").textContent = T.kicker;
+  $("#editionMotto").textContent = T.motto;
+  $("#editionLeft").textContent = T.editionLeft;
   $("#dek").textContent = T.dek;
-  $("#repoLink").textContent = T.repoSrc;
-  $("#dataLink").textContent = T.jsonData;
   $("#lblStatus").textContent = T.statusLabel;
   $("#lblConf").textContent = T.confLabel;
   $("#lblPwl").textContent = T.pwlLabel;
   $("#q").placeholder = T.searchPh;
-  $("#foot").innerHTML = T.foot;
+  const editionNo = editionNumber();
+  $("#editionNo").textContent = editionNo;
+  $("#footEdition").textContent = editionNo;
   $("#updated").textContent = GENERATED_AT
-    ? T.updated(fmtDate(GENERATED_AT))
-    : T.loading;
+    ? GENERATED_AT.replace("T", " ").replace("Z", " UTC")
+    : "—";
   document.documentElement.lang = LANG === "zh" ? "zh-CN" : "en";
-  // toggle button states
   $$("#langToggle button").forEach((b) =>
     b.classList.toggle("active", b.dataset.l === LANG));
 }
@@ -441,10 +412,7 @@ function setLang(lang) {
   if (lang === LANG) return;
   LANG = lang;
   localStorage.setItem(LANG_KEY, LANG);
-  applyChrome();
-  buildChips();
-  renderKpis();
-  render();
+  applyChrome(); buildChips(); renderKpis(); render();
 }
 
 // ─── Boot ──────────────────────────────────────────────────────
@@ -452,7 +420,6 @@ async function load() {
   applyChrome();
   $$("#langToggle button").forEach((b) =>
     b.addEventListener("click", () => setLang(b.dataset.l)));
-
   try {
     const r = await fetch("./data/projects.json", { cache: "no-store" });
     if (!r.ok) throw new Error("HTTP " + r.status);
@@ -460,8 +427,7 @@ async function load() {
     DATA = j.projects || [];
     GENERATED_AT = j.generated_at || "";
     applySort();
-    applyChrome();
-    boot();
+    applyChrome(); boot();
   } catch (e) {
     document.body.insertAdjacentHTML("beforeend",
       `<div class="wrap"><div class="err">
@@ -480,8 +446,7 @@ function boot() {
     FILTERS.pwl = e.target.checked;
     render();
   });
-  renderKpis();
-  render();
+  renderKpis(); render();
 }
 
 load();

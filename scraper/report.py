@@ -18,7 +18,13 @@ REPORTS = REPO_ROOT / "reports"
 HISTORY = REPO_ROOT / "data" / "history"
 PROJECTS = REPO_ROOT / "data" / "projects.json"
 
-PWL = "★"
+PWL = "✦"
+EPOCH = dt.datetime(2026, 4, 25, tzinfo=dt.timezone.utc)
+
+
+def edition_number() -> int:
+    days = (dt.datetime.now(dt.timezone.utc) - EPOCH).days + 1
+    return max(1, days)
 
 
 def fmt_usd(n) -> str:
@@ -181,23 +187,39 @@ def make_report(curr: dict, prev: dict | None) -> str:
             elif prev_p.get("status") != p.get("status"):
                 status_changes.append((p, prev_p.get("status")))
 
+    edition = edition_number()
+    today_long = dt.datetime.now(dt.timezone.utc).strftime("%A, %B %d, %Y").upper()
+
     out: list[str] = []
-    out.append(f"# Kickstarter China Tracker — {today}")
+    # Newsprint masthead
+    out.append("```")
+    out.append(f"VOL. 1 · NO. {edition}                                    BEIJING EDITION")
+    out.append(f"DAILY · LIVE EDITION · {today_long}")
+    out.append("```")
     out.append("")
-    out.append(f"_自动生成于 {curr.get('generated_at','—')} · 仓库 [Pages 站](https://chen17-sq.github.io/kickstarter-china-tracker/) · [JSON](../data/projects.json)_")
+    out.append(f"# Kickstarter China Tracker")
+    out.append("")
+    out.append(f"> *All The Crowd-Funded Hardware Fit To Print* — Vol. 1, No. {edition} · {today}")
+    out.append("")
+    out.append(f"_Auto-generated at {curr.get('generated_at','—')} · [完整看板](https://chen17-sq.github.io/kickstarter-china-tracker/) · [JSON](../data/projects.json)_")
+    out.append("")
+    out.append("---")
     out.append("")
 
-    out.append("## 概览")
+    out.append("## Section A · 头版概览")
     out.append("")
-    out.append("| 总数 | 未发布 | 在筹中 | 已成功 | KS 精选 | 在筹已筹合计 |")
+    out.append("| Tracked | Prelaunch | Live | Funded | Editor's | Pledged |")
     out.append("| ---: | ---: | ---: | ---: | ---: | ---: |")
     out.append(f"| **{len(projects)}** | {counts['prelaunch']} | {counts['live']} | {counts['successful']} | {PWL} {pwl_count} | {fmt_usd(total_live_usd)} |")
     out.append("")
-    out.append(f"中国背景置信度高 · **{high}** / {len(projects)}")
+    out.append(f"_中国背景置信度高 · **{high}** / {len(projects)}_")
     out.append("")
 
+    if new_today or status_changes:
+        out.append("✦ &nbsp; ✦ &nbsp; ✦")
+        out.append("")
     if new_today:
-        out.append(f"## 🆕 今日新增 · {len(new_today)} 项")
+        out.append(f"## Section B · 🆕 今日新增 · {len(new_today)} 项")
         out.append("")
         new_today_sorted = sorted(
             new_today,
@@ -214,7 +236,7 @@ def make_report(curr: dict, prev: dict | None) -> str:
         out.append("")
 
     if status_changes:
-        out.append(f"## 🔄 状态变化 · {len(status_changes)} 项")
+        out.append(f"## Section B · 🔄 状态变化 · {len(status_changes)} 项")
         out.append("")
         for p, prev_status in status_changes[:25]:
             out.append(f"- {project_link(p)}: `{prev_status}` → `{p.get('status')}`")
@@ -229,7 +251,9 @@ def make_report(curr: dict, prev: dict | None) -> str:
         ),
     )
     if prelaunch:
-        out.append(f"## ⏳ Prelaunch · {len(prelaunch)} 项")
+        out.append("✦ &nbsp; ✦ &nbsp; ✦")
+        out.append("")
+        out.append(f"## Section C · ⏳ Prelaunch · {len(prelaunch)} 项")
         out.append("")
         out.append("| | 项目 / 一句话 | 公司 | 国家 | Followers | 时间 |")
         out.append("| - | --- | --- | --- | ---: | --- |")
@@ -249,7 +273,9 @@ def make_report(curr: dict, prev: dict | None) -> str:
         key=lambda x: -float(x.get("pledged_usd") or 0),
     )
     if live:
-        out.append(f"## 🔴 在筹 · 按已筹排序 Top {min(20, len(live))}")
+        out.append("✦ &nbsp; ✦ &nbsp; ✦")
+        out.append("")
+        out.append(f"## Section D · 🔴 在筹 · 按已筹排序 Top {min(20, len(live))}")
         out.append("")
         out.append("| | 项目 / 一句话 | 已筹 | Backers | Followers | 完成率 | 时间 |")
         out.append("| - | --- | ---: | ---: | ---: | ---: | --- |")
@@ -267,7 +293,9 @@ def make_report(curr: dict, prev: dict | None) -> str:
         key=lambda x: -float(x.get("pledged_usd") or 0),
     )
     if successful:
-        out.append(f"## ✅ 最近已结束 · 按已筹排序 Top {min(15, len(successful))}")
+        out.append("✦ &nbsp; ✦ &nbsp; ✦")
+        out.append("")
+        out.append(f"## Section E · ✅ 最近已结束 · 按已筹排序 Top {min(15, len(successful))}")
         out.append("")
         out.append("| 项目 / 一句话 | 已筹 | Backers | 完成率 | 结束 |")
         out.append("| --- | ---: | ---: | ---: | --- |")
@@ -279,9 +307,13 @@ def make_report(curr: dict, prev: dict | None) -> str:
             )
         out.append("")
 
+    out.append("✦ &nbsp; ✦ &nbsp; ✦")
+    out.append("")
     out.append("---")
     out.append("")
-    out.append("<sub>报告由 `scraper/report.py` 每次 cron 自动生成 · 中文一句话来自 [`data/blurbs_zh.json`](../data/blurbs_zh.json)，欢迎 PR 补充 · 抓取细节见 [ARCHITECTURE.md](../ARCHITECTURE.md)</sub>")
+    out.append(f"*All the news that's fit to print, every morning at 09:00 Beijing.*")
+    out.append("")
+    out.append(f"<sub>Vol. 1 · No. {edition} · Auto-generated by `scraper/report.py` · 中文一句话见 [`data/blurbs_zh.json`](../data/blurbs_zh.json)（欢迎 PR）· 架构见 [ARCHITECTURE.md](../ARCHITECTURE.md)</sub>")
     return "\n".join(out)
 
 

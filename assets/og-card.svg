@@ -1,41 +1,54 @@
 <svg viewBox="0 0 1280 640" xmlns="http://www.w3.org/2000/svg" role="img">
-  <rect width="1280" height="640" fill="#fafaf7"/>
+  <rect width="1280" height="640" fill="#F9F9F7"/>
 
-  <circle cx="80" cy="100" r="6" fill="#c8102e"/>
-  <text x="100" y="106" font-family="Inter, sans-serif" font-size="18"
-        font-weight="600" fill="#6b6b6b" letter-spacing="3">DAILY · UPDATED 2026-04-26</text>
+  <!-- Top edition strip -->
+  <rect x="0" y="0" width="1280" height="46" fill="#111111"/>
+  <circle cx="50" cy="23" r="5" fill="#CC0000"/>
+  <text x="68" y="28" font-family="Inter, Helvetica, sans-serif" font-size="14" font-weight="700"
+        fill="#F9F9F7" letter-spacing="3.5">DAILY · LIVE EDITION · SUN · APR 26 · 2026</text>
+  <text x="1230" y="28" text-anchor="end" font-family="JetBrains Mono, Courier New, monospace" font-size="14"
+        font-weight="500" fill="#F9F9F7" letter-spacing="3">VOL. 1 · NO. 2</text>
 
-  <line x1="80" y1="138" x2="1200" y2="138" stroke="#0d0d0d" stroke-width="2"/>
+  <!-- Nameplate -->
+  <text x="640" y="200" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="118"
+        font-weight="900" fill="#111111" letter-spacing="-4">Kickstarter</text>
+  <text x="640" y="312" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="118"
+        font-weight="900" fill="#111111" letter-spacing="-4">China Tracker</text>
 
-  <text x="80" y="248" font-family="Inter Tight, Inter, sans-serif"
-        font-size="80" font-weight="800" fill="#0d0d0d" letter-spacing="-2.5">Kickstarter</text>
-  <text x="80" y="332" font-family="Inter Tight, Inter, sans-serif"
-        font-size="80" font-weight="800" fill="#0d0d0d" letter-spacing="-2.5">China Tracker</text>
+  <!-- Italic dek -->
+  <text x="640" y="362" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="20"
+        font-style="italic" fill="#404040">All the crowd-funded hardware fit to print, every morning at 09:00 Beijing.</text>
 
-  <text x="80" y="396" font-family="Inter, sans-serif" font-size="22" fill="#3a3a3a">每日追踪 Kickstarter 上中国背景的消费硬件项目</text>
-  <text x="80" y="430" font-family="Inter, sans-serif" font-size="18" fill="#6b6b6b">pre-launch · live · 已结束 · 数据每日 01:00 UTC 自动刷新</text>
+  <!-- Ornament + rule -->
+  <text x="640" y="420" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="22"
+        fill="#A3A3A3" letter-spacing="20">✦  ✦  ✦</text>
+  <line x1="80" y1="450" x2="1200" y2="450" stroke="#111111" stroke-width="4"/>
 
-  <line x1="80" y1="478" x2="1200" y2="478" stroke="#0d0d0d" stroke-width="2"/>
+  <!-- KPI strip -->
+  <text x="160" y="544" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="64"
+        font-weight="900" fill="#111111" letter-spacing="-2">142</text>
+  <text x="160" y="582" text-anchor="middle" font-family="Inter, Helvetica, sans-serif" font-size="13"
+        font-weight="700" fill="#737373" letter-spacing="3">TRACKED</text>
 
-  <text x="80" y="556" font-family="Inter Tight, Inter, sans-serif" font-size="56"
-        font-weight="700" fill="#0d0d0d" letter-spacing="-1.5">142</text>
-  <text x="80" y="588" font-size="13" font-weight="600" fill="#6b6b6b" letter-spacing="2">追踪总数</text>
+  <text x="380" y="544" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="64"
+        font-weight="900" fill="#CC0000" letter-spacing="-2">58</text>
+  <text x="380" y="582" text-anchor="middle" font-family="Inter, Helvetica, sans-serif" font-size="13"
+        font-weight="700" fill="#737373" letter-spacing="3">PRELAUNCH</text>
 
-  <text x="320" y="556" font-family="Inter Tight, Inter, sans-serif" font-size="56"
-        font-weight="700" fill="#c8102e" letter-spacing="-1.5">58</text>
-  <text x="320" y="588" font-size="13" font-weight="600" fill="#6b6b6b" letter-spacing="2">未发布</text>
+  <text x="600" y="544" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="64"
+        font-weight="900" fill="#111111" letter-spacing="-2">44</text>
+  <text x="600" y="582" text-anchor="middle" font-family="Inter, Helvetica, sans-serif" font-size="13"
+        font-weight="700" fill="#737373" letter-spacing="3">LIVE</text>
 
-  <text x="540" y="556" font-family="Inter Tight, Inter, sans-serif" font-size="56"
-        font-weight="700" fill="#1c4ed8" letter-spacing="-1.5">44</text>
-  <text x="540" y="588" font-size="13" font-weight="600" fill="#6b6b6b" letter-spacing="2">在筹中</text>
+  <text x="820" y="544" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="64"
+        font-weight="900" fill="#111111" letter-spacing="-2">40</text>
+  <text x="820" y="582" text-anchor="middle" font-family="Inter, Helvetica, sans-serif" font-size="13"
+        font-weight="700" fill="#737373" letter-spacing="3">FUNDED</text>
 
-  <text x="760" y="556" font-family="Inter Tight, Inter, sans-serif" font-size="56"
-        font-weight="700" fill="#0d0d0d" letter-spacing="-1.5">40</text>
-  <text x="760" y="588" font-size="13" font-weight="600" fill="#6b6b6b" letter-spacing="2">已成功</text>
+  <text x="1080" y="544" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="64"
+        font-weight="900" fill="#111111" letter-spacing="-2">★ 42</text>
+  <text x="1080" y="582" text-anchor="middle" font-family="Inter, Helvetica, sans-serif" font-size="13"
+        font-weight="700" fill="#737373" letter-spacing="3">EDITOR'S PICKS</text>
 
-  <text x="980" y="556" font-family="Inter Tight, Inter, sans-serif" font-size="56"
-        font-weight="700" fill="#0d0d0d" letter-spacing="-1.5">★ 42</text>
-  <text x="980" y="588" font-size="13" font-weight="600" fill="#6b6b6b" letter-spacing="2">KS 精选</text>
-
-  <line x1="80" y1="612" x2="1200" y2="612" stroke="#0d0d0d" stroke-width="2"/>
+  <line x1="80" y1="612" x2="1200" y2="612" stroke="#111111" stroke-width="1"/>
 </svg>
