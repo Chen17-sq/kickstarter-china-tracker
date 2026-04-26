@@ -62,6 +62,61 @@ def fmt_int(n) -> str:
         return str(n)
 
 
+def days_since(epoch) -> int | None:
+    if not epoch:
+        return None
+    try:
+        return max(0, int((dt.datetime.now(dt.timezone.utc).timestamp() - float(epoch)) / 86400))
+    except (TypeError, ValueError):
+        return None
+
+
+def days_until(epoch) -> int | None:
+    if not epoch:
+        return None
+    try:
+        return max(0, int((float(epoch) - dt.datetime.now(dt.timezone.utc).timestamp()) / 86400))
+    except (TypeError, ValueError):
+        return None
+
+
+def fmt_epoch_date(epoch) -> str:
+    if not epoch:
+        return "—"
+    try:
+        return dt.datetime.fromtimestamp(float(epoch), tz=dt.timezone.utc).strftime("%Y-%m-%d")
+    except (TypeError, ValueError):
+        return "—"
+
+
+def timeline_text(p: dict) -> str:
+    st = p.get("status")
+    if st == "prelaunch":
+        # Prefer state_changed_at (when project entered "submitted" prelaunch
+        # state) — created_at can be years old when creators draft early.
+        d = days_since(p.get("state_changed_at") or p.get("created_at"))
+        return f"已预热 {d} 天" if d is not None else ""
+    if st == "live":
+        parts = []
+        d_in = days_since(p.get("launched_at"))
+        if d_in is not None:
+            parts.append(f"上线 {d_in} 天")
+        d_left = days_until(p.get("deadline"))
+        if d_left is not None:
+            parts.append(f"剩 {d_left} 天")
+        return " · ".join(parts)
+    if st in ("successful", "failed", "canceled"):
+        d = days_since(p.get("deadline"))
+        if d is None:
+            return ""
+        if d < 1:
+            return "今日结束"
+        if d < 60:
+            return f"{d} 天前结束"
+        return f"结束于 {fmt_epoch_date(p.get('deadline'))}"
+    return ""
+
+
 def project_link(p: dict) -> str:
     title = p.get("title") or "(untitled)"
     blurb_zh = p.get("blurb_zh")
@@ -176,14 +231,17 @@ def make_report(curr: dict, prev: dict | None) -> str:
     if prelaunch:
         out.append(f"## ⏳ Prelaunch · {len(prelaunch)} 项")
         out.append("")
-        out.append("| | 项目 / 一句话 | 公司 | 国家 | Followers |")
-        out.append("| - | --- | --- | --- | ---: |")
+        out.append("| | 项目 / 一句话 | 公司 | 国家 | Followers | 时间 |")
+        out.append("| - | --- | --- | --- | ---: | --- |")
         for p in prelaunch[:30]:
             star = PWL if p.get("project_we_love") else ""
             brand = p.get("matched_brand_zh") or p.get("matched_brand") or p.get("creator_name") or ""
-            out.append(f"| {star} | {project_link(p)} | {brand} | {p.get('country','?')} | {fmt_int(p.get('followers'))} |")
+            out.append(
+                f"| {star} | {project_link(p)} | {brand} | {p.get('country','?')} "
+                f"| {fmt_int(p.get('followers'))} | {timeline_text(p)} |"
+            )
         if len(prelaunch) > 30:
-            out.append(f"| | _…and {len(prelaunch)-30} more in [JSON](../data/projects.json)_ | | | |")
+            out.append(f"| | _…and {len(prelaunch)-30} more in [JSON](../data/projects.json)_ | | | | |")
         out.append("")
 
     live = sorted(
@@ -193,13 +251,14 @@ def make_report(curr: dict, prev: dict | None) -> str:
     if live:
         out.append(f"## 🔴 在筹 · 按已筹排序 Top {min(20, len(live))}")
         out.append("")
-        out.append("| | 项目 / 一句话 | 已筹 | Backers | 完成率 | 国家 |")
-        out.append("| - | --- | ---: | ---: | ---: | --- |")
+        out.append("| | 项目 / 一句话 | 已筹 | Backers | Followers | 完成率 | 时间 |")
+        out.append("| - | --- | ---: | ---: | ---: | ---: | --- |")
         for p in live[:20]:
             star = PWL if p.get("project_we_love") else ""
             out.append(
                 f"| {star} | {project_link(p)} | {fmt_usd(p.get('pledged_usd'))} | "
-                f"{fmt_int(p.get('backers'))} | {fmt_pct(p.get('percent_funded'))} | {p.get('country','?')} |"
+                f"{fmt_int(p.get('backers'))} | {fmt_int(p.get('followers'))} | "
+                f"{fmt_pct(p.get('percent_funded'))} | {timeline_text(p)} |"
             )
         out.append("")
 
@@ -210,12 +269,13 @@ def make_report(curr: dict, prev: dict | None) -> str:
     if successful:
         out.append(f"## ✅ 最近已结束 · 按已筹排序 Top {min(15, len(successful))}")
         out.append("")
-        out.append("| 项目 / 一句话 | 已筹 | Backers | 完成率 |")
-        out.append("| --- | ---: | ---: | ---: |")
+        out.append("| 项目 / 一句话 | 已筹 | Backers | 完成率 | 结束 |")
+        out.append("| --- | ---: | ---: | ---: | --- |")
         for p in successful[:15]:
             out.append(
                 f"| {project_link(p)} | {fmt_usd(p.get('pledged_usd'))} | "
-                f"{fmt_int(p.get('backers'))} | {fmt_pct(p.get('percent_funded'))} |"
+                f"{fmt_int(p.get('backers'))} | {fmt_pct(p.get('percent_funded'))} | "
+                f"{timeline_text(p)} |"
             )
         out.append("")
 
@@ -235,6 +295,8 @@ def write_today() -> Path:
     today = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
     out_path = REPORTS / f"{today}.md"
     out_path.write_text(md, encoding="utf-8")
+    # Also write a stable-URL copy so a bookmark always points at today.
+    (REPORTS / "latest.md").write_text(md, encoding="utf-8")
     return out_path
 
 

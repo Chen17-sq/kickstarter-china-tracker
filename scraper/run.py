@@ -110,6 +110,7 @@ def build_row(hit: DiscoverHit, *, followers: int | None,
         "deadline": hit.deadline,
         "launched_at": hit.launched_at,
         "created_at": hit.created_at,
+        "state_changed_at": hit.state_changed_at,
         "prelaunch_activated": hit.prelaunch_activated,
         "china_confidence": confidence,
         "china_reason": reason,
@@ -223,7 +224,9 @@ def run() -> int:
         today = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
         report_path = REPORTS / f"{today}.md"
         report_path.write_text(md, encoding="utf-8")
-        print(f"  wrote reports/{today}.md")
+        # Stable URL — bookmark this once
+        (REPORTS / "latest.md").write_text(md, encoding="utf-8")
+        print(f"  wrote reports/{today}.md (and reports/latest.md)")
     except Exception as e:
         print(f"  report skipped: {e}")
 

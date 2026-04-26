@@ -66,6 +66,7 @@ class DiscoverHit:
     deadline: int | None = None     # epoch seconds
     launched_at: int | None = None
     created_at: int | None = None
+    state_changed_at: int | None = None  # last state transition (= prelaunch start for "submitted")
     prelaunch_activated: bool | None = None
     category: str | None = None
     raw: dict[str, Any] = field(default_factory=dict)
@@ -96,6 +97,7 @@ def _hit_from_proj(p: dict[str, Any]) -> DiscoverHit:
         deadline=p.get("deadline"),
         launched_at=p.get("launched_at"),
         created_at=p.get("created_at"),
+        state_changed_at=p.get("state_changed_at"),
         prelaunch_activated=p.get("prelaunch_activated"),
         category=category.get("name"),
         raw=p,

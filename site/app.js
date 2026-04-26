@@ -166,6 +166,46 @@ function fmtDate(iso) {
   if (!iso) return "";
   return iso.replace("T", " ").replace("Z", " UTC");
 }
+
+// epoch (seconds) → "YYYY-MM-DD"
+function fmtEpochDate(epoch) {
+  if (!epoch) return "";
+  return new Date(Number(epoch) * 1000).toISOString().slice(0, 10);
+}
+
+// Compose a per-status timeline string (no sort key — display only).
+function fmtTimeline(d) {
+  const now = Date.now() / 1000;
+  if (d.status === "prelaunch") {
+    // Prefer state_changed_at (when project entered "submitted") over
+    // created_at (creators sometimes draft years before activating).
+    const start = d.state_changed_at || d.created_at;
+    if (!start) return "";
+    const days = Math.max(0, Math.floor((now - Number(start)) / 86400));
+    return LANG === "zh" ? `已预热 ${days} 天` : `${days}d in pre-launch`;
+  }
+  if (d.status === "live") {
+    const parts = [];
+    if (d.launched_at) {
+      const since = Math.max(0, Math.floor((now - Number(d.launched_at)) / 86400));
+      parts.push(LANG === "zh" ? `上线 ${since} 天` : `${since}d in`);
+    }
+    if (d.deadline) {
+      const remain = Math.max(0, Math.floor((Number(d.deadline) - now) / 86400));
+      parts.push(LANG === "zh" ? `剩 ${remain} 天` : `${remain}d left`);
+    }
+    return parts.join(" · ");
+  }
+  if (d.status === "successful" || d.status === "failed" || d.status === "canceled") {
+    if (!d.deadline) return "";
+    const ago = Math.floor((now - Number(d.deadline)) / 86400);
+    if (ago < 0) return "";
+    if (ago < 1) return LANG === "zh" ? "今日结束" : "ended today";
+    if (ago < 60) return LANG === "zh" ? `${ago} 天前结束` : `ended ${ago}d ago`;
+    return (LANG === "zh" ? "结束于 " : "ended ") + fmtEpochDate(d.deadline);
+  }
+  return "";
+}
 function escapeHtml(s) {
   return String(s ?? "").replace(/[&<>"']/g, (c) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
@@ -212,8 +252,9 @@ function rowHtml(d) {
   const company = escapeHtml(brandLabel(d));
   const loc = escapeHtml(d.location || "");
   const cat = escapeHtml(categoryLabel(d.category));
-  // Meta line: just company · location · category (small, secondary)
-  const meta = [company, loc, cat].filter(Boolean).join(" · ");
+  // Meta line: timeline · company · location · category (small, secondary)
+  const timeline = escapeHtml(fmtTimeline(d));
+  const meta = [timeline, company, loc, cat].filter(Boolean).join(" · ");
   // Blurb line: the actual product description (中文 if curated, else English)
   const b = blurbInfo(d);
   const blurbHtml = b.text
