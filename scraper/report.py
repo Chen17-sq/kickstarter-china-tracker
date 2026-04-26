@@ -19,12 +19,8 @@ HISTORY = REPO_ROOT / "data" / "history"
 PROJECTS = REPO_ROOT / "data" / "projects.json"
 
 PWL = "✦"
-EPOCH = dt.datetime(2026, 4, 25, tzinfo=dt.timezone.utc)
 
-
-def edition_number() -> int:
-    days = (dt.datetime.now(dt.timezone.utc) - EPOCH).days + 1
-    return max(1, days)
+from ._common import edition_number  # noqa: E402  shared
 
 
 def fmt_usd(n) -> str:
@@ -339,7 +335,15 @@ def make_report(curr: dict, prev: dict | None) -> str:
                 # KS hero photo, no filter, max 360px wide for GitHub Markdown
                 out.append(f'<img src="{p["image_url"]}" alt="" width="360" />')
                 out.append("")
-            out.append(f"**{brand}** · {country} · **{fmt_int(p.get('followers'))}** watchers · {timeline_text(p)}")
+            stat_parts_pre = [
+                f"**{brand}**",
+                country,
+                f"**{fmt_int(p.get('followers'))}** watchers",
+            ]
+            if p.get("min_pledge_usd"):
+                stat_parts_pre.append(f"起步价 **{fmt_usd(p['min_pledge_usd'])}**")
+            stat_parts_pre.append(timeline_text(p))
+            out.append(" · ".join(s for s in stat_parts_pre if s))
             out.append("")
             if blurb_zh:
                 out.append(f"*{blurb_zh}*")
@@ -406,6 +410,8 @@ def make_report(curr: dict, prev: dict | None) -> str:
                 f"{fmt_int(p.get('backers'))} backers",
                 f"完成率 **{fmt_pct(p.get('percent_funded'))}**",
             ]
+            if p.get("min_pledge_usd"):
+                stat_parts.append(f"起步价 **{fmt_usd(p['min_pledge_usd'])}**")
             if cpw is not None:
                 stat_parts.append(f"\\${cpw:.0f}/watcher")
             if proj is not None:

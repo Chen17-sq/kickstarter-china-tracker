@@ -140,19 +140,31 @@ required for top 3.
 
 ## 5 · Surface-by-surface compliance checklist
 
-| Surface | Edition strip | Top 3 detail | Product images | 4 zh highlights |
-| --- | :---: | :---: | :---: | :---: |
-| Pages site `/` | ✓ | hero band | thumbnails in 'today's front page' | implicit via blurb_zh |
-| Pages `/stats.html` | ✓ | top 5 list | thumbnails | — |
-| Pages `/editions/<date>.html` | ✓ | ✓ | ✓ (4:3, no filter) | ✓ |
-| Daily email | ✓ | ✓ | ✓ (4:3, no filter, 240×180) | ✓ |
-| Daily Markdown report | text masthead | ✓ | ✓ (`<img width=360>`) | ✓ |
-| 小红书 carousel slides 04/06 | ✓ | ✓ (3-up) | ✓ (4:3, 280×210, no filter) | ✓ |
-| README banner SVG | embedded | — | — | — |
-| OG card | embedded | — | — | — |
-| PDF download | inherits from edition HTML | ✓ | ✓ | ✓ |
+| Surface | Edition strip | Top 3 detail | Product images | 4 zh highlights | 起步价 |
+| --- | :---: | :---: | :---: | :---: | :---: |
+| Pages site `/` | ✓ | hero band | thumbnails in 'today's front page' | implicit via blurb_zh | meta line |
+| Pages `/stats.html` | ✓ | top 5 list | thumbnails | — | meta line |
+| Pages `/editions/<date>.html` | ✓ | ✓ | ✓ (4:3, no filter) | ✓ | ✓ |
+| Daily email | ✓ | ✓ | ✓ (4:3, no filter, 240×180) | ✓ | ✓ |
+| Daily Markdown report | text masthead | ✓ | ✓ (`<img width=360>`) | ✓ | ✓ |
+| 小红书 carousel slides 04/06 | ✓ | ✓ (3-up) | ✓ (4:3, 280×210, no filter) | ✓ | ✓ |
+| README banner SVG | embedded | — | — | — | — |
+| OG card | embedded | — | — | — | — |
+| PDF download | inherits from edition HTML | ✓ | ✓ | ✓ | ✓ |
 
 If a new surface is added, fill in this row before merging.
+
+### 5.1 起步价 (price) data flow
+
+- Source: KS GraphQL `/graph` endpoint, query
+  `project { rewards(first:30) { nodes { amount { amount currency } } } }`
+- Captured in `scraper/project.py::fetch_pledge_minimums()` — runs once
+  per cron, batched 25 slugs/request, USD-forced via cookie.
+- Stored at `data/projects.json[].min_pledge_usd` as a USD float.
+- Displayed as **起步价 \$N** with N formatted by `fmt_usd()`.
+- Coverage: ~60% on first scrape (live + ended have rewards; many
+  prelaunches don't yet have pledge tiers configured). Falls back to
+  empty / hidden gracefully — no UI breakage when missing.
 
 ---
 
@@ -171,6 +183,20 @@ If a new surface is added, fill in this row before merging.
 | `site/social/latest/slide-*.png` | generated | `scraper/social.py` cron |
 | `site/sitemap.xml` | generated | `scraper/sitemap.py` cron |
 | `reports/*.md`, `reports/latest.md` | generated | `scraper/report.py` cron |
+| `site/social/<date>/*.png`  | generated PNG | `scraper/social.py` cron |
+| `site/social/latest/*.png` | generated PNG | `scraper/social.py` cron |
+| `data/highlights_zh.json` | manual + future LLM | human (24 projects covered as of 2026-04-26) |
+
+### 6.1 Retention / cleanup policy
+
+Daily artifacts accumulate ~5MB/day. `scraper/cleanup.py` prunes:
+
+- `site/social/<date>/` — older than **30 days** (keeps recent visual archive)
+- `site/editions/<date>.html` / `.pdf` — older than **60 days**
+- `data/history/<ts>.json` — older than **90 days** (powers Δ calculations)
+- `reports/<date>.md` — older than **365 days** (small, low cost)
+
+`latest.*` files are never pruned.
 
 ---
 

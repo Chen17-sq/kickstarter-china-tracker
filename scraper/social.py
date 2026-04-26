@@ -58,13 +58,10 @@ N600 = "#525252"
 N700 = "#404040"
 MUTED = "#E5E5E0"
 
-EPOCH = dt.datetime(2026, 4, 25, tzinfo=dt.timezone.utc)
+from ._common import edition_number  # noqa: E402
+
 SUBSCRIBE_URL = "chen17-sq.github.io/kickstarter-china-tracker/subscribe.html"
 PAGES_URL = "chen17-sq.github.io/kickstarter-china-tracker"
-
-
-def edition_number() -> int:
-    return max(1, (dt.datetime.now(dt.timezone.utc) - EPOCH).days + 1)
 
 
 def fmt_usd(n) -> str:
@@ -289,26 +286,6 @@ def _extract_highlights(p: dict, *, max_n: int = 4) -> list[str]:
     return [_truncate(s, 38) for s in parts[:max_n]]
 
 
-def _hero_image_block(image_url: str | None) -> str:
-    """Top product image — full width, fixed height, grayscale Newsprint look."""
-    if not image_url:
-        # Placeholder: dot pattern (matches Newsprint paper)
-        return f"""
-        <div style="height:380px;background:{MUTED};display:flex;align-items:center;
-                    justify-content:center;font-family:{PAPER};color:{N400};
-                    background-image:radial-gradient(#000 1px, transparent 1px);
-                    background-size:14px 14px;background-position:0 0">
-          <span class="serif" style="font-size:64px;color:{N400};font-style:italic">No image</span>
-        </div>"""
-    return f"""
-    <div style="height:380px;overflow:hidden;background:#000;
-                border-bottom:4px solid {INK}">
-      <img src="{_esc(image_url)}"
-           style="width:100%;height:100%;object-fit:cover;display:block;
-                  "
-           alt=""/>
-    </div>"""
-
 
 # ── Slides 04 / 06 · Track TOP 3 (3-up product detail) ─────────
 def _detail_row(rank: int, p: dict, *, kind: str, hl_map: dict) -> str:
@@ -378,6 +355,7 @@ def _detail_row(rank: int, p: dict, *, kind: str, hl_map: dict) -> str:
                color:{N500};letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px">
             {star}{brand} &nbsp;·&nbsp; {country}
           </div>
+          {f'<div style="font-family:Inter,sans-serif;font-size:11px;font-weight:700;color:{INK};letter-spacing:.04em;margin-bottom:8px">起步价 <span style="color:{RED}">{fmt_usd(p.get("min_pledge_usd"))}</span></div>' if p.get("min_pledge_usd") else ""}
           <h3 style="font-family:'Playfair Display',serif;font-size:24px;font-weight:900;
               line-height:1.15;letter-spacing:-.5px;color:{INK};margin:0 0 6px">{title}</h3>
           <div style="font-family:'Lora','Songti SC',serif;font-style:italic;font-size:14px;

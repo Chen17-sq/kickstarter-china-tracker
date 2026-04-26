@@ -39,13 +39,7 @@ from .momentum import (
 
 RESEND_API_URL = "https://api.resend.com/emails"
 
-# Project birthday — same as banner.py
-EPOCH = dt.datetime(2026, 4, 25, tzinfo=dt.timezone.utc)
-
-
-def edition_number() -> int:
-    days = (dt.datetime.now(dt.timezone.utc) - EPOCH).days + 1
-    return max(1, days)
+from ._common import edition_number  # noqa: E402  shared edition number
 
 
 # ── Newsprint design tokens (mirror site CSS) ────────────────────
@@ -122,6 +116,16 @@ def _detail_card(p: dict, *, kind: str, hl_map: dict, rank: int) -> str:
         big_label = f"{fmt_int(p.get('backers'))} BACKERS"
         big_color = INK
 
+    # Price line — render right after the brand·country row when present
+    price_line = ""
+    if p.get("min_pledge_usd"):
+        price_line = (
+            f'<div style="font-family:{MONO};font-size:12px;font-weight:700;color:{INK};'
+            f'letter-spacing:.04em;margin-bottom:8px">'
+            f'起步价 · <span style="color:{RED}">{fmt_usd(p.get("min_pledge_usd"))}</span>'
+            f'</div>'
+        )
+
     img_block = (
         f'<img src="{image_url}" width="240" height="180" '
         f'style="display:block;width:240px;height:180px;object-fit:contain;'
@@ -146,6 +150,7 @@ def _detail_card(p: dict, *, kind: str, hl_map: dict, rank: int) -> str:
           <div style="font-family:{MONO};font-size:10px;font-weight:700;color:{N500};
                letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px">
             {star}{brand} &nbsp;·&nbsp; {country}</div>
+          {price_line}
           <a href="{url}" style="text-decoration:none;color:{INK};
              font-family:{SERIF};font-size:18px;font-weight:700;line-height:1.2;
              letter-spacing:-.3px;display:block">{title}</a>

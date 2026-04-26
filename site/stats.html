@@ -419,7 +419,8 @@ function storyHtml(p, i) {
   const blurb = escapeHtml(p.blurb_zh || p.blurb || "");
   const brand = escapeHtml(p.matched_brand_zh || p.matched_brand || p.creator || "");
   const country = escapeHtml(p.country || "");
-  const meta = [brand, country].filter(Boolean).join(" · ");
+  const price = p.min_pledge_usd ? `起步价 ${fmtUSD(p.min_pledge_usd)}` : "";
+  const meta = [brand, country, price].filter(Boolean).join(" · ");
   return `<div class="story">
     <span class="rank">${String(i + 1).padStart(2, "0")}</span>
     <div class="body">
@@ -472,7 +473,8 @@ function storyHtmlPre(p, i) {
   const blurb = escapeHtml(p.blurb_zh || p.blurb || "");
   const brand = escapeHtml(p.matched_brand_zh || p.matched_brand || p.creator || "");
   const country = escapeHtml(p.country || "");
-  const meta = [brand, country].filter(Boolean).join(" · ");
+  const price = p.min_pledge_usd ? `起步价 ${fmtUSD(p.min_pledge_usd)}` : "";
+  const meta = [brand, country, price].filter(Boolean).join(" · ");
   return `<div class="story">
     <span class="rank">${String(i + 1).padStart(2, "0")}</span>
     <div class="body">

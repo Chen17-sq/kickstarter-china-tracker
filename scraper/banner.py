@@ -21,20 +21,11 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 PROJECTS = REPO_ROOT / "data" / "projects.json"
 ASSETS = REPO_ROOT / "assets"
 
-PAPER = "#F9F9F7"
-INK = "#111111"
-RED = "#CC0000"
-N400 = "#A3A3A3"
-N500 = "#737373"
-N700 = "#404040"
-
-# Project birthday — used to compute the daily edition number
-EPOCH = dt.datetime(2026, 4, 25, tzinfo=dt.timezone.utc)
-
-
-def edition_number() -> int:
-    days = (dt.datetime.now(dt.timezone.utc) - EPOCH).days + 1
-    return max(1, days)
+# Tokens + edition_number live in scraper/_common.py — single source of truth.
+# See docs/DESIGN_RULES.md.
+from ._common import (  # noqa: E402
+    PAPER, INK, RED, N400, N500, N700, edition_number,
+)
 
 
 def fmt_usd_short(n: float) -> str:

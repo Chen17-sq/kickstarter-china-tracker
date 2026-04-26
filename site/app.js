@@ -260,7 +260,8 @@ function rowHtml(d) {
   const cpwStr = (cpw && (d.status === "live" || d.status === "successful"))
     ? `${fmtUSD(cpw)}/W` : "";
   const projStr = proj ? `Proj. ${fmtUSD(proj)}` : "";
-  const meta = [tl, company, loc, cat, cpwStr, projStr].filter(Boolean).join(" · ");
+  const priceStr = d.min_pledge_usd ? `起步价 ${fmtUSD(d.min_pledge_usd)}` : "";
+  const meta = [tl, company, loc, cat, priceStr, cpwStr, projStr].filter(Boolean).join(" · ");
   const b = blurbInfo(d);
   const blurbHtml = b.text
     ? `<div class="cell-blurb${b.fallback ? " is-fallback" : ""}">${escapeHtml(b.text)}</div>`

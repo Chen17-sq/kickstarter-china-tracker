@@ -29,13 +29,14 @@ from .classify import classify
 from .diff import diff_snapshots, changes_to_markdown
 from .translate import fill_missing as translate_fill_missing
 from .report import make_report, REPORTS
-from .project import fetch_watches_counts, slug_from_pathname
+from .project import fetch_watches_counts, fetch_pledge_minimums, slug_from_pathname
 from .banner import write_banner
 from .momentum import compute_deltas
 from .email_notify import build_html as build_email_html, write_archive as write_email_archive
 from .sitemap import write_sitemap
 from .pdf import render_today as render_pdf_today
 from .social import generate_carousel
+from .cleanup import prune_archives
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA = REPO_ROOT / "data"
@@ -91,7 +92,8 @@ def load_blurbs_zh() -> dict[str, str]:
 def build_row(hit: DiscoverHit, *, followers: int | None,
               confidence: str, reason: str,
               matched_brand: str | None, matched_brand_zh: str | None,
-              blurb_zh: str | None) -> dict:
+              blurb_zh: str | None,
+              min_pledge_usd: float | None = None) -> dict:
     status = normalize_status(hit.state)
     return {
         "pathname": hit.pathname,
@@ -114,6 +116,7 @@ def build_row(hit: DiscoverHit, *, followers: int | None,
         "pledged_usd": hit.pledged_usd,
         "goal_usd": hit.goal_usd,
         "percent_funded": hit.percent_funded,
+        "min_pledge_usd": min_pledge_usd,
         "deadline": hit.deadline,
         "launched_at": hit.launched_at,
         "created_at": hit.created_at,
@@ -148,11 +151,17 @@ def run() -> int:
         if cls.confidence in ("高", "中"):
             classified_paths.append((path, hit, cls))
 
-    print(f"  fetching watchesCount via GraphQL for {len(classified_paths)} projects ...")
     slugs = [slug_from_pathname(path) for path, _, _ in classified_paths]
+    print(f"  fetching watchesCount via GraphQL for {len(slugs)} projects ...")
     watches = fetch_watches_counts(slugs)
     n_with = sum(1 for v in watches.values() if v is not None)
     print(f"  got watchesCount for {n_with}/{len(slugs)}")
+
+    # Pledge tier minimums (起步价) — separate query, smaller chunks
+    print(f"  fetching minimum pledge tiers via GraphQL ...")
+    pledge_mins = fetch_pledge_minimums(slugs)
+    n_pledge = sum(1 for v in pledge_mins.values() if v is not None)
+    print(f"  got pledge minimum for {n_pledge}/{len(slugs)}")
 
     rows: list[dict] = []
     for path, hit, cls in classified_paths:
@@ -165,6 +174,7 @@ def run() -> int:
             matched_brand=cls.matched_brand,
             matched_brand_zh=cls.matched_brand_zh,
             blurb_zh=blurbs_zh.get(path),
+            min_pledge_usd=pledge_mins.get(slug),
         ))
     matched = sum(1 for r in rows if r.get("blurb_zh"))
     print(f"  classified {len(rows)} as China-background ({matched} with curated zh blurb)")
@@ -265,6 +275,16 @@ def run() -> int:
             print(f"  generated {len(slides)} carousel slides → site/social/latest/")
     except Exception as e:
         print(f"  carousel skipped: {e}")
+
+    # Prune dated archives older than retention thresholds (keeps repo
+    # cloneable as the daily PNG/PDF/history archives accumulate).
+    try:
+        counts = prune_archives()
+        n = sum(counts.values())
+        if n > 0:
+            print(f"  cleanup: pruned {n} stale dated artifact(s)")
+    except Exception as e:
+        print(f"  cleanup skipped: {e}")
 
     # Generate today's Markdown report (compares against snaps[-2])
     try:
