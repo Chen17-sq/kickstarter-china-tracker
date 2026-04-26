@@ -29,6 +29,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Install Chromium for PDF render
+        run: python -m playwright install --with-deps chromium
+
       - name: Run scraper
         env:
           # If the secret is unset, scraper.translate logs a warning and skips

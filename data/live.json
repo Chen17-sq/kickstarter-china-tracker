@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-26T10:58:57Z",
-  "started_at": "2026-04-26T10:58:02Z",
+  "generated_at": "2026-04-26T11:03:52Z",
+  "started_at": "2026-04-26T11:02:56Z",
   "total_candidates": 297,
   "kept": 143,
   "projects": [
@@ -165,7 +165,7 @@
       "china_reason": "brand whitelist: XGIMI",
       "matched_brand": "XGIMI",
       "matched_brand_zh": "极米",
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -265,8 +265,8 @@
       "matched_brand": "Ultimea",
       "matched_brand_zh": "Ultimea",
       "delta_followers": 0,
-      "delta_backers": 1,
-      "delta_pledged_usd": 999.0
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/bluetti/fridgepower",
@@ -297,7 +297,7 @@
       "china_reason": "brand name in title: BLUETTI",
       "matched_brand": "BLUETTI",
       "matched_brand_zh": "BLUETTI",
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -429,7 +429,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -481,7 +481,7 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": true,
-      "followers": 2015,
+      "followers": 2016,
       "backers": 1219,
       "pledged_usd": "396478.595216",
       "goal_usd": 5000.7078,
@@ -529,8 +529,8 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 1,
-      "delta_pledged_usd": 1409.0366313700215
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/cozytime/cozytime-lumo-first-ai-infrared-indoor-grill-smoke-free",
@@ -613,7 +613,7 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": false,
-      "followers": 2061,
+      "followers": 2062,
       "backers": 593,
       "pledged_usd": "188457.02370356",
       "goal_usd": 3827.6292,
@@ -1155,7 +1155,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1353,7 +1353,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1519,8 +1519,8 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 1,
-      "delta_pledged_usd": 37.0
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     }
   ]
 }

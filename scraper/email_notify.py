@@ -269,13 +269,18 @@ def build_html(curr: dict) -> tuple[str, str]:
       <!-- Edition strip -->
       <div style="background:{INK};color:{PAPER};padding:10px 28px;
                   font-family:{SANS};font-size:10px;font-weight:700;
-                  letter-spacing:2.5px;display:flex;justify-content:space-between">
+                  letter-spacing:2.5px;display:flex;justify-content:space-between;
+                  align-items:center;flex-wrap:wrap;gap:8px">
         <span>
           <span style="display:inline-block;width:6px;height:6px;background:{RED};
                        margin-right:8px;vertical-align:1px"></span>
           DAILY · LIVE EDITION · {today_long}
         </span>
-        <span style="font-family:{MONO};font-weight:500">VOL. 1 · NO. {edition}</span>
+        <span style="font-family:{MONO};font-weight:500">VOL. 1 · NO. {edition} ·
+          <a href="https://chen17-sq.github.io/kickstarter-china-tracker/editions/{today}.pdf"
+             style="color:{PAPER};text-decoration:none;
+             border-bottom:1px solid {RED};padding-bottom:1px;margin-left:6px">↓ PDF</a>
+        </span>
       </div>
 
       <!-- Masthead -->
