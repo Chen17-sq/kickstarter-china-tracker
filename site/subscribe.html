@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Subscribe · Kickstarter China Tracker</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Subscribe to the Kickstarter China Tracker daily newsletter.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F9F9F7;
+  --ink:#111111;
+  --rule:#111111;
+  --muted:#E5E5E0;
+  --accent:#CC0000;
+  --n100:#F5F5F5;
+  --n400:#A3A3A3;
+  --n500:#737373;
+  --n600:#525252;
+  --n700:#404040;
+}
+*{box-sizing:border-box;border-radius:0!important}
+html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);
+  font-family:'Lora',Georgia,'Songti SC',serif;font-size:15px;line-height:1.625;
+  -webkit-font-smoothing:antialiased}
+body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Cpath fill='%23111111' fill-opacity='0.05' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'/%3E%3C/svg%3E")}
+.wrap{max-width:720px;margin:0 auto;background:var(--paper);
+  border-left:1px solid var(--ink);border-right:1px solid var(--ink);min-height:100vh}
+
+/* ── Edition strip ───────────────────────────────────────────── */
+.edition-strip{display:flex;align-items:center;justify-content:space-between;
+  padding:8px 28px;background:var(--ink);color:var(--paper);
+  font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase}
+.edition-strip .live-dot{display:inline-block;width:6px;height:6px;background:var(--accent);
+  margin-right:8px;vertical-align:1px}
+
+/* ── Masthead ───────────────────────────────────────────────── */
+.mast{padding:36px 28px 24px;border-bottom:4px solid var(--ink);text-align:center}
+.mast .nameplate{font-family:'Playfair Display',serif;font-weight:900;
+  font-size:48px;line-height:.95;letter-spacing:-1.5px;color:var(--ink);margin:0}
+.mast .tag{display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  padding:8px 0;margin-top:14px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink);font-weight:500}
+.mast .tag .center{flex:1;text-align:center;font-style:italic;letter-spacing:0;
+  font-family:'Playfair Display',serif;font-size:13px;font-weight:400;text-transform:none}
+
+/* ── Article body ────────────────────────────────────────────── */
+.article{padding:36px 28px}
+.article .kicker{font-family:'JetBrains Mono',monospace;font-size:11px;
+  font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:8px}
+.article h1{font-family:'Playfair Display',serif;font-weight:900;font-size:48px;
+  line-height:.95;letter-spacing:-1.5px;color:var(--ink);margin:0 0 22px}
+.article .lede{position:relative}
+.article .dropcap{float:left;font-family:'Playfair Display',serif;font-weight:900;
+  font-size:64px;line-height:.85;color:var(--accent);margin:6px 12px 0 0}
+.article p{margin:0 0 16px;font-family:'Lora',serif;font-size:15.5px;line-height:1.7;
+  color:var(--ink);text-align:justify}
+.article .small{font-family:'Inter',sans-serif;font-size:13px;color:var(--n600);
+  letter-spacing:.02em;line-height:1.55;text-align:left}
+.article ul{padding-left:20px;margin:8px 0 16px}
+.article ul li{margin:4px 0}
+
+/* ── Form ───────────────────────────────────────────────────── */
+.form-card{margin-top:24px;padding:24px 22px;border:4px solid var(--ink);
+  background:var(--paper);position:relative}
+.form-card .fc-label{font-family:'Inter',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--n500);
+  position:absolute;top:-9px;left:14px;background:var(--paper);padding:0 8px}
+.form-card label{display:block;margin:14px 0 4px;
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+.form-card label:first-of-type{margin-top:6px}
+.form-card input[type="email"],.form-card input[type="text"]{
+  width:100%;border:none;border-bottom:2px solid var(--ink);
+  background:transparent;padding:8px 4px;font-family:'JetBrains Mono',monospace;
+  font-size:14px;color:var(--ink);outline:none;transition:background .12s}
+.form-card input:focus{background:var(--n100)}
+.form-card input::placeholder{color:var(--n400)}
+.form-card .btn{margin-top:24px;width:100%;padding:14px 24px;
+  background:var(--ink);color:var(--paper);border:1px solid var(--ink);
+  font-family:'Inter',sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;cursor:pointer;
+  transition:all .12s}
+.form-card .btn:hover{background:var(--paper);color:var(--ink)}
+.form-card .btn:active{transform:translate(2px,2px)}
+.form-card .small-print{margin-top:16px;font-family:'Lora',serif;font-style:italic;
+  font-size:12px;color:var(--n500);text-align:center}
+
+.success{display:none;margin-top:24px;padding:24px 22px;
+  border:4px solid var(--accent);background:var(--paper)}
+.success.is-on{display:block}
+.success h2{margin:0 0 8px;font-family:'Playfair Display',serif;font-weight:900;
+  font-size:24px;color:var(--accent)}
+.success p{margin:0;font-family:'Lora',serif;font-size:14px;color:var(--ink)}
+
+/* ── Ornament + footer ──────────────────────────────────────── */
+.ornament{padding:36px 28px;text-align:center;
+  font-family:'Playfair Display',serif;font-size:22px;color:var(--n400);
+  letter-spacing:1em;border-bottom:1px solid var(--ink)}
+.foot{padding:24px 28px 36px;border-top:4px solid var(--ink);
+  font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--n500);
+  letter-spacing:.1em;text-transform:uppercase;text-align:center}
+.foot a{color:var(--ink);text-decoration:none;
+  border-bottom:2px solid var(--accent);padding-bottom:1px;font-weight:700}
+.foot a:hover{color:var(--accent)}
+.foot .credo{margin-top:16px;font-family:'Playfair Display',serif;font-style:italic;
+  font-size:14px;color:var(--n500);letter-spacing:0;text-transform:none}
+
+@media (max-width:680px){
+  .wrap{border-left:0;border-right:0}
+  .mast{padding:24px 18px 18px}
+  .mast .nameplate{font-size:34px}
+  .mast .tag{flex-direction:column;gap:4px;padding:10px 0}
+  .article{padding:28px 20px}
+  .article h1{font-size:32px}
+  .article .dropcap{font-size:48px}
+  .form-card{padding:20px 16px}
+  .ornament{padding:24px 18px;letter-spacing:.5em}
+  .foot{padding:20px 18px 28px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="edition-strip">
+    <span><span class="live-dot"></span>SUBSCRIBE · DAILY NEWSPAPER</span>
+    <span style="font-family:'JetBrains Mono',monospace;letter-spacing:.18em">VOL. 1</span>
+  </div>
+
+  <header class="mast">
+    <h1 class="nameplate">Kickstarter China Tracker</h1>
+    <div class="tag">
+      <span style="padding:0 14px">Beijing Edition</span>
+      <span class="center">All The Crowd-Funded Hardware Fit To Print</span>
+      <span style="padding:0 14px">Daily · 09:00 BJT</span>
+    </div>
+  </header>
+
+  <article class="article">
+    <div class="kicker">SUBSCRIBE · 订阅每日邮件</div>
+    <h1>每日清晨，一份关于 Kickstarter 中国硬件的报纸送到你的邮箱。</h1>
+
+    <div class="lede">
+      <span class="dropcap">每</span>
+      <p>天北京时间早上 09:00（UTC 01:00），我们会自动抓取 Kickstarter 上中国背景的消费硬件项目，按 prelaunch / live / 已结束三个阶段编排成一份带头版、Top Movers、深度数据的日报，发到你的邮箱。免费，不广告，可随时取消。</p>
+    </div>
+
+    <p class="small">每份报纸包含：</p>
+    <ul class="small">
+      <li><strong>头版概览</strong> — 当日追踪总数、未发布、在筹中、已成功、KS 精选</li>
+      <li><strong>Top Movers</strong> — 24 小时内涨幅最大的 USD / Watcher / Backer 项目</li>
+      <li><strong>Pre-launch Top 5</strong> — 按关注数排序，KS 编辑精选优先</li>
+      <li><strong>Live Top 5</strong> — 按已筹排序，含 \$/watcher 转化率与预测总额</li>
+    </ul>
+
+    <form class="form-card" id="subForm" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+      <span class="fc-label">订阅 · Subscribe</span>
+      <label for="email">邮箱 · Email</label>
+      <input id="email" type="email" name="email" required placeholder="your@email.com" autocomplete="email">
+      <label for="nickname">昵称 · How should we greet you?</label>
+      <input id="nickname" type="text" name="nickname" placeholder="陈先生 / Chen / Aldrich" maxlength="40">
+      <input type="hidden" name="_subject" value="[KS Tracker] New subscriber">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <button class="btn" type="submit" id="subBtn">订阅 / Subscribe →</button>
+      <div class="small-print">免费 · 每日 09:00 北京时间发送 · 你的邮箱不会被分享给第三方</div>
+    </form>
+
+    <div class="success" id="success">
+      <h2>✦ 订阅成功 · Welcome aboard.</h2>
+      <p>我们收到了你的请求。下一份头版会在明天早上 09:00 北京时间送到你的邮箱。在此期间，<a href="./" style="color:var(--accent);font-weight:700">先看一眼今日头版</a>。</p>
+    </div>
+
+  </article>
+
+  <div class="ornament">&#x2727; &#x2727; &#x2727;</div>
+
+  <footer class="foot">
+    <div>
+      <a href="./">完整看板 / Front page</a> &nbsp;·&nbsp;
+      <a href="./stats.html">公开数据 / Stats</a> &nbsp;·&nbsp;
+      <a href="https://github.com/Chen17-sq/kickstarter-china-tracker">GitHub</a>
+    </div>
+    <div class="credo">All the news that's fit to print, every morning at 09:00 Beijing.</div>
+  </footer>
+
+</div>
+<script>
+// Formspree returns 200 on success. We intercept to show the success card
+// instead of redirecting to formspree.io's own thank-you page.
+document.getElementById("subForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById("subBtn");
+  btn.disabled = true;
+  btn.textContent = "提交中…";
+  const data = new FormData(form);
+  try {
+    const r = await fetch(form.action, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: data,
+    });
+    if (r.ok) {
+      form.style.display = "none";
+      document.getElementById("success").classList.add("is-on");
+    } else {
+      btn.disabled = false;
+      btn.textContent = "重试 / Try again";
+      alert("提交失败，请稍后再试。");
+    }
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = "重试 / Try again";
+    alert("Network error: " + err.message);
+  }
+});
+</script>
+</body>
+</html>

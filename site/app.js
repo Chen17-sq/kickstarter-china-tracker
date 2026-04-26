@@ -334,6 +334,102 @@ function renderTable(rows) {
   });
 }
 
+// ─── Today's Front Page hero ─────────────────────────────────
+function renderHero() {
+  if (!DATA.length) {
+    document.getElementById("hero").hidden = true;
+    return;
+  }
+  // Top movers by USD delta (live + prelaunch combined)
+  const movers = DATA
+    .filter((p) => (p.delta_pledged_usd || 0) > 0 || (p.delta_followers || 0) > 0)
+    .sort((a, b) => {
+      const da = Number(a.delta_pledged_usd || 0);
+      const db = Number(b.delta_pledged_usd || 0);
+      if (da !== db) return db - da;
+      return Number(b.delta_followers || 0) - Number(a.delta_followers || 0);
+    })
+    .slice(0, 3);
+
+  const prelaunch = DATA
+    .filter((p) => p.status === "prelaunch")
+    .sort((a, b) => {
+      if (!!b.project_we_love !== !!a.project_we_love) {
+        return (b.project_we_love ? 1 : 0) - (a.project_we_love ? 1 : 0);
+      }
+      return Number(b.followers || 0) - Number(a.followers || 0);
+    })
+    .slice(0, 3);
+
+  const live = DATA
+    .filter((p) => p.status === "live")
+    .sort((a, b) => Number(b.pledged_usd || 0) - Number(a.pledged_usd || 0))
+    .slice(0, 3);
+
+  const langZh = LANG === "zh";
+  document.getElementById("heroLabel").textContent =
+    langZh ? "今日头版 · 自动生成" : "TODAY'S FRONT PAGE · AUTO-GENERATED";
+  document.getElementById("heroTitle").textContent =
+    langZh ? "今日头版" : "Today's Front Page";
+  document.getElementById("heroMeta").textContent =
+    GENERATED_AT ? GENERATED_AT.replace("T", " ").slice(0, 16) + " UTC" : "—";
+  document.getElementById("heroMoversLabel").textContent =
+    langZh ? "🔥 Top Movers · 24小时变化" : "🔥 Top Movers · Δ 24H";
+  document.getElementById("heroPreLabel").textContent =
+    langZh ? "⏳ 未发布 · 关注数 Top 3" : "⏳ Prelaunch · Top Watchers";
+  document.getElementById("heroLiveLabel").textContent =
+    langZh ? "🔴 在筹中 · 已筹 Top 3" : "🔴 Live · Top USD Raised";
+
+  function story(rank, p, opts) {
+    const url = escapeHtml(p.url || "#");
+    const title = escapeHtml(p.title || "(untitled)");
+    const star = p.project_we_love
+      ? '<span class="pwl" style="font-size:13px">✦</span> '
+      : "";
+    const blurb = escapeHtml(p.blurb_zh || p.blurb || "");
+    const blurbHtml = blurb
+      ? `<div class="blurb">${blurb}</div>`
+      : "";
+    let valHtml = "";
+    if (opts.kind === "mover") {
+      const dp = Number(p.delta_pledged_usd || 0);
+      const df = Number(p.delta_followers || 0);
+      if (dp > 0) {
+        valHtml = `<div class="v delta">+${escapeHtml(fmtUSD(dp))}</div><div class="l">USD Δ</div>`;
+      } else if (df > 0) {
+        valHtml = `<div class="v delta">+${df.toLocaleString()}</div><div class="l">WATCH Δ</div>`;
+      }
+    } else if (opts.kind === "prelaunch") {
+      valHtml = `<div class="v">${fmtNum(p.followers)}</div><div class="l">${langZh ? "关注" : "WATCH"}</div>`;
+    } else if (opts.kind === "live") {
+      valHtml = `<div class="v">${fmtUSD(p.pledged_usd)}</div><div class="l">${fmtNum(p.backers)} ${langZh ? "支持" : "BACK"}</div>`;
+    }
+    return `<div class="hero-story">
+      <span class="rank">${String(rank).padStart(2, "0")}</span>
+      <div class="body">
+        <a href="${url}" target="_blank" rel="noopener">${star}${title}</a>
+        ${blurbHtml}
+      </div>
+      <div class="right">${valHtml}</div>
+    </div>`;
+  }
+
+  const moversHtml = movers.length
+    ? movers.map((p, i) => story(i + 1, p, { kind: "mover" })).join("")
+    : `<div class="hero-empty">${langZh ? "等待第一份对比快照…" : "awaiting first delta…"}</div>`;
+  const preHtml = prelaunch.length
+    ? prelaunch.map((p, i) => story(i + 1, p, { kind: "prelaunch" })).join("")
+    : `<div class="hero-empty">${langZh ? "—" : "—"}</div>`;
+  const liveHtml = live.length
+    ? live.map((p, i) => story(i + 1, p, { kind: "live" })).join("")
+    : `<div class="hero-empty">${langZh ? "—" : "—"}</div>`;
+
+  document.getElementById("heroMovers").innerHTML = moversHtml;
+  document.getElementById("heroPre").innerHTML = preHtml;
+  document.getElementById("heroLive").innerHTML = liveHtml;
+  document.getElementById("hero").hidden = false;
+}
+
 function renderKpis() {
   const counts = { prelaunch: 0, live: 0, successful: 0, failed: 0 };
   let pwl = 0, high = 0, totalUsd = 0;
@@ -459,7 +555,7 @@ function setLang(lang) {
   if (lang === LANG) return;
   LANG = lang;
   localStorage.setItem(LANG_KEY, LANG);
-  applyChrome(); buildChips(); renderKpis(); render();
+  applyChrome(); buildChips(); renderHero(); renderKpis(); render();
 }
 
 // ─── Boot ──────────────────────────────────────────────────────
@@ -493,7 +589,7 @@ function boot() {
     FILTERS.pwl = e.target.checked;
     render();
   });
-  renderKpis(); render();
+  renderHero(); renderKpis(); render();
 }
 
 load();

@@ -1,153 +1,89 @@
-![Kickstarter China Tracker — Vol. 1 · Beijing Edition](assets/banner.svg)
+![Kickstarter China Tracker — Vol. 1, Beijing Edition](assets/banner.svg)
 
-> ***All The Crowd-Funded Hardware Fit To Print.***
-> 一份每日发行的报纸 —— 追踪 Kickstarter 上中国背景的消费硬件项目，覆盖 *prelaunch* · *live* · *已结束*。
-> Printed every morning at 09:00 Beijing (01:00 UTC) via GitHub Actions.
+<p align="center">
+  <strong><em>All The Crowd-Funded Hardware Fit To Print.</em></strong><br>
+  一份每日发行的报纸 — Kickstarter 上中国背景消费硬件项目的每日追踪。<br>
+  Printed every morning at 09:00 Beijing via GitHub Actions.
+</p>
 
-**[→ 完整看板](https://chen17-sq.github.io/kickstarter-china-tracker/)** · **[今日头版](reports/latest.md)** · **[原始 JSON](data/projects.json)** · **[订阅每日邮件](#deploy)**
+<p align="center">
+  <a href="https://chen17-sq.github.io/kickstarter-china-tracker/"><img alt="完整看板 · Full Paper" src="https://img.shields.io/badge/%E5%AE%8C%E6%95%B4%E7%9C%8B%E6%9D%BF-Full%20Paper-111111?style=for-the-badge&labelColor=CC0000"></a>
+  <a href="https://chen17-sq.github.io/kickstarter-china-tracker/subscribe.html"><img alt="订阅每日邮件" src="https://img.shields.io/badge/%E8%AE%A2%E9%98%85%E6%97%A5%E6%8A%A5-Subscribe-111111?style=for-the-badge"></a>
+  <a href="reports/latest.md"><img alt="今日头版" src="https://img.shields.io/badge/%E4%BB%8A%E6%97%A5%E5%A4%B4%E7%89%88-Today%27s%20Edition-111111?style=for-the-badge"></a>
+</p>
 
 ![Inside this issue — top prelaunch + top live](assets/snapshot.svg)
 
 ---
 
-## 它是什么
+<details>
+<summary><b>Inside this issue · 怎么读这份报纸</b></summary>
 
-每天一次，cron 通过 KS Discover 的内部 JSON API 抓全站的中国地区 + 全球 Tech / Design 三个 seed 列表，按"中国背景"规则筛出 ~140 个项目，分类为 prelaunch / live / 已结束。每个项目带：
+<br>
 
-- 公司 / 创作者（中英双语，有中文名的优先显示中文）
-- 产品一句话介绍（手工 + LLM 自动翻译）
-- 实时已筹金额、Backers、完成率、★ KS 精选标签
-- 国家、城市、品类
-- 直达 KS 项目页的链接
+| Section | What it shows |
+| :--- | :--- |
+| **完整看板** ([Pages](https://chen17-sq.github.io/kickstarter-china-tracker/)) | 142 项可筛选 / 排序的项目大表 + 今日头版 hero |
+| **今日头版** (`reports/latest.md`) | 当日 KPI · Top Movers · Top Prelaunch · Top Live · Funded |
+| **JSON 数据** (`data/projects.json`) | 完整结构化数据，可被任意第三方仪表盘消费 |
+| **历史快照** (`data/history/`) | 每日 cron 一份时间戳快照，用于算 Δ |
+| **品牌库** (`brands/china_brands.yaml`) | 可 PR 维护的品牌白名单 |
+| **中文一句话** (`data/blurbs_zh.json`) | 100+ 人工翻译 + LLM 自动补齐 |
 
-数据通过 GitHub Pages 的静态前端展示（Editorial / Swiss 设计），同时落到 [`data/projects.json`](data/projects.json)，并生成一份 [`reports/YYYY-MM-DD.md`](reports/) 的 Markdown 日报追踪状态变化。
+</details>
 
----
+<details>
+<summary><b>How it works · 流水线</b></summary>
 
-## 当前规模
+<br>
 
-| 抓取节奏 | 覆盖 seed | 中国背景项目 | 中文一句话覆盖 | KS 精选 |
-| ---: | ---: | ---: | ---: | ---: |
-| 每日 1 次 | 8 个 Discover 列表 | ~138 个 | 100 / 138（人工 + LLM 自动） | ~30 |
+1. **`scraper/discover.py`** — `curl_cffi` + Chrome/Safari TLS 指纹绕 Cloudflare，访问 `kickstarter.com/discover/advanced?...&format=json`
+2. **`scraper/classify.py`** — 三层规则判定中国背景：（a）品牌白名单（覆盖在美国注册 KS 账号但实际中国团队的品牌）；（b）KS location 字段；（c）人工标注的 medium-confidence
+3. **`scraper/project.py`** — KS GraphQL `/graph` 端点拉 `watchesCount`（pre-launch follower 数）
+4. **`scraper/translate.py`** — 用 Claude Haiku 4.5 自动补齐缺的中文一句话（人工版本永不被覆盖）
+5. **`scraper/momentum.py`** — 对比上一份 history 快照，算 Δ followers / Δ backers / Δ pledged_usd
+6. **`scraper/banner.py`** — 生成三张 SVG（masthead / today's snapshot / OG card），全部按 Newsprint 设计每日刷新
+7. **`scraper/email_notify.py`** — 通过 Resend 发 HTML 邮件到订阅者
+8. **`scraper/report.py`** — Markdown 日报落到 `reports/YYYY-MM-DD.md` 和 `reports/latest.md`
+9. **`scraper/run.py`** — 串以上 + 安全闸（中国分类结果 < 20 项即拒绝覆盖 `projects.json`）
+10. **`.github/workflows/scrape.yml`** — `cron 0 1 * * *` 每天触发；commit `data/`、`reports/`、`assets/`
 
-> 每次 cron 跑完会 commit 一份 `data/history/<时间戳>.json` 快照，长期沉淀做时间序列分析。
+</details>
 
----
+<details>
+<summary><b>Setup · 部署你自己的</b></summary>
 
-## 怎么工作的
-
-1. **`scraper/discover.py`** — 用 `curl_cffi` 模拟 Chrome / Safari TLS 指纹绕过 Cloudflare，访问 `kickstarter.com/discover/advanced?...&format=json`。该端点是 KS 自己 Discover 页客户端分页用的，返回完整的项目对象（包含 pledged / backers / staff_pick / location 等所有字段）。
-2. **`scraper/classify.py`** — 三层规则判定中国背景：（a）`brands/china_brands.yaml` 品牌白名单命中（覆盖在美国注册 KS 账号但实际中国团队的品牌）；（b）KS location 字段在 China / Hong Kong / Taiwan / Macau；（c）人工标注的 medium-confidence。
-3. **`scraper/translate.py`** — 对没有人工中文一句话的项目，调用 Claude Haiku 4.5 自动生成。结果写回 `data/blurbs_zh.json`，下次 cron 不再重复翻译。需要 `ANTHROPIC_API_KEY` secret，没设置就跳过。
-4. **`scraper/report.py`** — 对比当前快照和上一份历史快照，生成一份 Markdown 日报：今日新增、状态变化、Top prelaunch、Top live、最近成功。
-5. **`scraper/run.py`** — 串起以上四步 + 一道安全闸（如果分类结果 < 20 项，拒绝覆盖 `projects.json`，避免 Cloudflare 偶尔挡爬时清空数据）。
-6. **`.github/workflows/scrape.yml`** — cron `0 1 * * *` 每天触发；commit `data/`、`reports/`、`CHANGELOG.md`。
-7. **`site/`** — vanilla HTML + JS + CSS 静态前端，Inter / Inter Tight 字体，挂在 GitHub Pages 上。带中英 toggle、按状态/置信度/PWL 筛选、按已筹/Backers/完成率排序。
-
----
-
-## 仓库结构
-
-```
-.
-├── data/
-│   ├── projects.json        当前快照（前端读这个）
-│   ├── prelaunch.json       仅 prelaunch
-│   ├── live.json            仅 live
-│   ├── blurbs_zh.json       中文一句话产品描述（人工 + LLM）
-│   ├── projects-seed.json   97 条手工种子（首次 bootstrap）
-│   └── history/             每次 cron 一份时间戳快照
-├── brands/
-│   └── china_brands.yaml    品牌白名单（PR 友好）
-├── reports/
-│   └── YYYY-MM-DD.md        每日 Markdown 报告
-├── scraper/
-│   ├── http.py              curl_cffi + TLS 指纹轮换
-│   ├── discover.py          KS Discover JSON 抓取
-│   ├── classify.py          三层规则判定
-│   ├── translate.py         Claude Haiku 自动翻译
-│   ├── report.py            日报生成
-│   ├── run.py               主 pipeline
-│   ├── diff.py              snapshot diff
-│   └── notify.py            可选 Slack/Discord webhook
-├── site/                    GitHub Pages 静态站
-│   ├── index.html
-│   └── app.js
-├── .github/workflows/
-│   ├── scrape.yml           每日 cron
-│   └── deploy.yml           Pages 自动部署
-├── ARCHITECTURE.md
-└── CONTRIBUTING.md
-```
-
----
-
-## 本地跑一次
+<br>
 
 ```bash
 git clone https://github.com/Chen17-sq/kickstarter-china-tracker.git
 cd kickstarter-china-tracker
 pip install -r requirements.txt
-
-# 抓取 + 分类 + （可选）翻译 + 报告
 python -m scraper.run
-
-# 看输出
-cat data/projects.json | jq '.kept'
-ls reports/
 ```
 
-启用自动翻译（可选）：
-
-```bash
-export ANTHROPIC_API_KEY=sk-ant-...
-python -m scraper.run
-# 现在没有中文一句话的项目会被 Claude Haiku 自动翻译
-```
-
-跑前端站：
-
-```bash
-python -m http.server 8000 -d site
-# 浏览器打开 http://localhost:8000
-```
-
----
-
-<a id="deploy"></a>
-## 部署到自己的 GitHub
-
-Fork 这个仓库后：
-
+Fork 后启用：
 1. **Settings → Actions → General**：勾上 *Read and write permissions*
 2. **Settings → Pages**：Source 选 *GitHub Actions*
-3. **Settings → Secrets**（可选，强烈推荐）：
-   - `ANTHROPIC_API_KEY` — 启用自动中文翻译
-   - `SLACK_WEBHOOK` 或 `DISCORD_WEBHOOK` — 启用大变动推送
-4. Actions 标签页手动触发一次 *scrape* → Pages 自动跟进 → 你自己的 tracker 站就活了
+3. **Settings → Secrets**（可选）：
+   - `RESEND_API_KEY` + `NOTIFY_EMAIL_TO` — 启用每日邮件
+   - `ANTHROPIC_API_KEY` — 启用中文一句话自动翻译
+
+</details>
+
+<details>
+<summary><b>Limitations · 已知限制</b></summary>
+
+<br>
+
+- **Cloudflare 概率挡爬**：`scraper/http.py` 4 次 retry + TLS 指纹轮换（safari17_0 / chrome131 / chrome120 / edge101），命中率 > 95%
+- **品牌库覆盖率**：当前 142 项目里 ~36 项命中品牌白名单，~106 项靠 KS location 字段判定。前者识别更精确
+- **Followers 字段**：从 KS GraphQL `watchesCount` 读取。对 *prelaunch* 是当前实时关注；对 *live* / *已结束* 是上线时冻结的预热基线（仍可看转化率）
+
+</details>
 
 ---
 
-## 贡献
-
-最有价值的 PR：
-
-- **扩 `brands/china_brands.yaml`**：每加一个品牌白名单条目，就能多覆盖一批用美国地址注册 KS 但实际中国团队的项目。条目结构：`{ brand: "极米", brand_zh: "极米", creator_slugs: ["xgimi-projector"], hq: "成都", source: "official-site" }`。
-- **改 `data/blurbs_zh.json`**：人工写的中文一句话比 LLM 自动翻译质量更高。已有 100 条人工译文，可以补也可以改。
-- **加 `medium_confidence` 条目**：发现疑似中国背景但没确认的项目，先放 medium 列表标 reason，后续人工复核。
-
-详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
-
----
-
-## 已知限制
-
-- **Cloudflare 概率挡爬**：`scraper/http.py` 已经做了 4 次 retry + TLS 指纹轮换（Safari 17 / Chrome 131 / Chrome 120 / Edge 101），命中率 > 95%。极少数情况下整次 cron 会被全挡，安全闸会拒绝覆盖 `projects.json`，下一次 cron 自然恢复。
-- **品牌库覆盖率**：当前 138 项目里 34 项命中品牌白名单，104 项靠 KS location 字段判定。前者识别更精确，后者会捕获到一些"在中国设了工作室的非中国创始人"项目。
-- **Followers 字段语义**：当前从 KS GraphQL 的 `watchesCount` 字段读取。对 *prelaunch* 项目这是当前实时关注数；对 *live* / *已结束* 项目这是上线时冻结的预热基线（仍然有用——可以看转化率），但不是项目生命周期内的实时关注变化。
-
----
-
-## License
-
-MIT — see [LICENSE](LICENSE). 数据归 Kickstarter 所有，本仓库只做聚合 + 展示，不做转售。
+<p align="center">
+  <sub>Code: <a href="LICENSE">MIT</a> · Data: belongs to <a href="https://www.kickstarter.com">Kickstarter</a> · Architecture: <a href="ARCHITECTURE.md">notes</a> · Contributing: <a href="CONTRIBUTING.md">guide</a></sub>
+</p>

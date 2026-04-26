@@ -1,11 +1,6 @@
 {
-<<<<<<< Updated upstream
-  "generated_at": "2026-04-26T05:59:11Z",
-  "started_at": "2026-04-26T05:58:23Z",
-=======
-  "generated_at": "2026-04-26T10:02:40Z",
-  "started_at": "2026-04-26T10:01:45Z",
->>>>>>> Stashed changes
+  "generated_at": "2026-04-26T10:15:13Z",
+  "started_at": "2026-04-26T10:14:15Z",
   "total_candidates": 297,
   "kept": 142,
   "projects": [
@@ -585,7 +580,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 404,
+      "followers": 405,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -599,7 +594,7 @@
       "china_reason": "KS 地址 Denver，文案/产品风格疑似中国",
       "matched_brand": "SOUSIC TECH",
       "matched_brand_zh": "SOUSIC TECH",
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -632,7 +627,7 @@
       "china_reason": "brand whitelist: Vastnaut",
       "matched_brand": "Vastnaut",
       "matched_brand_zh": "Vastnaut",
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -651,11 +646,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-<<<<<<< Updated upstream
-      "followers": 711,
-=======
       "followers": 716,
->>>>>>> Stashed changes
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -768,7 +759,7 @@
       "china_reason": "brand whitelist: PongBot",
       "matched_brand": "PongBot",
       "matched_brand_zh": "PongBot",
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -853,7 +844,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": true,
-      "followers": 921,
+      "followers": 922,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -867,7 +858,7 @@
       "china_reason": "brand whitelist: xTool / Makeblock",
       "matched_brand": "xTool / Makeblock",
       "matched_brand_zh": "童心制物",
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -886,7 +877,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 3142,
+      "followers": 3143,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -900,7 +891,7 @@
       "china_reason": "团队疑似华人，KS 地址 San Jose",
       "matched_brand": "TrantorVision (NeuroHUD)",
       "matched_brand_zh": "TrantorVision (NeuroHUD)",
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1282,7 +1273,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 24,
+      "followers": 26,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1296,7 +1287,7 @@
       "china_reason": "KS location: Kowloon, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 2,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1480,11 +1471,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-<<<<<<< Updated upstream
-      "followers": 255,
-=======
       "followers": 280,
->>>>>>> Stashed changes
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1517,11 +1504,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-<<<<<<< Updated upstream
-      "followers": 525,
-=======
       "followers": 527,
->>>>>>> Stashed changes
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1719,7 +1702,7 @@
       "status": "prelaunch",
       "raw_state": "submitted",
       "project_we_love": false,
-      "followers": 1282,
+      "followers": 1283,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1733,7 +1716,7 @@
       "china_reason": "KS location: Central, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1884,7 +1867,7 @@
       "status": "prelaunch",
       "raw_state": "started",
       "project_we_love": false,
-      "followers": 28,
+      "followers": 29,
       "backers": 0,
       "pledged_usd": null,
       "goal_usd": null,
@@ -1898,7 +1881,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     }

@@ -431,15 +431,49 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     raw_to = os.environ.get("NOTIFY_EMAIL_TO", "")
-    to = [e.strip() for e in raw_to.split(",") if e.strip()]
-    if not to:
-        print("NOTIFY_EMAIL_TO empty — no recipients, skipping")
+    to_owner = [e.strip() for e in raw_to.split(",") if e.strip()]
+
+    # Subscriber broadcast: enabled by default. Set BROADCAST=0 to disable.
+    # Each subscriber is sent the email separately so unsubscribe / bounce
+    # tracking is per-recipient. Resend sandbox will reject unverified
+    # recipients (422) — we print + continue rather than abort the run.
+    broadcast = os.environ.get("BROADCAST", "1") != "0"
+    sub_emails: list[str] = []
+    if broadcast:
+        try:
+            from .subscribers import emails as load_subscriber_emails
+            sub_emails = load_subscriber_emails()
+        except Exception as e:
+            print(f"  warn: subscribers load failed ({e}); broadcast off")
+            sub_emails = []
+
+    # Dedupe: subscribers union owner addresses.
+    seen = set(e.lower() for e in to_owner)
+    recipients = list(to_owner)
+    for s in sub_emails:
+        if s.lower() not in seen:
+            recipients.append(s)
+            seen.add(s.lower())
+
+    if not recipients:
+        print("No recipients (NOTIFY_EMAIL_TO empty + no subscribers) — skipping")
         return 0
 
     sender = (os.environ.get("NOTIFY_EMAIL_FROM") or
               "KS China Tracker <onboarding@resend.dev>")
-    post_resend(api_key, sender, to, subject, html)
-    print(f"Email sent: subject={subject!r}, to={to}, from={sender}")
+    sent = 0
+    failed = 0
+    for r in recipients:
+        try:
+            post_resend(api_key, sender, [r], subject, html)
+            sent += 1
+        except Exception as e:
+            # Most likely cause in sandbox mode: 422 'You can only send testing
+            # emails to your own email address'. Don't fail the cron — the
+            # owner email is always first in the list and almost always works.
+            print(f"  ! send to {r} failed: {e}", file=sys.stderr)
+            failed += 1
+    print(f"Email broadcast: sent={sent}, failed={failed}, from={sender}")
     return 0
 
 
