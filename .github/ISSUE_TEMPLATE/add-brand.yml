@@ -1,0 +1,40 @@
+name: 补充中国背景品牌
+description: 发现一个 Kickstarter 项目疑似中国背景但 tracker 没识别 — 提交后并入 brands/china_brands.yaml
+title: "[brand] "
+labels: ["brand-addition"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        多数遗漏项目是因为创始团队是中国背景但 KS 账号注册在美国 / 加拿大等地，靠 KS location 字段无法判定。把它们手工录入到 `brands/china_brands.yaml` 后，下一次 cron 就会自动捕获。
+  - type: input
+    id: brand
+    attributes:
+      label: 品牌名（中英任选其一或都填）
+      placeholder: e.g. XGIMI / 极米
+    validations:
+      required: true
+  - type: input
+    id: ks_url
+    attributes:
+      label: KS 项目页 URL
+      placeholder: https://www.kickstarter.com/projects/...
+    validations:
+      required: true
+  - type: input
+    id: hq
+    attributes:
+      label: 公司总部
+      placeholder: 深圳 / Hong Kong / 台北 / ...
+    validations:
+      required: false
+  - type: textarea
+    id: source
+    attributes:
+      label: 中国背景判定依据
+      description: 链接到官网 about 页 / 工商注册 / 媒体报道。一行链接也行。
+      placeholder: |
+        - 官网 about: https://...
+        - 36kr 报道: https://...
+    validations:
+      required: true

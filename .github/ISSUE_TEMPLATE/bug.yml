@@ -1,0 +1,31 @@
+name: Bug · 抓取或前端异常
+description: scraper 漏抓 / 前端渲染出错 / 邮件发不出 / 数字明显不对
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: 现象
+      placeholder: |
+        e.g. reports/2026-04-26.md 里 XGIMI 显示 followers = 0，但 KS 项目页明明有 3K 关注。
+    validations:
+      required: true
+  - type: textarea
+    id: where
+    attributes:
+      label: 在哪看到的
+      placeholder: Pages 站 / 邮件 / reports/*.md / data/projects.json / 别的
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期 vs 实际
+    validations:
+      required: false
+  - type: input
+    id: cron_run
+    attributes:
+      label: 出问题那次 cron 的时间或 commit hash（可选）
+      placeholder: e.g. 2026-04-26T01:00 UTC / commit abc1234

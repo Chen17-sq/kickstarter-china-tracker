@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 在线看板
+    url: https://chen17-sq.github.io/kickstarter-china-tracker/
+    about: 查看实时数据，按状态 / 置信度 / KS 精选筛选
+  - name: 今日 Markdown 报告
+    url: https://github.com/Chen17-sq/kickstarter-china-tracker/blob/main/reports/latest.md
+    about: 当日 KPI · 24h 异动 · Top prelaunch / live
