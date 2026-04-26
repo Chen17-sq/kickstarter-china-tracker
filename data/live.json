@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-04-26T10:15:13Z",
-  "started_at": "2026-04-26T10:14:15Z",
-  "total_candidates": 297,
-  "kept": 142,
+  "generated_at": "2026-04-26T10:24:00Z",
+  "started_at": "2026-04-26T10:23:00Z",
+  "total_candidates": 265,
+  "kept": 111,
   "projects": [
     {
       "pathname": "/projects/agelocerwatch/agelocer-in-house-premium-independent-horology-watch",
@@ -85,7 +85,7 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": false,
-      "followers": 313,
+      "followers": 314,
       "backers": 227,
       "pledged_usd": "12508.43985189",
       "goal_usd": 1020.7117599999999,
@@ -99,7 +99,7 @@
       "china_reason": "KS location: Guangzhou, China",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -118,7 +118,7 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": true,
-      "followers": 5277,
+      "followers": 5278,
       "backers": 7522,
       "pledged_usd": "3493184.99320064",
       "goal_usd": 100045.9414912,
@@ -132,7 +132,7 @@
       "china_reason": "brand whitelist: Unihertz",
       "matched_brand": "Unihertz",
       "matched_brand_zh": "Unihertz",
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -152,10 +152,10 @@
       "raw_state": "live",
       "project_we_love": true,
       "followers": 3584,
-      "backers": 3012,
-      "pledged_usd": "9391197.0",
+      "backers": 3013,
+      "pledged_usd": "9394395.0",
       "goal_usd": 100000.0,
-      "percent_funded": 9391.197,
+      "percent_funded": 9394.395,
       "deadline": 1781017200,
       "launched_at": 1776956109,
       "created_at": 1772167141,
@@ -165,9 +165,9 @@
       "china_reason": "brand whitelist: XGIMI",
       "matched_brand": "XGIMI",
       "matched_brand_zh": "极米",
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 1,
-      "delta_pledged_usd": 2999.0
+      "delta_pledged_usd": 3198.0
     },
     {
       "pathname": "/projects/wecreat/lumos-ultra-worlds-first-one-stop-uv-mopa-laser",
@@ -316,7 +316,7 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": false,
-      "followers": 2990,
+      "followers": 2992,
       "backers": 3361,
       "pledged_usd": "827916.89312545",
       "goal_usd": 10215.5288,
@@ -330,9 +330,9 @@
       "china_reason": "KS location: Kowloon, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 4,
-      "delta_backers": 1,
-      "delta_pledged_usd": 250.40814971004147
+      "delta_followers": 2,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/xlean/xlean-tr1-dual-form-transformable-floor-washing-robot",
@@ -415,11 +415,11 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": true,
-      "followers": 4573,
-      "backers": 3754,
-      "pledged_usd": "525767.85651807",
+      "followers": 4574,
+      "backers": 3755,
+      "pledged_usd": "525921.8560669",
       "goal_usd": 5001.476648,
-      "percent_funded": 10512.252551020409,
+      "percent_funded": 10515.331632653062,
       "deadline": 1778162406,
       "launched_at": 1775570406,
       "created_at": 1768483106,
@@ -429,9 +429,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 2,
+      "delta_followers": 1,
       "delta_backers": 1,
-      "delta_pledged_usd": 132.94741498003714
+      "delta_pledged_usd": 153.99954882997554
     },
     {
       "pathname": "/projects/infplane/hilbert-agentic-computer",
@@ -495,7 +495,7 @@
       "china_reason": "KS location: Wan Chai, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -581,10 +581,10 @@
       "raw_state": "live",
       "project_we_love": true,
       "followers": 792,
-      "backers": 472,
-      "pledged_usd": "229866.10176222",
+      "backers": 473,
+      "pledged_usd": "230184.19217439",
       "goal_usd": 3830.8760999999995,
-      "percent_funded": 6000.353333333333,
+      "percent_funded": 6008.656666666667,
       "deadline": 1779450912,
       "launched_at": 1776858912,
       "created_at": 1768441258,
@@ -594,9 +594,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 2,
+      "delta_followers": 0,
       "delta_backers": 1,
-      "delta_pledged_usd": 279.1431718200038
+      "delta_pledged_usd": 318.09041216998594
     },
     {
       "pathname": "/projects/vitalink/vitalink-20mm-thin-180-foldable-keyboard-and-4k-touchscreen",
@@ -712,7 +712,7 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": false,
-      "followers": 520,
+      "followers": 521,
       "backers": 128,
       "pledged_usd": "132372.0",
       "goal_usd": 10000.0,
@@ -726,7 +726,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -811,7 +811,7 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": true,
-      "followers": 670,
+      "followers": 671,
       "backers": 218,
       "pledged_usd": "89871.86939472",
       "goal_usd": 9998.033541929999,
@@ -825,7 +825,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -844,7 +844,7 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": true,
-      "followers": 2705,
+      "followers": 2706,
       "backers": 135,
       "pledged_usd": "77665.1112328",
       "goal_usd": 9970.8648,
@@ -858,7 +858,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -891,7 +891,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -958,8 +958,8 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": -1,
-      "delta_pledged_usd": -280.37992175999534
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/1221680007/4k-wireless-hub",
@@ -1023,7 +1023,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1076,10 +1076,10 @@
       "raw_state": "live",
       "project_we_love": false,
       "followers": 611,
-      "backers": 432,
-      "pledged_usd": "45020.970072",
+      "backers": 433,
+      "pledged_usd": "45088.5104644",
       "goal_usd": 2553.512,
-      "percent_funded": 1763.1,
+      "percent_funded": 1765.7450000000001,
       "deadline": 1780063202,
       "launched_at": 1776175202,
       "created_at": 1767870075,
@@ -1091,7 +1091,7 @@
       "matched_brand_zh": null,
       "delta_followers": 0,
       "delta_backers": 1,
-      "delta_pledged_usd": 72.64741639999556
+      "delta_pledged_usd": 67.54039240000566
     },
     {
       "pathname": "/projects/1053593589/parkable-automatic-parking-garage-for-64-scale-model-cars",
@@ -1174,7 +1174,7 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": false,
-      "followers": 1224,
+      "followers": 1225,
       "backers": 654,
       "pledged_usd": "141937.61839187",
       "goal_usd": 12765.793,
@@ -1188,7 +1188,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1254,7 +1254,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1320,7 +1320,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1405,7 +1405,7 @@
       "status": "live",
       "raw_state": "live",
       "project_we_love": false,
-      "followers": 450,
+      "followers": 451,
       "backers": 228,
       "pledged_usd": "36074.8630161",
       "goal_usd": 4999.2244064999995,
@@ -1419,7 +1419,7 @@
       "china_reason": "KS location: Central, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 0,
+      "delta_followers": 1,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1488,6 +1488,36 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
+    },
+    {
+      "pathname": "/projects/turnula/turnula-smarter-and-easier-way-to-cook",
+      "url": "https://www.kickstarter.com/projects/turnula/turnula-smarter-and-easier-way-to-cook",
+      "title": "Finally! The Holy Grail of Spatulas Is Here. Meet Turnula.",
+      "blurb": "Sweep, slide, done. Unique lateral-sweep design, flexible steel core & heat-safe silicone for effortless cooking. 60,000+ happy users!",
+      "blurb_zh": null,
+      "creator": "Turnula",
+      "creator_slug": "turnula",
+      "creator_name": "Turnula",
+      "location": "Taipei City, Taiwan",
+      "country": "US",
+      "category": "Product Design",
+      "status": "live",
+      "raw_state": "live",
+      "project_we_love": false,
+      "followers": 402,
+      "backers": 590,
+      "pledged_usd": "31837.0",
+      "goal_usd": 3000.0,
+      "percent_funded": 1061.2333333333333,
+      "deadline": 1779985208,
+      "launched_at": 1776788408,
+      "created_at": 1774611810,
+      "state_changed_at": 1776788413,
+      "prelaunch_activated": true,
+      "china_confidence": "高",
+      "china_reason": "KS location: Taipei City, Taiwan",
+      "matched_brand": null,
+      "matched_brand_zh": null
     }
   ]
 }
