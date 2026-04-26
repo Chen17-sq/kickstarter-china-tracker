@@ -237,10 +237,11 @@ def main(argv: list[str] | None = None) -> int:
         print("NOTIFY_EMAIL_TO empty — no recipients, skipping")
         return 0
 
-    sender = os.environ.get(
-        "NOTIFY_EMAIL_FROM",
-        "KS Tracker <onboarding@resend.dev>",
-    )
+    # Use 'or' (not get's 2nd arg) — GH Actions injects empty string for
+    # unset secrets, and os.environ.get only honours the default when the
+    # key is missing entirely, not when it's present-but-empty.
+    sender = (os.environ.get("NOTIFY_EMAIL_FROM") or
+              "KS Tracker <onboarding@resend.dev>")
     post_resend(api_key, sender, to, subject, html)
     print(f"Email sent: subject={subject!r}, to={to}, from={sender}")
     return 0
