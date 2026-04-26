@@ -138,9 +138,9 @@ Fork 这个仓库后：
 
 ## 已知限制
 
-- **Prelaunch followers 数缺失**：KS 的 prelaunch 页 follower count 不在 SSR HTML 里，是 client-side GraphQL 加载的。当前版本所有 prelaunch follower 字段为 `null`。两条解决路径：（a）逆向 GraphQL 查询，（b）在 cron 里跑 Playwright headless。任一实现欢迎 PR。
 - **Cloudflare 概率挡爬**：`scraper/http.py` 已经做了 4 次 retry + TLS 指纹轮换（Safari 17 / Chrome 131 / Chrome 120 / Edge 101），命中率 > 95%。极少数情况下整次 cron 会被全挡，安全闸会拒绝覆盖 `projects.json`，下一次 cron 自然恢复。
 - **品牌库覆盖率**：当前 138 项目里 34 项命中品牌白名单，104 项靠 KS location 字段判定。前者识别更精确，后者会捕获到一些"在中国设了工作室的非中国创始人"项目。
+- **Followers 字段语义**：当前从 KS GraphQL 的 `watchesCount` 字段读取。对 *prelaunch* 项目这是当前实时关注数；对 *live* / *已结束* 项目这是上线时冻结的预热基线（仍然有用——可以看转化率），但不是项目生命周期内的实时关注变化。
 
 ---
 

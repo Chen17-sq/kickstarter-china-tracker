@@ -29,13 +29,7 @@ from .classify import classify
 from .diff import diff_snapshots, changes_to_markdown
 from .translate import fill_missing as translate_fill_missing
 from .report import make_report, REPORTS
-
-# TODO(followers): KS prelaunch pages don't include the follower count in SSR
-# HTML — it's fetched client-side via GraphQL after page mount. Two paths to
-# get it: (a) reverse-engineer the GraphQL query (needs CSRF token rotation),
-# or (b) drive a headless Playwright in CI. Both are non-trivial. For now we
-# emit followers=None for prelaunch projects; everything else (status, pledge,
-# backers, PWL, deadline, location) comes through cleanly via Discover JSON.
+from .project import fetch_watches_counts, slug_from_pathname
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA = REPO_ROOT / "data"
@@ -137,14 +131,27 @@ def run() -> int:
     blurbs_zh = load_blurbs_zh()
     print(f"  loaded {len(blurbs_zh)} curated Chinese blurbs")
 
-    rows: list[dict] = []
+    # Pre-fetch watchesCount via KS GraphQL for all classified rows.
+    # For prelaunch: this is the current pre-launch follower count (the key
+    # signal). For live/ended: it's the frozen pre-launch hype baseline.
+    classified_paths = []
     for path, hit in hits.items():
         cls = classify(creator_slug=hit.creator_slug, location=hit.location, title=hit.title)
-        if cls.confidence not in ("高", "中"):
-            continue
+        if cls.confidence in ("高", "中"):
+            classified_paths.append((path, hit, cls))
+
+    print(f"  fetching watchesCount via GraphQL for {len(classified_paths)} projects ...")
+    slugs = [slug_from_pathname(path) for path, _, _ in classified_paths]
+    watches = fetch_watches_counts(slugs)
+    n_with = sum(1 for v in watches.values() if v is not None)
+    print(f"  got watchesCount for {n_with}/{len(slugs)}")
+
+    rows: list[dict] = []
+    for path, hit, cls in classified_paths:
+        slug = slug_from_pathname(path)
         rows.append(build_row(
             hit,
-            followers=None,  # see TODO(followers) at top of file
+            followers=watches.get(slug),
             confidence=cls.confidence,
             reason=cls.reason,
             matched_brand=cls.matched_brand,
