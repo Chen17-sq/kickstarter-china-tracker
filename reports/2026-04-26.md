@@ -7,7 +7,7 @@ DAILY · LIVE EDITION · SUNDAY, APRIL 26, 2026
 
 > *All The Crowd-Funded Hardware Fit To Print* — Vol. 1, No. 2 · 2026-04-26
 
-_Auto-generated at 2026-04-26T05:56:51Z · [完整看板](https://chen17-sq.github.io/kickstarter-china-tracker/) · [JSON](../data/projects.json)_
+_Auto-generated at 2026-04-26T05:59:11Z · [完整看板](https://chen17-sq.github.io/kickstarter-china-tracker/) · [JSON](../data/projects.json)_
 
 ---
 
@@ -44,10 +44,10 @@ _中国背景置信度高 · **139** / 142_
 |  | [Memoir - An E-ink Digital Frame That Feels Like Paper — 类纸感无线 E-ink 数码相框](https://www.kickstarter.com/projects/698611014/memoir-a-paper-like-e-ink-digital-frame) | Zyvoralabs | HK | 1,281 | 已预热 65 天 |
 |  | [Kynooe: Not Just a Robotic Arm—Your AI Companion — 模块化个人 AI 机械臂（即开即用免编程）](https://www.kickstarter.com/projects/925044833/kynooe-one-worlds-1st-modular-personal-ai-robot-arm) | Kynooe | US | 948 | 已预热 30 天 |
 |  | [Litchi Town — 东方风格写实农场模拟经营游戏](https://www.kickstarter.com/projects/litchitown/litchi-town) | ETime Studio | HK | 783 | 已预热 738 天 |
-|  | [Gweike MCore Desktop 400W Fiber and 80W CO2 Laser Cutter — 桌面级 400W 光纤 + 80W CO₂ 双激光切割机](https://www.kickstarter.com/projects/gweikelaser/gweike-mcore-desktop-400w-fiber-and-80w-co2-laser-cutter) | 光韵达激光 | SG | 710 | 已预热 60 天 |
+|  | [Gweike MCore Desktop 400W Fiber and 80W CO2 Laser Cutter — 桌面级 400W 光纤 + 80W CO₂ 双激光切割机](https://www.kickstarter.com/projects/gweikelaser/gweike-mcore-desktop-400w-fiber-and-80w-co2-laser-cutter) | 光韵达激光 | SG | 711 | 已预热 60 天 |
 |  | [blafili B3: True Hi-Fi USB DAC with Bluetooth v5.1 Receiver — Hi-Fi 蓝牙音频接收器 / USB DAC](https://www.kickstarter.com/projects/blafili/blafili-b3-true-hi-fi-bluetooth-audio-receiver-and-usb-dac) | BLAFILI | US | 564 | 已预热 1012 天 |
 |  | [Kiwi Ears Halcyon: World’s First MEMS+1DD+3BA Tribrid IEM — MEMS+1DD+3BA 三模混合 HiFi 入耳式耳机](https://www.kickstarter.com/projects/kiwiears/kiwi-ears-halcyon-worlds-first-mems-1dd-3ba-tribrid-iem) | Kiwi Ears | US | 553 | 已预热 44 天 |
-|  | [PhantomX: Four-Arm Rotating Seconds Watch — 四臂轨道走时机械腕表](https://www.kickstarter.com/projects/2085886764/phantomx-four-arm-wandering-hour-watch) | Mitico | HK | 524 | 已预热 103 天 |
+|  | [PhantomX: Four-Arm Rotating Seconds Watch — 四臂轨道走时机械腕表](https://www.kickstarter.com/projects/2085886764/phantomx-four-arm-wandering-hour-watch) | Mitico | HK | 525 | 已预热 103 天 |
 |  | [ELEGANCE RE-IMAGINED — 现代设计羊毛男装服饰系列](https://www.kickstarter.com/projects/eleganc/elegance-re-imagined) | SMODA | HK | 506 | 已预热 183 天 |
 |  | [AxiGlide: Next-Gen Pivoting Vise for Smooth, Precise Control — 可枢转倾斜 / 旋转的精密台钳](https://www.kickstarter.com/projects/voguemech/axiglide-next-gen-pivoting-vise-for-smooth-precise-control) | VogueMech | HK | 465 | 已预热 176 天 |
 |  | [EnergyLink Gen 2: Titanium 2-in-1 Apple Watch Charger Band — Apple Watch 钛合金 USB-C 充电表带](https://www.kickstarter.com/projects/nexxtpercent/energylink-gen-2-charge-faster-wear-lighter-go-further) | NEXXTPERCENT (EnergyLink) | HK | 430 | 已预热 35 天 |
