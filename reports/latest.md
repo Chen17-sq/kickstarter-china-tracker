@@ -1,12 +1,12 @@
 # Kickstarter China Tracker — 2026-04-26
 
-_自动生成于 2026-04-26T05:11:28Z · 仓库 [Pages 站](https://chen17-sq.github.io/kickstarter-china-tracker/) · [JSON](../data/projects.json)_
+_自动生成于 2026-04-26T05:25:17Z · 仓库 [Pages 站](https://chen17-sq.github.io/kickstarter-china-tracker/) · [JSON](../data/projects.json)_
 
 ## 概览
 
 | 总数 | 未发布 | 在筹中 | 已成功 | KS 精选 | 在筹已筹合计 |
 | ---: | ---: | ---: | ---: | ---: | ---: |
-| **142** | 58 | 44 | 40 | ★ 42 | $30.31M |
+| **142** | 58 | 44 | 40 | ★ 42 | $30.32M |
 
 中国背景置信度高 · **139** / 142
 
@@ -16,18 +16,18 @@ _自动生成于 2026-04-26T05:11:28Z · 仓库 [Pages 站](https://chen17-sq.gi
 | - | --- | --- | --- | ---: | --- |
 | ★ | [AYANEO Pocket Play：Mobile Phone and Gaming Handheld in One — 安卓掌机 + 手机二合一（侧滑实体按键）](https://www.kickstarter.com/projects/ayaneo-offical/ayaneo-pocket-play-mobile-phone-and-gaming-handheld-in-one) | AYANEO | HK | 7,461 | 已预热 127 天 |
 | ★ | [Sunflower X: AI Sensing Auto Rotating Sunrise Wake-Up Lamp — AI 体感唤醒灯（毫米波睡眠监测 + 日出唤醒）](https://www.kickstarter.com/projects/261716880/sunflower-x-smarter-sleep-with-ai-sensing-and-sunrise-light) | Moonlex | HK | 2,451 | 已预热 174 天 |
-| ★ | [The World’s First AI-Native Robotic Monitor — 6 轴机械臂 4K AI 触控显示器](https://www.kickstarter.com/projects/cybopal/cybopal-worlds-first-active-tracking-ai-robotic-monitor) | CyboPal | HK | 981 | 已预热 126 天 |
+| ★ | [The World’s First AI-Native Robotic Monitor — 6 轴机械臂 4K AI 触控显示器](https://www.kickstarter.com/projects/cybopal/cybopal-worlds-first-active-tracking-ai-robotic-monitor) | CyboPal | HK | 982 | 已预热 126 天 |
 | ★ | [xTool WonderPress: The Most Creative 3D Auto Heat Press Ever — 3D 升华 + 自动热转印模块化创作机](https://www.kickstarter.com/projects/makeblock/xtool-wonderpress-the-most-creative-3d-auto-heat-press-ever) | 童心制物 | US | 919 | 已预热 5 天 |
 | ★ | [Procolored X one: Full-Color UV + Laser in One System — UV 全彩打印 + 激光雕刻一体机](https://www.kickstarter.com/projects/procolored/procolored-x-one-full-color-uv-laser-in-one-system) | Procolored | HK | 900 | 已预热 36 天 |
-| ★ | [Vastnaut One: World's First AI-Powered 4x4 Exoskeleton — AI 驱动 4×4 户外辅助外骨骼](https://www.kickstarter.com/projects/vastnaut/vastnaut-one-worlds-first-ai-powered-4x4-exoskeleton) | Vastnaut | HK | 870 | 已预热 25 天 |
+| ★ | [Vastnaut One: World's First AI-Powered 4x4 Exoskeleton — AI 驱动 4×4 户外辅助外骨骼](https://www.kickstarter.com/projects/vastnaut/vastnaut-one-worlds-first-ai-powered-4x4-exoskeleton) | Vastnaut | HK | 871 | 已预热 25 天 |
 | ★ | [PongBot Aura: World's First Ultra-Light AI Multi-Sport Robot — 7kg 便携 AI 网球 / 匹克球训练机器人](https://www.kickstarter.com/projects/pongbot/aura-the-worlds-first-ultra-light-ai-multi-sport-robot) | PongBot | HK | 597 | 已预热 29 天 |
 | ★ | [A Guidebook of Babel: An Afterlife Adventure — 蝴蝶效应主题点击式冒险解谜游戏](https://www.kickstarter.com/projects/aguidebookofbabel/a-guidebook-of-babel-an-afterlife-adventure) | StarryStarry | US | 498 | 已预热 1542 天 |
 | ★ | [CYPLORE: The World’s Lightest E-Assist for Your Bike — 1.7kg 全球最轻自行车助力套件（小米团队）](https://www.kickstarter.com/projects/cyplore/cyplore-the-lightest-e-bike-kit-for-thru-axle-bikes) | CYPLORE | HK | 127 | 已预热 32 天 |
 | ★ | [Revopoint POP 4 3D Scanner — 桌面 / 户外 AI 三维扫描仪（蓝激光 + 高斯泼溅）](https://www.kickstarter.com/projects/revopoint3d/revopoint-pop-4-3d-scanner) | 复志 | US | 122 | 已预热 5 天 |
 | ★ | [AEKE S1 Pro FULL-BODY AI HOME GYM — 全身式 AI 家用智能健身器材](https://www.kickstarter.com/projects/aeke/aeke-s1-pro-full-body-ai-home-gym) | Aeke | US | 102 | 已预热 33 天 |
 | ★ | [SPINO S1 Pro Self-Docking Cordless Robotic Pool Cleaner — 自动靠岸无线机器人泳池清洁机](https://www.kickstarter.com/projects/spinos1pro/spino-s1-pro-self-docking-cordless-robotic-pool-cleaner) | Mammotion | HK | 43 | 已预热 17 天 |
-|  | [La Seine Espresso Machine: Complete Extraction Freedom — 便携全自动浓缩咖啡机（北京 Maxim's）](https://www.kickstarter.com/projects/336547084/la-seine-espresso-machine) | Maxims Espresso Machine | HK | 4,746 | 已预热 527 天 |
-|  | [NeuroHUD: The Heads-Up Display Tesla Forgot — 特斯拉专用免改装抬头显示器](https://www.kickstarter.com/projects/trantor/neurohud-add-the-hud-tesla-forgot) | TrantorVision (NeuroHUD) | US | 3,131 | 已预热 193 天 |
+|  | [La Seine Espresso Machine: Complete Extraction Freedom — 便携全自动浓缩咖啡机（北京 Maxim's）](https://www.kickstarter.com/projects/336547084/la-seine-espresso-machine) | Maxims Espresso Machine | HK | 4,747 | 已预热 527 天 |
+|  | [NeuroHUD: The Heads-Up Display Tesla Forgot — 特斯拉专用免改装抬头显示器](https://www.kickstarter.com/projects/trantor/neurohud-add-the-hud-tesla-forgot) | TrantorVision (NeuroHUD) | US | 3,132 | 已预热 193 天 |
 |  | [Deoum Z2 - Fast Precision Laser Marking Machine — 桌面便携精密激光打标机](https://www.kickstarter.com/projects/1410951490/deoum-z2-fast-precision-laser-marking-machine) | Deoum | US | 2,152 | 已预热 1712 天 |
 |  | [Xhorse3D Xmachine WM-100 Desktop Simultaneous 5-Axis CNC — 桌面五轴联动 CNC 雕铣机（20000RPM）](https://www.kickstarter.com/projects/xhorse3d/xhorse3d-xmachine-wm-100-desktop-simultaneous-5-axis-cnc) | Xhorse3D | HK | 1,309 | 已预热 43 天 |
 |  | [Memoir - An E-ink Digital Frame That Feels Like Paper — 类纸感无线 E-ink 数码相框](https://www.kickstarter.com/projects/698611014/memoir-a-paper-like-e-ink-digital-frame) | Zyvoralabs | HK | 1,281 | 已预热 65 天 |
@@ -40,9 +40,9 @@ _自动生成于 2026-04-26T05:11:28Z · 仓库 [Pages 站](https://chen17-sq.gi
 |  | [ELEGANCE RE-IMAGINED — 现代设计羊毛男装服饰系列](https://www.kickstarter.com/projects/eleganc/elegance-re-imagined) | SMODA | HK | 506 | 已预热 183 天 |
 |  | [AxiGlide: Next-Gen Pivoting Vise for Smooth, Precise Control — 可枢转倾斜 / 旋转的精密台钳](https://www.kickstarter.com/projects/voguemech/axiglide-next-gen-pivoting-vise-for-smooth-precise-control) | VogueMech | HK | 465 | 已预热 176 天 |
 |  | [EnergyLink Gen 2: Titanium 2-in-1 Apple Watch Charger Band — Apple Watch 钛合金 USB-C 充电表带](https://www.kickstarter.com/projects/nexxtpercent/energylink-gen-2-charge-faster-wear-lighter-go-further) | NEXXTPERCENT (EnergyLink) | HK | 430 | 已预热 35 天 |
-|  | [MagmoFlex: Flexible Magnetic Organization for Any Space — 模块化磁吸收纳整理系统](https://www.kickstarter.com/projects/magmoflex/magmoflex-flexible-magnetic-organization-for-any-space) | Morzen International | HK | 423 | 已预热 24 天 |
-|  | [INKWON Tag - World's 1st 4-in-1 Pocket Creative Studio — 口袋式 4 合 1 彩色喷墨打印机（贴纸 / 纹身贴 / 烫画）](https://www.kickstarter.com/projects/inkwonprinting/inkwon-tag-worlds-1st-4-in-1-pocket-color-inkjet-printer) | INKWON Printing | HK | 422 | 已预热 10 天 |
-|  | [SOUSIC S02: Auto-Tuning Wireless Ultrasonic Cutter — 无线 40kHz 自调谐超声波切割刀](https://www.kickstarter.com/projects/sousic/sousic-s02-auto-tuning-wireless-ultrasonic-cutter) | SOUSIC TECH | US | 390 | 已预热 26 天 |
+|  | [MagmoFlex: Flexible Magnetic Organization for Any Space — 模块化磁吸收纳整理系统](https://www.kickstarter.com/projects/magmoflex/magmoflex-flexible-magnetic-organization-for-any-space) | Morzen International | HK | 424 | 已预热 24 天 |
+|  | [INKWON Tag - World's 1st 4-in-1 Pocket Creative Studio — 口袋式 4 合 1 彩色喷墨打印机（贴纸 / 纹身贴 / 烫画）](https://www.kickstarter.com/projects/inkwonprinting/inkwon-tag-worlds-1st-4-in-1-pocket-color-inkjet-printer) | INKWON Printing | HK | 423 | 已预热 10 天 |
+|  | [SOUSIC S02: Auto-Tuning Wireless Ultrasonic Cutter — 无线 40kHz 自调谐超声波切割刀](https://www.kickstarter.com/projects/sousic/sousic-s02-auto-tuning-wireless-ultrasonic-cutter) | SOUSIC TECH | US | 391 | 已预热 26 天 |
 |  | [The 1st AI Diode Laser Engraver with Built-in Camera](https://www.kickstarter.com/projects/235685896/atelier-blue-engraver-with-built-in-cameraandclass-1-safety) | Atelier | HK | 365 | 已预热 262 天 |
 | | _…and 28 more in [JSON](../data/projects.json)_ | | | | |
 
@@ -50,23 +50,23 @@ _自动生成于 2026-04-26T05:11:28Z · 仓库 [Pages 站](https://chen17-sq.gi
 
 | | 项目 / 一句话 | 已筹 | Backers | Followers | 完成率 | 时间 |
 | - | --- | ---: | ---: | ---: | ---: | --- |
-| ★ | [XGIMI TITAN Noir Series: A Dual Iris 4K RGB Laser Projector — 4K 三色激光投影仪（双虹膜光圈 + VRR）](https://www.kickstarter.com/projects/xgimititannoir/xgimi-titan-noir-series-4k-projector) | $9.34M | 2,997 | 3,568 | 9,342% | 上线 2 天 · 剩 44 天 |
-| ★ | [Titan 2 Elite: The 5G Keyboard Phone You’ve Been Waiting For — QWERTY 实体键盘 + 5G 安卓 16 商务智能手机](https://www.kickstarter.com/projects/jellyphone/titan-2-elite-the-5g-keyboard-phone-youve-been-waiting-for) | $3.49M | 7,519 | 5,267 | 3,490% | 上线 32 天 · 剩 17 天 |
+| ★ | [XGIMI TITAN Noir Series: A Dual Iris 4K RGB Laser Projector — 4K 三色激光投影仪（双虹膜光圈 + VRR）](https://www.kickstarter.com/projects/xgimititannoir/xgimi-titan-noir-series-4k-projector) | $9.34M | 2,997 | 3,571 | 9,342% | 上线 2 天 · 剩 44 天 |
+| ★ | [Titan 2 Elite: The 5G Keyboard Phone You’ve Been Waiting For — QWERTY 实体键盘 + 5G 安卓 16 商务智能手机](https://www.kickstarter.com/projects/jellyphone/titan-2-elite-the-5g-keyboard-phone-youve-been-waiting-for) | $3.49M | 7,520 | 5,267 | 3,491% | 上线 32 天 · 剩 17 天 |
 | ★ | [Lumos Ultra World's First One-stop UV+MOPA Laser — UV + MOPA 双光路一体激光雕刻打标机](https://www.kickstarter.com/projects/wecreat/lumos-ultra-worlds-first-one-stop-uv-mopa-laser) | $3.41M | 482 | 1,405 | 3,414% | 上线 4 天 · 剩 35 天 |
-| ★ | [iGarden Swim Jet X Series: Bring the Water Park Home — 1000W 便携式 AI 游泳推进器（无需建池）](https://www.kickstarter.com/projects/1312001986/igarden-x-series-worlds-1st-ai-powered-portable-swim-jet) | $3.33M | 1,660 | 1,477 | 6,668% | 上线 44 天 · 剩 15 天 |
+| ★ | [iGarden Swim Jet X Series: Bring the Water Park Home — 1000W 便携式 AI 游泳推进器（无需建池）](https://www.kickstarter.com/projects/1312001986/igarden-x-series-worlds-1st-ai-powered-portable-swim-jet) | $3.34M | 1,661 | 1,477 | 6,670% | 上线 44 天 · 剩 15 天 |
 | ★ | [Ultimea Skywave X100 Dual: 9.2.6 Wireless Surround System — 9.2.6 声道无线杜比全景声家庭影院](https://www.kickstarter.com/projects/ultimea/ultimea-skywave-x100-dual-926-wireless-surround-system) | $2.07M | 1,980 | 2,963 | 414× goal | 上线 44 天 · 剩 15 天 |
 | ★ | [BLUETTI FridgePower: Power Out. Fridge On. — 冰箱专用静音备用电源（断电自动接管）](https://www.kickstarter.com/projects/bluetti/fridgepower) | $1.58M | 1,390 | 1,521 | 3,159% | 上线 9 天 · 剩 35 天 |
-|  | [Hyzen, World's First Mechanical Magnetic Keyboard — 全球首款机械 + 磁轴混合可热插拔键盘](https://www.kickstarter.com/projects/lofree/hyzen-worlds-first-mechanical-magnetic-keyboard) | $822K | 3,339 | 2,955 | 8,051% | 上线 2 天 · 剩 27 天 |
+|  | [Hyzen, World's First Mechanical Magnetic Keyboard — 全球首款机械 + 磁轴混合可热插拔键盘](https://www.kickstarter.com/projects/lofree/hyzen-worlds-first-mechanical-magnetic-keyboard) | $823K | 3,341 | 2,956 | 8,055% | 上线 2 天 · 剩 27 天 |
 | ★ | [xLean TR1: The World's First Dual-Form Floor Washing Robot — 可变形（直立 ↔ 手持）地板清洁机器人](https://www.kickstarter.com/projects/xlean/xlean-tr1-dual-form-transformable-floor-washing-robot) | $730K | 746 | 10,487 | 730% | 上线 4 天 · 剩 55 天 |
-| ★ | [Loona Deskmate: The Cutest Desk Robot That Actually Helps — 桌面 AI 陪伴机器人（联动 PC + 50+ 应用）](https://www.kickstarter.com/projects/keyitechnology/loona-deskmate-the-worlds-first-screen-aware-ai-co-worker) | $636K | 2,823 | 3,900 | 6,358% | 上线 23 天 · 剩 6 天 |
-| ★ | [ANYLASER X1 — The Most Compact Desktop Laser Engraver — 全球最小桌面激光雕刻机](https://www.kickstarter.com/projects/anylaser/anylaser-x1-the-worlds-smallest-desktop-laser-engraver) | $523K | 3,731 | 4,544 | 104× goal | 上线 18 天 · 剩 11 天 |
+| ★ | [Loona Deskmate: The Cutest Desk Robot That Actually Helps — 桌面 AI 陪伴机器人（联动 PC + 50+ 应用）](https://www.kickstarter.com/projects/keyitechnology/loona-deskmate-the-worlds-first-screen-aware-ai-co-worker) | $636K | 2,823 | 3,901 | 6,358% | 上线 23 天 · 剩 6 天 |
+| ★ | [ANYLASER X1 — The Most Compact Desktop Laser Engraver — 全球最小桌面激光雕刻机](https://www.kickstarter.com/projects/anylaser/anylaser-x1-the-worlds-smallest-desktop-laser-engraver) | $523K | 3,732 | 4,546 | 105× goal | 上线 18 天 · 剩 11 天 |
 | ★ | [Parksible: The World's First Smart Garage for Model Cars — 1:64 模型车自动立体停车库](https://www.kickstarter.com/projects/1053593589/parkable-automatic-parking-garage-for-64-scale-model-cars) | $428K | 802 | 2,588 | 3,777% | 上线 18 天 · 剩 11 天 |
 | ★ | [Hilbert Agentic Computer: Local 235B (MoE) LLM + OpenClaw — 本地 235B MoE 大模型 AI 工作站](https://www.kickstarter.com/projects/infplane/hilbert-agentic-computer) | $415K | 129 | 554 | 1,301% | 上线 18 天 · 剩 11 天 |
 | ★ | [ClawStage: The real-world physical playground for OpenClaw — 多模态 IoT 互动陪伴机器人（树莓派核心）](https://www.kickstarter.com/projects/hoorii/hoorii-stage-your-proactive-smart-personalized-companion-hub) | $397K | 1,219 | 2,004 | 7,935% | 上线 39 天 · 剩 5 天 |
 |  | [KEENMOW K1: Truly Hassle-Free 3D LiDAR-Vision Robot Mower — 3D 激光 + AI 视觉无埋线割草机器人](https://www.kickstarter.com/projects/keenmow-robot-mower/keenmow-k1-the-new-generation-of-3d-lidar-vision-robot-mower) | $325K | 297 | 325 | 1,088% | 上线 14 天 · 剩 25 天 |
 | ★ | [COZYTIME LUMO: First AI Infrared Indoor Grill, Smoke-Free — AI 红外无烟室内烧烤炉](https://www.kickstarter.com/projects/cozytime/cozytime-lumo-first-ai-infrared-indoor-grill-smoke-free) | $304K | 837 | 1,698 | 6,086% | 上线 18 天 · 剩 27 天 |
 | ★ | [WavKong V2700: World's 1st RPU-Powered Wi-Fi Router — 全球首款 RPU 芯片驱动 Wi-Fi 路由器](https://www.kickstarter.com/projects/wavkong/wavkong-v2700-worlds-1st-rpu-powered-wi-fi-router) | $229K | 469 | 782 | 5,977% | 上线 3 天 · 剩 26 天 |
-|  | [VitaLink: 20mm Thin 180° Foldable Keyboard & 4K Touchscreen — 20mm 薄 180° 折叠键盘 + 4K 触屏一体机](https://www.kickstarter.com/projects/vitalink/vitalink-20mm-thin-180-foldable-keyboard-and-4k-touchscreen) | $186K | 584 | 2,040 | 4,852% | 上线 9 天 · 剩 20 天 |
+|  | [VitaLink: 20mm Thin 180° Foldable Keyboard & 4K Touchscreen — 20mm 薄 180° 折叠键盘 + 4K 触屏一体机](https://www.kickstarter.com/projects/vitalink/vitalink-20mm-thin-180-foldable-keyboard-and-4k-touchscreen) | $186K | 584 | 2,042 | 4,852% | 上线 9 天 · 剩 20 天 |
 |  | [Eva.i-Not just a robot. A Bionic Embodied AI Companion+App — 仿生具身智能 AI 陪伴机器人](https://www.kickstarter.com/projects/robonovaworld/evai-not-just-a-robot-a-bionic-embodied-ai-companion-app) | $158K | 119 | 1,264 | 158% | 上线 57 天 · 剩 2 天 |
 |  | [Titaner Heron: Titanium EDC Cutting Tool, Back to Pure Cut — M390 钢 + 钛合金 EDC 折叠刀](https://www.kickstarter.com/projects/titaner-yg/titaner-heron-the-ultimate-m390-and-cnc-titanium-edc-knife) | $151K | 743 | 766 | 3,011% | 上线 18 天 · 剩 6 天 |
 | ★ | [IRONIQ: Next-Gen Vacuum Steamer, All-in-One Garment Care — 真空吸附 + 蒸汽熨烫一体衣物护理机](https://www.kickstarter.com/projects/blast-by-magpie/ironiq-next-gen-vacuum-steamer-all-in-one-garment-care) | $147K | 2,011 | 2,390 | 2,948% | 上线 26 天 · 剩 12 天 |
