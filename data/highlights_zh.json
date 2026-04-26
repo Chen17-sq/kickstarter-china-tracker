@@ -1,0 +1,91 @@
+{
+  "_meta": {
+    "schema": "pathname → list of 4 Chinese highlight bullets (long form). Used by scraper/social.py to render the 3-up detail slides for top prelaunch / top live.",
+    "guidance": "Each highlight 16–32 Chinese chars. Lead with the spec or feature. Avoid marketing fluff. Order by importance.",
+    "fallback": "Projects without an entry here use English |-split blurb extracted at runtime — uglier on slides, prompt for PR / cron LLM auto-translate later."
+  },
+
+  "/projects/ayaneo-offical/ayaneo-pocket-play-mobile-phone-and-gaming-handheld-in-one": [
+    "极简北欧风设计语言，5G 安卓全功能",
+    "复古侧滑结构，秒切手机 / 掌机两种形态",
+    "标准 D-pad + ABXY 物理按键，肌肉记忆党友好",
+    "双模智能触摸板，操作精度补足按键"
+  ],
+
+  "/projects/261716880/sunflower-x-smarter-sleep-with-ai-sensing-and-sunrise-light": [
+    "毫米波传感监测 42,000+ 睡眠信号",
+    "AI 算法识别最佳唤醒窗口",
+    "日出渐亮 + 自然声替代闹钟",
+    "智能助眠：自动调暗灯光 / 静音手机"
+  ],
+
+  "/projects/cybopal/cybopal-worlds-first-active-tracking-ai-robotic-monitor": [
+    "全球首款主动追踪 AI 显示器",
+    "6 轴机械臂 + 4K 高刷面板",
+    "AI 隔空手势，免触摸控制方位",
+    "工作 / 创作 / 视讯三场景自动切换"
+  ],
+
+  "/projects/xgimititannoir/xgimi-titan-noir-series-4k-projector": [
+    "全球首款双虹膜光圈 4K 三色激光投影",
+    "10,000:1 原生对比度，黑场不再发灰",
+    "7000 ISO 流明，白天不拉窗帘也能看",
+    "VRR 可变刷新率 + 抗 RBE，3D 游戏首选"
+  ],
+
+  "/projects/jellyphone/titan-2-elite-the-5g-keyboard-phone-youve-been-waiting-for": [
+    "4.03 寸 120Hz AMOLED + 真物理 QWERTY 键盘",
+    "5G 全网通解锁 + eSIM 双卡",
+    "Android 16 系统，承诺四年安全更新",
+    "双 50MP 摄像 + NFC + 大电池续航"
+  ],
+
+  "/projects/wecreat/lumos-ultra-worlds-first-one-stop-uv-mopa-laser": [
+    "全球首款 UV + MOPA 双光路一体激光机",
+    "标记 / 雕刻 / 切割 / 打孔，10+ 工艺",
+    "覆盖 2500+ 种材料：玻璃 / 金属 / 亚克力",
+    "16K 精度 + AI 软件，电商创客生产线神器"
+  ],
+
+  "/projects/1312001986/igarden-x-series-worlds-1st-ai-powered-portable-swim-jet": [
+    "便携 AI 游泳推进器，无需建池",
+    "1000W 双发动机，10 小时持续推流",
+    "1 秒急停安全保护 + 6 档调速",
+    "适配多种泳池形状，开盖即用"
+  ],
+
+  "/projects/ultimea/ultimea-skywave-x100-dual-926-wireless-surround-system": [
+    "9.2.6 声道无线家庭影院系统",
+    "THX 调音 + Dolby Atmos / DTS:X",
+    "双 10 寸低音炮 + 8K 直通",
+    "全套 App 控制，自动校准声场"
+  ],
+
+  "/projects/bluetti/fridgepower": [
+    "冰箱专用静音不间断电源",
+    "断电瞬间自动接管，食物不解冻",
+    "纤薄机身，背贴冰箱不占地",
+    "插上即用，零配置零维护"
+  ],
+
+  "/projects/lofree/hyzen-worlds-first-mechanical-magnetic-keyboard": [
+    "全球首款机械 + 磁轴混合可热插拔",
+    "F 键可显示 / 隐藏，节省桌面空间",
+    "CNC 铝合金机身 + 卡扣式 Gasket 结构",
+    "0.01mm RT 精度，三模无线连接"
+  ],
+
+  "/projects/xlean/xlean-tr1-dual-form-transformable-floor-washing-robot": [
+    "全球首款可变形地板清洁机器人",
+    "1 秒切换：直立机器人 ↔ 手持模式",
+    "双电机 DirectSuction 直吸技术",
+    "OMNI 基站 + 实时 AI 自适应清洁"
+  ],
+
+  "/projects/keyitechnology/loona-deskmate-the-worlds-first-screen-aware-ai-co-worker": [
+    "桌面 AI 陪伴 / 协作机器人",
+    "165W PD 快充 + 超萌人格设计",
+    "无唤醒词，直接说话即可对话",
+    "联动 PC + 50+ 应用做你的小助手"
+  ]
+}
