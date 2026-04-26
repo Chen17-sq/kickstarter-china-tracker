@@ -7,7 +7,7 @@ DAILY · LIVE EDITION · SUNDAY, APRIL 26, 2026
 
 > *All The Crowd-Funded Hardware Fit To Print* — Vol. 1, No. 2 · 2026-04-26
 
-_Auto-generated at 2026-04-26T12:29:09Z · [完整看板](https://chen17-sq.github.io/kickstarter-china-tracker/) · [JSON](../data/projects.json)_
+_Auto-generated at 2026-04-26T12:32:29Z · [完整看板](https://chen17-sq.github.io/kickstarter-china-tracker/) · [JSON](../data/projects.json)_
 
 ---
 
@@ -15,7 +15,7 @@ _Auto-generated at 2026-04-26T12:29:09Z · [完整看板](https://chen17-sq.gith
 
 | Tracked | Prelaunch | Live | Funded | Editor's | Pledged |
 | ---: | ---: | ---: | ---: | ---: | ---: |
-| **143** | 57 | 46 | 40 | ✦ 42 | $30.51M |
+| **143** | 57 | 46 | 40 | ✦ 42 | $30.52M |
 
 _中国背景置信度高 · **140** / 143_
 
@@ -23,11 +23,23 @@ _中国背景置信度高 · **140** / 143_
 
 ## Section B · 🔥 Top Movers · Δ since last snapshot
 
+**💰 大额涨幅 (USD)**
+
+- [XGIMI TITAN Noir Series: A Dual Iris 4K RGB Laser Projector — 4K 三色激光投影仪（双虹膜光圈 + VRR）](https://www.kickstarter.com/projects/xgimititannoir/xgimi-titan-noir-series-4k-projector) · **+$5.7K** (now $9.44M)
+- [Titan 2 Elite: The 5G Keyboard Phone You’ve Been Waiting For — QWERTY 实体键盘 + 5G 安卓 16 商务智能手机](https://www.kickstarter.com/projects/jellyphone/titan-2-elite-the-5g-keyboard-phone-youve-been-waiting-for) · **+$901** (now $3.49M)
+- [Hyzen, World's First Mechanical Magnetic Keyboard — 全球首款机械 + 磁轴混合可热插拔键盘](https://www.kickstarter.com/projects/lofree/hyzen-worlds-first-mechanical-magnetic-keyboard) · **+$678** (now $830K)
+
 **👀 关注涨幅 (Watchers)**
 
-- [The World’s First AI-Native Robotic Monitor — 6 轴机械臂 4K AI 触控显示器](https://www.kickstarter.com/projects/cybopal/cybopal-worlds-first-active-tracking-ai-robotic-monitor) · **+1** (now 986)
-- [INKWON Tag - World's 1st 4-in-1 Pocket Creative Studio — 口袋式 4 合 1 彩色喷墨打印机（贴纸 / 纹身贴 / 烫画）](https://www.kickstarter.com/projects/inkwonprinting/inkwon-tag-worlds-1st-4-in-1-pocket-color-inkjet-printer) · **+1** (now 433)
-- [Xhorse3D Xmachine WM-100 Desktop Simultaneous 5-Axis CNC — 桌面五轴联动 CNC 雕铣机（20000RPM）](https://www.kickstarter.com/projects/xhorse3d/xhorse3d-xmachine-wm-100-desktop-simultaneous-5-axis-cnc) · **+1** (now 1,322)
+- [Wireless USB-C Transmitter & HDMI Receiver | No WiFi Needed](https://www.kickstarter.com/projects/2087613787/wireless-usb-c-transmitter-and-hdmi-receiver-no-wifi-needed) · **+2** (now 1,230)
+- [XGIMI TITAN Noir Series: A Dual Iris 4K RGB Laser Projector — 4K 三色激光投影仪（双虹膜光圈 + VRR）](https://www.kickstarter.com/projects/xgimititannoir/xgimi-titan-noir-series-4k-projector) · **+1** (now 3,595)
+- [ANYLASER X1 — The Most Compact Desktop Laser Engraver — 全球最小桌面激光雕刻机](https://www.kickstarter.com/projects/anylaser/anylaser-x1-the-worlds-smallest-desktop-laser-engraver) · **+1** (now 4,591)
+
+**👥 Backer 涨幅**
+
+- [Hyzen, World's First Mechanical Magnetic Keyboard — 全球首款机械 + 磁轴混合可热插拔键盘](https://www.kickstarter.com/projects/lofree/hyzen-worlds-first-mechanical-magnetic-keyboard) · **+3** (now 3,369)
+- [Titan 2 Elite: The 5G Keyboard Phone You’ve Been Waiting For — QWERTY 实体键盘 + 5G 安卓 16 商务智能手机](https://www.kickstarter.com/projects/jellyphone/titan-2-elite-the-5g-keyboard-phone-youve-been-waiting-for) · **+2** (now 7,523)
+- [XGIMI TITAN Noir Series: A Dual Iris 4K RGB Laser Projector — 4K 三色激光投影仪（双虹膜光圈 + VRR）](https://www.kickstarter.com/projects/xgimititannoir/xgimi-titan-noir-series-4k-projector) · **+2** (now 3,029)
 
 ✦ &nbsp; ✦ &nbsp; ✦
 
@@ -125,7 +137,7 @@ _中国背景置信度高 · **140** / 143_
 
 <img src="https://i.kickstarter.com/assets/053/456/880/b52a551e8aa66c93dc57fe242ffbedb7_original.jpg?anim=false&fit=cover&gravity=auto&height=315&origin=ugc&q=92&v=1776955293&width=560&sig=GNiBNkDCae7pJmZJKXQyhgKtedzp92W%2F4zK8ivL9Nxo%3D" alt="" width="360" />
 
-**极米** · US · 已筹 **$9.44M** · 3,027 backers · 完成率 **9,439%** · 起步价 **$1.3K** · \$2626/watcher · 预计总额 $153.05M · 上线 2 天 · 剩 44 天
+**极米** · US · 已筹 **$9.44M** *(+$5.7K)* · 3,029 backers · 完成率 **9,445%** · 起步价 **$1.3K** · \$2627/watcher · 预计总额 $153.02M · 上线 2 天 · 剩 44 天
 
 *4K 三色激光投影仪（双虹膜光圈 + VRR）*
 
@@ -142,7 +154,7 @@ _中国背景置信度高 · **140** / 143_
 
 <img src="https://i.kickstarter.com/assets/053/241/641/d95dfe23ab720828d5c3574601456636_original.jpg?anim=false&fit=cover&gravity=auto&height=315&origin=ugc&q=92&v=1775533694&width=560&sig=JqqRXfpRuSftmf72k5rNxWGxBxBW%2F255Y8%2B5Agq%2BANg%3D" alt="" width="360" />
 
-**Unihertz** · HK · 已筹 **$3.49M** · 7,521 backers · 完成率 **3,491%** · 起步价 **$79** · \$662/watcher · 预计总额 $5.29M · 上线 33 天 · 剩 16 天
+**Unihertz** · HK · 已筹 **$3.49M** *(+$901)* · 7,523 backers · 完成率 **3,492%** · 起步价 **$79** · \$662/watcher · 预计总额 $5.29M · 上线 33 天 · 剩 16 天
 
 *QWERTY 实体键盘 + 5G 安卓 16 商务智能手机*
 
@@ -159,7 +171,7 @@ _中国背景置信度高 · **140** / 143_
 
 <img src="https://i.kickstarter.com/assets/052/851/600/bf0f2fef62f1b4f8acdb0682aea73ac4_original.jpg?anim=false&fit=cover&gravity=auto&height=315&origin=ugc&q=92&v=1772795331&width=560&sig=gEN%2FkU0j0ll4vHvdZN29GpfNyAy5tUJg22yxhwNkRoc%3D" alt="" width="360" />
 
-**WeCreat** · US · 已筹 **$3.41M** · 481 backers · 完成率 **3,408%** · 起步价 **$3.7K** · \$2417/watcher · 预计总额 $28.01M · 上线 4 天 · 剩 35 天
+**WeCreat** · US · 已筹 **$3.41M** · 481 backers · 完成率 **3,408%** · 起步价 **$3.7K** · \$2417/watcher · 预计总额 $27.99M · 上线 4 天 · 剩 35 天
 
 *UV + MOPA 双光路一体激光雕刻打标机*
 
@@ -179,7 +191,7 @@ _中国背景置信度高 · **140** / 143_
 | ✦ | [iGarden Swim Jet X Series: Bring the Water Park Home — 1000W 便携式 AI 游泳推进器（无需建池）](https://www.kickstarter.com/projects/1312001986/igarden-x-series-worlds-1st-ai-powered-portable-swim-jet) | $3.33M | 1,660 | 6,666% | 上线 44 天 · 剩 15 天 |
 | ✦ | [Ultimea Skywave X100 Dual: 9.2.6 Wireless Surround System — 9.2.6 声道无线杜比全景声家庭影院](https://www.kickstarter.com/projects/ultimea/ultimea-skywave-x100-dual-926-wireless-surround-system) | $2.07M | 1,982 | 414× goal | 上线 44 天 · 剩 15 天 |
 | ✦ | [BLUETTI FridgePower: Power Out. Fridge On. — 冰箱专用静音备用电源（断电自动接管）](https://www.kickstarter.com/projects/bluetti/fridgepower) | $1.58M | 1,391 | 3,161% | 上线 9 天 · 剩 35 天 |
-|  | [Hyzen, World's First Mechanical Magnetic Keyboard — 全球首款机械 + 磁轴混合可热插拔键盘](https://www.kickstarter.com/projects/lofree/hyzen-worlds-first-mechanical-magnetic-keyboard) | $829K | 3,366 | 8,118% | 上线 2 天 · 剩 27 天 |
+|  | [Hyzen, World's First Mechanical Magnetic Keyboard — 全球首款机械 + 磁轴混合可热插拔键盘](https://www.kickstarter.com/projects/lofree/hyzen-worlds-first-mechanical-magnetic-keyboard) | $830K *(+$678)* | 3,369 | 8,125% | 上线 2 天 · 剩 27 天 |
 | ✦ | [xLean TR1: The World's First Dual-Form Floor Washing Robot — 可变形（直立 ↔ 手持）地板清洁机器人](https://www.kickstarter.com/projects/xlean/xlean-tr1-dual-form-transformable-floor-washing-robot) | $732K | 748 | 732% | 上线 4 天 · 剩 55 天 |
 | ✦ | [Loona Deskmate: The Cutest Desk Robot That Actually Helps — 桌面 AI 陪伴机器人（联动 PC + 50+ 应用）](https://www.kickstarter.com/projects/keyitechnology/loona-deskmate-the-worlds-first-screen-aware-ai-co-worker) | $639K | 2,834 | 6,387% | 上线 23 天 · 剩 6 天 |
 | ✦ | [ANYLASER X1 — The Most Compact Desktop Laser Engraver — 全球最小桌面激光雕刻机](https://www.kickstarter.com/projects/anylaser/anylaser-x1-the-worlds-smallest-desktop-laser-engraver) | $527K | 3,763 | 105× goal | 上线 18 天 · 剩 11 天 |
@@ -187,7 +199,7 @@ _中国背景置信度高 · **140** / 143_
 | ✦ | [Hilbert Agentic Computer: Local 235B (MoE) LLM + OpenClaw — 本地 235B MoE 大模型 AI 工作站](https://www.kickstarter.com/projects/infplane/hilbert-agentic-computer) | $415K | 129 | 1,301% | 上线 18 天 · 剩 11 天 |
 | ✦ | [ClawStage: The real-world physical playground for OpenClaw — 多模态 IoT 互动陪伴机器人（树莓派核心）](https://www.kickstarter.com/projects/hoorii/hoorii-stage-your-proactive-smart-personalized-companion-hub) | $397K | 1,219 | 7,932% | 上线 39 天 · 剩 5 天 |
 |  | [KEENMOW K1: Truly Hassle-Free 3D LiDAR-Vision Robot Mower — 3D 激光 + AI 视觉无埋线割草机器人](https://www.kickstarter.com/projects/keenmow-robot-mower/keenmow-k1-the-new-generation-of-3d-lidar-vision-robot-mower) | $329K | 300 | 1,099% | 上线 14 天 · 剩 25 天 |
-| ✦ | [COZYTIME LUMO: First AI Infrared Indoor Grill, Smoke-Free — AI 红外无烟室内烧烤炉](https://www.kickstarter.com/projects/cozytime/cozytime-lumo-first-ai-infrared-indoor-grill-smoke-free) | $306K | 841 | 6,122% | 上线 18 天 · 剩 27 天 |
+| ✦ | [COZYTIME LUMO: First AI Infrared Indoor Grill, Smoke-Free — AI 红外无烟室内烧烤炉](https://www.kickstarter.com/projects/cozytime/cozytime-lumo-first-ai-infrared-indoor-grill-smoke-free) | $306K *(+$343)* | 842 | 6,129% | 上线 18 天 · 剩 27 天 |
 | ✦ | [WavKong V2700: World's 1st RPU-Powered Wi-Fi Router — 全球首款 RPU 芯片驱动 Wi-Fi 路由器](https://www.kickstarter.com/projects/wavkong/wavkong-v2700-worlds-1st-rpu-powered-wi-fi-router) | $230K | 473 | 6,008% | 上线 4 天 · 剩 25 天 |
 |  | [VitaLink: 20mm Thin 180° Foldable Keyboard & 4K Touchscreen — 20mm 薄 180° 折叠键盘 + 4K 触屏一体机](https://www.kickstarter.com/projects/vitalink/vitalink-20mm-thin-180-foldable-keyboard-and-4k-touchscreen) | $188K | 592 | 4,915% | 上线 10 天 · 剩 19 天 |
 |  | [Eva.i-Not just a robot. A Bionic Embodied AI Companion+App — 仿生具身智能 AI 陪伴机器人](https://www.kickstarter.com/projects/robonovaworld/evai-not-just-a-robot-a-bionic-embodied-ai-companion-app) | $158K | 121 | 158% | 上线 58 天 · 剩 1 天 |

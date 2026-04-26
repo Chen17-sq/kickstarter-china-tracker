@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-26T12:29:09Z",
-  "started_at": "2026-04-26T12:27:39Z",
+  "generated_at": "2026-04-26T12:32:29Z",
+  "started_at": "2026-04-26T12:31:32Z",
   "total_candidates": 297,
   "kept": 143,
   "projects": [
@@ -770,7 +770,7 @@
       "china_reason": "brand whitelist: CyboPal",
       "matched_brand": "CyboPal",
       "matched_brand_zh": "CyboPal",
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1015,7 +1015,7 @@
       "china_reason": "brand whitelist: INKWON Printing",
       "matched_brand": "INKWON Printing",
       "matched_brand_zh": "INKWON Printing",
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1085,7 +1085,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
@@ -1190,7 +1190,7 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0
     },
