@@ -305,7 +305,7 @@ def _hero_image_block(image_url: str | None) -> str:
                 border-bottom:4px solid {INK}">
       <img src="{_esc(image_url)}"
            style="width:100%;height:100%;object-fit:cover;display:block;
-                  filter:grayscale(0.85) contrast(1.1) brightness(.96)"
+                  /* original product colors preserved per user spec */"
            alt=""/>
     </div>"""
 
@@ -347,7 +347,7 @@ def _detail_row(rank: int, p: dict, *, kind: str, hl_map: dict) -> str:
     image_html = (
         f'<img src="{_esc(image_url)}" style="width:100%;height:100%;'
         f'object-fit:cover;display:block;'
-        f'filter:grayscale(0.85) contrast(1.1) brightness(.96)" alt=""/>'
+        f'/* original product colors preserved per user spec */" alt=""/>'
         if image_url else
         f'<div style="width:100%;height:100%;background:{MUTED};display:flex;'
         f'align-items:center;justify-content:center;font-family:Lora,serif;'
