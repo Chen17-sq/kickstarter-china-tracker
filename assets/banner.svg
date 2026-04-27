@@ -1,14 +1,14 @@
 <svg viewBox="0 0 1280 460" xmlns="http://www.w3.org/2000/svg" role="img"
-     aria-label="Kickstarter China Tracker · Vol. 1 · No. 2">
+     aria-label="Kickstarter China Tracker · Vol. 1 · No. 3">
   <rect width="1280" height="460" fill="#F9F9F7"/>
 
   <!-- Edition strip (top, ink reverse) -->
   <rect x="0" y="0" width="1280" height="32" fill="#111111"/>
   <circle cx="32" cy="16" r="3" fill="#CC0000"/>
   <text x="44" y="20" font-family="Inter, Helvetica, sans-serif" font-size="11" font-weight="700"
-        fill="#F9F9F7" letter-spacing="3">DAILY · LIVE EDITION · SUNDAY, APRIL 26, 2026</text>
+        fill="#F9F9F7" letter-spacing="3">DAILY · LIVE EDITION · MONDAY, APRIL 27, 2026</text>
   <text x="1240" y="20" text-anchor="end" font-family="JetBrains Mono, Courier New, monospace" font-size="11"
-        font-weight="500" fill="#F9F9F7" letter-spacing="2.5">VOL. 1 · NO. 2</text>
+        font-weight="500" fill="#F9F9F7" letter-spacing="2.5">VOL. 1 · NO. 3</text>
 
   <!-- Nameplate -->
   <text x="640" y="148" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="92"
@@ -22,7 +22,7 @@
   <text x="640" y="202" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="14"
         font-style="italic" fill="#111111">All The Crowd-Funded Hardware Fit To Print</text>
   <text x="1224" y="202" text-anchor="end" font-family="JetBrains Mono, Courier New, monospace" font-size="11"
-        font-weight="500" fill="#111111" letter-spacing="2.5">PLEDGED · $31.3M</text>
+        font-weight="500" fill="#111111" letter-spacing="2.5">PLEDGED · $31.7M</text>
 
   <!-- Dek -->
   <text x="640" y="262" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="16"
@@ -34,9 +34,9 @@
 
   <!-- KPI hairline (top + bottom) -->
   <line x1="40" y1="332" x2="1240" y2="332" stroke="#111111" stroke-width="4"/>
-  <text x="54" y="402" font-family="Playfair Display, Times New Roman, serif" font-size="48" font-weight="900" fill="#111111" letter-spacing="-1">255</text><text x="54" y="430" font-family="Inter, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#737373" letter-spacing="3">TRACKED</text>
+  <text x="54" y="402" font-family="Playfair Display, Times New Roman, serif" font-size="48" font-weight="900" fill="#111111" letter-spacing="-1">253</text><text x="54" y="430" font-family="Inter, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#737373" letter-spacing="3">TRACKED</text>
 <line x1="280" y1="332" x2="280" y2="448" stroke="#111111" stroke-width="1"/>
-<text x="294" y="402" font-family="Playfair Display, Times New Roman, serif" font-size="48" font-weight="900" fill="#CC0000" letter-spacing="-1">89</text><text x="294" y="430" font-family="Inter, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#737373" letter-spacing="3">PRELAUNCH</text>
+<text x="294" y="402" font-family="Playfair Display, Times New Roman, serif" font-size="48" font-weight="900" fill="#CC0000" letter-spacing="-1">87</text><text x="294" y="430" font-family="Inter, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#737373" letter-spacing="3">PRELAUNCH</text>
 <line x1="520" y1="332" x2="520" y2="448" stroke="#111111" stroke-width="1"/>
 <text x="534" y="402" font-family="Playfair Display, Times New Roman, serif" font-size="48" font-weight="900" fill="#111111" letter-spacing="-1">90</text><text x="534" y="430" font-family="Inter, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#737373" letter-spacing="3">LIVE</text>
 <line x1="760" y1="332" x2="760" y2="448" stroke="#111111" stroke-width="1"/>
