@@ -2,8 +2,10 @@ name: scrape
 
 on:
   schedule:
-    # 01:00 UTC = 09:00 Beijing — fresh for morning. One snapshot/day.
-    - cron: "0 1 * * *"
+    # 00:00 UTC = 08:00 Beijing — kicks off at 8 AM, ~3-4 min scrape +
+    # ~1-2 min deploy means Pages refreshes by ~08:10. Reader opens at
+    # 9 AM and sees today's edition fully published. One snapshot/day.
+    - cron: "0 0 * * *"
   workflow_dispatch:        # manual run from Actions tab
 
 permissions:
