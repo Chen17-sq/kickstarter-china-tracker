@@ -119,7 +119,7 @@ body{
 .lang-toggle button.active{background:var(--ink);color:var(--paper)}
 .lang-toggle button + button{border-left:1px solid var(--ink)}
 
-/* ── Today's Front Page hero (3 column newspaper headlines) ─── */
+/* ── Today's Front Page hero (2 columns · Top 10 text list) ─── */
 .hero{border-bottom:4px solid var(--ink)}
 .hero-head{display:flex;align-items:baseline;justify-content:space-between;
   padding:18px 28px 10px;border-bottom:1px solid var(--ink)}
@@ -129,31 +129,37 @@ body{
   font-size:32px;letter-spacing:-1px;color:var(--ink);line-height:1}
 .hero-head .meta{font-family:'JetBrains Mono',monospace;font-size:11px;
   letter-spacing:.12em;color:var(--n500)}
-.hero-cols{display:grid;grid-template-columns:repeat(3,1fr)}
+.hero-cols{display:grid;grid-template-columns:repeat(2,1fr)}
 .hero-col{padding:18px 22px;border-right:1px solid var(--ink);min-width:0}
 .hero-col:last-child{border-right:none}
 .hero-col .col-label{font-family:'Inter',sans-serif;font-size:10px;font-weight:700;
-  letter-spacing:.25em;text-transform:uppercase;margin-bottom:14px}
-.hero-col.movers .col-label{color:var(--accent)}
+  letter-spacing:.25em;text-transform:uppercase;margin-bottom:14px;
+  display:flex;align-items:baseline;justify-content:space-between;gap:8px}
 .hero-col.prelaunch .col-label{color:var(--accent)}
 .hero-col.live .col-label{color:var(--ink)}
-.hero-story{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--muted)}
+.hero-col .col-label .col-meta{font-family:'JetBrains Mono',monospace;font-weight:500;
+  letter-spacing:.1em;color:var(--n500);font-size:9.5px;text-transform:uppercase}
+.hero-story{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--muted);
+  align-items:flex-start}
 .hero-story:last-child{border-bottom:none}
 .hero-story .rank{flex:none;font-family:'Playfair Display',serif;font-weight:900;
-  font-size:24px;line-height:1;color:var(--n400);letter-spacing:-1px;min-width:30px}
+  font-size:20px;line-height:1.1;color:var(--n400);letter-spacing:-.5px;
+  min-width:30px;text-align:right;padding-top:1px;font-variant-numeric:tabular-nums}
 .hero-story .body{flex:1;min-width:0}
-.hero-story .body a{font-family:'Playfair Display',serif;font-weight:700;font-size:15px;
-  line-height:1.25;color:var(--ink);text-decoration:none;display:block;
-  overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;
-  -webkit-box-orient:vertical}
+.hero-story .body a{font-family:'Playfair Display',serif;font-weight:700;font-size:14.5px;
+  line-height:1.22;color:var(--ink);text-decoration:none;display:-webkit-box;
+  overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:1;-webkit-box-orient:vertical}
 .hero-story .body a:hover{color:var(--accent)}
-.hero-story .body .blurb{font-family:'Lora',serif;font-style:italic;font-size:12px;
-  color:var(--n700);margin-top:3px;line-height:1.4;
+.hero-story .body .blurb{font-family:'Lora',serif;font-style:italic;font-size:11.5px;
+  color:var(--n700);margin-top:2px;line-height:1.35;
   overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:1;
   -webkit-box-orient:vertical}
-.hero-story .right{flex:none;text-align:right;min-width:80px}
+.hero-story .body .smeta{font-family:'JetBrains Mono',monospace;font-size:9.5px;
+  color:var(--n500);margin-top:3px;letter-spacing:.06em;text-transform:uppercase;
+  font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hero-story .right{flex:none;text-align:right;min-width:74px;padding-top:1px}
 .hero-story .right .v{font-family:'JetBrains Mono',monospace;font-weight:700;
-  font-size:14px;color:var(--ink);letter-spacing:-.02em}
+  font-size:13.5px;color:var(--ink);letter-spacing:-.02em}
 .hero-story .right .v.delta{color:var(--accent)}
 .hero-story .right .l{font-family:'Inter',sans-serif;font-size:9px;font-weight:700;
   color:var(--n500);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}
@@ -399,7 +405,7 @@ tbody td{padding:14px 14px;vertical-align:top}
     <p class="dek" id="dek">追踪 Kickstarter 上中国背景的消费硬件项目，覆盖 pre-launch / live / 已结束三个阶段。数据通过 KS Discover JSON 直连，每 4 小时由 GitHub Actions 重抓一次。</p>
   </header>
 
-  <!-- Today's Front Page hero (Top Movers + Top Prelaunch + Top Live) -->
+  <!-- Today's Front Page hero (Top 10 prelaunch + Top 10 live, with thumbnails) -->
   <section class="hero" id="hero" hidden>
     <div class="hero-head">
       <span class="label" id="heroLabel">TODAY'S FRONT PAGE</span>
@@ -407,9 +413,20 @@ tbody td{padding:14px 14px;vertical-align:top}
       <span class="meta" id="heroMeta">—</span>
     </div>
     <div class="hero-cols">
-      <div class="hero-col movers"><div class="col-label" id="heroMoversLabel">🔥 Top Movers · Δ 24H</div><div id="heroMovers"></div></div>
-      <div class="hero-col prelaunch"><div class="col-label" id="heroPreLabel">⏳ Pre-launch · TOP WATCHERS</div><div id="heroPre"></div></div>
-      <div class="hero-col live"><div class="col-label" id="heroLiveLabel">🔴 Live · TOP USD RAISED</div><div id="heroLive"></div></div>
+      <div class="hero-col prelaunch">
+        <div class="col-label">
+          <span id="heroPreLabel">⏳ Pre-launch · TOP 10 by Watchers</span>
+          <span class="col-meta" id="heroPreMeta">—</span>
+        </div>
+        <div id="heroPre"></div>
+      </div>
+      <div class="hero-col live">
+        <div class="col-label">
+          <span id="heroLiveLabel">🔴 Live · TOP 10 by USD Raised</span>
+          <span class="col-meta" id="heroLiveMeta">—</span>
+        </div>
+        <div id="heroLive"></div>
+      </div>
     </div>
   </section>
 

@@ -269,17 +269,17 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
     </div>
   </section>
 
-  <!-- Top 5 by funded -->
+  <!-- Top 10 by funded -->
   <div class="section-head">
     <span class="label">SECTION B</span>
-    <h2>🔴 Top 5 Live · 按已筹排序</h2>
+    <h2>🔴 Top 10 Live · 按已筹排序</h2>
   </div>
   <section class="stories" id="topLive"></section>
 
-  <!-- Top 5 prelaunch by watchers -->
+  <!-- Top 10 prelaunch by watchers -->
   <div class="section-head">
     <span class="label">SECTION C</span>
-    <h2>⏳ Top 5 Pre-launch · 按关注数排序</h2>
+    <h2>⏳ Top 10 Pre-launch · 按关注数排序</h2>
   </div>
   <section class="stories" id="topPre"></section>
 
@@ -393,21 +393,21 @@ async function load() {
     document.getElementById("kHigh").textContent = high;
     document.getElementById("kBrands").textContent = brands.size;
 
-    // Top 5 live by USD
+    // Top 10 live by USD
     const liveTop = projects
       .filter((p) => p.status === "live")
       .sort((a, b) => Number(b.pledged_usd || 0) - Number(a.pledged_usd || 0))
-      .slice(0, 5);
+      .slice(0, 10);
     document.getElementById("topLive").innerHTML = liveTop.map(storyHtml).join("") || "<p style='color:#A3A3A3;font-style:italic'>暂无数据</p>";
 
-    // Top 5 prelaunch by watchers
+    // Top 10 prelaunch by watchers
     const preTop = projects
       .filter((p) => p.status === "prelaunch")
       .sort((a, b) => {
         if (!!b.project_we_love !== !!a.project_we_love) return (b.project_we_love ? 1 : 0) - (a.project_we_love ? 1 : 0);
         return Number(b.followers || 0) - Number(a.followers || 0);
       })
-      .slice(0, 5);
+      .slice(0, 10);
     document.getElementById("topPre").innerHTML = preTop.map(storyHtmlPre).join("") || "<p style='color:#A3A3A3;font-style:italic'>暂无数据</p>";
   } catch (e) {
     console.error(e);

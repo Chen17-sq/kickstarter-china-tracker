@@ -4,8 +4,8 @@ Reads:
   - data/projects.json   — current snapshot
   - CHANGELOG.md          — diff vs. previous run (optional, may be absent)
 
-Builds a compact Markdown summary (KPI line + 🔥 today's signals + Top 5
-prelaunch by followers + Top 5 live by USD pledged) and posts it to:
+Builds a compact Markdown summary (KPI line + Top 10 prelaunch by followers
++ Top 10 live by USD pledged) and posts it to:
   - SLACK_WEBHOOK    — if set, posts as Slack mrkdwn
   - DISCORD_WEBHOOK  — if set, posts as Discord markdown
 
@@ -184,23 +184,17 @@ def build_summary(curr: dict, *, dialect: str = "slack") -> str:
         f"★ `{pwl}` KS 精选"
     )
 
-    signals = data["signals"]
-    if signals:
-        lines.append("")
-        lines.append("*🔥 24h 异动*")
-        lines.extend(signals)
-
     if prelaunch:
         lines.append("")
-        lines.append("*⏳ Prelaunch · Top 5 by followers*")
-        for p in prelaunch[:5]:
+        lines.append("*⏳ Prelaunch · Top 10 by followers*")
+        for p in prelaunch[:10]:
             star = "★ " if p.get("project_we_love") else ""
             lines.append(f"• {star}{fmt_link(p)} · {fmt_int(p.get('followers'))} followers")
 
     if live:
         lines.append("")
-        lines.append("*🔴 Live · Top 5 by USD raised*")
-        for p in live[:5]:
+        lines.append("*🔴 Live · Top 10 by USD raised*")
+        for p in live[:10]:
             star = "★ " if p.get("project_we_love") else ""
             lines.append(
                 f"• {star}{fmt_link(p)} · {fmt_usd(p.get('pledged_usd'))} · "

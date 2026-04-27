@@ -33,9 +33,7 @@ from .notify import (
     get_summary_data, fmt_usd, fmt_int,
     PAGES_URL, LATEST_URL, REPO_ROOT, PROJECTS,
 )
-from .momentum import (
-    conversion_per_watcher, projected_total, top_movers_from_rows,
-)
+from .momentum import conversion_per_watcher, projected_total
 
 RESEND_API_URL = "https://api.resend.com/emails"
 
@@ -46,6 +44,7 @@ from ._common import edition_number  # noqa: E402  shared edition number
 PAPER = "#F9F9F7"
 INK = "#111111"
 RED = "#CC0000"
+MUTED = "#E5E5E0"
 N400 = "#A3A3A3"
 N500 = "#737373"
 N600 = "#525252"
@@ -279,77 +278,9 @@ def build_html(curr: dict) -> tuple[str, str]:
         f"获 KS Editor's Pick 标签 <strong>{d['pwl']}</strong> 项。"
     )
 
-    # Top Movers: real Δ since prev snapshot, replaces the old CHANGELOG dump
-    movers_pledged = top_movers_from_rows(d["prelaunch"] + d["live"], "delta_pledged_usd", 3)
-    movers_followers = top_movers_from_rows(d["prelaunch"] + d["live"], "delta_followers", 3)
-    movers_backers = top_movers_from_rows(d["prelaunch"] + d["live"], "delta_backers", 3)
-
-    def _mover_line(p, *, value):
-        url = _esc(p.get("url") or "#")
-        title = _esc(p.get("title") or "")
-        blurb = _esc(p.get("blurb_zh") or "")
-        return (f'<li style="margin:8px 0;font-family:{BODY};font-size:14px;'
-                f'line-height:1.55;color:{INK};list-style:none;padding-left:18px;'
-                f'position:relative">'
-                f'<span style="position:absolute;left:0;color:{RED};font-weight:900">▸</span>'
-                f'<a href="{url}" style="color:{INK};text-decoration:none;'
-                f'font-family:{SERIF};font-weight:700">{title}</a>'
-                f'{(" — <i>" + blurb + "</i>") if blurb else ""}'
-                f' <span style="color:{RED};font-family:{MONO};font-weight:700">{value}</span>'
-                f'</li>')
-
-    movers_html_parts = []
-    if movers_pledged:
-        items = "".join(
-            _mover_line(p, value=f'+{fmt_usd(p.get("delta_pledged_usd"))}')
-            for p in movers_pledged
-        )
-        movers_html_parts.append(
-            f'<div style="margin-top:18px"><div style="font-family:{SANS};font-size:10px;'
-            f'font-weight:700;color:{N500};letter-spacing:2.5px;margin-bottom:6px">'
-            f'💰 USD GAINERS</div><ul style="margin:0;padding:0">{items}</ul></div>'
-        )
-    if movers_followers:
-        items = "".join(
-            _mover_line(p, value=f'+{int(p.get("delta_followers") or 0):,} watch')
-            for p in movers_followers
-        )
-        movers_html_parts.append(
-            f'<div style="margin-top:18px"><div style="font-family:{SANS};font-size:10px;'
-            f'font-weight:700;color:{N500};letter-spacing:2.5px;margin-bottom:6px">'
-            f'👀 WATCHER GAINERS</div><ul style="margin:0;padding:0">{items}</ul></div>'
-        )
-    if movers_backers:
-        items = "".join(
-            _mover_line(p, value=f'+{int(p.get("delta_backers") or 0):,} backers')
-            for p in movers_backers
-        )
-        movers_html_parts.append(
-            f'<div style="margin-top:18px"><div style="font-family:{SANS};font-size:10px;'
-            f'font-weight:700;color:{N500};letter-spacing:2.5px;margin-bottom:6px">'
-            f'👥 BACKER GAINERS</div><ul style="margin:0;padding:0">{items}</ul></div>'
-        )
-
-    signals_html = ""
-    if movers_html_parts:
-        signals_html = f'''
-        <div style="margin-top:48px">
-          <div style="font-family:{MONO};font-size:11px;font-weight:500;color:{N500};
-                      letter-spacing:2.5px;margin-bottom:6px">SECTION A</div>
-          <h2 style="margin:0 0 4px;font-family:{SERIF};font-weight:900;font-size:28px;
-                     letter-spacing:-.5px;color:{INK}">Breaking · Top Movers</h2>
-          <p style="margin:0 0 12px;font-family:{BODY};font-style:italic;font-size:13px;color:{N500}">
-            Δ since previous snapshot · biggest jumps in pledged $, watcher count, and backer count.
-          </p>
-          <div style="border-top:4px solid {INK};border-bottom:1px solid {INK};padding:14px 0">
-            {"".join(movers_html_parts)}
-          </div>
-        </div>'''
-
     # Top 3 of each track get FULL detail cards (KS hero image + brand line +
-    # 4 Chinese highlights from data/highlights_zh.json + big metric). Each
-    # card is its own <table>, so they're concatenated as block siblings —
-    # no outer wrapping table (otherwise Outlook nested-table fragility).
+    # 4 Chinese highlights from data/highlights_zh.json + big metric). Ranks
+    # 4-10 are rendered as compact text rows (no images) below.
     hl_map = _load_highlights_zh()
     pre_detail = "".join(
         _detail_card(p, kind="prelaunch", hl_map=hl_map, rank=i + 1)
@@ -359,6 +290,20 @@ def build_html(curr: dict) -> tuple[str, str]:
         _detail_card(p, kind="live", hl_map=hl_map, rank=i + 1)
         for i, p in enumerate(d["live"][:3])
     )
+
+    # Ranks 4-10 — compact text rows (uses _row helper, text-only)
+    pre_rows_4_10 = "".join(_row(p, kind="prelaunch") for p in d["prelaunch"][3:10])
+    live_rows_4_10 = "".join(_row(p, kind="live") for p in d["live"][3:10])
+    pre_rest_html = (
+        f'<table role="presentation" cellspacing="0" cellpadding="0" border="0" '
+        f'style="width:100%;margin-top:6px;border-top:4px solid {INK};border-collapse:collapse">'
+        f'<tbody>{pre_rows_4_10}</tbody></table>'
+    ) if pre_rows_4_10 else ""
+    live_rest_html = (
+        f'<table role="presentation" cellspacing="0" cellpadding="0" border="0" '
+        f'style="width:100%;margin-top:6px;border-top:4px solid {INK};border-collapse:collapse">'
+        f'<tbody>{live_rows_4_10}</tbody></table>'
+    ) if live_rows_4_10 else ""
 
     return subject, f'''<!DOCTYPE html>
 <html lang="zh-CN">
@@ -438,34 +383,34 @@ def build_html(curr: dict) -> tuple[str, str]:
 
       <div style="padding:0 28px">
 
-        {signals_html}
-
-        <!-- Prelaunch section -->
+        <!-- Prelaunch section · Top 10 (Top 3 detail + 4-10 list) -->
         <div style="margin-top:48px">
           <div style="font-family:{MONO};font-size:11px;font-weight:500;color:{N500};
-                      letter-spacing:2.5px;margin-bottom:6px">SECTION B</div>
+                      letter-spacing:2.5px;margin-bottom:6px">SECTION A</div>
           <h2 style="margin:0 0 4px;font-family:{SERIF};font-weight:900;font-size:28px;
-                     letter-spacing:-.5px;color:{INK}">⏳ Prelaunch · Top 3</h2>
+                     letter-spacing:-.5px;color:{INK}">⏳ Prelaunch · Top 10</h2>
           <p style="margin:0 0 4px;font-family:{BODY};font-style:italic;font-size:13px;color:{N500}">
-            按关注数排序 · KS Editor's Picks 优先 · 含 4 条中文产品亮点
+            按关注数排序 · KS Editor's Picks 优先 · Top 3 含图文亮点 · 4–10 列表形式
           </p>
           <div style="border-top:4px solid {INK}">
             {pre_detail or '<p style="padding:14px 0;color:'+N400+'">暂无</p>'}
           </div>
+          {pre_rest_html}
         </div>
 
-        <!-- Live section -->
+        <!-- Live section · Top 10 (Top 3 detail + 4-10 list) -->
         <div style="margin-top:48px">
           <div style="font-family:{MONO};font-size:11px;font-weight:500;color:{N500};
-                      letter-spacing:2.5px;margin-bottom:6px">SECTION C</div>
+                      letter-spacing:2.5px;margin-bottom:6px">SECTION B</div>
           <h2 style="margin:0 0 4px;font-family:{SERIF};font-weight:900;font-size:28px;
-                     letter-spacing:-.5px;color:{INK}">🔴 Live · Top 3 by USD Raised</h2>
+                     letter-spacing:-.5px;color:{INK}">🔴 Live · Top 10 by USD Raised</h2>
           <p style="margin:0 0 4px;font-family:{BODY};font-style:italic;font-size:13px;color:{N500}">
-            按已筹排序 · {counts['live']} 个 live 项目中的前 3
+            按已筹排序 · {counts['live']} 个 live 项目 · Top 3 含图文亮点 · 4–10 列表形式
           </p>
           <div style="border-top:4px solid {INK}">
             {live_detail or '<p style="padding:14px 0;color:'+N400+'">暂无</p>'}
           </div>
+          {live_rest_html}
         </div>
 
         <!-- Ornament -->

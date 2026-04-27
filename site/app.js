@@ -341,17 +341,8 @@ function renderHero() {
     document.getElementById("hero").hidden = true;
     return;
   }
-  // Top movers by USD delta (live + prelaunch combined)
-  const movers = DATA
-    .filter((p) => (p.delta_pledged_usd || 0) > 0 || (p.delta_followers || 0) > 0)
-    .sort((a, b) => {
-      const da = Number(a.delta_pledged_usd || 0);
-      const db = Number(b.delta_pledged_usd || 0);
-      if (da !== db) return db - da;
-      return Number(b.delta_followers || 0) - Number(a.delta_followers || 0);
-    })
-    .slice(0, 3);
 
+  const HERO_N = 10;
   const prelaunch = DATA
     .filter((p) => p.status === "prelaunch")
     .sort((a, b) => {
@@ -360,72 +351,85 @@ function renderHero() {
       }
       return Number(b.followers || 0) - Number(a.followers || 0);
     })
-    .slice(0, 3);
+    .slice(0, HERO_N);
 
   const live = DATA
     .filter((p) => p.status === "live")
     .sort((a, b) => Number(b.pledged_usd || 0) - Number(a.pledged_usd || 0))
-    .slice(0, 3);
+    .slice(0, HERO_N);
+
+  const totalPre = DATA.filter((p) => p.status === "prelaunch").length;
+  const totalLive = DATA.filter((p) => p.status === "live").length;
+  const liveUsdTotal = DATA
+    .filter((p) => p.status === "live")
+    .reduce((s, p) => s + Number(p.pledged_usd || 0), 0);
 
   const langZh = LANG === "zh";
   document.getElementById("heroLabel").textContent =
     langZh ? "今日头版 · 自动生成" : "TODAY'S FRONT PAGE · AUTO-GENERATED";
   document.getElementById("heroTitle").textContent =
-    langZh ? "今日头版" : "Today's Front Page";
+    langZh ? "今日头版 · Top 10" : "Today's Front Page · Top 10";
   document.getElementById("heroMeta").textContent =
     GENERATED_AT ? GENERATED_AT.replace("T", " ").slice(0, 16) + " UTC" : "—";
-  document.getElementById("heroMoversLabel").textContent =
-    langZh ? "🔥 Top Movers · 24小时变化" : "🔥 Top Movers · Δ 24H";
   document.getElementById("heroPreLabel").textContent =
-    langZh ? "⏳ 未发布 · 关注数 Top 3" : "⏳ Prelaunch · Top Watchers";
+    langZh ? "⏳ 未发布 · 关注数 Top 10" : "⏳ Prelaunch · Top 10 by Watchers";
+  document.getElementById("heroPreMeta").textContent =
+    langZh ? `共 ${totalPre} 项` : `${totalPre} TOTAL`;
   document.getElementById("heroLiveLabel").textContent =
-    langZh ? "🔴 在筹中 · 已筹 Top 3" : "🔴 Live · Top USD Raised";
+    langZh ? "🔴 在筹中 · 已筹 Top 10" : "🔴 Live · Top 10 by USD Raised";
+  document.getElementById("heroLiveMeta").textContent =
+    langZh
+      ? `共 ${totalLive} 项 · 合计 ${fmtUSD(liveUsdTotal)}`
+      : `${totalLive} · ${fmtUSD(liveUsdTotal)} TOTAL`;
 
-  function story(rank, p, opts) {
+  function story(rank, p, kind) {
     const url = escapeHtml(p.url || "#");
     const title = escapeHtml(p.title || "(untitled)");
     const star = p.project_we_love
       ? '<span class="pwl" style="font-size:13px">✦</span> '
       : "";
     const blurb = escapeHtml(p.blurb_zh || p.blurb || "");
-    const blurbHtml = blurb
-      ? `<div class="blurb">${blurb}</div>`
+    const blurbHtml = blurb ? `<div class="blurb">${blurb}</div>` : "";
+    const brand = escapeHtml(brandLabel(p));
+    const country = escapeHtml(countryLabel(p.country));
+    const price = p.min_pledge_usd
+      ? `${langZh ? "起步价" : "MIN"} ${fmtUSD(p.min_pledge_usd)}`
       : "";
+    const smeta = [brand, country, price].filter(Boolean).join(" · ");
+    const smetaHtml = smeta ? `<div class="smeta">${smeta}</div>` : "";
+
     let valHtml = "";
-    if (opts.kind === "mover") {
-      const dp = Number(p.delta_pledged_usd || 0);
-      const df = Number(p.delta_followers || 0);
-      if (dp > 0) {
-        valHtml = `<div class="v delta">+${escapeHtml(fmtUSD(dp))}</div><div class="l">USD Δ</div>`;
-      } else if (df > 0) {
-        valHtml = `<div class="v delta">+${df.toLocaleString()}</div><div class="l">WATCH Δ</div>`;
-      }
-    } else if (opts.kind === "prelaunch") {
-      valHtml = `<div class="v">${fmtNum(p.followers)}</div><div class="l">${langZh ? "关注" : "WATCH"}</div>`;
-    } else if (opts.kind === "live") {
-      valHtml = `<div class="v">${fmtUSD(p.pledged_usd)}</div><div class="l">${fmtNum(p.backers)} ${langZh ? "支持" : "BACK"}</div>`;
+    if (kind === "prelaunch") {
+      const dF = Number(p.delta_followers || 0);
+      const dHtml = dF > 0
+        ? ` <span class="delta" style="font-size:10px;margin-left:2px">+${dF.toLocaleString()}</span>`
+        : "";
+      valHtml = `<div class="v">${fmtNum(p.followers)}${dHtml}</div><div class="l">${langZh ? "关注" : "WATCH"}</div>`;
+    } else {
+      const dP = Number(p.delta_pledged_usd || 0);
+      const dHtml = dP > 0
+        ? ` <span class="delta" style="font-size:10px;margin-left:2px">+${escapeHtml(fmtUSD(dP))}</span>`
+        : "";
+      valHtml = `<div class="v">${fmtUSD(p.pledged_usd)}${dHtml}</div><div class="l">${fmtNum(p.backers)} ${langZh ? "支持" : "BACK"}</div>`;
     }
     return `<div class="hero-story">
       <span class="rank">${String(rank).padStart(2, "0")}</span>
       <div class="body">
         <a href="${url}" target="_blank" rel="noopener">${star}${title}</a>
         ${blurbHtml}
+        ${smetaHtml}
       </div>
       <div class="right">${valHtml}</div>
     </div>`;
   }
 
-  const moversHtml = movers.length
-    ? movers.map((p, i) => story(i + 1, p, { kind: "mover" })).join("")
-    : `<div class="hero-empty">${langZh ? "等待第一份对比快照…" : "awaiting first delta…"}</div>`;
   const preHtml = prelaunch.length
-    ? prelaunch.map((p, i) => story(i + 1, p, { kind: "prelaunch" })).join("")
+    ? prelaunch.map((p, i) => story(i + 1, p, "prelaunch")).join("")
     : `<div class="hero-empty">${langZh ? "—" : "—"}</div>`;
   const liveHtml = live.length
-    ? live.map((p, i) => story(i + 1, p, { kind: "live" })).join("")
+    ? live.map((p, i) => story(i + 1, p, "live")).join("")
     : `<div class="hero-empty">${langZh ? "—" : "—"}</div>`;
 
-  document.getElementById("heroMovers").innerHTML = moversHtml;
   document.getElementById("heroPre").innerHTML = preHtml;
   document.getElementById("heroLive").innerHTML = liveHtml;
   document.getElementById("hero").hidden = false;

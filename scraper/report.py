@@ -129,27 +129,6 @@ def project_link(p: dict) -> str:
     return f"[{label}]({url})" if url else label
 
 
-def fmt_delta_usd(d) -> str:
-    if d is None:
-        return ""
-    sign = "+" if d > 0 else ""
-    return f"{sign}{fmt_usd(d)}"
-
-
-def fmt_delta_int(d) -> str:
-    if d is None:
-        return ""
-    sign = "+" if d > 0 else ""
-    return f"{sign}{int(d):,}"
-
-
-def top_movers(projects: list, key: str, n: int = 3) -> list:
-    """Return top N rows sorted by `key` desc, only keeping non-zero positive movers."""
-    items = [p for p in projects if (p.get(key) or 0) > 0]
-    items.sort(key=lambda p: -(p.get(key) or 0))
-    return items[:n]
-
-
 def find_prev_snapshot() -> dict | None:
     """Return the second-most-recent snapshot from data/history/, if any.
 
@@ -232,51 +211,11 @@ def make_report(curr: dict, prev: dict | None) -> str:
     out.append(f"_中国背景置信度高 · **{high}** / {len(projects)}_")
     out.append("")
 
-    # Top Movers (Δ since prev snapshot)
-    movers_pledged = top_movers(projects, "delta_pledged_usd", 3)
-    movers_followers = top_movers(projects, "delta_followers", 3)
-    movers_backers = top_movers(projects, "delta_backers", 3)
-    if movers_pledged or movers_followers or movers_backers:
-        out.append("✦ &nbsp; ✦ &nbsp; ✦")
-        out.append("")
-        out.append("## Section B · 🔥 Top Movers · Δ since last snapshot")
-        out.append("")
-        if movers_pledged:
-            out.append("**💰 大额涨幅 (USD)**")
-            out.append("")
-            for p in movers_pledged:
-                d = p.get("delta_pledged_usd") or 0
-                out.append(
-                    f"- {project_link(p)} · **{fmt_delta_usd(d)}** "
-                    f"(now {fmt_usd(p.get('pledged_usd'))})"
-                )
-            out.append("")
-        if movers_followers:
-            out.append("**👀 关注涨幅 (Watchers)**")
-            out.append("")
-            for p in movers_followers:
-                d = p.get("delta_followers") or 0
-                out.append(
-                    f"- {project_link(p)} · **{fmt_delta_int(d)}** "
-                    f"(now {fmt_int(p.get('followers'))})"
-                )
-            out.append("")
-        if movers_backers:
-            out.append("**👥 Backer 涨幅**")
-            out.append("")
-            for p in movers_backers:
-                d = p.get("delta_backers") or 0
-                out.append(
-                    f"- {project_link(p)} · **{fmt_delta_int(d)}** "
-                    f"(now {fmt_int(p.get('backers'))})"
-                )
-            out.append("")
-
     if new_today or status_changes:
         out.append("✦ &nbsp; ✦ &nbsp; ✦")
         out.append("")
     if new_today:
-        out.append(f"## Section C · 🆕 今日新增 · {len(new_today)} 项")
+        out.append(f"## Section B · 🆕 今日新增 · {len(new_today)} 项")
         out.append("")
         new_today_sorted = sorted(
             new_today,
@@ -293,7 +232,7 @@ def make_report(curr: dict, prev: dict | None) -> str:
         out.append("")
 
     if status_changes:
-        out.append(f"## Section C · 🔄 状态变化 · {len(status_changes)} 项")
+        out.append(f"## Section B · 🔄 状态变化 · {len(status_changes)} 项")
         out.append("")
         for p, prev_status in status_changes[:25]:
             out.append(f"- {project_link(p)}: `{prev_status}` → `{p.get('status')}`")
@@ -317,7 +256,7 @@ def make_report(curr: dict, prev: dict | None) -> str:
 
         out.append("✦ &nbsp; ✦ &nbsp; ✦")
         out.append("")
-        out.append(f"## Section D · ⏳ Prelaunch · Top 3 详情")
+        out.append(f"## Section C · ⏳ Prelaunch · Top 10")
         out.append("")
         # Top 3 = full detail (product image + 4 Chinese highlights), per
         # design rules in docs/DESIGN_RULES.md.
@@ -359,22 +298,23 @@ def make_report(curr: dict, prev: dict | None) -> str:
             out.append("---")
             out.append("")
 
-        # Slots 4 onwards in compact list form
+        # Ranks 4-10 in compact list form (text only — Top 3 上面已是图文)
         if len(prelaunch) > 3:
-            out.append("**剩余 prelaunch · 列表形式**")
+            out.append("**Top 4–10 · 列表形式**")
             out.append("")
-            out.append("| | 项目 / 一句话 | 公司 | 国家 | Followers | 时间 |")
-            out.append("| - | --- | --- | --- | ---: | --- |")
-            for p in prelaunch[3:30]:
+            out.append("| # | 项目 / 一句话 | 公司 | 国家 | Followers | 时间 |")
+            out.append("| ---: | --- | --- | --- | ---: | --- |")
+            for i, p in enumerate(prelaunch[3:10], start=4):
                 star = PWL if p.get("project_we_love") else ""
                 brand = p.get("matched_brand_zh") or p.get("matched_brand") or p.get("creator_name") or ""
                 out.append(
-                    f"| {star} | {project_link(p)} | {brand} | {p.get('country','?')} "
+                    f"| {i:02d} {star} | {project_link(p)} | {brand} | {p.get('country','?')} "
                     f"| {fmt_int(p.get('followers'))} | {timeline_text(p)} |"
                 )
-            if len(prelaunch) > 30:
-                out.append(f"| | _…and {len(prelaunch)-30} more in [JSON](../data/projects.json)_ | | | | |")
             out.append("")
+            if len(prelaunch) > 10:
+                out.append(f"_…还有 {len(prelaunch)-10} 个 prelaunch 项目，完整看板见 [Pages](https://chen17-sq.github.io/kickstarter-china-tracker/) 或 [JSON](../data/projects.json)_")
+                out.append("")
 
     live = sorted(
         [p for p in projects if p.get("status") == "live"],
@@ -385,7 +325,7 @@ def make_report(curr: dict, prev: dict | None) -> str:
 
         out.append("✦ &nbsp; ✦ &nbsp; ✦")
         out.append("")
-        out.append(f"## Section E · 🔴 Live · Top 3 详情")
+        out.append(f"## Section D · 🔴 Live · Top 10")
         out.append("")
         # Top 3 detail blocks
         for i, p in enumerate(live[:3]):
@@ -433,25 +373,28 @@ def make_report(curr: dict, prev: dict | None) -> str:
             out.append("---")
             out.append("")
 
-        # Slots 4 onwards as compact table
+        # Ranks 4-10 in compact list form (text only)
         if len(live) > 3:
-            out.append(f"**剩余 live · 列表形式 (Top {min(20, len(live))-3} 条)**")
+            out.append("**Top 4–10 · 列表形式**")
             out.append("")
-            out.append("| | 项目 / 一句话 | 已筹 (Δ) | Backers | 完成率 | 时间 |")
-            out.append("| - | --- | ---: | ---: | ---: | --- |")
-            for p in live[3:20]:
+            out.append("| # | 项目 / 一句话 | 已筹 | Backers | 完成率 | 时间 |")
+            out.append("| ---: | --- | ---: | ---: | ---: | --- |")
+            for i, p in enumerate(live[3:10], start=4):
                 star = PWL if p.get("project_we_love") else ""
                 d_p = p.get("delta_pledged_usd")
                 pledged_cell = fmt_usd(p.get("pledged_usd"))
                 if d_p and d_p > 0:
                     pledged_cell += f" *(+{fmt_usd(d_p)})*"
                 out.append(
-                    f"| {star} | {project_link(p)} | {pledged_cell} | "
+                    f"| {i:02d} {star} | {project_link(p)} | {pledged_cell} | "
                     f"{fmt_int(p.get('backers'))} | "
                     f"{fmt_pct(p.get('percent_funded'))} | "
                     f"{timeline_text(p)} |"
                 )
             out.append("")
+            if len(live) > 10:
+                out.append(f"_…还有 {len(live)-10} 个 live 项目，完整看板见 [Pages](https://chen17-sq.github.io/kickstarter-china-tracker/) 或 [JSON](../data/projects.json)_")
+                out.append("")
 
     successful = sorted(
         [p for p in projects if p.get("status") == "successful"],
@@ -461,15 +404,15 @@ def make_report(curr: dict, prev: dict | None) -> str:
         from .momentum import conversion_per_watcher
         out.append("✦ &nbsp; ✦ &nbsp; ✦")
         out.append("")
-        out.append(f"## Section F · ✅ 最近已结束 · 按已筹排序 Top {min(15, len(successful))}")
+        out.append(f"## Section E · ✅ 最近已结束 · Top 10")
         out.append("")
-        out.append("| 项目 / 一句话 | 已筹 | Backers | $/Watcher | 完成率 | 结束 |")
-        out.append("| --- | ---: | ---: | ---: | ---: | --- |")
-        for p in successful[:15]:
+        out.append("| # | 项目 / 一句话 | 已筹 | Backers | $/Watcher | 完成率 | 结束 |")
+        out.append("| ---: | --- | ---: | ---: | ---: | ---: | --- |")
+        for i, p in enumerate(successful[:10], start=1):
             cpw = conversion_per_watcher(p)
             cpw_cell = fmt_usd(cpw) if cpw else "—"
             out.append(
-                f"| {project_link(p)} | {fmt_usd(p.get('pledged_usd'))} | "
+                f"| {i:02d} | {project_link(p)} | {fmt_usd(p.get('pledged_usd'))} | "
                 f"{fmt_int(p.get('backers'))} | {cpw_cell} | "
                 f"{fmt_pct(p.get('percent_funded'))} | "
                 f"{timeline_text(p)} |"

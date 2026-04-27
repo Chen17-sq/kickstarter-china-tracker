@@ -1,15 +1,13 @@
-"""Generate 9 portrait PNG slides (1080×1350) for 小红书 / Xiaohongshu carousel.
+"""Generate 7 portrait PNG slides (1080×1350) for 小红书 / Xiaohongshu carousel.
 
 Each cron run emits a complete carousel:
   site/social/latest/slide-01.png  cover (masthead + KPIs)
-  site/social/latest/slide-02.png  🔥 Top Movers · USD
-  site/social/latest/slide-03.png  🔥 Top Movers · Watchers
-  site/social/latest/slide-04.png  ⏳ Pre-launch · Featured #1
-  site/social/latest/slide-05.png  ⏳ Pre-launch · Top 5 list
-  site/social/latest/slide-06.png  🔴 Live · Featured #1
-  site/social/latest/slide-07.png  🔴 Live · Top 5 list
-  site/social/latest/slide-08.png  ✅ Recently funded · Top 3
-  site/social/latest/slide-09.png  Subscribe CTA + URL
+  site/social/latest/slide-02.png  ⏳ Pre-launch · Featured Top 3 (image+highlights)
+  site/social/latest/slide-03.png  ⏳ Pre-launch · Top 10 list (text)
+  site/social/latest/slide-04.png  🔴 Live · Featured Top 3 (image+highlights)
+  site/social/latest/slide-05.png  🔴 Live · Top 10 list (text)
+  site/social/latest/slide-06.png  ✅ Recently funded · Top 10 list (text)
+  site/social/latest/slide-07.png  Subscribe CTA + URL
 
 Also dated under site/social/<date>/ for permanent archiving.
 
@@ -198,68 +196,6 @@ def _kpi_block(label: str, value: str, color: str) -> str:
     </div>"""
 
 
-# ── Slide 02 / 03 · Top Movers ──────────────────────────────────
-def _mover_card(rank: int, p: dict, *, kind: str) -> str:
-    title = _esc(_truncate(p.get("title") or "", 38))
-    blurb = _esc(_truncate(p.get("blurb_zh") or p.get("blurb") or "", 30))
-    star = (f'<span style="color:{RED};font-family:Playfair Display;font-weight:900;'
-            f'margin-right:8px">✦</span>') if p.get("project_we_love") else ""
-    if kind == "usd":
-        delta = p.get("delta_pledged_usd") or 0
-        big = f"+{fmt_usd(delta)}"
-        sub = f"now {fmt_usd(p.get('pledged_usd'))}"
-    else:  # watchers
-        delta = int(p.get("delta_followers") or 0)
-        big = f"+{delta:,}"
-        sub = f"now {fmt_int(p.get('followers'))} watchers"
-    return f"""
-    <div style="display:flex;gap:24px;padding:28px 0;border-bottom:1px solid {INK}">
-      <div class="serif" style="flex:none;font-size:64px;font-weight:900;
-           line-height:1;color:{N400};letter-spacing:-2px;width:80px">{rank:02d}</div>
-      <div style="flex:1;min-width:0">
-        <div class="serif" style="font-size:30px;font-weight:700;line-height:1.15;color:{INK};
-             letter-spacing:-.5px">{star}{title}</div>
-        <div class="body" style="margin-top:10px;font-style:italic;font-size:18px;
-             line-height:1.4;color:{N700}">{blurb}</div>
-      </div>
-      <div style="flex:none;text-align:right;min-width:160px">
-        <div class="mono" style="font-size:32px;font-weight:700;color:{RED};letter-spacing:-.5px">{big}</div>
-        <div class="sans" style="margin-top:6px;font-size:11px;font-weight:700;
-             color:{N500};letter-spacing:.18em;text-transform:uppercase">{sub}</div>
-      </div>
-    </div>"""
-
-
-def slide_movers(d: dict, *, kind: str) -> str:
-    if kind == "usd":
-        movers = [p for p in (d["prelaunch"] + d["live"]) if (p.get("delta_pledged_usd") or 0) > 0]
-        movers.sort(key=lambda p: -(p.get("delta_pledged_usd") or 0))
-        kicker = "🔥 24-HOUR TOP MOVERS · USD"
-        h2 = "Breaking · 大额涨幅"
-        dek = "今日 24 小时内已筹涨幅 Top 3 · USD"
-    else:
-        movers = [p for p in (d["prelaunch"] + d["live"]) if (p.get("delta_followers") or 0) > 0]
-        movers.sort(key=lambda p: -(p.get("delta_followers") or 0))
-        kicker = "🔥 24-HOUR TOP MOVERS · WATCHERS"
-        h2 = "Breaking · 关注涨幅"
-        dek = "今日 24 小时内 watchers 涨幅 Top 3"
-
-    movers = movers[:3]
-    cards = "".join(_mover_card(i + 1, p, kind=kind) for i, p in enumerate(movers))
-    if not cards:
-        cards = (f'<div class="body" style="padding:60px 0;text-align:center;'
-                 f'font-style:italic;color:{N400};font-size:20px">'
-                 f'今日暂无明显涨幅项目。</div>')
-
-    return f"""
-    <div class="section">
-      <div class="kicker">{kicker}</div>
-      <h2>{h2}</h2>
-      <div class="dek">{_esc(dek)}</div>
-    </div>
-    <div style="padding:8px 56px">{cards}</div>"""
-
-
 # ── Highlights extraction (parses '|'-separated KS feature blurbs) ──
 def _extract_highlights(p: dict, *, max_n: int = 4) -> list[str]:
     """Pull short bullet-style highlights from KS English blurb.
@@ -427,12 +363,12 @@ def slide_live_feature(d: dict) -> str:
 
 
 
-# ── Slide 05 / 07 / 08 · Top 5 Lists ────────────────────────────
+# ── Slide list (text-only) · Top 10 ─────────────────────────────
 def _list_row(rank: int, p: dict, *, kind: str) -> str:
-    title = _esc(_truncate(p.get("title") or "", 36))
-    blurb = _esc(_truncate(p.get("blurb_zh") or p.get("blurb") or "", 26))
+    title = _esc(_truncate(p.get("title") or "", 38))
+    blurb = _esc(_truncate(p.get("blurb_zh") or p.get("blurb") or "", 28))
     star = ('<span style="color:'+RED+';font-family:Playfair Display;'
-            'font-weight:900;margin-right:6px">✦</span>') if p.get("project_we_love") else ""
+            'font-weight:900;margin-right:5px">✦</span>') if p.get("project_we_love") else ""
     if kind == "prelaunch":
         right = f'{fmt_int(p.get("followers"))}'
         right_lbl = "Watchers"
@@ -442,17 +378,18 @@ def _list_row(rank: int, p: dict, *, kind: str) -> str:
     else:  # successful
         right = f'{fmt_usd(p.get("pledged_usd"))}'
         right_lbl = f'{fmt_int(p.get("backers"))} backers'
+    # Compact row sizing — must fit 10 rows in 1080×1350 portrait
     return f"""
-    <div style="display:flex;gap:20px;padding:22px 0;border-bottom:1px solid {INK}">
-      <div class="serif" style="flex:none;font-size:48px;font-weight:900;line-height:1;
-           color:{N400};letter-spacing:-1.5px;width:64px">{rank:02d}</div>
+    <div style="display:flex;gap:16px;padding:11px 0;border-bottom:1px solid {INK};align-items:flex-start">
+      <div class="serif" style="flex:none;font-size:32px;font-weight:900;line-height:1;
+           color:{N400};letter-spacing:-1px;width:50px;font-variant-numeric:tabular-nums">{rank:02d}</div>
       <div style="flex:1;min-width:0">
-        <div class="serif" style="font-size:24px;font-weight:700;line-height:1.2;color:{INK};letter-spacing:-.3px">{star}{title}</div>
-        <div class="body" style="margin-top:6px;font-style:italic;font-size:15px;color:{N700};line-height:1.35">{blurb}</div>
+        <div class="serif" style="font-size:19px;font-weight:700;line-height:1.18;color:{INK};letter-spacing:-.2px">{star}{title}</div>
+        <div class="body" style="margin-top:3px;font-style:italic;font-size:13px;color:{N700};line-height:1.3">{blurb}</div>
       </div>
-      <div style="flex:none;text-align:right;min-width:180px">
-        <div class="mono" style="font-size:24px;font-weight:700;color:{INK};letter-spacing:-.3px">{right}</div>
-        <div class="sans" style="margin-top:4px;font-size:11px;font-weight:700;color:{N500};letter-spacing:.18em;text-transform:uppercase">{right_lbl}</div>
+      <div style="flex:none;text-align:right;min-width:160px">
+        <div class="mono" style="font-size:19px;font-weight:700;color:{INK};letter-spacing:-.3px">{right}</div>
+        <div class="sans" style="margin-top:2px;font-size:10px;font-weight:700;color:{N500};letter-spacing:.16em;text-transform:uppercase">{right_lbl}</div>
       </div>
     </div>"""
 
@@ -462,14 +399,14 @@ def slide_list(d: dict, *, kind: str) -> str:
         items = sorted(
             d["prelaunch"],
             key=lambda x: (0 if x.get("project_we_love") else 1, -(int(x.get("followers") or 0))),
-        )[:5]
-        kicker = "⏳ PRE-LAUNCH · TOP BY WATCHERS"
-        h2 = "未发布 · Top 5"
+        )[:10]
+        kicker = "⏳ PRE-LAUNCH · TOP 10 BY WATCHERS"
+        h2 = "未发布 · Top 10"
         dek = "按 watchers 排序 · KS Editor's Picks 优先"
     elif kind == "live":
-        items = sorted(d["live"], key=lambda x: -float(x.get("pledged_usd") or 0))[:5]
-        kicker = "🔴 LIVE · TOP BY USD RAISED"
-        h2 = "在筹中 · Top 5"
+        items = sorted(d["live"], key=lambda x: -float(x.get("pledged_usd") or 0))[:10]
+        kicker = "🔴 LIVE · TOP 10 BY USD RAISED"
+        h2 = "在筹中 · Top 10"
         dek = "按已筹 USD 排序"
     else:
         # successful from full dataset
@@ -477,9 +414,9 @@ def slide_list(d: dict, *, kind: str) -> str:
         items = sorted(
             [p for p in all_proj if p.get("status") == "successful"],
             key=lambda x: -float(x.get("pledged_usd") or 0),
-        )[:5]
-        kicker = "✅ RECENTLY FUNDED"
-        h2 = "已成功 · Top 5"
+        )[:10]
+        kicker = "✅ RECENTLY FUNDED · TOP 10"
+        h2 = "已成功 · Top 10"
         dek = "按已筹 USD 排序"
 
     rows = "".join(_list_row(i + 1, p, kind=kind) for i, p in enumerate(items))
@@ -491,7 +428,7 @@ def slide_list(d: dict, *, kind: str) -> str:
       <h2>{h2}</h2>
       <div class="dek">{_esc(dek)}</div>
     </div>
-    <div style="padding:8px 56px">{rows}</div>"""
+    <div style="padding:4px 56px">{rows}</div>"""
 
 
 def _empty_section(kicker: str, msg: str) -> str:
@@ -566,16 +503,17 @@ def generate_carousel() -> list[Path] | None:
     edition = edition_number()
     wrap = lambda body: slide_html(body, today_long=today_long, edition=edition)
 
+    # 7 slides — gainer (movers) slides dropped per redesign:
+    #   01 cover · 02-03 prelaunch (feature top 3 + list top 10)
+    #   04-05 live (feature top 3 + list top 10) · 06 successful · 07 CTA
     slides = [
         ("01", wrap(slide_cover(d))),
-        ("02", wrap(slide_movers(d, kind="usd"))),
-        ("03", wrap(slide_movers(d, kind="watchers"))),
-        ("04", wrap(slide_prelaunch_feature(d))),
-        ("05", wrap(slide_list(d, kind="prelaunch"))),
-        ("06", wrap(slide_live_feature(d))),
-        ("07", wrap(slide_list(d, kind="live"))),
-        ("08", wrap(slide_list(d, kind="successful"))),
-        ("09", wrap(slide_cta(d))),
+        ("02", wrap(slide_prelaunch_feature(d))),
+        ("03", wrap(slide_list(d, kind="prelaunch"))),
+        ("04", wrap(slide_live_feature(d))),
+        ("05", wrap(slide_list(d, kind="live"))),
+        ("06", wrap(slide_list(d, kind="successful"))),
+        ("07", wrap(slide_cta(d))),
     ]
 
     latest_dir = SOCIAL / "latest"
