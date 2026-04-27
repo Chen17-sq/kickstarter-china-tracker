@@ -1,6 +1,12 @@
 name: deploy-pages
 
 on:
+  # Cascades after scrape.yml so daily cron output reaches Pages without
+  # a manual dispatch. (GITHUB_TOKEN-driven push commits do NOT trigger
+  # the `push` event on other workflows — workflow_run does.)
+  workflow_run:
+    workflows: ["scrape"]
+    types: [completed]
   push:
     branches: [main]
     paths:
