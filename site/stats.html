@@ -342,6 +342,20 @@ function fmtUSD(n) {
 function fmtNum(n) {
   return n == null ? "—" : Number(n).toLocaleString();
 }
+function fmtBeijing(iso) {
+  if (!iso) return "—";
+  try {
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return iso;
+    const fmt = new Intl.DateTimeFormat("en-CA", {
+      year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", hour12: false,
+      timeZone: "Asia/Shanghai",
+    });
+    const parts = Object.fromEntries(fmt.formatToParts(d).map(p => [p.type, p.value]));
+    return `${parts.year}-${parts.month}-${parts.day} ${parts.hour}:${parts.minute} 北京`;
+  } catch (e) { return iso; }
+}
 function escapeHtml(s) {
   return String(s ?? "").replace(/[&<>"']/g, (c) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
@@ -370,7 +384,7 @@ async function load() {
     const j = await r.json();
     const projects = j.projects || [];
     document.getElementById("hsTracked").textContent = projects.length;
-    document.getElementById("updated").textContent = (j.generated_at || "—").replace("T", " ").slice(0, 16) + " UTC";
+    document.getElementById("updated").textContent = fmtBeijing(j.generated_at);
 
     let pre = 0, live = 0, succ = 0, pwl = 0, high = 0, totalLive = 0;
     const brands = new Set();

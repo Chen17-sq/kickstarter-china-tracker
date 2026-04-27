@@ -143,6 +143,23 @@ function fmtNum(n) {
   if (n == null || n === "" || isNaN(Number(n))) return "—";
   return Number(n).toLocaleString();
 }
+// Convert a UTC ISO timestamp to Beijing wall time. Cron fires at 00:00 UTC =
+// 08:00 北京 — readers always see Beijing-local figures.
+function fmtBeijing(iso) {
+  if (!iso) return "—";
+  try {
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return iso;
+    const fmt = new Intl.DateTimeFormat("en-CA", {
+      year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", hour12: false,
+      timeZone: "Asia/Shanghai",
+    });
+    const parts = Object.fromEntries(fmt.formatToParts(d).map(p => [p.type, p.value]));
+    const stamp = `${parts.year}-${parts.month}-${parts.day} ${parts.hour}:${parts.minute}`;
+    return LANG === "zh" ? `${stamp} 北京` : `${stamp} Beijing`;
+  } catch (e) { return iso; }
+}
 function escapeHtml(s) {
   return String(s ?? "").replace(/[&<>"']/g, (c) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
@@ -369,8 +386,7 @@ function renderHero() {
     langZh ? "今日头版 · 自动生成" : "TODAY'S FRONT PAGE · AUTO-GENERATED";
   document.getElementById("heroTitle").textContent =
     langZh ? "今日头版 · Top 10" : "Today's Front Page · Top 10";
-  document.getElementById("heroMeta").textContent =
-    GENERATED_AT ? GENERATED_AT.replace("T", " ").slice(0, 16) + " UTC" : "—";
+  document.getElementById("heroMeta").textContent = fmtBeijing(GENERATED_AT);
   document.getElementById("heroPreLabel").textContent =
     langZh ? "⏳ 未发布 · 关注数 Top 10" : "⏳ Prelaunch · Top 10 by Watchers";
   document.getElementById("heroPreMeta").textContent =
@@ -548,9 +564,7 @@ function applyChrome() {
   const editionNo = editionNumber();
   $("#editionNo").textContent = editionNo;
   $("#footEdition").textContent = editionNo;
-  $("#updated").textContent = GENERATED_AT
-    ? GENERATED_AT.replace("T", " ").replace("Z", " UTC")
-    : "—";
+  $("#updated").textContent = fmtBeijing(GENERATED_AT);
   document.documentElement.lang = LANG === "zh" ? "zh-CN" : "en";
   $$("#langToggle button").forEach((b) =>
     b.classList.toggle("active", b.dataset.l === LANG));
