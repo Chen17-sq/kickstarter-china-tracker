@@ -10,7 +10,7 @@ let LANG = localStorage.getItem(LANG_KEY) || "zh";
 
 const I18N = {
   zh: {
-    kicker: "实时数据 · cron 每日北京时间 09:00 刷新",
+    kicker: "实时数据 · cron 每日北京时间 08:00 刷新",
     motto: "All The Crowd-Funded Hardware Fit To Print",
     editionLeft: "北京版",
     editionRightPrefix: "更新于 ",
@@ -42,7 +42,7 @@ const I18N = {
     },
   },
   en: {
-    kicker: "Live · cron refreshes daily at 09:00 Beijing",
+    kicker: "Live · cron refreshes daily at 08:00 Beijing",
     motto: "All The Crowd-Funded Hardware Fit To Print",
     editionLeft: "Beijing Edition",
     editionRightPrefix: "Updated ",

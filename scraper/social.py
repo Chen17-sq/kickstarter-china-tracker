@@ -173,7 +173,7 @@ def slide_cover(d: dict) -> str:
         <p class="body" style="margin-top:36px;font-style:italic;font-size:24px;line-height:1.45;
            color:{N700};max-width:24ch">每日追踪 Kickstarter 上中国背景的消费硬件项目</p>
         <p class="body" style="margin-top:14px;font-size:18px;color:{N600};line-height:1.5">
-          Pre-launch · Live · 已结束 · 每日 09:00 北京时间</p>
+          Pre-launch · Live · 已结束 · 每日 08:00 北京时间</p>
       </div>
       <div style="border-top:4px solid {INK};border-bottom:4px solid {INK};display:flex;
                   justify-content:space-between;padding:30px 0">
@@ -454,7 +454,7 @@ def slide_cta(d: dict) -> str:
       <h1 class="serif" style="font-size:88px;font-weight:900;line-height:.95;letter-spacing:-3px;color:{INK};margin-top:6px">
         一份报纸</h1>
       <p class="body" style="margin-top:30px;font-size:22px;font-style:italic;line-height:1.5;color:{N700}">
-        09:00 北京时间，整份 Newsprint 头版送到你邮箱。<br>
+        08:00 北京时间，整份 Newsprint 头版送到你邮箱。<br>
         免费 · 无广告 · 可随时取消。</p>
       <div style="margin-top:48px;display:inline-block;border:4px solid {INK};padding:24px 36px">
         <div class="sans" style="font-size:11px;font-weight:700;color:{N500};letter-spacing:.22em;text-transform:uppercase;margin-bottom:8px">订阅地址</div>

@@ -434,7 +434,7 @@ def build_html(curr: dict) -> tuple[str, str]:
              padding-bottom:1px;font-weight:700">GITHUB</a>
           <div style="margin-top:14px;font-family:{SERIF};font-style:italic;
                       font-size:13px;color:{N500};letter-spacing:0;text-transform:none">
-            All the news that's fit to print, every morning at 09:00 Beijing.
+            All the news that's fit to print, every morning at 08:00 Beijing.
           </div>
           <div style="margin-top:10px;font-size:10px">
             退订 · 在仓库 SETTINGS → SECRETS → ACTIONS 把 NOTIFY_EMAIL_TO 删掉
