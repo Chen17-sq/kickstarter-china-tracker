@@ -34,9 +34,9 @@
 
   <!-- KPI hairline (top + bottom) -->
   <line x1="40" y1="332" x2="1240" y2="332" stroke="#111111" stroke-width="4"/>
-  <text x="54" y="402" font-family="Playfair Display, Times New Roman, serif" font-size="48" font-weight="900" fill="#111111" letter-spacing="-1">253</text><text x="54" y="430" font-family="Inter, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#737373" letter-spacing="3">TRACKED</text>
+  <text x="54" y="402" font-family="Playfair Display, Times New Roman, serif" font-size="48" font-weight="900" fill="#111111" letter-spacing="-1">255</text><text x="54" y="430" font-family="Inter, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#737373" letter-spacing="3">TRACKED</text>
 <line x1="280" y1="332" x2="280" y2="448" stroke="#111111" stroke-width="1"/>
-<text x="294" y="402" font-family="Playfair Display, Times New Roman, serif" font-size="48" font-weight="900" fill="#CC0000" letter-spacing="-1">87</text><text x="294" y="430" font-family="Inter, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#737373" letter-spacing="3">PRELAUNCH</text>
+<text x="294" y="402" font-family="Playfair Display, Times New Roman, serif" font-size="48" font-weight="900" fill="#CC0000" letter-spacing="-1">89</text><text x="294" y="430" font-family="Inter, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#737373" letter-spacing="3">PRELAUNCH</text>
 <line x1="520" y1="332" x2="520" y2="448" stroke="#111111" stroke-width="1"/>
 <text x="534" y="402" font-family="Playfair Display, Times New Roman, serif" font-size="48" font-weight="900" fill="#111111" letter-spacing="-1">90</text><text x="534" y="430" font-family="Inter, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#737373" letter-spacing="3">LIVE</text>
 <line x1="760" y1="332" x2="760" y2="448" stroke="#111111" stroke-width="1"/>
