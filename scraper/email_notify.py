@@ -631,6 +631,36 @@ def main(argv: list[str] | None = None) -> int:
 
     sender = (os.environ.get("NOTIFY_EMAIL_FROM") or
               "KS China Tracker <onboarding@resend.dev>")
+
+    # ── Last-gate sanity check before broadcast ───────────────────────
+    # Loads previous snapshot from history (one before today's), runs the
+    # quality gate. If it fails, broadcast is BLOCKED — owner gets a
+    # plaintext alert email; subscribers get nothing.
+    from .sanity import validate_for_send, format_alert_body
+    from .report import find_prev_snapshot
+    prev_snapshot = find_prev_snapshot()
+    ok, issues = validate_for_send(curr, prev_snapshot)
+    if issues:
+        print("⚠ sanity issues:")
+        for i in issues:
+            print(f"  - {i}")
+    if not ok:
+        print(f"⚠ BROADCAST BLOCKED — alerting owner only ({to_owner})")
+        if to_owner:
+            alert_body = format_alert_body(issues, curr)
+            alert_html = (
+                f'<pre style="font-family:monospace;font-size:13px;white-space:pre-wrap">'
+                f'{_esc(alert_body)}</pre>'
+            )
+            alert_subj = f"[ALERT] KS Tracker broadcast BLOCKED · {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%d')}"
+            for owner in to_owner:
+                try:
+                    post_resend(api_key, sender, [owner], alert_subj, alert_html)
+                    print(f"  → alert sent to {owner}")
+                except Exception as e:
+                    print(f"  ! alert to {owner} failed: {e}", file=sys.stderr)
+        return 0
+
     sent = 0
     failed = 0
     for r in recipients:
