@@ -21,20 +21,42 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # ── Idempotency guard ───────────────────────────────────────────
+      # Today's snapshot already exists? GH-cron, CC-backup, and manual
+      # workflow_dispatch all use the same workflow, so duplicate triggers
+      # are common. We treat the presence of a `data/history/<today-UTC>T*.json`
+      # file as the canonical "today already ran" marker — single source of
+      # truth for the whole pipeline. Subsequent steps gated on this.
+      - name: Check if today's snapshot already exists
+        id: dedupe
+        run: |
+          today_utc=$(date -u +%Y-%m-%d)
+          if ls "data/history/${today_utc}T"*.json >/dev/null 2>&1; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "✓ today's snapshot ${today_utc} already exists — skipping scrape + email"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            echo "→ no snapshot yet for ${today_utc} — proceeding"
+          fi
+
       - uses: actions/setup-python@v5
+        if: steps.dedupe.outputs.skip != 'true'
         with:
           python-version: "3.12"
           cache: "pip"
 
       - name: Install deps
+        if: steps.dedupe.outputs.skip != 'true'
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Install Chromium for PDF render
+        if: steps.dedupe.outputs.skip != 'true'
         run: python -m playwright install --with-deps chromium
 
       - name: Run scraper
+        if: steps.dedupe.outputs.skip != 'true'
         env:
           # If the secret is unset, scraper.translate logs a warning and skips
           # auto-translation — pipeline still produces correct projects.json.
@@ -42,6 +64,7 @@ jobs:
         run: python -m scraper.run
 
       - name: Commit changes
+        if: steps.dedupe.outputs.skip != 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -57,14 +80,14 @@ jobs:
           git push
 
       - name: Slack / Discord notify (optional)
-        if: env.SLACK_WEBHOOK != '' || env.DISCORD_WEBHOOK != ''
+        if: steps.dedupe.outputs.skip != 'true' && (env.SLACK_WEBHOOK != '' || env.DISCORD_WEBHOOK != '')
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: python -m scraper.notify
 
       - name: Email notify (optional)
-        if: env.RESEND_API_KEY != '' && env.NOTIFY_EMAIL_TO != ''
+        if: steps.dedupe.outputs.skip != 'true' && env.RESEND_API_KEY != '' && env.NOTIFY_EMAIL_TO != ''
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           NOTIFY_EMAIL_TO: ${{ secrets.NOTIFY_EMAIL_TO }}
