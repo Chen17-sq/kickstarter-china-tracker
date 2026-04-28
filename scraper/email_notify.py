@@ -663,6 +663,7 @@ def main(argv: list[str] | None = None) -> int:
 
     sent = 0
     failed = 0
+    failure_log: list[str] = []  # for owner digest
     for r in recipients:
         try:
             post_resend(api_key, sender, [r], subject, html)
@@ -673,7 +674,67 @@ def main(argv: list[str] | None = None) -> int:
             # owner email is always first in the list and almost always works.
             print(f"  ! send to {r} failed: {e}", file=sys.stderr)
             failed += 1
+            failure_log.append(f"{r}: {str(e)[:200]}")
     print(f"Email broadcast: sent={sent}, failed={failed}, from={sender}")
+
+    # ── Owner daily digest ────────────────────────────────────────
+    # Even on full success, send a separate plaintext "operations digest"
+    # to the owner. This is the observability layer — owner gets one
+    # email per day saying exactly what ran and what was sent. Catches
+    # silent degradation, silent partial failures, drift over time.
+    # (Skipped if there's no owner email or alert was already sent.)
+    if to_owner:
+        digest_subj = (
+            f"[OPS] KS Tracker · {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%d')} · "
+            f"sent={sent} failed={failed}"
+        )
+        digest_lines = [
+            f"Daily KS Tracker run completed.",
+            f"",
+            f"Snapshot:",
+            f"  generated_at:   {curr.get('generated_at','—')}",
+            f"  total projects: {d.get('total','?')}",
+            f"  prelaunch:      {counts.get('prelaunch','?')}",
+            f"  live:           {counts.get('live','?')}",
+            f"  successful:     {counts.get('successful','?')}",
+            f"  pledged USD:    {fmt_usd(d.get('total_live_usd', 0))}",
+            f"  high confidence: {d.get('high','?')}",
+            f"  ✦ KS picks:     {d.get('pwl','?')}",
+            f"",
+            f"Broadcast:",
+            f"  recipients (deduped):  {len(recipients)}",
+            f"  sent successfully:     {sent}",
+            f"  failed:                {failed}",
+            f"  sender:                {sender}",
+        ]
+        if failure_log:
+            digest_lines.append(f"")
+            digest_lines.append(f"Failures:")
+            for f in failure_log:
+                digest_lines.append(f"  - {f}")
+        if issues:
+            digest_lines.append(f"")
+            digest_lines.append(f"Sanity warnings (informational, broadcast still went out):")
+            for i in issues:
+                digest_lines.append(f"  - {i}")
+        digest_lines += [
+            f"",
+            f"Live: https://ks.aldrich.fyi/",
+            f"This edition: https://ks.aldrich.fyi/editions/{dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%d')}.html",
+            f"",
+            f"— ops digest, scraper/email_notify.py",
+        ]
+        digest_body = "\n".join(digest_lines)
+        digest_html = (
+            f'<pre style="font-family:monospace;font-size:12px;'
+            f'white-space:pre-wrap;line-height:1.5">{_esc(digest_body)}</pre>'
+        )
+        for owner in to_owner:
+            try:
+                post_resend(api_key, sender, [owner], digest_subj, digest_html)
+            except Exception as e:
+                print(f"  ! ops digest to {owner} failed: {e}", file=sys.stderr)
+
     return 0
 
 

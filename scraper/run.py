@@ -31,6 +31,7 @@ from .translate import fill_missing as translate_fill_missing
 from .report import make_report, REPORTS
 from .project import fetch_watches_counts, fetch_pledge_minimums, slug_from_pathname
 from .banner import write_banner
+from .atomic import write_text_atomic, write_json_atomic
 from .momentum import compute_deltas
 from .email_notify import build_html as build_email_html, write_archive as write_email_archive
 from .sitemap import write_sitemap
@@ -135,8 +136,17 @@ def run() -> int:
     hits = crawl_discover()
     print(f"  → {len(hits)} candidate projects")
 
-    if not hits:
-        print("FATAL: zero discovered. Likely Cloudflare blocked all seeds. Aborting write.", file=sys.stderr)
+    # Discover catastrophe guard: with 14 seeds × 8 pages, a healthy crawl
+    # produces 600-700 candidates. If we got < 50, all-but-one seed likely
+    # got 403'd — refuse to proceed (don't overwrite good projects.json).
+    DISCOVER_FLOOR = 50
+    if len(hits) < DISCOVER_FLOOR:
+        print(
+            f"FATAL: only {len(hits)} candidates (floor={DISCOVER_FLOOR}). "
+            f"Most discover seeds were probably Cloudflare-blocked. "
+            f"Refusing to write. data/projects.json stays at its previous value.",
+            file=sys.stderr,
+        )
         return 1
 
     blurbs_zh = load_blurbs_zh()
@@ -230,7 +240,7 @@ def run() -> int:
     # Always write the history snapshot — useful for debugging even when the
     # main file is locked behind the safety guard.
     snap_path = HISTORY / f"{finished.replace(':', '-')}.json"
-    snap_path.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
+    write_json_atomic(snap_path, out)
 
     if len(rows) < MIN_KEPT_FLOOR:
         print(f"WARN: kept {len(rows)} < floor {MIN_KEPT_FLOOR}. "
@@ -239,10 +249,10 @@ def run() -> int:
               file=sys.stderr)
         return 2
 
-    (DATA / "projects.json").write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
+    write_json_atomic(DATA / "projects.json", out)
     for slice_status in ("prelaunch", "live"):
         sub = {**out, "projects": [r for r in rows if r["status"] == slice_status]}
-        (DATA / f"{slice_status}.json").write_text(json.dumps(sub, ensure_ascii=False, indent=2), encoding="utf-8")
+        write_json_atomic(DATA / f"{slice_status}.json", sub)
 
     # Diff vs the second-newest snapshot in history
     snaps = sorted(HISTORY.glob("*.json"))
@@ -251,9 +261,8 @@ def run() -> int:
             prev = json.loads(snaps[-2].read_text(encoding="utf-8"))
             diffs = diff_snapshots(prev, out)
             if diffs:
-                (REPO_ROOT / "CHANGELOG.md").write_text(
-                    changes_to_markdown(diffs), encoding="utf-8"
-                )
+                write_text_atomic(REPO_ROOT / "CHANGELOG.md",
+                                  changes_to_markdown(diffs))
                 print(f"  wrote CHANGELOG.md with {len(diffs)} changes")
             else:
                 print("  no changes since last run")
@@ -322,9 +331,9 @@ def run() -> int:
         md = make_report(out, prev_for_report)
         today = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
         report_path = REPORTS / f"{today}.md"
-        report_path.write_text(md, encoding="utf-8")
+        write_text_atomic(report_path, md)
         # Stable URL — bookmark this once
-        (REPORTS / "latest.md").write_text(md, encoding="utf-8")
+        write_text_atomic(REPORTS / "latest.md", md)
         print(f"  wrote reports/{today}.md (and reports/latest.md)")
     except Exception as e:
         print(f"  report skipped: {e}")

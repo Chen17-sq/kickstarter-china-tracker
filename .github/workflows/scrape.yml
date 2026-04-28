@@ -18,6 +18,10 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    # Workflow timeout — protects against stuck Playwright / hung Resend POST /
+    # any pathology that would otherwise burn 6h of GH minutes silently.
+    # Healthy run: 3-4 min. Outlier with Playwright fallback: ~6 min.
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
 

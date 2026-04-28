@@ -38,6 +38,36 @@ def validate_for_send(curr: dict, prev: Optional[dict] = None) -> tuple[bool, li
     if n == 0:
         return False, ["snapshot has zero projects (discover catastrophic failure)"]
 
+    # Outlier detection — pledged_usd values that can't physically exist.
+    # KS's largest project ever (Pebble 2) was ~$20M. A single project
+    # >$100M = currency conversion bug (×100 from cents). We block.
+    def _num(v):
+        try:
+            return float(v) if v is not None else 0.0
+        except (TypeError, ValueError):
+            return 0.0
+    outlier_pledged = [p for p in projects if _num(p.get("pledged_usd")) > 100_000_000]
+    if outlier_pledged:
+        names = ", ".join((p.get("title") or "?")[:40] for p in outlier_pledged[:3])
+        issues.append(
+            f"{len(outlier_pledged)} projects pledged > $100M (currency conversion bug?): {names}"
+        )
+
+    # Negative or NaN pledged values — pure data corruption signal
+    bad_pledged = []
+    for p in projects:
+        v = _num(p.get("pledged_usd"))
+        if v < 0 or v != v:
+            bad_pledged.append(p)
+    if bad_pledged:
+        issues.append(f"{len(bad_pledged)} projects have negative/NaN pledged_usd")
+
+    # Duplicate pathnames — discover dedup broke
+    pathnames = [p.get("pathname") for p in projects if p.get("pathname")]
+    if len(pathnames) != len(set(pathnames)):
+        dupes = len(pathnames) - len(set(pathnames))
+        issues.append(f"{dupes} duplicate pathnames in snapshot — discover dedup may have broken")
+
     # Followers coverage — this catches today's exact failure mode
     n_with_f = sum(1 for p in projects if (p.get("followers") or 0) > 0)
     f_cov = n_with_f / n
@@ -61,6 +91,23 @@ def validate_for_send(curr: dict, prev: Optional[dict] = None) -> tuple[bool, li
             issues.append("all live projects sum to $0 pledged (impossible — abort)")
 
     # ── Comparative drift (vs yesterday) — only if prev exists ────
+    # Sanity check the prev itself first: if its timestamp is AFTER curr,
+    # find_prev_snapshot picked the wrong file (history listing got
+    # ordered weird, or there's a future-dated snapshot). Don't trust
+    # the comparison — but proceed with the absolute checks above.
+    if prev:
+        try:
+            curr_ts = curr.get("generated_at", "")
+            prev_ts = prev.get("generated_at", "")
+            if prev_ts and curr_ts and prev_ts >= curr_ts:
+                issues.append(
+                    f"prev snapshot timestamp {prev_ts} >= curr {curr_ts} — "
+                    f"history ordering broken; skipping comparative checks"
+                )
+                prev = None
+        except Exception:
+            pass
+
     if prev:
         prev_projects = prev.get("projects") or []
         prev_n = len(prev_projects)
