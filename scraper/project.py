@@ -12,8 +12,16 @@ count visible on the "Notify me on launch" UI.
 
 We batch all slugs into a single aliased GraphQL query (chunked at 50)
 so 138 projects → ~3 round trips instead of 138.
+
+Anti-bot strategy (in order of fall-through):
+  1. curl_cffi with TLS impersonation rotation — fast, usually works.
+  2. Playwright headless Chromium fallback — when CF 403's the HTML seed
+     page across all impersonations. Real browser, hardest to detect.
+     Slower (~8s startup) but only seeds once per scrape run; the
+     subsequent GraphQL POSTs still use curl_cffi for speed.
 """
 from __future__ import annotations
+import asyncio
 import json
 import random
 import re
@@ -32,6 +40,106 @@ PLEDGE_CHUNK_SIZE = 25  # rewards expansion roughly doubles response per project
 SEED_MAX_ATTEMPTS = 4
 
 
+def _seed_via_playwright(*, verbose: bool = True) -> tuple[str, dict] | None:
+    """Boot a real headless Chromium, visit a KS HTML page, extract the
+    CSRF token from <meta> and the session cookies. Returns (csrf, cookies)
+    or None on failure.
+
+    Used as the fallback when curl_cffi seeding gets 403'd by Cloudflare.
+    """
+    try:
+        from playwright.async_api import async_playwright
+    except ImportError:
+        if verbose:
+            print("  ! Playwright not installed; cannot fall back")
+        return None
+
+    async def _go() -> tuple[str, dict] | None:
+        async with async_playwright() as p:
+            browser = await p.chromium.launch()
+            try:
+                ctx = await browser.new_context(
+                    user_agent=(
+                        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                        "AppleWebKit/537.36 (KHTML, like Gecko) "
+                        "Chrome/131.0.0.0 Safari/537.36"
+                    ),
+                    locale="en-US",
+                    viewport={"width": 1280, "height": 800},
+                )
+                page = await ctx.new_page()
+                await page.goto(SEED_URL, wait_until="domcontentloaded", timeout=30_000)
+                # Give Cloudflare's "interactive challenge" a beat to clear
+                await page.wait_for_timeout(800)
+                csrf = await page.evaluate("""() => {
+                    const m = document.querySelector('meta[name="csrf-token"]');
+                    return m ? m.content : null;
+                }""")
+                if not csrf:
+                    return None
+                cookies = {c["name"]: c["value"] for c in await ctx.cookies()}
+                return (csrf, cookies)
+            finally:
+                await browser.close()
+
+    try:
+        return asyncio.run(_go())
+    except RuntimeError:
+        # Fall back if we're already in an asyncio event loop
+        loop = asyncio.new_event_loop()
+        try:
+            return loop.run_until_complete(_go())
+        finally:
+            loop.close()
+    except Exception as e:
+        if verbose:
+            print(f"  ! Playwright seed exception: {e}")
+        return None
+
+
+def _seed_session(*, label: str, verbose: bool = True) -> tuple[cc_requests.Session, str] | tuple[None, None]:
+    """Try curl_cffi first; on total failure, fall back to Playwright.
+    Returns (client, csrf) ready to POST GraphQL, or (None, None)."""
+    # ── Path A: curl_cffi with TLS rotation ─────────────────────────
+    for attempt in range(SEED_MAX_ATTEMPTS):
+        impersonate = IMPERSONATE_ROTATION[attempt % len(IMPERSONATE_ROTATION)]
+        client = cc_requests.Session(impersonate=impersonate, timeout=30)
+        for k, v in DEFAULT_COOKIES.items():
+            client.cookies.set(k, v)
+        try:
+            r = client.get(SEED_URL, headers={"Referer": "https://www.kickstarter.com/"})
+        except Exception as e:
+            if verbose:
+                print(f"  {label} seed attempt {attempt+1} ({impersonate}): exception {e}")
+            time.sleep(1.5 + attempt + random.random())
+            continue
+        if r.status_code == 200:
+            m = RE_CSRF.search(r.text)
+            if m:
+                return client, m.group(1)
+            elif verbose:
+                print(f"  {label} seed attempt {attempt+1} ({impersonate}): 200 but no CSRF token")
+        elif verbose:
+            print(f"  {label} seed attempt {attempt+1} ({impersonate}): status {r.status_code}")
+        time.sleep(2 + attempt + random.random() * 1.5)
+
+    # ── Path B: Playwright real-browser fallback ────────────────────
+    if verbose:
+        print(f"  {label} curl_cffi seed failed; falling back to Playwright headless")
+    pw = _seed_via_playwright(verbose=verbose)
+    if pw is None:
+        return None, None
+    csrf, cookies = pw
+    # Hand the cookies to a fresh curl_cffi Session so the subsequent POSTs
+    # are fast. chrome131 impersonation matches the UA we set in Playwright.
+    client = cc_requests.Session(impersonate="chrome131", timeout=30)
+    for k, v in cookies.items():
+        client.cookies.set(k, v)
+    if verbose:
+        print(f"  {label} ✅ seeded via Playwright (csrf len={len(csrf)}, {len(cookies)} cookies)")
+    return client, csrf
+
+
 def fetch_watches_counts(slugs: list[str], *, verbose: bool = True) -> dict[str, Optional[int]]:
     """Batch-fetch `watchesCount` for project slugs via KS GraphQL.
 
@@ -45,37 +153,11 @@ def fetch_watches_counts(slugs: list[str], *, verbose: bool = True) -> dict[str,
     if not slugs:
         return out
 
-    # Step 1: seed a session with retry + TLS impersonation rotation, since
-    # Cloudflare gates probabilistically. We need this single Session to
-    # persist for the POST too (cookies must match the CSRF token).
-    client: cc_requests.Session | None = None
-    csrf: str | None = None
-    for attempt in range(SEED_MAX_ATTEMPTS):
-        impersonate = IMPERSONATE_ROTATION[attempt % len(IMPERSONATE_ROTATION)]
-        client = cc_requests.Session(impersonate=impersonate, timeout=30)
-        for k, v in DEFAULT_COOKIES.items():
-            client.cookies.set(k, v)
-        try:
-            r = client.get(SEED_URL, headers={"Referer": "https://www.kickstarter.com/"})
-        except Exception as e:
-            if verbose:
-                print(f"  watchesCount seed attempt {attempt+1} ({impersonate}): exception {e}")
-            time.sleep(1.5 + attempt + random.random())
-            continue
-        if r.status_code == 200:
-            m = RE_CSRF.search(r.text)
-            if m:
-                csrf = m.group(1)
-                break
-            elif verbose:
-                print(f"  watchesCount seed attempt {attempt+1} ({impersonate}): 200 but no CSRF token")
-        elif verbose:
-            print(f"  watchesCount seed attempt {attempt+1} ({impersonate}): status {r.status_code}")
-        time.sleep(2 + attempt + random.random() * 1.5)
-
-    if csrf is None or client is None:
+    # Seed a session via curl_cffi → Playwright fallback chain.
+    client, csrf = _seed_session(label="watchesCount", verbose=verbose)
+    if client is None or csrf is None:
         if verbose:
-            print(f"  watchesCount: failed to seed session after {SEED_MAX_ATTEMPTS} attempts; skipping")
+            print(f"  watchesCount: failed to seed (curl_cffi + Playwright); skipping")
         return out
 
     headers = {
@@ -138,32 +220,11 @@ def fetch_pledge_minimums(slugs: list[str], *, verbose: bool = True) -> dict[str
     if not slugs:
         return out
 
-    # Reuse the same session-seed routine — separate session is fine,
-    # adds ~1s but keeps the watches fetch and pledge fetch independent.
-    client: cc_requests.Session | None = None
-    csrf: str | None = None
-    for attempt in range(SEED_MAX_ATTEMPTS):
-        impersonate = IMPERSONATE_ROTATION[attempt % len(IMPERSONATE_ROTATION)]
-        client = cc_requests.Session(impersonate=impersonate, timeout=30)
-        for k, v in DEFAULT_COOKIES.items():
-            client.cookies.set(k, v)
-        try:
-            r = client.get(SEED_URL, headers={"Referer": "https://www.kickstarter.com/"})
-        except Exception as e:
-            if verbose:
-                print(f"  pledge_min seed attempt {attempt+1} ({impersonate}): {e}")
-            time.sleep(1.5 + attempt + random.random())
-            continue
-        if r.status_code == 200:
-            m = RE_CSRF.search(r.text)
-            if m:
-                csrf = m.group(1)
-                break
-        time.sleep(2 + attempt + random.random() * 1.5)
-
-    if csrf is None or client is None:
+    # Same seed strategy as fetch_watches_counts (curl_cffi → Playwright).
+    client, csrf = _seed_session(label="pledge_min", verbose=verbose)
+    if client is None or csrf is None:
         if verbose:
-            print(f"  pledge_min: failed to seed session; skipping")
+            print(f"  pledge_min: failed to seed; skipping")
         return out
 
     headers = {
