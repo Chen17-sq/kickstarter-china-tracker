@@ -305,6 +305,83 @@ def build_html(curr: dict) -> tuple[str, str]:
         f'<tbody>{live_rows_4_10}</tbody></table>'
     ) if live_rows_4_10 else ""
 
+    # ── Sleepers · algorithmic editor's picks beyond Top 10 ──────────
+    from .sleepers import select_sleepers
+    front_paths = set()
+    front_paths.update((p.get("pathname") for p in d["prelaunch"][:10] if p.get("pathname")))
+    front_paths.update((p.get("pathname") for p in d["live"][:10] if p.get("pathname")))
+    front_paths.update((p.get("pathname") for p in (d.get("successful") or [])[:10] if p.get("pathname")))
+    sleepers = select_sleepers(curr.get("projects") or [], front_paths, n=5)
+    sleepers_html = ""
+    if sleepers:
+        cards = []
+        for i, p in enumerate(sleepers, start=1):
+            image_url = p.get("image_url") or ""
+            title = _esc(p.get("title") or "(untitled)")
+            url = _esc(p.get("url") or "#")
+            brand = _esc(p.get("matched_brand_zh") or p.get("matched_brand") or p.get("creator_name") or "")
+            country = _esc(p.get("country") or "")
+            status = _esc(p.get("status") or "")
+            reason = _esc(p.get("_sleeper_reason") or "")
+            blurb_zh = _esc(p.get("blurb_zh") or "")
+            star = (
+                f'<span style="display:inline-block;background:{RED};color:{PAPER};'
+                f'font-family:{SANS};font-size:9px;font-weight:700;letter-spacing:.2em;'
+                f'text-transform:uppercase;padding:2px 6px;margin-right:6px;'
+                f'vertical-align:2px">✦ KS PICK</span>'
+            ) if p.get("project_we_love") else ""
+            img_block = (
+                f'<img src="{image_url}" width="180" height="135" '
+                f'style="display:block;width:180px;height:135px;object-fit:contain;'
+                f'background:{PAPER};border:1px solid {INK}" alt=""/>'
+                if image_url else
+                f'<div style="width:180px;height:135px;background:{MUTED};'
+                f'border:1px solid {INK}"></div>'
+            )
+            cards.append(f'''
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0"
+                   style="width:100%;margin:14px 0;border-top:1px solid {MUTED};
+                          border-collapse:collapse">
+              <tr>
+                <td style="padding:14px 0 0;width:180px;vertical-align:top">
+                  {img_block}
+                </td>
+                <td style="padding:14px 0 0 16px;vertical-align:top">
+                  <div style="font-family:{MONO};font-size:9.5px;font-weight:700;color:{N500};
+                       letter-spacing:.2em;text-transform:uppercase;margin-bottom:6px">
+                    No. {i:02d} · `{status}` · {brand}{(' · ' + country) if country else ''}
+                  </div>
+                  <a href="{url}" style="text-decoration:none;color:{INK};
+                     font-family:{SERIF};font-size:17px;font-weight:700;line-height:1.2;
+                     letter-spacing:-.3px;display:block">{star}{title}</a>
+                  <div style="margin-top:8px;padding:6px 10px;background:{PAPER};
+                       border-left:3px solid {RED};font-family:{BODY};font-size:13px;
+                       color:{INK};line-height:1.4">
+                    <span style="font-family:{SANS};font-size:9.5px;font-weight:700;
+                          color:{RED};letter-spacing:.18em;text-transform:uppercase;
+                          margin-right:6px">WHY</span>
+                    {reason}
+                  </div>
+                  {(f'<div style="margin-top:8px;font-family:{BODY};font-style:italic;'
+                     f'font-size:13px;color:{N700};line-height:1.4">{blurb_zh}</div>')
+                   if blurb_zh else ""}
+                </td>
+              </tr>
+            </table>''')
+        sleepers_html = f'''
+        <div style="margin-top:48px">
+          <div style="font-family:{MONO};font-size:11px;font-weight:500;color:{N500};
+                      letter-spacing:2.5px;margin-bottom:6px">SECTION C</div>
+          <h2 style="margin:0 0 4px;font-family:{SERIF};font-weight:900;font-size:28px;
+                     letter-spacing:-.5px;color:{INK}">🌙 Sleeper Picks · 编辑算法挑选</h2>
+          <p style="margin:0 0 8px;font-family:{BODY};font-style:italic;font-size:13px;color:{N500}">
+            排在 Top 10 之外但被算法挑出来 · 每条都注明被选中的原因
+          </p>
+          <div style="border-top:4px solid {INK}">
+            {''.join(cards)}
+          </div>
+        </div>'''
+
     return subject, f'''<!DOCTYPE html>
 <html lang="zh-CN">
 <head><meta charset="UTF-8"><title>{_esc(subject)}</title>
@@ -412,6 +489,8 @@ def build_html(curr: dict) -> tuple[str, str]:
           </div>
           {live_rest_html}
         </div>
+
+        {sleepers_html}
 
         <!-- Ornament -->
         <div style="padding:40px 0 16px;text-align:center;
@@ -661,12 +740,99 @@ def main(argv: list[str] | None = None) -> int:
                     print(f"  ! alert to {owner} failed: {e}", file=sys.stderr)
         return 0
 
+    # Build a creator → personalised banner map ahead of the broadcast loop.
+    # If a subscriber has type="creator" + a creator_slug that matches any
+    # project in today's snapshot, we prepend a banner to their copy of the
+    # email greeting them by name and showing where their projects landed.
+    creator_banners: dict[str, str] = {}
+    try:
+        from .subscribers import all_subscribers
+        all_subs = all_subscribers()
+    except Exception as e:
+        print(f"  warn: all_subscribers load failed ({e})")
+        all_subs = []
+    if all_subs:
+        # Map creator_slug → list of their projects in today's data
+        slug_to_projects: dict[str, list[dict]] = {}
+        for p in (curr.get("projects") or []):
+            cs = p.get("creator_slug")
+            if cs:
+                slug_to_projects.setdefault(cs, []).append(p)
+        for sub in all_subs:
+            if sub.get("type") != "creator":
+                continue
+            slug = sub.get("creator_slug")
+            if not slug:
+                continue
+            mine = slug_to_projects.get(slug) or []
+            if not mine:
+                continue  # nothing of theirs in today's edition; standard email
+            email_addr = (sub.get("email") or "").lower()
+            nick = _esc(sub.get("nickname") or slug)
+            # Sort the creator's projects by status (live > prelaunch > successful)
+            order = {"live": 0, "prelaunch": 1, "successful": 2}
+            mine_sorted = sorted(mine, key=lambda p: order.get(p.get("status", ""), 9))
+            rows = []
+            for p in mine_sorted[:3]:
+                title = _esc(p.get("title") or "(untitled)")
+                status = _esc(p.get("status") or "")
+                metric = ""
+                if p.get("status") == "live":
+                    metric = f"{fmt_usd(p.get('pledged_usd'))} · {fmt_int(p.get('backers'))} backers"
+                elif p.get("status") == "prelaunch":
+                    metric = f"{fmt_int(p.get('followers'))} watchers"
+                elif p.get("status") == "successful":
+                    metric = f"funded · {fmt_usd(p.get('pledged_usd'))}"
+                rows.append(
+                    f'<li style="margin:5px 0;font-family:{BODY};font-size:13.5px;'
+                    f'color:{INK};list-style:none;padding-left:14px;position:relative">'
+                    f'<span style="position:absolute;left:0;color:{RED};font-weight:900">▸</span>'
+                    f'<span style="font-family:{SERIF};font-weight:700">{title}</span> '
+                    f'<span style="color:{N500};font-family:{MONO};font-size:11px;'
+                    f'letter-spacing:.06em">[{status}] {metric}</span></li>'
+                )
+            banner = f'''
+            <div style="margin:24px 28px 0;padding:18px 22px;border:2px solid {RED};
+                        background:{PAPER}">
+              <div style="font-family:{SANS};font-size:9.5px;font-weight:700;
+                   letter-spacing:.25em;color:{RED};text-transform:uppercase;margin-bottom:6px">
+                FOR YOU · CREATOR'S CORNER
+              </div>
+              <p style="margin:0 0 8px;font-family:{SERIF};font-size:18px;font-weight:700;
+                 color:{INK};line-height:1.3">
+                Hey {nick} — your project{'s' if len(mine_sorted) > 1 else ''} in today's edition:
+              </p>
+              <ul style="margin:8px 0 0;padding:0">{''.join(rows)}</ul>
+              <p style="margin:10px 0 0;font-family:{BODY};font-style:italic;font-size:12.5px;
+                 color:{N600};line-height:1.45">
+                Below is the same edition every other reader gets — but starting from
+                today, you'll see your projects flagged at the top whenever they show
+                up on the radar.
+              </p>
+            </div>'''
+            creator_banners[email_addr] = banner
+
     sent = 0
     failed = 0
     failure_log: list[str] = []  # for owner digest
     for r in recipients:
+        # Inject creator banner just after <body> if this recipient is a creator
+        # whose project is in today's edition. Otherwise send the standard html.
+        banner = creator_banners.get(r.lower())
+        html_for_this = html
+        if banner:
+            html_for_this = html.replace("<body ", "<!--creator-personalised--><body ", 1)
+            html_for_this = html_for_this.replace(
+                'background-color:{PAPER}',  # no-op marker; just keeps replace simple
+                'background-color:{PAPER}',
+                1,
+            )
+            # Actually inject banner right after the opening <body ...>
+            idx = html_for_this.find("<table")
+            if idx > 0:
+                html_for_this = html_for_this[:idx] + banner + html_for_this[idx:]
         try:
-            post_resend(api_key, sender, [r], subject, html)
+            post_resend(api_key, sender, [r], subject, html_for_this)
             sent += 1
         except Exception as e:
             # Most likely cause in sandbox mode: 422 'You can only send testing
@@ -675,7 +841,8 @@ def main(argv: list[str] | None = None) -> int:
             print(f"  ! send to {r} failed: {e}", file=sys.stderr)
             failed += 1
             failure_log.append(f"{r}: {str(e)[:200]}")
-    print(f"Email broadcast: sent={sent}, failed={failed}, from={sender}")
+    print(f"Email broadcast: sent={sent}, failed={failed}, "
+          f"creator_personalised={len(creator_banners)}, from={sender}")
 
     # ── Owner daily digest ────────────────────────────────────────
     # Even on full success, send a separate plaintext "operations digest"

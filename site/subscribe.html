@@ -210,6 +210,28 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
       <input id="email" type="email" name="email" required placeholder="your@email.com" autocomplete="email">
       <label for="nickname">昵称 · How should we greet you?</label>
       <input id="nickname" type="text" name="nickname" placeholder="陈先生 / Chen / Aldrich" maxlength="40">
+
+      <!-- Optional creator path: KS creators get personalised emails -->
+      <label class="creator-toggle" style="display:flex;align-items:center;gap:8px;
+        margin-top:18px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;
+        letter-spacing:.18em;text-transform:uppercase;color:var(--ink);cursor:pointer">
+        <input id="isCreator" type="checkbox" style="accent-color:var(--accent);margin:0">
+        <span>I'm a KS creator</span>
+      </label>
+      <div id="creatorBlock" style="display:none;margin-top:8px;padding:12px 14px;
+        border:1px dashed var(--ink);background:var(--paper)">
+        <label for="creatorUrl" style="margin:0 0 4px 0">你的 KS profile URL · Your KS profile</label>
+        <input id="creatorUrl" type="text" name="creator_url"
+          placeholder="https://www.kickstarter.com/profile/yourname"
+          style="width:100%">
+        <div style="margin-top:8px;font-family:'Lora',serif;font-style:italic;
+          font-size:12px;color:var(--n600);line-height:1.45">
+          We match this against KS creator slugs. When your project shows up
+          in the daily edition, you get a personalised note at the top of the
+          email.
+        </div>
+      </div>
+
       <input type="hidden" name="_subject" value="[KS Tracker] New subscriber">
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
       <button class="btn" type="submit" id="subBtn">订阅 / Subscribe →</button>
@@ -260,14 +282,25 @@ function showAlreadySubscribed() {
   success.querySelector("p").innerHTML = "这个邮箱已经在订阅列表里了。下一份头版还是会照常送达。<a href='./' style='color:var(--accent);font-weight:700'>看今日头版</a>。";
 }
 
+// Toggle the creator-only block
+document.getElementById("isCreator").addEventListener("change", (e) => {
+  document.getElementById("creatorBlock").style.display = e.target.checked ? "" : "none";
+});
+
 document.getElementById("subForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const form = e.target;
   const btn = document.getElementById("subBtn");
   const email = (form.email.value || "").trim();
   const nickname = (form.nickname.value || "").trim();
+  const isCreator = document.getElementById("isCreator").checked;
+  const creatorUrl = isCreator ? (document.getElementById("creatorUrl").value || "").trim() : "";
   if (!email) {
     alert("请填写邮箱 · Email is required");
+    return;
+  }
+  if (isCreator && !creatorUrl) {
+    alert("Creator path requires your KS profile URL · KS profile URL is required");
     return;
   }
 
@@ -283,7 +316,7 @@ document.getElementById("subForm").addEventListener("submit", async (e) => {
       const r = await fetch(workerUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, nickname }),
+        body: JSON.stringify({ email, nickname, creator_url: creatorUrl }),
       });
       const j = await r.json().catch(() => ({}));
       if (r.ok && j.ok) {

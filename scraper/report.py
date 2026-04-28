@@ -419,6 +419,58 @@ def make_report(curr: dict, prev: dict | None) -> str:
             )
         out.append("")
 
+    # ── Section F · Sleepers (algorithmic editor's picks) ────────────
+    from .sleepers import select_sleepers
+    front_page_paths = set()
+    front_page_paths.update(p.get("pathname") for p in prelaunch[:10] if p.get("pathname"))
+    front_page_paths.update(p.get("pathname") for p in live[:10] if p.get("pathname"))
+    front_page_paths.update(p.get("pathname") for p in successful[:10] if p.get("pathname"))
+    sleepers = select_sleepers(projects, front_page_paths, n=5)
+    if sleepers:
+        out.append("✦ &nbsp; ✦ &nbsp; ✦")
+        out.append("")
+        out.append(f"## Section F · 🌙 Sleeper Picks · {len(sleepers)} 个值得多看一眼")
+        out.append("")
+        out.append("_排在 Top 10 之外但被算法挑出来 — 每个都注明被选中的原因。_")
+        out.append("")
+        for i, p in enumerate(sleepers, start=1):
+            star = PWL if p.get("project_we_love") else " "
+            brand = p.get("matched_brand_zh") or p.get("matched_brand") or p.get("creator_name") or ""
+            country = p.get("country", "?")
+            status = p.get("status", "?")
+            reason = p.get("_sleeper_reason", "")
+            blurb_zh = p.get("blurb_zh") or ""
+            url = p.get("url") or ""
+            title = (p.get("title") or "").replace("|", "\\|")
+            out.append(f"### {i}. {star} {title}")
+            out.append("")
+            if p.get("image_url"):
+                out.append(f'<img src="{p["image_url"]}" alt="" width="280" />')
+                out.append("")
+            line_parts = [
+                f"`{status}`",
+                f"**{brand}**" if brand else "",
+                country,
+            ]
+            if status == "live":
+                line_parts.append(f"已筹 **{fmt_usd(p.get('pledged_usd'))}**")
+                line_parts.append(f"完成率 **{fmt_pct(p.get('percent_funded'))}**")
+            elif status == "prelaunch":
+                line_parts.append(f"**{fmt_int(p.get('followers'))}** watchers")
+            elif status == "successful":
+                line_parts.append(f"已筹 **{fmt_usd(p.get('pledged_usd'))}**")
+            out.append(" · ".join(s for s in line_parts if s))
+            out.append("")
+            out.append(f"**▸ 选中原因：{reason}**")
+            out.append("")
+            if blurb_zh:
+                out.append(f"*{blurb_zh}*")
+                out.append("")
+            out.append(f"→ [在 Kickstarter 看完整页面]({url})")
+            out.append("")
+            out.append("---")
+            out.append("")
+
     out.append("✦ &nbsp; ✦ &nbsp; ✦")
     out.append("")
     out.append("---")

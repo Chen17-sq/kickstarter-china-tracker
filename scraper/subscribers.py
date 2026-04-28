@@ -143,6 +143,13 @@ def emails() -> list[str]:
     return [s["email"] for s in data.get("subscribers", []) if s.get("email")]
 
 
+def all_subscribers() -> list[dict]:
+    """Return the full subscriber list, including type/creator_slug fields.
+    Used by email_notify to personalise creator-type subscribers' emails."""
+    data = load()
+    return list(data.get("subscribers", []) or [])
+
+
 def count() -> int:
     return len(emails())
 
