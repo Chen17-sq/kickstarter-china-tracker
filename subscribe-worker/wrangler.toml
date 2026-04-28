@@ -6,13 +6,11 @@ compatibility_date = "2024-12-01"
 [vars]
 ALLOWED_ORIGIN = "https://ks.aldrich.fyi,https://chen17-sq.github.io"
 
-# KV namespace binding — declarative form. The actual namespace ID must be
-# created in the dashboard or via `wrangler kv:namespace create SUBSCRIBERS_KV`,
-# then the id pasted in below. The Worker references it as env.SUBSCRIBERS_KV.
-#
-# [[kv_namespaces]]
-# binding = "SUBSCRIBERS_KV"
-# id = "<paste-namespace-id-here>"
+# KV namespace binding — referenced in code as env.SUBSCRIBERS_KV.
+# Created via dashboard; ID below pulled from `wrangler kv namespace list`.
+[[kv_namespaces]]
+binding = "SUBSCRIBERS_KV"
+id = "d55c5be8ae7a4a83847805032ebd36fb"
 
 # Secrets (DO NOT commit) — set via:
 #   npx wrangler secret put OWNER_TOKEN
