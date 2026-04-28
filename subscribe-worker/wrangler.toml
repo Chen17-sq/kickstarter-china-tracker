@@ -4,12 +4,27 @@ compatibility_date = "2024-12-01"
 
 # Public-facing variables (visible in dashboard, OK to commit)
 [vars]
-GITHUB_REPO = "Chen17-sq/kickstarter-china-tracker"
-ALLOWED_ORIGIN = "https://chen17-sq.github.io"
+ALLOWED_ORIGIN = "https://ks.aldrich.fyi,https://chen17-sq.github.io"
+
+# KV namespace binding — declarative form. The actual namespace ID must be
+# created in the dashboard or via `wrangler kv:namespace create SUBSCRIBERS_KV`,
+# then the id pasted in below. The Worker references it as env.SUBSCRIBERS_KV.
+#
+# [[kv_namespaces]]
+# binding = "SUBSCRIBERS_KV"
+# id = "<paste-namespace-id-here>"
 
 # Secrets (DO NOT commit) — set via:
-#   npx wrangler secret put GITHUB_TOKEN
+#   npx wrangler secret put OWNER_TOKEN
 # or via Cloudflare dashboard → Worker → Settings → Variables → Add encrypted variable
 #
 # Required:
-#   GITHUB_TOKEN — fine-grained PAT with 'Contents: Read and write' on the repo above
+#   OWNER_TOKEN — random secret used by GET /list and POST /unsubscribe.
+#                 Generate with: openssl rand -hex 32
+#                 Also stored as a GH Actions secret of the same name so
+#                 scraper/subscribers.py can authenticate when reading the
+#                 subscriber list during the daily email job.
+#
+# Removed (KV migration replaces these):
+#   GITHUB_TOKEN — no longer needed; subscribers stored in KV, not GitHub
+#   GITHUB_REPO  — same

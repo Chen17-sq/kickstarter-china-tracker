@@ -197,7 +197,7 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
 
     <!--
       Backend priority (in subscribe.js logic below):
-      1. data-worker-url on this form  → Cloudflare Worker → commits to GitHub
+      1. data-worker-url on this form  → Cloudflare Worker → writes to KV (private)
       2. action != REPLACE_WITH_FORMSPREE_ID → real Formspree → emails owner
       3. else → mailto: → owner inbox, manual processing
       Switch by editing the data-worker-url attribute below.
@@ -243,7 +243,7 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
 </div>
 <script>
 // Backend priority (configured by attributes on #subForm):
-//   1. data-worker-url is a real URL → Cloudflare Worker → commits to GitHub
+//   1. data-worker-url is a real URL → Cloudflare Worker → writes to private KV
 //   2. action contains a real Formspree ID → Formspree → emails owner
 //   3. else → mailto: opens visitor's mail client to owner inbox
 const OWNER_EMAIL = "schen.aldrich@gmail.com";

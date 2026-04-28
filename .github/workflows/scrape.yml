@@ -96,4 +96,9 @@ jobs:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           NOTIFY_EMAIL_TO: ${{ secrets.NOTIFY_EMAIL_TO }}
           NOTIFY_EMAIL_FROM: ${{ secrets.NOTIFY_EMAIL_FROM }}
+          # Subscribers list is now stored in Cloudflare KV (private),
+          # not in this public repo. Worker /list endpoint is gated by
+          # OWNER_TOKEN — must match the secret bound on the Worker side.
+          OWNER_TOKEN: ${{ secrets.OWNER_TOKEN }}
+          SUBSCRIBE_API_URL: ${{ secrets.SUBSCRIBE_API_URL }}
         run: python -m scraper.email_notify
