@@ -16,3 +16,4 @@ data/.tmp/
 # Subscriber data lives in Cloudflare KV via the subscribe Worker,
 # never on disk in this public repo. See scraper/subscribers.py.
 data/subscribers.json
+.wrangler/
