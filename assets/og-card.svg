@@ -5,9 +5,9 @@
   <rect x="0" y="0" width="1280" height="46" fill="#111111"/>
   <circle cx="50" cy="23" r="5" fill="#CC0000"/>
   <text x="68" y="28" font-family="Inter, Helvetica, sans-serif" font-size="14" font-weight="700"
-        fill="#F9F9F7" letter-spacing="3.5">DAILY · LIVE EDITION · WED · APR 29 · 2026</text>
+        fill="#F9F9F7" letter-spacing="3.5">DAILY · LIVE EDITION · THU · APR 30 · 2026</text>
   <text x="1230" y="28" text-anchor="end" font-family="JetBrains Mono, Courier New, monospace" font-size="14"
-        font-weight="500" fill="#F9F9F7" letter-spacing="3">VOL. 1 · NO. 5</text>
+        font-weight="500" fill="#F9F9F7" letter-spacing="3">VOL. 1 · NO. 6</text>
 
   <!-- Nameplate -->
   <text x="640" y="200" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="118"
@@ -26,27 +26,27 @@
 
   <!-- KPI strip -->
   <text x="160" y="544" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="64"
-        font-weight="900" fill="#111111" letter-spacing="-2">237</text>
+        font-weight="900" fill="#111111" letter-spacing="-2">257</text>
   <text x="160" y="582" text-anchor="middle" font-family="Inter, Helvetica, sans-serif" font-size="13"
         font-weight="700" fill="#737373" letter-spacing="3">TRACKED</text>
 
   <text x="380" y="544" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="64"
-        font-weight="900" fill="#CC0000" letter-spacing="-2">93</text>
+        font-weight="900" fill="#CC0000" letter-spacing="-2">85</text>
   <text x="380" y="582" text-anchor="middle" font-family="Inter, Helvetica, sans-serif" font-size="13"
         font-weight="700" fill="#737373" letter-spacing="3">PRELAUNCH</text>
 
   <text x="600" y="544" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="64"
-        font-weight="900" fill="#111111" letter-spacing="-2">68</text>
+        font-weight="900" fill="#111111" letter-spacing="-2">97</text>
   <text x="600" y="582" text-anchor="middle" font-family="Inter, Helvetica, sans-serif" font-size="13"
         font-weight="700" fill="#737373" letter-spacing="3">LIVE</text>
 
   <text x="820" y="544" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="64"
-        font-weight="900" fill="#111111" letter-spacing="-2">76</text>
+        font-weight="900" fill="#111111" letter-spacing="-2">75</text>
   <text x="820" y="582" text-anchor="middle" font-family="Inter, Helvetica, sans-serif" font-size="13"
         font-weight="700" fill="#737373" letter-spacing="3">FUNDED</text>
 
   <text x="1080" y="544" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="64"
-        font-weight="900" fill="#111111" letter-spacing="-2">★ 55</text>
+        font-weight="900" fill="#111111" letter-spacing="-2">★ 64</text>
   <text x="1080" y="582" text-anchor="middle" font-family="Inter, Helvetica, sans-serif" font-size="13"
         font-weight="700" fill="#737373" letter-spacing="3">EDITOR'S PICKS</text>
 
