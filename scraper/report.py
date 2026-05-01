@@ -20,48 +20,7 @@ PROJECTS = REPO_ROOT / "data" / "projects.json"
 
 PWL = "✦"
 
-from ._common import edition_number  # noqa: E402  shared
-
-
-def fmt_usd(n) -> str:
-    if n is None or n == "":
-        return "—"
-    try:
-        v = float(n)
-    except (TypeError, ValueError):
-        return "—"
-    if v >= 1_000_000:
-        s = f"${v/1e6:.2f}M"
-        return s.replace(".00M", "M").replace("0M", "M") if s.endswith("00M") else s
-    if v >= 10_000:
-        return f"${round(v/1e3)}K"
-    if v >= 1_000:
-        return f"${v/1e3:.1f}K"
-    return f"${round(v):,}"
-
-
-def fmt_pct(p) -> str:
-    """KS's `percent_funded` is already a percentage where 100 = 100%."""
-    if p is None or p == "":
-        return "—"
-    try:
-        v = float(p)
-    except (TypeError, ValueError):
-        return "—"
-    if v >= 10000:
-        return f"{round(v/100):,}× goal"
-    if v >= 1000:
-        return f"{round(v):,}%"
-    return f"{round(v)}%"
-
-
-def fmt_int(n) -> str:
-    if n is None or n == "":
-        return "—"
-    try:
-        return f"{int(n):,}"
-    except (TypeError, ValueError):
-        return str(n)
+from ._common import edition_number, fmt_usd, fmt_int, fmt_pct  # noqa: E402  shared
 
 
 def days_since(epoch) -> int | None:

@@ -812,25 +812,27 @@ def main(argv: list[str] | None = None) -> int:
             </div>'''
             creator_banners[email_addr] = banner
 
+    # Robust regex for injecting after <body ...> — handles any attribute form
+    import re as _re
+    BODY_OPEN_RE = _re.compile(r'(<body\b[^>]*>)', _re.IGNORECASE)
+
     sent = 0
     failed = 0
     failure_log: list[str] = []  # for owner digest
     for r in recipients:
-        # Inject creator banner just after <body> if this recipient is a creator
-        # whose project is in today's edition. Otherwise send the standard html.
         banner = creator_banners.get(r.lower())
         html_for_this = html
         if banner:
-            html_for_this = html.replace("<body ", "<!--creator-personalised--><body ", 1)
-            html_for_this = html_for_this.replace(
-                'background-color:{PAPER}',  # no-op marker; just keeps replace simple
-                'background-color:{PAPER}',
-                1,
-            )
-            # Actually inject banner right after the opening <body ...>
-            idx = html_for_this.find("<table")
-            if idx > 0:
-                html_for_this = html_for_this[:idx] + banner + html_for_this[idx:]
+            # Inject creator banner immediately after the <body ...> tag.
+            # Using regex so any whitespace / attribute order in <body> works.
+            new_html, n = BODY_OPEN_RE.subn(r"\1" + banner, html, count=1)
+            if n == 1:
+                html_for_this = new_html
+            else:
+                # Fall back to standard email if injection markers shift —
+                # better to send unbranded than to send broken HTML.
+                print(f"  ! creator banner inject FAILED for {r}; sending standard", file=sys.stderr)
+                html_for_this = html
         try:
             post_resend(api_key, sender, [r], subject, html_for_this)
             sent += 1

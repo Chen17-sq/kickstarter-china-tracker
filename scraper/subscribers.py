@@ -127,7 +127,8 @@ def remove(email: str) -> bool:
                   file=sys.stderr)
             return False
         body = r.json()
-        rm = (body.get("removed") or {}).get("removed", 0) if isinstance(body.get("removed"), dict) else body.get("removed", 0)
+        # Worker now returns flat shape: {ok, removed: N, count: M}
+        rm = int(body.get("removed", 0) or 0)
         if not rm:
             print(f"  {email} not found")
             return False

@@ -35,29 +35,9 @@ PAGES_URL = "https://chen17-sq.github.io/kickstarter-china-tracker/"
 LATEST_URL = "https://github.com/Chen17-sq/kickstarter-china-tracker/blob/main/reports/latest.md"
 
 
-def fmt_usd(n) -> str:
-    if n is None or n == "":
-        return "—"
-    try:
-        v = float(n)
-    except (TypeError, ValueError):
-        return "—"
-    if v >= 1_000_000:
-        return f"${v/1e6:.2f}M".replace(".00M", "M")
-    if v >= 10_000:
-        return f"${round(v/1e3)}K"
-    if v >= 1_000:
-        return f"${v/1e3:.1f}K"
-    return f"${round(v):,}"
-
-
-def fmt_int(n) -> str:
-    if n is None:
-        return "—"
-    try:
-        return f"{int(n):,}"
-    except (TypeError, ValueError):
-        return str(n)
+# Number formatters live in _common.py — re-exported for backwards compat
+# with `from .notify import fmt_usd, fmt_int` at all old call sites.
+from ._common import fmt_usd, fmt_int  # noqa: F401
 
 
 def project_label(p: dict) -> str:

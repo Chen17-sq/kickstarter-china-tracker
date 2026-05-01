@@ -62,30 +62,8 @@ SUBSCRIBE_URL = "chen17-sq.github.io/kickstarter-china-tracker/subscribe.html"
 PAGES_URL = "chen17-sq.github.io/kickstarter-china-tracker"
 
 
-def fmt_usd(n) -> str:
-    if n is None or n == "":
-        return "—"
-    try:
-        v = float(n)
-    except (TypeError, ValueError):
-        return "—"
-    if v >= 1_000_000:
-        s = f"${v/1e6:.2f}M"
-        return s.replace(".00M", "M").replace("0M", "M") if s.endswith("00M") else s
-    if v >= 10_000:
-        return f"${round(v/1e3)}K"
-    if v >= 1_000:
-        return f"${v/1e3:.1f}K"
-    return f"${round(v):,}"
-
-
-def fmt_int(n) -> str:
-    if n is None:
-        return "—"
-    try:
-        return f"{int(n):,}"
-    except (TypeError, ValueError):
-        return str(n)
+# Number formatters live in _common.py — see "Number formatters" section there.
+from ._common import fmt_usd, fmt_int  # noqa: F401, E402
 
 
 def _esc(s: str) -> str:

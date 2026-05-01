@@ -66,8 +66,10 @@ export default {
         return json({ ok: false, error: "bad payload" }, 400, cors);
       }
       if (!email) return json({ ok: false, error: "email required" }, 400, cors);
-      const removed = await removeSubscriber(env, email);
-      return json({ ok: true, removed, count: removed.count }, 200, cors);
+      const r = await removeSubscriber(env, email);
+      // Flat response shape — keeps the Python client (subscribers.py)
+      // simple instead of needing nested-dict parsing.
+      return json({ ok: true, removed: r.removed, count: r.count }, 200, cors);
     }
 
     // ── POST / — subscribe form submission ─────────────────────────
@@ -106,21 +108,25 @@ async function handleSubscribe(request, env, cors) {
   nickname = sanitizeNick(nickname);
   if (nickname.length > 60) nickname = nickname.slice(0, 60);
 
-  // Extract creator slug from KS profile URL when provided.
-  // Accept formats:
+  // Extract creator slug from a KS profile URL.
+  // Strict acceptance — reject anything that doesn't look like a real KS URL,
+  // so attackers can't sneak in slugs by encoding any URL like
+  // 'https://evil.com/profile/realuser'.
+  // Accepted forms:
   //   https://www.kickstarter.com/profile/<slug>
-  //   www.kickstarter.com/profile/<slug>
-  //   kickstarter.com/profile/<slug>
-  //   /profile/<slug>
-  //   <slug>           (already a slug, no scheme)
+  //   http://kickstarter.com/profile/<slug>     (and www variant)
+  //   <slug>                                   (bare slug, alphanumeric+_-)
   let creatorSlug = "";
   if (creatorUrl) {
-    const m = creatorUrl.match(/(?:^|\/)profile\/([A-Za-z0-9_-]+)/i);
+    const KS_URL_RE = /^https?:\/\/(?:www\.)?kickstarter\.com\/profile\/([A-Za-z0-9_-]{1,60})\/?$/i;
+    const m = creatorUrl.match(KS_URL_RE);
     if (m) {
       creatorSlug = m[1];
     } else if (/^[A-Za-z0-9_-]{1,60}$/.test(creatorUrl)) {
+      // Bare slug typed in directly — accept
       creatorSlug = creatorUrl;
     }
+    // Else: ignore (bad URL won't get any slug stored)
   }
 
   if (!env.SUBSCRIBERS_KV) {
@@ -202,14 +208,19 @@ async function removeSubscriber(env, email) {
 
 // ── Helpers ────────────────────────────────────────────────────────
 
+// Constant-time string compare — never short-circuits on length mismatch,
+// so attackers can't time-attack the length. We mix length difference
+// into the diff and walk the longer string with character-XOR.
 function authorized(request, env) {
   if (!env.OWNER_TOKEN) return false;
-  const token = request.headers.get("X-Owner-Token") || "";
-  // Constant-time-ish compare
-  if (token.length !== env.OWNER_TOKEN.length) return false;
-  let diff = 0;
-  for (let i = 0; i < token.length; i++) {
-    diff |= token.charCodeAt(i) ^ env.OWNER_TOKEN.charCodeAt(i);
+  const provided = request.headers.get("X-Owner-Token") || "";
+  const expected = env.OWNER_TOKEN;
+  let diff = provided.length ^ expected.length;
+  const len = Math.max(provided.length, expected.length);
+  for (let i = 0; i < len; i++) {
+    const a = i < provided.length ? provided.charCodeAt(i) : 0;
+    const b = i < expected.length ? expected.charCodeAt(i) : 0;
+    diff |= a ^ b;
   }
   return diff === 0;
 }
