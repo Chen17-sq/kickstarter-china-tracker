@@ -1,101 +1,129 @@
 # Kickstarter China Tracker — diff
 
-## new (12)
-- **Crystal & Rainbow Bezel: Upgraded Skeleton Chronograph** — Discovered (prelaunch, 6 followers)  
-  `/projects/bonestgattiwatches/crystal-and-rainbow-bezel-upgraded-skeleton-chronograph`
-- **Voltiva GO: 4-in-1 Foldable Wireless 10000mAh Power Bank** — Discovered (live, 352 followers)  
-  `/projects/voltivago/voltiva-go-4-in-1-wireless-charger-and-10000mah-power-bank`
-- **UMBRA II EDC Pocket Knife—Double Damascus, Double the Thrill** — Discovered (live, 153 followers)  
-  `/projects/008creation/umbra-edc-pocket-knife-double-damascus-double-the-thrill`
-- **UKONE Utility Knife: A Powerful Folding Pocket Knife** — Discovered (live, 276 followers)  
-  `/projects/laedc/ukone-utility-knife-a-powerful-folding-pocket-knife`
-- **iRe5 Gen 2: Bring Expandable Storage Back to Smartphones** — Discovered (live, 1411 followers)  
-  `/projects/ire5/ire5-gen-2`
-- **Aura: E-Ink Tracker, Your Items, Your Identity** — Discovered (live, 295 followers)  
-  `/projects/1727471052/aura-e-ink-tracker-your-items-your-identity`
-- **Travilo:The Ultimate Smart Mobility Electric suitcase** — Discovered (live, 183 followers)  
-  `/projects/travilo/travilo-travilo-the-100w-mobile-power-station-you-can-ride`
-- **Moka E-Ink Album: Privacy-First Smart Display Companion** — Discovered (live, 446 followers)  
-  `/projects/1650479992/moka-e-ink-album-privacy-first-smart-display-companion`
-- **CastVR Sync: Ultra-Low Latency 5G Wireless Cast** — Discovered (live, 50 followers)  
-  `/projects/567189577/castvr-sync-dedicated-wireless-casting-engine-for-vr`
-- **Zmozi Focus Box: Lock Away Distractions, Recharge Your Life.** — Discovered (live, 8 followers)  
-  `/projects/zmozi/zmozi-focus-box-lock-away-distractions-recharge-your-life`
-- **3I Atlas Space Terminal - Digital Life AI Companion Hub** — Discovered (prelaunch, 199 followers)  
-  `/projects/jessehang/3i-atlas-space-terminal-metaverse-ai-companion-hub`
-- **REACH, World's First Modular Sports Computer** — Discovered (prelaunch, 126 followers)  
-  `/projects/motionrivalry/reach-worlds-first-modular-sports-computer`
-
-## ended (13)
-- **CoolGeek TS-01 – Ultra-Slim Fully Automatic Turntable** — No longer in discovery (likely ended)  
-  `/projects/1147931066/coolgeek-ts01-ultra-slim-fully-automatic-turntable`
-- **NEXTSolid: 25W MagSafe solid-state power bank with Qi2.2** — No longer in discovery (likely ended)  
-  `/projects/246768194/nextsolid-25w-magsafe-solid-state-power-bank-with-qi22`
-- **Legends of Tibet： Tibetan Beads** — No longer in discovery (likely ended)  
-  `/projects/js-studio/legends-of-tibet-tibetan-beads`
-- **Wireless USB-C Transmitter & HDMI Receiver | No WiFi Needed** — No longer in discovery (likely ended)  
-  `/projects/2087613787/wireless-usb-c-transmitter-and-hdmi-receiver-no-wifi-needed`
-- **Foildash | A Foil Assist For Any Foil & Everyone** — No longer in discovery (likely ended)  
-  `/projects/foildash/foildash-assist-electric-propulsion-for-all-hydrofoil`
-- **Titaner Voyager: World's First Modular Titanium Luggage.** — No longer in discovery (likely ended)  
-  `/projects/titaner/titaner-voyager-worlds-first-modular-titanium-luggage`
-- **Saccater aéra: Integrated 9.6mm Planar Driver Hi-Fi IEM** — No longer in discovery (likely ended)  
-  `/projects/saccater/saccater-aera-integrated-planar-driver-hi-fi-iem`
-- **Hyperapid 350W — The Most Powerful 12-in-1 GaN Charging Hub** — No longer in discovery (likely ended)  
-  `/projects/794688473/hyperapid-350w-the-most-powerful-6-in-1-gan-charging-hub`
-- **THREE-WINGED HRAFN — A New Form of FPS Mouse** — No longer in discovery (likely ended)  
-  `/projects/1752111705/raven-a-new-form-of-fps-mouse`
-- **HMC Watch : Automatic Louvre Geometry Watch & Bitcoin Watch** — No longer in discovery (likely ended)  
-  `/projects/bitcoinwatch/hmc-bitcoin-the-bitcoin-mechanical-automatic-watch-by-hmc`
-- **The Chicago Movable Bridge Automaton Watch** — No longer in discovery (likely ended)  
+## new (8)
+- **The Chicago Movable Bridge Automaton Watch** — Discovered (prelaunch, 0 followers)  
   `/projects/delconawatch/reinterpreting-the-chicago-movable-bridge-automaton-watch`
-- **Zen-Time Guardian of Time's Breath,Ding-ling-ling~** — No longer in discovery (likely ended)  
-  `/projects/leekr/zen-time-guardian-of-times-breathding-ling-ling`
-- **Pocket G1 Coffee Grinder : One‑Click Fold, Grind Anywhere** — No longer in discovery (likely ended)  
-  `/projects/wonderfour/pocket-g1-coffee-grinder-oneclick-fold-grind-anywhere`
+- **HMC Watch : Automatic Louvre Geometry Watch & Bitcoin Watch** — Discovered (live, 0 followers)  
+  `/projects/bitcoinwatch/hmc-bitcoin-the-bitcoin-mechanical-automatic-watch-by-hmc`
+- **Bunny Ear Ita Bag** — Discovered (live, 0 followers)  
+  `/projects/1830847608/bunny-ear-ita-bag`
+- **G Fold : Ulta Slim Wallet｜Full Bills Unfolded** — Discovered (live, 0 followers)  
+  `/projects/mottocarpediem/g-fold-ulta-slim-wallet-full-bills-unfolded`
+- **VALIMOR: 4 Forged Gemstone Watches** — Discovered (prelaunch, 0 followers)  
+  `/projects/valimor/valimor-4-forged-gemstone-watches`
+- **OpenFrame: Agentic AI Workstation for OpenClaw** — Discovered (prelaunch, 0 followers)  
+  `/projects/monah-ai/openframe`
+- **Tardigrade Sleeping System** — Discovered (prelaunch, 0 followers)  
+  `/projects/ikigaiventures/tardigrade-sleeping-system`
+- **THREE-WINGED HRAFN — A New Form of FPS Mouse** — Discovered (prelaunch, 0 followers)  
+  `/projects/1752111705/raven-a-new-form-of-fps-mouse`
 
-## followers_delta (18)
-- **WavKong V2700: World's 1st RPU-Powered Wi-Fi Router** — +52 followers (1673 → 1725)  
+## ended (182)
+- **Fu Lamp: Reviving 500 Years of Imperial Porcelain Craft** — No longer in discovery (likely ended)  
+  `/projects/yifanjin/fu-lamp-reviving-500-years-of-imperial-porcelain-craft`
+- **Nomadix Pro Roof Box-Designed for a Smooth Smart Experience** — No longer in discovery (likely ended)  
+  `/projects/enroad/enroad-nomadix-pro-roof-box`
+- **SnakeSword Ti Utility Knife, Your One and Only Utility Knife** — No longer in discovery (likely ended)  
+  `/projects/gearology/snakesword-ti-utility-knife-your-one-and-only-utility-knife`
+- **JENCE: World’s First 50mm Ultra-Long Hidden Wireless Charger** — No longer in discovery (likely ended)  
+  `/projects/1290302238/50mm-ultra-distance-invisible-air-wireless-charger`
+- **Coolwill Ice Pop Maker - Redefining How Ice Pops Are Made** — No longer in discovery (likely ended)  
+  `/projects/coolwill/coolwill-ice-pop-maker-redefining-how-ice-pops-are-made`
+- **Karo: One Titanium Tray for Every Cooking Needs** — No longer in discovery (likely ended)  
+  `/projects/866913304/karo-3-layer-titanium-tray-for-better-cooking-anywhere`
+- **TOPFAB TF500 5-Axis AI CNC: Your Desktop. Your Fabrication.** — No longer in discovery (likely ended)  
+  `/projects/topfab/topfab-tf500-5-axis-ai-cnc-your-desktop-your-fabrication`
+- **InfiMech MX 3D Printer: 8X More Efficiency. 8X Less Waste.** — No longer in discovery (likely ended)  
+  `/projects/infimech-mx-series/infimech-mx-3d-printer-8x-more-efficiency-8x-less-waste`
+- **iMicro Q3p: A 1200x Polarizing Fingertip Microscope** — No longer in discovery (likely ended)  
+  `/projects/uchart/imicro-q3p-an-1200x-polarizing-fingertip-microscope`
+- **Chawke U2, 3-in-1 Ultrasonic Workstation for Precision Work** — No longer in discovery (likely ended)  
+  `/projects/chawkelab/chawke-u2-3and1-powerful-ultrasonic-workstation-for-welding`
+- **WUBEN X1Pro — Compact Power, Redefined.** — No longer in discovery (likely ended)  
+  `/projects/wubenlight/wuben-x1pro-ultra-bright-flashlight-for-explorers`
+- **PocketCloud: Portable NAS That Backs Up Your World On the Go** — No longer in discovery (likely ended)  
+  `/projects/stationpc/pocketcloud`
+- **Moka E-Ink Album: Privacy-First Smart Display Companion** — No longer in discovery (likely ended)  
+  `/projects/1650479992/moka-e-ink-album-privacy-first-smart-display-companion`
+- **eGryphon: Desktop Class Portable eGPU Thunderbolt 5+OCuLink** — No longer in discovery (likely ended)  
+  `/projects/egryphon/egryphone-desktop-class-portable-egpu-thunderbolt-5-oculink`
+- **Photography of Man-Made Beauty** — No longer in discovery (likely ended)  
+  `/projects/aidajin/gynoiddolls-photobook`
+- **The Vanishing Masters of Shadow Puppetry** — No longer in discovery (likely ended)  
+  `/projects/tangkou/the-vanishing-masters-of-shadow-puppetry`
+- **CastVR Sync: Ultra-Low Latency 5G Wireless Cast** — No longer in discovery (likely ended)  
+  `/projects/567189577/castvr-sync-dedicated-wireless-casting-engine-for-vr`
+- **GetD GSPRO-28: World's Lightest Dual AI Glasses** — No longer in discovery (likely ended)  
+  `/projects/tws2tws/echolens-ai-glasses-with-chatgpt-and-140-languages`
+- **Wuben X4-Redefined 18650 Flashlight** — No longer in discovery (likely ended)  
+  `/projects/wubenlight/wuben-x4-redefined-18650-flashlight`
+- **DAJA S6, The Most Affordable & Compact Fiber Laser Engraver** — No longer in discovery (likely ended)  
+  `/projects/dajalaser/daja-s6-the-most-affordable-and-compact-fiber-laser-engraver`
+- **LPCore: 4-in-1 Portable 45W 10000mAh Power Bank & Adapter** — No longer in discovery (likely ended)  
+  `/projects/lpcore/lpcore-4-in-1-portable-45w-10000mah-power-bank-and-adapter`
+- **Keebmon : Powerful Core + Touch Screen + Mechanical Keyboard** — No longer in discovery (likely ended)  
+  `/projects/332313376/keebmon-powerful-core-touch-screen-mechanical-keyboard`
+- **【Make 100】Through the Window: Hand-Painted Oil Art Series** — No longer in discovery (likely ended)  
+  `/projects/shanghainight/make-100through-the-window-hand-painted-oil-art-series`
+- **AGELOCER | In-House Movement Premium Petite Seconde Watch** — No longer in discovery (likely ended)  
+  `/projects/agelocerwatch/agelocer-in-house-premium-independent-horology-watch`
+- **Wokyis G7: Your Most Powerful Mac Studio Dock, Yet** — No longer in discovery (likely ended)  
+  `/projects/wokyis/wokyis-g7-your-most-powerful-mac-studio-dock-yet`
+- **Your Moka Pot is Fighting You. This Funnel Fights Back.** — No longer in discovery (likely ended)  
+  `/projects/118325534/your-moka-pot-is-fighting-you-this-funnel-fights-back`
+- **Kynooe: Not Just a Robotic Arm — Your Real-World Partner** — No longer in discovery (likely ended)  
+  `/projects/925044833/kynooe-one-worlds-1st-modular-personal-ai-robot-arm`
+- **MUITAVY Gen2: 300W Power, 7-in-1 Smart GaN Charging Hub** — No longer in discovery (likely ended)  
+  `/projects/muitavy/muitavy-the-intelligent-300w-7-in-1-fast-charging-center`
+- **UMBRA II EDC Pocket Knife—Double Damascus, Double the Thrill** — No longer in discovery (likely ended)  
+  `/projects/008creation/umbra-edc-pocket-knife-double-damascus-double-the-thrill`
+- **Cational Meographic** — No longer in discovery (likely ended)  
+  `/projects/ayiboardgamecraft/cational-meographic`
+- **CyberBrick: Beyond Bricks** — No longer in discovery (likely ended)  
+  `/projects/makerworld/cyberbrick-beyond-bricks`
+- **Tribute to Classic Masterpieces | Hand-painted Oil Art** — No longer in discovery (likely ended)  
+  `/projects/meits/tribute-to-classic-masterpieces-hand-painted-oil-art`
+- **AGELOCER｜Major Breakthrough: 29.51-day Moon Phase Watch** — No longer in discovery (likely ended)  
+  `/projects/agelocerwatch/agelocer-2951-day-precision-moon-phase-watch`
+- **MANETTA：A 3-in-1 Modular Camera Bag** — No longer in discovery (likely ended)  
+  `/projects/manettabag01/manetta-a-3-in-1-modular-camera-backpack`
+- **WavKong V2700: World's 1st RPU-Powered Wi-Fi Router** — No longer in discovery (likely ended)  
   `/projects/wavkong/wavkong-v2700-worlds-1st-rpu-powered-wi-fi-router`
-- **PongBot Aura: World's First Ultra-Light AI Multi-Sport Robot** — +56 followers (1611 → 1667)  
-  `/projects/pongbot/aura-the-worlds-first-ultra-light-ai-multi-sport-robot`
-- **LOCKBB: World's First Fingerprint Alloy Zipper Lock** — +81 followers (191 → 272)  
-  `/projects/lockbb/lockbb-worlds-first-fingerprint-alloy-zipper-lock`
-- **M5 CardputerZero, Pocket Raspberry Pi Computer for Hackers** — +79 followers (111 → 190)  
-  `/projects/m5stack/cardputerzero`
-- **GORDIX Portable CNC: Large Format without Rails** — +50 followers (163 → 213)  
-  `/projects/cubiio/gordix-large-format-desktop-cnc-without-rails`
-- **Redefining Wandering Hour Watches by Angles** — +50 followers (575 → 625)  
-  `/projects/angles/redefining-wandering-hour-watches-by-angles`
-- **AEKE S1 Pro FULL-BODY AI HOME GYM** — +51 followers (496 → 547)  
-  `/projects/aeke/aeke-s1-pro-full-body-ai-home-gym`
-- **Titan 2 Elite: The 5G Keyboard Phone You’ve Been Waiting For** — +52 followers (5857 → 5909)  
-  `/projects/jellyphone/titan-2-elite-the-5g-keyboard-phone-youve-been-waiting-for`
-- **VitaLink: 20mm Thin 180° Foldable Keyboard & 4K Touchscreen** — +54 followers (2891 → 2945)  
-  `/projects/vitalink/vitalink-20mm-thin-180-foldable-keyboard-and-4k-touchscreen`
-- **INKWON Tag - World's 1st 4-in-1 Pocket Creative Studio** — +69 followers (1730 → 1799)  
-  `/projects/inkwonprinting/inkwon-tag-worlds-1st-4-in-1-pocket-color-inkjet-printer`
-- **MAVO Lumicurve – The All-in-One Precision Coffee Scale.** — +50 followers (103 → 153)  
-  `/projects/mavo/mavo-lumicurve-the-all-in-one-precision-coffee-scale`
-- **MiixKey丨The World's First Security Key with a Touchscreen.** — +180 followers (1321 → 1501)  
-  `/projects/miixpro/miixkey`
-- **AxiGlide: Next-gen Pivoting Vise for Smooth, Precise Control** — +77 followers (989 → 1066)  
-  `/projects/voguemech/axiglide-next-gen-pivoting-vise-for-smooth-precise-control`
-- **Hyzen, World's First Mechanical Magnetic Keyboard** — +83 followers (4400 → 4483)  
-  `/projects/lofree/hyzen-worlds-first-mechanical-magnetic-keyboard`
-- **Orphic Project 0 - Wandering Hour Watch** — +66 followers (100 → 166)  
-  `/projects/orphicwatches/orphic-project-0-wandering-hour-watch`
-- **AiScan O1: The 3D Gaussian All-in-One 3D Scanner** — +65 followers (927 → 992)  
+- **VSD M18 V3 Pro: The Essential Tool for Modern Multitaskers** — No longer in discovery (likely ended)  
+  `/projects/848625214/vsd-m18-v3-pro-the-essential-tool-for-modern-multitaskers`
+- **Fabisense AI AIRBOT | Sleep & Safety Air Guardian** — No longer in discovery (likely ended)  
+  `/projects/protmex-neptune/fabisense-ai-airbot-1st-ai-sleep-optimized-air-purifier`
+- **Soundbud OpenAnc:True Active Noise Cancellation Open Earbuds** — No longer in discovery (likely ended)  
+  `/projects/polystartech/soundbud-openanc-true-active-noise-cancellation-open-earbuds`
+- **MechVault Wallet — Push. Fan. Click. Enjoy Every Carry** — No longer in discovery (likely ended)  
+  `/projects/comadni-coret/mechvault-wallet-push-fan-click-enjoy-every-carry`
+- **Phomemo F12 - Smarter Label Maker, More Organized Life** — No longer in discovery (likely ended)  
+  `/projects/phomemo-p15-printer/phomemo-f12-smarter-label-maker-more-organized-life`
+- **T-Pulse™ | The World's First T-Shaped Heated Pulse Massager** — No longer in discovery (likely ended)  
+  `/projects/416783749/t-pulsetm-the-worlds-first-t-shaped-heated-pulse-massager`
+- **AIPAL DOCK:Meet Your World's 1st Proactive AI Desk Sidekick** — No longer in discovery (likely ended)  
+  `/projects/zeehoo/future-beyond-the-charging-revolution`
+- **Vytasync: The Smart Air Pillow for Better Sleep** — No longer in discovery (likely ended)  
+  `/projects/185996931/vytasync-the-smart-air-pillow`
+- **EnergyLink Gen 2: Titanium 2-in-1 Apple Watch Charger Band** — No longer in discovery (likely ended)  
+  `/projects/nexxtpercent/energylink-gen-2-charge-faster-wear-lighter-go-further`
+- **Duroxen: Compact CNC Lathe with Pro-Level Precision** — No longer in discovery (likely ended)  
+  `/projects/874801633/duroxen-compact-cnc-lathe-built-for-precision-makers`
+- **AI Native Robotics 3D Camera: LooperRobotics Insight 9** — No longer in discovery (likely ended)  
+  `/projects/looper-robotics/looperrobotics-insight-9-an-ai-native-robotics-camera`
+- **LINYO H1 Car Wash Machine** — No longer in discovery (likely ended)  
+  `/projects/465535565/linyo-h1-car-wash-machine`
+- **Titan 2 - The Latest 5G QWERTY Physical Keyboard Smartphone** — No longer in discovery (likely ended)  
+  `/projects/jellyphone/titan-2-the-latest-5g-qwerty-physical-keyboard-smartphone`
+- **AiScan O1: The 3D Gaussian All-in-One 3D Scanner** — No longer in discovery (likely ended)  
   `/projects/1059314484/aiscan-o1-3d-gaussian-all-in-one-3d-scanner`
-- **xTool WonderPress: The Most Creative 3D Auto Heat Press Ever** — +66 followers (3122 → 3188)  
-  `/projects/makeblock/xtool-wonderpress-the-most-creative-3d-auto-heat-press-ever`
-- **Revopoint POP 4 3D Scanner** — +98 followers (2975 → 3073)  
-  `/projects/revopoint3d/revopoint-pop-4-3d-scanner`
+- **VitaLink: 20mm Thin 180° Foldable Keyboard & 4K Touchscreen** — No longer in discovery (likely ended)  
+  `/projects/vitalink/vitalink-20mm-thin-180-foldable-keyboard-and-4k-touchscreen`
 
 ## backers_delta (3)
-- **Titan 2 Elite: The 5G Keyboard Phone You’ve Been Waiting For** — +116 backers (8423 → 8539)  
-  `/projects/jellyphone/titan-2-elite-the-5g-keyboard-phone-youve-been-waiting-for`
-- **Hyzen, World's First Mechanical Magnetic Keyboard** — +151 backers (5030 → 5181)  
+- **Hyzen, World's First Mechanical Magnetic Keyboard** — +133 backers (5181 → 5314)  
   `/projects/lofree/hyzen-worlds-first-mechanical-magnetic-keyboard`
-- **xTool WonderPress: The Most Creative 3D Auto Heat Press Ever** — +164 backers (5705 → 5869)  
+- **Revopoint POP 4 3D Scanner** — +175 backers (1572 → 1747)  
+  `/projects/revopoint3d/revopoint-pop-4-3d-scanner`
+- **xTool WonderPress: The Most Creative 3D Auto Heat Press Ever** — +130 backers (5869 → 5999)  
   `/projects/makeblock/xtool-wonderpress-the-most-creative-3d-auto-heat-press-ever`
