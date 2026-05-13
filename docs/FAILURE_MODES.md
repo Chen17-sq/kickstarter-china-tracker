@@ -18,6 +18,7 @@
 | A8 | Resend 域名 unverify | ✅ | 单封 422 不影响其他收件人 |
 | A9 | GitHub Pages 短暂 down | 🟡 | 数据照发，邮件里链接暂时打不开（用户重试即可） |
 | A10 | Cloudflare DNS 失效 | ❌ | 没监控 |
+| A11 | curl_cffi seed 过 CF 但 GraphQL chunk POST 仍被 403（CF 跨 TLS+cookie 指纹核对） | 🆕 | Playwright 端到端兜底：seed + 所有 POST 都走 `page.evaluate(fetch)`，浏览器真实 TLS + sec-ch-ua + cookie 顺序全部一致 |
 
 ## B · Pipeline 内部逻辑
 
