@@ -853,6 +853,10 @@ def main(argv: list[str] | None = None) -> int:
     # silent degradation, silent partial failures, drift over time.
     # (Skipped if there's no owner email or alert was already sent.)
     if to_owner:
+        # `d` / `counts` are bound inside build_html(); recompute the
+        # summary here so the digest can render. Cheap (pure dict scan).
+        digest_d = get_summary_data(curr)
+        digest_counts = digest_d["counts"]
         digest_subj = (
             f"[OPS] KS Tracker · {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%d')} · "
             f"sent={sent} failed={failed}"
@@ -862,13 +866,13 @@ def main(argv: list[str] | None = None) -> int:
             f"",
             f"Snapshot:",
             f"  generated_at:   {curr.get('generated_at','—')}",
-            f"  total projects: {d.get('total','?')}",
-            f"  prelaunch:      {counts.get('prelaunch','?')}",
-            f"  live:           {counts.get('live','?')}",
-            f"  successful:     {counts.get('successful','?')}",
-            f"  pledged USD:    {fmt_usd(d.get('total_live_usd', 0))}",
-            f"  high confidence: {d.get('high','?')}",
-            f"  ✦ KS picks:     {d.get('pwl','?')}",
+            f"  total projects: {digest_d.get('total','?')}",
+            f"  prelaunch:      {digest_counts.get('prelaunch','?')}",
+            f"  live:           {digest_counts.get('live','?')}",
+            f"  successful:     {digest_counts.get('successful','?')}",
+            f"  pledged USD:    {fmt_usd(digest_d.get('total_live_usd', 0))}",
+            f"  high confidence: {digest_d.get('high','?')}",
+            f"  ✦ KS picks:     {digest_d.get('pwl','?')}",
             f"",
             f"Broadcast:",
             f"  recipients (deduped):  {len(recipients)}",
