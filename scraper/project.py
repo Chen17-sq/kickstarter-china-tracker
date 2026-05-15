@@ -40,6 +40,7 @@ from typing import Optional
 
 from curl_cffi import requests as cc_requests
 from .http import DEFAULT_COOKIES, IMPERSONATE_ROTATION
+from . import health
 
 GRAPH_URL = "https://www.kickstarter.com/graph"
 SEED_URL = "https://www.kickstarter.com/discover/advanced?state=upcoming"
@@ -302,6 +303,7 @@ def fetch_watches_counts(slugs: list[str], *, verbose: bool = True) -> dict[str,
     if transport is None:
         if verbose:
             print(f"  watchesCount: failed to seed (curl_cffi + Playwright); skipping")
+        health.watches_done(path="failed", fetched=0, requested=len(slugs))
         return out
 
     try:
@@ -329,6 +331,9 @@ def fetch_watches_counts(slugs: list[str], *, verbose: bool = True) -> dict[str,
                 obj = data.get(f"p{j}")
                 if isinstance(obj, dict) and "watchesCount" in obj:
                     out[s] = obj["watchesCount"]
+        # Record which transport actually carried the data
+        fetched = sum(1 for v in out.values() if v is not None)
+        health.watches_done(path=transport.mode, fetched=fetched, requested=len(slugs))
     finally:
         transport.close()
     return out
@@ -358,6 +363,7 @@ def fetch_pledge_minimums(slugs: list[str], *, verbose: bool = True) -> dict[str
     if transport is None:
         if verbose:
             print(f"  pledge_min: failed to seed; skipping")
+        health.pledge_done(path="failed", fetched=0, requested=len(slugs))
         return out
 
     try:
@@ -392,6 +398,8 @@ def fetch_pledge_minimums(slugs: list[str], *, verbose: bool = True) -> dict[str
                         pass
                 if amounts:
                     out[s] = min(amounts)
+        fetched = sum(1 for v in out.values() if v is not None)
+        health.pledge_done(path=transport.mode, fetched=fetched, requested=len(slugs))
     finally:
         transport.close()
     return out

@@ -38,6 +38,7 @@ from .sitemap import write_sitemap
 from .pdf import render_today as render_pdf_today
 from .social import generate_carousel
 from .cleanup import prune_archives
+from . import health
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA = REPO_ROOT / "data"
@@ -131,6 +132,7 @@ def build_row(hit: DiscoverHit, *, followers: int | None,
 
 
 def run() -> int:
+    health.reset()  # fresh counter state for this run
     started = now_iso()
     print(f"[{started}] crawl discover ...")
     hits = crawl_discover()
@@ -162,6 +164,7 @@ def run() -> int:
             classified_paths.append((path, hit, cls))
 
     slugs = [slug_from_pathname(path) for path, _, _ in classified_paths]
+    health.classified(len(slugs))
     print(f"  fetching watchesCount via GraphQL for {len(slugs)} projects ...")
     watches = fetch_watches_counts(slugs)
     n_with = sum(1 for v in watches.values() if v is not None)
@@ -188,6 +191,7 @@ def run() -> int:
                         watches[slug] = prev_followers[path]
                         restored += 1
                 print(f"  → restored {restored} followers from previous snapshot")
+                health.watches_restored_from_prev(restored)
             except Exception as e:
                 print(f"  ! couldn't read previous snapshot for fallback: {e}")
 
@@ -337,6 +341,13 @@ def run() -> int:
         print(f"  wrote reports/{today}.md (and reports/latest.md)")
     except Exception as e:
         print(f"  report skipped: {e}")
+
+    # Persist scrape health for the OPS digest. Failure is non-fatal —
+    # we'd rather have a working email today than crash on observability.
+    try:
+        health.save()
+    except Exception as e:
+        print(f"  health.save() skipped: {e}")
 
     print(f"done. kept {len(rows)}/{len(hits)}")
     return 0

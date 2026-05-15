@@ -853,6 +853,11 @@ def main(argv: list[str] | None = None) -> int:
     # silent degradation, silent partial failures, drift over time.
     # (Skipped if there's no owner email or alert was already sent.)
     if to_owner:
+        # Scrape health (curl_cffi vs playwright path, coverage %) read
+        # from data/.scrape_health.json. Owner sees fallback usage trend
+        # over time — catches "still working but degrading" creep.
+        from . import health as _health
+        _health_state = _health.load()
         # `d` / `counts` are bound inside build_html(); recompute the
         # summary here so the digest can render. Cheap (pure dict scan).
         digest_d = get_summary_data(curr)
@@ -880,6 +885,9 @@ def main(argv: list[str] | None = None) -> int:
             f"  failed:                {failed}",
             f"  sender:                {sender}",
         ]
+        if _health_state:
+            digest_lines.append(f"")
+            digest_lines.extend(_health.format_digest_lines(_health_state))
         if failure_log:
             digest_lines.append(f"")
             digest_lines.append(f"Failures:")

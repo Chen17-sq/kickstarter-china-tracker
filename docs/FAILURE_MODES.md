@@ -8,7 +8,7 @@
 
 | # | 故障 | 状态 | 兜底机制 |
 |---|---|---|---|
-| A1 | Kickstarter Discover JSON 全 14 seed 被 CF 封 | 🆕 | discover 候选 <50 时 `scraper.run` 主动 abort，不会写空 projects.json |
+| A1 | Kickstarter Discover JSON 全 14 seed 被 CF 封 | ✅ 🆕 | (a) curl_cffi 8 个 TLS 指纹轮换；(b) 一个 warm session 走完整个 crawl，先访问首页拿 CF clearance；(c) 单页 curl_cffi 耗尽后自动切 Playwright `page.evaluate(fetch)` 兜底（`X-Requested-With: XMLHttpRequest` 必须，否则 KS 在 format=json 上回 403）；(d) 候选 <50 时 `scraper.run` 主动 abort |
 | A2 | KS Discover JSON 字段静默改名（`pledged` → `pledge`） | 🆕 | sanity 检查 live 项目 backers >0 比例，全字段失踪会触发 |
 | A3 | KS GraphQL `watchesCount` 字段改名 | ✅ | sanity gate followers 覆盖率 <30% 阻断 |
 | A4 | KS GraphQL `rewards` 字段改名 | 🟡 | 不阻断（pledge_min 是可选字段），但日志可见 |
@@ -18,7 +18,8 @@
 | A8 | Resend 域名 unverify | ✅ | 单封 422 不影响其他收件人 |
 | A9 | GitHub Pages 短暂 down | 🟡 | 数据照发，邮件里链接暂时打不开（用户重试即可） |
 | A10 | Cloudflare DNS 失效 | ❌ | 没监控 |
-| A11 | curl_cffi seed 过 CF 但 GraphQL chunk POST 仍被 403（CF 跨 TLS+cookie 指纹核对） | 🆕 | Playwright 端到端兜底：seed + 所有 POST 都走 `page.evaluate(fetch)`，浏览器真实 TLS + sec-ch-ua + cookie 顺序全部一致 |
+| A11 | curl_cffi seed 过 CF 但 GraphQL chunk POST 仍被 403（CF 跨 TLS+cookie 指纹核对） | ✅ | Playwright 端到端兜底：seed + 所有 POST 都走 `page.evaluate(fetch)`，浏览器真实 TLS + sec-ch-ua + cookie 顺序全部一致 |
+| A12 | KS 在 `format=json` URL 上专门检查 `X-Requested-With: XMLHttpRequest`（jQuery legacy 行为） | ✅ 🆕 | discover Playwright fallback 显式塞这个 header；curl_cffi 路径走 TLS 指纹绕过同一个 WAF 规则 |
 
 ## B · Pipeline 内部逻辑
 

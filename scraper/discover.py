@@ -37,6 +37,7 @@ from dataclasses import dataclass, field
 from typing import Any, Iterable, Iterator, Optional
 
 from .http import fetch, warm_client, RateLimiter
+from . import health
 
 DISCOVER_SEEDS = [
     # ── China-labeled (woe_id=23424781) — 5 sort/state slices ──────────────
@@ -267,6 +268,7 @@ def _walk_seed(
     pw_fallback: _DiscoverPlaywright,
 ) -> Iterator[DiscoverHit]:
     sep = "&" if "?" in seed_url else "?"
+    seed_had_failure = False  # so we only bump the "seed had a page failure" counter once
     for page in range(1, MAX_PAGES_PER_SEED + 1):
         pacer.wait()
         page_url = f"{seed_url}{sep}format=json&page={page}"
@@ -279,11 +281,21 @@ def _walk_seed(
         except RuntimeError as e:
             # All impersonations exhausted — try Playwright fallback
             print(f"  ! curl_cffi exhausted on {page_url}\n    {e}; trying Playwright")
+            if not seed_had_failure:
+                health.discover_seed_page_failed_curl_cffi()
+                seed_had_failure = True
             data = pw_fallback.fetch_json(page_url)
+            if data is not None:
+                health.discover_playwright_used(pages=1)
         except Exception:
             # JSON decode error or other — try Playwright too
             print(f"  ! seed returned non-JSON: {page_url}; trying Playwright")
+            if not seed_had_failure:
+                health.discover_seed_page_failed_curl_cffi()
+                seed_had_failure = True
             data = pw_fallback.fetch_json(page_url)
+            if data is not None:
+                health.discover_playwright_used(pages=1)
 
         if not data:
             # Both paths failed — give up on this seed
@@ -316,6 +328,7 @@ def crawl_discover(seeds: Iterable[str] = DISCOVER_SEEDS) -> dict[str, DiscoverH
     out: dict[str, DiscoverHit] = {}
     try:
         for seed in seeds:
+            health.discover_seed_started()
             before = len(out)
             for hit in _walk_seed(seed, pacer=pacer, client=client, pw_fallback=pw_fallback):
                 if not hit.pathname:
@@ -324,6 +337,7 @@ def crawl_discover(seeds: Iterable[str] = DISCOVER_SEEDS) -> dict[str, DiscoverH
             print(f"  seed: {seed[51:120]:<70} +{len(out)-before} new (total {len(out)})")
     finally:
         pw_fallback.close()
+    health.discover_finalize(candidates_total=len(out))
     return out
 
 
