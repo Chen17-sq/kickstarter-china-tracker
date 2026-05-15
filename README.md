@@ -81,9 +81,30 @@ Fork 后启用：
 
 <br>
 
-- **Cloudflare 概率挡爬**：`scraper/http.py` 4 次 retry + TLS 指纹轮换（safari17_0 / chrome131 / chrome120 / edge101），命中率 > 95%
+- **Cloudflare 概率挡爬**：4 层防御 — (1) curl_cffi TLS 指纹 8 profile 轮换（Chrome/Safari/Firefox/Edge）; (2) warm session 先访问 KS 首页拿 CF clearance cookie; (3) Playwright headless Chromium 端到端兜底（POST 也走浏览器 fetch）; (4) `KS_PROXY` env 可加代理池。详见 [`docs/PROXY.md`](docs/PROXY.md) + [`docs/FAILURE_MODES.md`](docs/FAILURE_MODES.md)。
 - **品牌库覆盖率**：当前 142 项目里 ~36 项命中品牌白名单，~106 项靠 KS location 字段判定。前者识别更精确
 - **Followers 字段**：从 KS GraphQL `watchesCount` 读取。对 *prelaunch* 是当前实时关注；对 *live* / *已结束* 是上线时冻结的预热基线（仍可看转化率）
+
+</details>
+
+---
+
+<details>
+<summary><b>Docs · 文档索引</b></summary>
+
+<br>
+
+| 文档 | 内容 |
+|---|---|
+| [`ARCHITECTURE.md`](ARCHITECTURE.md) | 系统总览 — modules、data flow、为什么这么拆 |
+| [`docs/DESIGN_RULES.md`](docs/DESIGN_RULES.md) | Newsprint 视觉规范 — 字体 / 色板 / 排版 |
+| [`docs/FAILURE_MODES.md`](docs/FAILURE_MODES.md) | 故障模式目录 (A-I 层) — 每层防御 + 兜底 |
+| [`docs/PROXY.md`](docs/PROXY.md) | `KS_PROXY` 配置 — 单 URL / pool / Cloudflare Worker 免费代理 |
+| [`docs/RUNBOOK.md`](docs/RUNBOOK.md) | 运维手册 — 重跑 cron / 订阅者 CLI / Worker 部署 / 紧急恢复 |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | 贡献指南 (本仓库私用为主，记录约定) |
+| [`subscribe-worker/MIGRATE_TO_KV.md`](subscribe-worker/MIGRATE_TO_KV.md) | 订阅者数据从 GitHub JSON → Cloudflare KV 的迁移笔记 |
+
+订阅渠道：每日邮件 · [Atom feed](https://ks.aldrich.fyi/feed.xml) · 永久存档 [`/editions/`](https://ks.aldrich.fyi/editions/)
 
 </details>
 

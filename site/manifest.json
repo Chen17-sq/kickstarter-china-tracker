@@ -1,0 +1,20 @@
+{
+  "name": "Kickstarter China Tracker",
+  "short_name": "KS Tracker",
+  "description": "Daily newspaper tracking China-background consumer-hardware projects on Kickstarter.",
+  "start_url": "/",
+  "display": "minimal-ui",
+  "background_color": "#F9F9F7",
+  "theme_color": "#CC0000",
+  "lang": "zh-CN",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/assets/og-card.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["news", "business", "magazines"]
+}

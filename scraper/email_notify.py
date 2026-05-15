@@ -414,6 +414,32 @@ def build_html(curr: dict) -> tuple[str, str]:
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="{_esc(subject)} — Kickstarter China Tracker daily edition.">
 <link rel="alternate" type="application/atom+xml" title="Kickstarter China Tracker · Atom Feed" href="https://ks.aldrich.fyi/feed.xml">
+
+<!-- NewsArticle structured data — helps Google News + rich snippets pick up
+     each edition as a discrete article rather than a generic webpage. -->
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": "{_esc(subject)}",
+  "datePublished": "{today}T00:00:00Z",
+  "dateModified": "{today}T00:00:00Z",
+  "inLanguage": "zh-CN",
+  "url": "https://ks.aldrich.fyi/editions/{today}.html",
+  "publisher": {{
+    "@type": "Organization",
+    "name": "Kickstarter China Tracker",
+    "url": "https://ks.aldrich.fyi/"
+  }},
+  "author": {{
+    "@type": "Person",
+    "name": "Aldrich Chen",
+    "url": "https://aldrich.fyi"
+  }},
+  "description": "Daily edition: {d['total']} China-background hardware projects tracked · {counts['prelaunch']} prelaunch · {counts['live']} live ({fmt_usd(d['total_live_usd'])})."
+}}
+</script>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@500;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lora:ital,wght@0,400;1,400&display=swap');
 </style></head>
@@ -567,16 +593,104 @@ def build_html(curr: dict) -> tuple[str, str]:
 </html>'''
 
 
-def post_resend(api_key: str, sender: str, to: list[str], subject: str, html: str) -> None:
+def post_resend(api_key: str, sender: str, to: list[str], subject: str,
+                html: str, text: str | None = None) -> None:
+    """POST to Resend. If `text` is provided, the email is sent as
+    multipart with both HTML and plaintext alternatives — better for spam
+    scores, accessibility (screen readers), and clients that prefer text.
+    """
+    payload = {"from": sender, "to": to, "subject": subject, "html": html}
+    if text:
+        payload["text"] = text
     resp = httpx.post(
         RESEND_API_URL,
         headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
-        json={"from": sender, "to": to, "subject": subject, "html": html},
+        json=payload,
         timeout=30,
     )
     if resp.status_code >= 400:
         print(f"Resend error {resp.status_code}: {resp.text}", file=sys.stderr)
         resp.raise_for_status()
+
+
+def build_plaintext(curr: dict) -> str:
+    """Generate a plaintext alternative for the daily edition.
+
+    Sent alongside the HTML body in a multipart message. Improves spam
+    scoring (mail filters expect a text part), enables accessibility for
+    screen readers, and gives terminal/text-mode clients (Mutt, etc.) a
+    usable read.
+
+    Format mirrors the HTML structure: masthead, KPI line, Top 10 prelaunch,
+    Top 10 live, links to the visual + Atom feed. No images, no styling,
+    no tables — just structured text with separators.
+    """
+    d = get_summary_data(curr)
+    today = d["today"]
+    counts = d["counts"]
+    edition = edition_number()
+    lines: list[str] = []
+    rule = "─" * 60
+
+    lines.append("KICKSTARTER CHINA TRACKER")
+    lines.append(f"Vol. 1, No. {edition} · {today}")
+    lines.append("All The Crowd-Funded Hardware Fit To Print.")
+    lines.append("")
+    lines.append(rule)
+    lines.append(
+        f"{d['total']} 项追踪 · {counts['prelaunch']} prelaunch · "
+        f"{counts['live']} live ({fmt_usd(d['total_live_usd'])}) · "
+        f"{counts['successful']} successful · ✦ KS Pick {d['pwl']}"
+    )
+    lines.append(rule)
+    lines.append("")
+
+    pre = d["prelaunch"][:10]
+    if pre:
+        lines.append("⏳ PRELAUNCH · TOP 10 BY FOLLOWERS")
+        lines.append("")
+        for i, p in enumerate(pre, 1):
+            star = "★ " if p.get("project_we_love") else "  "
+            title = (p.get("title") or "?")[:50]
+            zh = p.get("blurb_zh") or ""
+            lines.append(f"{i:2d}. {star}{title}")
+            if zh:
+                lines.append(f"      {zh[:60]}")
+            lines.append(f"      {fmt_int(p.get('followers') or 0)} followers")
+            url = p.get("url")
+            if url:
+                lines.append(f"      {url}")
+            lines.append("")
+
+    live = d["live"][:10]
+    if live:
+        lines.append("🔴 LIVE · TOP 10 BY USD RAISED")
+        lines.append("")
+        for i, p in enumerate(live, 1):
+            star = "★ " if p.get("project_we_love") else "  "
+            title = (p.get("title") or "?")[:50]
+            zh = p.get("blurb_zh") or ""
+            lines.append(f"{i:2d}. {star}{title}")
+            if zh:
+                lines.append(f"      {zh[:60]}")
+            lines.append(
+                f"      {fmt_usd(p.get('pledged_usd'))} · "
+                f"{fmt_int(p.get('backers') or 0)} backers"
+            )
+            url = p.get("url")
+            if url:
+                lines.append(f"      {url}")
+            lines.append("")
+
+    lines.append(rule)
+    lines.append("VIEW VISUAL · https://ks.aldrich.fyi/editions/latest.html")
+    lines.append("RSS FEED    · https://ks.aldrich.fyi/feed.xml")
+    lines.append("ARCHIVE     · https://ks.aldrich.fyi/editions/")
+    lines.append("")
+    lines.append("─ ✦ ─")
+    lines.append("Reply 'unsubscribe' to stop receiving these.")
+
+    return "\n".join(lines)
 
 
 def write_archive(html: str) -> None:
@@ -698,6 +812,9 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     curr = json.loads(PROJECTS.read_text(encoding="utf-8"))
     subject, html = build_html(curr)
+    # Build plaintext alt for multipart messages — better spam scoring,
+    # accessibility, and terminal-client legibility.
+    plain_text = build_plaintext(curr)
 
     # Always archive — even on dry-run / no-API-key — so Pages always has the
     # latest visual edition viewable at /editions/<date>.html.
@@ -872,7 +989,7 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"  ! creator banner inject FAILED for {r}; sending standard", file=sys.stderr)
                 html_for_this = html
         try:
-            post_resend(api_key, sender, [r], subject, html_for_this)
+            post_resend(api_key, sender, [r], subject, html_for_this, text=plain_text)
             sent += 1
         except Exception as e:
             # Most likely cause in sandbox mode: 422 'You can only send testing
