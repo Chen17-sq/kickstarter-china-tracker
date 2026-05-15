@@ -35,6 +35,7 @@ from .atomic import write_text_atomic, write_json_atomic
 from .momentum import compute_deltas
 from .email_notify import build_html as build_email_html, write_archive as write_email_archive
 from .sitemap import write_sitemap
+from .feed import write_feed
 from .pdf import render_today as render_pdf_today
 from .social import generate_carousel
 from .cleanup import prune_archives
@@ -296,6 +297,15 @@ def run() -> int:
         print(f"  refreshed {sm.relative_to(REPO_ROOT)}")
     except Exception as e:
         print(f"  sitemap skipped: {e}")
+
+    # Refresh Atom feed (site/feed.xml) — subscription alternative to email,
+    # consumed by any RSS reader. See scraper/feed.py.
+    try:
+        fp = write_feed()
+        if fp:
+            print(f"  refreshed {fp.relative_to(REPO_ROOT)}")
+    except Exception as e:
+        print(f"  feed skipped: {e}")
 
     # Render today's edition to PDF (for 小红书 / 微信 sharing)
     try:

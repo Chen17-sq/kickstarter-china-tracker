@@ -26,6 +26,18 @@
  *                            complained emails from KV. Without it, the endpoint
  *                            returns 403 so misconfigured webhooks don't silently
  *                            drop subscribers.
+ *   RESEND_API_KEY         — (optional) Resend API key. Used by POST / to send
+ *                            a welcome email immediately after a successful
+ *                            subscribe. Without it, subscribers still land in
+ *                            KV but get no immediate confirmation (they'll see
+ *                            the first edition tomorrow morning).
+ *   NOTIFY_EMAIL_FROM      — (optional, paired with RESEND_API_KEY) sender used
+ *                            for welcome emails. Should match the verified
+ *                            sender in Resend, e.g. "KS Tracker <hi@aldrich.fyi>".
+ *
+ * Abuse protection:
+ *   POST / is rate-limited to 5 attempts/minute per IP, tracked via KV
+ *   bucket keys with 2-minute TTL. Casual flood scripts get 429.
  *
  * Subscribe-write payload (POST /):
  *   { email: "...", nickname: "..." }
@@ -86,6 +98,15 @@ export default {
 
     // ── POST / — subscribe form submission ─────────────────────────
     if (request.method === "POST" && (url.pathname === "/" || url.pathname === "")) {
+      // Rate-limit by client IP: max 5 subscribe attempts / minute.
+      // Without this, a bot can flood KV with fake addresses; the form
+      // has no CAPTCHA and KV writes are cheap to abuse. Bucket is
+      // per-IP-per-minute with a 2-minute TTL so transient spikes
+      // don't get permanently locked out.
+      const rlAllowed = await rateLimitOk(request, env, "subscribe", 5, 60);
+      if (!rlAllowed) {
+        return json({ ok: false, error: "rate limited" }, 429, cors);
+      }
       return handleSubscribe(request, env, cors);
     }
 
@@ -158,6 +179,12 @@ async function handleSubscribe(request, env, cors) {
     if (result.duplicate) {
       return json({ ok: true, duplicate: true, message: "already subscribed" }, 200, cors);
     }
+    // Fire-and-forget welcome email. We don't await its completion —
+    // if Resend is degraded, the subscribe flow still returns success
+    // quickly. Subscriber will get the daily edition tomorrow either way.
+    if (env.RESEND_API_KEY && env.NOTIFY_EMAIL_FROM) {
+      sendWelcomeEmail(env, email, nickname, !!creatorSlug).catch(() => {});
+    }
     return json({
       ok: true,
       count: result.count,
@@ -165,6 +192,136 @@ async function handleSubscribe(request, env, cors) {
     }, 200, cors);
   } catch (e) {
     return json({ ok: false, error: String(e.message || e) }, 500, cors);
+  }
+}
+
+// ── Rate limiting ───────────────────────────────────────────────────
+//
+// Per-IP, per-minute bucket counter stored in KV. NOT atomic — there's
+// a race between read and write — but for human-rate abuse the slop
+// is fine (5 vs 7 attempts in a minute doesn't matter). For real DDoS,
+// Cloudflare's free-tier WAF rules would catch it first; this is
+// belt-and-suspenders against casual flood scripts.
+//
+// `tag` lets different endpoints share the rate limit subsystem without
+// stepping on each other (e.g. "subscribe" vs "unsubscribe" buckets).
+async function rateLimitOk(request, env, tag, limit, windowSec) {
+  if (!env.SUBSCRIBERS_KV) return true;  // can't enforce → fail open
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  const bucket = Math.floor(Date.now() / 1000 / windowSec);
+  const key = `rl:${tag}:${ip}:${bucket}`;
+  let count = 0;
+  try {
+    const raw = await env.SUBSCRIBERS_KV.get(key);
+    count = parseInt(raw || "0", 10);
+  } catch (_e) {
+    // KV read error → fail open. Better to accept legit traffic during
+    // a partial KV outage than to lock everyone out.
+    return true;
+  }
+  if (count >= limit) return false;
+  try {
+    await env.SUBSCRIBERS_KV.put(key, String(count + 1), { expirationTtl: windowSec * 2 });
+  } catch (_e) {
+    // Ignore — counter stays a bit stale but the request still proceeds
+  }
+  return true;
+}
+
+// ── Welcome email ───────────────────────────────────────────────────
+//
+// Sent immediately on first successful subscribe. Subscriber gets a
+// confirmation + link to the latest edition so they have something to
+// read RIGHT NOW; otherwise they'd wait until tomorrow's cron for the
+// first real edition, which feels like the form silently swallowed
+// their email.
+async function sendWelcomeEmail(env, email, nickname, isCreator) {
+  const display = nickname && nickname.length ? nickname : email.split("@")[0];
+  const subject = "✦ 订阅成功 · Welcome to Kickstarter China Tracker";
+  const creatorLine = isCreator
+    ? `<p style="margin:0 0 12px;font-family:Lora,Georgia,serif;font-size:15px;line-height:1.55">
+         你勾选了"我是 KS Creator" — 每当你的项目出现在追踪列表里，邮件顶部会显示一个针对你的小横幅。</p>`
+    : "";
+  const html = `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>${subject}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Playfair+Display:wght@700;900&family=Inter:wght@500;700&display=swap');</style>
+</head>
+<body style="margin:0;padding:24px 12px;background:#F9F9F7;font-family:Lora,Georgia,serif;color:#111">
+  <div style="display:none;max-height:0;overflow:hidden;color:transparent;font-size:1px;opacity:0">
+    Welcome ${display} — your first edition arrives tomorrow morning at 08:00 Beijing.
+  </div>
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0"
+         style="max-width:600px;margin:0 auto;background:#F9F9F7;
+                border:1px solid #111;border-collapse:collapse">
+    <tr><td style="padding:0">
+      <div style="background:#111;color:#F9F9F7;padding:10px 24px;
+                  font-family:Inter,system-ui,sans-serif;font-size:10px;
+                  font-weight:700;letter-spacing:2.5px">
+        <span style="display:inline-block;width:6px;height:6px;background:#CC0000;border-radius:50%;margin-right:8px;vertical-align:1px"></span>
+        SUBSCRIBED · KICKSTARTER CHINA TRACKER
+      </div>
+      <div style="padding:28px 28px 16px">
+        <h1 style="margin:0 0 8px;font-family:'Playfair Display',Georgia,serif;
+                   font-weight:900;font-size:34px;line-height:1.05;letter-spacing:-.5px">
+          ${display}，欢迎上船。
+        </h1>
+        <p style="margin:0 0 16px;font-family:Inter,system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#737373">
+          DAILY · 08:00 BEIJING · STARTING TOMORROW
+        </p>
+        <p style="margin:0 0 12px;font-size:16px;line-height:1.6">
+          每天早上你会收到一份 Kickstarter 上中国背景消费硬件项目的追踪报。
+          Top 10 prelaunch / Top 10 live / Sleeper Picks，配 KPI 一行流和编辑挑选。
+        </p>
+        ${creatorLine}
+        <p style="margin:0 0 24px;font-size:16px;line-height:1.6">
+          想先睹为快？这里是最近一期的视觉版：
+        </p>
+        <p style="margin:0 0 24px">
+          <a href="https://ks.aldrich.fyi/editions/latest.html"
+             style="display:inline-block;padding:12px 24px;
+                    background:#CC0000;color:#F9F9F7;text-decoration:none;
+                    font-family:Inter,system-ui,sans-serif;font-size:13px;
+                    font-weight:700;letter-spacing:.18em;text-transform:uppercase">
+            阅读最新一期 →
+          </a>
+        </p>
+        <p style="margin:0;font-size:13px;color:#737373;line-height:1.5">
+          也可以走 RSS 阅读器：<a href="https://ks.aldrich.fyi/feed.xml" style="color:#737373">ks.aldrich.fyi/feed.xml</a><br>
+          想停订？回这封邮件说一声"取消订阅"即可。
+        </p>
+      </div>
+      <div style="background:#111;color:#F9F9F7;padding:14px 24px;
+                  font-family:Inter,system-ui,sans-serif;font-size:10px;
+                  letter-spacing:2px;text-align:center">
+        ✦ &nbsp; ALL THE CROWD-FUNDED HARDWARE FIT TO PRINT &nbsp; ✦
+      </div>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+  // POST to Resend
+  const r = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${env.RESEND_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: env.NOTIFY_EMAIL_FROM,
+      to: [email],
+      subject,
+      html,
+    }),
+  });
+  if (!r.ok) {
+    // Log to Worker console — Cloudflare keeps tail logs for a while.
+    // Not fatal; subscriber still got their KV entry.
+    const errText = await r.text().catch(() => "");
+    console.log(`welcome email to ${email} returned ${r.status}: ${errText.slice(0, 200)}`);
   }
 }
 

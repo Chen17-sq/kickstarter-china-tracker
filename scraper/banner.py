@@ -279,7 +279,7 @@ def build_og_svg(curr: dict) -> str:
 
   <!-- Italic dek -->
   <text x="640" y="362" text-anchor="middle" font-family="{body}" font-size="20"
-        font-style="italic" fill="{N700}">All the crowd-funded hardware fit to print, every morning at 09:00 Beijing.</text>
+        font-style="italic" fill="{N700}">All the crowd-funded hardware fit to print, every morning at 08:00 Beijing.</text>
 
   <!-- Ornament + rule -->
   <text x="640" y="420" text-anchor="middle" font-family="{serif}" font-size="22"

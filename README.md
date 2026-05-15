@@ -3,7 +3,7 @@
 <p align="center">
   <strong><em>All The Crowd-Funded Hardware Fit To Print.</em></strong><br>
   一份每日发行的报纸 — Kickstarter 上中国背景消费硬件项目的每日追踪。<br>
-  Printed every morning at 09:00 Beijing via GitHub Actions.
+  Printed every morning at 08:00 Beijing via GitHub Actions.
 </p>
 
 <p align="center">

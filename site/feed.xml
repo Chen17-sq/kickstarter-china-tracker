@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
+  <title>Kickstarter China Tracker</title>
+  <subtitle>All The Crowd-Funded Hardware Fit To Print.</subtitle>
+  <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/"/>
+  <link rel="self" type="application/atom+xml" href="https://ks.aldrich.fyi/feed.xml"/>
+  <id>https://ks.aldrich.fyi/</id>
+  <updated>2026-05-15T00:00:00Z</updated>
+  <author>
+    <name>Aldrich Chen · 陈思蕲</name>
+    <uri>https://aldrich.fyi</uri>
+  </author>
+  <rights>© Kickstarter China Tracker. Project data © Kickstarter, PBC.</rights>
+  <generator uri="https://github.com/Chen17-sq/kickstarter-china-tracker">scraper.feed</generator>
+  <entry>
+    <title>[Vol. 1, No. 21] 2026-05-15 · 234 项 · 76 在筹 · 86 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-05-15.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-05-15</id>
+    <updated>2026-05-15T00:00:00Z</updated>
+    <published>2026-05-15T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 20] 2026-05-14 · 174 项 · 90 在筹 · 80 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-05-14.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-05-14</id>
+    <updated>2026-05-14T00:00:00Z</updated>
+    <published>2026-05-14T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 19] 2026-05-13 · 242 项 · 83 在筹 · 88 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-05-13.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-05-13</id>
+    <updated>2026-05-13T00:00:00Z</updated>
+    <published>2026-05-13T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 18] 2026-05-12 · 68 项 · 31 在筹 · 37 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-05-12.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-05-12</id>
+    <updated>2026-05-12T00:00:00Z</updated>
+    <published>2026-05-12T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 17] 2026-05-11 · 242 项 · 87 在筹 · 81 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-05-11.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-05-11</id>
+    <updated>2026-05-11T00:00:00Z</updated>
+    <published>2026-05-11T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 16] 2026-05-10 · 243 项 · 81 在筹 · 88 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-05-10.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-05-10</id>
+    <updated>2026-05-10T00:00:00Z</updated>
+    <published>2026-05-10T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 15] 2026-05-09 · 248 项 · 80 在筹 · 94 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-05-09.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-05-09</id>
+    <updated>2026-05-09T00:00:00Z</updated>
+    <published>2026-05-09T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 14] 2026-05-08 · 215 项 · 54 在筹 · 87 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-05-08.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-05-08</id>
+    <updated>2026-05-08T00:00:00Z</updated>
+    <published>2026-05-08T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 13] 2026-05-07 · 246 项 · 91 在筹 · 80 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-05-07.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-05-07</id>
+    <updated>2026-05-07T00:00:00Z</updated>
+    <published>2026-05-07T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 12] 2026-05-06 · 247 项 · 82 在筹 · 89 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-05-06.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-05-06</id>
+    <updated>2026-05-06T00:00:00Z</updated>
+    <published>2026-05-06T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 11] 2026-05-05 · 251 项 · 95 在筹 · 81 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-05-05.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-05-05</id>
+    <updated>2026-05-05T00:00:00Z</updated>
+    <published>2026-05-05T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 10] 2026-05-04 · 226 项 · 96 在筹 · 56 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-05-04.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-05-04</id>
+    <updated>2026-05-04T00:00:00Z</updated>
+    <published>2026-05-04T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 9] 2026-05-03 · 229 项 · 66 在筹 · 89 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-05-03.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-05-03</id>
+    <updated>2026-05-03T00:00:00Z</updated>
+    <published>2026-05-03T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 8] 2026-05-02 · 141 项 · 23 在筹 · 44 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-05-02.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-05-02</id>
+    <updated>2026-05-02T00:00:00Z</updated>
+    <published>2026-05-02T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 7] 2026-05-01 · 240 项 · 76 在筹 · 90 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-05-01.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-05-01</id>
+    <updated>2026-05-01T00:00:00Z</updated>
+    <published>2026-05-01T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 6] 2026-04-30 · 257 项 · 97 在筹 · 85 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-04-30.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-04-30</id>
+    <updated>2026-04-30T00:00:00Z</updated>
+    <published>2026-04-30T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 5] 2026-04-29 · 237 项 · 68 在筹 · 93 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-04-29.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-04-29</id>
+    <updated>2026-04-29T00:00:00Z</updated>
+    <published>2026-04-29T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 4] 2026-04-28 · 234 项 · 68 在筹 · 90 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-04-28.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-04-28</id>
+    <updated>2026-04-28T00:00:00Z</updated>
+    <published>2026-04-28T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 3] 2026-04-27 · 255 项 · 90 在筹 · 89 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-04-27.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-04-27</id>
+    <updated>2026-04-27T00:00:00Z</updated>
+    <published>2026-04-27T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+  <entry>
+    <title>[Vol. 1, No. 2] 2026-04-26 · 255 项 · 90 在筹 · 89 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-04-26.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-04-26</id>
+    <updated>2026-04-26T00:00:00Z</updated>
+    <published>2026-04-26T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
+</feed>

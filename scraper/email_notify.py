@@ -267,6 +267,27 @@ def build_html(curr: dict) -> tuple[str, str]:
         f"{counts['prelaunch']} 未发布"
     )
 
+    # Preheader text — the gray preview shown in inbox lists right after the
+    # subject. Most clients display 60-100 chars. We pack a one-line teaser
+    # with the headline live project + total raised so readers know what
+    # they're getting before opening. Hidden visually via display:none +
+    # 0-size; clients still read the text for the preview line.
+    top_live = d["live"][0] if d["live"] else None
+    top_pre = d["prelaunch"][0] if d["prelaunch"] else None
+    preheader_bits = []
+    if top_live:
+        preheader_bits.append(
+            f"今日头条：{top_live.get('title','?')[:40]} {fmt_usd(top_live.get('pledged_usd') or 0)}"
+        )
+    elif top_pre:
+        preheader_bits.append(
+            f"今日头条：{top_pre.get('title','?')[:40]} · {fmt_int(top_pre.get('followers') or 0)} watchers"
+        )
+    preheader_bits.append(
+        f"在筹合计 {fmt_usd(d['total_live_usd'])} · ✦ KS Pick {d['pwl']}"
+    )
+    preheader_text = " · ".join(preheader_bits)
+
     # Drop cap on the lede paragraph (first paragraph after the masthead)
     lede_text = (
         f"今日（{today}）追踪到 <strong>{d['total']}</strong> 个中国背景消费硬件项目。"
@@ -385,12 +406,24 @@ def build_html(curr: dict) -> tuple[str, str]:
     return subject, f'''<!DOCTYPE html>
 <html lang="zh-CN">
 <head><meta charset="UTF-8"><title>{_esc(subject)}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="{_esc(subject)} — Kickstarter China Tracker daily edition.">
+<link rel="alternate" type="application/atom+xml" title="Kickstarter China Tracker · Atom Feed" href="https://ks.aldrich.fyi/feed.xml">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@500;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lora:ital,wght@0,400;1,400&display=swap');
 </style></head>
 <body style="margin:0;padding:24px 12px;background:{PAPER};
              background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Cpath fill='%23111111' fill-opacity='0.05' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'/%3E%3C/svg%3E\");
              font-family:{BODY};color:{INK};line-height:1.6">
+
+<!-- Preheader: inbox preview text. Hidden visually, read by Gmail/Apple Mail/Outlook
+     to populate the gray summary line under the subject in the inbox list.
+     The &zwnj;&nbsp; padding pushes other body content out of the preview. -->
+<div style="display:none;max-height:0;overflow:hidden;font-size:1px;line-height:1px;color:transparent;mso-hide:all;opacity:0">
+{_esc(preheader_text)}
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+</div>
 
 <table role="presentation" cellspacing="0" cellpadding="0" border="0"
        style="max-width:680px;margin:0 auto;background:{PAPER};
