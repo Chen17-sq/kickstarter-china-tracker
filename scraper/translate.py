@@ -13,6 +13,7 @@ If unset, this step is a silent no-op so the rest of the pipeline keeps
 working without it.
 """
 from __future__ import annotations
+
 import json
 import os
 from pathlib import Path

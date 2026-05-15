@@ -16,30 +16,31 @@ floor (likely Cloudflare blocking the runner), refuse to overwrite the live
 projects.json. We still write a history snapshot for forensics.
 """
 from __future__ import annotations
+
 import datetime as dt
 import json
 import os
 import sys
-from dataclasses import asdict
 from pathlib import Path
 
-from .http import RateLimiter
-from .discover import crawl_discover, DiscoverHit
-from .classify import classify
-from .diff import diff_snapshots, changes_to_markdown
-from .translate import fill_missing as translate_fill_missing
-from .report import make_report, REPORTS
-from .project import fetch_watches_counts, fetch_pledge_minimums, slug_from_pathname
-from .banner import write_banner
-from .atomic import write_text_atomic, write_json_atomic
-from .momentum import compute_deltas
-from .email_notify import build_html as build_email_html, write_archive as write_email_archive
-from .sitemap import write_sitemap
-from .feed import write_feed
-from .pdf import render_today as render_pdf_today
-from .social import generate_carousel
-from .cleanup import prune_archives
+from . import anomalies as _anomalies
 from . import health
+from .atomic import write_json_atomic, write_text_atomic
+from .banner import write_banner
+from .classify import classify
+from .cleanup import prune_archives
+from .diff import changes_to_markdown, diff_snapshots
+from .discover import DiscoverHit, crawl_discover
+from .email_notify import build_html as build_email_html
+from .email_notify import write_archive as write_email_archive
+from .feed import write_feed
+from .momentum import compute_deltas
+from .pdf import render_today as render_pdf_today
+from .project import fetch_pledge_minimums, fetch_watches_counts, slug_from_pathname
+from .report import REPORTS, make_report
+from .sitemap import write_sitemap
+from .social import generate_carousel
+from .translate import fill_missing as translate_fill_missing
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA = REPO_ROOT / "data"
@@ -58,7 +59,7 @@ ENDED_STATES = {"successful", "failed", "canceled", "suspended"}
 
 
 def now_iso() -> str:
-    return dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    return dt.datetime.now(dt.UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 def normalize_status(state: str | None) -> str:
@@ -197,7 +198,7 @@ def run() -> int:
                 print(f"  ! couldn't read previous snapshot for fallback: {e}")
 
     # Pledge tier minimums (起步价) — separate query, smaller chunks
-    print(f"  fetching minimum pledge tiers via GraphQL ...")
+    print("  fetching minimum pledge tiers via GraphQL ...")
     pledge_mins = fetch_pledge_minimums(slugs)
     n_pledge = sum(1 for v in pledge_mins.values() if v is not None)
     print(f"  got pledge minimum for {n_pledge}/{len(slugs)}")
@@ -286,7 +287,7 @@ def run() -> int:
     try:
         _, archive_html = build_email_html(out)
         write_email_archive(archive_html)
-        today_date = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
+        today_date = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
         print(f"  archived site/editions/{today_date}.html (+ latest.html)")
     except Exception as e:
         print(f"  archive skipped: {e}")
@@ -343,7 +344,7 @@ def run() -> int:
             except Exception:
                 prev_for_report = None
         md = make_report(out, prev_for_report)
-        today = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
+        today = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
         report_path = REPORTS / f"{today}.md"
         write_text_atomic(report_path, md)
         # Stable URL — bookmark this once
@@ -358,6 +359,25 @@ def run() -> int:
         health.save()
     except Exception as e:
         print(f"  health.save() skipped: {e}")
+
+    # Per-project anomaly detection: vanished / reverted / stuck. FYI-only;
+    # surfaced in the OPS digest but doesn't block the broadcast.
+    try:
+        prev_for_anomalies = None
+        if len(snaps) >= 2:
+            try:
+                prev_for_anomalies = json.loads(snaps[-2].read_text(encoding="utf-8"))
+            except Exception:
+                prev_for_anomalies = None
+        anomalies_result = _anomalies.detect(out, prev_for_anomalies)
+        _anomalies.save(anomalies_result)
+        v = len(anomalies_result.get("vanished", []))
+        r = len(anomalies_result.get("reverted", []))
+        s = len(anomalies_result.get("stuck", []))
+        if v + r + s > 0:
+            print(f"  anomalies: vanished={v} reverted={r} stuck={s}")
+    except Exception as e:
+        print(f"  anomalies skipped: {e}")
 
     print(f"done. kept {len(rows)}/{len(hits)}")
     return 0

@@ -8,10 +8,10 @@ These tests freeze the rules against the current brands/china_brands.yaml.
 If you add/remove a brand entry, update the test accordingly.
 """
 from __future__ import annotations
+
 import pytest
 
-from scraper.classify import classify, brands, CHINA_LOCATION_TOKENS
-
+from scraper.classify import CHINA_LOCATION_TOKENS, brands, classify
 
 # ── Location-based classification ─────────────────────────────────
 

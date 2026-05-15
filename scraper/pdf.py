@@ -20,6 +20,7 @@ In CI: scrape.yml installs both. If Playwright/Chromium is missing,
 this module logs a warning and exits cleanly — never aborts the cron.
 """
 from __future__ import annotations
+
 import asyncio
 import datetime as dt
 import shutil
@@ -54,7 +55,7 @@ async def _render_pdf(html_url: str, out_path: Path) -> None:
 
 def render_today() -> Path | None:
     """Render today's edition HTML to PDF. Returns path on success, None on skip."""
-    today = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
+    today = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
     html = EDITIONS / f"{today}.html"
     if not html.exists():
         print(f"  pdf: {html.name} missing — run email_notify first", file=sys.stderr)

@@ -23,6 +23,7 @@ When degraded:
     pledge:    198/234 (84.6%) · 0 restored from prev snapshot
 """
 from __future__ import annotations
+
 import datetime as dt
 import json
 from pathlib import Path
@@ -33,7 +34,7 @@ HEALTH_PATH = REPO_ROOT / "data" / ".scrape_health.json"
 
 def _empty_state() -> dict:
     return {
-        "started_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+        "started_at": dt.datetime.now(dt.UTC).isoformat(),
         "finished_at": None,
         "discover": {
             "candidates_total": 0,            # deduped projects across all seeds
@@ -118,7 +119,7 @@ def classified(n: int) -> None:
 
 def save() -> Path:
     """Write current state to data/.scrape_health.json. Returns the path."""
-    _state["finished_at"] = dt.datetime.now(dt.timezone.utc).isoformat()
+    _state["finished_at"] = dt.datetime.now(dt.UTC).isoformat()
     HEALTH_PATH.parent.mkdir(parents=True, exist_ok=True)
     HEALTH_PATH.write_text(json.dumps(_state, indent=2), encoding="utf-8")
     return HEALTH_PATH

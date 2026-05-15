@@ -15,6 +15,7 @@ let the human decide.
 Better to send 0 emails today than 6 wrong ones.
 """
 from __future__ import annotations
+
 from typing import Optional
 
 

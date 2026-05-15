@@ -31,10 +31,11 @@ Anti-bot stack used by this layer:
     for authenticated proxies. See docs/PROXY.md for setup.
 """
 from __future__ import annotations
+
 import os
 import random
 import time
-from typing import Any
+
 from curl_cffi import requests as cc_requests
 
 # Rotation order matters: most-likely-to-pass first so successful sessions
@@ -115,7 +116,7 @@ def playwright_proxy(url: str | None) -> dict | None:
     return out
 
 
-def make_client(*, timeout: float = 30.0, impersonate: str = "chrome131") -> "cc_requests.Session":
+def make_client(*, timeout: float = 30.0, impersonate: str = "chrome131") -> cc_requests.Session:
     c = cc_requests.Session(
         impersonate=impersonate,
         timeout=timeout,
@@ -126,7 +127,7 @@ def make_client(*, timeout: float = 30.0, impersonate: str = "chrome131") -> "cc
     return c
 
 
-def warm_client(*, impersonate: str = "chrome131", verbose: bool = False) -> "cc_requests.Session":
+def warm_client(*, impersonate: str = "chrome131", verbose: bool = False) -> cc_requests.Session:
     """Create a Session and pre-visit the KS homepage so we acquire CF
     clearance + session cookies BEFORE making any data requests.
 
@@ -152,7 +153,7 @@ def warm_client(*, impersonate: str = "chrome131", verbose: bool = False) -> "cc
         if verbose:
             # Show only the host, never the user:pass portion
             from urllib.parse import urlparse
-            host = urlparse(list(px.values())[0]).hostname or "?"
+            host = urlparse(next(iter(px.values()))).hostname or "?"
             print(f"  warm_client: routing through KS_PROXY ({host})")
     try:
         r = c.get(
@@ -170,11 +171,11 @@ def warm_client(*, impersonate: str = "chrome131", verbose: bool = False) -> "cc
 def fetch(
     url: str,
     *,
-    client: "cc_requests.Session | None" = None,
+    client: cc_requests.Session | None = None,
     max_attempts: int = 4,
-    headers: "dict | None" = None,
+    headers: dict | None = None,
     **kwargs,
-) -> "cc_requests.Response":
+) -> cc_requests.Response:
     """Fetch a URL with TLS impersonation and Cloudflare-aware retry.
 
     Cloudflare 403 challenges are probabilistic — retry with a different

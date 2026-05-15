@@ -14,10 +14,10 @@ History snapshots in data/history/ are KEPT longer (90 days) because
 they power Δ-since calculations beyond the 24h window.
 """
 from __future__ import annotations
+
 import datetime as dt
 import re
 import shutil
-import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -35,7 +35,7 @@ DEFAULTS = {
 
 
 def _date_cutoff(days: int) -> dt.date:
-    return (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=days)).date()
+    return (dt.datetime.now(dt.UTC) - dt.timedelta(days=days)).date()
 
 
 def _entry_date(name: str) -> dt.date | None:

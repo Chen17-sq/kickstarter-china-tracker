@@ -32,12 +32,14 @@ Anti-bot stack (applied to each request in order of cost):
      to amortize the ~5s startup cost.
 """
 from __future__ import annotations
-import json as _json
-from dataclasses import dataclass, field
-from typing import Any, Iterable, Iterator, Optional
 
-from .http import fetch, warm_client, RateLimiter, pick_proxy, playwright_proxy
+import json as _json
+from collections.abc import Iterable, Iterator
+from dataclasses import dataclass, field
+from typing import Any, Optional
+
 from . import health
+from .http import RateLimiter, fetch, pick_proxy, playwright_proxy, warm_client
 
 DISCOVER_SEEDS = [
     # ── China-labeled (woe_id=23424781) — 5 sort/state slices ──────────────

@@ -13,6 +13,7 @@ Visual rules echo the Pages site:
   - Sharp 90° corners, hairlines, ornamental ✦✦✦ dividers
 """
 from __future__ import annotations
+
 import datetime as dt
 import json
 from pathlib import Path
@@ -24,7 +25,13 @@ ASSETS = REPO_ROOT / "assets"
 # Tokens + edition_number live in scraper/_common.py — single source of truth.
 # See docs/DESIGN_RULES.md.
 from ._common import (  # noqa: E402
-    PAPER, INK, RED, N400, N500, N700, edition_number,
+    INK,
+    N400,
+    N500,
+    N700,
+    PAPER,
+    RED,
+    edition_number,
 )
 
 
@@ -64,7 +71,7 @@ def build_svg(curr: dict) -> str:
                 total_live_usd += float(p.get("pledged_usd") or 0)
             except (TypeError, ValueError):
                 pass
-    today = dt.datetime.now(dt.timezone.utc).strftime("%A, %B %d, %Y").upper()
+    today = dt.datetime.now(dt.UTC).strftime("%A, %B %d, %Y").upper()
     edition = edition_number()
 
     W, H = 1280, 460
@@ -185,7 +192,7 @@ def build_snapshot_svg(curr: dict) -> str:
         [p for p in projects if p.get("status") == "live"],
         key=lambda x: -float(x.get("pledged_usd") or 0),
     )[:3]
-    today = dt.datetime.now(dt.timezone.utc).strftime("%a, %b %d").upper()
+    today = dt.datetime.now(dt.UTC).strftime("%a, %b %d").upper()
 
     # Layout — section header on top, then column labels, then 3 rows.
     # Y math: rule at 110, column label at 144, row 0 at 184 (title at 178).
@@ -252,7 +259,7 @@ def build_og_svg(curr: dict) -> str:
                 total_live_usd += float(p.get("pledged_usd") or 0)
             except (TypeError, ValueError):
                 pass
-    today = dt.datetime.now(dt.timezone.utc).strftime("%a · %b %d · %Y").upper()
+    today = dt.datetime.now(dt.UTC).strftime("%a · %b %d · %Y").upper()
     edition = edition_number()
 
     serif = "Playfair Display, Times New Roman, serif"

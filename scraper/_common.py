@@ -9,8 +9,8 @@ If you want to change a color or the start date of the publication, this
 is the only place to edit. See docs/DESIGN_RULES.md for the spec.
 """
 from __future__ import annotations
-import datetime as dt
 
+import datetime as dt
 
 # ─── Newsprint design tokens (also documented in docs/DESIGN_RULES.md §1) ──
 PAPER = "#F9F9F7"
@@ -33,11 +33,11 @@ MONO = "'JetBrains Mono','Courier New',monospace"
 # ─── Edition number — identical across banner.svg / email / social slides
 # / Markdown report / stats page / docs. The user's "Vol. 1, No. N" line
 # everywhere derives from this single computation. ─────────────────────
-EPOCH = dt.datetime(2026, 4, 25, tzinfo=dt.timezone.utc)
+EPOCH = dt.datetime(2026, 4, 25, tzinfo=dt.UTC)
 
 
 def edition_number(now: dt.datetime | None = None) -> int:
-    now = now or dt.datetime.now(dt.timezone.utc)
+    now = now or dt.datetime.now(dt.UTC)
     return max(1, (now - EPOCH).days + 1)
 
 

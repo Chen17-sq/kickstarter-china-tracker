@@ -2,8 +2,9 @@
 
 The Top 10 (by watchers / USD) is what every reader sees on the front page.
 Sleepers are the alpha — projects you'd find if you actually scrolled past
-the obvious picks. We score every non-Top-10 project across two axes and
-emit the top N (default 5), each tagged with a single editorial "why" line.
+the obvious picks. We score every non-Top-10 project across two axes (plus
+a streak bonus) and emit the top N (default 5), each tagged with a single
+editorial "why" line.
 
 Two scoring axes
 ────────────────
@@ -43,8 +44,21 @@ Output: list of project dicts with two extra keys:
   _sleeper_reason  — human-readable single-line tag (zh)
 """
 from __future__ import annotations
+
+import json
 import re
-from typing import Iterable
+from collections.abc import Iterable
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+STREAK_PATH = REPO_ROOT / "data" / ".sleeper_streaks.json"
+
+# Streak bonus: project that hit sleeper criteria for N consecutive days
+# gets a +30/+60/+90 (cap at 3-day) lift. Encourages picking up genuine
+# sustained signals over one-day noise. Bonus is calculated AFTER the
+# normal scoring so it's compositional with all the existing buckets.
+STREAK_BONUS_PER_DAY = 30
+STREAK_BONUS_CAP_DAYS = 3
 
 # ── Novelty keyword table ─────────────────────────────────────────────
 # Each row: (score, label, pattern). Patterns are case-insensitive. A project
@@ -264,6 +278,24 @@ def _score_one(p: dict) -> tuple[int, str]:
     return score, reason
 
 
+def _load_streaks() -> dict[str, int]:
+    """Return {pathname: consecutive-days-as-sleeper} from disk."""
+    if not STREAK_PATH.exists():
+        return {}
+    try:
+        return json.loads(STREAK_PATH.read_text(encoding="utf-8")) or {}
+    except Exception:
+        return {}
+
+
+def _save_streaks(streaks: dict[str, int]) -> None:
+    try:
+        STREAK_PATH.parent.mkdir(parents=True, exist_ok=True)
+        STREAK_PATH.write_text(json.dumps(streaks, indent=2), encoding="utf-8")
+    except Exception:
+        pass  # observability, not critical
+
+
 def select_sleepers(
     projects: Iterable[dict],
     exclude_pathnames: set[str],
@@ -283,15 +315,44 @@ def select_sleepers(
          on slow scrape days (<100 projects) the stricter cap left fewer
          than `n` qualified picks; 3 is the sweet spot between editorial
          variety and "fill the slate".
+
+    Streak bonus: projects that scored > 0 yesterday AND the day before get
+    +30/+60/+90 (cap at 3 days) added to today's score. State persists at
+    data/.sleeper_streaks.json (gitignored — local artifact). Projects that
+    don't score this run have their streak reset to 0.
     """
+    # Load yesterday's streaks; today's will be saved at the end.
+    prev_streaks = _load_streaks()
+    today_streaks: dict[str, int] = {}
+
     scored: list[tuple[int, str, dict]] = []
     for p in projects:
-        if p.get("pathname") in exclude_pathnames:
+        path = p.get("pathname")
+        if path in exclude_pathnames:
+            # Top-10 projects don't accumulate streak as sleepers (they're
+            # already on the front page). We also don't reset their streak
+            # — they may dip in/out of Top 10 day-to-day.
             continue
         score, reason = _score_one(p)
         if score <= 0 or not reason:
             continue
+
+        # Apply streak bonus
+        if path:
+            today_streaks[path] = prev_streaks.get(path, 0) + 1
+            extra_days = min(today_streaks[path] - 1, STREAK_BONUS_CAP_DAYS)
+            if extra_days > 0:
+                bonus = STREAK_BONUS_PER_DAY * extra_days
+                score += bonus
+                # Annotate the reason so reader sees why this is hot
+                reason = f"{reason} · 连续 {today_streaks[path]} 天上榜"
+
         scored.append((score, reason, p))
+
+    # Persist today's streaks. Projects not in today_streaks were either
+    # not seen, or didn't qualify this run — their streak resets next time
+    # (by virtue of not being in the file).
+    _save_streaks(today_streaks)
 
     # Highest-scoring first
     scored.sort(key=lambda t: -t[0])

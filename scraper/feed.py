@@ -18,12 +18,11 @@ and unlike email it doesn't require giving us an address (privacy
 preserving — important for some readers).
 """
 from __future__ import annotations
+
 import datetime as dt
 import html as _html
 import re
 from pathlib import Path
-
-from ._common import edition_number, EPOCH
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SITE = REPO_ROOT / "site"
@@ -72,7 +71,7 @@ def _edition_iso_date(stem: str) -> dt.datetime | None:
     try:
         d = dt.datetime.strptime(stem, "%Y-%m-%d")
         # Treat the date as 08:00 Beijing (00:00 UTC) — when the cron fires
-        return d.replace(tzinfo=dt.timezone.utc)
+        return d.replace(tzinfo=dt.UTC)
     except ValueError:
         return None
 
@@ -99,7 +98,6 @@ def write_feed() -> Path | None:
     latest = entries[0][0]
 
     feed_id = f"{BASE_URL}/"  # Atom feed id — must be stable URI
-    now_iso = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     body: list[str] = []
     body.append('<?xml version="1.0" encoding="UTF-8"?>')
@@ -117,7 +115,7 @@ def write_feed() -> Path | None:
     body.append(
         '  <rights>© Kickstarter China Tracker. Project data © Kickstarter, PBC.</rights>'
     )
-    body.append(f'  <generator uri="https://github.com/Chen17-sq/kickstarter-china-tracker">scraper.feed</generator>')
+    body.append('  <generator uri="https://github.com/Chen17-sq/kickstarter-china-tracker">scraper.feed</generator>')
 
     for d, stem, path in entries:
         try:
@@ -152,6 +150,6 @@ def write_feed() -> Path | None:
 if __name__ == "__main__":
     p = write_feed()
     if p:
-        print(f"wrote {p.relative_to(REPO_ROOT)} (now={dt.datetime.now(dt.timezone.utc)})")
+        print(f"wrote {p.relative_to(REPO_ROOT)} (now={dt.datetime.now(dt.UTC)})")
     else:
         print("no editions found — nothing to write")

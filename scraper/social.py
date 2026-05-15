@@ -20,6 +20,7 @@ Playfair Display 900 nameplate, Lora italic dek, JetBrains Mono numbers,
 NYT-red accent on prelaunch / ★ / 'breaking'.
 """
 from __future__ import annotations
+
 import asyncio
 import datetime as dt
 import json
@@ -63,7 +64,7 @@ PAGES_URL = "chen17-sq.github.io/kickstarter-china-tracker"
 
 
 # Number formatters live in _common.py — see "Number formatters" section there.
-from ._common import fmt_usd, fmt_int  # noqa: F401, E402
+from ._common import fmt_int, fmt_usd  # noqa: E402
 
 
 def _esc(s: str) -> str:
@@ -452,7 +453,7 @@ async def _render_pngs(html_strs: list[str], paths: list[Path]) -> None:
             device_scale_factor=2,  # @2x for crisp text
         )
         page = await context.new_page()
-        for html, out_path in zip(html_strs, paths):
+        for html, out_path in zip(html_strs, paths, strict=True):
             await page.set_content(html, wait_until="networkidle", timeout=20_000)
             await page.wait_for_timeout(900)  # web font paint
             await page.screenshot(path=str(out_path), full_page=False, type="png")
@@ -476,8 +477,8 @@ def generate_carousel() -> list[Path] | None:
     d = get_summary_data(curr)
     d["_all"] = curr.get("projects", [])
 
-    today = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
-    today_long = dt.datetime.now(dt.timezone.utc).strftime("%a, %b %d, %Y").upper()
+    today = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
+    today_long = dt.datetime.now(dt.UTC).strftime("%a, %b %d, %Y").upper()
     edition = edition_number()
     wrap = lambda body: slide_html(body, today_long=today_long, edition=edition)
 

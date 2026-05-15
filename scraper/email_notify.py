@@ -20,6 +20,7 @@ Run locally:
   python -m scraper.email_notify              # POST to Resend
 """
 from __future__ import annotations
+
 import argparse
 import datetime as dt
 import json
@@ -29,16 +30,20 @@ from pathlib import Path
 
 import httpx
 
-from .notify import (
-    get_summary_data, fmt_usd, fmt_int,
-    PAGES_URL, LATEST_URL, REPO_ROOT, PROJECTS,
-)
 from .momentum import conversion_per_watcher, projected_total
+from .notify import (
+    LATEST_URL,
+    PAGES_URL,
+    PROJECTS,
+    REPO_ROOT,
+    fmt_int,
+    fmt_usd,
+    get_summary_data,
+)
 
 RESEND_API_URL = "https://api.resend.com/emails"
 
 from ._common import edition_number  # noqa: E402  shared edition number
-
 
 # ── Newsprint design tokens (mirror site CSS) ────────────────────
 PAPER = "#F9F9F7"
@@ -259,7 +264,7 @@ def build_html(curr: dict) -> tuple[str, str]:
     today = d["today"]
     counts = d["counts"]
     edition = edition_number()
-    today_long = dt.datetime.now(dt.timezone.utc).strftime("%A, %B %d, %Y").upper()
+    today_long = dt.datetime.now(dt.UTC).strftime("%A, %B %d, %Y").upper()
 
     subject = (
         f"[Vol. 1, No. {edition}] {today} · "
@@ -329,9 +334,9 @@ def build_html(curr: dict) -> tuple[str, str]:
     # ── Sleepers · algorithmic editor's picks beyond Top 10 ──────────
     from .sleepers import select_sleepers
     front_paths = set()
-    front_paths.update((p.get("pathname") for p in d["prelaunch"][:10] if p.get("pathname")))
-    front_paths.update((p.get("pathname") for p in d["live"][:10] if p.get("pathname")))
-    front_paths.update((p.get("pathname") for p in (d.get("successful") or [])[:10] if p.get("pathname")))
+    front_paths.update(p.get("pathname") for p in d["prelaunch"][:10] if p.get("pathname"))
+    front_paths.update(p.get("pathname") for p in d["live"][:10] if p.get("pathname"))
+    front_paths.update(p.get("pathname") for p in (d.get("successful") or [])[:10] if p.get("pathname"))
     sleepers = select_sleepers(curr.get("projects") or [], front_paths, n=5)
     sleepers_html = ""
     if sleepers:
@@ -582,7 +587,7 @@ def write_archive(html: str) -> None:
       https://chen17-sq.github.io/kickstarter-china-tracker/editions/2026-04-26.html
       https://chen17-sq.github.io/kickstarter-china-tracker/editions/latest.html
     """
-    today = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
+    today = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
     out_dir = REPO_ROOT / "site" / "editions"
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / f"{today}.html").write_text(html, encoding="utf-8")
@@ -748,8 +753,8 @@ def main(argv: list[str] | None = None) -> int:
     # Loads previous snapshot from history (one before today's), runs the
     # quality gate. If it fails, broadcast is BLOCKED — owner gets a
     # plaintext alert email; subscribers get nothing.
-    from .sanity import validate_for_send, format_alert_body
     from .report import find_prev_snapshot
+    from .sanity import format_alert_body, validate_for_send
     prev_snapshot = find_prev_snapshot()
     ok, issues = validate_for_send(curr, prev_snapshot)
     if issues:
@@ -764,7 +769,7 @@ def main(argv: list[str] | None = None) -> int:
                 f'<pre style="font-family:monospace;font-size:13px;white-space:pre-wrap">'
                 f'{_esc(alert_body)}</pre>'
             )
-            alert_subj = f"[ALERT] KS Tracker broadcast BLOCKED · {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%d')}"
+            alert_subj = f"[ALERT] KS Tracker broadcast BLOCKED · {dt.datetime.now(dt.UTC).strftime('%Y-%m-%d')}"
             for owner in to_owner:
                 try:
                     post_resend(api_key, sender, [owner], alert_subj, alert_html)
@@ -896,13 +901,13 @@ def main(argv: list[str] | None = None) -> int:
         digest_d = get_summary_data(curr)
         digest_counts = digest_d["counts"]
         digest_subj = (
-            f"[OPS] KS Tracker · {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%d')} · "
+            f"[OPS] KS Tracker · {dt.datetime.now(dt.UTC).strftime('%Y-%m-%d')} · "
             f"sent={sent} failed={failed}"
         )
         digest_lines = [
-            f"Daily KS Tracker run completed.",
-            f"",
-            f"Snapshot:",
+            "Daily KS Tracker run completed.",
+            "",
+            "Snapshot:",
             f"  generated_at:   {curr.get('generated_at','—')}",
             f"  total projects: {digest_d.get('total','?')}",
             f"  prelaunch:      {digest_counts.get('prelaunch','?')}",
@@ -911,32 +916,42 @@ def main(argv: list[str] | None = None) -> int:
             f"  pledged USD:    {fmt_usd(digest_d.get('total_live_usd', 0))}",
             f"  high confidence: {digest_d.get('high','?')}",
             f"  ✦ KS picks:     {digest_d.get('pwl','?')}",
-            f"",
-            f"Broadcast:",
+            "",
+            "Broadcast:",
             f"  recipients (deduped):  {len(recipients)}",
             f"  sent successfully:     {sent}",
             f"  failed:                {failed}",
             f"  sender:                {sender}",
         ]
         if _health_state:
-            digest_lines.append(f"")
+            digest_lines.append("")
             digest_lines.extend(_health.format_digest_lines(_health_state))
+        # Per-project anomalies (vanished/reverted/stuck) — FYI in digest.
+        try:
+            from . import anomalies as _anomalies_mod
+            _anomalies_state = _anomalies_mod.load()
+            anomaly_lines = _anomalies_mod.format_digest_lines(_anomalies_state)
+            if anomaly_lines:
+                digest_lines.append("")
+                digest_lines.extend(anomaly_lines)
+        except Exception:
+            pass
         if failure_log:
-            digest_lines.append(f"")
-            digest_lines.append(f"Failures:")
+            digest_lines.append("")
+            digest_lines.append("Failures:")
             for f in failure_log:
                 digest_lines.append(f"  - {f}")
         if issues:
-            digest_lines.append(f"")
-            digest_lines.append(f"Sanity warnings (informational, broadcast still went out):")
+            digest_lines.append("")
+            digest_lines.append("Sanity warnings (informational, broadcast still went out):")
             for i in issues:
                 digest_lines.append(f"  - {i}")
         digest_lines += [
-            f"",
-            f"Live: https://ks.aldrich.fyi/",
-            f"This edition: https://ks.aldrich.fyi/editions/{dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%d')}.html",
-            f"",
-            f"— ops digest, scraper/email_notify.py",
+            "",
+            "Live: https://ks.aldrich.fyi/",
+            f"This edition: https://ks.aldrich.fyi/editions/{dt.datetime.now(dt.UTC).strftime('%Y-%m-%d')}.html",
+            "",
+            "— ops digest, scraper/email_notify.py",
         ]
         digest_body = "\n".join(digest_lines)
         digest_html = (

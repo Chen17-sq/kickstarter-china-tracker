@@ -8,6 +8,7 @@ that operation is atomic on the same filesystem. Reader either sees the
 old file or the new file, never half of one.
 """
 from __future__ import annotations
+
 import json
 import os
 import tempfile

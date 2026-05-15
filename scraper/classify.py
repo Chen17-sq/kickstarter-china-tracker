@@ -1,7 +1,9 @@
 """Decide whether a project counts as "China-background"."""
 from __future__ import annotations
+
 from dataclasses import dataclass
 from pathlib import Path
+
 import yaml
 
 REPO_ROOT = Path(__file__).resolve().parent.parent

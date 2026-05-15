@@ -5,9 +5,10 @@ refactors don't silently weaken the gate. The gate is the difference
 between "send 0 emails today" and "send 6 wrong emails today".
 """
 from __future__ import annotations
+
 import pytest
 
-from scraper.sanity import validate_for_send, format_alert_body
+from scraper.sanity import format_alert_body, validate_for_send
 
 
 def _proj(**kw):

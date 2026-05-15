@@ -23,8 +23,8 @@ Local fallback:
   data/subscribers.json (only useful if you're testing pre-migration).
 """
 from __future__ import annotations
+
 import argparse
-import datetime as dt
 import json
 import os
 import re

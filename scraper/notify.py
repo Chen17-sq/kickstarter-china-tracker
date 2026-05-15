@@ -18,6 +18,7 @@ Run locally:
   python -m scraper.notify                  # POST to whichever webhooks are set
 """
 from __future__ import annotations
+
 import argparse
 import datetime as dt
 import json
@@ -37,7 +38,7 @@ LATEST_URL = "https://github.com/Chen17-sq/kickstarter-china-tracker/blob/main/r
 
 # Number formatters live in _common.py — re-exported for backwards compat
 # with `from .notify import fmt_usd, fmt_int` at all old call sites.
-from ._common import fmt_usd, fmt_int  # noqa: F401
+from ._common import fmt_int, fmt_usd  # noqa: E402  (intentional re-export below module body)
 
 
 def project_label(p: dict) -> str:
@@ -94,7 +95,7 @@ def get_summary_data(curr: dict) -> dict:
 
     Returns: {today, total, counts, pwl, high, total_live_usd, prelaunch, live, signals}
     """
-    today = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
+    today = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
     projects = curr.get("projects", []) or []
 
     counts = {"prelaunch": 0, "live": 0, "successful": 0, "failed": 0}

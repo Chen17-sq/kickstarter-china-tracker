@@ -1,8 +1,8 @@
 name: test
 
-# Runs the pytest suite on every push to main and every PR. Fast (<10s
-# total when there's nothing to install from cache); no scraper secrets
-# needed since tests are pure-logic.
+# Runs the pytest suite + ruff lint on every push to main and every PR.
+# Fast (<10s total when there's nothing to install from cache); no scraper
+# secrets needed since tests are pure-logic and ruff is static analysis.
 on:
   push:
     branches: [main]
@@ -10,6 +10,7 @@ on:
       - 'scraper/**'
       - '.github/workflows/test.yml'
       - 'requirements*.txt'
+      - 'pyproject.toml'
   pull_request:
     branches: [main]
 
@@ -32,7 +33,10 @@ jobs:
           # tests — only PyYAML for classify.py + pytest itself. Keep the test
           # install minimal so CI stays fast and doesn't break when the heavy
           # deps have wheel issues on new Python versions.
-          pip install pytest pyyaml
+          pip install pytest pyyaml ruff
+
+      - name: Lint (ruff)
+        run: ruff check scraper/
 
       - name: Run pytest
         run: python -m pytest scraper/tests/ -v

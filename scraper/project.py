@@ -32,6 +32,7 @@ History of how this evolved:
   - v3: curl_cffi → Playwright for seed + POSTs — current.
 """
 from __future__ import annotations
+
 import json
 import random
 import re
@@ -39,8 +40,15 @@ import time
 from typing import Optional
 
 from curl_cffi import requests as cc_requests
-from .http import DEFAULT_COOKIES, IMPERSONATE_ROTATION, pick_proxy, playwright_proxy, curl_cffi_proxies
+
 from . import health
+from .http import (
+    DEFAULT_COOKIES,
+    IMPERSONATE_ROTATION,
+    curl_cffi_proxies,
+    pick_proxy,
+    playwright_proxy,
+)
 
 GRAPH_URL = "https://www.kickstarter.com/graph"
 SEED_URL = "https://www.kickstarter.com/discover/advanced?state=upcoming"
@@ -75,7 +83,7 @@ class _Transport:
     """
 
     @classmethod
-    def from_curl_cffi(cls, client: "cc_requests.Session", csrf: str) -> "_Transport":
+    def from_curl_cffi(cls, client: cc_requests.Session, csrf: str) -> _Transport:
         t = cls.__new__(cls)
         t._cc = client
         t._pw_runtime = None
@@ -87,7 +95,7 @@ class _Transport:
         return t
 
     @classmethod
-    def from_playwright(cls, pw, browser, ctx, page, csrf: str) -> "_Transport":
+    def from_playwright(cls, pw, browser, ctx, page, csrf: str) -> _Transport:
         t = cls.__new__(cls)
         t._cc = None
         t._pw_runtime = pw
@@ -98,7 +106,7 @@ class _Transport:
         t.mode = "playwright"
         return t
 
-    def post_graphql(self, body: dict) -> tuple[int, "dict | None"]:
+    def post_graphql(self, body: dict) -> tuple[int, dict | None]:
         """POST a GraphQL query, return (status, parsed_json_or_None).
 
         Status -1 indicates a transport-level exception (network error,
@@ -184,7 +192,7 @@ class _Transport:
 
 def _try_curl_cffi_seed(
     label: str, verbose: bool
-) -> "tuple[cc_requests.Session, str] | None":
+) -> tuple[cc_requests.Session, str] | None:
     """Try every TLS impersonation in rotation; return (client, csrf) or None."""
     for attempt in range(SEED_MAX_ATTEMPTS):
         impersonate = IMPERSONATE_ROTATION[attempt % len(IMPERSONATE_ROTATION)]
@@ -215,7 +223,7 @@ def _try_curl_cffi_seed(
     return None
 
 
-def _open_playwright_transport(label: str, verbose: bool) -> "_Transport | None":
+def _open_playwright_transport(label: str, verbose: bool) -> _Transport | None:
     """Spin up sync Playwright, seed CSRF, return a Transport that POSTs via
     the same browser context. The whole CF-acceptable fingerprint is reused.
     """
@@ -223,7 +231,7 @@ def _open_playwright_transport(label: str, verbose: bool) -> "_Transport | None"
         from playwright.sync_api import sync_playwright
     except ImportError:
         if verbose:
-            print(f"  ! Playwright not installed; cannot fall back")
+            print("  ! Playwright not installed; cannot fall back")
         return None
 
     pw = None
@@ -282,7 +290,7 @@ def _open_playwright_transport(label: str, verbose: bool) -> "_Transport | None"
         return None
 
 
-def _open_transport(label: str, verbose: bool = True) -> "_Transport | None":
+def _open_transport(label: str, verbose: bool = True) -> _Transport | None:
     """Try curl_cffi first (fast). If all rotations 403, fall back to a
     Playwright-end-to-end transport — same browser context handles both
     the seed and the POSTs, so the TLS fingerprint stays consistent."""
@@ -311,7 +319,7 @@ def fetch_watches_counts(slugs: list[str], *, verbose: bool = True) -> dict[str,
     transport = _open_transport(label="watchesCount", verbose=verbose)
     if transport is None:
         if verbose:
-            print(f"  watchesCount: failed to seed (curl_cffi + Playwright); skipping")
+            print("  watchesCount: failed to seed (curl_cffi + Playwright); skipping")
         health.watches_done(path="failed", fetched=0, requested=len(slugs))
         return out
 
@@ -371,7 +379,7 @@ def fetch_pledge_minimums(slugs: list[str], *, verbose: bool = True) -> dict[str
     transport = _open_transport(label="pledge_min", verbose=verbose)
     if transport is None:
         if verbose:
-            print(f"  pledge_min: failed to seed; skipping")
+            print("  pledge_min: failed to seed; skipping")
         health.pledge_done(path="failed", fetched=0, requested=len(slugs))
         return out
 

@@ -18,4 +18,53 @@ dev = ["pytest>=8", "ruff>=0.5"]
 ks-tracker = "scraper.run:run"
 
 [tool.ruff]
+# Match the runtime Python in CI (3.12 per scrape.yml + test.yml).
+target-version = "py312"
 line-length = 100
+extend-exclude = [
+    "site/editions/",     # generated HTML
+    "data/",              # data artifacts
+    "assets/",            # generated SVGs
+    ".venv",
+]
+
+[tool.ruff.lint]
+# Start conservative — only catch real bugs and obvious style issues.
+# Easy to tighten later by adding rule sets.
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes (unused imports, undefined names — catches NameError-style bugs)
+    "W",   # pycodestyle warnings
+    "B",   # bugbear (mutable default args, raise-from misuse, etc.)
+    "UP",  # pyupgrade (syntax modernization)
+    "I",   # isort (import ordering)
+    "RUF", # ruff-specific
+]
+ignore = [
+    "E501",  # line too long — emails have HTML-in-fstrings that exceed 100
+    "E731",  # lambda assignments — used in sleepers.py phrasing pools intentionally
+    "B008",  # function call as default arg — fine for Path() defaults etc.
+    "UP007", # X | Y instead of Optional[X] — both readable; not enforcing
+    "UP045", # X | None instead of Optional[X] — same
+    # We process Chinese text — Chinese quotes / punctuation in strings, docstrings,
+    # and comments are intentional, not "ambiguous Unicode confusables".
+    "RUF001", # ambiguous unicode in strings
+    "RUF002", # ambiguous unicode in docstrings
+    "RUF003", # ambiguous unicode in comments
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Tests use long parametrize lines, repeated imports, magic numbers freely.
+"scraper/tests/*.py" = ["E501", "F401", "B007"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["scraper/tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "--tb=short --strict-markers"

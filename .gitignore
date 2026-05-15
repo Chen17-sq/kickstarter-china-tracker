@@ -18,3 +18,5 @@ data/.tmp/
 data/subscribers.json
 .wrangler/
 data/.scrape_health.json
+data/.anomalies.json
+data/.sleeper_streaks.json

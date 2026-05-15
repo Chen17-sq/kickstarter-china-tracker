@@ -18,6 +18,7 @@ Top-movers rankings are also exposed for the report / email / front-page
   - top_movers_backers
 """
 from __future__ import annotations
+
 import datetime as dt
 import json
 from pathlib import Path
@@ -40,7 +41,7 @@ def find_prev_snapshot() -> tuple[dict | None, dt.datetime | None]:
     prev_path = snaps[-1]
     try:
         ts = dt.datetime.strptime(prev_path.stem, "%Y-%m-%dT%H-%M-%SZ").replace(
-            tzinfo=dt.timezone.utc
+            tzinfo=dt.UTC
         )
     except ValueError:
         ts = None
@@ -75,7 +76,7 @@ def compute_deltas(rows: list[dict]) -> dict:
 
     if prev_ts:
         summary["delta_seconds"] = int(
-            (dt.datetime.now(dt.timezone.utc) - prev_ts).total_seconds()
+            (dt.datetime.now(dt.UTC) - prev_ts).total_seconds()
         )
 
     prev_by_path = {
@@ -186,7 +187,7 @@ def projected_total(p: dict) -> float | None:
         return None
     if launched_at <= 0 or deadline <= launched_at:
         return None
-    now = dt.datetime.now(dt.timezone.utc).timestamp()
+    now = dt.datetime.now(dt.UTC).timestamp()
     days_in = (now - launched_at) / 86400
     total_days = (deadline - launched_at) / 86400
     if days_in <= 0.5:  # too early to project

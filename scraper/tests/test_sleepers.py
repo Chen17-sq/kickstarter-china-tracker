@@ -10,16 +10,16 @@ Failure modes these tests guard against:
   for same pathname on different runs → email + report show different lines).
 """
 from __future__ import annotations
+
 import pytest
 
 from scraper.sleepers import (
-    _novelty_hits,
-    _score_one,
-    _pick_phrasing,
     _HIDDEN_HOT,
+    _novelty_hits,
+    _pick_phrasing,
+    _score_one,
     select_sleepers,
 )
-
 
 # ── Novelty matching tests ─────────────────────────────────────────
 
@@ -287,7 +287,7 @@ def test_reason_uses_novelty_label_in_composite():
     """Composite reason always starts with the novelty label."""
     p = _p(title="World's first AI-powered toaster", status="live",
            percent_funded=600, pledged_usd=30_000)
-    score, reason = _score_one(p)
+    _score, reason = _score_one(p)
     # AI 硬件 outranks 全球首款 in priority (140 > 100)
     # But composite format is "<novelty> · <metric>"
     assert reason.startswith("AI 硬件") or reason.startswith("全球首款")

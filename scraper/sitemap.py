@@ -11,6 +11,7 @@ Cron writes a fresh sitemap each run so newly-archived editions are
 indexed within a day.
 """
 from __future__ import annotations
+
 import datetime as dt
 from pathlib import Path
 
@@ -21,7 +22,7 @@ BASE_URL = "https://chen17-sq.github.io/kickstarter-china-tracker"
 
 
 def write_sitemap() -> Path:
-    today = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
+    today = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
     urls: list[tuple[str, str, str]] = [
         # (url, lastmod, changefreq)
         (f"{BASE_URL}/", today, "daily"),

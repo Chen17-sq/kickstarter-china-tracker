@@ -1,8 +1,9 @@
 """Diff two snapshots → human-readable changelog (and JSON change events)."""
 from __future__ import annotations
-from dataclasses import dataclass, asdict
-from typing import Iterable
+
 import json
+from collections.abc import Iterable
+from dataclasses import dataclass
 from pathlib import Path
 
 
@@ -32,7 +33,7 @@ def diff_snapshots(prev: dict, curr: dict) -> list[Change]:
     for path in a.keys() - b.keys():
         p = a[path]
         out.append(Change(path, p.get("title", ""), "ended",
-                          f"No longer in discovery (likely ended)"))
+                          "No longer in discovery (likely ended)"))
 
     # Compare overlapping
     for path in a.keys() & b.keys():
