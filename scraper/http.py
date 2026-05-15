@@ -22,8 +22,16 @@ Anti-bot stack used by this layer:
   * Browser-honest headers — Accept / Accept-Language / Accept-Encoding /
     sec-fetch-* are all set by the impersonation profile, but we also
     layer an explicit Accept-Language header to be safe.
+
+  * Optional proxy pool — KS_PROXY env var (single URL or comma-separated
+    list) routes outbound traffic through your own proxy IPs. Dormant by
+    default; when set, one proxy is picked at random per request. Use
+    this when KS specifically rate-limits the GH Actions IP range or you
+    want extra IP diversity. Supports `http://user:pass@host:port` form
+    for authenticated proxies. See docs/PROXY.md for setup.
 """
 from __future__ import annotations
+import os
 import random
 import time
 from typing import Any
@@ -57,11 +65,65 @@ BROWSER_HEADERS = {
 }
 
 
+def proxy_pool() -> list[str]:
+    """Parse KS_PROXY env into a list of proxy URLs (or empty list).
+
+    Supported formats:
+      KS_PROXY=http://proxy.example.com:8080
+      KS_PROXY=http://user:pass@proxy.example.com:8080
+      KS_PROXY=http://p1:8080,http://p2:8080,http://p3:8080
+
+    Each entry must be a full URL with scheme. We accept http:// even
+    for HTTPS targets — that's how proxies work (the proxy talks TLS to
+    the upstream and HTTP/CONNECT to us).
+    """
+    raw = os.environ.get("KS_PROXY") or ""
+    return [p.strip() for p in raw.split(",") if p.strip()]
+
+
+def pick_proxy() -> str | None:
+    """Pick one proxy URL at random, or None if KS_PROXY isn't set."""
+    pool = proxy_pool()
+    return random.choice(pool) if pool else None
+
+
+def curl_cffi_proxies(url: str | None) -> dict | None:
+    """Convert a single proxy URL to the dict shape curl_cffi expects."""
+    if not url:
+        return None
+    return {"http": url, "https": url}
+
+
+def playwright_proxy(url: str | None) -> dict | None:
+    """Convert a single proxy URL to Playwright's browser-launch proxy dict.
+
+    Playwright wants: {"server": "http://host:port", "username": "...", "password": "..."}.
+    We accept the standard `http://user:pass@host:port` form and split it.
+    """
+    if not url:
+        return None
+    # parse user:pass@host:port if present
+    from urllib.parse import urlparse
+    p = urlparse(url)
+    if not p.scheme or not p.hostname:
+        return None
+    out = {"server": f"{p.scheme}://{p.hostname}{':' + str(p.port) if p.port else ''}"}
+    if p.username:
+        out["username"] = p.username
+    if p.password:
+        out["password"] = p.password
+    return out
+
+
 def make_client(*, timeout: float = 30.0, impersonate: str = "chrome131") -> "cc_requests.Session":
-    return cc_requests.Session(
+    c = cc_requests.Session(
         impersonate=impersonate,
         timeout=timeout,
     )
+    px = curl_cffi_proxies(pick_proxy())
+    if px:
+        c.proxies = px
+    return c
 
 
 def warm_client(*, impersonate: str = "chrome131", verbose: bool = False) -> "cc_requests.Session":
@@ -76,10 +138,22 @@ def warm_client(*, impersonate: str = "chrome131", verbose: bool = False) -> "cc
     if the warm-up itself fails — we still return a session, just an
     un-warmed one. Callers can recover via the impersonation rotation
     in fetch() or via Playwright fallback.
+
+    If KS_PROXY env var is set, the session is bound to one of the
+    proxy URLs (random pick). All subsequent requests via this session
+    go through that proxy.
     """
     c = cc_requests.Session(impersonate=impersonate, timeout=30.0)
     for k, v in DEFAULT_COOKIES.items():
         c.cookies.set(k, v)
+    px = curl_cffi_proxies(pick_proxy())
+    if px:
+        c.proxies = px
+        if verbose:
+            # Show only the host, never the user:pass portion
+            from urllib.parse import urlparse
+            host = urlparse(list(px.values())[0]).hostname or "?"
+            print(f"  warm_client: routing through KS_PROXY ({host})")
     try:
         r = c.get(
             "https://www.kickstarter.com/",
@@ -124,7 +198,13 @@ def fetch(
         # If caller passed a client, reuse it (cookies persist). Otherwise
         # make a fresh one per attempt — but that loses the cookies between
         # attempts. Always prefer passing a warm_client() for crawl loops.
-        c = client or cc_requests.Session(impersonate=impersonate, timeout=30.0)
+        if client is not None:
+            c = client
+        else:
+            c = cc_requests.Session(impersonate=impersonate, timeout=30.0)
+            px = curl_cffi_proxies(pick_proxy())
+            if px:
+                c.proxies = px
         try:
             r = c.get(
                 url,

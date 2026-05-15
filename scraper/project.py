@@ -39,7 +39,7 @@ import time
 from typing import Optional
 
 from curl_cffi import requests as cc_requests
-from .http import DEFAULT_COOKIES, IMPERSONATE_ROTATION
+from .http import DEFAULT_COOKIES, IMPERSONATE_ROTATION, pick_proxy, playwright_proxy, curl_cffi_proxies
 from . import health
 
 GRAPH_URL = "https://www.kickstarter.com/graph"
@@ -189,6 +189,11 @@ def _try_curl_cffi_seed(
     for attempt in range(SEED_MAX_ATTEMPTS):
         impersonate = IMPERSONATE_ROTATION[attempt % len(IMPERSONATE_ROTATION)]
         client = cc_requests.Session(impersonate=impersonate, timeout=30)
+        # Route through KS_PROXY if set (random pick per attempt — so different
+        # retries may hit different proxy IPs, which helps if one is degraded).
+        px = curl_cffi_proxies(pick_proxy())
+        if px:
+            client.proxies = px
         for k, v in DEFAULT_COOKIES.items():
             client.cookies.set(k, v)
         try:
@@ -226,7 +231,11 @@ def _open_playwright_transport(label: str, verbose: bool) -> "_Transport | None"
     page = None
     try:
         pw = sync_playwright().start()
-        browser = pw.chromium.launch()
+        launch_kwargs = {}
+        pxy = playwright_proxy(pick_proxy())
+        if pxy:
+            launch_kwargs["proxy"] = pxy
+        browser = pw.chromium.launch(**launch_kwargs)
         ctx = browser.new_context(
             user_agent=PLAYWRIGHT_UA,
             locale="en-US",

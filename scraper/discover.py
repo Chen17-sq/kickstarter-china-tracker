@@ -36,7 +36,7 @@ import json as _json
 from dataclasses import dataclass, field
 from typing import Any, Iterable, Iterator, Optional
 
-from .http import fetch, warm_client, RateLimiter
+from .http import fetch, warm_client, RateLimiter, pick_proxy, playwright_proxy
 from . import health
 
 DISCOVER_SEEDS = [
@@ -165,7 +165,11 @@ class _DiscoverPlaywright:
             return False
         try:
             self._pw = sync_playwright().start()
-            self._browser = self._pw.chromium.launch()
+            launch_kwargs = {}
+            pxy = playwright_proxy(pick_proxy())
+            if pxy:
+                launch_kwargs["proxy"] = pxy
+            self._browser = self._pw.chromium.launch(**launch_kwargs)
             self._ctx = self._browser.new_context(
                 user_agent=PLAYWRIGHT_UA,
                 locale="en-US",
