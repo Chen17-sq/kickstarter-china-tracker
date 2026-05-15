@@ -165,7 +165,13 @@ def validate_for_send(curr: dict, prev: Optional[dict] = None) -> tuple[bool, li
 
 
 def format_alert_body(issues: list[str], snapshot_meta: dict) -> str:
-    """Human-readable alert body for owner email when broadcast is blocked."""
+    """Human-readable alert body for owner email when broadcast is blocked.
+
+    Includes the scrape health digest (from data/.scrape_health.json) when
+    available, so the owner sees WHY the gate fired — was it curl_cffi
+    being blocked? Discover seeds 403'd? Watchers fetch zero coverage?
+    Lets you skip the GH Actions log on routine bad-day investigations.
+    """
     lines = [
         "Today's KS Tracker broadcast was BLOCKED by the sanity gate.",
         "",
@@ -177,6 +183,20 @@ def format_alert_body(issues: list[str], snapshot_meta: dict) -> str:
         "",
         f"Generated at: {snapshot_meta.get('generated_at', '?')}",
         f"Total projects: {len(snapshot_meta.get('projects') or [])}",
+    ]
+
+    # Append scrape health if available — answers "did the fallbacks
+    # fire?" without making owner dig into the runner log.
+    try:
+        from . import health as _health
+        state = _health.load()
+        if state:
+            lines.append("")
+            lines.extend(_health.format_digest_lines(state))
+    except Exception:
+        pass  # never let observability break the alert path
+
+    lines += [
         "",
         "What was sent: NOTHING. No subscribers received today's edition.",
         "What to do:",
