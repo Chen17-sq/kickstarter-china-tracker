@@ -21,12 +21,22 @@ Why several seeds?
   - Tech / Design upcoming + popularity catches Chinese brands that registered
     their KS account from a US address (Delaware/CA/NY) — those don't appear
     in the geo-filtered list.
+
+Anti-bot stack (applied to each request in order of cost):
+  1. ONE warm curl_cffi session (warm_client()) for the whole crawl —
+     cookies + CF clearance persist across all 14 seeds, so we look like
+     a continued browsing session rather than 14 fresh visitors.
+  2. TLS impersonation rotation per retry (http.fetch rotates 8 profiles).
+  3. Playwright fallback (lazy) for pages where curl_cffi exhausts all
+     8 retries. Reuses one browser across all subsequent fallback hits
+     to amortize the ~5s startup cost.
 """
 from __future__ import annotations
+import json as _json
 from dataclasses import dataclass, field
-from typing import Any, Iterable, Iterator
+from typing import Any, Iterable, Iterator, Optional
 
-from .http import fetch, RateLimiter
+from .http import fetch, warm_client, RateLimiter
 
 DISCOVER_SEEDS = [
     # ── China-labeled (woe_id=23424781) — 5 sort/state slices ──────────────
@@ -52,6 +62,12 @@ DISCOVER_SEEDS = [
 # Cap pages per seed to avoid pulling thousands of rows. The signal lives near
 # the top of each sort order; tail is mostly noise we'd filter out anyway.
 MAX_PAGES_PER_SEED = 8
+
+PLAYWRIGHT_UA = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/131.0.0.0 Safari/537.36"
+)
 
 
 @dataclass
@@ -113,21 +129,166 @@ def _hit_from_proj(p: dict[str, Any]) -> DiscoverHit:
     )
 
 
-def _walk_seed(seed_url: str, *, pacer: RateLimiter) -> Iterator[DiscoverHit]:
+class _DiscoverPlaywright:
+    """Lazy Playwright fallback for the Discover JSON endpoint.
+
+    When curl_cffi.fetch() exhausts its 8-impersonation rotation and
+    raises RuntimeError, we open a real Chromium and use
+    `page.evaluate("fetch(...)")` to grab the JSON. The browser request
+    runs through the real browser HTTP stack (real TLS, real sec-ch-ua,
+    real cookies), so CF treats it as a normal page navigation.
+
+    Lazy + reused: the browser only starts on the first failed seed
+    (~5s cost) and stays open for the rest of the crawl. Subsequent
+    fallback hits are ~500ms each.
+    """
+
+    def __init__(self) -> None:
+        self._pw = None
+        self._browser = None
+        self._ctx = None
+        self._page = None
+        self._opened = False
+        self._failed = False  # once we've failed to open, stop trying
+
+    def _ensure_open(self) -> bool:
+        if self._opened:
+            return True
+        if self._failed:
+            return False
+        try:
+            from playwright.sync_api import sync_playwright
+        except ImportError:
+            print("  ! Playwright not installed; discover fallback unavailable")
+            self._failed = True
+            return False
+        try:
+            self._pw = sync_playwright().start()
+            self._browser = self._pw.chromium.launch()
+            self._ctx = self._browser.new_context(
+                user_agent=PLAYWRIGHT_UA,
+                locale="en-US",
+                viewport={"width": 1280, "height": 800},
+            )
+            self._page = self._ctx.new_page()
+            # Pre-warm: navigate to KS discover so CF drops session cookies
+            # BEFORE any JSON fetch. CF often inspects whether the requester
+            # is "transitioning" from a real page vs. spawning headless.
+            self._page.goto(
+                "https://www.kickstarter.com/discover/advanced",
+                wait_until="domcontentloaded",
+                timeout=30_000,
+            )
+            self._page.wait_for_timeout(1200)
+            n_cookies = len(self._ctx.cookies())
+            print(f"  📺 discover Playwright fallback warmed up ({n_cookies} cookies)")
+            self._opened = True
+            return True
+        except Exception as e:
+            print(f"  ! discover Playwright open failed: {e}")
+            self._failed = True
+            self._close_quiet()
+            return False
+
+    def fetch_json(self, url: str) -> Optional[dict]:
+        """Return parsed JSON, or None if anything went wrong.
+
+        IMPORTANT — `X-Requested-With: XMLHttpRequest` is required by the
+        KS discover JSON endpoint. Plain `fetch()` from Playwright (or
+        any modern browser) does NOT add this header by default, but
+        legacy AJAX libs (jQuery.ajax, etc.) do — and KS specifically
+        accepts only that flavor for `format=json` URLs. Without it the
+        endpoint returns 403 even with valid CF clearance cookies. We
+        verified this empirically in a local probe: same URL, with the
+        header → 200 JSON; without → 403 HTML.
+        """
+        if not self._ensure_open():
+            return None
+        try:
+            result = self._page.evaluate(
+                """async (url) => {
+                    try {
+                        const r = await fetch(url, {
+                            headers: {
+                                'Accept': 'application/json',
+                                'X-Requested-With': 'XMLHttpRequest',
+                            },
+                            credentials: 'include',
+                        });
+                        const text = await r.text();
+                        return { status: r.status, text: text };
+                    } catch (e) {
+                        return { status: -1, text: String(e) };
+                    }
+                }""",
+                url,
+            )
+        except Exception as e:
+            print(f"    ! Playwright fetch crashed: {e}")
+            return None
+        status = int(result.get("status", -1))
+        if status != 200:
+            print(f"    ! Playwright fetch returned status {status}")
+            return None
+        text = result.get("text") or ""
+        try:
+            return _json.loads(text)
+        except Exception as e:
+            print(f"    ! Playwright fetch returned non-JSON ({e}); first 80 chars: {text[:80]!r}")
+            return None
+
+    def _close_quiet(self) -> None:
+        for obj_name in ("_page", "_ctx", "_browser"):
+            obj = getattr(self, obj_name, None)
+            if obj is None:
+                continue
+            try:
+                obj.close()
+            except Exception:
+                pass
+            setattr(self, obj_name, None)
+        if self._pw is not None:
+            try:
+                self._pw.stop()
+            except Exception:
+                pass
+            self._pw = None
+
+    def close(self) -> None:
+        self._close_quiet()
+        self._opened = False
+
+
+def _walk_seed(
+    seed_url: str,
+    *,
+    pacer: RateLimiter,
+    client,
+    pw_fallback: _DiscoverPlaywright,
+) -> Iterator[DiscoverHit]:
     sep = "&" if "?" in seed_url else "?"
     for page in range(1, MAX_PAGES_PER_SEED + 1):
         pacer.wait()
         page_url = f"{seed_url}{sep}format=json&page={page}"
+        data: Optional[dict] = None
+
+        # Path 1: curl_cffi (warm session)
         try:
-            r = fetch(page_url)
-        except RuntimeError as e:
-            print(f"  ! seed page failed: {page_url}\n    {e}")
-            return
-        try:
+            r = fetch(page_url, client=client)
             data = r.json()
+        except RuntimeError as e:
+            # All impersonations exhausted — try Playwright fallback
+            print(f"  ! curl_cffi exhausted on {page_url}\n    {e}; trying Playwright")
+            data = pw_fallback.fetch_json(page_url)
         except Exception:
-            print(f"  ! seed returned non-JSON (likely Cloudflare HTML challenge slipped through): {page_url}")
+            # JSON decode error or other — try Playwright too
+            print(f"  ! seed returned non-JSON: {page_url}; trying Playwright")
+            data = pw_fallback.fetch_json(page_url)
+
+        if not data:
+            # Both paths failed — give up on this seed
             return
+
         projects = data.get("projects") or []
         for p in projects:
             yield _hit_from_proj(p)
@@ -140,16 +301,29 @@ def crawl_discover(seeds: Iterable[str] = DISCOVER_SEEDS) -> dict[str, DiscoverH
 
     First-seen wins. Order of DISCOVER_SEEDS thus matters: put the highest-
     signal seeds first so their richer metadata is preferred.
+
+    Uses a single warmed curl_cffi session for the whole crawl (cookies
+    persist across all 14 seeds). On per-page CF block, lazily opens a
+    Playwright fallback that gets reused for any subsequent blocked pages.
     """
     pacer = RateLimiter(qps=0.6)  # ~1 request per 1.7s — well under any threshold
+    # ── Warm-up: visit homepage once before any data fetch so CF drops its
+    #    session cookies into our session. Without this, every fetch starts
+    #    cold and looks fresher to CF than necessary.
+    client = warm_client(verbose=True)
+    pw_fallback = _DiscoverPlaywright()  # lazy; only opens on first failure
+
     out: dict[str, DiscoverHit] = {}
-    for seed in seeds:
-        before = len(out)
-        for hit in _walk_seed(seed, pacer=pacer):
-            if not hit.pathname:
-                continue
-            out.setdefault(hit.pathname, hit)
-        print(f"  seed: {seed[51:120]:<70} +{len(out)-before} new (total {len(out)})")
+    try:
+        for seed in seeds:
+            before = len(out)
+            for hit in _walk_seed(seed, pacer=pacer, client=client, pw_fallback=pw_fallback):
+                if not hit.pathname:
+                    continue
+                out.setdefault(hit.pathname, hit)
+            print(f"  seed: {seed[51:120]:<70} +{len(out)-before} new (total {len(out)})")
+    finally:
+        pw_fallback.close()
     return out
 
 

@@ -388,9 +388,9 @@ def make_report(curr: dict, prev: dict | None) -> str:
     if sleepers:
         out.append("✦ &nbsp; ✦ &nbsp; ✦")
         out.append("")
-        out.append(f"## Section F · 🌙 Sleeper Picks · {len(sleepers)} 个值得多看一眼")
+        out.append(f"## Section F · 🌙 Sleeper Picks · Top 10 之外，有点东西的 {len(sleepers)} 张牌")
         out.append("")
-        out.append("_排在 Top 10 之外但被算法挑出来 — 每个都注明被选中的原因。_")
+        out.append("_AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一项就上榜。_")
         out.append("")
         for i, p in enumerate(sleepers, start=1):
             star = PWL if p.get("project_we_love") else " "

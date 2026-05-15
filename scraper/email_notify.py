@@ -373,9 +373,9 @@ def build_html(curr: dict) -> tuple[str, str]:
           <div style="font-family:{MONO};font-size:11px;font-weight:500;color:{N500};
                       letter-spacing:2.5px;margin-bottom:6px">SECTION C</div>
           <h2 style="margin:0 0 4px;font-family:{SERIF};font-weight:900;font-size:28px;
-                     letter-spacing:-.5px;color:{INK}">🌙 Sleeper Picks · 编辑算法挑选</h2>
+                     letter-spacing:-.5px;color:{INK}">🌙 Sleeper Picks · Top 10 之外，有点东西的几张牌</h2>
           <p style="margin:0 0 8px;font-family:{BODY};font-style:italic;font-size:13px;color:{N500}">
-            排在 Top 10 之外但被算法挑出来 · 每条都注明被选中的原因
+            AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一项就上榜
           </p>
           <div style="border-top:4px solid {INK}">
             {''.join(cards)}
