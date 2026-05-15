@@ -2,10 +2,11 @@
  * Kickstarter China Tracker — subscribe Worker (KV edition)
  *
  * Endpoints:
- *   POST /            — append a subscriber (used by site/subscribe.html form)
- *   GET  /list        — read full subscriber list (X-Owner-Token auth)
- *   GET  /count       — public-safe count (no emails)
- *   POST /unsubscribe — remove a subscriber by email (X-Owner-Token auth)
+ *   POST /                 — append a subscriber (used by site/subscribe.html form)
+ *   GET  /list             — read full subscriber list (X-Owner-Token auth)
+ *   GET  /count            — public-safe count (no emails)
+ *   POST /unsubscribe      — remove a subscriber by email (X-Owner-Token auth)
+ *   POST /webhook/resend   — Resend bounce/complaint webhook (Svix-signed; auto-removes bad emails)
  *
  * Subscribers are stored in Cloudflare KV (private, never leaves CF).
  * Older versions of this Worker wrote to data/subscribers.json on the
@@ -13,18 +14,29 @@
  * could clone the repo. KV namespace is the privacy fix.
  *
  * Required Worker bindings / vars:
- *   SUBSCRIBERS_KV  — KV namespace bound as "SUBSCRIBERS_KV" in dashboard
- *   OWNER_TOKEN     — random secret. /list and /unsubscribe require
- *                     header "X-Owner-Token: <OWNER_TOKEN>". Anything
- *                     else gets 403.
- *   ALLOWED_ORIGIN  — comma-separated whitelist of allowed Origins for CORS.
- *                     '*' falls back to allow-all (debug only).
+ *   SUBSCRIBERS_KV         — KV namespace bound as "SUBSCRIBERS_KV" in dashboard
+ *   OWNER_TOKEN            — random secret. /list and /unsubscribe require
+ *                            header "X-Owner-Token: <OWNER_TOKEN>". Anything
+ *                            else gets 403.
+ *   ALLOWED_ORIGIN         — comma-separated whitelist of allowed Origins for CORS.
+ *                            '*' falls back to allow-all (debug only).
+ *   RESEND_WEBHOOK_SECRET  — (optional) Svix signing secret (starts with "whsec_")
+ *                            from Resend dashboard. When set, /webhook/resend
+ *                            verifies the signature and auto-removes bounced/
+ *                            complained emails from KV. Without it, the endpoint
+ *                            returns 403 so misconfigured webhooks don't silently
+ *                            drop subscribers.
  *
  * Subscribe-write payload (POST /):
  *   { email: "...", nickname: "..." }
  *
  * Owner-read response (GET /list):
  *   { count: N, subscribers: [{email, nickname, added_at, source}, ...] }
+ *
+ * Resend webhook setup (one-time, in Resend dashboard → Webhooks → Add):
+ *   URL:     https://ks-tracker-subscribe.<account>.workers.dev/webhook/resend
+ *   Events:  email.bounced, email.complained
+ *   Secret:  copy the "whsec_..." secret → `wrangler secret put RESEND_WEBHOOK_SECRET`
  */
 
 const KV_KEY = "subscribers";  // single key holds the full list (small enough)
@@ -75,6 +87,14 @@ export default {
     // ── POST / — subscribe form submission ─────────────────────────
     if (request.method === "POST" && (url.pathname === "/" || url.pathname === "")) {
       return handleSubscribe(request, env, cors);
+    }
+
+    // ── POST /webhook/resend — Resend bounce/complaint webhook ─────
+    // No CORS (server-to-server only). No X-Owner-Token (Resend doesn't
+    // know it). Auth is Svix HMAC signature verification with the
+    // RESEND_WEBHOOK_SECRET shared secret.
+    if (request.method === "POST" && url.pathname === "/webhook/resend") {
+      return handleResendWebhook(request, env);
     }
 
     return json({ ok: false, error: "not found" }, 404, cors);
@@ -255,4 +275,146 @@ function json(payload, status, extra) {
     status,
     headers: { "Content-Type": "application/json; charset=utf-8", ...(extra || {}) },
   });
+}
+
+// ── Resend webhook (bounce / complaint auto-cleanup) ────────────────
+//
+// Resend POSTs here on email.bounced (hard bounces) and email.complained
+// (spam reports). We verify the Svix signature, parse the event, and
+// auto-remove the offending address from KV. Soft bounces are ignored —
+// they're usually transient (full inbox, temp DNS issue) and the address
+// is worth keeping.
+//
+// Svix signature format (what Resend sends):
+//   svix-id:        unique message ID (string)
+//   svix-timestamp: epoch seconds (string)
+//   svix-signature: "v1,<base64-sig> v1,<base64-sig> ..." (space-separated
+//                   if multiple secret versions are active)
+//
+// Verification: HMAC-SHA256 of `${id}.${timestamp}.${body}` using the
+// signing secret (base64-decoded from `whsec_<...>`). Reject if no match,
+// or if timestamp is more than 5 minutes old (replay protection).
+async function handleResendWebhook(request, env) {
+  if (!env.RESEND_WEBHOOK_SECRET) {
+    // Safer to 403 than to silently accept — if Resend's webhook is hitting
+    // a misconfigured Worker, we want loud failure (Resend's dashboard
+    // will surface the 403) instead of silently dropping subscribers.
+    return json({ ok: false, error: "webhook not configured" }, 403);
+  }
+
+  const body = await request.text();  // need raw body for signature
+  const svixId = request.headers.get("svix-id");
+  const svixTs = request.headers.get("svix-timestamp");
+  const svixSig = request.headers.get("svix-signature");
+
+  if (!svixId || !svixTs || !svixSig) {
+    return json({ ok: false, error: "missing svix headers" }, 400);
+  }
+
+  // Replay protection: reject events more than 5 minutes old
+  const now = Math.floor(Date.now() / 1000);
+  const ts = parseInt(svixTs, 10);
+  if (!Number.isFinite(ts) || Math.abs(now - ts) > 300) {
+    return json({ ok: false, error: "timestamp too old or invalid" }, 400);
+  }
+
+  const ok = await verifyResendSignature(env.RESEND_WEBHOOK_SECRET, svixId, svixTs, body, svixSig);
+  if (!ok) {
+    return json({ ok: false, error: "bad signature" }, 401);
+  }
+
+  let event;
+  try {
+    event = JSON.parse(body);
+  } catch (_e) {
+    return json({ ok: false, error: "bad json" }, 400);
+  }
+
+  const type = event && event.type;
+  const data = (event && event.data) || {};
+  // Resend's `to` is always an array (even when single recipient)
+  const toList = Array.isArray(data.to) ? data.to : (data.to ? [data.to] : []);
+  if (!toList.length) {
+    return json({ ok: true, action: "ignored", reason: "no recipient", type }, 200);
+  }
+
+  // Decision: which event types cause removal?
+  //   email.bounced + bounce.type == "Permanent"  → remove (hard bounce)
+  //   email.bounced + bounce.type == "Transient"  → keep (soft, retry-able)
+  //   email.complained                            → remove (spam report)
+  //   anything else                                → ignore
+  let shouldRemove = false;
+  let reason = "";
+  if (type === "email.complained") {
+    shouldRemove = true;
+    reason = "spam complaint";
+  } else if (type === "email.bounced") {
+    // Resend bounce structure: data.bounce = { type: "Permanent"|"Transient"|"Undetermined", ... }
+    const bounceType = (data.bounce && data.bounce.type) || "Undetermined";
+    if (bounceType === "Permanent") {
+      shouldRemove = true;
+      reason = "hard bounce";
+    } else {
+      // Soft bounce — log but keep the subscriber
+      return json({ ok: true, action: "ignored", reason: `soft bounce (${bounceType})`, to: toList }, 200);
+    }
+  } else {
+    return json({ ok: true, action: "ignored", reason: `event type "${type}" not actionable` }, 200);
+  }
+
+  // Remove every recipient address from KV
+  const results = [];
+  for (const email of toList) {
+    try {
+      const r = await removeSubscriber(env, String(email).trim());
+      results.push({ email, removed: r.removed, count: r.count });
+    } catch (e) {
+      results.push({ email, error: String(e.message || e) });
+    }
+  }
+  return json({ ok: true, action: "removed", reason, results, type }, 200);
+}
+
+async function verifyResendSignature(secret, id, timestamp, body, headerValue) {
+  // Secret is "whsec_<base64>"; decode the suffix as raw bytes.
+  const b64 = secret.startsWith("whsec_") ? secret.slice(6) : secret;
+  let secretBytes;
+  try {
+    const raw = atob(b64);
+    secretBytes = new Uint8Array(raw.length);
+    for (let i = 0; i < raw.length; i++) secretBytes[i] = raw.charCodeAt(i);
+  } catch (_e) {
+    return false;
+  }
+  const key = await crypto.subtle.importKey(
+    "raw",
+    secretBytes,
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const toSign = `${id}.${timestamp}.${body}`;
+  const sigBytes = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(toSign));
+  // Base64 encode
+  let sigB64 = "";
+  const arr = new Uint8Array(sigBytes);
+  for (let i = 0; i < arr.length; i++) sigB64 += String.fromCharCode(arr[i]);
+  sigB64 = btoa(sigB64);
+
+  // Header value: "v1,base64sig v1,base64sig2 ..." — accept if any match
+  const candidates = headerValue.split(" ").map((s) => {
+    const parts = s.split(",");
+    return parts.length === 2 ? parts[1] : "";
+  }).filter(Boolean);
+
+  // Constant-time compare against each candidate
+  for (const cand of candidates) {
+    if (cand.length !== sigB64.length) continue;
+    let diff = 0;
+    for (let i = 0; i < cand.length; i++) {
+      diff |= cand.charCodeAt(i) ^ sigB64.charCodeAt(i);
+    }
+    if (diff === 0) return true;
+  }
+  return false;
 }
