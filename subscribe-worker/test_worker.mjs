@@ -218,9 +218,11 @@ function bucketKey(ip, now_ms, windowSec, tag = "subscribe") {
 }
 
 await test("two requests in same window share bucket key", async () => {
-  const now = Date.now();
-  const k1 = bucketKey("1.2.3.4", now, 60);
-  const k2 = bucketKey("1.2.3.4", now + 30_000, 60);  // 30s later, still in window
+  // Anchor to the start of a minute so adding 30s can't accidentally
+  // cross a window boundary (the flaky-CI failure mode).
+  const minuteStart = Math.floor(Date.now() / 60_000) * 60_000;
+  const k1 = bucketKey("1.2.3.4", minuteStart + 5_000, 60);   // +5s
+  const k2 = bucketKey("1.2.3.4", minuteStart + 35_000, 60);  // +35s, same minute
   assertEq(k1, k2);
 });
 
