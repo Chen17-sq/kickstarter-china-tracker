@@ -5,6 +5,7 @@
  *   POST /                 — append a subscriber (used by site/subscribe.html form)
  *   GET  /list             — read full subscriber list (X-Owner-Token auth)
  *   GET  /count            — public-safe count (no emails)
+ *   GET  /health           — public uptime probe + feature-flags status
  *   POST /unsubscribe      — remove a subscriber by email (X-Owner-Token auth)
  *   POST /webhook/resend   — Resend bounce/complaint webhook (Svix-signed; auto-removes bad emails)
  *
@@ -66,6 +67,38 @@ export default {
     if (request.method === "GET" && url.pathname === "/count") {
       const data = await readList(env);
       return json({ count: data.subscribers.length }, 200, cors);
+    }
+
+    // ── GET /health — uptime probe + minimal config diagnostic ─────
+    // Returns 200 if KV is reachable, 503 otherwise. Body always includes
+    // which optional features are wired up (welcome email, bounce
+    // webhook). Safe to expose publicly — no secret values are returned,
+    // only "configured / not configured" booleans for each env var.
+    if (request.method === "GET" && url.pathname === "/health") {
+      let kvOk = false;
+      try {
+        if (env.SUBSCRIBERS_KV) {
+          // Cheap roundtrip — read a key that may or may not exist.
+          await env.SUBSCRIBERS_KV.get("__health__");
+          kvOk = true;
+        }
+      } catch (_e) {
+        kvOk = false;
+      }
+      return json(
+        {
+          ok: kvOk,
+          ts: new Date().toISOString(),
+          features: {
+            kv: kvOk,
+            welcome_email: !!(env.RESEND_API_KEY && env.NOTIFY_EMAIL_FROM),
+            bounce_webhook: !!env.RESEND_WEBHOOK_SECRET,
+            cors_allowlist_configured: !!env.ALLOWED_ORIGIN && env.ALLOWED_ORIGIN !== "*",
+          },
+        },
+        kvOk ? 200 : 503,
+        cors,
+      );
     }
 
     // ── GET /list — owner-only, returns full list ──────────────────

@@ -413,7 +413,13 @@ def build_html(curr: dict) -> tuple[str, str]:
 <head><meta charset="UTF-8"><title>{_esc(subject)}</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="{_esc(subject)} — Kickstarter China Tracker daily edition.">
+<link rel="canonical" href="https://ks.aldrich.fyi/editions/{today}.html">
 <link rel="alternate" type="application/atom+xml" title="Kickstarter China Tracker · Atom Feed" href="https://ks.aldrich.fyi/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{_esc(subject)}">
+<meta property="og:url" content="https://ks.aldrich.fyi/editions/{today}.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="{today}T00:00:00Z">
 
 <!-- NewsArticle structured data — helps Google News + rich snippets pick up
      each edition as a discrete article rather than a generic webpage. -->

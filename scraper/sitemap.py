@@ -30,6 +30,11 @@ def write_sitemap() -> Path:
         (f"{BASE_URL}/stats.html", today, "daily"),
         (f"{BASE_URL}/editions/", today, "daily"),
         (f"{BASE_URL}/editions/latest.html", today, "daily"),
+        # Subscription / consumption alternatives
+        (f"{BASE_URL}/feed.xml", today, "daily"),
+        # Public JSON API surface
+        (f"{BASE_URL}/api/index.json", today, "daily"),
+        (f"{BASE_URL}/api/today.json", today, "daily"),
     ]
     # Add every dated edition
     if EDITIONS.exists():

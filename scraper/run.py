@@ -25,6 +25,7 @@ from pathlib import Path
 
 from . import anomalies as _anomalies
 from . import health
+from .api import write_api
 from .atomic import write_json_atomic, write_text_atomic
 from .banner import write_banner
 from .classify import classify
@@ -307,6 +308,14 @@ def run() -> int:
             print(f"  refreshed {fp.relative_to(REPO_ROOT)}")
     except Exception as e:
         print(f"  feed skipped: {e}")
+
+    # Refresh public JSON API (site/api/today.json + <date>.json + index.json).
+    # Slim schema for outside consumers (Slack bots, dashboards, mirrors).
+    try:
+        api_paths = write_api(out)
+        print(f"  refreshed {len(api_paths)} API file(s) (site/api/)")
+    except Exception as e:
+        print(f"  api skipped: {e}")
 
     # Render today's edition to PDF (for 小红书 / 微信 sharing)
     try:

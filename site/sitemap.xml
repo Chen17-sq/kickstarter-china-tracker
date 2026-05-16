@@ -26,6 +26,21 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
+    <loc>https://chen17-sq.github.io/kickstarter-china-tracker/feed.xml</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://chen17-sq.github.io/kickstarter-china-tracker/api/index.json</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://chen17-sq.github.io/kickstarter-china-tracker/api/today.json</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
     <loc>https://chen17-sq.github.io/kickstarter-china-tracker/editions/2026-04-26.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>yearly</changefreq>
