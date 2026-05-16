@@ -70,6 +70,38 @@ These thresholds are tuned for "interesting enough to ping me about" — adjust 
 ### 6. Notify (`scraper/notify.py`)
 If `SLACK_WEBHOOK` or `DISCORD_WEBHOOK` env var is set, posts the latest `CHANGELOG.md` to those webhooks (truncated to 3.5KB).
 
+### 7. Email broadcast + observability (`scraper/email_notify.py`)
+The main user-facing output. Builds a newsprint-styled HTML edition + plaintext alternative (multipart), preheader text for inbox preview, NewsArticle JSON-LD for SEO, per-edition canonical URL. Sends via Resend. Owner gets a separate `[OPS]` digest each day with KPIs, sanity warnings, scrape-health, and anomaly counts.
+
+### 8. Sleeper picks (`scraper/sleepers.py`)
+Algorithmic editor's-picks beyond the Top 10. Scores every non-Top-10 project across 6 buckets (hidden_hot, acceleration, early_traction, watcher_surge, just_crossed, cold_pick), composes a single Chinese reason line, applies diversity caps (≤3 per status, ≤3 per novelty label), plus a streak bonus (+30/day, capped at 3 days) for projects that hit the criteria multiple days in a row. Streak state at `data/.sleeper_streaks.json` (gitignored).
+
+### 9. Sanity gate (`scraper/sanity.py`)
+LAST check before broadcast. Blocks if: 0 projects, project count dropped >70%, followers coverage <30%, pledged_usd outliers >$100M, negative pledged values, duplicate pathnames, history timestamps out of order. On block, owner gets `[ALERT]` instead of subscribers getting bad data. See `docs/FAILURE_MODES.md`.
+
+### 10. Anomaly detection (`scraper/anomalies.py`)
+FYI signals — vanished (project gone from discovery, not ended/failed), reverted (followers dropped >50%), stuck (live project with $0 movement in 7 days). Surfaced in OPS digest, never blocks broadcast. State at `data/.anomalies.json`.
+
+### 11. Public outputs
+
+| Surface | Module | URL |
+|---|---|---|
+| Static homepage + sortable table | `site/index.html` | `/` |
+| Newsprint edition (per day) | `email_notify.write_archive` | `/editions/<date>.html` |
+| Atom 1.0 feed | `scraper/feed.py` | `/feed.xml` |
+| Sitemap | `scraper/sitemap.py` | `/sitemap.xml` |
+| Public JSON API (slim) | `scraper/api.py` | `/api/today.json`, `/api/<date>.json`, `/api/index.json` |
+| Carousel slides (Xiaohongshu) | `scraper/social.py` | `/social/<date>/slide-NN.png` |
+| PDF edition | `scraper/pdf.py` | `/editions/<date>.pdf` |
+| 404 page | `site/404.html` | served on misses |
+| PWA manifest | `site/manifest.json` | installable to home screen |
+
+### 12. Subscribe Worker (`subscribe-worker/worker.js`)
+Cloudflare Worker that stores subscribers in KV (private, never on public repo). Endpoints: POST / (subscribe + rate limit + welcome email), GET /count, GET /list (owner-only), GET /health, POST /unsubscribe (owner-only), POST /webhook/resend (Svix-verified bounce auto-cleanup). See `docs/RUNBOOK.md` for ops.
+
+### 13. Anti-bot defense (`scraper/http.py` + `scraper/project.py` + `scraper/discover.py`)
+Four-layer stack: (1) curl_cffi TLS impersonation rotation across 8 profiles; (2) warm session pre-visits KS homepage for CF clearance; (3) Playwright headless Chromium end-to-end fallback — POSTs go via `page.evaluate("fetch(...)")` so requests inherit the real browser TLS fingerprint + sec-ch-ua headers; (4) optional `KS_PROXY` env (single URL or comma-pool). See `docs/PROXY.md` + `docs/FAILURE_MODES.md`.
+
 ## Storage choices
 
 **Why JSON commits, not a real DB?**

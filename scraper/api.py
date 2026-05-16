@@ -86,6 +86,11 @@ PUBLIC_PROJECT_FIELDS = [
     "delta_followers",
     "delta_backers",
     "delta_pledged_usd",
+    # Editorial annotation — present on sleeper picks only. Letting
+    # API consumers filter for "today's sleeper picks" without re-running
+    # the algorithm themselves.
+    "_sleeper_reason",
+    "_sleeper_score",
 ]
 
 

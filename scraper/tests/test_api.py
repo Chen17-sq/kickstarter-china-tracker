@@ -70,11 +70,24 @@ def test_slim_project_drops_internal_fields():
         assert k not in slim, f"internal field {k} leaked into API output"
 
 
-def test_slim_project_keeps_all_whitelisted_fields():
+def test_slim_project_keeps_all_present_whitelisted_fields():
+    """Every whitelisted field that exists on the input must survive.
+    Whitelisted fields that ARE NOT on input are simply absent — that's
+    correct (e.g., _sleeper_reason is only present on sleeper picks).
+    """
     p = _full_project()
     slim = _slim_project(p)
     for k in PUBLIC_PROJECT_FIELDS:
-        assert k in slim, f"public field {k} missing from API output"
+        if k in p:
+            assert k in slim, f"public field {k} present on input but dropped from API output"
+
+
+def test_slim_project_keeps_sleeper_annotations_when_present():
+    """Sleeper-only fields survive when present."""
+    p = _full_project(_sleeper_reason="AI 硬件 · 连续 2 天上榜", _sleeper_score=170)
+    slim = _slim_project(p)
+    assert slim["_sleeper_reason"] == "AI 硬件 · 连续 2 天上榜"
+    assert slim["_sleeper_score"] == 170
 
 
 def test_slim_project_missing_input_field_is_simply_absent():
