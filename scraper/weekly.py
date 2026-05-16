@@ -381,16 +381,50 @@ def build_html(stats: dict) -> tuple[str, str]:
           </tr>
         </table>'''
 
+    def _short_blurb(p: dict, *, max_chars: int = 90) -> str:
+        """One-line description, in fallback order:
+            blurb_zh (curated 中文, ~40% coverage)
+          → blurb (English from KS Discover, always present)
+          → title's tail after ':' / '—' (e.g. "PenN — Minimal by design")
+          → empty string
+        Truncated to max_chars with ellipsis on overflow.
+        """
+        for cand in (p.get("blurb_zh"), p.get("blurb")):
+            if cand and cand.strip():
+                s = cand.strip().replace("\n", " ")
+                if len(s) > max_chars:
+                    s = s[: max_chars - 1].rstrip() + "…"
+                return s
+        # Title-tail fallback: take the part after the first separator
+        title = (p.get("title") or "").strip()
+        for sep in (":", "—", "–", "-", "·"):
+            if sep in title:
+                tail = title.split(sep, 1)[1].strip()
+                if tail:
+                    if len(tail) > max_chars:
+                        tail = tail[: max_chars - 1].rstrip() + "…"
+                    return tail
+        return ""
+
     def _compact_row(p: dict, *, rank: int, right_label: str, right_value: str) -> str:
         """Compact text row for rank 4+ items — no image, just title +
-        Chinese blurb + metric. Saves vertical space."""
-        title = _esc((p.get("title") or "?")[:60])
-        blurb = _esc((p.get("blurb_zh") or "")[:60])
+        description (Chinese-preferred, English-fallback) + metric."""
+        # Trim title to keep the row a single visual line on most clients
+        title_full = (p.get("title") or "?").strip()
+        # If title has a colon/dash, the head is usually the product name and
+        # the tail is the descriptor we'll show as blurb. Keep the head only.
+        title = title_full
+        for sep in (":", "—", "–"):
+            if sep in title_full:
+                title = title_full.split(sep, 1)[0].strip()
+                break
+        title = _esc(title[:60])
+        blurb = _esc(_short_blurb(p, max_chars=85))
         star = (f'<span style="color:{RED};margin-right:5px">✦</span>'
                 if p.get("project_we_love") else "")
         url = _esc(p.get("url") or "#")
         return f"""
-        <tr><td style="padding:11px 0;border-bottom:1px solid {MUTED}">
+        <tr><td style="padding:13px 0;border-bottom:1px solid {MUTED}">
           <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="width:100%">
             <tr>
               <td style="width:40px;vertical-align:top;font-family:{SERIF};
@@ -399,8 +433,8 @@ def build_html(stats: dict) -> tuple[str, str]:
               <td style="vertical-align:top">
                 <a href="{url}" style="text-decoration:none;color:{INK};
                    font-family:{SERIF};font-size:16px;font-weight:700;line-height:1.25">{star}{title}</a>
-                <div style="font-family:{BODY};font-style:italic;font-size:12px;
-                     color:{N700};line-height:1.4;margin-top:2px">{blurb}</div>
+                <div style="font-family:{BODY};font-style:italic;font-size:12.5px;
+                     color:{N700};line-height:1.45;margin-top:3px">{blurb}</div>
               </td>
               <td style="text-align:right;vertical-align:top;font-family:{MONO};
                   font-size:14px;font-weight:700;color:{RED};white-space:nowrap;padding-left:12px">
@@ -472,19 +506,24 @@ def build_html(stats: dict) -> tuple[str, str]:
             </table>"""
         return detail_html + compact_html
 
-    # ── Section 1: New in discovery (detail Top 3 + compact next 5)
+    # Section layout: Top 3 as full detail cards (image + bullets + big metric)
+    # then ranks 4-10 as compact rows (title + 1-line description + metric).
+    # Beyond top 10 is truncated — weekly is a digest, not the archive.
+    #
+    # ── Section 1: New in discovery
     new_html = _build_mixed_section(
         stats.get("new_in_discovery", []),
+        n_detail=3, n_compact=7,
         big_value_fn=lambda p: fmt_int(p.get("followers") or 0),
         big_label_fn=lambda _p: "WATCHERS · 关注",
         right_value_fn=lambda p: f"{fmt_int(p.get('followers') or 0)} 关注",
         right_label_fn=lambda p: f"首见 {p.get('first_seen','?')}",
         subtitle_fn=lambda p: f"首见 {p.get('first_seen','?')} · {p.get('status','?')}",
     )
-    # ── Section 2: Newly live (detail Top 3 + compact next 3)
+    # ── Section 2: Newly live
     live_html = _build_mixed_section(
         stats.get("newly_live", []),
-        n_detail=3, n_compact=4,
+        n_detail=3, n_compact=7,
         big_value_fn=lambda p: fmt_usd(p.get("pledged_usd") or 0),
         big_label_fn=lambda p: f"{fmt_int(p.get('backers') or 0)} BACKERS",
         right_value_fn=lambda p: fmt_usd(p.get("pledged_usd") or 0),
@@ -494,14 +533,14 @@ def build_html(stats: dict) -> tuple[str, str]:
     # ── Section 3: Newly successful
     success_html = _build_mixed_section(
         stats.get("newly_successful", []),
-        n_detail=3, n_compact=4,
+        n_detail=3, n_compact=7,
         big_value_fn=lambda p: fmt_usd(p.get("pledged_usd") or 0),
         big_label_fn=lambda p: f"{fmt_int(p.get('backers') or 0)} BACKERS",
         right_value_fn=lambda p: fmt_usd(p.get("pledged_usd") or 0),
         right_label_fn=lambda p: f"{fmt_int(p.get('backers') or 0)} backers",
         subtitle_fn=lambda _p: "FUNDED ✓",
     )
-    # ── Section 4: Top follower gainers (detail Top 3 + compact next 2)
+    # ── Section 4: Top follower gainers (capped at 5 in compute_weekly_stats)
     f_html = _build_mixed_section(
         stats.get("top_follower_gainers", []),
         n_detail=3, n_compact=2,
