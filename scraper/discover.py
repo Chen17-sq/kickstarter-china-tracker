@@ -99,6 +99,21 @@ class DiscoverHit:
     raw: dict[str, Any] = field(default_factory=dict)
 
 
+def _to_float(v: Any) -> float | None:
+    """Coerce to float, returning None if value is missing or unparseable.
+
+    KS Discover JSON has annoyingly inconsistent typing — some numeric
+    fields come back as strings (e.g. `usd_pledged`), others as floats
+    (e.g. `converted_pledged_amount`). This helper smooths the difference.
+    """
+    if v is None or v == "":
+        return None
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return None
+
+
 def _hit_from_proj(p: dict[str, Any]) -> DiscoverHit:
     urls = (p.get("urls") or {}).get("web") or {}
     project_url = urls.get("project") or ""
@@ -118,7 +133,12 @@ def _hit_from_proj(p: dict[str, Any]) -> DiscoverHit:
         state=p.get("state"),
         staff_pick=bool(p.get("staff_pick")),
         backers_count=p.get("backers_count"),
-        pledged_usd=p.get("usd_pledged") or p.get("converted_pledged_amount"),
+        # KS Discover JSON returns `usd_pledged` as a STRING (e.g. "12991053.0")
+        # but `converted_pledged_amount` as a float. Normalize to float here so
+        # downstream consumers (API, sort, sanity, deltas) all see the same
+        # type — otherwise `sorted(key=lambda x: -x['pledged_usd'])` raises
+        # TypeError on the string and the API exposes inconsistent types.
+        pledged_usd=_to_float(p.get("usd_pledged") or p.get("converted_pledged_amount")),
         goal_usd=(p.get("goal") or 0) * (p.get("static_usd_rate") or 1.0) if p.get("goal") else None,
         percent_funded=p.get("percent_funded"),
         deadline=p.get("deadline"),

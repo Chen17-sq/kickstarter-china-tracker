@@ -299,6 +299,14 @@ def slide_track_top3(d: dict, *, kind: str) -> str:
         kicker = "⏳ TODAY'S TOP PRE-LAUNCH · BY WATCHERS"
         h2 = "未发布 · Top 3"
         kicker_color = RED
+    elif kind == "successful":
+        items = sorted(
+            [p for p in d.get("_all", []) if p.get("status") == "successful"],
+            key=lambda x: -float(x.get("pledged_usd") or 0),
+        )[:3]
+        kicker = "✅ RECENTLY FUNDED · TOP 3 BY USD RAISED"
+        h2 = "已成功 · Top 3"
+        kicker_color = INK
     else:  # live
         items = sorted(d["live"], key=lambda x: -float(x.get("pledged_usd") or 0))[:3]
         kicker = "🔴 TODAY'S TOP LIVE · BY USD RAISED"
@@ -410,6 +418,84 @@ def slide_list(d: dict, *, kind: str) -> str:
     <div style="padding:4px 56px">{rows}</div>"""
 
 
+def slide_sleeper(d: dict) -> str:
+    """Algorithmic editor's picks beyond Top 10. One slide, ~5 picks, with
+    the sleeper reason rendered as a small chip under each title.
+
+    Calls select_sleepers in READ-ONLY mode so we don't double-increment
+    streak counters (cron's email_notify path is the canonical writer).
+    """
+    from .sleepers import select_sleepers
+
+    prelaunch_top = sorted(
+        d["prelaunch"],
+        key=lambda x: (0 if x.get("project_we_love") else 1, -(int(x.get("followers") or 0))),
+    )[:10]
+    live_top = sorted(d["live"], key=lambda x: -float(x.get("pledged_usd") or 0))[:10]
+    front_paths = set()
+    for p in prelaunch_top + live_top:
+        if p.get("pathname"):
+            front_paths.add(p["pathname"])
+    picks = select_sleepers(
+        d.get("_all", []),
+        front_paths,
+        n=5,
+        track_streaks=False,
+    )
+
+    if not picks:
+        return _empty_section("✦ TODAY'S SLEEPER PICKS · BEYOND THE TOP 10",
+                              "今日暂无 sleeper 候选")
+
+    # Render each pick as a row matching the style of _list_row but with
+    # the algorithmic reason chip in red beneath the title.
+    rows_html: list[str] = []
+    for i, p in enumerate(picks, start=1):
+        title = _esc(_truncate(p.get("title") or "", 40))
+        reason = _esc(p.get("_sleeper_reason") or "")
+        blurb = _esc(_truncate(p.get("blurb_zh") or "", 32))
+        star = (
+            f'<span style="color:{RED};font-family:Playfair Display;'
+            f'font-weight:900;margin-right:5px">✦</span>'
+            if p.get("project_we_love") else ""
+        )
+        status_pill = (
+            f'<span style="display:inline-block;padding:1px 8px;background:{MUTED};'
+            f'color:{N600};font-family:JetBrains Mono,monospace;font-size:10px;'
+            f'font-weight:700;letter-spacing:.18em;text-transform:uppercase;'
+            f'margin-left:8px;vertical-align:3px">{_esc(p.get("status",""))}</span>'
+        )
+        rows_html.append(f"""
+        <div style="display:flex;gap:16px;padding:13px 0;border-bottom:1px solid {INK};align-items:flex-start">
+          <div class="serif" style="flex:none;font-size:32px;font-weight:900;line-height:1;
+               color:{N400};letter-spacing:-1px;width:50px;font-variant-numeric:tabular-nums">{i:02d}</div>
+          <div style="flex:1;min-width:0">
+            <div class="serif" style="font-size:19px;font-weight:700;line-height:1.2;
+                 color:{INK};letter-spacing:-.2px">{star}{title}{status_pill}</div>
+            <div class="body" style="margin-top:3px;font-style:italic;font-size:13px;
+                 color:{N700};line-height:1.3">{blurb}</div>
+            <div style="display:inline-block;margin-top:6px;padding:3px 9px;
+                 background:{RED};color:{PAPER};font-family:'JetBrains Mono',monospace;
+                 font-size:10px;font-weight:700;letter-spacing:.16em;
+                 text-transform:uppercase;line-height:1.2">{reason}</div>
+          </div>
+        </div>""")
+
+    return f"""
+    <div class="section">
+      <div class="kicker">✦ TODAY'S SLEEPER PICKS · BEYOND THE TOP 10</div>
+      <h2>Sleeper · 编辑挑选</h2>
+      <div class="dek">{_esc('算法识别 + 编辑视角 · 不在 Top 10 但值得看')}</div>
+    </div>
+    <div style="padding:4px 56px">{''.join(rows_html)}</div>"""
+
+
+def slide_successful_feature(d: dict) -> str:
+    """Top 3 recently-successful projects with hero images. Thin wrapper
+    over slide_track_top3 — kicker + 3 product-row cards."""
+    return slide_track_top3(d, kind="successful")
+
+
 def _empty_section(kicker: str, msg: str) -> str:
     return f"""
     <div class="section">
@@ -482,17 +568,26 @@ def generate_carousel() -> list[Path] | None:
     edition = edition_number()
     wrap = lambda body: slide_html(body, today_long=today_long, edition=edition)
 
-    # 7 slides — gainer (movers) slides dropped per redesign:
-    #   01 cover · 02-03 prelaunch (feature top 3 + list top 10)
-    #   04-05 live (feature top 3 + list top 10) · 06 successful · 07 CTA
+    # 9 slides (small-red-book convention is 9 per post):
+    #   01 cover (KPI + masthead)
+    #   02 prelaunch top 3 (image cards)
+    #   03 prelaunch top 10 (list)
+    #   04 live top 3 (image cards)
+    #   05 live top 10 (list)
+    #   06 successful top 3 (image cards)     ← restored from old layout
+    #   07 successful top 10 (list)
+    #   08 sleeper picks (algorithmic editor's picks beyond Top 10)  ← new
+    #   09 CTA (subscribe + RSS + JSON API channels)
     slides = [
         ("01", wrap(slide_cover(d))),
         ("02", wrap(slide_prelaunch_feature(d))),
         ("03", wrap(slide_list(d, kind="prelaunch"))),
         ("04", wrap(slide_live_feature(d))),
         ("05", wrap(slide_list(d, kind="live"))),
-        ("06", wrap(slide_list(d, kind="successful"))),
-        ("07", wrap(slide_cta(d))),
+        ("06", wrap(slide_successful_feature(d))),
+        ("07", wrap(slide_list(d, kind="successful"))),
+        ("08", wrap(slide_sleeper(d))),
+        ("09", wrap(slide_cta(d))),
     ]
 
     latest_dir = SOCIAL / "latest"
