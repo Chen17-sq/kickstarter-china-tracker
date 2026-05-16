@@ -130,8 +130,48 @@ def build_payload(curr: dict) -> dict:
     }
 
 
+def build_sleepers_payload(curr: dict) -> dict:
+    """Slim payload containing ONLY today's sleeper picks.
+
+    Useful for consumers who just want "today's algorithmic editor's
+    picks beyond Top 10" without sifting through the full project list.
+    Calls select_sleepers in READ-ONLY mode (track_streaks=False) so
+    we don't double-increment the streak counter when email_notify
+    also calls it later in the same cron.
+    """
+    from .notify import get_summary_data
+    from .sleepers import select_sleepers
+
+    summary = get_summary_data(curr)
+    # Exclude what's on the front page (Top 10 prelaunch + Top 10 live) so
+    # sleeper picks are genuinely distinct. Matches the email_notify
+    # exclusion set so api.sleepers and email picks stay consistent.
+    front_paths: set = set()
+    front_paths.update(
+        p.get("pathname") for p in summary["prelaunch"][:10] if p.get("pathname")
+    )
+    front_paths.update(
+        p.get("pathname") for p in summary["live"][:10] if p.get("pathname")
+    )
+    picks = select_sleepers(
+        curr.get("projects") or [],
+        front_paths,
+        n=5,
+        track_streaks=False,
+    )
+    slim_picks = [_slim_project(p) for p in picks]
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "generated_at": curr.get("generated_at")
+            or dt.datetime.now(dt.UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "edition": edition_number(),
+        "count": len(slim_picks),
+        "projects": slim_picks,
+    }
+
+
 def write_api(curr: dict) -> list[Path]:
-    """Write today.json + <date>.json + index.json to site/api/.
+    """Write today.json + <date>.json + index.json + sleepers.json to site/api/.
 
     Returns the list of paths written so the caller can log + cron commits."""
     API_DIR.mkdir(parents=True, exist_ok=True)
@@ -148,16 +188,35 @@ def write_api(curr: dict) -> list[Path]:
     alias.write_text(body, encoding="utf-8")
     paths.append(alias)
 
+    # Sleeper-picks-only slim endpoint — useful for consumers who want
+    # just the editor's picks of the day, not the full project list.
+    sleepers_payload = build_sleepers_payload(curr)
+    sleepers_path = API_DIR / "sleepers.json"
+    sleepers_path.write_text(
+        json.dumps(sleepers_payload, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    paths.append(sleepers_path)
+
     # Build the index of available dates by scanning the dir
     dated = sorted(
-        [f.stem for f in API_DIR.glob("*.json") if f.stem not in ("today", "index")],
+        [
+            f.stem for f in API_DIR.glob("*.json")
+            if f.stem not in ("today", "index", "sleepers")
+        ],
         reverse=True,
     )
     index = {
         "schema_version": SCHEMA_VERSION,
         "latest": dated[0] if dated else None,
         "dates": dated,
-        "doc_url": "https://github.com/Chen17-sq/kickstarter-china-tracker#docs",
+        "endpoints": {
+            "latest": "/api/today.json",
+            "by_date": "/api/<YYYY-MM-DD>.json",
+            "sleepers": "/api/sleepers.json",
+            "index": "/api/index.json",
+        },
+        "doc_url": "https://github.com/Chen17-sq/kickstarter-china-tracker/blob/main/docs/API.md",
     }
     index_path = API_DIR / "index.json"
     index_path.write_text(json.dumps(index, indent=2), encoding="utf-8")

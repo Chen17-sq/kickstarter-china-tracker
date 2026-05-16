@@ -35,6 +35,7 @@ def write_sitemap() -> Path:
         # Public JSON API surface
         (f"{BASE_URL}/api/index.json", today, "daily"),
         (f"{BASE_URL}/api/today.json", today, "daily"),
+        (f"{BASE_URL}/api/sleepers.json", today, "daily"),
     ]
     # Add every dated edition
     if EDITIONS.exists():

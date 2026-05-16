@@ -300,6 +300,8 @@ def select_sleepers(
     projects: Iterable[dict],
     exclude_pathnames: set[str],
     n: int = 5,
+    *,
+    track_streaks: bool = True,
 ) -> list[dict]:
     """Pick N projects worth surfacing. Returns shallow-cloned dicts with
     `_sleeper_score` and `_sleeper_reason` keys added.
@@ -320,8 +322,14 @@ def select_sleepers(
     +30/+60/+90 (cap at 3 days) added to today's score. State persists at
     data/.sleeper_streaks.json (gitignored — local artifact). Projects that
     don't score this run have their streak reset to 0.
+
+    `track_streaks` (default True): when False, the streak file is NOT
+    modified. Used by read-only callers (api.py) that need today's picks
+    without double-incrementing the streak counter on a 2nd call within
+    the same cron run.
     """
-    # Load yesterday's streaks; today's will be saved at the end.
+    # Load yesterday's streaks; today's will be saved at the end if
+    # track_streaks is True.
     prev_streaks = _load_streaks()
     today_streaks: dict[str, int] = {}
 
@@ -349,10 +357,12 @@ def select_sleepers(
 
         scored.append((score, reason, p))
 
-    # Persist today's streaks. Projects not in today_streaks were either
-    # not seen, or didn't qualify this run — their streak resets next time
-    # (by virtue of not being in the file).
-    _save_streaks(today_streaks)
+    # Persist today's streaks unless caller asked for read-only. Projects
+    # not in today_streaks were either not seen, or didn't qualify this
+    # run — their streak resets next time (by virtue of not being in the
+    # file).
+    if track_streaks:
+        _save_streaks(today_streaks)
 
     # Highest-scoring first
     scored.sort(key=lambda t: -t[0])

@@ -13,9 +13,10 @@ academic research. No registration, no key, no rate limit you'd hit.
 
 | URL | Returns |
 |---|---|
-| `https://ks.aldrich.fyi/api/today.json` | Today's slim snapshot |
+| `https://ks.aldrich.fyi/api/today.json` | Today's full snapshot (all tracked projects) |
 | `https://ks.aldrich.fyi/api/<YYYY-MM-DD>.json` | A specific past day |
-| `https://ks.aldrich.fyi/api/index.json` | Available dates + schema version |
+| `https://ks.aldrich.fyi/api/sleepers.json` | **Just** today's 5 algorithmic editor's picks (sleeper bucket) |
+| `https://ks.aldrich.fyi/api/index.json` | Available dates + endpoints list + schema version |
 
 The GitHub Pages mirror also works:
 - `https://chen17-sq.github.io/kickstarter-china-tracker/api/today.json`
@@ -116,9 +117,13 @@ for p in live[:10]:
     print(f"  ${p['pledged_usd']:>12,.0f}  {p['title']}")
 ```
 
-### Sleeper picks of the day
+### Sleeper picks of the day (use dedicated endpoint)
 
 ```bash
+# Slim — only the 5 sleeper picks, sorted by score desc:
+curl -s https://ks.aldrich.fyi/api/sleepers.json | jq '.projects[] | {title, reason: ._sleeper_reason, score: ._sleeper_score}'
+
+# Or filter from the full snapshot:
 curl -s https://ks.aldrich.fyi/api/today.json \
   | jq '.projects[] | select(._sleeper_reason != null) | {title, reason: ._sleeper_reason, score: ._sleeper_score}'
 ```

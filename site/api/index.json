@@ -4,5 +4,11 @@
   "dates": [
     "2026-05-16"
   ],
-  "doc_url": "https://github.com/Chen17-sq/kickstarter-china-tracker#docs"
+  "endpoints": {
+    "latest": "/api/today.json",
+    "by_date": "/api/<YYYY-MM-DD>.json",
+    "sleepers": "/api/sleepers.json",
+    "index": "/api/index.json"
+  },
+  "doc_url": "https://github.com/Chen17-sq/kickstarter-china-tracker/blob/main/docs/API.md"
 }

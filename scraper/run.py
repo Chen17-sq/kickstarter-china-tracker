@@ -24,6 +24,7 @@ import sys
 from pathlib import Path
 
 from . import anomalies as _anomalies
+from . import brand_candidates as _brand_candidates
 from . import health
 from .api import write_api
 from .atomic import write_json_atomic, write_text_atomic
@@ -161,10 +162,29 @@ def run() -> int:
     # For prelaunch: this is the current pre-launch follower count (the key
     # signal). For live/ended: it's the frozen pre-launch hype baseline.
     classified_paths = []
+    unknown_for_review: list[dict] = []  # for brand_candidates auto-discovery
     for path, hit in hits.items():
         cls = classify(creator_slug=hit.creator_slug, location=hit.location, title=hit.title)
         if cls.confidence in ("高", "中"):
             classified_paths.append((path, hit, cls))
+        elif cls.confidence == "未知":
+            # Track unknowns with their hit data — brand_candidates.detect()
+            # will further filter by signal strength (followers / pledged /
+            # staff_pick). Without this list, unknowns get dropped on the
+            # classifier step and we never see them again.
+            unknown_for_review.append({
+                "pathname": path,
+                "title": hit.title,
+                "location": hit.location,
+                "country": hit.country,
+                "creator_slug": hit.creator_slug,
+                "status": hit.state,
+                "followers": None,  # watchesCount fetch is below; can't fill yet
+                "pledged_usd": hit.pledged_usd,
+                "project_we_love": hit.staff_pick,
+                "url": hit.url,
+                "china_confidence": "未知",
+            })
 
     slugs = [slug_from_pathname(path) for path, _, _ in classified_paths]
     health.classified(len(slugs))
@@ -368,6 +388,17 @@ def run() -> int:
         health.save()
     except Exception as e:
         print(f"  health.save() skipped: {e}")
+
+    # Brand-candidates auto-discovery — surface high-signal unknown creators
+    # for owner to evaluate adding to brands/china_brands.yaml. FYI-only.
+    try:
+        bc_result = _brand_candidates.detect(unknown_for_review)
+        _brand_candidates.save(bc_result)
+        n_cands = len(bc_result.get("candidates", []))
+        if n_cands:
+            print(f"  brand candidates: {n_cands} unknown high-signal creator(s) for review")
+    except Exception as e:
+        print(f"  brand_candidates skipped: {e}")
 
     # Per-project anomaly detection: vanished / reverted / stuck. FYI-only;
     # surfaced in the OPS digest but doesn't block the broadcast.

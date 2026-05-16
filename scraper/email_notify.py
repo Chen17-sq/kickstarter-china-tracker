@@ -1068,6 +1068,16 @@ def main(argv: list[str] | None = None) -> int:
                 digest_lines.extend(anomaly_lines)
         except Exception:
             pass
+        # Brand candidates — unknown creators with high signals worth review.
+        try:
+            from . import brand_candidates as _bc_mod
+            _bc_state = _bc_mod.load()
+            bc_lines = _bc_mod.format_digest_lines(_bc_state)
+            if bc_lines:
+                digest_lines.append("")
+                digest_lines.extend(bc_lines)
+        except Exception:
+            pass
         if failure_log:
             digest_lines.append("")
             digest_lines.append("Failures:")

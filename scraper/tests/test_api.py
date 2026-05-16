@@ -184,16 +184,17 @@ def test_payload_projects_are_slimmed():
 
 # ── write_api round-trip ──────────────────────────────────────────
 
-def test_write_api_creates_today_index_and_dated(monkeypatch, tmp_path):
-    """write_api should produce 3 files: today.json, <date>.json, index.json."""
+def test_write_api_creates_today_index_dated_and_sleepers(monkeypatch, tmp_path):
+    """write_api should produce 4 files: today.json, <date>.json, sleepers.json, index.json."""
     api_mod = __import__("scraper.api", fromlist=["api"])
     monkeypatch.setattr(api_mod, "API_DIR", tmp_path / "api")
     paths = write_api(_curr([_full_project()]))
     names = sorted(p.name for p in paths)
     assert "today.json" in names
     assert "index.json" in names
-    # The third one is a date — just verify it ends in .json and not the others
-    other = [n for n in names if n not in ("today.json", "index.json")]
+    assert "sleepers.json" in names
+    # The remaining one is the dated file — verify it ends in .json
+    other = [n for n in names if n not in ("today.json", "index.json", "sleepers.json")]
     assert len(other) == 1
     assert other[0].endswith(".json")
 
@@ -203,13 +204,27 @@ def test_write_api_today_and_dated_have_identical_content(monkeypatch, tmp_path)
     monkeypatch.setattr(api_mod, "API_DIR", tmp_path / "api")
     write_api(_curr([_full_project()]))
     today = (tmp_path / "api" / "today.json").read_text(encoding="utf-8")
+    # Exclude the meta files; only the dated <YYYY-MM-DD>.json should match today.json
     others = [
         f for f in (tmp_path / "api").iterdir()
-        if f.name not in ("today.json", "index.json")
+        if f.name not in ("today.json", "index.json", "sleepers.json")
     ]
     assert len(others) == 1
     dated = others[0].read_text(encoding="utf-8")
     assert today == dated
+
+
+def test_write_api_sleepers_endpoint_is_well_formed(monkeypatch, tmp_path):
+    """sleepers.json has schema_version, count, projects array."""
+    api_mod = __import__("scraper.api", fromlist=["api"])
+    monkeypatch.setattr(api_mod, "API_DIR", tmp_path / "api")
+    write_api(_curr([_full_project()]))
+    s = json.loads((tmp_path / "api" / "sleepers.json").read_text(encoding="utf-8"))
+    assert "schema_version" in s
+    assert "count" in s
+    assert "projects" in s
+    assert isinstance(s["projects"], list)
+    assert s["count"] == len(s["projects"])
 
 
 def test_write_api_index_lists_available_dates(monkeypatch, tmp_path):
