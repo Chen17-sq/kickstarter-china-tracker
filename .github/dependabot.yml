@@ -1,0 +1,49 @@
+# Dependabot — security + version updates.
+#
+# Daily checks for vulnerable / out-of-date dependencies across pip,
+# GitHub Actions, and npm (subscribe-worker). PRs auto-open against
+# main and are gated by the existing test.yml workflow before merge.
+#
+# We keep update frequency LOW (weekly for most, daily for github-actions
+# since action vulnerabilities can be exploited fastest) to avoid PR
+# spam — solo project, every notification is real cost.
+version: 2
+
+updates:
+  # Python deps in requirements.txt
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "python"
+    commit-message:
+      prefix: "deps"
+
+  # GitHub Actions versions (actions/checkout@v4, etc.)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"  # action vulns get exploited fast — check often
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "ci"
+
+  # Worker package.json (if/when we add real npm deps; currently zero)
+  - package-ecosystem: "npm"
+    directory: "/subscribe-worker"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "worker"
+    commit-message:
+      prefix: "deps(worker)"

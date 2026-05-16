@@ -38,7 +38,9 @@
 | **今日头版 · 视觉版** ([editions/latest.html](https://chen17-sq.github.io/kickstarter-china-tracker/editions/latest.html)) | 完整 Newsprint 视觉，跟订阅邮件**像素级一致**——可分享 |
 | **过往日报存档** ([editions/](https://chen17-sq.github.io/kickstarter-china-tracker/editions/)) | 永久存档每天发出去的报纸，按日期浏览 |
 | **今日头版 · Markdown** (`reports/latest.md`) | KPI · Top Movers · Top Prelaunch · Top Live · Funded（GitHub markdown 灰色） |
-| **JSON 数据** (`data/projects.json`) | 完整结构化数据，可被任意第三方仪表盘消费 |
+| **公开 JSON API** ([api/today.json](https://chen17-sq.github.io/kickstarter-china-tracker/api/today.json)) | 稳定 schema 的精简数据接口，给 Slack bot / 仪表盘 / mirror 站使用 |
+| **Atom feed** ([feed.xml](https://chen17-sq.github.io/kickstarter-china-tracker/feed.xml)) | RSS 阅读器订阅渠道（不给邮箱也能订） |
+| **JSON 完整数据** (`data/projects.json`) | 内部完整结构化数据（schema 不保证稳定，外部消费请用 `/api/today.json`） |
 | **历史快照** (`data/history/`) | 每日 cron 一份时间戳快照，用于算 Δ |
 | **品牌库** (`brands/china_brands.yaml`) | 可 PR 维护的品牌白名单 |
 | **中文一句话** (`data/blurbs_zh.json`) | 100+ 人工翻译 + LLM 自动补齐 |

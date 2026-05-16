@@ -1,0 +1,40 @@
+# CITATION.cff — How to cite this project.
+# GitHub renders a "Cite this repository" button using this file.
+# Schema: https://citation-file-format.github.io/
+
+cff-version: 1.2.0
+title: "Kickstarter China Tracker"
+message: "If you use this dataset or the tracker output in research, please cite it."
+type: software
+authors:
+  - given-names: "Aldrich"
+    family-names: "Chen"
+    name-particle: "陈"
+    given-names-alternate: "思蕲"
+    affiliation: "Hillhouse"
+    website: "https://aldrich.fyi"
+url: "https://github.com/Chen17-sq/kickstarter-china-tracker"
+repository-code: "https://github.com/Chen17-sq/kickstarter-china-tracker"
+license: MIT
+keywords:
+  - kickstarter
+  - china
+  - crowdfunding
+  - consumer-hardware
+  - prelaunch
+  - daily-tracker
+  - newspaper
+abstract: |
+  A daily newspaper-style tracker of China-background consumer-hardware
+  projects on Kickstarter — prelaunch follower counts, live USD raised,
+  and editor's picks (KS staff-pick + algorithmic "sleeper" picks beyond
+  the Top 10). Published every morning at 08:00 Beijing via GitHub
+  Actions. Free public JSON API at /api/today.json; Atom feed at /feed.xml.
+preferred-citation:
+  type: software
+  title: "Kickstarter China Tracker — Daily Newsprint Briefing"
+  authors:
+    - given-names: "Aldrich"
+      family-names: "Chen"
+  url: "https://ks.aldrich.fyi"
+  year: 2026
