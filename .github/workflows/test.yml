@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - 'scraper/**'
+      - 'subscribe-worker/**'
       - '.github/workflows/test.yml'
       - 'requirements*.txt'
       - 'pyproject.toml'
@@ -40,3 +41,20 @@ jobs:
 
       - name: Run pytest
         run: python -m pytest scraper/tests/ -v
+
+  worker-tests:
+    # Worker JS unit tests — Svix sig verify, sanitizeNick, rate-limit math.
+    # Pure-logic, Node-only; no Wrangler/Miniflare required.
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Bundle check (esbuild)
+        working-directory: subscribe-worker
+        run: npx --yes esbuild worker.js --bundle --platform=neutral --target=es2022 --outfile=/tmp/_worker_check.js
+      - name: Run worker tests
+        working-directory: subscribe-worker
+        run: node test_worker.mjs

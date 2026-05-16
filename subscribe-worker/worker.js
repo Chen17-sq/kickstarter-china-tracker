@@ -269,7 +269,11 @@ async function rateLimitOk(request, env, tag, limit, windowSec) {
 // first real edition, which feels like the form silently swallowed
 // their email.
 async function sendWelcomeEmail(env, email, nickname, isCreator) {
-  const display = nickname && nickname.length ? nickname : email.split("@")[0];
+  // sanitizeNick already strips unsafe chars upstream in handleSubscribe;
+  // escapeHtml is the second layer of defense against any future code path
+  // that bypasses sanitization. Cheap and idempotent.
+  const rawDisplay = nickname && nickname.length ? nickname : email.split("@")[0];
+  const display = escapeHtml(rawDisplay);
   const subject = "✦ 订阅成功 · Welcome to Kickstarter China Tracker";
   const creatorLine = isCreator
     ? `<p style="margin:0 0 12px;font-family:Lora,Georgia,serif;font-size:15px;line-height:1.55">
@@ -440,7 +444,26 @@ function isValidEmail(s) {
 }
 
 function sanitizeNick(s) {
-  return s.replace(/[ -]/g, "").replace(/\s+/g, " ").trim();
+  // Strip HTML tag chars, ampersand, quotes, backtick + control chars so
+  // the nickname is safe to inline into HTML emails / templates. Collapse
+  // whitespace runs into single spaces. Allow CJK, accented letters, emoji
+  // — only the actively dangerous characters are blocked.
+  return s
+    .replace(/[<>&"\'`\x00-\x1F\x7F]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+// HTML-escape user-supplied content before interpolating into HTML.
+// Belt-and-suspenders given sanitizeNick already strips the unsafe set —
+// any future code path that omits sanitizeNick should still be safe.
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 function corsHeaders(requestOrigin, whitelistEnv) {

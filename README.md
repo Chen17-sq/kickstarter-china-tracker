@@ -15,6 +15,14 @@
   <a href="https://chen17-sq.github.io/kickstarter-china-tracker/social/"><img alt="小红书 9 图" src="https://img.shields.io/badge/%E5%B0%8F%E7%BA%A2%E4%B9%A6-9%20%E5%9B%BE-111111?style=for-the-badge&labelColor=FF2442"></a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/Chen17-sq/kickstarter-china-tracker/actions/workflows/scrape.yml"><img alt="Daily cron" src="https://img.shields.io/github/actions/workflow/status/Chen17-sq/kickstarter-china-tracker/scrape.yml?label=daily%20cron&style=flat-square"></a>
+  <a href="https://github.com/Chen17-sq/kickstarter-china-tracker/actions/workflows/test.yml"><img alt="Tests" src="https://img.shields.io/github/actions/workflow/status/Chen17-sq/kickstarter-china-tracker/test.yml?label=tests&style=flat-square"></a>
+  <img alt="Python" src="https://img.shields.io/badge/python-3.12-blue?style=flat-square">
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-green?style=flat-square"></a>
+  <a href="https://ks.aldrich.fyi/feed.xml"><img alt="Atom feed" src="https://img.shields.io/badge/feed-Atom%201.0-orange?style=flat-square"></a>
+</p>
+
 ![Inside this issue — top prelaunch + top live](assets/snapshot.svg)
 
 ---

@@ -86,6 +86,10 @@
 | H1 | Resend API key 被提交到 repo | 🟡 只在 env，但没 secret-scan |
 | H2 | GITHUB_TOKEN 泄漏 | ✅ 只在 workflow env |
 | H3 | Worker PAT 权限过宽 | ✅ scoped to single repo Contents |
+| H4 | Worker subscribe endpoint 被 bot 灌假邮箱 | 🆕 KV-backed per-IP rate limit 5 req/min |
+| H5 | nickname 字段 XSS 进 welcome email | 🆕 sanitizeNick 修了原先错误的 `[ -]` 正则；加 escapeHtml 双重防御 |
+| H6 | Resend webhook 被伪造调用扌除订阅者 | 🆕 Svix HMAC SHA-256 验签 + 5 分钟 timestamp replay 保护 + 常数时间 compare |
+| H7 | OWNER_TOKEN 被时序攻击破解 | ✅ Worker 端常数时间比较（无 length 短路） |
 
 ## I · 可观测性 ⭐ 最大缺口
 
