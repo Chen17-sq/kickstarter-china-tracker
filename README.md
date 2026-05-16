@@ -111,6 +111,8 @@ Fork 后启用：
 | [`docs/FAILURE_MODES.md`](docs/FAILURE_MODES.md) | 故障模式目录 (A-I 层) — 每层防御 + 兜底 |
 | [`docs/PROXY.md`](docs/PROXY.md) | `KS_PROXY` 配置 — 单 URL / pool / Cloudflare Worker 免费代理 |
 | [`docs/RUNBOOK.md`](docs/RUNBOOK.md) | 运维手册 — 重跑 cron / 订阅者 CLI / Worker 部署 / 紧急恢复 |
+| [`docs/API.md`](docs/API.md) | 公开 JSON API 文档 — schema、字段稳定性承诺、示例 |
+| [`docs/CHANGELOG_features.md`](docs/CHANGELOG_features.md) | 功能开发流水（`python scripts/gen_changelog.py` 重新生成） |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | 贡献指南 (本仓库私用为主，记录约定) |
 | [`subscribe-worker/MIGRATE_TO_KV.md`](subscribe-worker/MIGRATE_TO_KV.md) | 订阅者数据从 GitHub JSON → Cloudflare KV 的迁移笔记 |
 
