@@ -1,0 +1,59 @@
+name: worker-deploy
+
+# Deploy the subscribe Worker to Cloudflare on push to subscribe-worker/.
+#
+# REQUIRES one repo secret to be set BEFORE this fires successfully:
+#   CLOUDFLARE_API_TOKEN
+#
+# Without that secret, the deploy step skips (no-op) — you can still
+# merge worker changes; just run `wrangler deploy` manually until you
+# decide to wire up automation.
+#
+# Token: Cloudflare dashboard → My Profile → API Tokens → Create Token →
+#        "Edit Cloudflare Workers" template. Then in this repo:
+#        Settings → Secrets → Actions → New repo secret → CLOUDFLARE_API_TOKEN.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'subscribe-worker/worker.js'
+      - 'subscribe-worker/wrangler.toml'
+      - '.github/workflows/worker-deploy.yml'
+  workflow_dispatch:  # manual button in Actions tab
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Bundle check
+        working-directory: subscribe-worker
+        run: npx --yes esbuild worker.js --bundle --platform=neutral --target=es2022 --outfile=/tmp/_worker_check.js
+
+      - name: Run worker tests
+        working-directory: subscribe-worker
+        run: node test_worker.mjs
+
+      - name: Skip if no Cloudflare token configured
+        id: check_token
+        run: |
+          if [ -z "${{ secrets.CLOUDFLARE_API_TOKEN }}" ]; then
+            echo "no_token=true" >> $GITHUB_OUTPUT
+            echo "::notice::CLOUDFLARE_API_TOKEN not set; skipping deploy. Add it in Settings → Secrets to enable auto-deploy."
+          else
+            echo "no_token=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Deploy with wrangler
+        if: steps.check_token.outputs.no_token == 'false'
+        working-directory: subscribe-worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: npx --yes wrangler deploy
