@@ -1,0 +1,65 @@
+name: weekly
+
+# Weekly digest — Sunday-morning summary email.
+#
+# Schedule: every Sunday at 01:00 UTC (= 09:00 Beijing).
+# An hour after the regular daily cron (00:00 UTC), so the day's
+# history snapshot is already committed before we crunch the week.
+#
+# Triggers:
+#   - schedule (Sundays only)
+#   - workflow_dispatch (manual button for one-off resend / preview)
+on:
+  schedule:
+    - cron: "0 1 * * 0"
+  workflow_dispatch:
+
+jobs:
+  weekly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          # Weekly digest is pure-logic over data/history/ — no network
+          # scrape. Only needs httpx (for Resend) + PyYAML (for the
+          # classify import chain via subscribers).
+          pip install httpx pyyaml
+
+      - name: Pull latest history
+        run: |
+          # Make sure we have the freshest snapshots — the daily cron
+          # may have pushed within the last hour.
+          git pull --rebase origin main
+
+      - name: Build + send weekly digest
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NOTIFY_EMAIL_TO: ${{ secrets.NOTIFY_EMAIL_TO }}
+          NOTIFY_EMAIL_FROM: ${{ secrets.NOTIFY_EMAIL_FROM }}
+          OWNER_TOKEN: ${{ secrets.OWNER_TOKEN }}
+          SUBSCRIBE_API_URL: ${{ secrets.SUBSCRIBE_API_URL }}
+          BROADCAST: "1"
+        run: python -m scraper.weekly
+
+      - name: Commit weekly archive
+        run: |
+          git config user.name "ks-tracker-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add site/weekly/
+          if git diff --staged --quiet; then
+            echo "No new weekly archive."
+            exit 0
+          fi
+          git commit -m "weekly digest $(date -u +%F)"
+          git push

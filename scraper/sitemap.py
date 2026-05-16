@@ -18,6 +18,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SITE = REPO_ROOT / "site"
 EDITIONS = SITE / "editions"
+WEEKLY = SITE / "weekly"
 BASE_URL = "https://chen17-sq.github.io/kickstarter-china-tracker"
 
 
@@ -47,6 +48,20 @@ def write_sitemap() -> Path:
                 d = dt.datetime.strptime(stem, "%Y-%m-%d")
                 lastmod = d.strftime("%Y-%m-%d")
                 urls.append((f"{BASE_URL}/editions/{stem}.html", lastmod, "yearly"))
+            except ValueError:
+                continue
+
+    # Weekly digest archive (Sunday-only)
+    if WEEKLY.exists():
+        urls.append((f"{BASE_URL}/weekly/latest.html", today, "weekly"))
+        for f in sorted(WEEKLY.glob("*.html")):
+            stem = f.stem
+            if stem in ("latest", "index"):
+                continue
+            try:
+                d = dt.datetime.strptime(stem, "%Y-%m-%d")
+                lastmod = d.strftime("%Y-%m-%d")
+                urls.append((f"{BASE_URL}/weekly/{stem}.html", lastmod, "yearly"))
             except ValueError:
                 continue
 

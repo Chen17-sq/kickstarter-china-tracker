@@ -150,4 +150,14 @@
     <lastmod>2026-05-16</lastmod>
     <changefreq>yearly</changefreq>
   </url>
+  <url>
+    <loc>https://chen17-sq.github.io/kickstarter-china-tracker/weekly/latest.html</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://chen17-sq.github.io/kickstarter-china-tracker/weekly/2026-05-16.html</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
 </urlset>

@@ -10,6 +10,7 @@
   <a href="https://chen17-sq.github.io/kickstarter-china-tracker/"><img alt="完整看板 · Full Paper" src="https://img.shields.io/badge/%E5%AE%8C%E6%95%B4%E7%9C%8B%E6%9D%BF-Full%20Paper-111111?style=for-the-badge&labelColor=CC0000"></a>
   <a href="https://chen17-sq.github.io/kickstarter-china-tracker/subscribe.html"><img alt="订阅每日邮件" src="https://img.shields.io/badge/%E8%AE%A2%E9%98%85%E6%97%A5%E6%8A%A5-Subscribe-111111?style=for-the-badge&labelColor=CC0000"></a>
   <a href="https://chen17-sq.github.io/kickstarter-china-tracker/editions/latest.html"><img alt="今日头版 视觉版" src="https://img.shields.io/badge/%E4%BB%8A%E6%97%A5%E5%A4%B4%E7%89%88-Today%27s%20Edition-111111?style=for-the-badge&labelColor=CC0000"></a>
+  <a href="https://chen17-sq.github.io/kickstarter-china-tracker/weekly/latest.html"><img alt="本周周报" src="https://img.shields.io/badge/%E5%91%A8%E6%8A%A5-Weekly%20Digest-111111?style=for-the-badge&labelColor=CC0000"></a>
   <a href="https://chen17-sq.github.io/kickstarter-china-tracker/editions/"><img alt="过往日报存档" src="https://img.shields.io/badge/%E5%AD%98%E6%A1%A3-Archive-111111?style=for-the-badge&labelColor=737373"></a>
   <a href="https://chen17-sq.github.io/kickstarter-china-tracker/editions/latest.pdf"><img alt="下载今日 PDF" src="https://img.shields.io/badge/PDF-Download-111111?style=for-the-badge&labelColor=CC0000"></a>
   <a href="https://chen17-sq.github.io/kickstarter-china-tracker/social/"><img alt="小红书 9 图" src="https://img.shields.io/badge/%E5%B0%8F%E7%BA%A2%E4%B9%A6-9%20%E5%9B%BE-111111?style=for-the-badge&labelColor=FF2442"></a>
