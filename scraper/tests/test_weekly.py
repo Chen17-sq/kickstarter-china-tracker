@@ -110,8 +110,8 @@ def test_status_transition_prelaunch_to_live():
     out = compute_weekly_stats(week)
     assert len(out["newly_live"]) == 1
     assert out["newly_live"][0]["pathname"] == "/a"
-    assert out["newly_live"][0]["from"] == "prelaunch"
-    assert out["newly_live"][0]["to"] == "live"
+    assert out["newly_live"][0]["_from"] == "prelaunch"
+    assert out["newly_live"][0]["_to"] == "live"
 
 
 def test_status_transition_to_successful():

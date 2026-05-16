@@ -42,6 +42,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 PROJECTS = REPO_ROOT / "data" / "projects.json"
 HISTORY = REPO_ROOT / "data" / "history"
 WEEKLY_DIR = REPO_ROOT / "site" / "weekly"
+HIGHLIGHTS_FILE = REPO_ROOT / "data" / "highlights_zh.json"
 
 RESEND_API_URL = "https://api.resend.com/emails"
 
@@ -49,12 +50,25 @@ RESEND_API_URL = "https://api.resend.com/emails"
 PAPER = "#F9F9F7"
 INK = "#111111"
 RED = "#CC0000"
+MUTED = "#E5E5E0"
 N400 = "#A3A3A3"
+N500 = "#737373"
 N700 = "#404040"
 SERIF = "'Playfair Display', Georgia, serif"
 SANS = "'Inter', system-ui, sans-serif"
 MONO = "'JetBrains Mono', ui-monospace, monospace"
 BODY = "Lora, Georgia, serif"
+
+
+def _load_highlights_zh() -> dict[str, list[str]]:
+    """Same source as the daily — curated 4-bullet Chinese highlights
+    keyed by KS pathname. Returns {} if file missing."""
+    if not HIGHLIGHTS_FILE.exists():
+        return {}
+    try:
+        return json.loads(HIGHLIGHTS_FILE.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
 
 
 def _esc(s: str) -> str:
@@ -152,26 +166,29 @@ def compute_weekly_stats(week: list[tuple[dt.datetime, dict]]) -> dict:
     out["kpi"]["total_week_start"] = len(oldest_by_path)
 
     # ── New in discovery: pathname in newest but not in oldest, AND
-    #    not in any intermediate snapshot before it appeared
+    #    not in any intermediate snapshot before it appeared.
+    # We carry the FULL project dict through (with image_url, blurb_zh,
+    # brand, country, etc.) so the email renderer can build rich detail
+    # cards instead of bare title rows. Prefer the freshest (newest)
+    # version of each project's data — newest has up-to-date follower
+    # counts, vs the version at first-discovery which may be 0.
     ever_seen: set[str] = set(oldest_by_path.keys())
     for ts, snap in week[1:]:
         snap_paths = {p.get("pathname") for p in (snap.get("projects") or []) if p.get("pathname")}
         new_today = snap_paths - ever_seen
         for path in new_today:
-            proj = next(
+            # Pull the FRESHEST data for this project (from newest snapshot
+            # if it's still there, else from first-discovery snapshot).
+            fresh = newest_by_path.get(path) or next(
                 (p for p in snap.get("projects") or [] if p.get("pathname") == path),
                 None,
             )
-            if proj:
-                out["new_in_discovery"].append({
-                    "pathname": path,
-                    "title": proj.get("title") or "?",
-                    "status": proj.get("status") or "?",
-                    "first_seen": ts.strftime("%Y-%m-%d"),
-                    "followers": proj.get("followers"),
-                    "url": proj.get("url"),
-                    "project_we_love": proj.get("project_we_love"),
-                })
+            if fresh:
+                # Shallow copy + add first_seen metadata so renderer can
+                # decorate without mutating the snapshot data
+                row = dict(fresh)
+                row["first_seen"] = ts.strftime("%Y-%m-%d")
+                out["new_in_discovery"].append(row)
         ever_seen |= snap_paths
 
     # Sort new discoveries by followers desc (then PWL first)
@@ -182,7 +199,10 @@ def compute_weekly_stats(week: list[tuple[dt.datetime, dict]]) -> dict:
         ),
     )
 
-    # ── Status transitions: compare oldest vs newest only
+    # ── Status transitions: compare oldest vs newest only.
+    # Carry the full project dict (image, blurb, brand, etc.) so renderer
+    # can build detail cards. Tag with `_from` / `_to` so the renderer
+    # knows which transition this represents.
     for path, new in newest_by_path.items():
         old = oldest_by_path.get(path)
         if not old:
@@ -191,16 +211,11 @@ def compute_weekly_stats(week: list[tuple[dt.datetime, dict]]) -> dict:
         new_status = new.get("status")
         if old_status == new_status:
             continue
-        record = {
-            "pathname": path,
-            "title": new.get("title") or "?",
-            "from": old_status,
-            "to": new_status,
-            "url": new.get("url"),
-            "pledged_usd": _num(new.get("pledged_usd")),
-            "backers": new.get("backers"),
-            "followers": new.get("followers"),
-        }
+        record = dict(new)
+        record["_from"] = old_status
+        record["_to"] = new_status
+        # Coerce pledged_usd to float (KS API sometimes returns string)
+        record["pledged_usd"] = _num(new.get("pledged_usd"))
         if old_status == "prelaunch" and new_status == "live":
             out["newly_live"].append(record)
         elif new_status == "successful":
@@ -208,12 +223,13 @@ def compute_weekly_stats(week: list[tuple[dt.datetime, dict]]) -> dict:
         elif new_status == "failed":
             out["newly_failed"].append(record)
 
+    # Sort newly_live by followers (the prelaunch signal that mattered
+    # before they launched), newly_successful by USD raised.
     out["newly_live"].sort(key=lambda x: -(int(x.get("followers") or 0)))
     out["newly_successful"].sort(key=lambda x: -_num(x.get("pledged_usd")))
 
-    # ── Top gainers: weekly Δ that were already on weekly delta annotations
-    #    (computed by momentum.compute_weekly_deltas in run.py). We trust
-    #    those values if present; otherwise compute fresh here.
+    # ── Top gainers: weekly Δ in followers / pledged_usd vs start of
+    # window. Carry full project dict so renderer can show image/blurb.
     f_gainers: list[dict] = []
     u_gainers: list[dict] = []
     for path, new in newest_by_path.items():
@@ -229,24 +245,14 @@ def compute_weekly_stats(week: list[tuple[dt.datetime, dict]]) -> dict:
         except (TypeError, ValueError):
             du = 0.0
         if df > 0:
-            f_gainers.append({
-                "pathname": path,
-                "title": new.get("title") or "?",
-                "delta_followers": df,
-                "followers": new.get("followers"),
-                "url": new.get("url"),
-                "blurb_zh": new.get("blurb_zh"),
-            })
+            row = dict(new)
+            row["delta_followers"] = df
+            f_gainers.append(row)
         if du > 1.0:
-            u_gainers.append({
-                "pathname": path,
-                "title": new.get("title") or "?",
-                "delta_pledged_usd": du,
-                "pledged_usd": _num(new.get("pledged_usd")),
-                "backers": new.get("backers"),
-                "url": new.get("url"),
-                "blurb_zh": new.get("blurb_zh"),
-            })
+            row = dict(new)
+            row["delta_pledged_usd"] = du
+            row["pledged_usd"] = _num(new.get("pledged_usd"))
+            u_gainers.append(row)
     f_gainers.sort(key=lambda x: -x["delta_followers"])
     u_gainers.sort(key=lambda x: -x["delta_pledged_usd"])
     out["top_follower_gainers"] = f_gainers[:5]
@@ -286,79 +292,234 @@ def build_html(stats: dict) -> tuple[str, str]:
         f"+{len(stats.get('newly_successful', []))} 成功"
     )
 
-    def _proj_row(p: dict, *, right_label: str, right_value: str) -> str:
+    hl_map = _load_highlights_zh()
+
+    def _detail_card(
+        p: dict, *, rank: int, big_value: str, big_label: str,
+        big_color: str = INK, subtitle: str = "",
+    ) -> str:
+        """Image + brand line + Chinese highlights + big metric.
+        Mirrors the daily edition's `_detail_card` so weekly reads like
+        a "longer-window edition" rather than a plaintext changelog.
+        """
+        image_url = p.get("image_url") or ""
+        title = _esc((p.get("title") or "(untitled)")[:80])
+        blurb_zh = _esc(p.get("blurb_zh") or "")
+        url = _esc(p.get("url") or "#")
+        brand = _esc(
+            p.get("matched_brand_zh") or p.get("matched_brand")
+            or p.get("creator_name") or ""
+        )
+        country = _esc(p.get("country") or "")
+        star = (
+            f'<span style="display:inline-block;background:{RED};color:{PAPER};'
+            f'font-family:{SANS};font-size:9px;font-weight:700;letter-spacing:.2em;'
+            f'text-transform:uppercase;padding:2px 6px;margin-right:6px;'
+            f'vertical-align:2px">✦ KS PICK</span>'
+        ) if p.get("project_we_love") else ""
+
+        # Curated 4-bullet highlights from data/highlights_zh.json keyed by
+        # pathname — same source the daily edition uses.
+        highlights = hl_map.get(p.get("pathname")) or []
+        if not highlights and p.get("blurb"):
+            highlights = [s.strip() for s in p["blurb"].split("|") if s.strip()][:4]
+        bullets = "".join(
+            f"""<li style="margin:6px 0;font-family:{BODY};font-size:13.5px;
+                line-height:1.5;color:{INK};list-style:none;padding-left:18px;
+                position:relative">
+              <span style="position:absolute;left:0;color:{RED};font-weight:900">▸</span>
+              {_esc(h)}</li>"""
+            for h in highlights[:4]
+        )
+
+        img_block = (
+            f'<img src="{image_url}" width="240" height="180" '
+            f'style="display:block;width:240px;height:180px;object-fit:contain;'
+            f'background:{PAPER};border:1px solid {INK}" alt=""/>'
+            if image_url else
+            f'<div style="width:240px;height:180px;background:{MUTED};'
+            f'border:1px solid {INK}"></div>'
+        )
+
+        subtitle_chip = (
+            f'<div style="font-family:{MONO};font-size:10px;font-weight:700;'
+            f'letter-spacing:.15em;color:{N500};text-transform:uppercase;'
+            f'margin-bottom:6px">{subtitle}</div>'
+            if subtitle else ""
+        )
+
+        return f'''
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0"
+               style="width:100%;margin:18px 0;border-top:1px solid {INK};
+                      border-collapse:collapse">
+          <tr>
+            <td style="padding:18px 0 0;width:240px;vertical-align:top">
+              {img_block}
+              <div style="text-align:center;margin-top:6px;font-family:{SERIF};
+                          font-size:24px;font-weight:900;color:{INK};letter-spacing:-.5px">
+                No. {rank:02d}</div>
+            </td>
+            <td style="padding:18px 0 0 18px;vertical-align:top">
+              <div style="font-family:{MONO};font-size:10px;font-weight:700;color:{N500};
+                   letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px">
+                {star}{brand}{' · ' + country if brand and country else country}</div>
+              {subtitle_chip}
+              <a href="{url}" style="text-decoration:none;color:{INK};
+                 font-family:{SERIF};font-size:18px;font-weight:700;line-height:1.2;
+                 letter-spacing:-.3px;display:block">{title}</a>
+              <div style="margin-top:6px;font-family:{BODY};font-style:italic;
+                   font-size:13px;color:{N700};line-height:1.4">{blurb_zh}</div>
+              <ul style="list-style:none;padding:0;margin:10px 0 0">{bullets}</ul>
+              <div style="margin-top:10px">
+                <span style="font-family:{MONO};font-size:24px;font-weight:700;
+                      color:{big_color};letter-spacing:-.3px">{big_value}</span>
+                <span style="margin-left:8px;font-family:{SANS};font-size:9px;
+                      font-weight:700;letter-spacing:.2em;color:{N500};
+                      text-transform:uppercase">{big_label}</span>
+              </div>
+            </td>
+          </tr>
+        </table>'''
+
+    def _compact_row(p: dict, *, rank: int, right_label: str, right_value: str) -> str:
+        """Compact text row for rank 4+ items — no image, just title +
+        Chinese blurb + metric. Saves vertical space."""
         title = _esc((p.get("title") or "?")[:60])
-        blurb = _esc(p.get("blurb_zh") or "")[:50]
-        star = "✦ " if p.get("project_we_love") else ""
+        blurb = _esc((p.get("blurb_zh") or "")[:60])
+        star = (f'<span style="color:{RED};margin-right:5px">✦</span>'
+                if p.get("project_we_love") else "")
         url = _esc(p.get("url") or "#")
         return f"""
-        <tr><td style="padding:10px 0;border-bottom:1px solid #E5E5E0">
-          <a href="{url}" style="color:{INK};text-decoration:none">
-            <div style="font-family:{SERIF};font-weight:700;font-size:18px;color:{INK};line-height:1.25">{star}{title}</div>
-            <div style="font-family:{BODY};font-style:italic;font-size:13px;color:{N700};line-height:1.4;margin-top:3px">{blurb}</div>
-            <div style="font-family:{SANS};font-size:11px;color:{N400};margin-top:4px;letter-spacing:.05em">
-              <span style="color:{RED};font-weight:700">{right_value}</span> · {right_label}
-            </div>
-          </a>
+        <tr><td style="padding:11px 0;border-bottom:1px solid {MUTED}">
+          <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="width:100%">
+            <tr>
+              <td style="width:40px;vertical-align:top;font-family:{SERIF};
+                  font-size:22px;font-weight:900;color:{N400};line-height:1;
+                  letter-spacing:-.5px">{rank:02d}</td>
+              <td style="vertical-align:top">
+                <a href="{url}" style="text-decoration:none;color:{INK};
+                   font-family:{SERIF};font-size:16px;font-weight:700;line-height:1.25">{star}{title}</a>
+                <div style="font-family:{BODY};font-style:italic;font-size:12px;
+                     color:{N700};line-height:1.4;margin-top:2px">{blurb}</div>
+              </td>
+              <td style="text-align:right;vertical-align:top;font-family:{MONO};
+                  font-size:14px;font-weight:700;color:{RED};white-space:nowrap;padding-left:12px">
+                {right_value}
+                <div style="font-family:{SANS};font-size:9px;color:{N500};
+                     letter-spacing:.15em;margin-top:2px;text-transform:uppercase">{right_label}</div>
+              </td>
+            </tr>
+          </table>
         </td></tr>"""
 
-    def _section(title_en: str, title_zh: str, dek: str, rows_html: str) -> str:
-        if not rows_html:
+    def _section(title_en: str, title_zh: str, dek: str, body_html: str) -> str:
+        """Section wrapper — only renders if there's a body."""
+        if not body_html.strip():
             return ""
         return f"""
-        <div style="margin-top:36px">
-          <div style="font-family:{MONO};font-size:10px;font-weight:700;letter-spacing:.22em;color:{RED};text-transform:uppercase;margin-bottom:4px">{title_en}</div>
-          <h2 style="font-family:{SERIF};font-weight:900;font-size:32px;color:{INK};line-height:1;margin:0 0 6px;letter-spacing:-.6px">{title_zh}</h2>
-          <div style="font-family:{BODY};font-style:italic;font-size:13px;color:{N700};margin-bottom:14px">{_esc(dek)}</div>
-          <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="width:100%;border-top:2px solid {INK};border-collapse:collapse">
-            <tbody>{rows_html}</tbody>
-          </table>
+        <div style="margin-top:48px">
+          <div style="font-family:{MONO};font-size:10px;font-weight:700;
+               letter-spacing:.22em;color:{RED};text-transform:uppercase;
+               margin-bottom:4px">{title_en}</div>
+          <h2 style="font-family:{SERIF};font-weight:900;font-size:36px;
+              color:{INK};line-height:1;margin:0 0 6px;letter-spacing:-.8px">{title_zh}</h2>
+          <div style="font-family:{BODY};font-style:italic;font-size:13px;
+               color:{N700};margin-bottom:14px">{_esc(dek)}</div>
+          {body_html}
         </div>"""
 
-    # New in discovery
-    new_rows = "".join(
-        _proj_row(
-            p,
-            right_label=f"first seen {p.get('first_seen','?')}",
-            right_value=f"{fmt_int(p.get('followers') or 0)} watchers",
+    def _build_mixed_section(
+        items: list[dict],
+        *,
+        n_detail: int = 3,
+        n_compact: int = 5,
+        big_value_fn=None,
+        big_label_fn=None,
+        right_value_fn=None,
+        right_label_fn=None,
+        subtitle_fn=None,
+    ) -> str:
+        """Top N as detail cards + next M as compact rows + table wrapper.
+        Empty → returns empty string so the section vanishes."""
+        if not items:
+            return ""
+        detail_items = items[:n_detail]
+        compact_items = items[n_detail:n_detail + n_compact]
+        detail_html = "".join(
+            _detail_card(
+                p, rank=i + 1,
+                big_value=big_value_fn(p) if big_value_fn else "",
+                big_label=big_label_fn(p) if big_label_fn else "",
+                subtitle=subtitle_fn(p) if subtitle_fn else "",
+            )
+            for i, p in enumerate(detail_items)
         )
-        for p in stats.get("new_in_discovery", [])[:10]
+        compact_html = ""
+        if compact_items:
+            rows = "".join(
+                _compact_row(
+                    p, rank=n_detail + i + 1,
+                    right_value=right_value_fn(p) if right_value_fn else "",
+                    right_label=right_label_fn(p) if right_label_fn else "",
+                )
+                for i, p in enumerate(compact_items)
+            )
+            compact_html = f"""
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0"
+                   style="width:100%;margin-top:18px;border-top:2px solid {INK};
+                          border-collapse:collapse">
+              <tbody>{rows}</tbody>
+            </table>"""
+        return detail_html + compact_html
+
+    # ── Section 1: New in discovery (detail Top 3 + compact next 5)
+    new_html = _build_mixed_section(
+        stats.get("new_in_discovery", []),
+        big_value_fn=lambda p: fmt_int(p.get("followers") or 0),
+        big_label_fn=lambda _p: "WATCHERS · 关注",
+        right_value_fn=lambda p: f"{fmt_int(p.get('followers') or 0)} 关注",
+        right_label_fn=lambda p: f"首见 {p.get('first_seen','?')}",
+        subtitle_fn=lambda p: f"首见 {p.get('first_seen','?')} · {p.get('status','?')}",
     )
-    # Newly live
-    live_rows = "".join(
-        _proj_row(
-            p,
-            right_label=f"{p.get('from','?')} → live · {fmt_int(p.get('backers') or 0)} backers",
-            right_value=fmt_usd(p.get("pledged_usd") or 0),
-        )
-        for p in stats.get("newly_live", [])[:10]
+    # ── Section 2: Newly live (detail Top 3 + compact next 3)
+    live_html = _build_mixed_section(
+        stats.get("newly_live", []),
+        n_detail=3, n_compact=4,
+        big_value_fn=lambda p: fmt_usd(p.get("pledged_usd") or 0),
+        big_label_fn=lambda p: f"{fmt_int(p.get('backers') or 0)} BACKERS",
+        right_value_fn=lambda p: fmt_usd(p.get("pledged_usd") or 0),
+        right_label_fn=lambda p: f"{fmt_int(p.get('backers') or 0)} backers",
+        subtitle_fn=lambda _p: "PRELAUNCH → LIVE",
     )
-    # Newly successful
-    success_rows = "".join(
-        _proj_row(
-            p,
-            right_label=f"funded · {fmt_int(p.get('backers') or 0)} backers",
-            right_value=fmt_usd(p.get("pledged_usd") or 0),
-        )
-        for p in stats.get("newly_successful", [])[:10]
+    # ── Section 3: Newly successful
+    success_html = _build_mixed_section(
+        stats.get("newly_successful", []),
+        n_detail=3, n_compact=4,
+        big_value_fn=lambda p: fmt_usd(p.get("pledged_usd") or 0),
+        big_label_fn=lambda p: f"{fmt_int(p.get('backers') or 0)} BACKERS",
+        right_value_fn=lambda p: fmt_usd(p.get("pledged_usd") or 0),
+        right_label_fn=lambda p: f"{fmt_int(p.get('backers') or 0)} backers",
+        subtitle_fn=lambda _p: "FUNDED ✓",
     )
-    # Top follower gainers
-    f_rows = "".join(
-        _proj_row(
-            p,
-            right_label=f"now {fmt_int(p.get('followers') or 0)} total",
-            right_value=f"+{fmt_int(p.get('delta_followers'))} this week",
-        )
-        for p in stats.get("top_follower_gainers", [])[:5]
+    # ── Section 4: Top follower gainers (detail Top 3 + compact next 2)
+    f_html = _build_mixed_section(
+        stats.get("top_follower_gainers", []),
+        n_detail=3, n_compact=2,
+        big_value_fn=lambda p: f"+{fmt_int(p.get('delta_followers'))}",
+        big_label_fn=lambda p: f"周净增 · NOW {fmt_int(p.get('followers') or 0)}",
+        right_value_fn=lambda p: f"+{fmt_int(p.get('delta_followers'))}",
+        right_label_fn=lambda p: f"now {fmt_int(p.get('followers') or 0)}",
+        subtitle_fn=lambda _p: "TOP FOLLOWER GAINER",
     )
-    # Top USD gainers
-    u_rows = "".join(
-        _proj_row(
-            p,
-            right_label=f"now {fmt_usd(p.get('pledged_usd') or 0)} total",
-            right_value=f"+{fmt_usd(p.get('delta_pledged_usd') or 0)} this week",
-        )
-        for p in stats.get("top_usd_gainers", [])[:5]
+    # ── Section 5: Top USD gainers
+    u_html = _build_mixed_section(
+        stats.get("top_usd_gainers", []),
+        n_detail=3, n_compact=2,
+        big_value_fn=lambda p: f"+{fmt_usd(p.get('delta_pledged_usd') or 0)}",
+        big_label_fn=lambda p: f"周净增 · NOW {fmt_usd(p.get('pledged_usd') or 0)}",
+        right_value_fn=lambda p: f"+{fmt_usd(p.get('delta_pledged_usd') or 0)}",
+        right_label_fn=lambda p: f"now {fmt_usd(p.get('pledged_usd') or 0)}",
+        subtitle_fn=lambda _p: "TOP USD GAINER",
     )
 
     kpi = stats.get("kpi") or {}
@@ -418,35 +579,35 @@ Week {week_no} · {week_label} · {len(stats.get('new_in_discovery', []))} new p
         "★ NEW IN DISCOVERY · 本周新发现",
         "本周新发现",
         f"过去 7 天首次出现在追踪列表里的 {len(stats.get('new_in_discovery', []))} 个项目（按 watchers 排序）",
-        new_rows,
+        new_html,
       )}
 
       {_section(
         "🔴 NEWLY LIVE · 本周新上线",
         "本周新上线",
         f"prelaunch → live · {len(stats.get('newly_live', []))} 项过去 7 天进入筹款期",
-        live_rows,
+        live_html,
       )}
 
       {_section(
         "✅ NEWLY FUNDED · 本周筹款成功",
         "本周筹款成功",
         f"{len(stats.get('newly_successful', []))} 项 live → successful · 已达目标金额",
-        success_rows,
+        success_html,
       )}
 
       {_section(
         "📈 TOP FOLLOWER GAINERS · 本周关注涨幅榜",
         "本周关注涨幅",
         "按本周 watchers 净增排序 · prelaunch 项目最相关",
-        f_rows,
+        f_html,
       )}
 
       {_section(
         "💰 TOP USD GAINERS · 本周筹款涨幅榜",
         "本周筹款涨幅",
         "按本周已筹 USD 净增排序",
-        u_rows,
+        u_html,
       )}
 
     </div>
