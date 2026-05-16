@@ -51,6 +51,139 @@ def find_prev_snapshot() -> tuple[dict | None, dt.datetime | None]:
         return None, None
 
 
+def find_week_ago_snapshot() -> tuple[dict | None, dt.datetime | None]:
+    """Return the history snapshot closest to 7 days ago.
+
+    'Closest to' rather than 'exactly N back' because cron occasionally
+    skips a day (CF block, GH runner outage). We want the snapshot whose
+    timestamp is as close as possible to now-7d, not "the 7th most recent
+    file" which could be 9 days ago if 2 runs were skipped.
+
+    Returns (None, None) if there's no snapshot at least 5 days old —
+    weekly deltas need real distance from today to mean anything; less
+    than 5 days is just daily noise.
+    """
+    if not HISTORY.exists():
+        return None, None
+    snaps = sorted(HISTORY.glob("*.json"))
+    if not snaps:
+        return None, None
+    target = dt.datetime.now(dt.UTC) - dt.timedelta(days=7)
+    # Find snapshot whose timestamp is closest to target
+    best_path: Path | None = None
+    best_ts: dt.datetime | None = None
+    best_delta = dt.timedelta(days=365)  # arbitrary large
+    for p in snaps:
+        try:
+            ts = dt.datetime.strptime(p.stem, "%Y-%m-%dT%H-%M-%SZ").replace(
+                tzinfo=dt.UTC
+            )
+        except ValueError:
+            continue
+        delta = abs(ts - target)
+        if delta < best_delta:
+            best_delta = delta
+            best_path = p
+            best_ts = ts
+    if best_path is None:
+        return None, None
+    # Require at least 5 days of separation — anything less is "yesterday-
+    # ish" and gives no new signal beyond find_prev_snapshot().
+    age_days = (dt.datetime.now(dt.UTC) - best_ts).total_seconds() / 86400
+    if age_days < 5:
+        return None, None
+    try:
+        return json.loads(best_path.read_text(encoding="utf-8")), best_ts
+    except Exception:
+        return None, None
+
+
+def compute_weekly_deltas(rows: list[dict]) -> dict:
+    """Annotate rows with weekly_delta_* fields by comparing to a snapshot
+    ~7 days ago. Mirrors compute_deltas() but for the longer window.
+
+    Returns:
+        {
+          "ref_at": "2026-05-09T...",
+          "age_days": 7.04,
+          "top_weekly_followers": [(pathname, delta), ...],
+          "top_weekly_pledged":   [(pathname, delta), ...],
+        }
+
+    Fields added to each row (when ref data is available for that project):
+        weekly_delta_followers     int
+        weekly_delta_backers       int
+        weekly_delta_pledged_usd   float
+    """
+    ref, ref_ts = find_week_ago_snapshot()
+    summary: dict = {
+        "ref_at": None,
+        "age_days": None,
+        "top_weekly_followers": [],
+        "top_weekly_pledged": [],
+    }
+    if ref is None:
+        return summary
+    summary["ref_at"] = ref.get("generated_at")
+    if ref_ts:
+        summary["age_days"] = round(
+            (dt.datetime.now(dt.UTC) - ref_ts).total_seconds() / 86400, 2
+        )
+
+    ref_by_path = {
+        p["pathname"]: p
+        for p in ref.get("projects", [])
+        if p.get("pathname")
+    }
+
+    f_movers: list[tuple[str, int]] = []
+    p_movers: list[tuple[str, float]] = []
+
+    for r in rows:
+        path = r.get("pathname")
+        old = ref_by_path.get(path)
+        if old is None:
+            continue
+
+        # Follower weekly delta
+        try:
+            cf = r.get("followers")
+            of = old.get("followers")
+            if cf is not None and of is not None:
+                d = int(cf) - int(of)
+                r["weekly_delta_followers"] = d
+                if d > 0:
+                    f_movers.append((path, d))
+        except (TypeError, ValueError):
+            pass
+
+        # Backer weekly delta
+        try:
+            cb = r.get("backers")
+            ob = old.get("backers")
+            if cb is not None and ob is not None:
+                r["weekly_delta_backers"] = int(cb) - int(ob)
+        except (TypeError, ValueError):
+            pass
+
+        # Pledged weekly delta
+        try:
+            cp = float(r.get("pledged_usd") or 0)
+            op = float(old.get("pledged_usd") or 0)
+            d = cp - op
+            r["weekly_delta_pledged_usd"] = d
+            if d > 1.0:
+                p_movers.append((path, d))
+        except (TypeError, ValueError):
+            pass
+
+    f_movers.sort(key=lambda x: -x[1])
+    p_movers.sort(key=lambda x: -x[1])
+    summary["top_weekly_followers"] = f_movers[:10]
+    summary["top_weekly_pledged"] = p_movers[:10]
+    return summary
+
+
 def compute_deltas(rows: list[dict]) -> dict:
     """Mutate `rows` in-place to add delta_* fields. Returns top-movers summary.
 

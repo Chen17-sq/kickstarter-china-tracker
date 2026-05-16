@@ -36,7 +36,7 @@ from .discover import DiscoverHit, crawl_discover
 from .email_notify import build_html as build_email_html
 from .email_notify import write_archive as write_email_archive
 from .feed import write_feed
-from .momentum import compute_deltas
+from .momentum import compute_deltas, compute_weekly_deltas
 from .pdf import render_today as render_pdf_today
 from .project import fetch_pledge_minimums, fetch_watches_counts, slug_from_pathname
 from .report import REPORTS, make_report
@@ -251,6 +251,16 @@ def run() -> int:
         hrs = momentum_summary["delta_seconds"] / 3600
         n_with_delta = sum(1 for r in rows if "delta_pledged_usd" in r)
         print(f"  computed Δ vs snapshot {hrs:.1f}h ago for {n_with_delta} projects")
+
+    # Compute weekly Δ (7-day rolling window). Surfaces sustained growth
+    # vs daily noise. No-op until history is at least 5 days old.
+    weekly_summary = compute_weekly_deltas(rows)
+    if weekly_summary.get("age_days"):
+        n_weekly = sum(1 for r in rows if "weekly_delta_pledged_usd" in r)
+        print(
+            f"  computed weekly Δ vs snapshot {weekly_summary['age_days']}d ago "
+            f"for {n_weekly} projects"
+        )
 
     finished = now_iso()
     out = {

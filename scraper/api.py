@@ -86,6 +86,12 @@ PUBLIC_PROJECT_FIELDS = [
     "delta_followers",
     "delta_backers",
     "delta_pledged_usd",
+    # 7-day rolling deltas — sustained signal vs daily noise. Present
+    # only when history has at least 5 days of snapshots. Computed by
+    # momentum.compute_weekly_deltas.
+    "weekly_delta_followers",
+    "weekly_delta_backers",
+    "weekly_delta_pledged_usd",
     # Editorial annotation — present on sleeper picks only. Letting
     # API consumers filter for "today's sleeper picks" without re-running
     # the algorithm themselves.
