@@ -320,9 +320,9 @@ def call_deepseek(model: str, temperature: float, ctx: str, *, max_tokens: int =
         )
         r.raise_for_status()
     except httpx.HTTPStatusError as e:
-        raise SystemExit(f"DeepSeek API {e.response.status_code}: {e.response.text}")
+        raise SystemExit(f"DeepSeek API {e.response.status_code}: {e.response.text}") from e
     except httpx.HTTPError as e:
-        raise SystemExit(f"DeepSeek API network error: {e}")
+        raise SystemExit(f"DeepSeek API network error: {e}") from e
     j = r.json()
     msg = j["choices"][0]["message"]
     content = (msg.get("content") or "").strip()
@@ -350,6 +350,17 @@ def main(argv: list[str] | None = None) -> int:
         type=Path,
         default=None,
         help="Save the drafts to this markdown file (in addition to stdout)",
+    )
+    ap.add_argument(
+        "--json",
+        type=Path,
+        default=None,
+        dest="json_out",
+        help=(
+            "Save drafts as JSON for the email pipeline to consume. "
+            "Typical: --json data/.editor_drafts.json (gitignored). "
+            "Schema: {generated_at, model, drafts: [{index, temp, text, warnings}]}"
+        ),
     )
     ap.add_argument(
         "--dump-context",
@@ -410,8 +421,36 @@ def main(argv: list[str] | None = None) -> int:
             rel = out_path.relative_to(REPO_ROOT)
             print(f"\nSaved to {rel}")
         except ValueError:
-            # User pointed --out somewhere outside the repo — print absolute
             print(f"\nSaved to {out_path}")
+
+    if args.json_out:
+        # JSON output — consumed by scraper/email_notify.py to render the
+        # Beta editor's-note section at the bottom of the email + archive.
+        json_path = args.json_out.resolve()
+        json_path.parent.mkdir(parents=True, exist_ok=True)
+        payload = {
+            "generated_at": dt.datetime.now(dt.UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "model": args.model,
+            "context_chars": len(ctx),
+            "drafts": [
+                {
+                    "index": i,
+                    "temp": temp,
+                    "text": text,
+                    "reasoning_tokens": rt,
+                    "warnings": warns,
+                }
+                for i, (temp, text, rt, warns) in enumerate(drafts, 1)
+            ],
+        }
+        json_path.write_text(
+            json.dumps(payload, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+        try:
+            print(f"JSON saved to {json_path.relative_to(REPO_ROOT)}")
+        except ValueError:
+            print(f"JSON saved to {json_path}")
 
     return 0
 

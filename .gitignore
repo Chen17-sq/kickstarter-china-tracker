@@ -21,3 +21,4 @@ data/.scrape_health.json
 data/.anomalies.json
 data/.sleeper_streaks.json
 .deepseek_key
+data/.editor_drafts.json

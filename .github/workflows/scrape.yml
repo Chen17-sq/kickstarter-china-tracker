@@ -90,6 +90,27 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: python -m scraper.notify
 
+      - name: Draft editor's notes (Beta · optional)
+        # Generates 3 LLM-drafted candidate editor's notes from today's
+        # snapshot. Email step picks them up and renders inside a
+        # collapsible <details> "BETA" block at the bottom of the email
+        # + archived edition. Hidden by default — reader clicks to view.
+        # Skipped entirely if DEEPSEEK_API_KEY isn't set, so the rest of
+        # the cron continues to work exactly as before.
+        if: steps.dedupe.outputs.skip != 'true' && env.DEEPSEEK_API_KEY != ''
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          # `continue-on-error` style: even if the LLM API has a bad day,
+          # we don't want the daily email blocked. Worst case: no Beta
+          # section in today's email.
+          python3 scripts/draft_editor_note.py \
+            --json data/.editor_drafts.json \
+            --temps 0.7,0.85,0.95 \
+            --model deepseek-v4-pro \
+            || echo "Editor drafts step failed; continuing without Beta block"
+        continue-on-error: true
+
       - name: Email notify (optional)
         if: steps.dedupe.outputs.skip != 'true' && env.RESEND_API_KEY != '' && env.NOTIFY_EMAIL_TO != ''
         env:
