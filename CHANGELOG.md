@@ -1,67 +1,67 @@
 # Kickstarter China Tracker — diff
 
-## new (11)
-- **KairoGlo: The Perpetual 10" AI Frame | Frame Your Kairos** — Discovered (prelaunch, 0 followers)  
-  `/projects/kairoglo/kairoglo-the-perpetual-10-ai-frame-frame-your-kairos`
-- **The Community Microscope Kit: Budget-Friendly Build-It-Yours** — Discovered (prelaunch, 0 followers)  
-  `/projects/tangyuan1/the-community-microscope-kit-budget-friendly-build-it-yours`
-- **ViewX Liber 15.6" Glasses-Free Spatial AI 3D Display** — Discovered (prelaunch, 0 followers)  
-  `/projects/viewx/viewx-liber-glass-free-spatial-ai-3d-display`
-- **AIPAL DOCK:Meet Your World's 1st Proactive AI Desk Sidekick** — Discovered (prelaunch, 0 followers)  
-  `/projects/zeehoo/future-beyond-the-charging-revolution`
-- **Zensbuds AI: Real-Time Translation for Calls and Meetings** — Discovered (live, 0 followers)  
-  `/projects/zensbuds-ai/zensbuds-ai-ai-powered-earbuds-with-real-time-translation`
-- **The AI Smart Glasses Built for Cycling & Outdoor Adventures** — Discovered (prelaunch, 0 followers)  
-  `/projects/530191637/the-ai-smart-glasses-built-for-cycling-and-outdoor-adventures`
-- **ORBITRIX | A Watch That Redefines Orbital Timekeeping $199** — Discovered (prelaunch, 0 followers)  
-  `/projects/watchesdesign/orbitrix-a-watch-that-redefines-orbital-timekeeping-199`
-- **ORIONER TP01: Gr5 Titanium Capsule EDC Glow Pendant** — Discovered (prelaunch, 0 followers)  
-  `/projects/orionersx2/orioner-tp01-gr5-titanium-capsule-edc-glow-pendant`
-- **Vortex H1 : Smart Helmet with 4k Camera & Sensor Light** — Discovered (prelaunch, 0 followers)  
-  `/projects/vortexh1/vortex-h1-smart-helmet-with-4k-camera-and-scensing-light`
-- **Pocket G1 Coffee Grinder : One‑Click Fold, Grind Anywhere** — Discovered (prelaunch, 0 followers)  
-  `/projects/wonderfour/pocket-g1-coffee-grinder-oneclick-fold-grind-anywhere`
-- **SOFBUNNY : The First All-in-One Visual Ear Wax Removal Tool** — Discovered (prelaunch, 0 followers)  
-  `/projects/567439297/sofbunny-the-first-all-in-one-visual-ear-wax-removal-tool`
-
-## ended (12)
-- **E03 Pro: Floating RGB Bluetooth Speaker | IPX7 Waterproof** — No longer in discovery (likely ended)  
-  `/projects/tangyuan1/e03-pro-floating-rgb-bluetooth-speaker-ipx7-waterproof`
-- **The Transparent Crystal Rainbow Bezel Skeleton Chronograph** — No longer in discovery (likely ended)  
-  `/projects/bonestgattiwatches/crystal-and-rainbow-bezel-upgraded-skeleton-chronograph`
-- **VALIMOR: 4 Forged Gemstone Watches** — No longer in discovery (likely ended)  
-  `/projects/valimor/valimor-4-forged-gemstone-watches`
-- **A game watch that can football predict winning side** — No longer in discovery (likely ended)  
-  `/projects/luckyharveywatch/a-interactive-watch-for-predicting-top-tier-football-matches`
-- **The Chicago Movable Bridge Automaton Watch** — No longer in discovery (likely ended)  
-  `/projects/delconawatch/reinterpreting-the-chicago-movable-bridge-automaton-watch`
-- **XBAND: Smart Innovation, Timeless Elegance** — No longer in discovery (likely ended)  
-  `/projects/85272757/xband-smart-innovation-timeless-elegance`
-- **ZIMO1: The Breakthrough Interactive Light Field 3D Display** — No longer in discovery (likely ended)  
-  `/projects/zondision/zondision-m1-the-debut-interactive-glasses-free-3d-monitor`
-- **Sheyinn: Al Smart Photon Mask - Bring Salon Skincare Home** — No longer in discovery (likely ended)  
-  `/projects/sheyinn/sheyinn-c10-pro-worlds-first-ai-powered-home-beauty-mask`
-- **KEENMOW K1: Truly Hassle-Free 3D LiDAR-Vision Robot Mower** — No longer in discovery (likely ended)  
-  `/projects/keenmow-robot-mower/keenmow-k1-the-new-generation-of-3d-lidar-vision-robot-mower`
-- **Fabisense AI AIRBOT | Sleep & Safety Air Guardian** — No longer in discovery (likely ended)  
+## new (9)
+- **Domosoon: The Ultra-Light Semiconductor Cooling Vest** — Discovered (prelaunch, 0 followers)  
+  `/projects/260160255/domosoon-the-ultra-light-semiconductor-cooling-vest`
+- **POWRAIR UC-01 Wireless Ultrasonic Cutter with TFT & Cooling** — Discovered (prelaunch, 0 followers)  
+  `/projects/429272265/powrair-uc-01-wireless-ultrasonic-cutter-with-tft-and-cooling`
+- **WF04: Not Just a Waist Fan — A Wearable Cooling System** — Discovered (live, 0 followers)  
+  `/projects/aerixwork/wf04-not-just-a-waist-fan-a-wearable-cooling-system`
+- **Fabisense AI AIRBOT | Sleep & Safety Air Guardian** — Discovered (prelaunch, 0 followers)  
   `/projects/protmex-neptune/fabisense-ai-airbot-1st-ai-sleep-optimized-air-purifier`
-- **AEROGO | 80KM/H Dual-Brushless Customizable RC Hovercraft** — No longer in discovery (likely ended)  
-  `/projects/358527836/shifty-x-high-speed80km-h-dual-brushless-diy-rchovercraftt`
-- **Your Moka Pot is Fighting You. This Funnel Fights Back.** — No longer in discovery (likely ended)  
-  `/projects/118325534/your-moka-pot-is-fighting-you-this-funnel-fights-back`
+- **Fongdiver: The 550W Charging Hub with Smart Display** — Discovered (live, 0 followers)  
+  `/projects/1775280844/fongdiver-550w-charging-hub-with-smart-display`
+- **S86 Dual-Lens Thumb Camera – Capture Photos & Videos Easily** — Discovered (prelaunch, 0 followers)  
+  `/projects/kf20/s86-dual-lens-thumb-camera-capture-photos-and-videos-easily`
+- **Carbon-based Life Form Ti Alloy Foldable Nail Clipper** — Discovered (prelaunch, 0 followers)  
+  `/projects/liangyiding/carbon-based-life-form-ti-alloy-foldable-nail-clipper`
+- **Kitto: True AI Agent Toy & Robot** — Discovered (prelaunch, 0 followers)  
+  `/projects/kitto/kitto-true-ai-agent-toy`
+- **Izestee Pro:The World’s First Scenic Aeroponic Ecosystem** — Discovered (prelaunch, 0 followers)  
+  `/projects/1921554991/izestee-pro-the-worlds-first-scenic-aeroponic-ecosystem`
 
-## backers_delta (3)
-- **AEKE S1 Pro FULL-BODY AI HOME GYM** — +201 backers (658 → 859)  
+## ended (18)
+- **The AI Smart Glasses Built for Cycling & Outdoor Adventures** — No longer in discovery (likely ended)  
+  `/projects/530191637/the-ai-smart-glasses-built-for-cycling-and-outdoor-adventures`
+- **Chrono Tri-Core — Wandering Hour Mechanical Watch** — No longer in discovery (likely ended)  
+  `/projects/1535000764/chrono-tri-core-time-in-motion-shaped-by-structure`
+- **MakerPi Tiwrench: More Advanced Adjustable Wrench** — No longer in discovery (likely ended)  
+  `/projects/makerpihk/makerpi-tiwrench-better-adjustable-wrench`
+- **MINIX: USB-C Multiport SSD Storage Hub for MacBook Air/Pro** — No longer in discovery (likely ended)  
+  `/projects/minixssd/minix-ultra-portable-usb-c-and-ssd-storage-hub-for-macbook`
+- **Titaner Voyager: World's First Modular Titanium Luggage.** — No longer in discovery (likely ended)  
+  `/projects/titaner/titaner-voyager-worlds-first-modular-titanium-luggage`
+- **EWEADN ES68 Dawn SE - 32K Aluminum Magnetic Switch Keyboard** — No longer in discovery (likely ended)  
+  `/projects/eweadn/eweadn-es68-dawn-se-32k-aluminum-magnetic-switch-keyboard`
+- **WavKong V2700: World's 1st RPU-Powered Wi-Fi Router** — No longer in discovery (likely ended)  
+  `/projects/wavkong/wavkong-v2700-worlds-1st-rpu-powered-wi-fi-router`
+- **KairoGlo: The Perpetual 10" AI Frame | Frame Your Kairos** — No longer in discovery (likely ended)  
+  `/projects/kairoglo/kairoglo-the-perpetual-10-ai-frame-frame-your-kairos`
+- **MateTable DuoLite: World’s First Nested Dual-Folding Table** — No longer in discovery (likely ended)  
+  `/projects/serotoninoutdoors/matetable-duolite-worlds-first-nested-dual-folding-table`
+- **Sensereo: Smart Air Monitoring for Creative Spaces** — No longer in discovery (likely ended)  
+  `/projects/1941032835/airo-the-modular-air-monitor-designed-for-modern-living`
+- **KUT Lite: Ultrathin EDC Titanium Keychain Utility Tool** — No longer in discovery (likely ended)  
+  `/projects/ryfinedgearedc/kut-lite-ultrathin-minimalist-ti-keychain-utility-tool`
+- **Aura: E-Ink Tracker, Your Items, Your Identity** — No longer in discovery (likely ended)  
+  `/projects/1727471052/aura-e-ink-tracker-your-items-your-identity`
+- **Zensbuds AI: Real-Time Translation for Calls and Meetings** — No longer in discovery (likely ended)  
+  `/projects/zensbuds-ai/zensbuds-ai-ai-powered-earbuds-with-real-time-translation`
+- **Pocket G1 Coffee Grinder : One‑Click Fold, Grind Anywhere** — No longer in discovery (likely ended)  
+  `/projects/wonderfour/pocket-g1-coffee-grinder-oneclick-fold-grind-anywhere`
+- **ORBITRIX | A Watch That Redefines Orbital Timekeeping $199** — No longer in discovery (likely ended)  
+  `/projects/watchesdesign/orbitrix-a-watch-that-redefines-orbital-timekeeping-199`
+- **🎵OLLIE: A Designer Art Figure That Sounds Like a Gaming Rig** — No longer in discovery (likely ended)  
+  `/projects/shellaxy/shellaxy`
+- **ViewX Liber 15.6" Glasses-Free Spatial AI 3D Display** — No longer in discovery (likely ended)  
+  `/projects/viewx/viewx-liber-glass-free-spatial-ai-3d-display`
+- **Redefining Wandering Hour Watches by Angles** — No longer in discovery (likely ended)  
+  `/projects/angles/redefining-wandering-hour-watches-by-angles`
+
+## backers_delta (1)
+- **AEKE S1 Pro FULL-BODY AI HOME GYM** — +113 backers (859 → 972)  
   `/projects/aeke/aeke-s1-pro-full-body-ai-home-gym`
-- **Pongbot Aura: World's First Ultra-Light AI Multi-Sport Robot** — +227 backers (2029 → 2256)  
-  `/projects/pongbot/aura-the-worlds-first-ultra-light-ai-multi-sport-robot`
-- **Sleepal AI Lamp: Tracking and Improving Sleep, Naturally** — +125 backers (407 → 532)  
-  `/projects/sleepal/sleepal-ai-lamp-tracking-and-improving-sleep-naturally`
 
-## status_change (3)
-- **Padingcui: Your Lightweight Pocket Espresso Maker** — prelaunch → live  
-  `/projects/padingcui/padingcui-your-lightweight-pocket-espresso-maker`
-- **ScentPause: The Scent of Slowness, Shaping Your Moments** — prelaunch → live  
-  `/projects/libbymmmo/scentpause-the-scent-of-slowness-shaping-your-moments`
-- **The Frame: A Masterpiece of Sound & Design** — prelaunch → live  
-  `/projects/coelacanths/the-frame-a-masterpiece-of-sound-and-design`
+## status_change (1)
+- **ThermoShift: The Adaptive 7 in 1 Modular Sleeping Bag System** — prelaunch → live  
+  `/projects/travelbird/thermoshift-the-adaptive-7-in-1-modular-sleeping-bag-system`
