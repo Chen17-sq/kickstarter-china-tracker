@@ -26,6 +26,7 @@ from pathlib import Path
 from . import anomalies as _anomalies
 from . import brand_candidates as _brand_candidates
 from . import health
+from . import refresh as _refresh
 from .api import write_api
 from .atomic import write_json_atomic, write_text_atomic
 from .banner import write_banner
@@ -147,10 +148,12 @@ def run() -> int:
     hits = crawl_discover()
     print(f"  → {len(hits)} candidate projects")
 
-    # Discover catastrophe guard: with 14 seeds × 8 pages, a healthy crawl
-    # produces 600-700 candidates. If we got < 50, all-but-one seed likely
-    # got 403'd — refuse to proceed (don't overwrite good projects.json).
-    DISCOVER_FLOOR = 50
+    # Discover catastrophe guard. Threshold lowered to 25 (was 50) now
+    # that refresh.refresh_from_history() supplements yesterday's known
+    # projects via fat GraphQL — even a near-total discover failure can
+    # still produce a usable snapshot. Only abort when discover is so
+    # broken that we have no useful new-project signal at all.
+    DISCOVER_FLOOR = 25
     if len(hits) < DISCOVER_FLOOR:
         print(
             f"FATAL: only {len(hits)} candidates (floor={DISCOVER_FLOOR}). "
@@ -258,6 +261,40 @@ def run() -> int:
         ))
     matched = sum(1 for r in rows if r.get("blurb_zh"))
     print(f"  classified {len(rows)} as China-background ({matched} with curated zh blurb)")
+
+    # ── Refresh supplement: carry forward yesterday's known projects that
+    # discover MISSED today. This is the resilience win: if discover blocks
+    # 50% of seeds, refresh.refresh_from_history() pulls those known
+    # pathnames from yesterday's snapshot and updates them via fat GraphQL
+    # (watchesCount + state + backersCount + pledged_usd + percentFunded).
+    # The sanity gate's "project count dropped" threshold can no longer
+    # fire on partial discover failures — we always have yesterday's
+    # baseline as a safety net.
+    refresh_result = None
+    try:
+        # Open a fresh transport so refresh doesn't reuse a possibly-tainted
+        # session from the discover crawl. (ks_transport is already closed
+        # above in the finally block.)
+        refresh_result = _refresh.refresh_from_history(verbose=True)
+    except Exception as e:
+        print(f"  refresh supplement skipped: {e}")
+    if refresh_result is not None:
+        refreshed_projects, _refresh_summary = refresh_result
+        existing_paths = {r.get("pathname") for r in rows}
+        supplement = []
+        for rp in refreshed_projects:
+            p = rp.get("pathname")
+            if not p or p in existing_paths:
+                continue  # already in today's discover output — skip
+            # Yesterday knew this project, today's discover missed it.
+            # Carry yesterday's record forward with refreshed dynamic fields.
+            supplement.append(rp)
+        if supplement:
+            rows.extend(supplement)
+            print(
+                f"  refresh: supplemented {len(supplement)} yesterday-known "
+                f"projects that today's discover missed"
+            )
 
     # Auto-translate any rows still missing blurb_zh (no-op if no API key).
     # Mutates rows in-place to add blurb_zh; updates data/blurbs_zh.json.
