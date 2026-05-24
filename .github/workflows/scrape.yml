@@ -43,7 +43,7 @@ jobs:
             echo "→ no snapshot yet for ${today_utc} — proceeding"
           fi
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         if: steps.dedupe.outputs.skip != 'true'
         with:
           python-version: "3.12"
