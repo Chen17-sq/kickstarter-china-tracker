@@ -34,14 +34,12 @@ History of how this evolved:
 from __future__ import annotations
 
 import json
-import random
 import re
-import time
 from typing import Optional
 
 from curl_cffi import requests as cc_requests
 
-from . import health
+from . import backoff, health, session_state
 from .http import (
     DEFAULT_COOKIES,
     IMPERSONATE_ROTATION,
@@ -193,46 +191,99 @@ class _Transport:
 def _try_curl_cffi_seed(
     label: str, verbose: bool
 ) -> tuple[cc_requests.Session, str] | None:
-    """Try every TLS impersonation in rotation; return (client, csrf) or None."""
-    for attempt in range(SEED_MAX_ATTEMPTS):
-        impersonate = IMPERSONATE_ROTATION[attempt % len(IMPERSONATE_ROTATION)]
+    """Try every TLS impersonation in rotation; return (client, csrf) or None.
+
+    Improvements over the naïve loop:
+      - Reuses cookies from session_state (cf_clearance et al.) — turns
+        "fresh stranger" into "returning user" in CF's eyes
+      - Jittered exponential backoff between attempts via Backoff (no
+        more "all 4 attempts in 30 seconds" pattern)
+      - Persists earned cookies back to session_state on success
+    """
+    # Pull cached cookies — if we have a fresh cf_clearance, attempt 1
+    # is dramatically more likely to succeed.
+    cached_cookies = session_state.get_cookies()
+    cached_ua = session_state.get_ua()
+
+    bo = backoff.Backoff(
+        name=f"{label}_seed",
+        max_attempts=SEED_MAX_ATTEMPTS,
+        base_seconds=3.0,
+        verbose=verbose,
+    )
+    attempt_idx = 0
+    while bo.can_retry():
+        impersonate = IMPERSONATE_ROTATION[attempt_idx % len(IMPERSONATE_ROTATION)]
         client = cc_requests.Session(impersonate=impersonate, timeout=30)
         # Route through KS_PROXY if set (random pick per attempt — so different
         # retries may hit different proxy IPs, which helps if one is degraded).
         px = curl_cffi_proxies(pick_proxy())
         if px:
             client.proxies = px
+        # Seed default cookies first, then layer cached CF cookies on top
         for k, v in DEFAULT_COOKIES.items():
             client.cookies.set(k, v)
+        for k, v in cached_cookies.items():
+            client.cookies.set(k, v)
+        headers = {"Referer": "https://www.kickstarter.com/"}
+        if cached_ua and cached_ua.startswith("Mozilla"):
+            # If we have a cached UA matching previous cookies, reuse it —
+            # CF correlates UA+cookies and flags mismatch.
+            headers["User-Agent"] = cached_ua
         try:
-            r = client.get(SEED_URL, headers={"Referer": "https://www.kickstarter.com/"})
+            r = client.get(SEED_URL, headers=headers)
         except Exception as e:
             if verbose:
-                print(f"  {label} seed attempt {attempt+1} ({impersonate}): exception {e}")
-            time.sleep(1.5 + attempt + random.random())
+                print(f"  {label} seed attempt {attempt_idx+1} ({impersonate}): exception {e}")
+            bo.sleep_and_retry()
+            attempt_idx += 1
             continue
         if r.status_code == 200:
             m = RE_CSRF.search(r.text)
             if m:
+                # Persist whatever fresh cookies KS just gave us — next
+                # run will start from a warm state.
+                session_state.update_cookies(client)
+                session_state.mark_warmed()
                 return client, m.group(1)
             elif verbose:
-                print(f"  {label} seed attempt {attempt+1} ({impersonate}): 200 but no CSRF token")
+                print(f"  {label} seed attempt {attempt_idx+1} ({impersonate}): 200 but no CSRF token")
         elif verbose:
-            print(f"  {label} seed attempt {attempt+1} ({impersonate}): status {r.status_code}")
-        time.sleep(2 + attempt + random.random() * 1.5)
+            print(f"  {label} seed attempt {attempt_idx+1} ({impersonate}): status {r.status_code}")
+        bo.sleep_and_retry()
+        attempt_idx += 1
     return None
 
 
 def _open_playwright_transport(label: str, verbose: bool) -> _Transport | None:
-    """Spin up sync Playwright, seed CSRF, return a Transport that POSTs via
-    the same browser context. The whole CF-acceptable fingerprint is reused.
+    """Spin up sync Playwright (or patchright if available — drop-in better
+    CDP stealth), seed CSRF, return a Transport that POSTs via the same
+    browser context. The whole CF-acceptable fingerprint is reused.
+
+    Patchright is patchright-python: a fork of Playwright that patches
+    the Runtime.enable + Console.enable CDP leaks at binary level (the
+    fingerprints CF uses to detect Playwright in 2026). Drop-in
+    compatible: same import path, same API. If patchright isn't
+    installed, we silently fall through to vanilla playwright.
     """
+    sync_playwright = None
+    impl_name = "playwright"
+    # Prefer patchright if installed — same API, harder to fingerprint
     try:
-        from playwright.sync_api import sync_playwright
+        from patchright.sync_api import sync_playwright as _spw
+        sync_playwright = _spw
+        impl_name = "patchright"
     except ImportError:
-        if verbose:
-            print("  ! Playwright not installed; cannot fall back")
-        return None
+        try:
+            from playwright.sync_api import sync_playwright as _spw
+            sync_playwright = _spw
+        except ImportError:
+            if verbose:
+                print("  ! Neither patchright nor playwright installed; cannot fall back")
+            return None
+
+    if verbose:
+        print(f"  {label} using {impl_name} for headless browser")
 
     pw = None
     browser = None
@@ -244,12 +295,41 @@ def _open_playwright_transport(label: str, verbose: bool) -> _Transport | None:
         if pxy:
             launch_kwargs["proxy"] = pxy
         browser = pw.chromium.launch(**launch_kwargs)
+        # Seed context with cached cookies from previous run if we have
+        # them — CF's "is this a returning user" signal is gold.
+        cached_cookies = session_state.get_cookies()
+        cookie_records: list[dict] = []
+        for name, value in cached_cookies.items():
+            cookie_records.append({
+                "name": name,
+                "value": value,
+                "domain": ".kickstarter.com",
+                "path": "/",
+            })
         ctx = browser.new_context(
             user_agent=PLAYWRIGHT_UA,
             locale="en-US",
             viewport={"width": 1280, "height": 800},
         )
+        if cookie_records:
+            try:
+                ctx.add_cookies(cookie_records)
+                if verbose:
+                    print(f"  {label} seeded {len(cookie_records)} cached cookies into Playwright ctx")
+            except Exception as e:
+                # Bad cached cookie — discard, KS will re-issue
+                if verbose:
+                    print(f"  ! cached cookies rejected ({e}); proceeding fresh")
         page = ctx.new_page()
+        # Warmup: GET homepage first (jittered) before the data-bearing URL.
+        # This matches what a human would do — land on '/' then drill into a
+        # discover page. Skipping warmup is the strongest "I'm a bot" signal.
+        try:
+            page.goto("https://www.kickstarter.com/", wait_until="domcontentloaded", timeout=30_000)
+            page.wait_for_timeout(int(backoff.warmup_pause(2.0, 5.0) * 1000))
+        except Exception as e:
+            if verbose:
+                print(f"  ! warmup GET failed ({e}); proceeding to seed URL")
         page.goto(SEED_URL, wait_until="domcontentloaded", timeout=30_000)
         # Give Cloudflare's interactive challenge a beat to clear
         page.wait_for_timeout(800)
@@ -268,6 +348,16 @@ def _open_playwright_transport(label: str, verbose: bool) -> _Transport | None:
                 f"  {label} ✅ seeded via Playwright "
                 f"(csrf len={len(csrf)}, {n_cookies} cookies)"
             )
+        # Persist fresh cookies back to disk for next run
+        try:
+            fresh = {c["name"]: c["value"] for c in ctx.cookies()
+                     if c.get("name") in session_state.PRESERVE_COOKIE_NAMES}
+            if fresh:
+                session_state.update_cookies(fresh)
+                session_state.set_ua(PLAYWRIGHT_UA)
+                session_state.mark_warmed()
+        except Exception:
+            pass
         return _Transport.from_playwright(pw, browser, ctx, page, csrf)
     except Exception as e:
         if verbose:
@@ -349,6 +439,11 @@ def fetch_watches_counts(
     try:
         # Chunked batch GraphQL query, one round trip per ~50 slugs.
         for i in range(0, len(slugs), CHUNK_SIZE):
+            # Jittered pause between chunks — fixed delays are a
+            # fingerprint, "1.0s between every chunk" is bot-shaped.
+            # Skip on first chunk (no prior request to be paced from).
+            if i > 0:
+                backoff.chunk_pause(1.0, 3.5)
             chunk = slugs[i : i + CHUNK_SIZE]
             # Build aliased query: p0: project(slug: $s0) { watchesCount } …
             # Use variables (not interpolated strings) — safer + cacheable.
@@ -419,6 +514,9 @@ def fetch_pledge_minimums(
 
     try:
         for i in range(0, len(slugs), PLEDGE_CHUNK_SIZE):
+            # Jittered pause between chunks (same rationale as watchesCount)
+            if i > 0:
+                backoff.chunk_pause(1.0, 3.5)
             chunk = slugs[i : i + PLEDGE_CHUNK_SIZE]
             var_decls = ", ".join(f"$s{j}: String!" for j in range(len(chunk)))
             fields = "\n  ".join(

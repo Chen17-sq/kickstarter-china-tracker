@@ -77,9 +77,7 @@ def _render_emergency_banner(curr: dict) -> str:
     if not info:
         return ""
     refreshed = info.get("projects_refreshed", 0)
-    carried = info.get("projects_carried_over", 0)
     state_changes = info.get("state_changes_detected", 0)
-    yesterday_at = info.get("yesterday_snapshot", "?")
     return f'''
         <!-- Emergency refresh banner — KS rate-limited today, this is a
              best-effort refresh from yesterday's catalog -->

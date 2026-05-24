@@ -57,7 +57,26 @@ jobs:
 
       - name: Install Chromium for PDF render
         if: steps.dedupe.outputs.skip != 'true'
-        run: python -m playwright install --with-deps chromium
+        # patchright ships its own Chromium binary download — we run BOTH
+        # installers because scraper code prefers patchright for KS calls
+        # (better CDP stealth) while pdf.py still uses vanilla playwright
+        # for rendering. Both share Playwright's browser cache so installing
+        # patchright Chromium is essentially free incremental work.
+        run: |
+          python -m playwright install --with-deps chromium
+          python -m patchright install chromium || echo "patchright install skipped"
+
+      # Restore CF session cookies from previous run — the biggest single
+      # CF-pass-rate improvement (turns "fresh stranger from a flagged IP"
+      # into "returning user with valid cf_clearance").
+      - name: Restore session cookies cache
+        if: steps.dedupe.outputs.skip != 'true'
+        uses: actions/cache@v4
+        with:
+          path: .session_state.json
+          key: ks-session-${{ github.run_id }}
+          restore-keys: |
+            ks-session-
 
       - name: Run scraper
         if: steps.dedupe.outputs.skip != 'true'
