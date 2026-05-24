@@ -142,15 +142,30 @@ def open_nodriver_transport(
             print("  ! nodriver not installed; cannot use Tier 3 fallback")
         return None
 
+    # Route through KS_PROXY if configured — same plumbing as the other
+    # tiers, so a Webshare residential URL flips IPs everywhere at once.
+    from .http import pick_proxy
+    proxy_url = pick_proxy()
+
     async def _boot() -> NodriverTransport | None:
         try:
+            args = [
+                "--lang=en-US",
+                "--disable-blink-features=AutomationControlled",
+            ]
+            if proxy_url:
+                # Strip any embedded credentials — Chromium reads
+                # --proxy-server as URL only; auth is handled separately.
+                from urllib.parse import urlparse
+                p = urlparse(proxy_url)
+                clean = f"{p.scheme}://{p.hostname}:{p.port}" if p.hostname else proxy_url
+                args.append(f"--proxy-server={clean}")
+                if verbose:
+                    print(f"  nodriver routing through KS_PROXY ({p.hostname})")
             browser = await nd.start(
                 headless=True,
                 user_data_dir=None,  # ephemeral profile per run
-                browser_args=[
-                    "--lang=en-US",
-                    "--disable-blink-features=AutomationControlled",
-                ],
+                browser_args=args,
             )
         except Exception as e:
             if verbose:

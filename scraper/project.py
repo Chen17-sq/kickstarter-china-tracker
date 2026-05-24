@@ -380,30 +380,56 @@ def _open_playwright_transport(label: str, verbose: bool) -> _Transport | None:
         return None
 
 
+def _label_to_metric_path(label: str) -> str:
+    """Map a transport label ('watchesCount', 'pledge_min', ...) to the
+    coarser metric path tier_metrics uses ('watches', 'pledge', ...).
+    Unknown labels fall through unchanged."""
+    if "watch" in label.lower():
+        return "watches"
+    if "pledge" in label.lower():
+        return "pledge"
+    if "refresh" in label.lower():
+        return "refresh"
+    return label
+
+
 def _open_transport(label: str, verbose: bool = True) -> _Transport | None:
     """Try curl_cffi first (fast). If all rotations 403, fall back to a
     Playwright-end-to-end transport — same browser context handles both
-    the seed and the POSTs, so the TLS fingerprint stays consistent."""
-    cc = _try_curl_cffi_seed(label, verbose)
-    if cc is not None:
-        client, csrf = cc
-        return _Transport.from_curl_cffi(client, csrf)
-    if verbose:
-        print(f"  {label} curl_cffi seed failed; falling back to Playwright (full session)")
-    pw_transport = _open_playwright_transport(label, verbose)
-    if pw_transport is not None:
-        return pw_transport
+    the seed and the POSTs, so the TLS fingerprint stays consistent.
+
+    Adaptive: if tier_metrics has recent evidence that curl_cffi has
+    been failing for this path, skip straight to the recommended tier.
+    Saves ~3-8 seconds of pointless 403 retries when CF has clearly
+    fingerprinted curl_cffi for this fetch type."""
+    path = _label_to_metric_path(label)
+    rec = tier_metrics.recommended_tier(path)
+    skip_curl_cffi = rec in ("patchright", "playwright", "nodriver")
+    skip_playwright = rec == "nodriver"
+    if verbose and rec:
+        print(f"  {label} tier_metrics recommends {rec!r} (skipping degraded tiers)")
+
+    if not skip_curl_cffi:
+        cc = _try_curl_cffi_seed(label, verbose)
+        if cc is not None:
+            client, csrf = cc
+            return _Transport.from_curl_cffi(client, csrf)
+        if verbose:
+            print(f"  {label} curl_cffi seed failed; falling back to Playwright (full session)")
+
+    if not skip_playwright:
+        pw_transport = _open_playwright_transport(label, verbose)
+        if pw_transport is not None:
+            return pw_transport
+        if verbose:
+            print(f"  {label} Playwright also failed; attempting nodriver (Tier 3)")
+
     # Tier 3: nodriver (raw CDP, harder to fingerprint than Playwright).
-    # Only triggers when both curl_cffi AND patchright/playwright failed.
     # Returns None if nodriver isn't installed — caller falls through.
-    if verbose:
-        print(f"  {label} Playwright also failed; attempting nodriver (Tier 3)")
     try:
         from .nodriver_transport import open_nodriver_transport
         nd = open_nodriver_transport(label, verbose=verbose)
         if nd is not None:
-            # NodriverTransport has matching post_graphql/close/mode/csrf
-            # interface — caller treats it like any _Transport instance.
             return nd
     except Exception as e:
         if verbose:
