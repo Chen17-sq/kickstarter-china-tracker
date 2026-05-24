@@ -38,7 +38,12 @@ from .email_notify import write_archive as write_email_archive
 from .feed import write_feed
 from .momentum import compute_deltas, compute_weekly_deltas
 from .pdf import render_today as render_pdf_today
-from .project import fetch_pledge_minimums, fetch_watches_counts, slug_from_pathname
+from .project import (
+    fetch_pledge_minimums,
+    fetch_watches_counts,
+    open_transport,
+    slug_from_pathname,
+)
 from .report import REPORTS, make_report
 from .sitemap import write_sitemap
 from .social import generate_carousel
@@ -188,41 +193,55 @@ def run() -> int:
 
     slugs = [slug_from_pathname(path) for path, _, _ in classified_paths]
     health.classified(len(slugs))
-    print(f"  fetching watchesCount via GraphQL for {len(slugs)} projects ...")
-    watches = fetch_watches_counts(slugs)
-    n_with = sum(1 for v in watches.values() if v is not None)
-    print(f"  got watchesCount for {n_with}/{len(slugs)}")
 
-    # Graceful degradation: if Cloudflare 403'd the GraphQL endpoint and we
-    # got <50% watchers coverage, fall back to the previous projects.json
-    # snapshot's followers numbers. Avoids sending an email full of zeros
-    # when the only thing wrong was a transient block. Δ deltas will read
-    # as 0 (truthful — we don't know today's change).
-    if len(slugs) and n_with < len(slugs) * 0.5:
-        print(f"  ⚠ watchers fetch coverage {n_with}/{len(slugs)} below 50%; reusing previous followers")
-        prev_path = DATA / "projects.json"
-        if prev_path.exists():
-            try:
-                prev = json.loads(prev_path.read_text(encoding="utf-8"))
-                prev_followers = {p.get("pathname"): p.get("followers")
-                                  for p in (prev.get("projects") or [])
-                                  if p.get("pathname") and p.get("followers") is not None}
-                restored = 0
-                for path, _, _ in classified_paths:
-                    slug = slug_from_pathname(path)
-                    if watches.get(slug) is None and prev_followers.get(path) is not None:
-                        watches[slug] = prev_followers[path]
-                        restored += 1
-                print(f"  → restored {restored} followers from previous snapshot")
-                health.watches_restored_from_prev(restored)
-            except Exception as e:
-                print(f"  ! couldn't read previous snapshot for fallback: {e}")
+    # Open ONE GraphQL transport, share between watchesCount + pledge_min.
+    # Why: opening two separate Playwright sessions back-to-back trips CF's
+    # "burst of fresh sessions" detector — observed on 2026-05-24 cron where
+    # watchesCount succeeded via curl_cffi but the *second* session for
+    # pledge_min got 403'd on every chunk despite a successful seed.
+    # Sharing the session collapses two suspicious patterns into one and
+    # makes pledge_min ride watchesCount's already-warm cookie state.
+    ks_transport = open_transport(label="ks_graphql")
+    try:
+        print(f"  fetching watchesCount via GraphQL for {len(slugs)} projects ...")
+        watches = fetch_watches_counts(slugs, transport=ks_transport)
+        n_with = sum(1 for v in watches.values() if v is not None)
+        print(f"  got watchesCount for {n_with}/{len(slugs)}")
 
-    # Pledge tier minimums (起步价) — separate query, smaller chunks
-    print("  fetching minimum pledge tiers via GraphQL ...")
-    pledge_mins = fetch_pledge_minimums(slugs)
-    n_pledge = sum(1 for v in pledge_mins.values() if v is not None)
-    print(f"  got pledge minimum for {n_pledge}/{len(slugs)}")
+        # Graceful degradation: if Cloudflare 403'd the GraphQL endpoint and we
+        # got <50% watchers coverage, fall back to the previous projects.json
+        # snapshot's followers numbers. Avoids sending an email full of zeros
+        # when the only thing wrong was a transient block. Δ deltas will read
+        # as 0 (truthful — we don't know today's change).
+        if len(slugs) and n_with < len(slugs) * 0.5:
+            print(f"  ⚠ watchers fetch coverage {n_with}/{len(slugs)} below 50%; reusing previous followers")
+            prev_path = DATA / "projects.json"
+            if prev_path.exists():
+                try:
+                    prev = json.loads(prev_path.read_text(encoding="utf-8"))
+                    prev_followers = {p.get("pathname"): p.get("followers")
+                                      for p in (prev.get("projects") or [])
+                                      if p.get("pathname") and p.get("followers") is not None}
+                    restored = 0
+                    for path, _, _ in classified_paths:
+                        slug = slug_from_pathname(path)
+                        if watches.get(slug) is None and prev_followers.get(path) is not None:
+                            watches[slug] = prev_followers[path]
+                            restored += 1
+                    print(f"  → restored {restored} followers from previous snapshot")
+                    health.watches_restored_from_prev(restored)
+                except Exception as e:
+                    print(f"  ! couldn't read previous snapshot for fallback: {e}")
+
+        # Pledge tier minimums (起步价) — same transport, smaller chunks
+        print("  fetching minimum pledge tiers via GraphQL ...")
+        pledge_mins = fetch_pledge_minimums(slugs, transport=ks_transport)
+        n_pledge = sum(1 for v in pledge_mins.values() if v is not None)
+        print(f"  got pledge minimum for {n_pledge}/{len(slugs)}")
+    finally:
+        # Close the shared transport regardless of either fetch's outcome
+        if ks_transport is not None:
+            ks_transport.close()
 
     rows: list[dict] = []
     for path, hit, cls in classified_paths:

@@ -303,7 +303,25 @@ def _open_transport(label: str, verbose: bool = True) -> _Transport | None:
     return _open_playwright_transport(label, verbose)
 
 
-def fetch_watches_counts(slugs: list[str], *, verbose: bool = True) -> dict[str, Optional[int]]:
+def open_transport(label: str = "ks_graphql", *, verbose: bool = True) -> _Transport | None:
+    """Public alias of _open_transport — for callers that want to share
+    one session across both watches + pledge_min fetches.
+
+    Why share: opening two separate Playwright sessions back-to-back trips
+    CF's "burst of fresh sessions" detector. As of 2026-05-24 cron logs,
+    pledge_min was consistently 403'd on chunks even with a successful
+    Playwright seed — likely because it was the SECOND Playwright in 30s.
+    Sharing the session collapses two suspicious patterns into one.
+    """
+    return _open_transport(label, verbose=verbose)
+
+
+def fetch_watches_counts(
+    slugs: list[str],
+    *,
+    verbose: bool = True,
+    transport: _Transport | None = None,
+) -> dict[str, Optional[int]]:
     """Batch-fetch `watchesCount` for project slugs via KS GraphQL.
 
     Returns {slug: count_or_None}. Slugs that error out individually still
@@ -311,17 +329,22 @@ def fetch_watches_counts(slugs: list[str], *, verbose: bool = True) -> dict[str,
 
     A slug is the *last* segment of the KS pathname:
         /projects/creator/foo-bar  →  "foo-bar"
+
+    If `transport` is provided, use it and DO NOT close it (caller owns
+    lifecycle). Otherwise open + close internally.
     """
     out: dict[str, Optional[int]] = {s: None for s in slugs}
     if not slugs:
         return out
 
-    transport = _open_transport(label="watchesCount", verbose=verbose)
-    if transport is None:
-        if verbose:
-            print("  watchesCount: failed to seed (curl_cffi + Playwright); skipping")
-        health.watches_done(path="failed", fetched=0, requested=len(slugs))
-        return out
+    own_transport = transport is None
+    if own_transport:
+        transport = _open_transport(label="watchesCount", verbose=verbose)
+        if transport is None:
+            if verbose:
+                print("  watchesCount: failed to seed (curl_cffi + Playwright); skipping")
+            health.watches_done(path="failed", fetched=0, requested=len(slugs))
+            return out
 
     try:
         # Chunked batch GraphQL query, one round trip per ~50 slugs.
@@ -352,11 +375,17 @@ def fetch_watches_counts(slugs: list[str], *, verbose: bool = True) -> dict[str,
         fetched = sum(1 for v in out.values() if v is not None)
         health.watches_done(path=transport.mode, fetched=fetched, requested=len(slugs))
     finally:
-        transport.close()
+        if own_transport:
+            transport.close()
     return out
 
 
-def fetch_pledge_minimums(slugs: list[str], *, verbose: bool = True) -> dict[str, Optional[float]]:
+def fetch_pledge_minimums(
+    slugs: list[str],
+    *,
+    verbose: bool = True,
+    transport: _Transport | None = None,
+) -> dict[str, Optional[float]]:
     """Batch-fetch minimum pledge tier (in USD) for project slugs.
 
     Returns {slug: usd_amount_or_None}. We pull all reward tiers via the
@@ -371,17 +400,22 @@ def fetch_pledge_minimums(slugs: list[str], *, verbose: bool = True) -> dict[str
 
     Currency is forced to USD via the `currency` cookie (set in
     DEFAULT_COOKIES), so amounts come back already converted.
+
+    If `transport` is provided, use it and DO NOT close it (caller owns
+    lifecycle). Otherwise open + close internally.
     """
     out: dict[str, Optional[float]] = {s: None for s in slugs}
     if not slugs:
         return out
 
-    transport = _open_transport(label="pledge_min", verbose=verbose)
-    if transport is None:
-        if verbose:
-            print("  pledge_min: failed to seed; skipping")
-        health.pledge_done(path="failed", fetched=0, requested=len(slugs))
-        return out
+    own_transport = transport is None
+    if own_transport:
+        transport = _open_transport(label="pledge_min", verbose=verbose)
+        if transport is None:
+            if verbose:
+                print("  pledge_min: failed to seed; skipping")
+            health.pledge_done(path="failed", fetched=0, requested=len(slugs))
+            return out
 
     try:
         for i in range(0, len(slugs), PLEDGE_CHUNK_SIZE):
@@ -418,7 +452,8 @@ def fetch_pledge_minimums(slugs: list[str], *, verbose: bool = True) -> dict[str
         fetched = sum(1 for v in out.values() if v is not None)
         health.pledge_done(path=transport.mode, fetched=fetched, requested=len(slugs))
     finally:
-        transport.close()
+        if own_transport:
+            transport.close()
     return out
 
 
