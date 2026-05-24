@@ -1,0 +1,94 @@
+name: scrape-retry
+
+# Automatic recovery for sanity-blocked broadcasts.
+#
+# Triggered by workflow_run when scrape.yml completes — if the original
+# run resulted in a sanity-gate block (no broadcast went out), this
+# workflow waits 2 hours and tries again. CF blocks are usually transient
+# (~30 min to a few hours), so a delayed retry often succeeds where the
+# initial 8am Beijing slot didn't.
+#
+# Safety: this workflow does NOT loop. It runs AT MOST ONCE per failed
+# scrape.yml run. If the retry ALSO blocks, accept the skip — that day
+# is genuinely lost (CF is escalating; we shouldn't keep hammering).
+
+on:
+  workflow_run:
+    workflows: ["scrape"]
+    types: [completed]
+
+jobs:
+  detect-block:
+    # Only proceed if the original scrape COMPLETED but the sanity gate
+    # blocked the broadcast. We detect this by checking the previous
+    # run's logs for the BLOCKED marker.
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'
+    outputs:
+      should_retry: ${{ steps.check.outputs.should_retry }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Inspect previous run for sanity block
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # The sanity gate writes "BROADCAST BLOCKED" to the email step
+          # log on block. Check the previous run for that marker.
+          RUN_ID="${{ github.event.workflow_run.id }}"
+          echo "Checking run $RUN_ID for sanity block ..."
+          if gh run view "$RUN_ID" --log 2>&1 | grep -q "BROADCAST BLOCKED"; then
+            echo "should_retry=true" >> "$GITHUB_OUTPUT"
+            echo "Sanity gate fired — will retry in 2 hours"
+          else
+            echo "should_retry=false" >> "$GITHUB_OUTPUT"
+            echo "Original run broadcast normally — no retry needed"
+          fi
+
+  delayed-retry:
+    needs: detect-block
+    if: needs.detect-block.outputs.should_retry == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 200  # ample buffer for sleep + retry execution
+    steps:
+      - name: Wait 2 hours for CF block to lift
+        # CF Bot Management blocks are typically session-scoped (30 min)
+        # or IP-rep-scoped (a few hours). Two hours hits the sweet spot
+        # for both. The wait is the cheapest part of this workflow.
+        run: sleep 7200
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Pull any commits the daily cron made between trigger and now —
+      # we need fresh history snapshot for refresh.refresh_from_history()
+      - name: Pull latest
+        run: git pull --rebase origin main
+
+      # Delete today's history file so the idempotency guard in
+      # scrape.yml lets the cron re-fire on workflow_dispatch.
+      - name: Clear today's history snapshot
+        run: |
+          today=$(date -u +%Y-%m-%d)
+          rm -f "data/history/${today}T"*.json || true
+          if git diff --quiet data/history/; then
+            echo "Nothing to remove (history was already clear)"
+          else
+            git config user.name "ks-tracker-bot"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add data/history/
+            git commit -m "auto-retry: clear $(date -u +%FT%TZ) history for re-run"
+            git push
+          fi
+
+      # Trigger scrape.yml manually — this will respect the idempotency
+      # guard (which now passes since we deleted today's history file).
+      - name: Trigger fresh scrape
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run scrape.yml --repo ${{ github.repository }}
+          echo "Re-triggered scrape.yml; sanity gate will decide whether the new attempt broadcasts."
