@@ -26,6 +26,7 @@ import datetime as dt
 import json
 import os
 import sys
+import time
 from pathlib import Path
 
 import httpx
@@ -739,23 +740,41 @@ def build_html(curr: dict) -> tuple[str, str]:
 
 
 def post_resend(api_key: str, sender: str, to: list[str], subject: str,
-                html: str, text: str | None = None) -> None:
+                html: str, text: str | None = None,
+                max_retries: int = 3) -> None:
     """POST to Resend. If `text` is provided, the email is sent as
     multipart with both HTML and plaintext alternatives — better for spam
     scores, accessibility (screen readers), and clients that prefer text.
+
+    Auto-retries on 429 (Resend free tier limits to 5 req/s). Respects
+    the Retry-After header when present, otherwise backs off exponentially
+    (1s, 2s, 4s). Raises after `max_retries` 429s in a row — at that
+    point the rate limit is structural and the caller should be told.
     """
     payload = {"from": sender, "to": to, "subject": subject, "html": html}
     if text:
         payload["text"] = text
-    resp = httpx.post(
-        RESEND_API_URL,
-        headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
-        json=payload,
-        timeout=30,
-    )
-    if resp.status_code >= 400:
-        print(f"Resend error {resp.status_code}: {resp.text}", file=sys.stderr)
-        resp.raise_for_status()
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+    }
+    for attempt in range(max_retries):
+        resp = httpx.post(RESEND_API_URL, headers=headers, json=payload, timeout=30)
+        if resp.status_code == 429:
+            # Prefer server-provided Retry-After, fall back to exponential.
+            ra = resp.headers.get("retry-after", "")
+            try:
+                wait = float(ra) if ra else 2.0 ** attempt
+            except ValueError:
+                wait = 2.0 ** attempt
+            wait = min(max(wait, 0.5), 10.0)
+            if attempt < max_retries - 1:
+                time.sleep(wait)
+                continue
+        if resp.status_code >= 400:
+            print(f"Resend error {resp.status_code}: {resp.text}", file=sys.stderr)
+            resp.raise_for_status()
+        return
 
 
 def build_plaintext(curr: dict) -> str:
@@ -1143,6 +1162,11 @@ def main(argv: list[str] | None = None) -> int:
             print(f"  ! send to {r} failed: {e}", file=sys.stderr)
             failed += 1
             failure_log.append(f"{r}: {str(e)[:200]}")
+        # Resend free tier caps at 5 req/s. Pace at ~4/s to leave headroom
+        # for the owner-digest send that follows the loop; post_resend's
+        # 429-retry handles bursts above that, but pacing avoids triggering
+        # the retry path on every recipient when the list grows.
+        time.sleep(0.25)
     print(f"Email broadcast: sent={sent}, failed={failed}, "
           f"creator_personalised={len(creator_banners)}, from={sender}")
 
