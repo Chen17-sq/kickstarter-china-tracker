@@ -1208,6 +1208,17 @@ def main(argv: list[str] | None = None) -> int:
                 digest_lines.extend(bc_lines)
         except Exception:
             pass
+        # Tier metrics — last 7 days of which transport tier carried
+        # each fetch path. Used to spot CF pattern shifts (e.g. "Tier 1
+        # has been failing 6/7 days; CF must've fingerprinted curl_cffi").
+        try:
+            from . import tier_metrics as _tm
+            tm_lines = _tm.format_digest_lines(window_days=7)
+            if tm_lines:
+                digest_lines.append("")
+                digest_lines.extend(tm_lines)
+        except Exception:
+            pass
         if failure_log:
             digest_lines.append("")
             digest_lines.append("Failures:")

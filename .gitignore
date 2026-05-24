@@ -24,3 +24,4 @@ data/.sleeper_streaks.json
 data/.editor_drafts.json
 .session_state.json
 data/.webrobots/
+data/.tier_metrics.json

@@ -39,7 +39,7 @@ from typing import Optional
 
 from curl_cffi import requests as cc_requests
 
-from . import backoff, health, session_state
+from . import backoff, health, session_state, tier_metrics
 from .http import (
     DEFAULT_COOKIES,
     IMPERSONATE_ROTATION,
@@ -487,6 +487,7 @@ def fetch_watches_counts(
         # Record which transport actually carried the data
         fetched = sum(1 for v in out.values() if v is not None)
         health.watches_done(path=transport.mode, fetched=fetched, requested=len(slugs))
+        tier_metrics.record("watches", transport.mode if fetched else "failed")
     finally:
         if own_transport:
             transport.close()
@@ -567,6 +568,7 @@ def fetch_pledge_minimums(
                     out[s] = min(amounts)
         fetched = sum(1 for v in out.values() if v is not None)
         health.pledge_done(path=transport.mode, fetched=fetched, requested=len(slugs))
+        tier_metrics.record("pledge", transport.mode if fetched else "failed")
     finally:
         if own_transport:
             transport.close()
