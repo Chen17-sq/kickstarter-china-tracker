@@ -390,7 +390,25 @@ def _open_transport(label: str, verbose: bool = True) -> _Transport | None:
         return _Transport.from_curl_cffi(client, csrf)
     if verbose:
         print(f"  {label} curl_cffi seed failed; falling back to Playwright (full session)")
-    return _open_playwright_transport(label, verbose)
+    pw_transport = _open_playwright_transport(label, verbose)
+    if pw_transport is not None:
+        return pw_transport
+    # Tier 3: nodriver (raw CDP, harder to fingerprint than Playwright).
+    # Only triggers when both curl_cffi AND patchright/playwright failed.
+    # Returns None if nodriver isn't installed — caller falls through.
+    if verbose:
+        print(f"  {label} Playwright also failed; attempting nodriver (Tier 3)")
+    try:
+        from .nodriver_transport import open_nodriver_transport
+        nd = open_nodriver_transport(label, verbose=verbose)
+        if nd is not None:
+            # NodriverTransport has matching post_graphql/close/mode/csrf
+            # interface — caller treats it like any _Transport instance.
+            return nd
+    except Exception as e:
+        if verbose:
+            print(f"  ! nodriver import/boot exception: {e}")
+    return None
 
 
 def open_transport(label: str = "ks_graphql", *, verbose: bool = True) -> _Transport | None:

@@ -23,3 +23,4 @@ data/.sleeper_streaks.json
 .deepseek_key
 data/.editor_drafts.json
 .session_state.json
+data/.webrobots/

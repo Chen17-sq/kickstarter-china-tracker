@@ -334,6 +334,13 @@ def _walk_seed(
             return
 
 
+# Below this candidate threshold we treat the crawl as "underperforming"
+# and supplement with Kicktraq RSS. Set at ~half of normal cron output —
+# avoids supplementing healthy runs (zero cost) while ensuring partial-
+# block days get topped up.
+KICKTRAQ_SUPPLEMENT_THRESHOLD = 400
+
+
 def crawl_discover(seeds: Iterable[str] = DISCOVER_SEEDS) -> dict[str, DiscoverHit]:
     """Returns {pathname: DiscoverHit}, deduped across all seeds.
 
@@ -343,6 +350,12 @@ def crawl_discover(seeds: Iterable[str] = DISCOVER_SEEDS) -> dict[str, DiscoverH
     Uses a single warmed curl_cffi session for the whole crawl (cookies
     persist across all 14 seeds). On per-page CF block, lazily opens a
     Playwright fallback that gets reused for any subsequent blocked pages.
+
+    If the crawl returns fewer than KICKTRAQ_SUPPLEMENT_THRESHOLD candidates
+    — i.e. CF probably blocked a chunk of our seeds — we supplement from
+    Kicktraq RSS feeds (CF-free, kicktraq.com origin). The supplemented
+    DiscoverHits have only pathname + title; the rest of the pipeline
+    (classify, watchesCount fetch, ...) fills in metadata downstream.
     """
     pacer = RateLimiter(qps=0.6)  # ~1 request per 1.7s — well under any threshold
     # ── Warm-up: visit homepage once before any data fetch so CF drops its
@@ -363,6 +376,42 @@ def crawl_discover(seeds: Iterable[str] = DISCOVER_SEEDS) -> dict[str, DiscoverH
             print(f"  seed: {seed[51:120]:<70} +{len(out)-before} new (total {len(out)})")
     finally:
         pw_fallback.close()
+
+    # ── Supplement from Kicktraq if we underperformed ─────────────
+    if len(out) < KICKTRAQ_SUPPLEMENT_THRESHOLD:
+        print(
+            f"  ⚠ discover under threshold ({len(out)} < "
+            f"{KICKTRAQ_SUPPLEMENT_THRESHOLD}); supplementing from Kicktraq RSS ..."
+        )
+        try:
+            from . import kicktraq
+            kt_hits = kicktraq.fetch_all(verbose=True)
+            added = 0
+            for kh in kt_hits:
+                if kh.pathname in out:
+                    continue
+                # Build a minimal DiscoverHit. Downstream classify needs
+                # creator_slug + title + location at least. Extract slug
+                # from pathname; title is from Kicktraq; rest is None.
+                parts = [s for s in kh.pathname.split("/") if s]
+                creator_slug = parts[1] if len(parts) >= 3 else None
+                out[kh.pathname] = DiscoverHit(
+                    pathname=kh.pathname,
+                    url=kh.ks_url,
+                    title=kh.title,
+                    blurb=None,
+                    creator_slug=creator_slug,
+                    creator_name=None,
+                    location=None,
+                    country=None,
+                    state=None,
+                    raw={"_source": "kicktraq", "_feed": kh.source_feed},
+                )
+                added += 1
+            print(f"  ✓ supplemented {added} pathnames from Kicktraq")
+        except Exception as e:
+            print(f"  ! Kicktraq supplement failed: {e}")
+
     health.discover_finalize(candidates_total=len(out))
     return out
 

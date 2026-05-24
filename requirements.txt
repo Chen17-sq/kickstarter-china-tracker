@@ -9,3 +9,10 @@ playwright>=1.45
 # CF-protected sites and meaningfully better on CF-specific tests. project.py
 # tries patchright first, falls through to playwright if not installed.
 patchright>=1.60
+# nodriver — Tier 3 raw-CDP fallback for KS GraphQL when both curl_cffi AND
+# patchright/playwright have failed. The actively-maintained successor to
+# undetected-chromedriver (same author). Benchmark leader (90.3% pass)
+# against modern CF detection. Optional — if absent, scraper degrades to
+# 2-tier defense gracefully. scraper/nodriver_transport.py handles import
+# fallback.
+nodriver>=0.50
