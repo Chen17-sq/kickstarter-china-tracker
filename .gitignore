@@ -25,3 +25,4 @@ data/.editor_drafts.json
 .session_state.json
 data/.webrobots/
 data/.tier_metrics.json
+data/.proxy_cache.json

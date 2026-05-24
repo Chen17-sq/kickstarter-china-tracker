@@ -82,10 +82,32 @@ def proxy_pool() -> list[str]:
     return [p.strip() for p in raw.split(",") if p.strip()]
 
 
+# Memoize auto-discovery — it does real network I/O, so we run it at
+# most once per process and reuse the result.
+_AUTO_DISCOVERED: str | None = None
+_AUTO_DISCOVERY_ATTEMPTED = False
+
+
 def pick_proxy() -> str | None:
-    """Pick one proxy URL at random, or None if KS_PROXY isn't set."""
+    """Pick one proxy URL.
+
+    Precedence:
+      1. KS_PROXY env (user-configured pool, picked at random)
+      2. proxy_auto.discover() — free public proxy (once-per-process)
+      3. None (direct connection)
+    """
     pool = proxy_pool()
-    return random.choice(pool) if pool else None
+    if pool:
+        return random.choice(pool)
+    global _AUTO_DISCOVERED, _AUTO_DISCOVERY_ATTEMPTED
+    if not _AUTO_DISCOVERY_ATTEMPTED:
+        _AUTO_DISCOVERY_ATTEMPTED = True
+        try:
+            from . import proxy_auto
+            _AUTO_DISCOVERED = proxy_auto.discover()
+        except Exception:
+            _AUTO_DISCOVERED = None
+    return _AUTO_DISCOVERED
 
 
 def curl_cffi_proxies(url: str | None) -> dict | None:
