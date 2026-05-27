@@ -1,65 +1,65 @@
 # Kickstarter China Tracker — diff
 
-## new (5)
-- **The Transparent Crystal Rainbow Bezel Skeleton Chronograph** — Discovered (live, 31 followers)  
-  `/projects/bonestgattiwatches/crystal-and-rainbow-bezel-upgraded-skeleton-chronograph`
-- **Karmi — Pocket Fortune Teller** — Discovered (prelaunch, 1 followers)  
-  `/projects/691584235/karmi`
-- **MG20 Dice Ring - Fidget. Spin. Decide.** — Discovered (prelaunch, 1 followers)  
-  `/projects/lexee666/mg20-dice-ring-fidget-spin-decide`
-- **KRONOSTI ATLAS GMT – Ready-to-Ship Titanium GMT Watch** — Discovered (prelaunch, 94 followers)  
-  `/projects/katino/kronosti-atlas-gmt-automatic-travel-watch`
-- **The Chicago Movable Bridge Automaton Watch** — Discovered (prelaunch, 124 followers)  
-  `/projects/delconawatch/reinterpreting-the-chicago-movable-bridge-automaton-watch`
+## new (11)
+- **Saccater aéra: Integrated 9.6mm Planar Driver Hi-Fi IEM** — Discovered (prelaunch, 0 followers)  
+  `/projects/saccater/saccater-aera-integrated-planar-driver-hi-fi-iem`
+- **Ginkgo Leaf — Mechanical Pocket Utility Knife** — Discovered (prelaunch, 0 followers)  
+  `/projects/tikzer/ginkgo-leaf-mechanical-pocket-utility-knife`
+- **Magtame One-Click Freedom** — Discovered (live, 0 followers)  
+  `/projects/magtame/magtame-one-click-freedom`
+- **AuraSnap Prototype Development in Progress** — Discovered (live, 0 followers)  
+  `/projects/123335066/aurasnap-prototype-development-in-progress`
+- **Voltbou Power:The Visual 240W Power Station** — Discovered (prelaunch, 0 followers)  
+  `/projects/318347732/voltbou-power-the-visual-240w-power-station`
+- **ViewX Liber 15.6" Glasses-Free Spatial AI 3D Display** — Discovered (prelaunch, 0 followers)  
+  `/projects/viewx/viewx-liber-glass-free-spatial-ai-3d-display`
+- **Pure Titanium Hip Flask — 50g, Pure Ti, Built for Life"** — Discovered (live, 0 followers)  
+  `/projects/gift-titanium/pure-titanium-hip-flask-50g-pure-ti-built-for-life`
+- **XBAND: Smart Innovation, Timeless Elegance** — Discovered (prelaunch, 0 followers)  
+  `/projects/85272757/xband-smart-innovation-timeless-elegance`
+- **Linklan 5G eSIM Hotspot: Portable Unlocked eSIM Wi-Fi Device** — Discovered (prelaunch, 0 followers)  
+  `/projects/linklan/linklan-5g-esim-hotspot-portable-open-esim-wi-fi-device`
+- **AntBelt G1: Desktop Galvo Laser Engraver for Makers & Shops** — Discovered (prelaunch, 0 followers)  
+  `/projects/1299122000/antbelt-g1-desktop-galvo-laser-engraver-for-makers-and-shops`
+- **XWasher: Smart Toy Care System, Every Mess Ends with Fresh** — Discovered (prelaunch, 0 followers)  
+  `/projects/samuelfu/xwasher-smart-toy-care-system-every-mess-ends-with-fresh`
 
-## status_change (5)
-- **105-in-1 Adjustable Ratchet Tool Kit for Precision Repairs** — prelaunch → live  
-  `/projects/126050015/105-in-1-adjustable-ratchet-tool-kit-for-precision-repairs`
-- **SenseRobot Chess Mini: Meet the Future of Chess** — live → successful  
-  `/projects/senserobotchess/senserobot-robotic-chess-companion-ai-powered-device`
-- **COZYTIME LUMO: First AI Infrared Indoor Grill, Smoke-Free** — live → successful  
-  `/projects/cozytime/cozytime-lumo-first-ai-infrared-indoor-grill-smoke-free`
-- **Hyzen, World's First Mechanical Magnetic Keyboard** — live → successful  
-  `/projects/lofree/hyzen-worlds-first-mechanical-magnetic-keyboard`
-- **Memdock: 13-in-1 Docking Station - Redefining Your Workspace** — live → successful  
-  `/projects/758873559/memdock-13-in-1-docking-station-redefining-your-workspace`
-
-## followers_delta (19)
-- **GORDIX: The First 3-in-1 Portable CNC That Fits Your Space** — +143 followers (8509 → 8652)  
-  `/projects/cubiio/gordix-large-format-desktop-cnc-without-rails`
-- **Pen N — Minimal by design. Built for versatile writing.** — +61 followers (1518 → 1579)  
-  `/projects/antou/penn-minimal-by-design-built-for-versatile-writing`
-- **LINYO H1 Car Wash Machine** — +53 followers (1212 → 1265)  
-  `/projects/465535565/linyo-h1-car-wash-machine`
-- **Memoir - An E-ink Digital Frame That Feels Like Paper** — +54 followers (2327 → 2381)  
-  `/projects/698611014/memoir-a-paper-like-e-ink-digital-frame`
-- **INKWON Tag - World's 1st 4-in-1 Pocket Creative Studio** — +60 followers (3043 → 3103)  
-  `/projects/inkwonprinting/inkwon-tag-worlds-1st-4-in-1-pocket-color-inkjet-printer`
-- **COZYTIME LUMO: First AI Infrared Indoor Grill, Smoke-Free** — +67 followers (2280 → 2347)  
-  `/projects/cozytime/cozytime-lumo-first-ai-infrared-indoor-grill-smoke-free`
-- **InfiMech MX 3D Printer: 8X More Efficiency. 8X Less Waste.** — +140 followers (2472 → 2612)  
-  `/projects/infimech-mx-series/infimech-mx-3d-printer-8x-more-efficiency-8x-less-waste`
-- **Hyperapid 350W — The Most Powerful 12-in-1 GaN Charging Hub** — +53 followers (1094 → 1147)  
-  `/projects/794688473/hyperapid-350w-the-most-powerful-6-in-1-gan-charging-hub`
-- **Moka E-Ink Album: Privacy-First Smart Display Companion** — +52 followers (763 → 815)  
-  `/projects/1650479992/moka-e-ink-album-privacy-first-smart-display-companion`
-- **Foldryn: Dry. Straight. Smooth. Like New.** — +56 followers (547 → 603)  
-  `/projects/foldryn/foldryn-dryer-the-ultra-compact-wardrobe-care-system`
-- **Gweike MCore Desktop 400W Fiber and 80W CO2 Laser Cutter** — +58 followers (1900 → 1958)  
+## status_change (12)
+- **Gweike MCore Desktop 400W Fiber and 80W CO2 Laser Cutter** — prelaunch → live  
   `/projects/gweikelaser/gweike-mcore-desktop-400w-fiber-and-80w-co2-laser-cutter`
-- **XGIMI TITAN Noir Series: A Dual Iris 4K RGB Laser Projector** — +50 followers (5124 → 5174)  
-  `/projects/xgimititannoir/xgimi-titan-noir-series-4k-projector`
-- **CardputerZero, Pocket Raspberry Pi Computer for Makers** — +975 followers (5477 → 6452)  
+- **AIPAL DOCK:Meet Your World's 1st Proactive AI Desk Sidekick** — prelaunch → live  
+  `/projects/zeehoo/future-beyond-the-charging-revolution`
+- **MILESEEY Horizon: Smart Golf Glasses for Eyes-Up Play** — prelaunch → live  
+  `/projects/mileseeyd9/mileseey-horizon-smart-golf-sunglasses`
+- **VEZERLEZER WK2: All in 1 Flashlight, Carry Less Do Better** — prelaunch → live  
+  `/projects/vezerlezer/vezerlezer-wk2-5-in-1-flashlight-for-your-daily-life`
+- **Carbon-based Life Form Ti Alloy Foldable Nail Clipper** — prelaunch → live  
+  `/projects/liangyiding/carbon-based-life-form-ti-alloy-foldable-nail-clipper`
+- **SOFBUNNY : The First All-in-One Visual Ear Wax Removal Tool** — prelaunch → live  
+  `/projects/567439297/sofbunny-the-first-all-in-one-visual-ear-wax-removal-tool`
+- **Titanium Keychain Utility Tool: KUT Lite | Ultrathin EDC** — prelaunch → live  
+  `/projects/ryfinedgearedc/kut-lite-ultrathin-minimalist-ti-keychain-utility-tool`
+- **Bemberg™ Cupro Pajamas: Built for Deep Sleep All Year** — prelaunch → live  
+  `/projects/945153313/bembergtm-cupro-pajamas-built-for-deep-quality-sleep`
+- **Domosoon: The Ultra-Light Semiconductor Cooling Vest** — prelaunch → live  
+  `/projects/260160255/domosoon-the-ultra-light-semiconductor-cooling-vest`
+- **Walnut Whiskey Glass — Handcrafted for the Way You Drink** — prelaunch → live  
+  `/projects/dignum/dignum-custom-engraved-walnut-whiskey-glass`
+- **DAJA S6, The Most Affordable & Compact Fiber Laser Engraver** — prelaunch → live  
+  `/projects/dajalaser/daja-s6-the-most-affordable-and-compact-fiber-laser-engraver`
+- **CardputerZero, Pocket Raspberry Pi Computer for Makers** — prelaunch → live  
   `/projects/m5stack/cardputerzero`
-- **Titaner Matrix: The 3-Level Keychain Security System** — +83 followers (819 → 902)  
+
+## backers_delta (3)
+- **Gweike MCore Desktop 400W Fiber and 80W CO2 Laser Cutter** — +269 backers (0 → 269)  
+  `/projects/gweikelaser/gweike-mcore-desktop-400w-fiber-and-80w-co2-laser-cutter`
+- **VEZERLEZER WK2: All in 1 Flashlight, Carry Less Do Better** — +145 backers (0 → 145)  
+  `/projects/vezerlezer/vezerlezer-wk2-5-in-1-flashlight-for-your-daily-life`
+- **CardputerZero, Pocket Raspberry Pi Computer for Makers** — +7878 backers (0 → 7878)  
+  `/projects/m5stack/cardputerzero`
+
+## followers_delta (2)
+- **VEZERLEZER WK2: All in 1 Flashlight, Carry Less Do Better** — +53 followers (194 → 247)  
+  `/projects/vezerlezer/vezerlezer-wk2-5-in-1-flashlight-for-your-daily-life`
+- **Titaner Matrix: The 3-Level Keychain Security System** — +84 followers (902 → 986)  
   `/projects/keychain/titaner-worlds-first-titanium-keychain-security-matrix`
-- **Hyzen, World's First Mechanical Magnetic Keyboard** — +76 followers (5026 → 5102)  
-  `/projects/lofree/hyzen-worlds-first-mechanical-magnetic-keyboard`
-- **AEKE S1 Pro FULL-BODY AI HOME GYM** — +77 followers (1578 → 1655)  
-  `/projects/aeke/aeke-s1-pro-full-body-ai-home-gym`
-- **SpinTi: The Rotating Tritium Keychain— Glow That Never Fades** — +104 followers (465 → 569)  
-  `/projects/ninezone/spinti-the-rotating-tritium-keychain-glow-that-never-fades`
-- **MiixKey丨The World's First Security Key with a Touchscreen** — +79 followers (3005 → 3084)  
-  `/projects/miixpro/miixkey`
-- **EnergyLink Gen 2: Titanium 2-in-1 Apple Watch Charger Band** — +124 followers (2446 → 2570)  
-  `/projects/nexxtpercent/energylink-gen-2-charge-faster-wear-lighter-go-further`
