@@ -1,7 +1,99 @@
 {
-  "candidates": [],
+  "candidates": [
+    {
+      "creator_slug": "irisarworld",
+      "title": "Iris Green: World’s First PICO AR HUD for Safer Cycling",
+      "location": "Cleveland, TN",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 149145.72261681,
+      "project_we_love": true,
+      "url": "https://www.kickstarter.com/projects/irisarworld/irisgreen",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000",
+        "KS staff pick"
+      ]
+    },
+    {
+      "creator_slug": "geekgearedc",
+      "title": "TacticalGeek: Quick-Release Magnetic Phone Mount for Straps",
+      "location": "Tokyo, Japan",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 151512.34570674,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/geekgearedc/quick-release-magsafe-iphone-mount-for-backpack-strap-and-gear",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "movespeedtech",
+      "title": "MOVESPEED Touch to Interact The Ultimate Smart SSD Enclosure",
+      "location": "Los Angeles, CA",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 46678.7499734,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/movespeedtech/movespeed-smart-touchscreen-ssd-enclosure",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "438191414",
+      "title": "PREP: Portable Wind Power System for Life Off-Grid",
+      "location": "Dallas, TX",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 43689.0788906,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/438191414/prep-portable-wind-power-system-for-life-off-grid",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "528662604",
+      "title": "TiArc Knife: A Titanium EDC Knife That Fits — Not Fights",
+      "location": "San Francisco, CA",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 35859.30778534,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/528662604/tiarc-knife-minimalist-titanium-mini-edc-folding-knife",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "palmblock",
+      "title": "DexoPad: Cross-Device Keyboard, Mouse & Macros — Anywhere",
+      "location": "New York, NY",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 15938.66716599,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/palmblock/dexopad-cross-device-keyboard-mouse-and-macros-anywhere",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    }
+  ],
   "_meta": {
-    "generated_at": "2026-06-02T02:56:35.119285+00:00",
+    "generated_at": "2026-06-03T03:02:16.810318+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
