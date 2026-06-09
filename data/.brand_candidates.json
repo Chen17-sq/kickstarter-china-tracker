@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 154371.50466116,
+      "pledged_usd": 157329.82223934,
       "project_we_love": true,
       "url": "https://www.kickstarter.com/projects/irisarworld/irisgreen",
       "china_confidence": "未知",
@@ -23,7 +23,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 84828.3704352,
+      "pledged_usd": 94882.3300512,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/rokkoyo-2/rokkoyo-titan-modern-technology-meets-japanese-heritage",
       "china_confidence": "未知",
@@ -38,7 +38,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 56692.40596035,
+      "pledged_usd": 57999.389519,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/movespeedtech/movespeed-smart-touchscreen-ssd-enclosure",
       "china_confidence": "未知",
@@ -68,9 +68,24 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 17318.84071533,
+      "pledged_usd": 17568.79441106,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/palmblock/dexopad-cross-device-keyboard-mouse-and-macros-anywhere",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "lastoolx",
+      "title": "MatchGrip - Precision Tweezers You’ll Actually Carry",
+      "location": "Los Angeles, CA",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 17446.21410592,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/lastoolx/matchgrip-worlds-smallest-titanium-edc-precision-tweezers",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -78,7 +93,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-06-08T02:47:35.431699+00:00",
+    "generated_at": "2026-06-09T02:15:28.818042+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
