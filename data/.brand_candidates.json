@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 158301.15481779,
+      "pledged_usd": 167002.65986771,
       "project_we_love": true,
       "url": "https://www.kickstarter.com/projects/irisarworld/irisgreen",
       "china_confidence": "未知",
@@ -23,7 +23,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 106670.214936,
+      "pledged_usd": 121956.5715552,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/rokkoyo-2/rokkoyo-titan-modern-technology-meets-japanese-heritage",
       "china_confidence": "未知",
@@ -38,24 +38,9 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 58687.2756025,
+      "pledged_usd": 60911.86601465,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/movespeedtech/movespeed-smart-touchscreen-ssd-enclosure",
-      "china_confidence": "未知",
-      "reasons": [
-        "pledged >= $5,000"
-      ]
-    },
-    {
-      "creator_slug": "438191414",
-      "title": "PREP: Portable Wind Power System for Life Off-Grid",
-      "location": "Dallas, TX",
-      "country": "HK",
-      "status": "live",
-      "followers": 0,
-      "pledged_usd": 43689.0788906,
-      "project_we_love": false,
-      "url": "https://www.kickstarter.com/projects/438191414/prep-portable-wind-power-system-for-life-off-grid",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -68,7 +53,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 38840.2264625,
+      "pledged_usd": 58010.8157125,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/manime/manime-an-elegant-true-gmt-watch-for-gentlemen-travelers",
       "china_confidence": "未知",
@@ -83,9 +68,24 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 29726.64963104,
+      "pledged_usd": 50317.517088,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/lastoolx/matchgrip-worlds-smallest-titanium-edc-precision-tweezers",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "438191414",
+      "title": "PREP: Portable Wind Power System for Life Off-Grid",
+      "location": "Dallas, TX",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 45078.4219457,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/438191414/prep-portable-wind-power-system-for-life-off-grid",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -98,7 +98,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 17788.86095053,
+      "pledged_usd": 18719.0667584,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/palmblock/dexopad-cross-device-keyboard-mouse-and-macros-anywhere",
       "china_confidence": "未知",
@@ -108,7 +108,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-06-10T02:35:51.827098+00:00",
+    "generated_at": "2026-06-12T02:42:57.393967+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
