@@ -1,51 +1,37 @@
 # Kickstarter China Tracker — diff
 
 ## new (3)
-- **Tankogo: The Portable Propane-Free Heated Shower Tank** — Discovered (prelaunch, 50 followers)  
-  `/projects/tankogo/tankogo-the-portable-propane-free-heated-shower-tank`
-- **NanoKVM-Go: World's First AI-Native 4K USB-C KVM** — Discovered (prelaunch, 82 followers)  
-  `/projects/zepan/nanokvm-go-worlds-first-ai-native-4k-usb-c-kvm`
-- **Kiwii: The Future of Entertainment with AI Holographic Audio** — Discovered (prelaunch, 174 followers)  
-  `/projects/xinvo/kiwii-the-future-of-entertainment-with-ai-holographic-audio`
+- **Speed with Safety: Auto-inspired Mechanical Watch** — Discovered (live, 1 followers)  
+  `/projects/timein/speed-with-safety-auto-inspired-mechanical-watch`
+- **The Original Play Bed : Modular Cushion Fun Furniture** — Discovered (live, 2 followers)  
+  `/projects/funmodularcushions/the-original-play-bed-modular-cushion-fun-furniture`
+- **Mixpower: 65W 3-in-1 Travel Power Bank** — Discovered (live, 2 followers)  
+  `/projects/moxsemi/mixpower-65w-3-in-1-travel-power-bank`
 
-## followers_delta (10)
-- **PlantSenso — Turns plant care into play** — +126 followers (1156 → 1282)  
-  `/projects/sensoplantsensor/senso-smart-and-gamified-plant-sensor`
-- **Magic Screen: The First Snap-On Touchscreen for Your MacBook** — +52 followers (763 → 815)  
-  `/projects/intricuit/magic-screen-the-first-snap-on-touchscreen-for-your-macbook`
-- **INKWON Tag - World's 1st 4-in-1 Pocket Creative Studio** — +56 followers (3921 → 3977)  
+## followers_delta (9)
+- **INKWON Tag - World's 1st 4-in-1 Pocket Creative Studio** — +50 followers (3977 → 4027)  
   `/projects/inkwonprinting/inkwon-tag-worlds-1st-4-in-1-pocket-color-inkjet-printer`
-- **VORO 60mm Ultra-Long Distance Invisible Wireless Charger** — +72 followers (725 → 797)  
-  `/projects/voro/voro-60mm-ultra-long-distance-invisible-wireless-charger`
-- **Coinax:EDC Tools Smaller Than A Coin** — +60 followers (113 → 173)  
-  `/projects/coinax/coinax-edc-tools-smaller-than-a-coin`
-- **Ampax: 10000mAh Modular Power Bank with Removable Batteries** — +52 followers (186 → 238)  
-  `/projects/2071143925/ampax-10000mah-modular-power-bank-with-removable-batteries`
-- **Walnut Whiskey Glass — Handcrafted for the Way You Drink** — +100 followers (65 → 165)  
-  `/projects/dignum/dignum-custom-engraved-walnut-whiskey-glass`
-- **InfiMech MX 3D Printer: 8X More Efficiency. 8X Less Waste.** — +70 followers (4556 → 4626)  
-  `/projects/infimech-mx-series/infimech-mx-3d-printer-8x-more-efficiency-8x-less-waste`
-- **MemoMind One: The Most Natural AI Display Glasses!** — +137 followers (1235 → 1372)  
+- **NanoKVM-Go: World's First AI-Native 4K USB-C KVM** — +169 followers (82 → 251)  
+  `/projects/zepan/nanokvm-go-worlds-first-ai-native-4k-usb-c-kvm`
+- **TAYEN Gen 2 — AC-Style Semiconductor Cooling Mist Fan** — +64 followers (615 → 679)  
+  `/projects/tayen/icemist-the-ultimate-semiconductor-portable-mist-fan`
+- **CardputerZero, Pocket Raspberry Pi Computer for Makers** — +64 followers (9778 → 9842)  
+  `/projects/m5stack/cardputerzero`
+- **MemoMind One: The Most Natural AI Display Glasses!** — +119 followers (1372 → 1491)  
   `/projects/1963472698/memomind-one-the-most-natural-ai-display-glasses`
-- **Karmi — Pocket Fortune Teller** — +70 followers (111 → 181)  
+- **Karmi — Pocket Fortune Teller** — +73 followers (181 → 254)  
   `/projects/691584235/karmi`
+- **VORO 60mm Ultra-Long Distance Invisible Wireless Charger** — +75 followers (797 → 872)  
+  `/projects/voro/voro-60mm-ultra-long-distance-invisible-wireless-charger`
+- **PlantSenso — Turns plant care into play** — +84 followers (1282 → 1366)  
+  `/projects/sensoplantsensor/senso-smart-and-gamified-plant-sensor`
+- **InfiMech MX 3D Printer: 8X More Efficiency. 8X Less Waste.** — +84 followers (4626 → 4710)  
+  `/projects/infimech-mx-series/infimech-mx-3d-printer-8x-more-efficiency-8x-less-waste`
 
-## status_change (6)
-- **Finally! The Holy Grail of Spatulas Is Here. Meet Turnula.** — live → successful  
-  `/projects/turnula/turnula-smarter-and-easier-way-to-cook`
-- **Walnut Whiskey Glass — Handcrafted for the Way You Drink** — live → failed  
-  `/projects/dignum/dignum-custom-engraved-walnut-whiskey-glass`
-- **MARROW: A Bone & Damascus Compact Knife** — live → successful  
-  `/projects/989993500/marrow-a-bone-and-damascus-compact-knife`
-- **OneJoy • Breathable Watch Strap** — live → successful  
-  `/projects/1828670441/onejoy-breathable-watch-strap`
-- **Titaner Matrix: The 3-Level Keychain Security System** — live → successful  
-  `/projects/keychain/titaner-worlds-first-titanium-keychain-security-matrix`
-- **Walnut Whiskey Glass — Handcrafted for the Way You Drink** — live → failed  
-  `/projects/dasya/dignum-custom-engraved-walnut-whiskey-glass`
-
-## backers_delta (2)
-- **Finally! The Holy Grail of Spatulas Is Here. Meet Turnula.** — +117 backers (2077 → 2194)  
-  `/projects/turnula/turnula-smarter-and-easier-way-to-cook`
-- **Walnut Whiskey Glass — Handcrafted for the Way You Drink** — +161 backers (104 → 265)  
-  `/projects/dignum/dignum-custom-engraved-walnut-whiskey-glass`
+## status_change (3)
+- **NeuroHUD: The Heads-Up Display Tesla Forgot** — live → successful  
+  `/projects/trantor/neurohud-add-the-hud-tesla-forgot`
+- **Coolwill Ice Pop Maker - Redefining How Ice Pops Are Made** — live → successful  
+  `/projects/coolwill/coolwill-ice-pop-maker-redefining-how-ice-pops-are-made`
+- **Moka E-Ink Album: Privacy-First Smart Display Companion** — live → successful  
+  `/projects/1650479992/moka-e-ink-album-privacy-first-smart-display-companion`
