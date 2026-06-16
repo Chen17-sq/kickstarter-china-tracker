@@ -1,37 +1,35 @@
 # Kickstarter China Tracker — diff
 
-## new (3)
-- **Speed with Safety: Auto-inspired Mechanical Watch** — Discovered (live, 1 followers)  
-  `/projects/timein/speed-with-safety-auto-inspired-mechanical-watch`
-- **The Original Play Bed : Modular Cushion Fun Furniture** — Discovered (live, 2 followers)  
-  `/projects/funmodularcushions/the-original-play-bed-modular-cushion-fun-furniture`
-- **Mixpower: 65W 3-in-1 Travel Power Bank** — Discovered (live, 2 followers)  
-  `/projects/moxsemi/mixpower-65w-3-in-1-travel-power-bank`
+## new (2)
+- **Qi2 25W The First Semi-Solid State Cooling Power Bank** — Discovered (prelaunch, 0 followers)  
+  `/projects/aknner/qi2-25w-the-first-semi-solid-state-cooling-power-bank`
+- **AIVOZ SleepHalo H1: The AI-Powered Smart Sleep Companion** — Discovered (prelaunch, 0 followers)  
+  `/projects/innioasis/aivoz-sleephalo-h1`
 
-## followers_delta (9)
-- **INKWON Tag - World's 1st 4-in-1 Pocket Creative Studio** — +50 followers (3977 → 4027)  
-  `/projects/inkwonprinting/inkwon-tag-worlds-1st-4-in-1-pocket-color-inkjet-printer`
-- **NanoKVM-Go: World's First AI-Native 4K USB-C KVM** — +169 followers (82 → 251)  
-  `/projects/zepan/nanokvm-go-worlds-first-ai-native-4k-usb-c-kvm`
-- **TAYEN Gen 2 — AC-Style Semiconductor Cooling Mist Fan** — +64 followers (615 → 679)  
-  `/projects/tayen/icemist-the-ultimate-semiconductor-portable-mist-fan`
-- **CardputerZero, Pocket Raspberry Pi Computer for Makers** — +64 followers (9778 → 9842)  
-  `/projects/m5stack/cardputerzero`
-- **MemoMind One: The Most Natural AI Display Glasses!** — +119 followers (1372 → 1491)  
+## followers_delta (10)
+- **W01: The World’s First Portable Distillation Cup** — +65 followers (125 → 190)  
+  `/projects/1705572997/w01-the-worlds-first-portable-distillation-cup`
+- **MemoMind One: The Most Natural AI Display Glasses!** — +124 followers (1491 → 1615)  
   `/projects/1963472698/memomind-one-the-most-natural-ai-display-glasses`
-- **Karmi — Pocket Fortune Teller** — +73 followers (181 → 254)  
-  `/projects/691584235/karmi`
-- **VORO 60mm Ultra-Long Distance Invisible Wireless Charger** — +75 followers (797 → 872)  
-  `/projects/voro/voro-60mm-ultra-long-distance-invisible-wireless-charger`
-- **PlantSenso — Turns plant care into play** — +84 followers (1282 → 1366)  
+- **NanoKVM-Go: World's First AI-Native 4K USB-C KVM** — +150 followers (251 → 401)  
+  `/projects/zepan/nanokvm-go-worlds-first-ai-native-4k-usb-c-kvm`
+- **PlantSenso — Turns plant care into play** — +226 followers (1366 → 1592)  
   `/projects/sensoplantsensor/senso-smart-and-gamified-plant-sensor`
-- **InfiMech MX 3D Printer: 8X More Efficiency. 8X Less Waste.** — +84 followers (4626 → 4710)  
+- **GORDIX: The First 3-in-1 Portable CNC That Fits Your Space** — +51 followers (10086 → 10137)  
+  `/projects/cubiio/gordix-large-format-desktop-cnc-without-rails`
+- **InfiMech MX 3D Printer: 8X More Efficiency. 8X Less Waste.** — +60 followers (4710 → 4770)  
   `/projects/infimech-mx-series/infimech-mx-3d-printer-8x-more-efficiency-8x-less-waste`
+- **INKWON Tag - World's 1st 4-in-1 Pocket Creative Studio** — +59 followers (4027 → 4086)  
+  `/projects/inkwonprinting/inkwon-tag-worlds-1st-4-in-1-pocket-color-inkjet-printer`
+- **TiNexus: The Titanium EDC Ratchet System — Always Ready** — +50 followers (148 → 198)  
+  `/projects/edc-angie/tinexus-the-titanium-edc-ratchet-system-always-ready`
+- **VORO 60mm Ultra-Long Distance Invisible Wireless Charger** — +54 followers (872 → 926)  
+  `/projects/voro/voro-60mm-ultra-long-distance-invisible-wireless-charger`
+- **Karmi — Pocket Fortune Teller** — +72 followers (254 → 326)  
+  `/projects/691584235/karmi`
 
-## status_change (3)
-- **NeuroHUD: The Heads-Up Display Tesla Forgot** — live → successful  
-  `/projects/trantor/neurohud-add-the-hud-tesla-forgot`
-- **Coolwill Ice Pop Maker - Redefining How Ice Pops Are Made** — live → successful  
-  `/projects/coolwill/coolwill-ice-pop-maker-redefining-how-ice-pops-are-made`
-- **Moka E-Ink Album: Privacy-First Smart Display Companion** — live → successful  
-  `/projects/1650479992/moka-e-ink-album-privacy-first-smart-display-companion`
+## status_change (2)
+- **World Cup Fan Party Kit | 3D Printed Glasses & Coasters** — live → failed  
+  `/projects/layerforge/world-cup-fan-party-kit-3d-printed-glasses-and-coasters`
+- **FumeClear Industrial Dust Collector for Precision Work** — prelaunch → live  
+  `/projects/fumeclear/fumeclear-industrial-dust-collector-for-precision-work`
