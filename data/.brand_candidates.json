@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 196658.12944368,
+      "pledged_usd": 201150.51419088,
       "project_we_love": true,
       "url": "https://www.kickstarter.com/projects/rokkoyo-2/rokkoyo-titan-modern-technology-meets-japanese-heritage",
       "china_confidence": "未知",
@@ -23,9 +23,24 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 112024.12718,
+      "pledged_usd": 115014.07522736,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/lastoolx/matchgrip-worlds-smallest-titanium-edc-precision-tweezers",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "movespeedtech",
+      "title": "MOVESPEED Touch to Interact The Ultimate Smart SSD Enclosure",
+      "location": "Los Angeles, CA",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 75805.17402435,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/movespeedtech/movespeed-smart-touchscreen-ssd-enclosure",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -38,9 +53,24 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 65924.1082125,
+      "pledged_usd": 65962.3983375,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/manime/manime-an-elegant-true-gmt-watch-for-gentlemen-travelers",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "438191414",
+      "title": "PREP: Portable Wind Power System for Life Off-Grid",
+      "location": "Dallas, TX",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 47655.43746535,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/438191414/prep-portable-wind-power-system-for-life-off-grid",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -53,7 +83,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 25418.18767178,
+      "pledged_usd": 26681.55437709,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/1082409906/nanomax20-the-compact-m390-titanium-edc-knife-reimagined",
       "china_confidence": "未知",
@@ -63,7 +93,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-06-23T02:30:36.362030+00:00",
+    "generated_at": "2026-06-24T02:21:59.138660+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
