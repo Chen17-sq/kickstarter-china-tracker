@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 206810.33206608,
+      "pledged_usd": 209400.37496208,
       "project_we_love": true,
       "url": "https://www.kickstarter.com/projects/rokkoyo-2/rokkoyo-titan-modern-technology-meets-japanese-heritage",
       "china_confidence": "未知",
@@ -23,7 +23,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 121589.05063376,
+      "pledged_usd": 124468.71371216,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/lastoolx/matchgrip-worlds-smallest-titanium-edc-precision-tweezers",
       "china_confidence": "未知",
@@ -38,39 +38,9 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 64839.2213375,
+      "pledged_usd": 66638.8572125,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/manime/manime-an-elegant-true-gmt-watch-for-gentlemen-travelers",
-      "china_confidence": "未知",
-      "reasons": [
-        "pledged >= $5,000"
-      ]
-    },
-    {
-      "creator_slug": "438191414",
-      "title": "PREP: Portable Wind Power System for Life Off-Grid",
-      "location": "Dallas, TX",
-      "country": "HK",
-      "status": "live",
-      "followers": 0,
-      "pledged_usd": 47726.3223151,
-      "project_we_love": false,
-      "url": "https://www.kickstarter.com/projects/438191414/prep-portable-wind-power-system-for-life-off-grid",
-      "china_confidence": "未知",
-      "reasons": [
-        "pledged >= $5,000"
-      ]
-    },
-    {
-      "creator_slug": "1082409906",
-      "title": "NanoMax2.0: The Compact M390 Titanium EDC Knife, Reimagined",
-      "location": "Chicago, IL",
-      "country": "HK",
-      "status": "live",
-      "followers": 0,
-      "pledged_usd": 29310.77121678,
-      "project_we_love": false,
-      "url": "https://www.kickstarter.com/projects/1082409906/nanomax20-the-compact-m390-titanium-edc-knife-reimagined",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -83,9 +53,24 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 27590.19045048,
+      "pledged_usd": 32457.7722844,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/1161869810/muse-300-desktop-dac-and-headphone-amplifier",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "1082409906",
+      "title": "NanoMax2.0: The Compact M390 Titanium EDC Knife, Reimagined",
+      "location": "Chicago, IL",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 30268.09151747,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/1082409906/nanomax20-the-compact-m390-titanium-edc-knife-reimagined",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -98,7 +83,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 10914.42024959,
+      "pledged_usd": 12999.99694708,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/672826267/kestrel-titanium-flip-tool-built-for-tactile-motion",
       "china_confidence": "未知",
@@ -108,7 +93,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-06-26T02:30:52.297029+00:00",
+    "generated_at": "2026-06-27T02:18:27.081436+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
