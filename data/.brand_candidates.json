@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 229906.75251744,
+      "pledged_usd": 231613.88423904,
       "project_we_love": true,
       "url": "https://www.kickstarter.com/projects/rokkoyo-2/rokkoyo-titan-modern-technology-meets-japanese-heritage",
       "china_confidence": "未知",
@@ -23,7 +23,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 147908.48188928,
+      "pledged_usd": 150525.45229856,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/lastoolx/matchgrip-worlds-smallest-titanium-edc-precision-tweezers",
       "china_confidence": "未知",
@@ -68,7 +68,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 35673.67761742,
+      "pledged_usd": 35368.9074697,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/1082409906/nanomax20-the-compact-m390-titanium-edc-knife-reimagined",
       "china_confidence": "未知",
@@ -83,9 +83,24 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 15867.68085188,
+      "pledged_usd": 16210.32315474,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/672826267/kestrel-titanium-flip-tool-built-for-tactile-motion",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "lairedc",
+      "title": "TiLok: Titanium Magnetic Quick-Release EDC Carry System",
+      "location": "San Francisco, CA",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 12871.85923845,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/lairedc/tilok-titanium-magnetic-quick-release-edc-carry-system",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -93,7 +108,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-07-03T02:05:48.484707+00:00",
+    "generated_at": "2026-07-04T02:10:24.690011+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
