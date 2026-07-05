@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-04T02:10:06Z",
-  "started_at": "2026-07-04T01:56:37Z",
-  "total_candidates": 677,
+  "generated_at": "2026-07-05T02:12:30Z",
+  "started_at": "2026-07-05T02:03:53Z",
+  "total_candidates": 29,
   "kept": 477,
   "projects": [
     {
@@ -34,7 +34,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Lishan, China",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/titaner/titaner-voyager-worlds-first-modular-titanium-luggage",
@@ -67,10 +70,10 @@
       "china_reason": "KS location: Xi'an, China",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 76,
-      "delta_backers": 45,
-      "delta_pledged_usd": 29606.05988585,
-      "weekly_delta_followers": 521,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 517,
       "weekly_delta_backers": 480,
       "weekly_delta_pledged_usd": 315304.3401445
     },
@@ -105,12 +108,12 @@
       "china_reason": "KS location: Shenzhen, China",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 20,
-      "delta_backers": 16,
-      "delta_pledged_usd": 1120.0,
-      "weekly_delta_followers": 268,
-      "weekly_delta_backers": 237,
-      "weekly_delta_pledged_usd": 16374.0
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 228,
+      "weekly_delta_backers": 184,
+      "weekly_delta_pledged_usd": 12874.0
     },
     {
       "pathname": "/projects/gogochina/gogochinareality-travel-show",
@@ -144,8 +147,8 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 1,
-      "delta_pledged_usd": 873.4445082000002,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
       "weekly_delta_followers": 0,
       "weekly_delta_backers": 9,
       "weekly_delta_pledged_usd": 6603.7698423
@@ -181,12 +184,12 @@
       "china_reason": "KS location: Shenzhen, China",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 13,
-      "delta_backers": -1,
-      "delta_pledged_usd": -305.28065047999553,
-      "weekly_delta_followers": 105,
-      "weekly_delta_backers": 0,
-      "weekly_delta_pledged_usd": 72.36376623000251
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 92,
+      "weekly_delta_backers": 1,
+      "weekly_delta_pledged_usd": 875.6398590900062
     },
     {
       "pathname": "/projects/850840687/chinese-silk-yunjin-brocade",
@@ -219,7 +222,7 @@
       "china_reason": "KS location: Nanjing, China",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 3,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
       "weekly_delta_followers": 3,
@@ -257,12 +260,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 18,
-      "delta_backers": 7,
-      "delta_pledged_usd": 21989.351530079963,
-      "weekly_delta_followers": 134,
-      "weekly_delta_backers": 67,
-      "weekly_delta_pledged_usd": 212219.4683030399
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 108,
+      "weekly_delta_backers": 54,
+      "weekly_delta_pledged_usd": 170452.00705895992
     },
     {
       "pathname": "/projects/innodigym/omni-x1-best-all-in-one-smart-cable-training-machine",
@@ -295,12 +298,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 21,
-      "delta_backers": 7,
-      "delta_pledged_usd": 18083.502445579972,
-      "weekly_delta_followers": 155,
-      "weekly_delta_backers": 44,
-      "weekly_delta_pledged_usd": 117298.60455312999
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 132,
+      "weekly_delta_backers": 31,
+      "weekly_delta_pledged_usd": 84868.90105693997
     },
     {
       "pathname": "/projects/procolored/procolored-x-one-full-color-uv-laser-in-one-system",
@@ -333,12 +336,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 11,
-      "delta_backers": -1,
-      "delta_pledged_usd": -8990.072096519987,
-      "weekly_delta_followers": 64,
-      "weekly_delta_backers": 3,
-      "weekly_delta_pledged_usd": 64195.336130940006
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 47,
+      "weekly_delta_backers": 1,
+      "weekly_delta_pledged_usd": 49548.319716420025
     },
     {
       "pathname": "/projects/1963472698/memomind-one-the-most-natural-ai-display-glasses",
@@ -371,10 +374,10 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 64,
-      "delta_backers": 61,
-      "delta_pledged_usd": 30358.748759499984,
-      "weekly_delta_followers": 774,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 651,
       "weekly_delta_backers": 1278,
       "weekly_delta_pledged_usd": 605299.43721905
     },
@@ -409,12 +412,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 24,
-      "delta_backers": 1,
-      "delta_pledged_usd": 429.2051954700146,
-      "weekly_delta_followers": 144,
-      "weekly_delta_backers": 18,
-      "weekly_delta_pledged_usd": 13653.523941890046
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 117,
+      "weekly_delta_backers": 10,
+      "weekly_delta_pledged_usd": 6737.615426480013
     },
     {
       "pathname": "/projects/465535565/linyo-h1-car-wash-machine",
@@ -447,12 +450,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 24,
-      "delta_backers": 10,
-      "delta_pledged_usd": 4506.775151979993,
-      "weekly_delta_followers": 212,
-      "weekly_delta_backers": 73,
-      "weekly_delta_pledged_usd": 33495.16357219999
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 183,
+      "weekly_delta_backers": 65,
+      "weekly_delta_pledged_usd": 30884.567420280015
     },
     {
       "pathname": "/projects/sleepal/sleepal-ai-lamp-tracking-and-improving-sleep-naturally",
@@ -485,12 +488,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 28,
-      "delta_backers": 8,
-      "delta_pledged_usd": 2065.151408409991,
-      "weekly_delta_followers": 125,
-      "weekly_delta_backers": 36,
-      "weekly_delta_pledged_usd": 10757.843578920001
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 115,
+      "weekly_delta_backers": 33,
+      "weekly_delta_pledged_usd": 9860.462553780002
     },
     {
       "pathname": "/projects/1676689999/melo-d-play-from-the-first-touch-worlds-first-ai-guitar",
@@ -523,12 +526,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 13,
-      "delta_backers": 12,
-      "delta_pledged_usd": 4451.270439390006,
-      "weekly_delta_followers": 72,
-      "weekly_delta_backers": 32,
-      "weekly_delta_pledged_usd": 12504.837268340023
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 67,
+      "weekly_delta_backers": 31,
+      "weekly_delta_pledged_usd": 12108.896309340023
     },
     {
       "pathname": "/projects/mavo/mavo-lumicurve-the-all-in-one-precision-coffee-scale",
@@ -561,12 +564,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 20,
-      "delta_backers": 30,
-      "delta_pledged_usd": 2925.8809450000117,
-      "weekly_delta_followers": 155,
-      "weekly_delta_backers": 189,
-      "weekly_delta_pledged_usd": 17713.503470000025
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 142,
+      "weekly_delta_backers": 163,
+      "weekly_delta_pledged_usd": 15397.526624999999
     },
     {
       "pathname": "/projects/698611014/memoir-a-paper-like-e-ink-digital-frame",
@@ -599,12 +602,12 @@
       "china_reason": "KS location: Central, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 52,
-      "delta_backers": 12,
-      "delta_pledged_usd": 5250.393260910001,
-      "weekly_delta_followers": 212,
-      "weekly_delta_backers": 27,
-      "weekly_delta_pledged_usd": 16029.53141262001
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 178,
+      "weekly_delta_backers": 26,
+      "weekly_delta_pledged_usd": 14084.51589702
     },
     {
       "pathname": "/projects/intricuit/magic-screen-the-first-snap-on-touchscreen-for-your-macbook",
@@ -637,10 +640,10 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 69,
-      "delta_backers": 54,
-      "delta_pledged_usd": 10311.403688320002,
-      "weekly_delta_followers": 934,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 781,
       "weekly_delta_backers": 839,
       "weekly_delta_pledged_usd": 136660.52802284
     },
@@ -675,12 +678,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 4,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 31,
-      "weekly_delta_backers": -3,
-      "weekly_delta_pledged_usd": -3948.228345840005
+      "weekly_delta_followers": 22,
+      "weekly_delta_backers": -5,
+      "weekly_delta_pledged_usd": -6503.5499110200035
     },
     {
       "pathname": "/projects/voxmeta/h1-pro-3d-scanner",
@@ -713,10 +716,10 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 25,
-      "delta_backers": 3,
-      "delta_pledged_usd": 4545.4132354800095,
-      "weekly_delta_followers": 172,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 168,
       "weekly_delta_backers": 60,
       "weekly_delta_pledged_usd": 117944.84066948
     },
@@ -751,10 +754,10 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 124,
-      "delta_backers": 140,
-      "delta_pledged_usd": 22595.582372699995,
-      "weekly_delta_followers": 503,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 480,
       "weekly_delta_backers": 905,
       "weekly_delta_pledged_usd": 117187.32165642
     },
@@ -789,12 +792,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 37,
-      "weekly_delta_backers": 61,
-      "weekly_delta_pledged_usd": 31194.656117079998
+      "weekly_delta_followers": 29,
+      "weekly_delta_backers": 62,
+      "weekly_delta_pledged_usd": 31003.367108160004
     },
     {
       "pathname": "/projects/quickfreezer/2nd-gen-quickfreezer-shaved-ice-machine",
@@ -827,12 +830,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 10,
-      "delta_backers": 9,
-      "delta_pledged_usd": 2719.7243444800115,
-      "weekly_delta_followers": 150,
-      "weekly_delta_backers": 55,
-      "weekly_delta_pledged_usd": 14827.967250240006
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 127,
+      "weekly_delta_backers": 41,
+      "weekly_delta_pledged_usd": 10860.516549760003
     },
     {
       "pathname": "/projects/1180418196/vbookscan-all-in-one-smart-scanning-solution",
@@ -865,12 +868,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 23,
-      "delta_backers": 6,
-      "delta_pledged_usd": 484.57138729999133,
-      "weekly_delta_followers": 151,
-      "weekly_delta_backers": 58,
-      "weekly_delta_pledged_usd": 4563.834839849995
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 121,
+      "weekly_delta_backers": 48,
+      "weekly_delta_pledged_usd": 3763.0276183499955
     },
     {
       "pathname": "/projects/metaxsire/aether-the-ai-interactive-male-sex-toy-tuned-to-your-body",
@@ -903,12 +906,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 27,
-      "delta_backers": 20,
-      "delta_pledged_usd": 4211.147585599996,
-      "weekly_delta_followers": 278,
-      "weekly_delta_backers": 163,
-      "weekly_delta_pledged_usd": 34033.739564799995
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 258,
+      "weekly_delta_backers": 155,
+      "weekly_delta_pledged_usd": 32589.782628799992
     },
     {
       "pathname": "/projects/185996931/vytasync-the-smart-air-pillow",
@@ -941,12 +944,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 26,
-      "delta_backers": 1,
-      "delta_pledged_usd": -283.346924999998,
-      "weekly_delta_followers": 155,
-      "weekly_delta_backers": 31,
-      "weekly_delta_pledged_usd": 9653.323413749997
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 132,
+      "weekly_delta_backers": 25,
+      "weekly_delta_pledged_usd": 7728.47883
     },
     {
       "pathname": "/projects/mileseeyd9/mileseey-horizon-smart-golf-sunglasses",
@@ -979,12 +982,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 2,
-      "delta_backers": -1,
-      "delta_pledged_usd": -598.9903979800001,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
       "weekly_delta_followers": 6,
-      "weekly_delta_backers": -2,
-      "weekly_delta_pledged_usd": -1137.9924117600021
+      "weekly_delta_backers": -3,
+      "weekly_delta_pledged_usd": -1836.9209051200014
     },
     {
       "pathname": "/projects/sensoplantsensor/senso-smart-and-gamified-plant-sensor",
@@ -1017,12 +1020,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 28,
-      "delta_backers": 4,
-      "delta_pledged_usd": 819.8674325600005,
-      "weekly_delta_followers": 159,
-      "weekly_delta_backers": 28,
-      "weekly_delta_pledged_usd": 3793.673635250001
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 138,
+      "weekly_delta_backers": 18,
+      "weekly_delta_pledged_usd": 2254.1249367799974
     },
     {
       "pathname": "/projects/1705572997/w01-the-worlds-first-portable-distillation-cup",
@@ -1055,12 +1058,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 18,
-      "delta_backers": 12,
-      "delta_pledged_usd": 1328.0,
-      "weekly_delta_followers": 166,
-      "weekly_delta_backers": 98,
-      "weekly_delta_pledged_usd": 11608.0
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 150,
+      "weekly_delta_backers": 87,
+      "weekly_delta_pledged_usd": 10264.0
     },
     {
       "pathname": "/projects/jessehang/3i-atlas-space-terminal-metaverse-ai-companion-hub",
@@ -1093,10 +1096,10 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 4,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 24,
+      "weekly_delta_followers": 17,
       "weekly_delta_backers": 2,
       "weekly_delta_pledged_usd": 1762.510778900003
     },
@@ -1131,12 +1134,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 30,
-      "delta_backers": 20,
-      "delta_pledged_usd": 982.533706000002,
-      "weekly_delta_followers": 218,
-      "weekly_delta_backers": 81,
-      "weekly_delta_pledged_usd": 4432.885837200003
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 193,
+      "weekly_delta_backers": 66,
+      "weekly_delta_pledged_usd": 3577.9539112000057
     },
     {
       "pathname": "/projects/trilife-tripod/aulgo-all-in-one-4k-pocket-camera",
@@ -1169,12 +1172,12 @@
       "china_reason": "KS location: Kwun Tong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 43,
-      "delta_backers": 18,
-      "delta_pledged_usd": 4376.207048600001,
-      "weekly_delta_followers": 305,
-      "weekly_delta_backers": 137,
-      "weekly_delta_pledged_usd": 28648.565572040003
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 262,
+      "weekly_delta_backers": 114,
+      "weekly_delta_pledged_usd": 23735.200310160002
     },
     {
       "pathname": "/projects/zensyandsoulie/zensy-ring-mood-tracking-ring-with-phone-free-calming-guide",
@@ -1207,9 +1210,9 @@
       "china_reason": "KS location: Central, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 10,
-      "delta_backers": 10,
-      "delta_pledged_usd": 1673.0017855999977
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/guliguli/ht01-hd-camera-meets-wireless-torquesee-and-fix-with-ease",
@@ -1242,12 +1245,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 6,
-      "delta_backers": 12,
-      "delta_pledged_usd": 937.8382256000004,
-      "weekly_delta_followers": 96,
-      "weekly_delta_backers": 48,
-      "weekly_delta_pledged_usd": 3801.1225183999995
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 82,
+      "weekly_delta_backers": 43,
+      "weekly_delta_pledged_usd": 3346.177182399999
     },
     {
       "pathname": "/projects/koibot/worlds-first-lifelike-robot-for-personal-bonds",
@@ -1280,9 +1283,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 37,
-      "delta_backers": 4,
-      "delta_pledged_usd": 11395.034423730001
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/tadcalo/tadcalo-gen3-14-in-1-dual-host-kvm-docking-station",
@@ -1315,12 +1318,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 25,
-      "delta_backers": 19,
-      "delta_pledged_usd": 4037.741260839999,
-      "weekly_delta_followers": 89,
-      "weekly_delta_backers": 47,
-      "weekly_delta_pledged_usd": 10063.17195952
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 76,
+      "weekly_delta_backers": 36,
+      "weekly_delta_pledged_usd": 7815.320424079999
     },
     {
       "pathname": "/projects/2057714259/lawnsense-tango-the-advanced-smart-robotic-lawn-mower-0",
@@ -1353,10 +1356,10 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 12,
+      "weekly_delta_followers": 10,
       "weekly_delta_backers": 2,
       "weekly_delta_pledged_usd": 2010.1734100799986
     },
@@ -1391,10 +1394,10 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 4,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 33,
+      "weekly_delta_followers": 28,
       "weekly_delta_backers": 1,
       "weekly_delta_pledged_usd": 329.17030393999994
     },
@@ -1429,12 +1432,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 2,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 25,
-      "weekly_delta_backers": -1,
-      "weekly_delta_pledged_usd": -507.5729100000008
+      "weekly_delta_followers": 19,
+      "weekly_delta_backers": -2,
+      "weekly_delta_pledged_usd": -2900.106754999999
     },
     {
       "pathname": "/projects/joymaylab/joymaylab-your-drinks-deserve-better-ice",
@@ -1467,12 +1470,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 5,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 36,
-      "weekly_delta_backers": 6,
-      "weekly_delta_pledged_usd": 2945.0202714000006
+      "weekly_delta_followers": 27,
+      "weekly_delta_backers": 4,
+      "weekly_delta_pledged_usd": 1944.7139407000013
     },
     {
       "pathname": "/projects/384029795/powerrider-ai-powered-presenter-endless-possibilities",
@@ -1505,10 +1508,10 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 14,
-      "delta_backers": 10,
-      "delta_pledged_usd": 1398.3339552599991,
-      "weekly_delta_followers": 107,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 106,
       "weekly_delta_backers": 70,
       "weekly_delta_pledged_usd": 11828.90818194
     },
@@ -1543,10 +1546,10 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 57,
-      "delta_backers": 38,
-      "delta_pledged_usd": 2714.481522360001,
-      "weekly_delta_followers": 111,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 110,
       "weekly_delta_backers": 133,
       "weekly_delta_pledged_usd": 10193.71189014
     },
@@ -1581,12 +1584,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 9,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 86,
-      "weekly_delta_backers": 10,
-      "weekly_delta_pledged_usd": 1589.1678212499992
+      "weekly_delta_followers": 24,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 288.83517624999877
     },
     {
       "pathname": "/projects/rugone/rugone-xlink-7-ai-sports-walkie-talkie-lte-walkie-talkie",
@@ -1619,12 +1622,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 20,
-      "delta_backers": 6,
-      "delta_pledged_usd": 1426.4383590500001,
-      "weekly_delta_followers": 89,
-      "weekly_delta_backers": 17,
-      "weekly_delta_pledged_usd": 3317.80603205
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 65,
+      "weekly_delta_backers": 11,
+      "weekly_delta_pledged_usd": 2252.9226404499996
     },
     {
       "pathname": "/projects/kf20/s86-dual-lens-thumb-camera-capture-photos-and-videos-easily",
@@ -1657,12 +1660,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 12,
-      "delta_backers": 4,
-      "delta_pledged_usd": -389.3414050800002,
-      "weekly_delta_followers": 69,
-      "weekly_delta_backers": 10,
-      "weekly_delta_pledged_usd": -323.3664767200007
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 17,
+      "weekly_delta_backers": 2,
+      "weekly_delta_pledged_usd": -567.9969170799995
     },
     {
       "pathname": "/projects/kerylove/glass-air-fryer-with-ceramic-coating-and-steam-function",
@@ -1695,10 +1698,10 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 14,
-      "delta_backers": 13,
-      "delta_pledged_usd": 1555.357626,
-      "weekly_delta_followers": 44,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 43,
       "weekly_delta_backers": 34,
       "weekly_delta_pledged_usd": 3943.2140469
     },
@@ -1733,9 +1736,9 @@
       "china_reason": "KS location: Wan Chai, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 8,
-      "delta_backers": 10,
-      "delta_pledged_usd": 1472.74518816,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
       "weekly_delta_followers": 39,
       "weekly_delta_backers": 48,
       "weekly_delta_pledged_usd": 6711.75062118
@@ -1771,9 +1774,9 @@
       "china_reason": "KS location: Kowloon, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 3,
-      "delta_backers": 1,
-      "delta_pledged_usd": 380.88844006,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
       "weekly_delta_followers": 11,
       "weekly_delta_backers": 7,
       "weekly_delta_pledged_usd": 3216.44794512
@@ -1809,9 +1812,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 8,
-      "delta_backers": 8,
-      "delta_pledged_usd": 626.2280311799996,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
       "weekly_delta_followers": 46,
       "weekly_delta_backers": 69,
       "weekly_delta_pledged_usd": 5377.45108998
@@ -1847,12 +1850,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 2,
-      "delta_backers": 1,
-      "delta_pledged_usd": 68.75807939000015,
-      "weekly_delta_followers": 13,
-      "weekly_delta_backers": 6,
-      "weekly_delta_pledged_usd": 799.2010526500001
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 10,
+      "weekly_delta_backers": 3,
+      "weekly_delta_pledged_usd": 414.97223053000016
     },
     {
       "pathname": "/projects/washwow/washwow-p1-electrolyzed-water-generating-pet-paw-cleaner",
@@ -1885,10 +1888,10 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 10,
+      "weekly_delta_followers": 8,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 14.925223170000208
     },
@@ -1923,10 +1926,10 @@
       "china_reason": "KS location: Kowloon, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 1,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 25,
+      "weekly_delta_followers": 18,
       "weekly_delta_backers": 1,
       "weekly_delta_pledged_usd": 618.6951485
     },
@@ -1961,12 +1964,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 78,
-      "delta_backers": 22,
-      "delta_pledged_usd": 17388.906400799984,
-      "weekly_delta_followers": 745,
-      "weekly_delta_backers": 235,
-      "weekly_delta_pledged_usd": 186171.59887127997
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 629,
+      "weekly_delta_backers": 188,
+      "weekly_delta_pledged_usd": 148938.83657927997
     },
     {
       "pathname": "/projects/antou/penn-minimal-by-design-built-for-versatile-writing",
@@ -1999,12 +2002,12 @@
       "china_reason": "KS location: Taipei City, Taiwan",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 38,
-      "delta_backers": 30,
-      "delta_pledged_usd": 2995.0,
-      "weekly_delta_followers": 327,
-      "weekly_delta_backers": 247,
-      "weekly_delta_pledged_usd": 22651.0
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 268,
+      "weekly_delta_backers": 185,
+      "weekly_delta_pledged_usd": 16638.0
     },
     {
       "pathname": "/projects/ruixinpro/ruixin-pro-omnix-the-worlds-first-4-in-1-modular-sharpener",
@@ -2037,10 +2040,10 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 47,
-      "delta_backers": 79,
-      "delta_pledged_usd": 13492.912419319997,
-      "weekly_delta_followers": 422,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 402,
       "weekly_delta_backers": 1131,
       "weekly_delta_pledged_usd": 197518.39076626
     },
@@ -2075,12 +2078,12 @@
       "china_reason": "KS location: Kowloon, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 28,
-      "delta_backers": 3,
-      "delta_pledged_usd": 706.1529427699861,
-      "weekly_delta_followers": 146,
-      "weekly_delta_backers": 49,
-      "weekly_delta_pledged_usd": 11128.066788169992
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 133,
+      "weekly_delta_backers": 42,
+      "weekly_delta_pledged_usd": 10109.996659039985
     },
     {
       "pathname": "/projects/foldryn/foldryn-dryer-the-ultra-compact-wardrobe-care-system",
@@ -2113,12 +2116,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 51,
-      "delta_backers": 20,
-      "delta_pledged_usd": 2579.8746551099903,
-      "weekly_delta_followers": 301,
-      "weekly_delta_backers": 204,
-      "weekly_delta_pledged_usd": 24632.253396729997
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 240,
+      "weekly_delta_backers": 131,
+      "weekly_delta_pledged_usd": 16174.06045225999
     },
     {
       "pathname": "/projects/kronosti/kronosti-atlas-gmt-titanium-automatic-gmt-watch",
@@ -2151,12 +2154,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 19,
-      "delta_backers": 6,
-      "delta_pledged_usd": 1543.9854737500136,
-      "weekly_delta_followers": 96,
-      "weekly_delta_backers": 32,
-      "weekly_delta_pledged_usd": 13114.11254500001
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 77,
+      "weekly_delta_backers": 25,
+      "weekly_delta_pledged_usd": 10854.229367500011
     },
     {
       "pathname": "/projects/1921554991/izestee-pro-the-worlds-first-scenic-aeroponic-ecosystem",
@@ -2189,12 +2192,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 39,
-      "delta_backers": 3,
-      "delta_pledged_usd": 459.34199999998964,
-      "weekly_delta_followers": 340,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 270,
       "weekly_delta_backers": 41,
-      "weekly_delta_pledged_usd": 5573.732384999996
+      "weekly_delta_pledged_usd": 5272.60818499999
     },
     {
       "pathname": "/projects/edc-angie/tinexus-the-titanium-edc-ratchet-system-always-ready",
@@ -2227,12 +2230,12 @@
       "china_reason": "KS location: Kowloon, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 64,
-      "delta_backers": 14,
-      "delta_pledged_usd": 3543.050684080008,
-      "weekly_delta_followers": 473,
-      "weekly_delta_backers": 227,
-      "weekly_delta_pledged_usd": 46314.847303480004
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 401,
+      "weekly_delta_backers": 198,
+      "weekly_delta_pledged_usd": 40816.88250464001
     },
     {
       "pathname": "/projects/twelvetooo/twelvetooo-smart-projection-bulb-light-and-motion-anywhere",
@@ -2265,12 +2268,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 56,
-      "delta_backers": 27,
-      "delta_pledged_usd": 1715.5284062400024,
-      "weekly_delta_followers": 341,
-      "weekly_delta_backers": 191,
-      "weekly_delta_pledged_usd": 11330.172762480004
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 306,
+      "weekly_delta_backers": 157,
+      "weekly_delta_pledged_usd": 9159.144627600006
     },
     {
       "pathname": "/projects/novaz/novaz-crystal-pint-innovative-material-reusable",
@@ -2303,12 +2306,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 29,
-      "delta_backers": 11,
-      "delta_pledged_usd": 1834.5267898099992,
-      "weekly_delta_followers": 252,
-      "weekly_delta_backers": 105,
-      "weekly_delta_pledged_usd": 16539.188328520002
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 231,
+      "weekly_delta_backers": 80,
+      "weekly_delta_pledged_usd": 12814.64353455
     },
     {
       "pathname": "/projects/zerasonic/zera-mini",
@@ -2341,10 +2344,10 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 129,
-      "delta_backers": 215,
-      "delta_pledged_usd": 14491.470982770003,
-      "weekly_delta_followers": 333,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 320,
       "weekly_delta_backers": 704,
       "weekly_delta_pledged_usd": 46119.54081915
     },
@@ -2379,10 +2382,10 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 13,
-      "delta_backers": 8,
-      "delta_pledged_usd": 4724.954890519999,
-      "weekly_delta_followers": 105,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 101,
       "weekly_delta_backers": 86,
       "weekly_delta_pledged_usd": 45280.45640724
     },
@@ -2417,12 +2420,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 71,
-      "delta_backers": 25,
-      "delta_pledged_usd": 5681.1522553500035,
-      "weekly_delta_followers": 234,
-      "weekly_delta_backers": 104,
-      "weekly_delta_pledged_usd": 24370.97594646
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 207,
+      "weekly_delta_backers": 92,
+      "weekly_delta_pledged_usd": 21904.10444508
     },
     {
       "pathname": "/projects/wetox/wetoxd2-tesla-v2l-adapter-v2h-discharge-powershare-nacs-ccs2",
@@ -2455,9 +2458,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 24,
-      "delta_backers": 16,
-      "delta_pledged_usd": 12139.948735920003,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
       "weekly_delta_followers": 89,
       "weekly_delta_backers": 49,
       "weekly_delta_pledged_usd": 38667.84793065
@@ -2493,12 +2496,12 @@
       "china_reason": "KS location: Taipei City, Taiwan",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 35,
-      "delta_backers": 6,
-      "delta_pledged_usd": 336.0,
-      "weekly_delta_followers": 194,
-      "weekly_delta_backers": 53,
-      "weekly_delta_pledged_usd": 4474.0
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 168,
+      "weekly_delta_backers": 43,
+      "weekly_delta_pledged_usd": 3595.0
     },
     {
       "pathname": "/projects/eckstudio/fixman-revolver-style-titanium-ratchet-driver",
@@ -2531,12 +2534,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 2,
-      "delta_backers": 3,
-      "delta_pledged_usd": 516.8137462399973,
-      "weekly_delta_followers": 53,
-      "weekly_delta_backers": 3,
-      "weekly_delta_pledged_usd": 28.59838911999759
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 44,
+      "weekly_delta_backers": 2,
+      "weekly_delta_pledged_usd": -253.30001792000257
     },
     {
       "pathname": "/projects/orionersx2/orioner-tp01-gr5-titanium-capsule-edc-glow-pendant",
@@ -2569,12 +2572,12 @@
       "china_reason": "KS location: Wan Tsai, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 24,
-      "delta_backers": 8,
-      "delta_pledged_usd": 477.8622734599994,
-      "weekly_delta_followers": 223,
-      "weekly_delta_backers": 72,
-      "weekly_delta_pledged_usd": 6939.718510010001
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 180,
+      "weekly_delta_backers": 44,
+      "weekly_delta_pledged_usd": 4393.628516420002
     },
     {
       "pathname": "/projects/1207952088/reusable-grocery-shopping-bag-thats-not-pain-in-the-hand",
@@ -2607,12 +2610,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 25,
-      "delta_backers": 11,
-      "delta_pledged_usd": 266.17450275999727,
-      "weekly_delta_followers": 167,
-      "weekly_delta_backers": 64,
-      "weekly_delta_pledged_usd": 2217.013924619998
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 151,
+      "weekly_delta_backers": 57,
+      "weekly_delta_pledged_usd": 1996.3087706999977
     },
     {
       "pathname": "/projects/294064084/partydro-3-in-1-backpack-that-transforms-and-travels-with-you",
@@ -2645,10 +2648,10 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 7,
-      "delta_backers": 2,
-      "delta_pledged_usd": 157.98251703999995,
-      "weekly_delta_followers": 35,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 28,
       "weekly_delta_backers": 13,
       "weekly_delta_pledged_usd": 849.3793484800008
     },
@@ -2682,7 +2685,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/1830847608/the-junco-rolling-ita-bag",
@@ -2714,7 +2720,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/weipin/weipin-modular-car-organizer-multi-function-storage-bag",
@@ -2746,7 +2755,10 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/tankogo/tankogo-the-portable-propane-free-heated-shower-tank",
@@ -2780,8 +2792,8 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 1,
-      "delta_pledged_usd": 180.29034491999982,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
       "weekly_delta_followers": 12,
       "weekly_delta_backers": 20,
       "weekly_delta_pledged_usd": 3718.13772858
@@ -2817,9 +2829,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 10,
-      "delta_backers": 2,
-      "delta_pledged_usd": 286.2459861
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/172287722/spindeck-20-tools-one-rotating-titanium-card",
@@ -2852,9 +2864,9 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 16,
-      "delta_backers": 6,
-      "delta_pledged_usd": 798.4648020999994,
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
       "weekly_delta_followers": 90,
       "weekly_delta_backers": 64,
       "weekly_delta_pledged_usd": 8738.7394997
@@ -2893,7 +2905,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 30,
+      "weekly_delta_followers": 16,
       "weekly_delta_backers": 10,
       "weekly_delta_pledged_usd": 2664.949595
     },
@@ -2928,12 +2940,12 @@
       "china_reason": "KS location: Central, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 2,
-      "delta_backers": 2,
-      "delta_pledged_usd": 382.3119453399995,
-      "weekly_delta_followers": 7,
-      "weekly_delta_backers": 14,
-      "weekly_delta_pledged_usd": 4404.23871121
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 5,
+      "weekly_delta_backers": 11,
+      "weekly_delta_pledged_usd": 3690.4962301999994
     },
     {
       "pathname": "/projects/ddiin/exlicon-l-black-stainless-steel-golden-ratio-ruler-for-art",
@@ -2966,12 +2978,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 3,
-      "delta_backers": 8,
-      "delta_pledged_usd": 839.8323251999991,
-      "weekly_delta_followers": 80,
-      "weekly_delta_backers": 70,
-      "weekly_delta_pledged_usd": 7711.558786799999
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 71,
+      "weekly_delta_backers": 67,
+      "weekly_delta_pledged_usd": 7477.747630649999
     },
     {
       "pathname": "/projects/1345931503/torvx-all-in-one-magnetic-wireless-charger-with-4k-camera",
@@ -3004,12 +3016,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 3,
+      "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 26,
-      "weekly_delta_backers": 14,
-      "weekly_delta_pledged_usd": 1909.0113273
+      "weekly_delta_followers": 14,
+      "weekly_delta_backers": 11,
+      "weekly_delta_pledged_usd": 1499.93747145
     },
     {
       "pathname": "/projects/mecarmygear/mecarmy-tpx11-modular-bolt-action-pen",
@@ -3042,12 +3054,12 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_followers": 3,
-      "delta_backers": 4,
-      "delta_pledged_usd": 417.66219099999944,
-      "weekly_delta_followers": 46,
-      "weekly_delta_backers": 33,
-      "weekly_delta_pledged_usd": 4787.23765672
+      "delta_followers": 0,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 35,
+      "weekly_delta_backers": 23,
+      "weekly_delta_pledged_usd": 3376.75099032
     },
     {
       "pathname": "/projects/pongbot/aura-the-worlds-first-ultra-light-ai-multi-sport-robot",
@@ -3083,9 +3095,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 108,
-      "weekly_delta_backers": 488,
-      "weekly_delta_pledged_usd": 400430.16313771997
+      "weekly_delta_followers": 92,
+      "weekly_delta_backers": 435,
+      "weekly_delta_pledged_usd": 357532.77013364993
     },
     {
       "pathname": "/projects/linklan/linklan-5g-esim-hotspot-portable-open-esim-wi-fi-device",
@@ -3121,9 +3133,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 152,
-      "weekly_delta_backers": 7,
-      "weekly_delta_pledged_usd": 2359.184614020007
+      "weekly_delta_followers": 123,
+      "weekly_delta_backers": 5,
+      "weekly_delta_pledged_usd": 2056.852668190011
     },
     {
       "pathname": "/projects/52877986/x1-worlds-1st-auto-zoom-laser-5w-engrave-and-25w-cut-in-one",
@@ -3159,7 +3171,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 14,
+      "weekly_delta_followers": 9,
       "weekly_delta_backers": 4,
       "weekly_delta_pledged_usd": 2968.152240710002
     },
@@ -3197,9 +3209,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 23,
-      "weekly_delta_backers": 3,
-      "weekly_delta_pledged_usd": 377.0234855999952
+      "weekly_delta_followers": 20,
+      "weekly_delta_backers": 2,
+      "weekly_delta_pledged_usd": 298.04631551999773
     },
     {
       "pathname": "/projects/m5stack/cardputerzero",
@@ -3235,9 +3247,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 397,
-      "weekly_delta_backers": 687,
-      "weekly_delta_pledged_usd": 112804.96561659989
+      "weekly_delta_followers": 335,
+      "weekly_delta_backers": 626,
+      "weekly_delta_pledged_usd": 103295.53037229995
     },
     {
       "pathname": "/projects/udifine/fortune-toad-incense-holder",
@@ -3349,9 +3361,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 64,
-      "weekly_delta_backers": 45,
-      "weekly_delta_pledged_usd": 3088.7558001300004
+      "weekly_delta_followers": 59,
+      "weekly_delta_backers": 44,
+      "weekly_delta_pledged_usd": 2998.82176308
     },
     {
       "pathname": "/projects/yansquareheaven/sakura-within-oceacn-creatures-enamel-pins-and-shirt",
@@ -3387,7 +3399,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 13,
+      "weekly_delta_followers": 10,
       "weekly_delta_backers": 1,
       "weekly_delta_pledged_usd": 125.58068760000003
     },
@@ -3425,7 +3437,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 3,
+      "weekly_delta_followers": 1,
       "weekly_delta_backers": 2,
       "weekly_delta_pledged_usd": 197.87684400000012
     },
@@ -3463,9 +3475,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 11,
-      "weekly_delta_backers": 12,
-      "weekly_delta_pledged_usd": 1689.7887113399997
+      "weekly_delta_followers": 1,
+      "weekly_delta_backers": 3,
+      "weekly_delta_pledged_usd": 547.4394782999998
     },
     {
       "pathname": "/projects/allingo/voxera-beyond-language-barriers-ai-translation-earbuds",
@@ -3501,9 +3513,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 3,
-      "weekly_delta_backers": 1,
-      "weekly_delta_pledged_usd": 98.89309999999978
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/318347732/voltbou-240w-24000mah-powerbank-with-led-display",
@@ -3539,7 +3551,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 2,
+      "weekly_delta_followers": 1,
       "weekly_delta_backers": -1,
       "weekly_delta_pledged_usd": -89.10841103999996
     },
@@ -3577,9 +3589,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": -1,
-      "weekly_delta_backers": -1,
-      "weekly_delta_pledged_usd": -8.936373600000024
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 50.043692159999864
     },
     {
       "pathname": "/projects/voro/voro-60mm-ultra-long-distance-invisible-wireless-charger",
@@ -3615,9 +3627,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 64,
-      "weekly_delta_backers": 11,
-      "weekly_delta_pledged_usd": 2316.0795796599996
+      "weekly_delta_followers": 33,
+      "weekly_delta_backers": 5,
+      "weekly_delta_pledged_usd": 714.5636959999974
     },
     {
       "pathname": "/projects/aeke/aeke-s1-pro-full-body-ai-home-gym",
@@ -3653,9 +3665,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 83,
-      "weekly_delta_backers": 23,
-      "weekly_delta_pledged_usd": 84940.0
+      "weekly_delta_followers": 40,
+      "weekly_delta_backers": 11,
+      "weekly_delta_pledged_usd": 35305.0
     },
     {
       "pathname": "/projects/806364082/tical-pro-20-a-titanium-dual-scale-vernier-caliper-for-edc",
@@ -3691,9 +3703,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 71,
-      "weekly_delta_backers": 75,
-      "weekly_delta_pledged_usd": 8430.703206859995
+      "weekly_delta_followers": 35,
+      "weekly_delta_backers": 40,
+      "weekly_delta_pledged_usd": 4317.878733739984
     },
     {
       "pathname": "/projects/1828670441/blue-legend-turquoise-decembers-birthstone",
@@ -3768,8 +3780,8 @@
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
       "weekly_delta_followers": 0,
-      "weekly_delta_backers": 1,
-      "weekly_delta_pledged_usd": 70.89616620000001
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/647981696/black-whalem390-titanium-folding-knife-portable-edc",
@@ -3805,9 +3817,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 4,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
-      "weekly_delta_pledged_usd": 15.958922499999971
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/js-studio/walking-perfume-jiangzhenxiang-the-rare-liquid-gold",
@@ -7985,8 +7997,8 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 2,
-      "weekly_delta_backers": -1,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
     {
@@ -8025,7 +8037,7 @@
       "delta_pledged_usd": 0.0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0,
-      "weekly_delta_followers": -1
+      "weekly_delta_followers": 0
     }
   ]
 }
