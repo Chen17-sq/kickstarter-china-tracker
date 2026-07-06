@@ -1,7 +1,114 @@
 {
-  "candidates": [],
+  "candidates": [
+    {
+      "creator_slug": "rokkoyo-2",
+      "title": "Rokkoyo Titan Kettle: Taste the Roast, Not the Metal",
+      "location": "Tokoname-shi, Japan",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 239015.28268224,
+      "project_we_love": true,
+      "url": "https://www.kickstarter.com/projects/rokkoyo-2/rokkoyo-titan-modern-technology-meets-japanese-heritage",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000",
+        "KS staff pick"
+      ]
+    },
+    {
+      "creator_slug": "lastoolx",
+      "title": "MatchGrip - Precision Tweezers You’ll Actually Carry",
+      "location": "Los Angeles, CA",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 155719.95092336,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/lastoolx/matchgrip-worlds-smallest-titanium-edc-precision-tweezers",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "manime",
+      "title": "MANIME | An Elegant True GMT Watch for Gentlemen Travelers",
+      "location": "Paris, France",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 64992.3818375,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/manime/manime-an-elegant-true-gmt-watch-for-gentlemen-travelers",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "1161869810",
+      "title": "Muse 300 Desktop DAC and Headphone Amplifier",
+      "location": "New York, NY",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 41818.5065804,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/1161869810/muse-300-desktop-dac-and-headphone-amplifier",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "1082409906",
+      "title": "NanoMax2.0: The Compact M390 Titanium EDC Knife, Reimagined",
+      "location": "Chicago, IL",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 38509.90332629,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/1082409906/nanomax20-the-compact-m390-titanium-edc-knife-reimagined",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "lairedc",
+      "title": "TiLok: Titanium Magnetic Quick-Release EDC Carry System",
+      "location": "San Francisco, CA",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 18944.25588468,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/lairedc/tilok-titanium-magnetic-quick-release-edc-carry-system",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "672826267",
+      "title": "KESTREL — A Tool That Feels as Sharp as It Cuts",
+      "location": "San Francisco, CA",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 16514.44052258,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/672826267/kestrel-titanium-flip-tool-built-for-tactile-motion",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    }
+  ],
   "_meta": {
-    "generated_at": "2026-07-05T02:12:49.535852+00:00",
+    "generated_at": "2026-07-06T02:19:03.058502+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
