@@ -1,46 +1,15 @@
 {
   "candidates": [
     {
-      "creator_slug": "rokkoyo-2",
-      "title": "Rokkoyo Titan Kettle: Taste the Roast, Not the Metal",
-      "location": "Tokoname-shi, Japan",
-      "country": "HK",
-      "status": "live",
-      "followers": 0,
-      "pledged_usd": 268537.81645872,
-      "project_we_love": true,
-      "url": "https://www.kickstarter.com/projects/rokkoyo-2/rokkoyo-titan-modern-technology-meets-japanese-heritage",
-      "china_confidence": "未知",
-      "reasons": [
-        "pledged >= $5,000",
-        "KS staff pick"
-      ]
-    },
-    {
       "creator_slug": "1161869810",
       "title": "Muse 300 Desktop DAC and Headphone Amplifier",
       "location": "New York, NY",
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 44813.94155512,
+      "pledged_usd": 44464.50814952,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/1161869810/muse-300-desktop-dac-and-headphone-amplifier",
-      "china_confidence": "未知",
-      "reasons": [
-        "pledged >= $5,000"
-      ]
-    },
-    {
-      "creator_slug": "1082409906",
-      "title": "NanoMax2.0: The Compact M390 Titanium EDC Knife, Reimagined",
-      "location": "Chicago, IL",
-      "country": "HK",
-      "status": "live",
-      "followers": 0,
-      "pledged_usd": 42545.93814685,
-      "project_we_love": false,
-      "url": "https://www.kickstarter.com/projects/1082409906/nanomax20-the-compact-m390-titanium-edc-knife-reimagined",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -53,7 +22,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 19386.76787811,
+      "pledged_usd": 19026.3583692,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/lairedc/tilok-titanium-magnetic-quick-release-edc-carry-system",
       "china_confidence": "未知",
@@ -68,7 +37,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 17950.70622917,
+      "pledged_usd": 18030.43498542,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/672826267/kestrel-titanium-flip-tool-built-for-tactile-motion",
       "china_confidence": "未知",
@@ -78,7 +47,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-07-13T01:58:20.151277+00:00",
+    "generated_at": "2026-07-14T01:39:18.043752+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
