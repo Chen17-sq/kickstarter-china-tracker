@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 44439.51218328,
+      "pledged_usd": 43715.64940584,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/1161869810/muse-300-desktop-dac-and-headphone-amplifier",
       "china_confidence": "未知",
@@ -22,7 +22,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 19521.27724001,
+      "pledged_usd": 38106.6945777,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/419657217/still-a-titanium-brush-pen-that-slows-you-down",
       "china_confidence": "未知",
@@ -37,7 +37,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 18932.65444665,
+      "pledged_usd": 19009.14744465,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/lairedc/tilok-titanium-magnetic-quick-release-edc-carry-system",
       "china_confidence": "未知",
@@ -52,7 +52,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 17599.51700364,
+      "pledged_usd": 17686.77215448,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/672826267/kestrel-titanium-flip-tool-built-for-tactile-motion",
       "china_confidence": "未知",
@@ -62,7 +62,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-07-15T01:36:34.920508+00:00",
+    "generated_at": "2026-07-16T01:51:58.420401+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
