@@ -5,9 +5,9 @@
   <rect x="0" y="0" width="1280" height="46" fill="#111111"/>
   <circle cx="50" cy="23" r="5" fill="#CC0000"/>
   <text x="68" y="28" font-family="Inter, Helvetica, sans-serif" font-size="14" font-weight="700"
-        fill="#F9F9F7" letter-spacing="3.5">DAILY · LIVE EDITION · SUN · JUL 19 · 2026</text>
+        fill="#F9F9F7" letter-spacing="3.5">DAILY · LIVE EDITION · MON · JUL 20 · 2026</text>
   <text x="1230" y="28" text-anchor="end" font-family="JetBrains Mono, Courier New, monospace" font-size="14"
-        font-weight="500" fill="#F9F9F7" letter-spacing="3">VOL. 1 · NO. 86</text>
+        font-weight="500" fill="#F9F9F7" letter-spacing="3">VOL. 1 · NO. 87</text>
 
   <!-- Nameplate -->
   <text x="640" y="200" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="118"
