@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 82721.16194671,
+      "pledged_usd": 98288.89035455,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/419657217/still-a-titanium-brush-pen-that-slows-you-down",
       "china_confidence": "未知",
@@ -22,7 +22,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 44826.69459912,
+      "pledged_usd": 45201.12397096,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/1161869810/muse-300-desktop-dac-and-headphone-amplifier",
       "china_confidence": "未知",
@@ -37,7 +37,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 18863.81074845,
+      "pledged_usd": 18845.83489392,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/lairedc/tilok-titanium-magnetic-quick-release-edc-carry-system",
       "china_confidence": "未知",
@@ -52,7 +52,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 10927.59315333,
+      "pledged_usd": 11124.56257661,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/cargocontainerusa/fire-pit-max-tactical-folding-smokeless-fire-pit",
       "china_confidence": "未知",
@@ -62,7 +62,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-07-20T02:07:03.271884+00:00",
+    "generated_at": "2026-07-21T01:52:17.598897+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
