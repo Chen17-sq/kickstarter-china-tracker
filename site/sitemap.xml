@@ -2,53 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://chen17-sq.github.io/kickstarter-china-tracker/</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://chen17-sq.github.io/kickstarter-china-tracker/subscribe.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://chen17-sq.github.io/kickstarter-china-tracker/stats.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://chen17-sq.github.io/kickstarter-china-tracker/editions/</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://chen17-sq.github.io/kickstarter-china-tracker/editions/latest.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://chen17-sq.github.io/kickstarter-china-tracker/feed.xml</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://chen17-sq.github.io/kickstarter-china-tracker/api/index.json</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://chen17-sq.github.io/kickstarter-china-tracker/api/today.json</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://chen17-sq.github.io/kickstarter-china-tracker/api/sleepers.json</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>daily</changefreq>
-  </url>
-  <url>
-    <loc>https://chen17-sq.github.io/kickstarter-china-tracker/editions/2026-05-22.html</loc>
-    <lastmod>2026-05-22</lastmod>
-    <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://chen17-sq.github.io/kickstarter-china-tracker/editions/2026-05-23.html</loc>
@@ -331,8 +326,13 @@
     <changefreq>yearly</changefreq>
   </url>
   <url>
+    <loc>https://chen17-sq.github.io/kickstarter-china-tracker/editions/2026-07-24.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
     <loc>https://chen17-sq.github.io/kickstarter-china-tracker/weekly/latest.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>

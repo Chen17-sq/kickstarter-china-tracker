@@ -1,93 +1,127 @@
 # Kickstarter China Tracker — diff
 
-## new (12)
-- **HT06: 360° Warmth Meets Modern Living** — Discovered (live, 19 followers)  
-  `/projects/281733758/ht06-the-heater-youll-actually-want-to-display`
-- **Diiwell:19” 4K 144Hz Monitors–Two Models,One Powerful Screen** — Discovered (prelaunch, 1 followers)  
-  `/projects/162375127/diiwell-19-4k-144hz-monitorstwo-modelsone-powerful-screen`
-- **SoPeren H-11：A Modern Christmas Tree That Lasts for Years** — Discovered (prelaunch, 2 followers)  
-  `/projects/2033927165/soperen-h-11-a-modern-christmas-tree-that-lasts-for-years`
-- **Lock your love for a lifetime! Lock happiness, lock love.** — Discovered (prelaunch, 1 followers)  
-  `/projects/dreamlegend/lock-your-love-for-a-lifetime-lock-happiness-lock-love`
-- **ES4: 15-in-1 USB4 Docking Station and Modular Storage System** — Discovered (prelaunch, 3 followers)  
-  `/projects/853307799/es4-15-in-1-usb4-docking-station-and-modular-storage-system`
-- **Rainbean - Best Smart Birdhouse On The Market** — Discovered (prelaunch, 2 followers)  
-  `/projects/178191783/rainbean-best-smart-birdhouse-on-the-market`
-- **CtrlVibe AI Keyboard-Workflow Control Console for the AI Era** — Discovered (prelaunch, 1 followers)  
-  `/projects/663521697/ctrlvibe-ai-keyboard-workflow-control-console-for-the-ai-era`
-- **TaoTao Cute Paradise Series Mini Figures** — Discovered (prelaunch, 1 followers)  
-  `/projects/sutoys/taotso-cute-paradise-series-mini-blind-bag`
-- **DensiFindr** — Discovered (live, 1 followers)  
-  `/projects/755802192/densifindr`
-- **Portal Nomis ONE™: Inflatable Rooftop Tent** — Discovered (prelaunch, 8 followers)  
-  `/projects/portaloutdoors/nomis-one-inflatable-rooftop-tent`
-- **RODMAN:Titanium Quick-Release EDC Tool with Tritium Glow** — Discovered (prelaunch, 1 followers)  
-  `/projects/rodman-flashlight/rodman-titanium-quick-release-edc-tool-with-tritium-glow`
-- **ZKSCool: One Lunch Box. Every Temperature.** — Discovered (live, 45 followers)  
-  `/projects/1200242880/worlds-first-heated-and-cooled-smart-lunch-box-with-find-my`
+## new (11)
+- **OASIS S-10: The Next Step In Aqua Technology** — Discovered (prelaunch, 0 followers)  
+  `/projects/modulink/oasis-s-10-the-next-step-in-aqua-technology`
+- **Wearable AI Anime Electronic Badge | AI Voice Chat, Meeting** — Discovered (live, 7 followers)  
+  `/projects/zuowei11/wearable-ai-anime-electronic-badge-ai-voice-chat-meeting`
+- **点春风 | The Modern Snap-Open Folding Fan** — Discovered (live, 128 followers)  
+  `/projects/predatorcn/the-modern-cockade-fan`
+- **JuniorCreator | The Protective STEAM Drone** — Discovered (live, 11 followers)  
+  `/projects/howardor/juniorcreator-the-protective-steam-drone`
+- **ORIONER Z8: M390 Ti EDC Knife, Tritium Slots & Bottle Opener** — Discovered (prelaunch, 1 followers)  
+  `/projects/455737531/orioner-z8-m390-ti-edc-knife-tritium-slots-and-bottle-opener`
+- **GENTLEMAN: SKD-11 Steel & Titanium EDC Pocket Knife** — Discovered (prelaunch, 9 followers)  
+  `/projects/87978743/gentleman-skd-11-steel-and-titanium-edc-pocket-knife`
+- **PetCueAI: Smart Glasses That Understand Pets** — Discovered (prelaunch, 10 followers)  
+  `/projects/petcueai/petcueai-smart-glasses-that-understand-pets`
+- **NENEXS AirShift: The Belt-Free Camera Backpack** — Discovered (prelaunch, 0 followers)  
+  `/projects/120046477/nenexs-airshift-the-belt-free-camera-backpack`
+- **Aegis Pouch | Fire-resistant Pouch** — Discovered (prelaunch, 2 followers)  
+  `/projects/add1d/aegis-pouch-fire-resistant-pouch`
+- **Lyocell × Coolmax® Ice-cool Breathable Polo Shirts & Pants** — Discovered (live, 18 followers)  
+  `/projects/airvex/lyocell-coolmax-ice-cool-breathable-polo-shirts-and-pants`
+- **Roma-X: The World’s First AI-Powered Home Coffee Roaster** — Discovered (live, 1375 followers)  
+  `/projects/magomaga/mago-maga-smart-roaster-pro`
 
-## followers_delta (18)
-- **XPOLAR C1—Smart Cushion That Cools, Heats, and Adapts to You** — +50 followers (540 → 590)  
-  `/projects/xpolar/c1-the-smart-cushion-that-cools-heats-and-adapts-to-you`
-- **AP30 Music Boy: The First Truly Wearable Hi-Res Music Player** — +186 followers (5140 → 5326)  
+## status_change (17)
+- **SleepHalo H1: The AI-Powered Smart Sleep Companion** — prelaunch → live  
+  `/projects/innioasis/aivoz-sleephalo-h1`
+- **ChargeUltra G4: 7-in-1 Wireless Charger with Ambient Clock** — prelaunch → live  
+  `/projects/1062523922/chargeultra-7-in-1-alarm-clock-lamp-wireless-charging-hub`
+- **AP30 Music Boy: The First Truly Wearable Hi-Res Music Player** — prelaunch → live  
   `/projects/hidizs/ap30-music-boy-the-first-truly-wearable-hi-res-music-player`
-- **TIMECAPSULE G3: A Tiny AI Time Machine for Your Desk** — +211 followers (1062 → 1273)  
-  `/projects/raycue/timecapsule-g3-a-tiny-ai-time-machine-for-your-desk`
-- **Transformable Three-Screen Display. Built for Every Workflow** — +50 followers (1241 → 1291)  
-  `/projects/1679345995/brick-your-display-grid-modular-triple-screen-workstation`
-- **Sweekar: The AI Pocket Pet That Physically Grows With You** — +157 followers (309 → 466)  
-  `/projects/sweekar/sweekar-the-ai-pocket-pet-that-grows-up-with-you`
-- **HERMIX NANO: Turn Your Tablet Into a Smart Car System** — +57 followers (625 → 682)  
-  `/projects/1559671905/hermix-nano-turn-your-ipad-into-a-smart-car-system`
-- **Sovol M1D IDEX Tool-Changing 3D Printer** — +60 followers (2130 → 2190)  
-  `/projects/sovol/sovol-m1d-idex-tool-changing-3d-printer`
-- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +79 followers (534 → 613)  
-  `/projects/bvio/violoop-plug-in-ai-for-your-computer`
-- **NanoKVM-Go: World's First AI-Native 4K USB-C KVM** — +95 followers (2870 → 2965)  
-  `/projects/zepan/nanokvm-go-worlds-first-ai-native-4k-usb-c-kvm`
-- **ScanMax 320: The Portable A2 Scanner Reinvented** — +75 followers (213 → 288)  
-  `/projects/joyusing/scanmax-320-the-portable-a2-scanner-reinvented`
-- **ZERA mini - The True Card-Sized Cooling Fan** — +81 followers (2109 → 2190)  
-  `/projects/zerasonic/zera-mini`
-- **PixelMug S1 Series — The Most Playable Mug Ever** — +97 followers (1501 → 1598)  
+- **HushNest — Bone-Conduction Audio for Quiet Bedtime Listening** — prelaunch → live  
+  `/projects/hushpillow/hushnest-turn-your-pillow-into-a-private-sound-zone`
+- **NEXGRIND PRO: 240-Step Smart Touchscreen Coffee Grinder** — prelaunch → live  
+  `/projects/1810496497/nexgrind-pro-240-step-smart-touchscreen-coffee-grinder`
+- **Rainbean - Best Smart Birdhouse On The Market** — prelaunch → live  
+  `/projects/178191783/rainbean-best-smart-birdhouse-on-the-market`
+- **Portal Nomis ONE™: Inflatable Rooftop Tent** — prelaunch → live  
+  `/projects/portaloutdoors/nomis-one-inflatable-rooftop-tent`
+- **Secret Orbital II – The Evolution of Mechanical Time | GPHG** — prelaunch → live  
+  `/projects/mandetbrote/secret-orbital-ii-the-evolution-of-mechanical-time`
+- **Alphamiu V1 — Ti & Carbon Folding Knife with M390 Blade** — prelaunch → live  
+  `/projects/alphamiu/alphamiu-v1-a-titanium-folding-knife-crafted-with-m390`
+- **Nyxara Nightclaw, Catfolk Rogue** — prelaunch → live  
+  `/projects/onigirl/nyxara-nightclaw-catfolk-rogue`
+- **The World’s Smallest 2800Wh Portable Power Station** — prelaunch → live  
+  `/projects/charon-1/p2800-ultralightweight-solidstate-power-station`
+- **PixelMug S1 Series — The Most Playable Mug Ever** — prelaunch → live  
   `/projects/pixelmug/pixelmug-s1-series-the-most-playable-mug-ever`
-- **Arealm One: Light & Seamless & Affordable Spatial Camera** — +492 followers (0 → 492)  
-  `/projects/arealmtech/arealm-one-spatial-camera-for-meta-quest-vision-pro-and-pico`
-- **Ruixin Pro Omnix Sharpener with Built-in Angle Indicator** — +52 followers (1804 → 1856)  
+- **Bloomie: The Flower That Reacts to Your Air** — prelaunch → live  
+  `/projects/bloomie/bloomie-the-smart-air-sensor-for-everyday-wellbeing`
+- **XPOLAR C1—Smart Cushion That Cools, Heats, and Adapts to You** — prelaunch → live  
+  `/projects/xpolar/c1-the-smart-cushion-that-cools-heats-and-adapts-to-you`
+- **All-Metal Reusable Dental Floss & Stress Relief EDC Tool** — prelaunch → live  
+  `/projects/tikzer-ks/all-metal-reusable-dental-floss-and-stress-relief-edc-tool`
+- **LiftVue: The Portable Monitor That Meets You at Eye Level** — prelaunch → live  
+  `/projects/832262630/liftvue-156-inch-portable-monitor-with-lift-stand`
+- **SO1: 1st app-connected ultrasonic cutter live-view.** — prelaunch → live  
+  `/projects/lianyou/portable-wireless-visual-ultrasonic-cutting-machine-30-w`
+
+## followers_delta (24)
+- **OVD - MØ:ARK Concrete Moonphase Watch** — +71 followers (781 → 852)  
+  `/projects/611551995/ovd-m-ark-concrete-moonphase-watch`
+- **LIGNUM: 5-in-1 Game Table & Family Entertainment Hub** — +55 followers (434 → 489)  
+  `/projects/multi-game-table/lignum-5-in-1-game-table-and-family-entertainment-hub`
+- **MemoMind One: The Most Natural AI Display Glasses!** — +83 followers (4363 → 4446)  
+  `/projects/1963472698/memomind-one-the-most-natural-ai-display-glasses`
+- **Sovol M1D IDEX Tool-Changing 3D Printer** — +118 followers (2190 → 2308)  
+  `/projects/sovol/sovol-m1d-idex-tool-changing-3d-printer`
+- **Ruixin Pro Omnix Sharpener with Built-in Angle Indicator** — +75 followers (1856 → 1931)  
   `/projects/ruixinpro/ruixin-pro-omnix-the-worlds-first-4-in-1-modular-sharpener`
-- **Jetro: Keep Freshness Longer** — +60 followers (874 → 934)  
-  `/projects/ionizo/jetro-keep-freshness-longer`
-- **Titaner Verso: Modular Titanium MagSafe Wallet** — +112 followers (92 → 204)  
-  `/projects/36820570/titaner-verso-titanium-magsafe-walletmore-than-just-thin`
-- **InfiMech MX 3D Printer: 8X More Efficiency. 8X Less Waste.** — +80 followers (5966 → 6046)  
+- **Xhorse3D Xmachine WM-100 Desktop Simultaneous 5-Axis CNC** — +58 followers (3477 → 3535)  
+  `/projects/xhorse3d/xhorse3d-xmachine-wm-100-desktop-simultaneous-5-axis-cnc`
+- **AP30 Music Boy: The First Truly Wearable Hi-Res Music Player** — +373 followers (5326 → 5699)  
+  `/projects/hidizs/ap30-music-boy-the-first-truly-wearable-hi-res-music-player`
+- **ScanMax 320: The Portable A2 Scanner Reinvented** — +129 followers (288 → 417)  
+  `/projects/joyusing/scanmax-320-the-portable-a2-scanner-reinvented`
+- **ATROX | High-Performance Safe Foam Dart Blaster** — +72 followers (729 → 801)  
+  `/projects/xtra-ltd/atrox-next-gen-brushless-foam-dart-blaster`
+- **InfiMaker K1: The Pro-Grade Desktop 5-Axis CNC** — +94 followers (1084 → 1178)  
+  `/projects/infimaker/infimaker-k1-the-pro-grade-desktop-5-axis-cnc`
+- **KOVADEX X1 – Your 100W RGB Desktop Hub with Dual Monitor Arm** — +60 followers (1243 → 1303)  
+  `/projects/kovadex/kovadex-x1-your-100w-rgb-desktop-hub-with-dual-monitor-arm`
+- **InfiMech MX 3D Printer: 8X More Efficiency. 8X Less Waste.** — +82 followers (6046 → 6128)  
   `/projects/infimech-mx-series/infimech-mx-3d-printer-8x-more-efficiency-8x-less-waste`
-- **The Tiny Thunderbolt 5 eGPU | Unleash RTX Power on Mac & PC** — +61 followers (431 → 492)  
-  `/projects/orcanyx/the-tiny-thunderbolt-5-egpu-unleash-rtx-power-on-mac-and-pc`
-
-## status_change (8)
-- **点春风 | The Modern Cockade Fan** — prelaunch → live  
-  `/projects/liangyiding/the-modern-cockade-fan`
-- **ATROX | High-Performance Safe Foam Dart Blaster** — prelaunch → live  
-  `/projects/xtra-ltd/atrox-next-gen-brushless-foam-dart-blaster`
-- **TIMECAPSULE G3: A Tiny AI Time Machine for Your Desk** — prelaunch → live  
-  `/projects/raycue/timecapsule-g3-a-tiny-ai-time-machine-for-your-desk`
-- **Glocandy- Contactless 60GHz mm Wave Radar Smart Baby Monitor** — prelaunch → live  
-  `/projects/988255726/glocandy-a-contactless-60ghz-mmwave-radar-smart-baby-monitor`
-- **Sweekar: The AI Pocket Pet That Physically Grows With You** — prelaunch → live  
-  `/projects/sweekar/sweekar-the-ai-pocket-pet-that-grows-up-with-you`
-- **Lumur LTF-1500: World’s First Five-In-One Tower Fan** — prelaunch → live  
-  `/projects/lumur/lumur-ltf-1500-worlds-first-five-in-one-tower-fan`
-- **Nexo: AI Night Vision That Recognizes What You See** — prelaunch → live  
-  `/projects/nexos/nexo-the-night-vision-that-doesnt-just-see-it-knows`
-- **Titaner Verso: Modular Titanium MagSafe Wallet** — prelaunch → live  
+- **Atlas - E-ink Smart Chessboard for Online & Offline Play** — +56 followers (792 → 848)  
+  `/projects/1482571777/atlas-e-ink-smart-chessboard-for-online-and-offline-play`
+- **Titaner Verso: Modular Titanium MagSafe Wallet** — +261 followers (204 → 465)  
   `/projects/36820570/titaner-verso-titanium-magsafe-walletmore-than-just-thin`
-
-## backers_delta (4)
-- **ATROX | High-Performance Safe Foam Dart Blaster** — +181 backers (0 → 181)  
-  `/projects/xtra-ltd/atrox-next-gen-brushless-foam-dart-blaster`
-- **TIMECAPSULE G3: A Tiny AI Time Machine for Your Desk** — +654 backers (0 → 654)  
-  `/projects/raycue/timecapsule-g3-a-tiny-ai-time-machine-for-your-desk`
-- **Sweekar: The AI Pocket Pet That Physically Grows With You** — +592 backers (0 → 592)  
+- **ZERA mini - The True Card-Sized Cooling Fan** — +104 followers (2190 → 2294)  
+  `/projects/zerasonic/zera-mini`
+- **Secret Orbital II – The Evolution of Mechanical Time | GPHG** — +64 followers (150 → 214)  
+  `/projects/mandetbrote/secret-orbital-ii-the-evolution-of-mechanical-time`
+- **PixelMug S1 Series — The Most Playable Mug Ever** — +224 followers (1598 → 1822)  
+  `/projects/pixelmug/pixelmug-s1-series-the-most-playable-mug-ever`
+- **Bloomie: The Flower That Reacts to Your Air** — +89 followers (63 → 152)  
+  `/projects/bloomie/bloomie-the-smart-air-sensor-for-everyday-wellbeing`
+- **XPOLAR C1—Smart Cushion That Cools, Heats, and Adapts to You** — +186 followers (590 → 776)  
+  `/projects/xpolar/c1-the-smart-cushion-that-cools-heats-and-adapts-to-you`
+- **All-Metal Reusable Dental Floss & Stress Relief EDC Tool** — +154 followers (39 → 193)  
+  `/projects/tikzer-ks/all-metal-reusable-dental-floss-and-stress-relief-edc-tool`
+- **NanoKVM-Go: World's First AI-Native 4K USB-C KVM** — +166 followers (2965 → 3131)  
+  `/projects/zepan/nanokvm-go-worlds-first-ai-native-4k-usb-c-kvm`
+- **Sweekar: The AI Pocket Pet That Physically Grows With You** — +179 followers (466 → 645)  
   `/projects/sweekar/sweekar-the-ai-pocket-pet-that-grows-up-with-you`
-- **Titaner Verso: Modular Titanium MagSafe Wallet** — +100 backers (0 → 100)  
-  `/projects/36820570/titaner-verso-titanium-magsafe-walletmore-than-just-thin`
+- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +182 followers (613 → 795)  
+  `/projects/bvio/violoop-plug-in-ai-for-your-computer`
+- **TIMECAPSULE G3: A Tiny AI Time Machine for Your Desk** — +348 followers (1273 → 1621)  
+  `/projects/raycue/timecapsule-g3-a-tiny-ai-time-machine-for-your-desk`
+
+## backers_delta (7)
+- **AP30 Music Boy: The First Truly Wearable Hi-Res Music Player** — +1231 backers (0 → 1231)  
+  `/projects/hidizs/ap30-music-boy-the-first-truly-wearable-hi-res-music-player`
+- **PixelMug S1 Series — The Most Playable Mug Ever** — +1148 backers (0 → 1148)  
+  `/projects/pixelmug/pixelmug-s1-series-the-most-playable-mug-ever`
+- **XPOLAR C1—Smart Cushion That Cools, Heats, and Adapts to You** — +146 backers (0 → 146)  
+  `/projects/xpolar/c1-the-smart-cushion-that-cools-heats-and-adapts-to-you`
+- **All-Metal Reusable Dental Floss & Stress Relief EDC Tool** — +188 backers (0 → 188)  
+  `/projects/tikzer-ks/all-metal-reusable-dental-floss-and-stress-relief-edc-tool`
+- **NanoKVM-Go: World's First AI-Native 4K USB-C KVM** — +148 backers (2057 → 2205)  
+  `/projects/zepan/nanokvm-go-worlds-first-ai-native-4k-usb-c-kvm`
+- **Sweekar: The AI Pocket Pet That Physically Grows With You** — +205 backers (592 → 797)  
+  `/projects/sweekar/sweekar-the-ai-pocket-pet-that-grows-up-with-you`
+- **TIMECAPSULE G3: A Tiny AI Time Machine for Your Desk** — +493 backers (654 → 1147)  
+  `/projects/raycue/timecapsule-g3-a-tiny-ai-time-machine-for-your-desk`
