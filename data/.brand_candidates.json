@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 147070.0774795,
+      "pledged_usd": 150978.59379456,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/419657217/still-a-titanium-brush-pen-that-slows-you-down",
       "china_confidence": "未知",
@@ -22,7 +22,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 25889.59082976,
+      "pledged_usd": 26780.91029964,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/twopan/twopan-your-pocket-magnetic-all-in-one-usb-c-hub",
       "china_confidence": "未知",
@@ -37,7 +37,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 18207.8832906,
+      "pledged_usd": 17571.20657058,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/lairedc/tilok-titanium-magnetic-quick-release-edc-carry-system",
       "china_confidence": "未知",
@@ -62,7 +62,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-07-28T01:41:15.509453+00:00",
+    "generated_at": "2026-07-29T01:59:26.480472+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000

@@ -1,31 +1,41 @@
 # Kickstarter China Tracker — diff
 
-## new (6)
-- **Blizwheel F0.5: 0.5-meter foldable e-scooter fits your bag** — Discovered (prelaunch, 0 followers)  
-  `/projects/1541803670/blizwheel-f05-05-meter-foldable-e-scooter-fits-your-bag`
-- **QIHUBO X1: AI-Powered Wireless Transmitter & Receiver** — Discovered (prelaunch, 0 followers)  
-  `/projects/555408976/qihubo-x1-ai-powered-wireless-transmitter-and-receiver`
-- **Klyvo: A Versatile 13-in-1 EDC Tool for Everyday Carry** — Discovered (prelaunch, 0 followers)  
-  `/projects/klyvo/klyvo-a-versatile-13-in-1-edc-tool-for-everyday-carry`
-- **OssiAir : Stereo Sports Open-Ear Cartilage Conduction Clip** — Discovered (prelaunch, 0 followers)  
-  `/projects/698775371/ossiair-stereo-sports-open-ear-cartilage-conduction-clip`
-- **Wooask Al TransNote** — Discovered (prelaunch, 0 followers)  
-  `/projects/wooask-w06/wooask-al-transnote`
-- **MechaX: Bi-Directional Bolt Titanium Pen — Write & Defend** — Discovered (prelaunch, 0 followers)  
-  `/projects/comandi-konodi/mechax-bi-directional-bolt-titanium-pen-write-and-defend`
+## new (8)
+- **NOOMDOT N2：The Ultra-Slim 50,000mAh Solid-State Power Bank** — Discovered (prelaunch, 0 followers)  
+  `/projects/158200299/noomdot-n2-the-ultra-slim-50000mah-solid-state-power-bank`
+- **DIISEA｜ Portable Paint & Sensor Safe Car Cleaner** — Discovered (prelaunch, 0 followers)  
+  `/projects/diisea-official/diisea-portable-paint-and-sensor-safe-car-cleaner`
+- **LaserCyber L1 Pro: 1200W Laser Welder & CNC Desktop Workshop** — Discovered (prelaunch, 0 followers)  
+  `/projects/863343715/lasercyber-l1-pro-1200w-laser-welder-and-cnc-desktop-workshop`
+- **Master Craft: Intertwined Vine Pattern Thin-Walled Jade Pot** — Discovered (prelaunch, 0 followers)  
+  `/projects/1828670441/master-craft-chinese-floral-eggshell-teapot`
+- **Titaner Zephyra: A Titanium Ritual for Quiet Moments** — Discovered (prelaunch, 0 followers)  
+  `/projects/spinning-top/titaner-zephyra-titanium-spinning-top-that-diffuses-calm`
+- **LumenStim: Redefining the Next Generation of Teeth Whitening** — Discovered (prelaunch, 0 followers)  
+  `/projects/lumenstim/lumenstim-redefining-the-next-generation-of-teeth-whitening`
+- **TICKET: Refresh it new. Clip it on. Carry your moment.** — Discovered (prelaunch, 0 followers)  
+  `/projects/enilinx/ticket-refresh-it-new-clip-it-on-carry-your-moment`
+- **IDO-EVB6208** — Discovered (prelaunch, 0 followers)  
+  `/projects/c-h/ido-evb6208`
 
 ## backers_delta (4)
-- **NanoKVM-Go: World's First AI-Native 4K USB-C KVM** — +175 backers (2381 → 2556)  
+- **NanoKVM-Go: World's First AI-Native 4K USB-C KVM** — +105 backers (2556 → 2661)  
   `/projects/zepan/nanokvm-go-worlds-first-ai-native-4k-usb-c-kvm`
-- **AP30 Music Boy: The First Truly Wearable Hi-Res Music Player** — +388 backers (1642 → 2030)  
+- **Submarine Fountain Pen — TurbineFill™ 2.0** — +125 backers (0 → 125)  
+  `/projects/ta-group/submarine-fountain-pen-turbinefilltm-20`
+- **AP30 Music Boy: The First Truly Wearable Hi-Res Music Player** — +173 backers (2030 → 2203)  
   `/projects/hidizs/ap30-music-boy-the-first-truly-wearable-hi-res-music-player`
-- **All-Metal Reusable Dental Floss & Stress Relief EDC Tool** — +149 backers (365 → 514)  
-  `/projects/tikzer-ks/all-metal-reusable-dental-floss-and-stress-relief-edc-tool`
-- **PixelMug S1 Series — The Most Playable Mug Ever** — +123 backers (1547 → 1670)  
-  `/projects/pixelmug/pixelmug-s1-series-the-most-playable-mug-ever`
+- **Sovol M1D IDEX Tool-Changing 3D Printer** — +1680 backers (0 → 1680)  
+  `/projects/sovol/sovol-m1d-idex-tool-changing-3d-printer`
 
-## status_change (2)
-- **TaoTao Cute Paradise Series Mini Figures** — prelaunch → live  
-  `/projects/sutoys/taotso-cute-paradise-series-mini-blind-bag`
-- **🔥DWSTN CRAWLER EDC Knife丨Damascus Blade, Titanium Handel** — prelaunch → live  
-  `/projects/1073133210/crawler-tc4-edc-knife-damascus-blade-modular-custom-0`
+## status_change (5)
+- **On-N-Go Tag: The Ultra-Thin Rechargeable Find My Tracker** — prelaunch → live  
+  `/projects/leric/on-n-go-tag-the-ultra-thin-rechargeable-find-my-tracker`
+- **PetCueAI: Smart Glasses That Understand Pets** — prelaunch → live  
+  `/projects/petcueai/petcueai-smart-glasses-that-understand-pets`
+- **Submarine Fountain Pen — TurbineFill™ 2.0** — prelaunch → live  
+  `/projects/ta-group/submarine-fountain-pen-turbinefilltm-20`
+- **Sovol M1D IDEX Tool-Changing 3D Printer** — prelaunch → live  
+  `/projects/sovol/sovol-m1d-idex-tool-changing-3d-printer`
+- **Bronze Afterglow: A Bronze-Inspired Artistic Chef’s Knife** — prelaunch → live  
+  `/projects/1662040240/bronze-afterglow-a-chefs-knife-inspired-by-ancient-bronze`
