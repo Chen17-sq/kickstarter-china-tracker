@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 150978.59379456,
+      "pledged_usd": 155176.05813017,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/419657217/still-a-titanium-brush-pen-that-slows-you-down",
       "china_confidence": "未知",
@@ -22,24 +22,9 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 26780.91029964,
+      "pledged_usd": 27518.40445746,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/twopan/twopan-your-pocket-magnetic-all-in-one-usb-c-hub",
-      "china_confidence": "未知",
-      "reasons": [
-        "pledged >= $5,000"
-      ]
-    },
-    {
-      "creator_slug": "lairedc",
-      "title": "TiLok—The Titanium Pendant with Mechanical Precision",
-      "location": "San Francisco, CA",
-      "country": "HK",
-      "status": "live",
-      "followers": 0,
-      "pledged_usd": 17571.20657058,
-      "project_we_love": false,
-      "url": "https://www.kickstarter.com/projects/lairedc/tilok-titanium-magnetic-quick-release-edc-carry-system",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -52,7 +37,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 14781.50913603,
+      "pledged_usd": 14978.47855931,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/cargocontainerusa/fire-pit-max-tactical-folding-smokeless-fire-pit",
       "china_confidence": "未知",
@@ -62,7 +47,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-07-29T01:59:26.480472+00:00",
+    "generated_at": "2026-07-30T01:33:27.402072+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
