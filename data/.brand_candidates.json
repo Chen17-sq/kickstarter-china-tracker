@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 155176.05813017,
+      "pledged_usd": 158712.1950757,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/419657217/still-a-titanium-brush-pen-that-slows-you-down",
       "china_confidence": "未知",
@@ -22,7 +22,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 27518.40445746,
+      "pledged_usd": 28263.04141584,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/twopan/twopan-your-pocket-magnetic-all-in-one-usb-c-hub",
       "china_confidence": "未知",
@@ -37,7 +37,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 14978.47855931,
+      "pledged_usd": 15412.21951731,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/cargocontainerusa/fire-pit-max-tactical-folding-smokeless-fire-pit",
       "china_confidence": "未知",
@@ -47,7 +47,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-07-30T01:33:27.402072+00:00",
+    "generated_at": "2026-07-31T02:02:10.864547+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
