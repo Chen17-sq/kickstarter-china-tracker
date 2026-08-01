@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 158712.1950757,
+      "pledged_usd": 168215.07675287,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/419657217/still-a-titanium-brush-pen-that-slows-you-down",
       "china_confidence": "未知",
@@ -22,7 +22,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 28263.04141584,
+      "pledged_usd": 28646.58429591,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/twopan/twopan-your-pocket-magnetic-all-in-one-usb-c-hub",
       "china_confidence": "未知",
@@ -37,9 +37,24 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 15412.21951731,
+      "pledged_usd": 15767.63196113,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/cargocontainerusa/fire-pit-max-tactical-folding-smokeless-fire-pit",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "movespeedtech",
+      "title": "MOVESPEED Ultimate 2-in-1 Summer Cooling EDC Gadget",
+      "location": "Los Angeles, CA",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 6614.69233984,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/movespeedtech/movespeed-2-in-1-cold-touch-cooling-fan-and-power-bank",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -47,7 +62,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-07-31T02:02:10.864547+00:00",
+    "generated_at": "2026-08-01T02:02:22.305876+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
