@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 175133.75531645,
+      "pledged_usd": 178122.61322968,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/419657217/still-a-titanium-brush-pen-that-slows-you-down",
       "china_confidence": "未知",
@@ -22,7 +22,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 31166.8449435,
+      "pledged_usd": 31410.21036258,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/twopan/twopan-your-pocket-magnetic-all-in-one-usb-c-hub",
       "china_confidence": "未知",
@@ -37,7 +37,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 15787.53301685,
+      "pledged_usd": 14038.28124741,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/cargocontainerusa/fire-pit-max-tactical-folding-smokeless-fire-pit",
       "china_confidence": "未知",
@@ -52,7 +52,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 12189.5560128,
+      "pledged_usd": 13765.74554304,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/movespeedtech/movespeed-2-in-1-cold-touch-cooling-fan-and-power-bank",
       "china_confidence": "未知",
@@ -62,7 +62,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-08-03T02:00:33.919634+00:00",
+    "generated_at": "2026-08-04T01:37:17.021808+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
