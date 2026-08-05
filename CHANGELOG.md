@@ -1,21 +1,29 @@
 # Kickstarter China Tracker — diff
 
-## new (7)
-- **X1 LITE: World's First Pen & Torch Laser Workstation** — Discovered (prelaunch, 0 followers)  
-  `/projects/xlaserlab/x1-lite-worlds-first-pen-and-torch-laser-workstation`
-- **WITISAN — The Best-Fit Leather Pen Sleeve** — Discovered (prelaunch, 0 followers)  
-  `/projects/witisan/witisan-the-best-fit-leather-pen-sleeve`
-- **MeoWorld Assassin's Creed Edward Kenway Figurine** — Discovered (prelaunch, 0 followers)  
-  `/projects/bonafidestudio/meoworld-assassins-creed-edward-kenway-figurine`
-- **PlantMulti: The Smart Gardening Multi-Tool for Plant Parents** — Discovered (prelaunch, 0 followers)  
-  `/projects/plantsrobot-ks/plantmulti-the-smart-gardening-multi-tool-for-plant-parents`
-- **QianKun 2：Your EDC Decision-Making Playmate** — Discovered (prelaunch, 0 followers)  
-  `/projects/1902464305/qiankun-2-your-edc-decision-making-playmate`
-- **Porcelain artisan dial with titanium watch case, mechanical** — Discovered (prelaunch, 0 followers)  
-  `/projects/charlesberret/porcelain-artisan-dial-with-titanium-watch-case-mechanical`
-- **Ti-Link | The Modular TC4 Titanium Keychain & EDC Tool** — Discovered (live, 0 followers)  
-  `/projects/tgzuo/ti-link-the-modular-tc4-titanium-keychain-and-edc-tool`
+## new (4)
+- **mOrr Tekor** — Discovered (live, 0 followers)  
+  `/projects/wchan/morr-tekor`
+- **Vosen Mero F10S - Your Pet's First AI Companion Robot** — Discovered (live, 0 followers)  
+  `/projects/videostrong/vosen-mero-f10s-your-pets-first-ai-companion-robot`
+- **XtraMaker M1&M1 Pro: Your 5-in-1 Automated DTF Studio** — Discovered (live, 0 followers)  
+  `/projects/xtramaker/xtramaker-m1-your-5-in-1-smart-dtf-print-to-profit-partner`
+- **A|P THE LEGEND AFFORDABLE SWISS AUTOMATIC A CLASS A PART** — Discovered (prelaunch, 0 followers)  
+  `/projects/385239623/a-p-the-legend-affordable-swiss-automatic-a-class-a-part`
 
 ## backers_delta (1)
-- **AP30 Music Boy: The First Truly Wearable Hi-Res Music Player** — +140 backers (2860 → 3000)  
+- **AP30 Music Boy: The First Truly Wearable Hi-Res Music Player** — +109 backers (3000 → 3109)  
   `/projects/hidizs/ap30-music-boy-the-first-truly-wearable-hi-res-music-player`
+
+## status_change (6)
+- **IDO-EVB6208** — prelaunch → live  
+  `/projects/c-h/ido-evb6208`
+- **BASUNS N01 ：Not Just a Lamp – It's a Flower You Make** — prelaunch → live  
+  `/projects/155367752/not-just-a-lamp-its-a-flower-you-make`
+- **Bincoo-GYKF2227 Moka Coffee Pot** — prelaunch → live  
+  `/projects/bincoo/bincoo-gykf2227-moka-coffee-pot`
+- **The World's First Modular AI Wearable Speaker** — prelaunch → live  
+  `/projects/2051446485/the-worlds-first-modular-ai-wearable-speaker`
+- **MOZTECH Space Fan: Cooling Fan & Power Bank in One** — prelaunch → live  
+  `/projects/moztechspacefan/moztech-cooling-fan-and-power-bank-in-one`
+- **CampDock: Modular Magnetic Camping Light System** — prelaunch → live  
+  `/projects/1159000893/campdock-modular-magnetic-camping-light-system`

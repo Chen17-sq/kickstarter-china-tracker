@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 178122.61322968,
+      "pledged_usd": 182257.82298073,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/419657217/still-a-titanium-brush-pen-that-slows-you-down",
       "china_confidence": "未知",
@@ -22,24 +22,9 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 31410.21036258,
+      "pledged_usd": 31222.9669479,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/twopan/twopan-your-pocket-magnetic-all-in-one-usb-c-hub",
-      "china_confidence": "未知",
-      "reasons": [
-        "pledged >= $5,000"
-      ]
-    },
-    {
-      "creator_slug": "cargocontainerusa",
-      "title": "FIRE PIT MAX: Tactical Foldable Smokeless Fire Pit",
-      "location": "Denver, CO",
-      "country": "HK",
-      "status": "live",
-      "followers": 0,
-      "pledged_usd": 14038.28124741,
-      "project_we_love": false,
-      "url": "https://www.kickstarter.com/projects/cargocontainerusa/fire-pit-max-tactical-folding-smokeless-fire-pit",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -52,9 +37,24 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 13765.74554304,
+      "pledged_usd": 15470.06501568,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/movespeedtech/movespeed-2-in-1-cold-touch-cooling-fan-and-power-bank",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "cargocontainerusa",
+      "title": "FIRE PIT MAX: Tactical Foldable Smokeless Fire Pit",
+      "location": "Denver, CO",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 13644.34240085,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/cargocontainerusa/fire-pit-max-tactical-folding-smokeless-fire-pit",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -62,7 +62,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-08-04T01:37:17.021808+00:00",
+    "generated_at": "2026-08-05T01:50:40.064266+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
