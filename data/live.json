@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-05T01:50:21Z",
-  "started_at": "2026-08-05T01:41:02Z",
-  "total_candidates": 581,
+  "generated_at": "2026-08-06T01:37:50Z",
+  "started_at": "2026-08-06T01:29:32Z",
+  "total_candidates": 29,
   "kept": 645,
   "projects": [
     {
@@ -36,10 +36,11 @@
       "matched_brand": "Wireless-Tag (IDO Claw)",
       "matched_brand_zh": "Wireless-Tag (IDO Claw)",
       "delta_followers": 0,
-      "delta_backers": 11,
-      "delta_pledged_usd": 981.359288,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
       "weekly_delta_backers": 11,
-      "weekly_delta_pledged_usd": 981.359288
+      "weekly_delta_pledged_usd": 981.359288,
+      "weekly_delta_followers": 0
     },
     {
       "pathname": "/projects/tgzuo/ti-link-the-modular-tc4-titanium-keychain-and-edc-tool",
@@ -107,11 +108,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": -1,
-      "delta_pledged_usd": -150.08617899,
-      "weekly_delta_followers": 11,
-      "weekly_delta_backers": 4,
-      "weekly_delta_pledged_usd": 600.34471596
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 1,
+      "weekly_delta_pledged_usd": 150.08617899
     },
     {
       "pathname": "/projects/36820570/titaner-verso-titanium-magsafe-walletmore-than-just-thin",
@@ -145,11 +146,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 1,
-      "delta_pledged_usd": -106.24915832999977,
-      "weekly_delta_followers": 77,
-      "weekly_delta_backers": 33,
-      "weekly_delta_pledged_usd": 9918.161227589997
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 27,
+      "weekly_delta_pledged_usd": 8378.887706909998
     },
     {
       "pathname": "/projects/850840687/chinese-silk-song-brocade",
@@ -185,7 +186,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 3,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -221,11 +222,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 1,
-      "delta_pledged_usd": 57.12886591999995,
-      "weekly_delta_followers": 4,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 9,
-      "weekly_delta_pledged_usd": 470.93058447
+      "weekly_delta_pledged_usd": 458.17860546999987
     },
     {
       "pathname": "/projects/2026597237/delast-full-metal-wireless-ergonomic-mechanical-keyboard",
@@ -261,7 +262,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 3,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -297,11 +298,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": -6,
-      "delta_pledged_usd": -1514.3302303,
-      "weekly_delta_followers": 1,
-      "weekly_delta_backers": -2,
-      "weekly_delta_pledged_usd": -433.0629803
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": -3,
+      "weekly_delta_pledged_usd": -741.9964803
     },
     {
       "pathname": "/projects/gogochina/gogochinareality-travel-show",
@@ -373,11 +374,11 @@
       "matched_brand": "Sovol",
       "matched_brand_zh": "索尔",
       "delta_followers": 0,
-      "delta_backers": 21,
-      "delta_pledged_usd": 35939.200316669885,
-      "weekly_delta_followers": 883,
-      "weekly_delta_backers": 416,
-      "weekly_delta_pledged_usd": 655437.9475934999
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 256,
+      "weekly_delta_pledged_usd": 403342.8980795997
     },
     {
       "pathname": "/projects/innodigym/omni-x1-best-all-in-one-smart-cable-training-machine",
@@ -411,11 +412,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 7,
-      "delta_pledged_usd": 22969.790892620105,
-      "weekly_delta_followers": 70,
-      "weekly_delta_backers": 43,
-      "weekly_delta_pledged_usd": 138158.07094232016
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 39,
+      "weekly_delta_pledged_usd": 125715.1547609102
     },
     {
       "pathname": "/projects/1963472698/memomind-one-the-most-natural-ai-display-glasses",
@@ -449,11 +450,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 30,
-      "delta_pledged_usd": 14856.902727800072,
-      "weekly_delta_followers": 146,
-      "weekly_delta_backers": 154,
-      "weekly_delta_pledged_usd": 75217.75603545003
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 142,
+      "weekly_delta_pledged_usd": 69806.76077165
     },
     {
       "pathname": "/projects/hidizs/ap30-music-boy-the-first-truly-wearable-hi-res-music-player",
@@ -487,11 +488,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 109,
-      "delta_pledged_usd": 15861.195052559953,
-      "weekly_delta_followers": 1101,
-      "weekly_delta_backers": 906,
-      "weekly_delta_pledged_usd": 116051.00059916996
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 770,
+      "weekly_delta_pledged_usd": 99655.20581952
     },
     {
       "pathname": "/projects/pixelmug/pixelmug-s1-series-the-most-playable-mug-ever",
@@ -525,11 +526,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 42,
-      "delta_pledged_usd": 6004.584336269996,
-      "weekly_delta_followers": 302,
-      "weekly_delta_backers": 456,
-      "weekly_delta_pledged_usd": 72676.47943452
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 379,
+      "weekly_delta_pledged_usd": 59016.69743138002
     },
     {
       "pathname": "/projects/xtramaker/xtramaker-m1-your-5-in-1-smart-dtf-print-to-profit-partner",
@@ -561,7 +562,9 @@
       "china_confidence": "高",
       "china_reason": "brand name in title: XtraMaker",
       "matched_brand": "XtraMaker",
-      "matched_brand_zh": "XtraMaker"
+      "matched_brand_zh": "XtraMaker",
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/sweekar/sweekar-the-ai-pocket-pet-that-grows-up-with-you",
@@ -595,11 +598,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 38,
-      "delta_pledged_usd": 6906.705491489993,
-      "weekly_delta_followers": 171,
-      "weekly_delta_backers": 153,
-      "weekly_delta_pledged_usd": 29729.61143081999
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 137,
+      "weekly_delta_pledged_usd": 26496.218677319994
     },
     {
       "pathname": "/projects/intricuit/magic-screen-the-first-snap-on-touchscreen-for-your-macbook",
@@ -634,10 +637,10 @@
       "matched_brand_zh": null,
       "delta_followers": 0,
       "delta_backers": 0,
-      "delta_pledged_usd": 19.25482238002587,
-      "weekly_delta_followers": 129,
-      "weekly_delta_backers": 45,
-      "weekly_delta_pledged_usd": 8802.131650640018
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 40,
+      "weekly_delta_pledged_usd": 7843.598539180006
     },
     {
       "pathname": "/projects/orcanyx/the-tiny-thunderbolt-5-egpu-unleash-rtx-power-on-mac-and-pc",
@@ -671,11 +674,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": -1,
-      "delta_pledged_usd": -1205.16200888998,
-      "weekly_delta_followers": 188,
-      "weekly_delta_backers": 39,
-      "weekly_delta_pledged_usd": 23194.935583400016
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 29,
+      "weekly_delta_pledged_usd": 17086.204473449994
     },
     {
       "pathname": "/projects/bigme/worlds-first-large-dual-screen-color-e-ink-smartphone",
@@ -709,11 +712,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": -1,
-      "delta_pledged_usd": -889.6877556600084,
-      "weekly_delta_followers": 57,
-      "weekly_delta_backers": 0,
-      "weekly_delta_pledged_usd": 805.1074599899875
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": -3,
+      "weekly_delta_pledged_usd": -1923.2768288399966
     },
     {
       "pathname": "/projects/raycue/timecapsule-g3-a-tiny-ai-time-machine-for-your-desk",
@@ -747,11 +750,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 2,
-      "delta_pledged_usd": 157.14161232000333,
-      "weekly_delta_followers": 285,
-      "weekly_delta_backers": 149,
-      "weekly_delta_pledged_usd": 18996.788289360004
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 108,
+      "weekly_delta_pledged_usd": 14474.630234820012
     },
     {
       "pathname": "/projects/xpolar/c1-the-smart-cushion-that-cools-heats-and-adapts-to-you",
@@ -785,11 +788,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 25,
-      "delta_pledged_usd": 7429.545813559991,
-      "weekly_delta_followers": 248,
-      "weekly_delta_backers": 173,
-      "weekly_delta_pledged_usd": 46901.27212016999
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 150,
+      "weekly_delta_pledged_usd": 39959.89456134
     },
     {
       "pathname": "/projects/1679345995/brick-your-display-grid-modular-triple-screen-workstation",
@@ -823,11 +826,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 3,
-      "delta_pledged_usd": 2499.7608005999937,
-      "weekly_delta_followers": 136,
-      "weekly_delta_backers": 11,
-      "weekly_delta_pledged_usd": 10023.918348149993
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 9,
+      "weekly_delta_pledged_usd": 6554.1544281499955
     },
     {
       "pathname": "/projects/snailcle/snailcle-roboroll-l1-your-intelligent-back-recovery-robot",
@@ -861,11 +864,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 4,
-      "delta_pledged_usd": 175.53363956999965,
-      "weekly_delta_followers": 68,
-      "weekly_delta_backers": 53,
-      "weekly_delta_pledged_usd": 4227.33954642
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 42,
+      "weekly_delta_pledged_usd": 3434.315020809998
     },
     {
       "pathname": "/projects/ionizo/jetro-keep-freshness-longer",
@@ -899,11 +902,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 3,
-      "delta_pledged_usd": 549.9228111499979,
-      "weekly_delta_followers": 148,
-      "weekly_delta_backers": 89,
-      "weekly_delta_pledged_usd": 7178.959879200003
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 78,
+      "weekly_delta_pledged_usd": 6190.424856049998
     },
     {
       "pathname": "/projects/xtra-ltd/atrox-next-gen-brushless-foam-dart-blaster",
@@ -937,11 +940,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 2,
-      "delta_pledged_usd": 1245.9084976799932,
-      "weekly_delta_followers": 97,
-      "weekly_delta_backers": 57,
-      "weekly_delta_pledged_usd": 14345.67717471
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 48,
+      "weekly_delta_pledged_usd": 12118.526450099998
     },
     {
       "pathname": "/projects/innioasis/aivoz-sleephalo-h1",
@@ -975,11 +978,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 14,
-      "delta_pledged_usd": 1819.4240108800004,
-      "weekly_delta_followers": 23,
-      "weekly_delta_backers": 68,
-      "weekly_delta_pledged_usd": 58170.809147520005
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 63,
+      "weekly_delta_pledged_usd": 54630.16359936001
     },
     {
       "pathname": "/projects/1559671905/hermix-nano-turn-your-ipad-into-a-smart-car-system",
@@ -1013,11 +1016,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 25,
-      "delta_pledged_usd": 3134.798988509996,
-      "weekly_delta_followers": 232,
-      "weekly_delta_backers": 153,
-      "weekly_delta_pledged_usd": 14878.080284619995
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 139,
+      "weekly_delta_pledged_usd": 13407.570866130001
     },
     {
       "pathname": "/projects/fegve/fegve-tetrach-the-safest-titanium-alloy-quick-release-system",
@@ -1051,11 +1054,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 2,
-      "delta_pledged_usd": 225.19994913999835,
-      "weekly_delta_followers": 85,
-      "weekly_delta_backers": 39,
-      "weekly_delta_pledged_usd": 6481.193326749999
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 28,
+      "weekly_delta_pledged_usd": 4994.05753577
     },
     {
       "pathname": "/projects/85272757/xband-smart-innovation-timeless-elegance",
@@ -1089,9 +1092,9 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 2,
-      "delta_pledged_usd": 567.6294212400026,
-      "weekly_delta_followers": 35,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 11,
       "weekly_delta_pledged_usd": 3726.3112006200026
     },
@@ -1127,11 +1130,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 13,
-      "delta_pledged_usd": 1376.867609370005,
-      "weekly_delta_followers": 52,
-      "weekly_delta_backers": 101,
-      "weekly_delta_pledged_usd": 11253.541785860005
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 95,
+      "weekly_delta_pledged_usd": 10663.291618040003
     },
     {
       "pathname": "/projects/gopump/reargo-11-wireless-carplay-and-true-wire-free-4-ch-dvr",
@@ -1165,11 +1168,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": -1,
-      "delta_pledged_usd": -548.8151311799993,
-      "weekly_delta_followers": 51,
-      "weekly_delta_backers": 1,
-      "weekly_delta_pledged_usd": 11.864204370001971
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": -356.1812752799997
     },
     {
       "pathname": "/projects/koibot/worlds-first-lifelike-robot-for-personal-bonds",
@@ -1205,7 +1208,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 10,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -1241,9 +1244,9 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": -1,
-      "delta_pledged_usd": -392.3284233500017,
-      "weekly_delta_followers": 29,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": -379.32306125000105
     },
@@ -1279,9 +1282,9 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 2,
-      "delta_pledged_usd": 398.0211143999986,
-      "weekly_delta_followers": 19,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 3,
       "weekly_delta_pledged_usd": 248.76319650000005
     },
@@ -1317,8 +1320,8 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 10,
-      "delta_pledged_usd": 1909.3544300000012,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
       "weekly_delta_followers": 0,
       "weekly_delta_backers": 118,
       "weekly_delta_pledged_usd": 14231.862536
@@ -1355,11 +1358,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 6,
-      "delta_pledged_usd": 337.52108754000074,
-      "weekly_delta_followers": 49,
-      "weekly_delta_backers": 74,
-      "weekly_delta_pledged_usd": 4994.06201749
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 65,
+      "weekly_delta_pledged_usd": 4498.112664369999
     },
     {
       "pathname": "/projects/178191783/rainbean-best-smart-birdhouse-on-the-market",
@@ -1393,11 +1396,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 2,
-      "delta_pledged_usd": 198.19044672000018,
-      "weekly_delta_followers": 64,
-      "weekly_delta_backers": 14,
-      "weekly_delta_pledged_usd": 1387.3331270399995
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 11,
+      "weekly_delta_pledged_usd": 1090.0474569599992
     },
     {
       "pathname": "/projects/jadensprinter/the-worlds-smallest-inkless-portable-printer",
@@ -1431,11 +1434,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 1,
-      "delta_pledged_usd": 78.96636853000018,
-      "weekly_delta_followers": 54,
-      "weekly_delta_backers": 24,
-      "weekly_delta_pledged_usd": 1581.878788
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 22,
+      "weekly_delta_pledged_usd": 1459.9210362800004
     },
     {
       "pathname": "/projects/leadjoy/xeno-pro",
@@ -1469,11 +1472,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 2,
-      "delta_pledged_usd": -37.123123170000326,
-      "weekly_delta_followers": 54,
-      "weekly_delta_backers": 19,
-      "weekly_delta_pledged_usd": 2326.63752706
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 14,
+      "weekly_delta_pledged_usd": 1721.9516032600004
     },
     {
       "pathname": "/projects/134337082/seesmiles-all-in-one-portable-oral-care-station",
@@ -1507,11 +1510,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": -1,
-      "delta_pledged_usd": -266.1612300199995,
-      "weekly_delta_followers": 21,
-      "weekly_delta_backers": 11,
-      "weekly_delta_pledged_usd": 970.3529023499996
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 8,
+      "weekly_delta_pledged_usd": 1164.9338590999996
     },
     {
       "pathname": "/projects/2051446485/the-worlds-first-modular-ai-wearable-speaker",
@@ -1544,8 +1547,8 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_backers": 18,
-      "delta_pledged_usd": 1590.5008315
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/1159000893/campdock-modular-magnetic-camping-light-system",
@@ -1578,8 +1581,8 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_backers": 5,
-      "delta_pledged_usd": 445.029095
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/wchan/morr-tekor",
@@ -1611,7 +1614,9 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/videostrong/vosen-mero-f10s-your-pets-first-ai-companion-robot",
@@ -1643,7 +1648,9 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/630365725/x76-glow-bone-and-air-conduction-headphones-for-night-running",
@@ -1677,9 +1684,9 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 6,
-      "delta_pledged_usd": 483.70646911999984,
-      "weekly_delta_followers": 5,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 52,
       "weekly_delta_pledged_usd": 3866.209456
     },
@@ -1715,9 +1722,9 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 1,
-      "delta_pledged_usd": 138.97805199999993,
-      "weekly_delta_followers": 1,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 17,
       "weekly_delta_pledged_usd": 2680.74637
     },
@@ -1753,11 +1760,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 4,
-      "delta_pledged_usd": 720.4891299999995,
-      "weekly_delta_followers": 7,
-      "weekly_delta_backers": 29,
-      "weekly_delta_pledged_usd": 4686.7499106
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 24,
+      "weekly_delta_pledged_usd": 4005.1544415999997
     },
     {
       "pathname": "/projects/555408976/qihubo-x1-ai-powered-wireless-transmitter-and-receiver",
@@ -1791,10 +1798,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 1,
-      "delta_pledged_usd": 138.99701800000003,
-      "weekly_delta_backers": 27,
-      "weekly_delta_pledged_usd": 5102.8483232
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_backers": 13,
+      "weekly_delta_pledged_usd": 2010.2284328,
+      "weekly_delta_followers": 0
     },
     {
       "pathname": "/projects/petcueai/petcueai-smart-glasses-that-understand-pets",
@@ -1828,11 +1836,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 1,
-      "delta_pledged_usd": 98.05970402999992,
-      "weekly_delta_followers": 48,
-      "weekly_delta_backers": 32,
-      "weekly_delta_pledged_usd": 3231.12462993
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 18,
+      "weekly_delta_pledged_usd": 1943.59689054
     },
     {
       "pathname": "/projects/ruixinpro/ruixin-pro-omnix-the-worlds-first-4-in-1-modular-sharpener",
@@ -1866,11 +1874,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 17,
-      "delta_pledged_usd": 2559.233676599979,
-      "weekly_delta_followers": 121,
-      "weekly_delta_backers": 60,
-      "weekly_delta_pledged_usd": 10394.92626221996
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 44,
+      "weekly_delta_pledged_usd": 7182.686324640003
     },
     {
       "pathname": "/projects/neakasa/neakasa-riko-the-smart-wet-food-feeder",
@@ -1904,11 +1912,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 19,
-      "delta_pledged_usd": 5683.810104150005,
-      "weekly_delta_followers": 74,
-      "weekly_delta_backers": 94,
-      "weekly_delta_pledged_usd": 28820.433315800008
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 76,
+      "weekly_delta_pledged_usd": 22773.017620839993
     },
     {
       "pathname": "/projects/zerasonic/zera-mini",
@@ -1942,11 +1950,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 22,
-      "delta_pledged_usd": 1813.1390292599972,
-      "weekly_delta_followers": 191,
-      "weekly_delta_backers": 178,
-      "weekly_delta_pledged_usd": 14517.35111376
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 153,
+      "weekly_delta_pledged_usd": 12405.889392299985
     },
     {
       "pathname": "/projects/magomaga/mago-maga-smart-roaster-pro",
@@ -1980,11 +1988,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 8,
-      "delta_pledged_usd": 6450.658124299982,
-      "weekly_delta_followers": 73,
-      "weekly_delta_backers": 48,
-      "weekly_delta_pledged_usd": 41863.840046080004
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 45,
+      "weekly_delta_pledged_usd": 39496.855427639995
     },
     {
       "pathname": "/projects/portaloutdoors/nomis-one-inflatable-rooftop-tent",
@@ -2018,11 +2026,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 2,
-      "delta_pledged_usd": 1588.1094255000062,
-      "weekly_delta_followers": 75,
-      "weekly_delta_backers": 33,
-      "weekly_delta_pledged_usd": 34829.47198354
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 23,
+      "weekly_delta_pledged_usd": 24240.0348697
     },
     {
       "pathname": "/projects/wetox/wetoxd2-tesla-v2l-adapter-v2h-discharge-powershare-nacs-ccs2",
@@ -2058,9 +2066,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 24,
-      "weekly_delta_backers": 7,
-      "weekly_delta_pledged_usd": 5867.7778765799885
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 5,
+      "weekly_delta_pledged_usd": 4091.4829746899923
     },
     {
       "pathname": "/projects/multi-game-table/lignum-5-in-1-game-table-and-family-entertainment-hub",
@@ -2094,11 +2102,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 2,
-      "delta_pledged_usd": 2397.380055610003,
-      "weekly_delta_followers": 78,
-      "weekly_delta_backers": 7,
-      "weekly_delta_pledged_usd": 9102.853218649994
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 5,
+      "weekly_delta_pledged_usd": 6305.251071109989
     },
     {
       "pathname": "/projects/611551995/ovd-m-ark-concrete-moonphase-watch",
@@ -2132,11 +2140,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 3,
-      "delta_pledged_usd": 2310.3084556999966,
-      "weekly_delta_followers": 76,
-      "weekly_delta_backers": 18,
-      "weekly_delta_pledged_usd": 10087.028690899999
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 15,
+      "weekly_delta_pledged_usd": 8736.053177599999
     },
     {
       "pathname": "/projects/mandetbrote/secret-orbital-ii-the-evolution-of-mechanical-time",
@@ -2170,11 +2178,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 6,
-      "delta_pledged_usd": 2392.4964164400008,
-      "weekly_delta_followers": 114,
-      "weekly_delta_backers": 34,
-      "weekly_delta_pledged_usd": 13960.693660550001
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 23,
+      "weekly_delta_pledged_usd": 8773.762450180002
     },
     {
       "pathname": "/projects/ta-group/submarine-fountain-pen-turbinefilltm-20",
@@ -2208,11 +2216,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 11,
-      "delta_pledged_usd": 1654.0,
-      "weekly_delta_followers": 233,
-      "weekly_delta_backers": 235,
-      "weekly_delta_pledged_usd": 32687.0
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 163,
+      "weekly_delta_pledged_usd": 23215.0
     },
     {
       "pathname": "/projects/outzac/beam-pump-the-backpacking-pump-lantern",
@@ -2246,9 +2254,9 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 45,
-      "delta_pledged_usd": 2961.5075355999943,
-      "weekly_delta_followers": 96,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 772,
       "weekly_delta_pledged_usd": 47038.8429872
     },
@@ -2284,11 +2292,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 29,
-      "delta_pledged_usd": 3083.0661161300013,
-      "weekly_delta_followers": 74,
-      "weekly_delta_backers": 162,
-      "weekly_delta_pledged_usd": 18001.498342730003
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 129,
+      "weekly_delta_pledged_usd": 14735.747132120003
     },
     {
       "pathname": "/projects/zevor/the-hidden-pop-up-precision-screwdriver-for-everyday-carry",
@@ -2322,11 +2330,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 38,
-      "delta_pledged_usd": 1734.1456499199994,
-      "weekly_delta_followers": 62,
-      "weekly_delta_backers": 376,
-      "weekly_delta_pledged_usd": 15594.169515999998
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 306,
+      "weekly_delta_pledged_usd": 12742.500194240001
     },
     {
       "pathname": "/projects/barkutan/worlds-first-removable-360-leather-sleeve-glass-hip-flask",
@@ -2360,11 +2368,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 2,
-      "delta_pledged_usd": 404.6547996400004,
-      "weekly_delta_followers": 29,
-      "weekly_delta_backers": 23,
-      "weekly_delta_pledged_usd": 4592.67889087
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 16,
+      "weekly_delta_pledged_usd": 3502.8409484600015
     },
     {
       "pathname": "/projects/1715876190/tri-fold-cruiser-20kg44lbs-foldable-3-wheel-e-trike",
@@ -2398,11 +2406,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": -1,
-      "delta_pledged_usd": -497.96477994999805,
-      "weekly_delta_followers": 21,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 2,
-      "weekly_delta_pledged_usd": 654.4315622800023
+      "weekly_delta_pledged_usd": 754.4070776400004
     },
     {
       "pathname": "/projects/ouroproxy/ouroproxy-cyborg-soul-exo",
@@ -2436,11 +2444,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": -1,
-      "delta_pledged_usd": -588.3763110600012,
-      "weekly_delta_followers": 37,
-      "weekly_delta_backers": -9,
-      "weekly_delta_pledged_usd": -4596.705870130001
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": -7,
+      "weekly_delta_pledged_usd": -3791.1633567000026
     },
     {
       "pathname": "/projects/631952656/tingbar-full-titanium-folding-tuning-fork-edc-pry-bar",
@@ -2475,8 +2483,8 @@
       "matched_brand_zh": null,
       "delta_followers": 0,
       "delta_backers": 0,
-      "delta_pledged_usd": -80.49342035000154,
-      "weekly_delta_followers": 25,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 5,
       "weekly_delta_pledged_usd": 942.9593711999987
     },
@@ -2512,11 +2520,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": -2,
-      "delta_pledged_usd": -377.02399548000176,
-      "weekly_delta_followers": 34,
-      "weekly_delta_backers": -1,
-      "weekly_delta_pledged_usd": 20.024616809998406
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 2,
+      "weekly_delta_pledged_usd": 685.04596743
     },
     {
       "pathname": "/projects/welderks/gen2-cordless-fast-heat-portable-soldering-iron",
@@ -2550,11 +2558,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 3,
-      "delta_pledged_usd": 1138.8476525299993,
-      "weekly_delta_followers": 49,
-      "weekly_delta_backers": 7,
-      "weekly_delta_pledged_usd": 2343.6507476900006
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 6,
+      "weekly_delta_pledged_usd": 2008.7705989399983
     },
     {
       "pathname": "/projects/bloomie/bloomie-the-smart-air-sensor-for-everyday-wellbeing",
@@ -2588,11 +2596,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 8,
-      "delta_pledged_usd": 954.3963631799998,
-      "weekly_delta_followers": 105,
-      "weekly_delta_backers": 47,
-      "weekly_delta_pledged_usd": 6031.37172417
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 44,
+      "weekly_delta_pledged_usd": 5763.88052214
     },
     {
       "pathname": "/projects/airvex/lyocell-coolmax-ice-cool-breathable-polo-shirts-and-pants",
@@ -2626,11 +2634,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 10,
-      "delta_pledged_usd": 1427.5068662399972,
-      "weekly_delta_followers": 51,
-      "weekly_delta_backers": 72,
-      "weekly_delta_pledged_usd": 9681.871147199998
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 59,
+      "weekly_delta_pledged_usd": 8196.845689279999
     },
     {
       "pathname": "/projects/predatorcn/the-modern-cockade-fan",
@@ -2664,11 +2672,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 1,
-      "delta_pledged_usd": 178.5700140000008,
-      "weekly_delta_followers": 33,
-      "weekly_delta_backers": 13,
-      "weekly_delta_pledged_usd": 1640.9308786500005
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 12,
+      "weekly_delta_pledged_usd": 1636.4666283000006
     },
     {
       "pathname": "/projects/2113316451/itehil-e02-electric-outdoor-water-filter-straw",
@@ -2702,8 +2710,8 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": -2,
-      "delta_pledged_usd": -198.4087788500001,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
       "weekly_delta_followers": 0,
       "weekly_delta_backers": 16,
       "weekly_delta_pledged_usd": 1050.7371664500006
@@ -2740,11 +2748,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 3,
-      "delta_pledged_usd": 901.195091399999,
-      "weekly_delta_followers": 4,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 2,
-      "weekly_delta_pledged_usd": 334.4418116500001
+      "weekly_delta_pledged_usd": 501.98147634999987
     },
     {
       "pathname": "/projects/155367752/not-just-a-lamp-its-a-flower-you-make",
@@ -2778,9 +2786,9 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 9,
-      "delta_pledged_usd": 473.337536,
-      "weekly_delta_followers": 21,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 9,
       "weekly_delta_pledged_usd": 473.337536
     },
@@ -2815,8 +2823,8 @@
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
       "matched_brand_zh": null,
-      "delta_backers": 26,
-      "delta_pledged_usd": 3261.0
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/bincoo/bincoo-gykf2227-moka-coffee-pot",
@@ -2850,9 +2858,9 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 3,
-      "delta_pledged_usd": 15.30186,
-      "weekly_delta_followers": 2,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 3,
       "weekly_delta_pledged_usd": 15.30186
     },
@@ -2888,9 +2896,9 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 6,
-      "delta_pledged_usd": 537.8068104000013,
-      "weekly_delta_followers": 5,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 97,
       "weekly_delta_pledged_usd": 8295.0771624
     },
@@ -2928,9 +2936,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 3,
-      "weekly_delta_backers": 6,
-      "weekly_delta_pledged_usd": 239.4829356
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 1,
+      "weekly_delta_pledged_usd": 40.9339842
     },
     {
       "pathname": "/projects/jellyedc/starry-sky-sm100-50-years-of-rust-free-cutting-tool-edcknife",
@@ -2966,7 +2974,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 15,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 2,
       "weekly_delta_pledged_usd": 1995.9461704
     },
@@ -3004,9 +3012,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 9,
-      "weekly_delta_backers": 20,
-      "weekly_delta_pledged_usd": 1322.59460364
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 19,
+      "weekly_delta_pledged_usd": 1258.83666864
     },
     {
       "pathname": "/projects/1073133210/crawler-tc4-edc-knife-damascus-blade-modular-custom-0",
@@ -3040,11 +3048,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 1,
-      "delta_pledged_usd": 87.60352634999981,
-      "weekly_delta_followers": 93,
-      "weekly_delta_backers": 29,
-      "weekly_delta_pledged_usd": 3374.8397792999995
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 18,
+      "weekly_delta_pledged_usd": 2001.2368886999993
     },
     {
       "pathname": "/projects/sutoys/taotso-cute-paradise-series-mini-blind-bag",
@@ -3078,11 +3086,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 1,
-      "delta_pledged_usd": 16.832118600000058,
-      "weekly_delta_followers": 3,
-      "weekly_delta_backers": 3,
-      "weekly_delta_pledged_usd": 471.04428870000004
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 2,
+      "weekly_delta_pledged_usd": 243.93820365
     },
     {
       "pathname": "/projects/yuandesignstudio/1618-beauty-unearthed-15-the-golden-ratio-paperclip",
@@ -3116,11 +3124,11 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_followers": 0,
-      "delta_backers": 2,
-      "delta_pledged_usd": 259.16394192000007,
-      "weekly_delta_followers": 18,
-      "weekly_delta_backers": 12,
-      "weekly_delta_pledged_usd": 632.7324389099999
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 13,
+      "weekly_delta_pledged_usd": 656.2000399500002
     },
     {
       "pathname": "/projects/ecowittglobal/wqt01-smart-water-quality-tester",
@@ -3156,7 +3164,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 7,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": -1,
       "weekly_delta_pledged_usd": -299.7915444999999
     },
@@ -3194,7 +3202,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 14,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -3232,9 +3240,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 4,
-      "weekly_delta_backers": -2,
-      "weekly_delta_pledged_usd": -1099.4914401900005
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": -1,
+      "weekly_delta_pledged_usd": -540.7523163900005
     },
     {
       "pathname": "/projects/hushpillow/hushnest-turn-your-pillow-into-a-private-sound-zone",
@@ -3270,9 +3278,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 36,
-      "weekly_delta_backers": 8,
-      "weekly_delta_pledged_usd": 1291.6623327400002
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 7,
+      "weekly_delta_pledged_usd": 1162.7001938499998
     },
     {
       "pathname": "/projects/lianyou/portable-wireless-visual-ultrasonic-cutting-machine-30-w",
@@ -3308,9 +3316,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 30,
-      "weekly_delta_backers": 9,
-      "weekly_delta_pledged_usd": 1425.7268312299993
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 7,
+      "weekly_delta_pledged_usd": 1083.8687380299998
     },
     {
       "pathname": "/projects/1810496497/nexgrind-pro-240-step-smart-touchscreen-coffee-grinder",
@@ -3346,7 +3354,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 23,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 3,
       "weekly_delta_pledged_usd": 1497.0
     },
@@ -3422,8 +3430,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_backers": 5,
-      "weekly_delta_pledged_usd": 394.675019
+      "weekly_delta_backers": 4,
+      "weekly_delta_pledged_usd": 315.7400152,
+      "weekly_delta_followers": 0
     },
     {
       "pathname": "/projects/modulink/oasis-s-10-the-next-step-in-aqua-technology",
@@ -3459,7 +3468,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 11,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -3497,9 +3506,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 16,
-      "weekly_delta_backers": 3,
-      "weekly_delta_pledged_usd": 396.8360178900002
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 1,
+      "weekly_delta_pledged_usd": 118.88497868000013
     },
     {
       "pathname": "/projects/tikzer-ks/all-metal-reusable-dental-floss-and-stress-relief-edc-tool",
@@ -3535,9 +3544,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 365,
-      "weekly_delta_backers": 239,
-      "weekly_delta_pledged_usd": 18818.650235709996
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 189,
+      "weekly_delta_pledged_usd": 14992.645889649997
     },
     {
       "pathname": "/projects/ddiin/exlicon-l-black-stainless-steel-golden-ratio-ruler-for-art",
@@ -3573,9 +3582,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 67,
-      "weekly_delta_backers": 51,
-      "weekly_delta_pledged_usd": 5083.383630599994
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 48,
+      "weekly_delta_pledged_usd": 4637.445931799994
     },
     {
       "pathname": "/projects/alphamiu/alphamiu-v1-a-titanium-folding-knife-crafted-with-m390",
@@ -3611,7 +3620,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 12,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 1,
       "weekly_delta_pledged_usd": 178.9325590399999
     },
@@ -3649,7 +3658,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": -1,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -3687,9 +3696,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 81,
-      "weekly_delta_backers": 37,
-      "weekly_delta_pledged_usd": 113600.20250303997
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 22,
+      "weekly_delta_pledged_usd": 59636.889219599776
     },
     {
       "pathname": "/projects/mousearc/mousearc-g1-puzzle-style-wireless-transmitter-and-receiver",
@@ -3725,9 +3734,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 149,
-      "weekly_delta_backers": 55,
-      "weekly_delta_pledged_usd": 5457.392942309998
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 34,
+      "weekly_delta_pledged_usd": 3385.7075798099977
     },
     {
       "pathname": "/projects/2057714259/lawnsense-tango-the-advanced-smart-robotic-lawn-mower-0",
@@ -3763,7 +3772,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 6,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -3801,9 +3810,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 16,
-      "weekly_delta_backers": 1,
-      "weekly_delta_pledged_usd": 109.00252215
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/boyu/kbdcraft-10-saha-the-55-modular-duo-controller-input-deck",
@@ -3839,7 +3848,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 18,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 42.07114889999866
     },
@@ -3877,7 +3886,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 17,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": -1,
       "weekly_delta_pledged_usd": -152.91528031999997
     },
@@ -3991,9 +4000,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 335,
-      "weekly_delta_backers": 291,
-      "weekly_delta_pledged_usd": 48691.52601774002
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 151,
+      "weekly_delta_pledged_usd": 26769.291107219993
     },
     {
       "pathname": "/projects/sensoplantsensor/senso-smart-and-gamified-plant-sensor",
@@ -4029,9 +4038,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 67,
-      "weekly_delta_backers": 25,
-      "weekly_delta_pledged_usd": 2094.465198589998
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 9,
+      "weekly_delta_pledged_usd": 560.7872818600008
     },
     {
       "pathname": "/projects/384029795/powerrider-ai-powered-presenter-endless-possibilities",
@@ -4067,9 +4076,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 13,
-      "weekly_delta_backers": 0,
-      "weekly_delta_pledged_usd": -509.25009732000035
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": -2,
+      "weekly_delta_pledged_usd": -796.7711212199974
     },
     {
       "pathname": "/projects/nexos/nexo-the-night-vision-that-doesnt-just-see-it-knows",
@@ -4105,9 +4114,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 24,
-      "weekly_delta_backers": -2,
-      "weekly_delta_pledged_usd": -197.7025154999992
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/988255726/glocandy-a-contactless-60ghz-mmwave-radar-smart-baby-monitor",
@@ -4143,9 +4152,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 3,
-      "weekly_delta_backers": 9,
-      "weekly_delta_pledged_usd": 1671.2877810299997
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 4,
+      "weekly_delta_pledged_usd": 810.3252135299999
     },
     {
       "pathname": "/projects/voxmeta/h1-pro-3d-scanner",
@@ -4181,9 +4190,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 25,
-      "weekly_delta_backers": 3,
-      "weekly_delta_pledged_usd": 6537.203471079993
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/zensyandsoulie/zensy-ring-mood-tracking-ring-with-phone-free-calming-guide",
@@ -4219,9 +4228,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 42,
-      "weekly_delta_backers": 1,
-      "weekly_delta_pledged_usd": 191.27306999999564
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/lyvor/lyvor-turn-any-desk-into-an-invisible-wireless-charger",
@@ -4257,9 +4266,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 69,
-      "weekly_delta_backers": 6,
-      "weekly_delta_pledged_usd": 646.88135435
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/281733758/ht06-the-heater-youll-actually-want-to-display",
@@ -4295,9 +4304,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 33,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
-      "weekly_delta_pledged_usd": -9.948900779999803
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/1200242880/worlds-first-heated-and-cooled-smart-lunch-box-with-find-my",
@@ -4333,9 +4342,9 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 40,
-      "weekly_delta_backers": -1,
-      "weekly_delta_pledged_usd": -328.9514757899997
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/warsunofficial/warsun-t9-pro-the-ultimate-4-in-1-magnetic-edc-flashlight",
