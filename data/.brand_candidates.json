@@ -7,39 +7,9 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 190976.90923262,
+      "pledged_usd": 192945.8380402,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/419657217/still-a-titanium-brush-pen-that-slows-you-down",
-      "china_confidence": "未知",
-      "reasons": [
-        "pledged >= $5,000"
-      ]
-    },
-    {
-      "creator_slug": "twopan",
-      "title": "Twopan T11: Portable Magnetic Multi-port USB-C Hub Stand",
-      "location": "Los Angeles, CA",
-      "country": "HK",
-      "status": "live",
-      "followers": 0,
-      "pledged_usd": 31877.93624925,
-      "project_we_love": false,
-      "url": "https://www.kickstarter.com/projects/twopan/twopan-your-pocket-magnetic-all-in-one-usb-c-hub",
-      "china_confidence": "未知",
-      "reasons": [
-        "pledged >= $5,000"
-      ]
-    },
-    {
-      "creator_slug": "movespeedtech",
-      "title": "MOVESPEED Ultimate 2-in-1 Summer Cooling EDC Gadget",
-      "location": "Los Angeles, CA",
-      "country": "HK",
-      "status": "live",
-      "followers": 0,
-      "pledged_usd": 17562.85407488,
-      "project_we_love": false,
-      "url": "https://www.kickstarter.com/projects/movespeedtech/movespeed-2-in-1-cold-touch-cooling-fan-and-power-bank",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -52,7 +22,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 9490.3410875,
+      "pledged_usd": 10640.5308975,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/wondercore/chaircise",
       "china_confidence": "未知",
@@ -62,7 +32,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-08-08T01:01:57.724344+00:00",
+    "generated_at": "2026-08-09T01:04:48.231359+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
