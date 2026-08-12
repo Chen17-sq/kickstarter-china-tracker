@@ -1,28 +1,13 @@
 {
   "candidates": [
     {
-      "creator_slug": "419657217",
-      "title": "STILL: A Titanium Brush Fountain Pen That Slows You Down",
-      "location": "Chicago, IL",
-      "country": "HK",
-      "status": "live",
-      "followers": 0,
-      "pledged_usd": 204311.89227372,
-      "project_we_love": false,
-      "url": "https://www.kickstarter.com/projects/419657217/still-a-titanium-brush-pen-that-slows-you-down",
-      "china_confidence": "未知",
-      "reasons": [
-        "pledged >= $5,000"
-      ]
-    },
-    {
       "creator_slug": "twopan",
       "title": "Twopan T11: Portable Magnetic Multi-port USB-C Hub Stand",
       "location": "Los Angeles, CA",
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 33492.33672582,
+      "pledged_usd": 34298.197689,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/twopan/twopan-your-pocket-magnetic-all-in-one-usb-c-hub",
       "china_confidence": "未知",
@@ -37,7 +22,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 16966.5748525,
+      "pledged_usd": 19844.5996875,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/wondercore/chaircise",
       "china_confidence": "未知",
@@ -52,7 +37,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 14163.68341262,
+      "pledged_usd": 14597.42437062,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/cargocontainerusa/fire-pit-max-tactical-folding-smokeless-fire-pit",
       "china_confidence": "未知",
@@ -62,7 +47,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-08-11T01:07:06.089629+00:00",
+    "generated_at": "2026-08-12T01:13:29.425444+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
