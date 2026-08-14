@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-12T01:13:10Z",
-  "started_at": "2026-08-12T01:03:53Z",
-  "total_candidates": 752,
+  "generated_at": "2026-08-14T01:10:29Z",
+  "started_at": "2026-08-14T01:04:27Z",
+  "total_candidates": 30,
   "kept": 678,
   "projects": [
     {
@@ -34,7 +34,9 @@
       "china_confidence": "高",
       "china_reason": "KS location: Xi'an, China",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/1953170970/pistonv-dual-os-gaming-beast-in-a-gadget-form-factor",
@@ -66,7 +68,9 @@
       "china_confidence": "高",
       "china_reason": "KS location: Shenzhen, China",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/30653905/labyrinth-magic-dice-seven-faces-of-fate",
@@ -136,7 +140,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 1480,
+      "weekly_delta_followers": 411,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -174,7 +178,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 0,
+      "weekly_delta_followers": 1,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -250,7 +254,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 58,
+      "weekly_delta_followers": 2,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -288,7 +292,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 94,
+      "weekly_delta_followers": 29,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -326,7 +330,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 16,
+      "weekly_delta_followers": 4,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -402,7 +406,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 109,
+      "weekly_delta_followers": 22,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -478,7 +482,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 4,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -554,7 +558,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 13,
+      "weekly_delta_followers": 7,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -668,7 +672,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 1,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -782,7 +786,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 3,
+      "weekly_delta_followers": 1,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -820,7 +824,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 1042,
+      "weekly_delta_followers": 288,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -858,7 +862,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 558,
+      "weekly_delta_followers": 190,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -896,7 +900,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 902,
+      "weekly_delta_followers": 239,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -934,7 +938,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 375,
+      "weekly_delta_followers": 136,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -972,7 +976,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 148,
+      "weekly_delta_followers": 66,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -1010,7 +1014,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 213,
+      "weekly_delta_followers": 98,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -1049,7 +1053,8 @@
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
       "weekly_delta_backers": 0,
-      "weekly_delta_pledged_usd": 0.0
+      "weekly_delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 69
     },
     {
       "pathname": "/projects/farseer/rocx-worlds-first-robotic-extreme-zoom-camera",
@@ -1085,7 +1090,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 150,
+      "weekly_delta_followers": 76,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -1123,7 +1128,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 432,
+      "weekly_delta_followers": 109,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -1161,7 +1166,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 194,
+      "weekly_delta_followers": 51,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -1272,7 +1277,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 373,
+      "weekly_delta_followers": 79,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -1310,7 +1315,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 40,
+      "weekly_delta_followers": 6,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -1348,7 +1353,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 189,
+      "weekly_delta_followers": 92,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -1385,7 +1390,10 @@
       "matched_brand_zh": null,
       "delta_followers": 0,
       "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 39,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/xhorse3d/xhorse3d-xmachine-wm-100-desktop-simultaneous-5-axis-cnc",
@@ -1421,7 +1429,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 131,
+      "weekly_delta_followers": 28,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -1459,7 +1467,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 74,
+      "weekly_delta_followers": 21,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -1608,7 +1616,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 64,
+      "weekly_delta_followers": 16,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -1645,7 +1653,10 @@
       "matched_brand_zh": null,
       "delta_followers": 0,
       "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 27,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/yuedaopower/yuedao-robolite-the-5-in-1-camping-light-and-power-station",
@@ -1681,7 +1692,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 66,
+      "weekly_delta_followers": 14,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -1719,7 +1730,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 35,
+      "weekly_delta_followers": 16,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -1757,7 +1768,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 47,
+      "weekly_delta_followers": 13,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -1795,7 +1806,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 48,
+      "weekly_delta_followers": 15,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -1833,7 +1844,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 178,
+      "weekly_delta_followers": 45,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -1871,7 +1882,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 49,
+      "weekly_delta_followers": 19,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -1910,7 +1921,8 @@
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
       "weekly_delta_backers": 0,
-      "weekly_delta_pledged_usd": 0.0
+      "weekly_delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 8
     },
     {
       "pathname": "/projects/viewx/viewx-liber-glass-free-spatial-ai-3d-display",
@@ -1985,7 +1997,8 @@
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
       "weekly_delta_backers": 0,
-      "weekly_delta_pledged_usd": 0.0
+      "weekly_delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0
     },
     {
       "pathname": "/projects/1512910192/metabunny-y1-your-ai-agents-finally-on-your-desk",
@@ -2021,7 +2034,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 24,
+      "weekly_delta_followers": 14,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -2093,7 +2106,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 83,
+      "weekly_delta_followers": 18,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -2127,7 +2140,9 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/1890677523/impell-188w-turbo-air-power-wherever-you-go",
@@ -2300,7 +2315,10 @@
       "matched_brand_zh": null,
       "delta_followers": 0,
       "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/plantsrobot-ks/plantmulti-the-smart-gardening-multi-tool-for-plant-parents",
@@ -2337,7 +2355,8 @@
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
       "weekly_delta_backers": 0,
-      "weekly_delta_pledged_usd": 0.0
+      "weekly_delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 8
     },
     {
       "pathname": "/projects/aristo-trigsafe/trigsafe-the-ultimate-anti-explosion-spray-can-handle",
@@ -2374,7 +2393,8 @@
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
       "weekly_delta_backers": 0,
-      "weekly_delta_pledged_usd": 0.0
+      "weekly_delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 0
     },
     {
       "pathname": "/projects/xman/clickclack-s7-open-ear-ai-earbuds-with-proprietary-acoustic",
@@ -2411,7 +2431,8 @@
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
       "weekly_delta_backers": 0,
-      "weekly_delta_pledged_usd": 0.0
+      "weekly_delta_pledged_usd": 0.0,
+      "weekly_delta_followers": 1
     },
     {
       "pathname": "/projects/2114030572/gt6-finally-a-grow-light-that-makes-sense",
@@ -2484,7 +2505,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 2,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -2522,7 +2543,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 1,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -2560,7 +2581,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 2,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -2597,7 +2618,9 @@
       "matched_brand_zh": null,
       "delta_followers": 0,
       "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/408604787/modular-desk-shelf-with-storage-and-cable-management",
@@ -2708,7 +2731,9 @@
       "matched_brand_zh": "Keychron",
       "delta_followers": 0,
       "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/osimt/osimt-the-microwave-safe-titanium-storage-system",
@@ -2818,7 +2843,9 @@
       "matched_brand_zh": null,
       "delta_followers": 0,
       "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/jellyedc/magic-eye-an-edc-knife-that-gazes-into-the-abyss-limited200",
@@ -3110,7 +3137,9 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/vollyc/ezy-back",
@@ -3142,7 +3171,9 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/171684782/zealwell-3-layer-leak-proof-trash-bag-dispenser",
@@ -3174,7 +3205,9 @@
       "china_confidence": "高",
       "china_reason": "KS location: Hong Kong, Hong Kong",
       "matched_brand": null,
-      "matched_brand_zh": null
+      "matched_brand_zh": null,
+      "delta_backers": 0,
+      "delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/853307799/es4-15-in-1-usb4-docking-station-and-modular-storage-system",
@@ -3282,7 +3315,9 @@
       "matched_brand_zh": null,
       "delta_followers": 0,
       "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/witisan/witisan-the-best-fit-leather-pen-sleeve",
@@ -3654,7 +3689,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 13,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -3882,7 +3917,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 52,
+      "weekly_delta_followers": 12,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -3958,7 +3993,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 44,
+      "weekly_delta_followers": 1,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -3996,7 +4031,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 3,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -4034,7 +4069,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 6,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -4222,7 +4257,9 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/1902464305/primordial-divine-arms-xuanyuan-sword",
@@ -4256,7 +4293,9 @@
       "matched_brand": null,
       "matched_brand_zh": null,
       "delta_backers": 0,
-      "delta_pledged_usd": 0.0
+      "delta_pledged_usd": 0.0,
+      "weekly_delta_backers": 0,
+      "weekly_delta_pledged_usd": 0.0
     },
     {
       "pathname": "/projects/235685896/atelier-blue-engraver-with-built-in-cameraandclass-1-safety",
@@ -4292,7 +4331,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 16,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -4330,7 +4369,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 23,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -4368,7 +4407,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 18,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -4406,7 +4445,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 10,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -4444,7 +4483,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 4,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -6066,7 +6105,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": -1,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -7390,7 +7429,7 @@
       "delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0,
-      "weekly_delta_followers": -1
+      "weekly_delta_followers": 0
     },
     {
       "pathname": "/projects/1941032835/airo-the-modular-air-monitor-designed-for-modern-living",
@@ -7426,7 +7465,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 1,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     },
@@ -7464,7 +7503,7 @@
       "delta_followers": 0,
       "delta_backers": 0,
       "delta_pledged_usd": 0.0,
-      "weekly_delta_followers": 2,
+      "weekly_delta_followers": 0,
       "weekly_delta_backers": 0,
       "weekly_delta_pledged_usd": 0.0
     }

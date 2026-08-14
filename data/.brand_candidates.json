@@ -1,53 +1,7 @@
 {
-  "candidates": [
-    {
-      "creator_slug": "twopan",
-      "title": "Twopan T11: Portable Magnetic Multi-port USB-C Hub Stand",
-      "location": "Los Angeles, CA",
-      "country": "HK",
-      "status": "live",
-      "followers": 0,
-      "pledged_usd": 34298.197689,
-      "project_we_love": false,
-      "url": "https://www.kickstarter.com/projects/twopan/twopan-your-pocket-magnetic-all-in-one-usb-c-hub",
-      "china_confidence": "未知",
-      "reasons": [
-        "pledged >= $5,000"
-      ]
-    },
-    {
-      "creator_slug": "wondercore",
-      "title": "Chaircise",
-      "location": "South Florida, FL",
-      "country": "HK",
-      "status": "live",
-      "followers": 0,
-      "pledged_usd": 19844.5996875,
-      "project_we_love": false,
-      "url": "https://www.kickstarter.com/projects/wondercore/chaircise",
-      "china_confidence": "未知",
-      "reasons": [
-        "pledged >= $5,000"
-      ]
-    },
-    {
-      "creator_slug": "cargocontainerusa",
-      "title": "FIRE PIT MAX: Tactical Foldable Smokeless Fire Pit",
-      "location": "Denver, CO",
-      "country": "HK",
-      "status": "live",
-      "followers": 0,
-      "pledged_usd": 14597.42437062,
-      "project_we_love": false,
-      "url": "https://www.kickstarter.com/projects/cargocontainerusa/fire-pit-max-tactical-folding-smokeless-fire-pit",
-      "china_confidence": "未知",
-      "reasons": [
-        "pledged >= $5,000"
-      ]
-    }
-  ],
+  "candidates": [],
   "_meta": {
-    "generated_at": "2026-08-12T01:13:29.425444+00:00",
+    "generated_at": "2026-08-14T01:10:49.230249+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
