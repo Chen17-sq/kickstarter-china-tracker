@@ -1,7 +1,23 @@
 {
-  "candidates": [],
+  "candidates": [
+    {
+      "creator_slug": "wondercore",
+      "title": "Chaircise",
+      "location": "South Florida, FL",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 29454.805345,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/wondercore/chaircise",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    }
+  ],
   "_meta": {
-    "generated_at": "2026-08-14T01:10:49.230249+00:00",
+    "generated_at": "2026-08-15T00:46:57.153883+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
