@@ -1,30 +1,30 @@
 {
   "candidates": [
     {
-      "creator_slug": "twopan",
-      "title": "Twopan T11: Portable Magnetic Multi-port USB-C Hub Stand",
-      "location": "Los Angeles, CA",
-      "country": "HK",
-      "status": "live",
-      "followers": 0,
-      "pledged_usd": 36568.84296702,
-      "project_we_love": false,
-      "url": "https://www.kickstarter.com/projects/twopan/twopan-your-pocket-magnetic-all-in-one-usb-c-hub",
-      "china_confidence": "未知",
-      "reasons": [
-        "pledged >= $5,000"
-      ]
-    },
-    {
       "creator_slug": "wondercore",
       "title": "Chaircise",
       "location": "South Florida, FL",
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 35379.175475,
+      "pledged_usd": 41915.620005,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/wondercore/chaircise",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "twopan",
+      "title": "Twopan T11: Portable Magnetic Multi-port USB-C Hub Stand",
+      "location": "Los Angeles, CA",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 38944.97210331,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/twopan/twopan-your-pocket-magnetic-all-in-one-usb-c-hub",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -32,7 +32,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-08-17T00:49:13.864318+00:00",
+    "generated_at": "2026-08-19T00:48:17.985956+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
