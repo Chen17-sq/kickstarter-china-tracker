@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 54316.50238,
+      "pledged_usd": 54334.35455,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/wondercore/chaircise",
       "china_confidence": "未知",
@@ -17,7 +17,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-08-29T04:56:43.498120+00:00",
+    "generated_at": "2026-08-30T02:33:06.087149+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
