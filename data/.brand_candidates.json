@@ -1,15 +1,15 @@
 {
   "candidates": [
     {
-      "creator_slug": "wondercore",
-      "title": "Chaircise",
-      "location": "South Florida, FL",
+      "creator_slug": "1469979441",
+      "title": "4URPC: 15.6\" Wireless Touchscreen Portable Monitor",
+      "location": "New York, NY",
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 55524.074165,
+      "pledged_usd": 57391.17520455,
       "project_we_love": false,
-      "url": "https://www.kickstarter.com/projects/wondercore/chaircise",
+      "url": "https://www.kickstarter.com/projects/1469979441/4urpc-x6-156-wireless-touchscreen-portable-monitor",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -17,7 +17,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-09-01T02:45:14.130961+00:00",
+    "generated_at": "2026-09-02T02:09:05.588690+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
