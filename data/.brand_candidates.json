@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 122633.998272,
+      "pledged_usd": 140449.53092085,
       "project_we_love": true,
       "url": "https://www.kickstarter.com/projects/1469979441/4urpc-x6-156-wireless-touchscreen-portable-monitor",
       "china_confidence": "未知",
@@ -23,7 +23,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 57846.13142,
+      "pledged_usd": 58421.226325,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/wondercore/chaircise",
       "china_confidence": "未知",
@@ -33,7 +33,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-09-04T02:07:24.777755+00:00",
+    "generated_at": "2026-09-05T02:06:42.789106+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
