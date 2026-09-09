@@ -1,73 +1,77 @@
 # Kickstarter China Tracker — diff
 
-## new (7)
-- **Coffee Watch In Motion --Mechanical Chronograph | ST 1901** — Discovered (prelaunch, 3 followers)  
-  `/projects/chronofuns/coffee-watch-in-motion-mechanical-chronograph-st-1901`
-- **ARDIX: 8mm Card-Thin Foldable Mouse** — Discovered (prelaunch, 0 followers)  
-  `/projects/ardix/ardix-card-thin-foldable-mouse`
-- **TapDock: The Desktop Hub with One-Touch Shortcuts** — Discovered (prelaunch, 0 followers)  
-  `/projects/1037359518/tapdock-the-desktop-hub-with-one-touch-shortcuts`
-- **SS85 Clip-On | Next-Gen Open Earbuds That Change the Game** — Discovered (prelaunch, 1 followers)  
-  `/projects/e-books/ss85-clip-on`
-- **Hilight Pivot — An Adaptive Desk Light Designed Around You** — Discovered (prelaunch, 0 followers)  
-  `/projects/hilight/hilight-pivot-an-adaptive-desk-light-designed-around-you`
-- **Smaller Than Your Thumb. Built for Every Day丨Pocket Knife** — Discovered (prelaunch, 3 followers)  
-  `/projects/tikzer/smaller-than-your-thumb-built-for-every-daypocket-knife`
-- **AI WUKONG: Your First AI Humanoid Robot That Does It All** — Discovered (prelaunch, 5 followers)  
-  `/projects/aiwukong/ai-wukong-your-first-ai-humanoid-robot-that-does-it-all`
+## new (6)
+- **Titaner Vesta: Titanium Everyday Pot with Micro-Pressure** — Discovered (prelaunch, 7 followers)  
+  `/projects/titanerwy/titaner-vesta-titanium-everyday-pot-with-micro-pressure`
+- **AutoPlug System** — Discovered (live, 5 followers)  
+  `/projects/kellylaw/autoplug-system`
+- **The ESP32-P461-S1** — Discovered (prelaunch, 1 followers)  
+  `/projects/c-h/the-esp32-p461-s1`
+- **Foldable Travel Handheld Steamer** — Discovered (live, 4 followers)  
+  `/projects/candcproduction/foldable-garment-care-master-handheld-streamer`
+- **ToTo** — Discovered (live, 24 followers)  
+  `/projects/militellodesign/toto-0`
+- **Muning Ring: The First Smart Ring Built for Your Loved Ones** — Discovered (prelaunch, 0 followers)  
+  `/projects/foldingspace/muning-ring-the-first-smart-ring-built-for-your-loved-ones`
 
-## followers_delta (18)
-- **Eck Design K1: The Quick-Access Titanium Carry Clip** — +63 followers (1120 → 1183)  
-  `/projects/smartx/eck-design-k1-the-user-friendly-titanium-carry-clip`
-- **FlameMage: 4-Level Heat Control Titanium Foldable Stove** — +81 followers (130 → 211)  
-  `/projects/camprit/flamemage-adjustable-fuel-height-titanium-foldable-stove`
-- **CORE POWER BANK S - Light to Carry. Safe to Trust** — +51 followers (1422 → 1473)  
-  `/projects/oztechlab/core-power-bank-s-so-thin-you-forget-its-there`
-- **TICKEY: A Customizable Clip-On Color E-Paper Card** — +216 followers (5930 → 6146)  
-  `/projects/enilinx/ticket-refresh-it-new-clip-it-on-carry-your-moment`
-- **GritPlex: The Desktop Sandblaster & Zero‑Dust Work Cell** — +58 followers (1239 → 1297)  
-  `/projects/gritplex/gritplex-the-desktop-sandblaster-and-zerodust-work-cell`
-- **RocXZoom, World's First Robotic Extreme Zoom Camera** — +56 followers (1613 → 1669)  
-  `/projects/farseer/rocx-worlds-first-robotic-extreme-zoom-camera`
-- **X3 | The World's First Solution to Turn Your PC into a NAS** — +54 followers (2846 → 2900)  
-  `/projects/fanxiang/fanx-drive-turn-your-pc-into-a-private-cloud-nasin-minutes`
-- **StationPC DA400 AI NAS:Next-Gen AI Private Cloud** — +101 followers (1202 → 1303)  
-  `/projects/stationpc/stationpc-da400-ai-nas`
-- **RugOne Xsnap 7 Pro: Rugged Phone + Detachable Action Camera** — +88 followers (65 → 153)  
-  `/projects/rugone/rugone-xsnap-7-pro-rugged-phone-detachable-action-camera`
-- **OSIMT: The Microwave-Safe Titanium Storage System** — +87 followers (616 → 703)  
-  `/projects/osimt/osimt-the-microwave-safe-titanium-storage-system`
-- **VisaUltra 250W: The Most Powerful Travel Adapter Ever Built** — +59 followers (1592 → 1651)  
-  `/projects/arsmel/visaultra-235w-the-most-powerful-travel-adapter-ever-built`
-- **Piston V | Dual-OS Gaming Beast in a Gadget Form Factor** — +79 followers (2197 → 2276)  
-  `/projects/pistonv/pistonv-dual-os-gaming-beast-in-a-gadget-form-factor`
-- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +86 followers (253 → 339)  
-  `/projects/xgimititannoir/xgimi-aura-3-series-the-ultimate-laser-tv-for-every-moment`
-- **Turn Your Phone Into a Smart Scope** — +50 followers (1334 → 1384)  
-  `/projects/qivika/turn-your-phone-into-a-smart-scope`
-- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +136 followers (4900 → 5036)  
+## followers_delta (19)
+- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +135 followers (5036 → 5171)  
   `/projects/bvio/violoop-plug-in-ai-for-your-computer`
-- **Blizwheel F0.5: 0.5-meter foldable e-scooter fits your bag** — +55 followers (2138 → 2193)  
+- **Turn Your Phone Into a Smart Scope** — +58 followers (1384 → 1442)  
+  `/projects/qivika/turn-your-phone-into-a-smart-scope`
+- **Blizwheel F0.5: 0.5-meter foldable e-scooter fits your bag** — +73 followers (2193 → 2266)  
   `/projects/1541803670/blizwheel-f05-05-meter-foldable-e-scooter-fits-your-bag`
-- **The World’s First Desktop Robotics Terminal** — +117 followers (5608 → 5725)  
-  `/projects/cybopal/cybopal-worlds-first-active-tracking-ai-robotic-monitor`
-- **Inkanva: The World's First Self-Charging E-Ink Canvas** — +100 followers (3489 → 3589)  
-  `/projects/98798876/inkanva`
-
-## status_change (6)
-- **FlameMage: 4-Level Heat Control Titanium Foldable Stove** — prelaunch → live  
+- **FlameMage: 4-Level Heat-Control Titanium Cooking System** — +71 followers (211 → 282)  
   `/projects/camprit/flamemage-adjustable-fuel-height-titanium-foldable-stove`
-- **K-BOX | Modular Mini PC for Makers & IoT** — prelaunch → live  
-  `/projects/youyeetoo/k-box`
-- **UNIUX - U1 Hollow Spindleless Coffee Grinder** — prelaunch → live  
-  `/projects/uniux/uniux-u1-hollow-spindleless-coffee-grinder`
-- **RugOne Xsnap 7 Pro: Rugged Phone + Detachable Action Camera** — prelaunch → live  
-  `/projects/rugone/rugone-xsnap-7-pro-rugged-phone-detachable-action-camera`
-- **DWSTN Dragon Tooth: Ti M390 Steel Pocket Folding EDC Knife** — prelaunch → live  
-  `/projects/71593596/dragon-tooth-edc-knife-m390-steel-titanium-frame-lock`
-- **AGELOCER｜Aero Ti Grade 5 In-house Movement Tourbillon Watch** — live → successful  
-  `/projects/agelocerwatch/agelocer-titanium-free-sprung-aero-tourbillon-watch`
+- **Piston V | Dual-OS Gaming Beast in a Gadget Form Factor** — +64 followers (2276 → 2340)  
+  `/projects/pistonv/pistonv-dual-os-gaming-beast-in-a-gadget-form-factor`
+- **PexarBolt: The Thunderbolt 5 Dock that Shows Your Workflow** — +132 followers (685 → 817)  
+  `/projects/1293510277/pexarbolt-the-thunderbolt-5-dock-that-shows-your-workflow`
+- **X3 | The World's First Solution to Turn Your PC into a NAS** — +71 followers (2900 → 2971)  
+  `/projects/fanxiang/fanx-drive-turn-your-pc-into-a-private-cloud-nasin-minutes`
+- **OSIMT: The Microwave-Safe Titanium Storage System** — +123 followers (703 → 826)  
+  `/projects/osimt/osimt-the-microwave-safe-titanium-storage-system`
+- **GritPlex: The Desktop Sandblaster & Zero‑Dust Work Cell** — +66 followers (1297 → 1363)  
+  `/projects/gritplex/gritplex-the-desktop-sandblaster-and-zerodust-work-cell`
+- **Eck Design K1: The Quick-Access Titanium Carry Clip** — +51 followers (1183 → 1234)  
+  `/projects/smartx/eck-design-k1-the-user-friendly-titanium-carry-clip`
+- **TICKEY: A Customizable Clip-On Color E-Paper Card** — +168 followers (6146 → 6314)  
+  `/projects/enilinx/ticket-refresh-it-new-clip-it-on-carry-your-moment`
+- **Inkanva: The World's First Self-Charging E-Ink Canvas** — +101 followers (3589 → 3690)  
+  `/projects/98798876/inkanva`
+- **TBK N1: The 6-in-1 Touchscreen Soldering & Repair Station** — +58 followers (7 → 65)  
+  `/projects/1024841174/tbk-n1-the-6-in-1-touchscreen-soldering-and-repair-station`
+- **Voltiva Pro: Modular 5-in-1 Power Bank with 100W Output.** — +55 followers (156 → 211)  
+  `/projects/voltivago/voltiva-pro-modular-5-in-1-power-bank-with-100w-output`
+- **KRONOSTI STRATA GMT – Titanium Natural Stone Dial Watch** — +105 followers (291 → 396)  
+  `/projects/katino/kronosti-atlas-gmt-automatic-travel-watch`
+- **StationPC DA400 AI NAS:Next-Gen AI Private Cloud** — +62 followers (1303 → 1365)  
+  `/projects/stationpc/stationpc-da400-ai-nas`
+- **LightMake L4: 1st 4-Head Color 3D Printer with Linear Motors** — +52 followers (3566 → 3618)  
+  `/projects/lightmake/lightmake-l4-1st-4-head-color-3d-printer-with-linear-motor`
+- **The World’s First Desktop Robotics Terminal** — +131 followers (5725 → 5856)  
+  `/projects/cybopal/cybopal-worlds-first-active-tracking-ai-robotic-monitor`
+- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +132 followers (339 → 471)  
+  `/projects/xgimititannoir/xgimi-aura-3-series-the-ultimate-laser-tv-for-every-moment`
 
-## backers_delta (1)
-- **TICKEY: A Customizable Clip-On Color E-Paper Card** — +244 backers (4521 → 4765)  
+## status_change (7)
+- **PexarBolt: The Thunderbolt 5 Dock that Shows Your Workflow** — prelaunch → live  
+  `/projects/1293510277/pexarbolt-the-thunderbolt-5-dock-that-shows-your-workflow`
+- **Xone — Built-In Audio Sleep Mask with Sleep-Aware Auto Stop** — prelaunch → live  
+  `/projects/1915646966/xone-built-in-audio-sleep-mask-with-sleep-aware-auto-stop`
+- **POWER STATION — 10-in-1 Multi-Function Wireless Charger** — prelaunch → live  
+  `/projects/ilepo360-keyboard/power-station-10-in-1-multi-function-wireless-charger`
+- **TBK N1: The 6-in-1 Touchscreen Soldering & Repair Station** — prelaunch → live  
+  `/projects/1024841174/tbk-n1-the-6-in-1-touchscreen-soldering-and-repair-station`
+- **VALIMOR: 60-Hour Limited-Edition Forged Gemstone Watches** — prelaunch → live  
+  `/projects/valimor/valimor-4-forged-gemstone-watches`
+- **Voltiva Pro: Modular 5-in-1 Power Bank with 100W Output.** — prelaunch → live  
+  `/projects/voltivago/voltiva-pro-modular-5-in-1-power-bank-with-100w-output`
+- **KRONOSTI STRATA GMT – Titanium Natural Stone Dial Watch** — prelaunch → live  
+  `/projects/katino/kronosti-atlas-gmt-automatic-travel-watch`
+
+## backers_delta (2)
+- **PexarBolt: The Thunderbolt 5 Dock that Shows Your Workflow** — +338 backers (0 → 338)  
+  `/projects/1293510277/pexarbolt-the-thunderbolt-5-dock-that-shows-your-workflow`
+- **TICKEY: A Customizable Clip-On Color E-Paper Card** — +186 backers (4765 → 4951)  
   `/projects/enilinx/ticket-refresh-it-new-clip-it-on-carry-your-moment`

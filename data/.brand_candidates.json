@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 174361.7964321,
+      "pledged_usd": 181865.6785251,
       "project_we_love": true,
       "url": "https://www.kickstarter.com/projects/1469979441/4urpc-x6-156-wireless-touchscreen-portable-monitor",
       "china_confidence": "未知",
@@ -15,10 +15,25 @@
         "pledged >= $5,000",
         "KS staff pick"
       ]
+    },
+    {
+      "creator_slug": "tlyard",
+      "title": "Tlyard PowerBridge Pro: 7500W EV-to-Home & Outdoor Power",
+      "location": "Los Angeles, CA",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 6123.32374797,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/tlyard/tlyard-powerbridge-pro-7500w-ev-to-home-and-outdoor-power",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
     }
   ],
   "_meta": {
-    "generated_at": "2026-09-08T02:10:20.798994+00:00",
+    "generated_at": "2026-09-09T02:16:39.736840+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
