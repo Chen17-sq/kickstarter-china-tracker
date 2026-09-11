@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 187868.5290522,
+      "pledged_usd": 205280.2910988,
       "project_we_love": true,
       "url": "https://www.kickstarter.com/projects/1469979441/4urpc-x6-156-wireless-touchscreen-portable-monitor",
       "china_confidence": "未知",
@@ -23,7 +23,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 28364.31078923,
+      "pledged_usd": 45727.95082343,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/hermanpeng/the-gennai-pen-mechanical-edc-art-by-nakayama",
       "china_confidence": "未知",
@@ -32,15 +32,15 @@
       ]
     },
     {
-      "creator_slug": "lairedc",
-      "title": "SFX MK II Chroma Titanium & Carbon EDC Pocket Folding Knife",
-      "location": "San Francisco, CA",
+      "creator_slug": "movespeedtech",
+      "title": "MOVESPEED ClariWatt Duo",
+      "location": "California City, CA",
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 6493.1396209,
+      "pledged_usd": 10378.11295107,
       "project_we_love": false,
-      "url": "https://www.kickstarter.com/projects/lairedc/sfx-mk-ii-chroma-titanium-and-carbon-edc-pocket-folding-knife",
+      "url": "https://www.kickstarter.com/projects/movespeedtech/movespeed-clariwatt-duo",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -53,9 +53,24 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 5375.02484179,
+      "pledged_usd": 10027.26616607,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/morphgears/morphgears-14-in-1-modular-titanium-edc-card",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "lairedc",
+      "title": "SFX MK II Chroma Titanium & Carbon EDC Pocket Folding Knife",
+      "location": "San Francisco, CA",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 7763.6002878,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/lairedc/sfx-mk-ii-chroma-titanium-and-carbon-edc-pocket-folding-knife",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -63,7 +78,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-09-10T02:11:41.476244+00:00",
+    "generated_at": "2026-09-11T02:14:54.149657+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
