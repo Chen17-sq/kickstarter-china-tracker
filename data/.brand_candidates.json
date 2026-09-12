@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 205280.2910988,
+      "pledged_usd": 219700.9613475,
       "project_we_love": true,
       "url": "https://www.kickstarter.com/projects/1469979441/4urpc-x6-156-wireless-touchscreen-portable-monitor",
       "china_confidence": "未知",
@@ -23,7 +23,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 45727.95082343,
+      "pledged_usd": 55277.57021465,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/hermanpeng/the-gennai-pen-mechanical-edc-art-by-nakayama",
       "china_confidence": "未知",
@@ -38,7 +38,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 10378.11295107,
+      "pledged_usd": 14613.288906,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/movespeedtech/movespeed-clariwatt-duo",
       "china_confidence": "未知",
@@ -53,7 +53,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 10027.26616607,
+      "pledged_usd": 13355.48848642,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/morphgears/morphgears-14-in-1-modular-titanium-edc-card",
       "china_confidence": "未知",
@@ -68,7 +68,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 7763.6002878,
+      "pledged_usd": 9103.2034069,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/lairedc/sfx-mk-ii-chroma-titanium-and-carbon-edc-pocket-folding-knife",
       "china_confidence": "未知",
@@ -78,7 +78,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-09-11T02:14:54.149657+00:00",
+    "generated_at": "2026-09-12T02:18:40.558034+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
