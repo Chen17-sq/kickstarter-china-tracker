@@ -1,13 +1,29 @@
 {
   "candidates": [
     {
+      "creator_slug": "1469979441",
+      "title": "4URPC: 15.6\" Wireless Touchscreen Portable Monitor",
+      "location": "New York, NY",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 257036.6657565,
+      "project_we_love": true,
+      "url": "https://www.kickstarter.com/projects/1469979441/4urpc-x6-156-wireless-touchscreen-portable-monitor",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000",
+        "KS staff pick"
+      ]
+    },
+    {
       "creator_slug": "hermanpeng",
       "title": "Hidetoshi Nakayama’s Gennai Pen SL01: Steampunk EDC Pen",
       "location": "Tokyo, Japan",
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 72928.818654,
+      "pledged_usd": 76984.41602294,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/hermanpeng/the-gennai-pen-mechanical-edc-art-by-nakayama",
       "china_confidence": "未知",
@@ -22,9 +38,24 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 27135.18342762,
+      "pledged_usd": 28476.16558804,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/morphgears/morphgears-14-in-1-modular-titanium-edc-card",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "movespeedtech",
+      "title": "MOVESPEED ClariWatt Duo",
+      "location": "California City, CA",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 24465.52748143,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/movespeedtech/movespeed-clariwatt-duo",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -32,7 +63,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-09-16T02:28:49.034270+00:00",
+    "generated_at": "2026-09-17T02:32:49.232417+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000

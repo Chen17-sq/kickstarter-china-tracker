@@ -1,61 +1,49 @@
 # Kickstarter China Tracker — diff
 
-## new (6)
-- **TiTern: A Titanium & Carbon Guitar Pick, Your Grip Redefined** — Discovered (prelaunch, 1 followers)  
-  `/projects/654030638/titern-a-titanium-and-carbon-guitar-pick-your-grip-redefined`
-- **SyntaCharging 200W Multi-functional 7-in-1 Charging Station.** — Discovered (live, 61 followers)  
-  `/projects/syntacharging/syntacharging-200w-multi-functional-7-in-1-charging-station`
-- **SLogic32U3 – The World's First 10Gbps USB3.2 Logic Analyzer** — Discovered (prelaunch, 474 followers)  
-  `/projects/sipeed/slogic32u3-the-worlds-first-10gbps-usb32-logic-analyzer`
-- **ChewJoy: The Treat Ball That Cleans Teeth While Dogs Play** — Discovered (prelaunch, 0 followers)  
-  `/projects/injune/chewjoy-dental-care-ball`
-- **AeroVox: The Minimalist Titanium Whistle with More Inside** — Discovered (prelaunch, 2 followers)  
-  `/projects/149739871/aerovox-a-titanium-utility-whistle-built-for-the-moments`
-- **VAULT: modular stacking toolbox system** — Discovered (prelaunch, 5211 followers)  
+## new (4)
+- **Morelink PRAYTECH S1: 76-Lumen DLP Projector Smartphone** — Discovered (live, 0 followers)  
+  `/projects/morelink/morelink-praytech-s1-76-lumen-dlp-projector-smartphone`
+- **Apanmeker: DL-210 Industrial CNC Power in a Desktop Lathe** — Discovered (live, 0 followers)  
+  `/projects/apanmeker/apanmeker-dl-210-industrial-cnc-power-in-a-desktop-lathe`
+- **MaixCAM2: Build Your Next-Gen 4K AI Camera** — Discovered (successful, 0 followers)  
+  `/projects/sipeed/maixcam2-build-your-next-gen-4k-ai-camera`
+- **M1 Outdoor Multi-functional Portable Power Bank** — Discovered (live, 0 followers)  
+  `/projects/1691134195/m1-outdoor-multi-functional-portable-power-bank`
+
+## status_change (12)
+- **QIVIKA: Turn Your Phone Into a Smart Scope** — prelaunch → live  
+  `/projects/qivika/turn-your-phone-into-a-smart-scope`
+- **VAULT: modular stacking toolbox system** — prelaunch → live  
   `/projects/ussa/vault-modular-stacking-toolbox-system`
+- **Slumbera: earbud with UV light care and white noise** — prelaunch → live  
+  `/projects/gagaal/slumbera-earbud-with-uv-light-care-and-white-noise`
+- **metaXring AI Smart Ring: Understands Nights. Improves Days.** — prelaunch → live  
+  `/projects/metaxring/metaxring-ai-smart-ring-understands-nights-improves-days`
+- **KeyUnity Quick-Release Magnetic Phone Carry System** — prelaunch → live  
+  `/projects/keyunity/keyunity-quick-release-magnetic-phone-carry-system`
+- **Atlas - E-ink Smart Chessboard for Online & Offline Play** — prelaunch → live  
+  `/projects/1482571777/atlas-e-ink-smart-chessboard-for-online-and-offline-play`
+- **StationPC DA400:Your Next-Gen AI NAS & Local AI Cloud** — prelaunch → live  
+  `/projects/stationpc/stationpc-da400-ai-nas`
+- **Lumpoo-World's First Illuminated Coffee Capsule Organizer** — prelaunch → live  
+  `/projects/3a58/coffee-light-box-a-better-place-for-your-coffee-corner`
+- **REZE FLOW: The World’s First All-in-One Smart Curtain Rod** — prelaunch → live  
+  `/projects/1402655559/the-worlds-first-all-in-one-solar-smart-curtain-rod`
+- **A Traditional Yengisar Knife, Born on the Silk Road.** — prelaunch → live  
+  `/projects/1856405275/yengisar-a-knife-born-on-the-silk-road`
+- **BSCOBBER OmniPump: Lightweight Portable outdoor Pump 10-in-1** — prelaunch → live  
+  `/projects/jasmine-01/bscobber-am0-lightweight-portable-outdoor-pump-10-in-1`
+- **SANJINZY G5：Upgrade Your Workstation-2M Thunderbolt 5 Cable** — prelaunch → live  
+  `/projects/sanjinzy/sanjinzy-g5-upgrade-your-workstation-2m-thunderbolt-5-cable`
 
-## followers_delta (9)
-- **InfiMech MX 3D Printer: 8X More Efficiency. 8X Less Waste.** — +50 followers (10306 → 10356)  
-  `/projects/infimech-mx-series/infimech-mx-3d-printer-8x-more-efficiency-8x-less-waste`
-- **TICKEY: A Customizable Clip-On Color E-Paper Card** — +136 followers (7139 → 7275)  
+## backers_delta (5)
+- **QIVIKA: Turn Your Phone Into a Smart Scope** — +369 backers (0 → 369)  
+  `/projects/qivika/turn-your-phone-into-a-smart-scope`
+- **VAULT: modular stacking toolbox system** — +1347 backers (0 → 1347)  
+  `/projects/ussa/vault-modular-stacking-toolbox-system`
+- **TICKEY: A Customizable Clip-On Color E-Paper Card** — +109 backers (5972 → 6081)  
   `/projects/enilinx/ticket-refresh-it-new-clip-it-on-carry-your-moment`
-- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +61 followers (937 → 998)  
-  `/projects/xgimititannoir/xgimi-aura-3-series-the-ultimate-laser-tv-for-every-moment`
-- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +188 followers (6559 → 6747)  
+- **Atlas - E-ink Smart Chessboard for Online & Offline Play** — +600 backers (0 → 600)  
+  `/projects/1482571777/atlas-e-ink-smart-chessboard-for-online-and-offline-play`
+- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +424 backers (1514 → 1938)  
   `/projects/bvio/violoop-plug-in-ai-for-your-computer`
-- **The World’s First Desktop Robotics Terminal** — +93 followers (6456 → 6549)  
-  `/projects/cybopal/cybopal-worlds-first-active-tracking-ai-robotic-monitor`
-- **Cinomadist Cadence: Other Bags Say No, We Say Pack It All.** — +94 followers (735 → 829)  
-  `/projects/cinomadistbackpack/cinomadist-cadence-backpack-40l`
-- **OSIMT: The Microwave-Safe Titanium Storage System** — +118 followers (1512 → 1630)  
-  `/projects/osimt/osimt-the-microwave-safe-titanium-storage-system`
-- **MakerPi Tiwrench: Hold it. Lock it. Make it.** — +65 followers (542 → 607)  
-  `/projects/makerpihk/makerpi-tiwrench-better-adjustable-wrench`
-- **Inkanva: The World's First Self-Charging E-Ink Canvas** — +117 followers (4294 → 4411)  
-  `/projects/98798876/inkanva`
-
-## backers_delta (2)
-- **TICKEY: A Customizable Clip-On Color E-Paper Card** — +159 backers (5813 → 5972)  
-  `/projects/enilinx/ticket-refresh-it-new-clip-it-on-carry-your-moment`
-- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +1514 backers (0 → 1514)  
-  `/projects/bvio/violoop-plug-in-ai-for-your-computer`
-
-## status_change (9)
-- **ORIONER MS-08: Gravity-Action EDC Fidget Utility Knife** — prelaunch → live  
-  `/projects/575377882/ms08-portable-gravity-action-edc-fidget-utility-knife`
-- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — prelaunch → live  
-  `/projects/bvio/violoop-plug-in-ai-for-your-computer`
-- **Cinomadist Cadence: Other Bags Say No, We Say Pack It All.** — prelaunch → live  
-  `/projects/cinomadistbackpack/cinomadist-cadence-backpack-40l`
-- **Hilight Pivot: Adjustable Desk Light with Wireless Charging** — prelaunch → live  
-  `/projects/hilight/hilight-pivot-an-adaptive-desk-light-designed-around-you`
-- **MakerPi Tiwrench: Hold it. Lock it. Make it.** — prelaunch → live  
-  `/projects/makerpihk/makerpi-tiwrench-better-adjustable-wrench`
-- **Modular desk shelf with storage and cable management** — prelaunch → live  
-  `/projects/408604787/modular-desk-shelf-with-storage-and-cable-management`
-- **Coinax VG10 Damascus Camp Knife | Leather Grip** — prelaunch → live  
-  `/projects/coinax/coinax-damascus-camp-knife`
-- **PACE Ti: A Modern Tritium-Core Titanium Pocket Fountain Pen** — prelaunch → live  
-  `/projects/814668681/pace-ti-a-modern-tritium-core-titanium-pocket-fountain-pen`
-- **Harnds Sidekick: ALL in 1 EDC Folding Knife** — prelaunch → live  
-  `/projects/harndsknife/harnds-sidekick-4-in-1-edc-folding-knife`
