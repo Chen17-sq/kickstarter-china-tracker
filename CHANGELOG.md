@@ -1,49 +1,39 @@
 # Kickstarter China Tracker — diff
 
-## new (4)
-- **Morelink PRAYTECH S1: 76-Lumen DLP Projector Smartphone** — Discovered (live, 0 followers)  
-  `/projects/morelink/morelink-praytech-s1-76-lumen-dlp-projector-smartphone`
-- **Apanmeker: DL-210 Industrial CNC Power in a Desktop Lathe** — Discovered (live, 0 followers)  
-  `/projects/apanmeker/apanmeker-dl-210-industrial-cnc-power-in-a-desktop-lathe`
-- **MaixCAM2: Build Your Next-Gen 4K AI Camera** — Discovered (successful, 0 followers)  
-  `/projects/sipeed/maixcam2-build-your-next-gen-4k-ai-camera`
-- **M1 Outdoor Multi-functional Portable Power Bank** — Discovered (live, 0 followers)  
-  `/projects/1691134195/m1-outdoor-multi-functional-portable-power-bank`
+## new (10)
+- **MBOX D69: Smart Quantum Display & Extended Screen** — Discovered (prelaunch, 0 followers)  
+  `/projects/ds21/mbox-d69-smart-quantum-display-and-extended-screen`
+- **Equora RC1: AI-POWERED, NON-CONTACT HORSE STALL MONITOR** — Discovered (prelaunch, 0 followers)  
+  `/projects/equora/equora-rc1-ai-powered-non-contact-horse-stall-monitor`
+- **STYLEPIE C92 – Strong Fast-Charging Lanyard Cable** — Discovered (prelaunch, 0 followers)  
+  `/projects/stylepie-c92/stylepie-c92-strong-fast-charging-lanyard-cable-0`
+- **HECHEER:FROM ONE BOX TO YOUR COMPLETE CAMP KITCHEN** — Discovered (prelaunch, 0 followers)  
+  `/projects/455547630/hecheer-all-in1-modular-camp-box-storagetablemountandcooking`
+- **The First Smart Ring Built for Personalization.Star Ring** — Discovered (prelaunch, 0 followers)  
+  `/projects/censtar/the-first-smart-ring-built-for-personalizationstar-ring`
+- **LumiSleep D1: An EEG Headband with Adaptive Sound.** — Discovered (prelaunch, 0 followers)  
+  `/projects/71932623/lumisleep-d1-an-eeg-headband-with-adaptive-sound`
+- **OssiAir : Clip-on cartilage conduction OWS for Every Move** — Discovered (live, 0 followers)  
+  `/projects/ossiair/ossiair-stereo-sports-open-ear-cartilage-conduction-clip`
+- **EchoBox： The Smart Sound & Display Showcase** — Discovered (prelaunch, 0 followers)  
+  `/projects/lakso/echobox-the-smart-sound-and-display-showcase`
+- **TrustKernel PlugMate Pro: Your Thumb-Sized Privacy Computer** — Discovered (prelaunch, 0 followers)  
+  `/projects/trustkernel/trustkernel-plugmate-pro-your-thumb-sized-privacy-computer`
+- **TITANBOLT — Three Metals. One Mechanical Pen.** — Discovered (prelaunch, 0 followers)  
+  `/projects/1098410811/titanbolt-three-metals-one-mechanical-pen`
 
-## status_change (12)
-- **QIVIKA: Turn Your Phone Into a Smart Scope** — prelaunch → live  
-  `/projects/qivika/turn-your-phone-into-a-smart-scope`
-- **VAULT: modular stacking toolbox system** — prelaunch → live  
-  `/projects/ussa/vault-modular-stacking-toolbox-system`
-- **Slumbera: earbud with UV light care and white noise** — prelaunch → live  
-  `/projects/gagaal/slumbera-earbud-with-uv-light-care-and-white-noise`
-- **metaXring AI Smart Ring: Understands Nights. Improves Days.** — prelaunch → live  
-  `/projects/metaxring/metaxring-ai-smart-ring-understands-nights-improves-days`
-- **KeyUnity Quick-Release Magnetic Phone Carry System** — prelaunch → live  
-  `/projects/keyunity/keyunity-quick-release-magnetic-phone-carry-system`
-- **Atlas - E-ink Smart Chessboard for Online & Offline Play** — prelaunch → live  
-  `/projects/1482571777/atlas-e-ink-smart-chessboard-for-online-and-offline-play`
-- **StationPC DA400:Your Next-Gen AI NAS & Local AI Cloud** — prelaunch → live  
-  `/projects/stationpc/stationpc-da400-ai-nas`
-- **Lumpoo-World's First Illuminated Coffee Capsule Organizer** — prelaunch → live  
-  `/projects/3a58/coffee-light-box-a-better-place-for-your-coffee-corner`
-- **REZE FLOW: The World’s First All-in-One Smart Curtain Rod** — prelaunch → live  
-  `/projects/1402655559/the-worlds-first-all-in-one-solar-smart-curtain-rod`
-- **A Traditional Yengisar Knife, Born on the Silk Road.** — prelaunch → live  
-  `/projects/1856405275/yengisar-a-knife-born-on-the-silk-road`
-- **BSCOBBER OmniPump: Lightweight Portable outdoor Pump 10-in-1** — prelaunch → live  
-  `/projects/jasmine-01/bscobber-am0-lightweight-portable-outdoor-pump-10-in-1`
-- **SANJINZY G5：Upgrade Your Workstation-2M Thunderbolt 5 Cable** — prelaunch → live  
-  `/projects/sanjinzy/sanjinzy-g5-upgrade-your-workstation-2m-thunderbolt-5-cable`
-
-## backers_delta (5)
-- **QIVIKA: Turn Your Phone Into a Smart Scope** — +369 backers (0 → 369)  
-  `/projects/qivika/turn-your-phone-into-a-smart-scope`
-- **VAULT: modular stacking toolbox system** — +1347 backers (0 → 1347)  
-  `/projects/ussa/vault-modular-stacking-toolbox-system`
-- **TICKEY: A Customizable Clip-On Color E-Paper Card** — +109 backers (5972 → 6081)  
-  `/projects/enilinx/ticket-refresh-it-new-clip-it-on-carry-your-moment`
-- **Atlas - E-ink Smart Chessboard for Online & Offline Play** — +600 backers (0 → 600)  
-  `/projects/1482571777/atlas-e-ink-smart-chessboard-for-online-and-offline-play`
-- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +424 backers (1514 → 1938)  
+## backers_delta (4)
+- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +289 backers (1938 → 2227)  
   `/projects/bvio/violoop-plug-in-ai-for-your-computer`
+- **VAULT: modular stacking toolbox system** — +301 backers (1347 → 1648)  
+  `/projects/ussa/vault-modular-stacking-toolbox-system`
+- **TICKEY: A Customizable Clip-On Color E-Paper Card** — +164 backers (6081 → 6245)  
+  `/projects/enilinx/ticket-refresh-it-new-clip-it-on-carry-your-moment`
+- **Atlas - E-ink Smart Chessboard for Online & Offline Play** — +147 backers (600 → 747)  
+  `/projects/1482571777/atlas-e-ink-smart-chessboard-for-online-and-offline-play`
+
+## status_change (2)
+- **VOLTIXA: Repair Anywhere. Power Built In.** — prelaunch → live  
+  `/projects/896279568/voltixa-the-pocket-precision-repair-kit`
+- **TiForge: Heavy-Duty Titanium Modular Quick-Release System** — prelaunch → live  
+  `/projects/comandi-cc/tiforge-heavy-duty-titanium-modular-quick-release-system`
