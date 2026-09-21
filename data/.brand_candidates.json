@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 277723.4985459,
+      "pledged_usd": 283435.60872465,
       "project_we_love": true,
       "url": "https://www.kickstarter.com/projects/1469979441/4urpc-x6-156-wireless-touchscreen-portable-monitor",
       "china_confidence": "未知",
@@ -23,7 +23,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 83141.40411616,
+      "pledged_usd": 86327.03388797,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/hermanpeng/the-gennai-pen-mechanical-edc-art-by-nakayama",
       "china_confidence": "未知",
@@ -38,9 +38,24 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 32462.37982066,
+      "pledged_usd": 33917.12991784,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/morphgears/morphgears-14-in-1-modular-titanium-edc-card",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "movespeedtech",
+      "title": "MOVESPEED ClariWatt Duo",
+      "location": "California City, CA",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 28394.92100358,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/movespeedtech/movespeed-clariwatt-duo",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -48,7 +63,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-09-20T02:34:08.935826+00:00",
+    "generated_at": "2026-09-21T02:31:35.888113+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
