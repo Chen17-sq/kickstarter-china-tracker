@@ -1,57 +1,57 @@
 # Kickstarter China Tracker — diff
 
-## new (6)
-- **FluxPin Portable Precision Soldering Tweezers** — Discovered (prelaunch, 3 followers)  
-  `/projects/592352763/fluxpin-portable-precision-soldering-tweezers`
-- **BOOSTER TF64 A7: A New Twist on the Handheld Blower** — Discovered (prelaunch, 2 followers)  
-  `/projects/part/booster-tf64-a7-a-new-twist-on-the-handheld-blower`
-- **JETROX: The Waterproof 130,000 RPM Pocket Turbo Blower** — Discovered (live, 12 followers)  
-  `/projects/2039718298/jetrox-the-waterproof-130000-rpm-pocket-turbo-blower`
-- **EYVORIQ: 14.9g Open-Ear AI Audio Glasses** — Discovered (prelaunch, 0 followers)  
-  `/projects/eyvoriq/eyvoriq-149g-open-ear-ai-audio-glasses`
-- **Redragon: Tri-Mode Gasket Mounted Mechanical Keyboard** — Discovered (prelaunch, 1 followers)  
-  `/projects/334020914/redragon-tri-mode-gasket-mounted-mechanical-keyboard`
-- **Pen L-01 - a minimalist pen, physics-inspired.** — Discovered (prelaunch, 0 followers)  
-  `/projects/zenlethome/pen-l-01-a-minimalist-pen-physics-inspired`
+## new (7)
+- **HOZO Hobby Knife + A Maker Workspace That Unfolds Anywhere** — Discovered (prelaunch, 47 followers)  
+  `/projects/hozodesign/hozo-hobby-knife`
+- **WindAid:Keep your bike. Add the power.** — Discovered (prelaunch, 0 followers)  
+  `/projects/2112114320/friction-drive-e-bike-conversion-kit-fast-and-removable`
+- **TiPlect: Titanium Guitar Pick, Reimagined** — Discovered (prelaunch, 2 followers)  
+  `/projects/tihaven-hk/tiplect-titanium-guitar-pick-reimagined`
+- **GW-B PLUS: The Fanless PC Built for Industry** — Discovered (prelaunch, 0 followers)  
+  `/projects/454123234/gw-b-plus-the-fanless-pc-built-for-industry`
+- **LUMIVAR：See The Invisible. Protect Your Privacy.** — Discovered (prelaunch, 1 followers)  
+  `/projects/374999274/lumivar-see-the-invisible-protect-your-privacy`
+- **Two Brand-New Designs: Kitsune & Leopard Cats** — Discovered (prelaunch, 2 followers)  
+  `/projects/sunshingtaiwan/two-brand-new-designs-kitsune-and-leopard-cats`
+- **RheoFit A1 Lite: The Hands-Free Automatic Foam Roller** — Discovered (prelaunch, 19 followers)  
+  `/projects/rheofit-a1/rheofit-a1-lite-fully-automatic-foam-roller`
 
-## followers_delta (14)
-- **UGREEN HomeAgent: A Living Local Intelligence for Your Home** — +56 followers (503 → 559)  
-  `/projects/ugreen/ugreen-homeagent-a-living-local-intelligence-for-your-home`
-- **The World’s First Desktop Robotic Terminal** — +94 followers (7125 → 7219)  
-  `/projects/cybopal/cybopal-worlds-first-active-tracking-ai-robotic-monitor`
-- **Awekeys RGB | Full Metal Shine Through Keycaps for keyboards** — +173 followers (179 → 352)  
-  `/projects/awekeys/awekeys-rgb-full-metal-shine-through-keycaps-for-keyboards`
-- **TBK N1: The 6-in-1 Touchscreen Soldering & Repair Station** — +56 followers (783 → 839)  
-  `/projects/1024841174/tbk-n1-the-6-in-1-touchscreen-soldering-and-repair-station`
-- **Cinomadist Cadence: Other Bags Say No, We Say Pack It All.** — +81 followers (1323 → 1404)  
-  `/projects/cinomadistbackpack/cinomadist-cadence-backpack-40l`
-- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +86 followers (7410 → 7496)  
-  `/projects/bvio/violoop-plug-in-ai-for-your-computer`
-- **TICKEY: A Customizable Clip-On Color E-Paper Card** — +95 followers (8143 → 8238)  
-  `/projects/enilinx/ticket-refresh-it-new-clip-it-on-carry-your-moment`
-- **QIVIKA: Turn Your Phone Into a Smart Scope** — +76 followers (2669 → 2745)  
+## followers_delta (13)
+- **QIVIKA: Turn Your Phone Into a Smart Scope** — +89 followers (2745 → 2834)  
   `/projects/qivika/turn-your-phone-into-a-smart-scope`
-- **OSIMT: The Microwave-Safe Titanium Storage System** — +76 followers (2327 → 2403)  
+- **OSIMT: The Microwave-Safe Titanium Storage System** — +96 followers (2403 → 2499)  
   `/projects/osimt/osimt-the-microwave-safe-titanium-storage-system`
-- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +69 followers (1686 → 1755)  
+- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +84 followers (1755 → 1839)  
   `/projects/xgimititannoir/xgimi-aura-3-series-the-ultimate-laser-tv-for-every-moment`
-- **Inkanva: The World's First Self-Charging E-Ink Canvas** — +108 followers (5262 → 5370)  
-  `/projects/98798876/inkanva`
-- **VAULT: modular stacking toolbox system** — +106 followers (6304 → 6410)  
-  `/projects/ussa/vault-modular-stacking-toolbox-system`
-- **Weekly Pill Organizer V2: Bigger, Bolder, Built to last** — +52 followers (367 → 419)  
+- **Weekly Pill Organizer V2: Bigger, Bolder, Built to last** — +54 followers (419 → 473)  
   `/projects/klimtechnologies/weekly-pill-organizer-v2-bigger-bolder-built-to-last`
-- **AREX | AR Dive Computer Mask & Marine Life Identification** — +94 followers (1053 → 1147)  
-  `/projects/arex/arex-ar-dive-computer-mask-and-marine-life-identification`
+- **Inkanva: The World's First Self-Charging E-Ink Canvas** — +120 followers (5370 → 5490)  
+  `/projects/98798876/inkanva`
+- **VAULT: modular stacking toolbox system** — +109 followers (6410 → 6519)  
+  `/projects/ussa/vault-modular-stacking-toolbox-system`
+- **The World’s First Desktop Robotic Terminal** — +71 followers (7219 → 7290)  
+  `/projects/cybopal/cybopal-worlds-first-active-tracking-ai-robotic-monitor`
+- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +62 followers (7496 → 7558)  
+  `/projects/bvio/violoop-plug-in-ai-for-your-computer`
+- **CORE POWER BANK S - Light to Carry. Safe to Trust** — +53 followers (1995 → 2048)  
+  `/projects/oztechlab/core-power-bank-s-so-thin-you-forget-its-there`
+- **Pulsar F1:Smart Male Sex Toy with Adaptive Motion&Video Sync** — +58 followers (143 → 201)  
+  `/projects/90142071/pulsar-f1-ai-powered-interactive-pleasure-device-for-men`
+- **PexarBolt: The Thunderbolt 5 Dock that Shows Your Workflow** — +51 followers (1792 → 1843)  
+  `/projects/1293510277/pexarbolt-the-thunderbolt-5-dock-that-shows-your-workflow`
+- **TICKEY: A Customizable Clip-On Color E-Paper Card** — +98 followers (8238 → 8336)  
+  `/projects/enilinx/ticket-refresh-it-new-clip-it-on-carry-your-moment`
+- **MakerPi Tiruler 2.0: Do More, Carry Less** — +80 followers (964 → 1044)  
+  `/projects/soongon/makerpi-tiruler-20-do-more-carry-less`
 
-## status_change (3)
-- **GaNSync: The 240W GaN Dock With 4K Display&Wireless Charging** — prelaunch → live  
-  `/projects/425069922/compact-gan-240w-dock-with-4k-display-and-wireless-charging`
-- **Moreclaren: Liquid Fuel for Tabletop & Outdoor Cooking** — prelaunch → live  
-  `/projects/1451275461/moreclaren-calm-blue-flame-no-pressurized-gas-canister`
-- **EGIOZR: 10-in-1 Pocket Docking Station with Detachable Shell** — prelaunch → live  
-  `/projects/619280132/egiozr-10-in-1-pocket-docking-station-with-detachable-shell`
+## status_change (2)
+- **AQUAPOCKET — The Water Flosser That Fits Your Pocket** — prelaunch → live  
+  `/projects/1008277210/aquapocket-the-water-flosser-that-fits-your-pocket`
+- **BirdSnap Cam 1: Built for Backyard Birdwatching** — prelaunch → live  
+  `/projects/birdsnap-cam1/birdsnap-cam-1-built-for-backyard-birdwatching`
 
-## backers_delta (1)
-- **TICKEY: A Customizable Clip-On Color E-Paper Card** — +215 backers (7030 → 7245)  
+## backers_delta (2)
+- **VAULT: modular stacking toolbox system** — +103 backers (2629 → 2732)  
+  `/projects/ussa/vault-modular-stacking-toolbox-system`
+- **TICKEY: A Customizable Clip-On Color E-Paper Card** — +236 backers (7245 → 7481)  
   `/projects/enilinx/ticket-refresh-it-new-clip-it-on-carry-your-moment`
