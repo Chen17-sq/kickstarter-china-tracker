@@ -1,41 +1,35 @@
 # Kickstarter China Tracker — diff
 
-## new (14)
-- **KR-S MARK: Retro Suitcase-Style All-In-One CD Music Player** — Discovered (prelaunch, 0 followers)  
-  `/projects/13941229/kr-s-mark-retro-suitcase-style-all-in-one-cd-music-player`
-- **Twelvetooo:FHD immersive 3D scene projector** — Discovered (prelaunch, 0 followers)  
-  `/projects/twelvetooo/twelvetooo-fhd-immersive-3d-scene-projector`
-- **iGOREST CF688: AI 8-Electrode Body Composition Scale** — Discovered (prelaunch, 0 followers)  
-  `/projects/678055582/igorest-cf688-ai-8-electrode-body-composition-scale`
-- **BLOKI LAND: The Modular Habitat You Build for Your Reptile** — Discovered (prelaunch, 0 followers)  
-  `/projects/blokiland/bloki-land-the-modular-habitat-you-build-for-your-reptile`
-- **A1-Meet Your New Interactive Pet** — Discovered (prelaunch, 0 followers)  
-  `/projects/2047559389/a1-meet-your-new-interactive-pet`
-- **AGELOCER｜"Ice Never Melts" Manta Tourbillon Limited Watch** — Discovered (prelaunch, 0 followers)  
-  `/projects/agelocerwatch/agelocer-ice-never-melts-manta-tourbillon-limited-watch`
-- **Petyfun JDB1 — Smart Interactive Dog Ball** — Discovered (prelaunch, 0 followers)  
-  `/projects/1282633043/petyfun-jdb1-smart-interactive-dog-ball`
-- **XK01 Clean the Air. Light Up the Night.** — Discovered (prelaunch, 0 followers)  
-  `/projects/246993741/airglow-air-purifier-and-starlight-projector`
-- **A Handcrafted Sculpture About the Invisible Cages We Live In** — Discovered (prelaunch, 0 followers)  
-  `/projects/chameleondecorart/a-handcrafted-sculpture-about-the-invisible-cages-we-live-in`
-- **(Vibee) guitar Pick, sensing a zero loss life aura-Fegve** — Discovered (prelaunch, 0 followers)  
-  `/projects/fegve68/vibee-guitar-pick-sensing-a-zero-loss-life-aura-fegve`
-- **BOOSTER TF64 A7: A New Twist on the Handheld Blower** — Discovered (prelaunch, 0 followers)  
-  `/projects/1767960502/booster-tf64-a7-a-new-twist-on-the-handheld-blower`
-- **SN All-Aluminum Magnetic Phone Mount for Tesla Model 3/Y** — Discovered (prelaunch, 0 followers)  
-  `/projects/324386321/sn-all-aluminum-magnetic-phone-mount-for-tesla-model-3-y`
-- **Mr.HE-The best tool you own is the one with scratches on it.** — Discovered (prelaunch, 0 followers)  
-  `/projects/jellyedc/mrhe-the-best-tool-you-own-is-the-one-with-scratches-on-it`
-- **5 in 1 Swappable‑Battery Modular Magnetic Wireless PowerBank** — Discovered (live, 0 followers)  
-  `/projects/1388944504/swb-5s-modular-swappable-magnetic-wireless-charger`
-
-## status_change (1)
-- **Vimow: Wire-Free Vision AI Robot Lawn Mower** — prelaunch → live  
-  `/projects/vimow/vimow-wire-free-vision-ai-robot-lawn-mower`
+## new (6)
+- **One-Touch Electric Umbrella: Open, Close & Retract** — Discovered (live, 0 followers)  
+  `/projects/2092919102/one-touch-electric-umbrella-open-close-and-retract`
+- **Eck Design L2 — Wick Lighter. 20+ Days per Fill.** — Discovered (prelaunch, 0 followers)  
+  `/projects/eckdesign/eck-design-l2-wick-lighter-20-days-per-fill`
+- **NEVILO Universal 200W Travel Charger – One Charger for 200+** — Discovered (live, 0 followers)  
+  `/projects/nevilo/nevilo-x1-200w-universal-travel-adapter-us-uk-eu-au-4-port`
+- **VaCu Pro: Next-Gen Stainless Steel Vacuum Container** — Discovered (live, 0 followers)  
+  `/projects/kellylaw/vacu-pro-next-gen-stainless-steel-vacuum-container`
+- **COKAFEGO: Cordless Coffee Station for Every Adventure** — Discovered (prelaunch, 0 followers)  
+  `/projects/1894547884/cokafego-cordless-coffee-station-for-every-adventure`
+- **Linen-Tencel™4-Season Thermoregulating, Ironing-free Apparel** — Discovered (prelaunch, 0 followers)  
+  `/projects/1568571394/linen-tenceltm4-season-thermoregulating-ironing-free-apparel`
 
 ## backers_delta (2)
-- **VAULT: modular stacking toolbox system** — +313 backers (2922 → 3235)  
+- **VAULT: modular stacking toolbox system** — +117 backers (3235 → 3352)  
   `/projects/ussa/vault-modular-stacking-toolbox-system`
-- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +155 backers (3349 → 3504)  
-  `/projects/bvio/violoop-plug-in-ai-for-your-computer`
+- **ED08 2.0 | The World’s First 5-Color Coin-Sized Flashlight** — +121 backers (0 → 121)  
+  `/projects/rodman-portablelight/coinlight-20-new-colors-brighter-designed-for-everyday`
+
+## status_change (6)
+- **Edison: White Ceramic Daydream Sculpture** — prelaunch → live  
+  `/projects/petmemorycraft/edison-white-ceramic-daydream-sculpture`
+- **Pocket Knife丨Smaller Than Your Thumb. Built for Every Day** — prelaunch → live  
+  `/projects/tikzer/smaller-than-your-thumb-built-for-every-daypocket-knife`
+- **KICK — The Mobility Copilot for Your Wheeled Ski Bag** — prelaunch → live  
+  `/projects/tracin/kick-the-mobility-copilot-for-your-wheeled-ski-bag`
+- **ATuMan FL2: The All-in-One EDC Flashlight** — prelaunch → live  
+  `/projects/atumanofficial/atuman-fl2-the-all-in-one-edc-flashlight`
+- **GeoLink: A Refined Titanium Ruler That Follows Your Ideas** — prelaunch → live  
+  `/projects/mechark/geolink-a-versatile-titanium-edc-ruler-ready-when-needed`
+- **ED08 2.0 | The World’s First 5-Color Coin-Sized Flashlight** — prelaunch → live  
+  `/projects/rodman-portablelight/coinlight-20-new-colors-brighter-designed-for-everyday`
