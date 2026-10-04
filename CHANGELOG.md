@@ -1,11 +1,15 @@
 # Kickstarter China Tracker — diff
 
 ## new (4)
-- **PiLY – The Wrist-Worn AI Notetaker with 24/7 Health Tracking** — Discovered (prelaunch, 0 followers)  
-  `/projects/piteam/pily-smart-band`
-- **BONESONG — Resonant Haptic EDC Slider.** — Discovered (prelaunch, 0 followers)  
-  `/projects/1811898042/bonesong-resonant-haptic-edc-slider`
-- **The Next-Generation Airbag E-Ink Display Phone Case** — Discovered (prelaunch, 0 followers)  
-  `/projects/yeocase/the-next-generation-airbag-e-ink-display-phone-case`
-- **NOOKK | Protect your Secret Files** — Discovered (prelaunch, 0 followers)  
-  `/projects/atlancube/nookk-protect-your-secret-files`
+- **WayLithe : The 3-in-1 Modular Travel Bag** — Discovered (prelaunch, 0 followers)  
+  `/projects/waylithe/waylithe-the-3-in-1-modular-travel-bag`
+- **WISP NOOK | Your Pet's Moments, Connected to You** — Discovered (prelaunch, 0 followers)  
+  `/projects/wispnook/wisp-nook-your-pets-moments-connected-to-you`
+- **JollyNet: AI-Powered 3D Video Projection Light** — Discovered (prelaunch, 0 followers)  
+  `/projects/jollynet/jollynet-ai-powered-3d-video-projection-light`
+- **Zorkeythos N96: Your All-in-One Control Console Keyboard** — Discovered (prelaunch, 0 followers)  
+  `/projects/zorkeythos/zorkeythos-n96-your-all-in-one-control-console-keyboard`
+
+## status_change (1)
+- **LUMIVAR：See The Invisible. Protect Your Privacy.** — prelaunch → live  
+  `/projects/374999274/lumivar-see-the-invisible-protect-your-privacy`

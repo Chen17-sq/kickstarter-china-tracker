@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 105821.78205594,
+      "pledged_usd": 106581.93553474,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/hermanpeng/the-gennai-pen-mechanical-edc-art-by-nakayama",
       "china_confidence": "未知",
@@ -22,7 +22,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 50805.54648526,
+      "pledged_usd": 52153.28839977,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/morphgears/morphgears-14-in-1-modular-titanium-edc-card",
       "china_confidence": "未知",
@@ -47,7 +47,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-10-03T03:03:30.816169+00:00",
+    "generated_at": "2026-10-04T03:33:08.973156+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
