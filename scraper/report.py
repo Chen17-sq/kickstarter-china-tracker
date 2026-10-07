@@ -111,6 +111,9 @@ def find_prev_snapshot() -> dict | None:
 
 
 def make_report(curr: dict, prev: dict | None) -> str:
+    from .identity import align_snapshot
+    if prev:
+        prev = align_snapshot(prev, curr)
     today = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
     projects = curr.get("projects", []) or []
     prev_by_path = {}

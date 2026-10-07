@@ -1,5 +1,7 @@
 # Public JSON API
 
+Projects with a verified Kickstarter numeric `project_id` are counted once. `identity_observation` records the official source and observation time; `aliases` retains alternate project paths. Missing IDs or matching titles alone never trigger merging. Existing dated archives remain immutable; their original path counts can differ from the corrected current project count.
+
 A free, no-auth, CORS-friendly read-only API of every China-background
 consumer-hardware project we're tracking. Refreshed daily at 08:00 Beijing
 (00:00 UTC) by the scrape cron.

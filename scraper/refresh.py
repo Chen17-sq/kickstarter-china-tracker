@@ -11,6 +11,7 @@ from pathlib import Path
 
 from . import health
 from .graphql import CATALOG_BATCH_SIZE, fetch_projects
+from .identity import observe_identity
 from .money import observe_money, to_usd
 from .observations import carry_row, number, observe, timestamp
 from .project import (
@@ -38,6 +39,8 @@ STATE_MAP = {
 # in a single round trip. Adding fields here is cheap (KS doesn't charge
 # per field) but bloats response size.
 FAT_QUERY_FIELDS = """
+    pid
+    url
     watchesCount
     currency
     usdExchangeRate
@@ -113,6 +116,7 @@ def fetch_fat_graphql(
             goal = obj.get("goal")
             goal = goal if isinstance(goal, dict) else {}
             out[slug] = {
+                "project_id": obj.get("pid"), "canonical_url": obj.get("url"),
                 "_error": response["error"],
                 "currency": obj.get("currency"), "usd_exchange_rate": number(obj.get("usdExchangeRate")),
                 "watchesCount": obj.get("watchesCount"), "state": obj.get("state"),
@@ -158,6 +162,7 @@ def apply_refresh(
         reason = fresh.get("_error", "source_missing" if fresh else "fetch_failed")
         new = carry_row(orig, at=attempted, reason=reason)
         at = fresh.get("observed_at") or attempted
+        observe_identity(new, fresh.get("project_id"), fresh.get("canonical_url"), at=at, source="ks_graphql")
         any_fresh = False
         for field, source_field in (("followers", "watchesCount"), ("backers", "backersCount"),
                                     ("percent_funded", "percentFunded")):

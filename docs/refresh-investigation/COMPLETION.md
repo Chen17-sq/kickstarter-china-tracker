@@ -53,3 +53,16 @@ done
 实际转换包含HKD、GBP、SGD、CAD、JPY、EUR及显式USD，逐字段核对原币×汇率全部一致。632个既有历史文件SHA256全部保持一致，新增1份采集快照及独立报告/API/图像修订版。机器可读证据见[completion-acceptance.json](completion-acceptance.json)。
 
 本次验收还发现18个`STARTED`项目关注数据新鲜但状态未映射。官方ProjectState定义明确为“Created and preparing for launch”，现补充映射prelaunch；PURGED按官方隐藏暂停含义映射suspended，并保存本次raw_state。全部8种官方状态和未知状态均增加回归，未知状态继续保留旧时间，不能把字段成功当作状态刷新成功。此补漏后测试为318项通过。
+
+## 官方项目身份与别名排重
+
+公网浏览器发现LightMake L4以`lightmake`和`968766790`两个creator路径重复出现在Top10。仅同标题/金额/slug不足以合并；官方页面单次访问返回403挑战后停止。官方schema另有明确的`Project.pid: Int!`与`url: String!`，目录现采集这两个字段，Discover保留官方`id`，只有带来源与观测证据的相同项目ID才合并。
+
+- 最新项目目录按确认的独立项目统计，原路径留在每行`aliases`和顶层`project_aliases`，原历史文件不改写。
+- 官方URL对应的已有记录优先作为主路径，指标逐字段保留成功观测；缺ID、未知身份或不同ID即使同标题也不合并。
+- 网站、邮件、API、质量分母均读取相同独立项目目录。日/周基线接受已确认别名，拒绝已知不同ID；日报差分与异常检查不再将别名迁移当作新增/消失。
+- 新增第六种`aliases`隔离全链路回放：31个历史路径保留为30个独立项目和1个别名，核心live分母15，正常增量仍29项有效，网络/发信0。新增身份单元与整链路回归后330项通过。
+
+```sh
+.venv/bin/python scripts/dry_run.py --scenario aliases --output /tmp/ks-aliases-new
+```

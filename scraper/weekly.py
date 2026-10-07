@@ -144,6 +144,10 @@ def compute_weekly_stats(week: list[tuple[dt.datetime, dict]]) -> dict:
     if not week:
         return out
 
+    from .identity import align_snapshot
+    reference = week[-1][1]
+    week = [(at, align_snapshot(snapshot, reference)) for at, snapshot in week]
+
     oldest_ts, oldest = week[0]
     newest_ts, newest = week[-1]
     out["week_start"] = oldest_ts.strftime("%Y-%m-%d")
