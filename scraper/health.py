@@ -199,3 +199,10 @@ def refresh_done(*, fetched, requested):
 
 def fetch_error(source, status, affected):
     _state.setdefault("fetch_errors", []).append({"source": source, "status": status, "affected": affected})
+
+
+def graphql_batch(source, requested, returned, result):
+    """Safe diagnostics only: no response bodies, cookies or tokens."""
+    event = {"source": source, "requested": requested, "returned": returned, "result": result}
+    _state.setdefault("graphql_batches", []).append(event)
+    print(f"  graphql batch: source={source} requested={requested} returned={returned} result={result}")

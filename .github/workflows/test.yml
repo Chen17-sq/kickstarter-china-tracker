@@ -55,3 +55,42 @@ jobs:
       - name: Run worker tests
         working-directory: subscribe-worker
         run: node test_worker.mjs
+
+  browser-lifecycle:
+    # Local HTTP fixture only: prove real browser boot/query/cleanup on runner.
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright nodriver curl_cffi httpx selectolax pyyaml
+      - run: python -m playwright install --with-deps chromium
+      - run: python scripts/refresh_probe.py --mode browser --output /tmp/browser-probe.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-probe
+          path: /tmp/browser-probe.json
+
+  source-readonly-probe:
+    # No secrets or mutations. Green means diagnostics ran, not fresh production data.
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install httpx selectolax curl_cffi
+      - run: python scripts/refresh_probe.py --mode source --output /tmp/source-probe.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: source-probe
+          path: /tmp/source-probe.json

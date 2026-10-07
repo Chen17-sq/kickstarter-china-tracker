@@ -1,26 +1,7 @@
-"""Daily refresh — promote yesterday's projects with one fat GraphQL query.
+"""Refresh known catalog entries independently of discovery.
 
-Architecturally this is the BIGGEST resilience improvement in the whole
-scraper. Before today: every cron tried to re-discover the entire
-universe via /discover/advanced — fragile, single point of failure
-(today's 2026-05-24 cron lost 50% of projects when 4/14 seeds got CF-
-blocked). After: we load yesterday's pathnames from local history (free,
-no network), refresh them via ONE GraphQL query (watchesCount + state +
-backersCount + pledged_usd + percentFunded + goal_amt), and use discover
-ONLY for finding genuinely new projects.
-
-This makes the pipeline ALMOST IMMUNE to discover failures. Even if
-KS hard-blocks /discover/advanced for a week, we still have ~245 live
-project refreshes per day with all their fresh metrics. The sanity gate
-stops firing on "project count dropped 50%" because the floor is
-yesterday's count, not today's discover output.
-
-Reused for `scripts/emergency_refresh.py` AND `scraper/run.py` so the
-two paths share one canonical implementation.
-
-Cost: ONE GraphQL call (~5 chunks of 50 slugs). ~3-10 seconds total.
-Same transport ladder (curl_cffi → patchright → nodriver) so when CF
-blocks one layer, we ride down the tiers exactly like the discover path.
+Field-level evidence distinguishes failed requests from unchanged observations.
+Catalog queries use conservative batches; GraphQL errors remain diagnosable.
 """
 from __future__ import annotations
 
@@ -29,11 +10,10 @@ import json
 from pathlib import Path
 
 from . import health
+from .graphql import CATALOG_BATCH_SIZE, fetch_projects
 from .observations import carry_row, number, observe, timestamp
 from .project import (
-    CHUNK_SIZE,
     _open_transport,
-    backoff,
 )
 
 _AUTO_TRANSPORT = object()
@@ -93,7 +73,7 @@ def fetch_fat_graphql(
     transport=_AUTO_TRANSPORT,
     verbose: bool = True,
 ) -> dict[str, dict]:
-    """Fat GraphQL fetch — one query, many fields, batched 50 slugs/chunk.
+    """Fat GraphQL fetch — one query, many fields, batched 20 slugs/chunk.
 
     Returns {slug: {watchesCount, state, backersCount, pledged_amt,
                     pledged_currency, percentFunded, goal_amt, deadlineAt}}.
@@ -119,57 +99,25 @@ def fetch_fat_graphql(
         return out
 
     try:
-        for i in range(0, len(slugs), CHUNK_SIZE):
-            if i > 0:
-                backoff.chunk_pause(1.0, 3.0)
-            chunk = slugs[i : i + CHUNK_SIZE]
-            var_decls = ", ".join(f"$s{j}: String!" for j in range(len(chunk)))
-            fields = "\n  ".join(
-                f"p{j}: project(slug: $s{j}) {{{FAT_QUERY_FIELDS}}}"
-                for j in range(len(chunk))
-            )
-            query = f"query Refresh({var_decls}) {{\n  {fields}\n}}"
-            variables = {f"s{j}": s for j, s in enumerate(chunk)}
-            body = {
-                "operationName": "Refresh",
-                "variables": variables,
-                "query": query,
+        fetched = fetch_projects(slugs, transport=transport, fields=FAT_QUERY_FIELDS,
+                                 operation="Refresh", batch_size=CATALOG_BATCH_SIZE,
+                                 source="catalog_refresh")
+        for slug, response in fetched.items():
+            obj = response["data"]
+            pledged = obj.get("pledged")
+            pledged = pledged if isinstance(pledged, dict) else {}
+            goal = obj.get("goal")
+            goal = goal if isinstance(goal, dict) else {}
+            out[slug] = {
+                "_error": response["error"],
+                "watchesCount": obj.get("watchesCount"), "state": obj.get("state"),
+                "backersCount": obj.get("backersCount"),
+                "pledged_amt": number(pledged.get("amount")),
+                "pledged_currency": pledged.get("currency"),
+                "percentFunded": obj.get("percentFunded"),
+                "goal_amt": number(goal.get("amount")), "deadlineAt": obj.get("deadlineAt"),
+                "observed_at": response.get("observed_at"),
             }
-            status, jdata = transport.post_graphql(body)
-            if status != 200:
-                out.update({slug: {"_error": f"http_{status}"} for slug in chunk})
-                health.fetch_error("catalog_refresh", status, len(chunk))
-                if verbose:
-                    print(
-                        f"  ! refresh chunk {i // CHUNK_SIZE + 1}: status {status}"
-                    )
-                continue
-            if not isinstance(jdata, dict):
-                health.fetch_error("catalog_refresh", "invalid_response", len(chunk))
-                continue
-            data = jdata.get("data") or {}
-            if not isinstance(data, dict):
-                continue
-            for j, s in enumerate(chunk):
-                alias = f"p{j}"
-                obj = data.get(alias) or {}
-                has_error = any(not e.get("path") or e["path"][0] == alias for e in (jdata.get("errors") or []))
-                out[s] = {"_error": "graphql_error" if has_error else "source_missing"}
-                if isinstance(obj, dict) and obj:
-                    pledged = obj.get("pledged") or {}
-                    goal = obj.get("goal") or {}
-                    out[s] = {
-                        "_error": "graphql_error" if has_error else "source_missing",
-                        "watchesCount": obj.get("watchesCount"),
-                        "state": obj.get("state"),
-                        "backersCount": obj.get("backersCount"),
-                        "pledged_amt": number(pledged.get("amount")),
-                        "pledged_currency": pledged.get("currency"),
-                        "percentFunded": obj.get("percentFunded"),
-                        "goal_amt": number(goal.get("amount")),
-                        "deadlineAt": obj.get("deadlineAt"),
-                        "observed_at": timestamp(),
-                    }
         if verbose:
             n_with = sum(
                 1 for v in out.values() if v.get("watchesCount") is not None

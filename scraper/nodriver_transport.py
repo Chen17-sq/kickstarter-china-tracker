@@ -1,32 +1,7 @@
-"""nodriver — Tier 3 heavy artillery for KS GraphQL when patchright fails.
+"""Browser GraphQL transport owning a single bounded asyncio lifecycle.
 
-nodriver (https://github.com/ultrafunkamsterdam/nodriver) is the actively-
-maintained successor to undetected-chromedriver, by the same author. It
-talks raw Chrome DevTools Protocol — NO Playwright shim — and is the
-benchmark leader (90.3% pass) against modern CF detection as of May 2026.
-
-We use it as Tier 3, after curl_cffi (Tier 1) and patchright/playwright
-(Tier 2) have both failed. The cost is a slower startup (~5s vs
-patchright's ~3s) and async-only API (we bridge to sync via asyncio.run).
-
-Architecture:
-  Tier 1: curl_cffi with rotated TLS impersonations (fastest)
-  Tier 2: patchright headless Chromium via page.evaluate(fetch())
-  Tier 3: nodriver raw CDP — last resort
-
-This module exposes one function: `open_nodriver_transport(label)`,
-which returns the same `_Transport`-shaped object (post_graphql + close)
-that project.py expects. Drop-in.
-
-Bridge strategy: nodriver is async-only. We wrap every call in
-a single owned event loop so browser connections survive between calls. This is acceptable
-because we open the transport once per cron run; the overhead is
-amortized across many GraphQL chunks.
-
-If `nodriver` isn't installed (it's listed as `>=0.50` in requirements
-but optional in practice), open_nodriver_transport returns None and
-the caller falls back gracefully (today's case: skip pledge_min, keep
-yesterday's value).
+CI verifies startup, two queries and cleanup against a local HTTP fixture.
+A successful local browser test does not establish Kickstarter access.
 """
 from __future__ import annotations
 
@@ -51,12 +26,13 @@ class NodriverTransport:
       .csrf = <token>
     """
 
-    def __init__(self, browser: Any, page: Any, csrf: str, loop=None):
+    def __init__(self, browser: Any, page: Any, csrf: str, loop=None, graph_url=GRAPH_URL):
         self._loop = loop or asyncio.new_event_loop()
         self._browser = browser
         self._page = page
         self.csrf = csrf
         self.mode = "nodriver"
+        self.graph_url = graph_url
 
     def post_graphql(self, body: dict) -> tuple[int, dict | None]:
         """POST a GraphQL query via the in-browser fetch — like patchright
@@ -92,7 +68,7 @@ class NodriverTransport:
                   }})()
                 """
                 expr = expr_template.format(
-                    url=json.dumps(GRAPH_URL),
+                    url=json.dumps(self.graph_url),
                     headers=json.dumps(headers),
                     body=json.dumps(payload),
                 )
@@ -110,7 +86,10 @@ class NodriverTransport:
             except Exception:
                 return status, None
 
-        return self._loop.run_until_complete(_do())
+        try:
+            return self._loop.run_until_complete(asyncio.wait_for(_do(), timeout=30))
+        except TimeoutError:
+            return -1, None
 
     def close(self) -> None:
         """Shut down the browser. Safe to call multiple times."""
@@ -144,7 +123,7 @@ def _close_loop(loop):
 
 
 def open_nodriver_transport(
-    label: str = "nodriver", *, verbose: bool = True
+    label: str = "nodriver", *, verbose: bool = True, seed_url=SEED_URL, graph_url=GRAPH_URL
 ) -> NodriverTransport | None:
     """Boot a nodriver browser, fetch CSRF, return a NodriverTransport.
 
@@ -199,7 +178,7 @@ def open_nodriver_transport(
             return None
 
         try:
-            page = await browser.get(SEED_URL)
+            page = await browser.get(seed_url)
             # Wait briefly for any CF challenge to clear
             await asyncio.sleep(2.5)
             # Extract CSRF the same way Playwright does
@@ -213,7 +192,7 @@ def open_nodriver_transport(
                 return None
             if verbose:
                 print(f"  {label} ✅ seeded via nodriver (csrf len={len(csrf)})")
-            return NodriverTransport(browser=browser, page=page, csrf=csrf, loop=loop)
+            return NodriverTransport(browser=browser, page=page, csrf=csrf, loop=loop, graph_url=graph_url)
         except Exception as e:
             if verbose:
                 print(f"  ! nodriver seed exception: {e}")
@@ -224,7 +203,7 @@ def open_nodriver_transport(
             return None
 
     try:
-        result = loop.run_until_complete(_boot())
+        result = loop.run_until_complete(asyncio.wait_for(_boot(), timeout=60))
         if result is None:
             _close_loop(loop)
         return result

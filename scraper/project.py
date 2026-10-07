@@ -40,6 +40,7 @@ from typing import Optional
 from curl_cffi import requests as cc_requests
 
 from . import backoff, health, session_state, tier_metrics
+from .graphql import fetch_projects
 from .http import (
     DEFAULT_COOKIES,
     IMPERSONATE_ROTATION,
@@ -47,7 +48,7 @@ from .http import (
     pick_proxy,
     playwright_proxy,
 )
-from .observations import FetchResults, number, timestamp
+from .observations import FetchResults, number
 
 _AUTO_TRANSPORT = object()
 
@@ -241,6 +242,7 @@ def _try_curl_cffi_seed(
         except Exception as e:
             if verbose:
                 print(f"  {label} seed attempt {attempt_idx+1} ({impersonate}): exception {e}")
+            client.close()
             bo.sleep_and_retry()
             attempt_idx += 1
             continue
@@ -256,6 +258,7 @@ def _try_curl_cffi_seed(
                 print(f"  {label} seed attempt {attempt_idx+1} ({impersonate}): 200 but no CSRF token")
         elif verbose:
             print(f"  {label} seed attempt {attempt_idx+1} ({impersonate}): status {r.status_code}")
+        client.close()
         bo.sleep_and_retry()
         attempt_idx += 1
     return None
@@ -296,7 +299,10 @@ def _open_playwright_transport(label: str, verbose: bool) -> _Transport | None:
     page = None
     try:
         pw = sync_playwright().start()
+        import os
         launch_kwargs = {}
+        if os.environ.get("KS_BROWSER_EXECUTABLE"):
+            launch_kwargs["executable_path"] = os.environ["KS_BROWSER_EXECUTABLE"]
         pxy = playwright_proxy(pick_proxy())
         if pxy:
             launch_kwargs["proxy"] = pxy
@@ -491,48 +497,14 @@ def fetch_watches_counts(
         return out
 
     try:
-        # Chunked batch GraphQL query, one round trip per ~50 slugs.
-        for i in range(0, len(slugs), CHUNK_SIZE):
-            # Jittered pause between chunks — fixed delays are a
-            # fingerprint, "1.0s between every chunk" is bot-shaped.
-            # Skip on first chunk (no prior request to be paced from).
-            if i > 0:
-                backoff.chunk_pause(1.0, 3.5)
-            chunk = slugs[i : i + CHUNK_SIZE]
-            # Build aliased query: p0: project(slug: $s0) { watchesCount } …
-            # Use variables (not interpolated strings) — safer + cacheable.
-            var_decls = ", ".join(f"$s{j}: String!" for j in range(len(chunk)))
-            fields = "\n  ".join(
-                f"p{j}: project(slug: $s{j}) {{ watchesCount }}"
-                for j in range(len(chunk))
-            )
-            query = f"query Watches({var_decls}) {{\n  {fields}\n}}"
-            variables = {f"s{j}": s for j, s in enumerate(chunk)}
-            body = {"operationName": "Watches", "variables": variables, "query": query}
-
-            status, jdata = transport.post_graphql(body)
-            if status != 200:
-                out.errors.update(dict.fromkeys(chunk, f"http_{status}"))
-                health.fetch_error("graphql", status, len(chunk))
-                if verbose:
-                    print(f"  watchesCount chunk {i//CHUNK_SIZE+1}: status {status}")
-                continue
-            if not isinstance(jdata, dict):
-                out.errors.update(dict.fromkeys(chunk, "invalid_response"))
-                continue
-            data = jdata.get("data") or {}
-            if not isinstance(data, dict):
-                continue
-            for j, s in enumerate(chunk):
-                alias = f"p{j}"
-                obj = data.get(alias)
-                has_error = any(not e.get("path") or e["path"][0] == alias for e in (jdata.get("errors") or []))
-                out.errors[s] = "graphql_error" if has_error else "source_missing"
-                if isinstance(obj, dict) and "watchesCount" in obj:
-                    value = number(obj["watchesCount"])
-                    out[s] = int(value) if value is not None and value.is_integer() else None
-                    out.errors[s] = None if out[s] is not None else out.errors[s]
-                    out.observed_at[s] = timestamp()
+        responses = fetch_projects(slugs, transport=transport, fields="watchesCount",
+                                   operation="Watches", batch_size=CHUNK_SIZE, source="watches")
+        for slug, response in responses.items():
+            value = number(response["data"].get("watchesCount"))
+            out[slug] = int(value) if value is not None and value.is_integer() else None
+            out.errors[slug] = None if out[slug] is not None else response["error"]
+            if out[slug] is not None:
+                out.observed_at[slug] = response["observed_at"]
         # Record which transport actually carried the data
         fetched = sum(1 for v in out.values() if v is not None)
         health.watches_done(path=transport.mode, fetched=fetched, requested=len(slugs))
@@ -561,8 +533,8 @@ def fetch_pledge_minimums(
     it as the minimum because the user-facing display formats $1 fine
     and editorial nuance can be handled in the UI layer.
 
-    Currency is forced to USD via the `currency` cookie (set in
-    DEFAULT_COOKIES), so amounts come back already converted.
+    Only explicit USD amounts are accepted; a currency cookie is not evidence
+    that the response uses USD.
 
     If `transport` is provided, use it and DO NOT close it (caller owns
     lifecycle). Otherwise open + close internally.
@@ -585,50 +557,25 @@ def fetch_pledge_minimums(
         return out
 
     try:
-        for i in range(0, len(slugs), PLEDGE_CHUNK_SIZE):
-            # Jittered pause between chunks (same rationale as watchesCount)
-            if i > 0:
-                backoff.chunk_pause(1.0, 3.5)
-            chunk = slugs[i : i + PLEDGE_CHUNK_SIZE]
-            var_decls = ", ".join(f"$s{j}: String!" for j in range(len(chunk)))
-            fields = "\n  ".join(
-                f"p{j}: project(slug: $s{j}) {{ rewards(first: 30) {{ nodes {{ amount {{ amount currency }} }} }} }}"
-                for j in range(len(chunk))
-            )
-            query = f"query Pledges({var_decls}) {{\n  {fields}\n}}"
-            variables = {f"s{j}": s for j, s in enumerate(chunk)}
-            body = {"operationName": "Pledges", "variables": variables, "query": query}
-
-            status, jdata = transport.post_graphql(body)
-            if status != 200:
-                out.errors.update(dict.fromkeys(chunk, f"http_{status}"))
-                health.fetch_error("graphql", status, len(chunk))
-                if verbose:
-                    print(f"  pledge_min chunk {i//PLEDGE_CHUNK_SIZE+1}: status {status}")
-                continue
-            if not isinstance(jdata, dict):
-                out.errors.update(dict.fromkeys(chunk, "invalid_response"))
-                continue
-            data = jdata.get("data") or {}
-            if not isinstance(data, dict):
-                continue
-            for j, s in enumerate(chunk):
-                obj = data.get(f"p{j}") or {}
-                out.errors[s] = "source_missing" if obj and not jdata.get("errors") else "graphql_error"
-                rewards = (obj.get("rewards") or {}).get("nodes") or []
-                amounts: list[float] = []
-                for node in rewards:
-                    amt_obj = node.get("amount") or {}
-                    try:
-                        amt = float(amt_obj.get("amount") or 0)
-                        if number(amt) is not None and amt > 0 and amt_obj.get("currency") == "USD":
-                            amounts.append(amt)
-                    except (TypeError, ValueError):
-                        pass
-                if amounts:
-                    out[s] = min(amounts)
-                    out.errors[s] = None
-                    out.observed_at[s] = timestamp()
+        responses = fetch_projects(slugs, transport=transport,
+                                   fields="rewards(first: 30) { nodes { amount { amount currency } } }",
+                                   operation="Pledges", batch_size=PLEDGE_CHUNK_SIZE, source="minimum_pledge")
+        for slug, response in responses.items():
+            rewards = response["data"].get("rewards")
+            nodes = rewards.get("nodes") if isinstance(rewards, dict) else None
+            amounts = []
+            for node in nodes if isinstance(nodes, list) else []:
+                obj = node.get("amount") if isinstance(node, dict) else None
+                if not isinstance(obj, dict):
+                    continue
+                amount = number(obj.get("amount"))
+                if amount is not None and amount > 0 and obj.get("currency") == "USD":
+                    amounts.append(amount)
+            out.errors[slug] = response["error"]
+            if amounts:
+                out[slug] = min(amounts)
+                out.errors[slug] = None
+                out.observed_at[slug] = response["observed_at"]
         fetched = sum(1 for v in out.values() if v is not None)
         health.pledge_done(path=transport.mode, fetched=fetched, requested=len(slugs))
         tier_metrics.record("pledge", transport.mode if fetched else "failed")
