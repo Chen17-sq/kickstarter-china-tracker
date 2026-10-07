@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import datetime as dt
+import os
 
 from .observations import is_fresh, parse_time
 
@@ -41,7 +42,7 @@ def assess(snapshot, *, now=None):
         issues.append("empty_snapshot")
     return {"status": "degraded" if issues else "healthy", "metrics": metrics,
             "issues": issues, "proposed_send_allowed": not issues,
-            "policy_mode": "observe", "thresholds": POLICY, "evaluated_at": now.isoformat()}
+            "policy_mode": os.environ.get("KS_QUALITY_POLICY", "observe"), "thresholds": POLICY, "evaluated_at": now.isoformat()}
 
 
 def quality_lines(snapshot):

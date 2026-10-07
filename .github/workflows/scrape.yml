@@ -119,7 +119,7 @@ jobs:
           git push
 
       - name: Slack / Discord notify (optional)
-        if: steps.dedupe.outputs.skip != 'true' && (env.SLACK_WEBHOOK != '' || env.DISCORD_WEBHOOK != '')
+        if: steps.dedupe.outputs.skip != 'true' && inputs.refresh_only != true && (env.SLACK_WEBHOOK != '' || env.DISCORD_WEBHOOK != '')
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}

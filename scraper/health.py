@@ -184,7 +184,7 @@ def format_digest_lines(state: dict | None = None) -> list[str]:
 
     if s.get("data_quality"):
         q = s["data_quality"]
-        lines.append(f"Data refresh: {q['status']}; proposed gate: {q['proposed_send_allowed']} (observe mode)")
+        lines.append(f"Data refresh: {q['status']}; proposed gate: {q['proposed_send_allowed']} ({q.get('policy_mode', 'observe')} mode)")
         lines.extend("  " + issue for issue in q["issues"])
     return lines
 

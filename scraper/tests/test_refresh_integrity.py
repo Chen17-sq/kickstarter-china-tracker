@@ -328,3 +328,10 @@ def test_delivery_pause_applies_before_any_reads_or_writes(tmp_path, monkeypatch
     monkeypatch.setattr(email_notify, 'PROJECTS', tmp_path / 'missing.json')
     assert email_notify.main([]) == 0
     assert list(tmp_path.iterdir()) == []
+
+
+def test_health_reports_actual_enforcement_mode(monkeypatch):
+    monkeypatch.setenv('KS_QUALITY_POLICY', 'enforce')
+    quality = assess({'projects': [row()]})
+    assert quality['policy_mode'] == 'enforce'
+    assert any('(enforce mode)' in line for line in health.format_digest_lines({'data_quality': quality}))
