@@ -24,6 +24,8 @@ import json
 from pathlib import Path
 from typing import Optional
 
+from .observations import comparable_delta, parse_time
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 HISTORY = REPO_ROOT / "data" / "history"
 ANOMALIES_PATH = REPO_ROOT / "data" / ".anomalies.json"
@@ -46,15 +48,17 @@ def _num(v) -> float:
 
 def _load_history_snapshot(n_back: int) -> Optional[dict]:
     """Return the n-th-most-recent history snapshot (n_back=1 = yesterday)."""
-    if not HISTORY.exists():
-        return None
-    snaps = sorted(HISTORY.glob("*.json"))
-    if len(snaps) < n_back:
-        return None
-    try:
-        return json.loads(snaps[-n_back].read_text(encoding="utf-8"))
-    except Exception:
-        return None
+    target = dt.datetime.now(dt.UTC) - dt.timedelta(days=n_back)
+    candidates = []
+    for path in HISTORY.glob("*.json"):
+        try:
+            snapshot = json.loads(path.read_text(encoding="utf-8"))
+            ts = parse_time(snapshot.get("generated_at"))
+            if ts and abs(ts - target) <= dt.timedelta(hours=12):
+                candidates.append((abs(ts - target), snapshot))
+        except (ValueError, OSError):
+            continue
+    return min(candidates, key=lambda item: item[0])[1] if candidates else None
 
 
 def detect(curr: dict, prev: Optional[dict] = None) -> dict:
@@ -138,9 +142,9 @@ def detect(curr: dict, prev: Optional[dict] = None) -> dict:
             if not wp:
                 continue
             curr_pledged = _num(curr_p.get("pledged_usd"))
-            week_pledged = _num(wp.get("pledged_usd"))
+            delta, _ = comparable_delta(curr_p, wp, "pledged_usd", days=STUCK_DAYS)
             # Stuck = literally zero movement (within $1) AND >=$100 baseline
-            if curr_pledged >= 100 and abs(curr_pledged - week_pledged) < 1.0:
+            if delta is not None and curr_pledged >= 100 and abs(delta) < 1.0:
                 out["stuck"].append({
                     "pathname": path,
                     "title": curr_p.get("title") or "?",

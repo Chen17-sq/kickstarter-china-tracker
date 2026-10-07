@@ -225,7 +225,10 @@ body{
 .count-line b{color:var(--ink);font-weight:700}
 
 /* ── Table — newspaper feature columns ──────────────────────── */
-.table-wrap{background:var(--paper)}
+.table-wrap{background:var(--paper);overflow-x:auto}
+.hero-story .right{max-width:45%;overflow-wrap:anywhere}
+#data-quality{overflow-wrap:anywhere}
+@media(max-width:600px){.hero-story .right .v{font-size:16px}.table-wrap{max-width:100%}}
 table{width:100%;border-collapse:collapse;font-size:14px}
 thead th{position:sticky;top:0;background:var(--paper);z-index:1;
   text-align:left;padding:12px 14px;font-family:'Inter',sans-serif;font-weight:700;

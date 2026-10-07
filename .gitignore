@@ -26,3 +26,6 @@ data/.editor_drafts.json
 data/.webrobots/
 data/.tier_metrics.json
 data/.proxy_cache.json
+
+# Delivery diagnostics are local run state; not subscriber data or a fresh scrape.
+data/.delivery_health.json

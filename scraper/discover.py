@@ -40,6 +40,7 @@ from typing import Any, Optional
 
 from . import health
 from .http import RateLimiter, fetch, pick_proxy, playwright_proxy, warm_client
+from .observations import number, timestamp
 
 DISCOVER_SEEDS = [
     # ── China-labeled (woe_id=23424781) — 5 sort/state slices ──────────────
@@ -96,6 +97,7 @@ class DiscoverHit:
     prelaunch_activated: bool | None = None
     category: str | None = None
     image_url: str | None = None        # photo.full from KS Discover JSON
+    observed_at: str | None = None
     raw: dict[str, Any] = field(default_factory=dict)
 
 
@@ -138,8 +140,8 @@ def _hit_from_proj(p: dict[str, Any]) -> DiscoverHit:
         # downstream consumers (API, sort, sanity, deltas) all see the same
         # type — otherwise `sorted(key=lambda x: -x['pledged_usd'])` raises
         # TypeError on the string and the API exposes inconsistent types.
-        pledged_usd=_to_float(p.get("usd_pledged") or p.get("converted_pledged_amount")),
-        goal_usd=(p.get("goal") or 0) * (p.get("static_usd_rate") or 1.0) if p.get("goal") else None,
+        pledged_usd=number(p.get("usd_pledged")) if p.get("usd_pledged") is not None else (number(p.get("converted_pledged_amount")) if p.get("current_currency") == "USD" else None),
+        goal_usd=(number(p.get("goal")) * number(p.get("static_usd_rate"))) if number(p.get("goal")) is not None and number(p.get("static_usd_rate")) is not None else None,
         percent_funded=p.get("percent_funded"),
         deadline=p.get("deadline"),
         launched_at=p.get("launched_at"),
@@ -148,6 +150,7 @@ def _hit_from_proj(p: dict[str, Any]) -> DiscoverHit:
         prelaunch_activated=p.get("prelaunch_activated"),
         category=category.get("name"),
         image_url=(p.get("photo") or {}).get("full"),
+        observed_at=timestamp(),
         raw=p,
     )
 

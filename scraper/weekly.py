@@ -37,6 +37,7 @@ from typing import Any
 import httpx
 
 from ._common import fmt_int, fmt_usd
+from .observations import comparable_delta, parse_time
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 PROJECTS = REPO_ROOT / "data" / "projects.json"
@@ -103,16 +104,13 @@ def _load_snapshots_for_week() -> list[tuple[dt.datetime, dict]]:
     out: list[tuple[dt.datetime, dict]] = []
     for p in sorted(HISTORY.glob("*.json")):
         try:
-            ts = dt.datetime.strptime(p.stem, "%Y-%m-%dT%H-%M-%SZ").replace(
-                tzinfo=dt.UTC
-            )
-        except ValueError:
-            continue
-        if ts < cutoff:
-            continue
-        try:
-            out.append((ts, json.loads(p.read_text(encoding="utf-8"))))
-        except Exception:
+            snapshot = json.loads(p.read_text(encoding="utf-8"))
+            ts = parse_time(snapshot.get("generated_at"))
+            if ts is None:
+                ts = dt.datetime.strptime(p.stem, "%Y-%m-%dT%H-%M-%SZ").replace(tzinfo=dt.UTC)
+            if cutoff <= ts <= now:
+                out.append((ts, snapshot))
+        except (ValueError, OSError):
             continue
     return out
 
@@ -236,19 +234,13 @@ def compute_weekly_stats(week: list[tuple[dt.datetime, dict]]) -> dict:
         old = oldest_by_path.get(path)
         if not old:
             continue
-        try:
-            df = int(new.get("followers") or 0) - int(old.get("followers") or 0)
-        except (TypeError, ValueError):
-            df = 0
-        try:
-            du = _num(new.get("pledged_usd")) - _num(old.get("pledged_usd"))
-        except (TypeError, ValueError):
-            du = 0.0
-        if df > 0:
+        df, _ = comparable_delta(new, old, "followers", days=7)
+        du, _ = comparable_delta(new, old, "pledged_usd", days=7)
+        if df is not None and df > 0:
             row = dict(new)
             row["delta_followers"] = df
             f_gainers.append(row)
-        if du > 1.0:
+        if du is not None and du > 1.0:
             row = dict(new)
             row["delta_pledged_usd"] = du
             row["pledged_usd"] = _num(new.get("pledged_usd"))
@@ -258,19 +250,12 @@ def compute_weekly_stats(week: list[tuple[dt.datetime, dict]]) -> dict:
     out["top_follower_gainers"] = f_gainers[:5]
     out["top_usd_gainers"] = u_gainers[:5]
 
-    # Aggregate live USD growth (sum of positive deltas on live projects)
-    for path, new in newest_by_path.items():
-        if new.get("status") != "live":
-            continue
-        old = oldest_by_path.get(path)
-        if not old:
-            continue
-        try:
-            du = _num(new.get("pledged_usd")) - _num(old.get("pledged_usd"))
-            if du > 0:
-                out["total_live_usd_change"] += du
-        except (TypeError, ValueError):
-            pass
+    # Same project cohort and compatible observation window, including losses.
+    live = [p for p in newest_by_path.values() if p.get("status") == "live"]
+    changes = [comparable_delta(p, oldest_by_path.get(p.get("pathname"), {}), "pledged_usd", days=7)[0] for p in live]
+    out["comparable_live_projects"] = sum(v is not None for v in changes)
+    out["eligible_live_projects"] = len(changes)
+    out["total_live_usd_change"] = sum(changes) if changes and all(v is not None for v in changes) else None
 
     return out
 
@@ -607,7 +592,7 @@ Week {week_no} · {week_label} · {len(stats.get('new_in_discovery', []))} new p
       <div style="font-family:{BODY};font-style:italic;font-size:14px;color:{N700};margin-top:8px">
         过去 7 天 · {kpi.get('total_now', 0)} 项追踪
         ({'+' if growth >= 0 else ''}{growth} 项变化) ·
-        在筹累计净增 {fmt_usd(stats.get('total_live_usd_change', 0))}
+        在筹累计净增 {(fmt_usd(stats['total_live_usd_change']) if stats.get('total_live_usd_change') is not None else '无法计算')}
       </div>
     </div>
 
@@ -693,7 +678,7 @@ def build_plaintext(stats: dict) -> str:
         f"{len(stats.get('new_in_discovery',[]))} 新发现 · "
         f"{len(stats.get('newly_live',[]))} 新上线 · "
         f"{len(stats.get('newly_successful',[]))} 筹款成功 · "
-        f"在筹净增 {fmt_usd(stats.get('total_live_usd_change',0))}",
+        f"在筹净增 {(fmt_usd(stats['total_live_usd_change']) if stats.get('total_live_usd_change') is not None else '无法计算')}",
         rule,
         "",
     ]

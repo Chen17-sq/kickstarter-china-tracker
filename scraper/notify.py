@@ -28,6 +28,8 @@ from pathlib import Path
 
 import httpx
 
+from .observations import is_fresh
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 PROJECTS = REPO_ROOT / "data" / "projects.json"
 CHANGELOG = REPO_ROOT / "CHANGELOG.md"
@@ -127,6 +129,10 @@ def get_summary_data(curr: dict) -> dict:
         key=lambda x: -float(x.get("pledged_usd") or 0),
     )
 
+    if curr.get("schema_version", 1) >= 2 and any(
+        not is_fresh(p, "pledged_usd") for p in projects if p.get("status") == "live"
+    ):
+        total_live_usd = None
     return {
         "today": today,
         "total": len(projects),

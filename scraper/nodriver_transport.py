@@ -19,7 +19,7 @@ which returns the same `_Transport`-shaped object (post_graphql + close)
 that project.py expects. Drop-in.
 
 Bridge strategy: nodriver is async-only. We wrap every call in
-asyncio.run() so the rest of project.py stays sync. This is acceptable
+a single owned event loop so browser connections survive between calls. This is acceptable
 because we open the transport once per cron run; the overhead is
 amortized across many GraphQL chunks.
 
@@ -31,7 +31,10 @@ yesterday's value).
 from __future__ import annotations
 
 import asyncio
+import inspect
 import json
+import os
+from pathlib import Path
 from typing import Any
 
 GRAPH_URL = "https://www.kickstarter.com/graph"
@@ -48,7 +51,8 @@ class NodriverTransport:
       .csrf = <token>
     """
 
-    def __init__(self, browser: Any, page: Any, csrf: str):
+    def __init__(self, browser: Any, page: Any, csrf: str, loop=None):
+        self._loop = loop or asyncio.new_event_loop()
         self._browser = browser
         self._page = page
         self.csrf = csrf
@@ -106,7 +110,7 @@ class NodriverTransport:
             except Exception:
                 return status, None
 
-        return asyncio.run(_do())
+        return self._loop.run_until_complete(_do())
 
     def close(self) -> None:
         """Shut down the browser. Safe to call multiple times."""
@@ -114,15 +118,29 @@ class NodriverTransport:
             return
         async def _do() -> None:
             try:
-                await self._browser.stop()
+                result = self._browser.stop()
+                if inspect.isawaitable(result):
+                    await result
             except Exception:
                 pass
         try:
-            asyncio.run(_do())
+            self._loop.run_until_complete(_do())
         except Exception:
             pass
         self._browser = None
         self._page = None
+        _close_loop(self._loop)
+
+
+def _close_loop(loop):
+    async def cleanup():
+        pending = asyncio.all_tasks(loop) - {asyncio.current_task()}
+        for task in pending:
+            task.cancel()
+        if pending:
+            await asyncio.gather(*pending, return_exceptions=True)
+    loop.run_until_complete(cleanup())
+    loop.close()
 
 
 def open_nodriver_transport(
@@ -147,6 +165,13 @@ def open_nodriver_transport(
     from .http import pick_proxy
     proxy_url = pick_proxy()
 
+    executable = os.environ.get("KS_BROWSER_EXECUTABLE")
+    if executable and not Path(executable).is_file():
+        if verbose:
+            print("  nodriver: configured Chromium executable does not exist")
+        return None
+    loop = asyncio.new_event_loop()
+
     async def _boot() -> NodriverTransport | None:
         try:
             args = [
@@ -164,6 +189,7 @@ def open_nodriver_transport(
                     print(f"  nodriver routing through KS_PROXY ({p.hostname})")
             browser = await nd.start(
                 headless=True,
+                browser_executable_path=executable,
                 user_data_dir=None,  # ephemeral profile per run
                 browser_args=args,
             )
@@ -183,23 +209,28 @@ def open_nodriver_transport(
             if not csrf or not isinstance(csrf, str):
                 if verbose:
                     print("  ! nodriver: no CSRF found on seed page")
-                await browser.stop()
+                browser.stop()
                 return None
             if verbose:
                 print(f"  {label} ✅ seeded via nodriver (csrf len={len(csrf)})")
-            return NodriverTransport(browser=browser, page=page, csrf=csrf)
+            return NodriverTransport(browser=browser, page=page, csrf=csrf, loop=loop)
         except Exception as e:
             if verbose:
                 print(f"  ! nodriver seed exception: {e}")
             try:
-                await browser.stop()
+                browser.stop()
             except Exception:
                 pass
             return None
 
     try:
-        return asyncio.run(_boot())
+        result = loop.run_until_complete(_boot())
+        if result is None:
+            _close_loop(loop)
+        return result
     except Exception as e:
+        if not loop.is_closed():
+            _close_loop(loop)
         if verbose:
             print(f"  ! nodriver asyncio bridge failed: {e}")
         return None

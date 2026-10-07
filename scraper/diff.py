@@ -6,6 +6,8 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
 
+from .observations import comparable_delta
+
 
 @dataclass
 class Change:
@@ -27,7 +29,7 @@ def diff_snapshots(prev: dict, curr: dict) -> list[Change]:
     for path in b.keys() - a.keys():
         p = b[path]
         out.append(Change(path, p.get("title", ""), "new",
-                          f"Discovered ({p.get('status', '?')}, {p.get('followers') or 0} followers)"))
+                          f"Discovered ({p.get('status', '?')}, {p.get('followers') if p.get('followers') is not None else '未更新'} followers)"))
 
     # Removed = ended/archived
     for path in a.keys() - b.keys():
@@ -44,12 +46,12 @@ def diff_snapshots(prev: dict, curr: dict) -> list[Change]:
                               f"{ap.get('status')} → {bp.get('status')}"))
 
         af, bf = ap.get("followers") or 0, bp.get("followers") or 0
-        if isinstance(af, int) and isinstance(bf, int) and bf - af >= 50:
+        if isinstance(af, int) and isinstance(bf, int) and bf - af >= 50 and comparable_delta(bp, ap, "followers")[0] is not None:
             out.append(Change(path, bp.get("title", ""), "followers_delta",
                               f"+{bf - af} followers ({af} → {bf})"))
 
         ab, bb = ap.get("backers") or 0, bp.get("backers") or 0
-        if isinstance(ab, int) and isinstance(bb, int) and bb - ab >= 100:
+        if isinstance(ab, int) and isinstance(bb, int) and bb - ab >= 100 and comparable_delta(bp, ap, "backers")[0] is not None:
             out.append(Change(path, bp.get("title", ""), "backers_delta",
                               f"+{bb - ab} backers ({ab} → {bb})"))
 

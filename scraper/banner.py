@@ -18,6 +18,9 @@ import datetime as dt
 import json
 from pathlib import Path
 
+from .observations import is_fresh, metric_text
+from .quality import assess
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 PROJECTS = REPO_ROOT / "data" / "projects.json"
 ASSETS = REPO_ROOT / "assets"
@@ -71,6 +74,10 @@ def build_svg(curr: dict) -> str:
                 total_live_usd += float(p.get("pledged_usd") or 0)
             except (TypeError, ValueError):
                 pass
+    pledged_label = (fmt_usd_short(total_live_usd) if all(
+        is_fresh(p, "pledged_usd") for p in projects if p.get("status") == "live")
+        else "未更新")
+    quality_label = "DATA DEGRADED" if assess(curr)["status"] == "degraded" else "LIVE EDITION"
     today = dt.datetime.now(dt.UTC).strftime("%A, %B %d, %Y").upper()
     edition = edition_number()
 
@@ -111,7 +118,7 @@ def build_svg(curr: dict) -> str:
   <rect x="0" y="0" width="{W}" height="32" fill="{INK}"/>
   <circle cx="32" cy="16" r="3" fill="{RED}"/>
   <text x="44" y="20" font-family="{sans}" font-size="11" font-weight="700"
-        fill="{PAPER}" letter-spacing="3">DAILY · LIVE EDITION · {today}</text>
+        fill="{PAPER}" letter-spacing="3">DAILY · {quality_label} · {today}</text>
   <text x="{W-40}" y="20" text-anchor="end" font-family="{mono}" font-size="11"
         font-weight="500" fill="{PAPER}" letter-spacing="2.5">VOL. 1 · NO. {edition}</text>
 
@@ -127,7 +134,7 @@ def build_svg(curr: dict) -> str:
   <text x="{W//2}" y="202" text-anchor="middle" font-family="{serif}" font-size="14"
         font-style="italic" fill="{INK}">All The Crowd-Funded Hardware Fit To Print</text>
   <text x="{W-56}" y="202" text-anchor="end" font-family="{mono}" font-size="11"
-        font-weight="500" fill="{INK}" letter-spacing="2.5">PLEDGED · {fmt_usd_short(total_live_usd)}</text>
+        font-weight="500" fill="{INK}" letter-spacing="2.5">PLEDGED · {pledged_label}</text>
 
   <!-- Dek -->
   <text x="{W//2}" y="262" text-anchor="middle" font-family="{body}" font-size="16"
@@ -157,11 +164,11 @@ def _highlight_row(y: int, rank: int, p: dict, *, kind: str, col_x: int) -> str:
     star = (f'<tspan fill="{RED}" font-family="{serif}" font-weight="900">✦ </tspan>'
             if p.get("project_we_love") else "")
     if kind == "prelaunch":
-        right_value = f'{int(p.get("followers") or 0):,}'
+        right_value = metric_text(p, "followers")
         right_label = "WATCHING"
     else:
-        right_value = fmt_usd_short(float(p.get("pledged_usd") or 0))
-        right_label = f'{int(p.get("backers") or 0):,} BACKERS'
+        right_value = metric_text(p, "pledged_usd")
+        right_label = f'{metric_text(p, "backers")} BACKERS'
 
     return (
         f'<text x="{col_x + 12}" y="{y + 6}" font-family="{serif}" font-size="36" '
@@ -192,6 +199,7 @@ def build_snapshot_svg(curr: dict) -> str:
         [p for p in projects if p.get("status") == "live"],
         key=lambda x: -float(x.get("pledged_usd") or 0),
     )[:3]
+    quality_label = "未更新 · 排名仅供历史参考" if assess(curr)["status"] == "degraded" else "Today's Top Stories"
     today = dt.datetime.now(dt.UTC).strftime("%a, %b %d").upper()
 
     # Layout — section header on top, then column labels, then 3 rows.
@@ -219,7 +227,7 @@ def build_snapshot_svg(curr: dict) -> str:
   <text x="40" y="44" font-family="{mono}" font-size="11" font-weight="500"
         fill="{N500}" letter-spacing="2.5">SECTION B · INSIDE THIS ISSUE · {today}</text>
   <text x="40" y="86" font-family="{serif}" font-size="36" font-weight="900"
-        fill="{INK}" letter-spacing="-1">Today's Top Stories</text>
+        fill="{INK}" letter-spacing="-1">{quality_label}</text>
 
   <line x1="40" y1="110" x2="{W-40}" y2="110" stroke="{INK}" stroke-width="4"/>
 
@@ -259,6 +267,7 @@ def build_og_svg(curr: dict) -> str:
                 total_live_usd += float(p.get("pledged_usd") or 0)
             except (TypeError, ValueError):
                 pass
+    quality_label = "DATA DEGRADED" if assess(curr)["status"] == "degraded" else "LIVE EDITION"
     today = dt.datetime.now(dt.UTC).strftime("%a · %b %d · %Y").upper()
     edition = edition_number()
 
@@ -274,7 +283,7 @@ def build_og_svg(curr: dict) -> str:
   <rect x="0" y="0" width="1280" height="46" fill="{INK}"/>
   <circle cx="50" cy="23" r="5" fill="{RED}"/>
   <text x="68" y="28" font-family="{sans}" font-size="14" font-weight="700"
-        fill="{PAPER}" letter-spacing="3.5">DAILY · LIVE EDITION · {today}</text>
+        fill="{PAPER}" letter-spacing="3.5">DAILY · {quality_label} · {today}</text>
   <text x="1230" y="28" text-anchor="end" font-family="{mono}" font-size="14"
         font-weight="500" fill="{PAPER}" letter-spacing="3">VOL. 1 · NO. {edition}</text>
 

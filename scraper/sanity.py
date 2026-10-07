@@ -16,7 +16,10 @@ Better to send 0 emails today than 6 wrong ones.
 """
 from __future__ import annotations
 
+import os
 from typing import Optional
+
+from .quality import assess
 
 
 def validate_for_send(curr: dict, prev: Optional[dict] = None) -> tuple[bool, list[str]]:
@@ -68,6 +71,14 @@ def validate_for_send(curr: dict, prev: Optional[dict] = None) -> tuple[bool, li
     if len(pathnames) != len(set(pathnames)):
         dupes = len(pathnames) - len(set(pathnames))
         issues.append(f"{dupes} duplicate pathnames in snapshot — discover dedup may have broken")
+
+    if curr.get("schema_version", 1) >= 2:
+        q = assess(curr)
+        mode = os.environ.get("KS_QUALITY_POLICY", "observe")
+        if mode not in {"observe", "enforce"}:
+            return False, [*issues, "unknown KS_QUALITY_POLICY; expected observe or enforce"]
+        allowed = not issues and (q["proposed_send_allowed"] if mode == "enforce" else True)
+        return allowed, issues + q["issues"]
 
     # Followers coverage — this catches today's exact failure mode
     n_with_f = sum(1 for p in projects if (p.get("followers") or 0) > 0)
@@ -154,7 +165,7 @@ def validate_for_send(curr: dict, prev: Optional[dict] = None) -> tuple[bool, li
                 issues.append(
                     f"followers identical to yesterday for {same}/{n} projects — "
                     f"watchers likely fell back to previous snapshot. "
-                    f"Δ deltas in email will read 0; broadcasting anyway."
+                    f"Δ is unverified; display unavailable. Legacy policy: broadcasting anyway."
                 )
                 # NOTE: this issue is informational, not blocking.
                 # See logic below — we still allow if this is the only issue.
@@ -203,7 +214,7 @@ def format_alert_body(issues: list[str], snapshot_meta: dict) -> str:
         "What to do:",
         "  1. Open https://ks.aldrich.fyi/ and check it visually",
         "  2. If data looks fine: re-run `gh workflow run scrape.yml --repo Chen17-sq/kickstarter-china-tracker`",
-        "     after deleting today's history file (so the idempotency guard re-fires)",
+        "     use refresh_only=true; retain every previous attempt and never resend automatically",
         "  3. If data is genuinely broken: investigate the scraper logs",
         "",
         "— sanity gate, scraper/sanity.py",

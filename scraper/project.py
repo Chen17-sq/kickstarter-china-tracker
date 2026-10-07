@@ -47,6 +47,9 @@ from .http import (
     pick_proxy,
     playwright_proxy,
 )
+from .observations import FetchResults, number, timestamp
+
+_AUTO_TRANSPORT = object()
 
 GRAPH_URL = "https://www.kickstarter.com/graph"
 SEED_URL = "https://www.kickstarter.com/discover/advanced?state=upcoming"
@@ -166,6 +169,9 @@ class _Transport:
 
     def close(self) -> None:
         """Release any external resources. Safe to call multiple times."""
+        if self._cc is not None:
+            self._cc.close()
+            self._cc = None
         if self._pw_runtime is None:
             return
         try:
@@ -330,14 +336,14 @@ def _open_playwright_transport(label: str, verbose: bool) -> _Transport | None:
         except Exception as e:
             if verbose:
                 print(f"  ! warmup GET failed ({e}); proceeding to seed URL")
-        page.goto(SEED_URL, wait_until="domcontentloaded", timeout=30_000)
+        seed_response = page.goto(SEED_URL, wait_until="domcontentloaded", timeout=30_000)
         # Give Cloudflare's interactive challenge a beat to clear
         page.wait_for_timeout(800)
         csrf = page.evaluate(
             "() => { const m = document.querySelector('meta[name=\"csrf-token\"]'); return m ? m.content : null; }"
         )
         if not csrf:
-            raise RuntimeError("CSRF token not found after Playwright navigation")
+            raise RuntimeError(f"CSRF token missing: status={seed_response.status if seed_response else None}, title={page.title()[:80]!r}")
         # IMPORTANT: keep the page open. We use page.evaluate('fetch(...)')
         # for the subsequent GraphQL POSTs so each request gets the real
         # browser TLS fingerprint + sec-ch-ua headers. Closing the page
@@ -454,7 +460,7 @@ def fetch_watches_counts(
     slugs: list[str],
     *,
     verbose: bool = True,
-    transport: _Transport | None = None,
+    transport=_AUTO_TRANSPORT,
 ) -> dict[str, Optional[int]]:
     """Batch-fetch `watchesCount` for project slugs via KS GraphQL.
 
@@ -467,11 +473,11 @@ def fetch_watches_counts(
     If `transport` is provided, use it and DO NOT close it (caller owns
     lifecycle). Otherwise open + close internally.
     """
-    out: dict[str, Optional[int]] = {s: None for s in slugs}
+    out = FetchResults(slugs)
     if not slugs:
         return out
 
-    own_transport = transport is None
+    own_transport = transport is _AUTO_TRANSPORT
     if own_transport:
         transport = _open_transport(label="watchesCount", verbose=verbose)
         if transport is None:
@@ -479,6 +485,10 @@ def fetch_watches_counts(
                 print("  watchesCount: failed to seed (curl_cffi + Playwright); skipping")
             health.watches_done(path="failed", fetched=0, requested=len(slugs))
             return out
+
+    if transport is None:
+        health.watches_done(path="failed", fetched=0, requested=len(slugs))
+        return out
 
     try:
         # Chunked batch GraphQL query, one round trip per ~50 slugs.
@@ -502,14 +512,27 @@ def fetch_watches_counts(
 
             status, jdata = transport.post_graphql(body)
             if status != 200:
+                out.errors.update(dict.fromkeys(chunk, f"http_{status}"))
+                health.fetch_error("graphql", status, len(chunk))
                 if verbose:
                     print(f"  watchesCount chunk {i//CHUNK_SIZE+1}: status {status}")
                 continue
-            data = (jdata or {}).get("data") or {}
+            if not isinstance(jdata, dict):
+                out.errors.update(dict.fromkeys(chunk, "invalid_response"))
+                continue
+            data = jdata.get("data") or {}
+            if not isinstance(data, dict):
+                continue
             for j, s in enumerate(chunk):
-                obj = data.get(f"p{j}")
+                alias = f"p{j}"
+                obj = data.get(alias)
+                has_error = any(not e.get("path") or e["path"][0] == alias for e in (jdata.get("errors") or []))
+                out.errors[s] = "graphql_error" if has_error else "source_missing"
                 if isinstance(obj, dict) and "watchesCount" in obj:
-                    out[s] = obj["watchesCount"]
+                    value = number(obj["watchesCount"])
+                    out[s] = int(value) if value is not None and value.is_integer() else None
+                    out.errors[s] = None if out[s] is not None else out.errors[s]
+                    out.observed_at[s] = timestamp()
         # Record which transport actually carried the data
         fetched = sum(1 for v in out.values() if v is not None)
         health.watches_done(path=transport.mode, fetched=fetched, requested=len(slugs))
@@ -524,7 +547,7 @@ def fetch_pledge_minimums(
     slugs: list[str],
     *,
     verbose: bool = True,
-    transport: _Transport | None = None,
+    transport=_AUTO_TRANSPORT,
 ) -> dict[str, Optional[float]]:
     """Batch-fetch minimum pledge tier (in USD) for project slugs.
 
@@ -544,11 +567,11 @@ def fetch_pledge_minimums(
     If `transport` is provided, use it and DO NOT close it (caller owns
     lifecycle). Otherwise open + close internally.
     """
-    out: dict[str, Optional[float]] = {s: None for s in slugs}
+    out = FetchResults(slugs)
     if not slugs:
         return out
 
-    own_transport = transport is None
+    own_transport = transport is _AUTO_TRANSPORT
     if own_transport:
         transport = _open_transport(label="pledge_min", verbose=verbose)
         if transport is None:
@@ -556,6 +579,10 @@ def fetch_pledge_minimums(
                 print("  pledge_min: failed to seed; skipping")
             health.pledge_done(path="failed", fetched=0, requested=len(slugs))
             return out
+
+    if transport is None:
+        health.pledge_done(path="failed", fetched=0, requested=len(slugs))
+        return out
 
     try:
         for i in range(0, len(slugs), PLEDGE_CHUNK_SIZE):
@@ -574,24 +601,34 @@ def fetch_pledge_minimums(
 
             status, jdata = transport.post_graphql(body)
             if status != 200:
+                out.errors.update(dict.fromkeys(chunk, f"http_{status}"))
+                health.fetch_error("graphql", status, len(chunk))
                 if verbose:
                     print(f"  pledge_min chunk {i//PLEDGE_CHUNK_SIZE+1}: status {status}")
                 continue
-            data = (jdata or {}).get("data") or {}
+            if not isinstance(jdata, dict):
+                out.errors.update(dict.fromkeys(chunk, "invalid_response"))
+                continue
+            data = jdata.get("data") or {}
+            if not isinstance(data, dict):
+                continue
             for j, s in enumerate(chunk):
                 obj = data.get(f"p{j}") or {}
+                out.errors[s] = "source_missing" if obj and not jdata.get("errors") else "graphql_error"
                 rewards = (obj.get("rewards") or {}).get("nodes") or []
                 amounts: list[float] = []
                 for node in rewards:
                     amt_obj = node.get("amount") or {}
                     try:
                         amt = float(amt_obj.get("amount") or 0)
-                        if amt > 0:
+                        if number(amt) is not None and amt > 0 and amt_obj.get("currency") == "USD":
                             amounts.append(amt)
                     except (TypeError, ValueError):
                         pass
                 if amounts:
                     out[s] = min(amounts)
+                    out.errors[s] = None
+                    out.observed_at[s] = timestamp()
         fetched = sum(1 for v in out.values() if v is not None)
         health.pledge_done(path=transport.mode, fetched=fetched, requested=len(slugs))
         tier_metrics.record("pledge", transport.mode if fetched else "failed")

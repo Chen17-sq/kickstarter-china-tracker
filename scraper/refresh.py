@@ -29,12 +29,14 @@ import json
 from pathlib import Path
 
 from . import health
+from .observations import carry_row, number, observe, timestamp
 from .project import (
     CHUNK_SIZE,
     _open_transport,
-    _Transport,
     backoff,
 )
+
+_AUTO_TRANSPORT = object()
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 HISTORY_DIR = REPO_ROOT / "data" / "history"
@@ -45,9 +47,9 @@ STATE_MAP = {
     "LIVE": "live",
     "SUCCESSFUL": "successful",
     "FAILED": "failed",
-    "CANCELED": "failed",
+    "CANCELED": "canceled",
     "PURGED": "failed",
-    "SUSPENDED": "failed",
+    "SUSPENDED": "suspended",
 }
 
 # Field set for the fat query — everything that can change day-to-day
@@ -64,13 +66,6 @@ FAT_QUERY_FIELDS = """
 """
 
 
-def _num(v) -> float:
-    try:
-        return float(v) if v is not None else 0.0
-    except (TypeError, ValueError):
-        return 0.0
-
-
 def latest_history_snapshot() -> dict | None:
     """Most recent history snapshot (not necessarily yesterday — could be
     any prior day if cron skipped some). Returns None if no history."""
@@ -79,22 +74,23 @@ def latest_history_snapshot() -> dict | None:
     snaps = sorted(HISTORY_DIR.glob("*.json"))
     if not snaps:
         return None
-    today_prefix = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
-    # Skip today's snapshot if present (we're building TOMORROW's
-    # refresh from YESTERDAY's data, not from a half-written today)
+    now = timestamp()
+    # Include same-day successful observations when recovering; never invent
+    # a timestamp from the enclosing snapshot for legacy carried values.
     for p in reversed(snaps):
-        if not p.stem.startswith(today_prefix):
-            try:
-                return json.loads(p.read_text(encoding="utf-8"))
-            except Exception:
-                continue
+        try:
+            snapshot = json.loads(p.read_text(encoding="utf-8"))
+            if snapshot.get("generated_at", "") <= now:
+                return snapshot
+        except (ValueError, OSError):
+            continue
     return None
 
 
 def fetch_fat_graphql(
     slugs: list[str],
     *,
-    transport: _Transport | None = None,
+    transport=_AUTO_TRANSPORT,
     verbose: bool = True,
 ) -> dict[str, dict]:
     """Fat GraphQL fetch — one query, many fields, batched 50 slugs/chunk.
@@ -111,13 +107,16 @@ def fetch_fat_graphql(
     if not slugs:
         return out
 
-    own_transport = transport is None
+    own_transport = transport is _AUTO_TRANSPORT
     if own_transport:
         transport = _open_transport(label="refresh", verbose=verbose)
         if transport is None:
             if verbose:
                 print("  ✗ refresh: transport open failed (all tiers blocked)")
             return out
+
+    if transport is None:
+        return out
 
     try:
         for i in range(0, len(slugs), CHUNK_SIZE):
@@ -138,26 +137,38 @@ def fetch_fat_graphql(
             }
             status, jdata = transport.post_graphql(body)
             if status != 200:
+                out.update({slug: {"_error": f"http_{status}"} for slug in chunk})
+                health.fetch_error("catalog_refresh", status, len(chunk))
                 if verbose:
                     print(
                         f"  ! refresh chunk {i // CHUNK_SIZE + 1}: status {status}"
                     )
                 continue
-            data = (jdata or {}).get("data") or {}
+            if not isinstance(jdata, dict):
+                health.fetch_error("catalog_refresh", "invalid_response", len(chunk))
+                continue
+            data = jdata.get("data") or {}
+            if not isinstance(data, dict):
+                continue
             for j, s in enumerate(chunk):
-                obj = data.get(f"p{j}") or {}
-                if isinstance(obj, dict):
+                alias = f"p{j}"
+                obj = data.get(alias) or {}
+                has_error = any(not e.get("path") or e["path"][0] == alias for e in (jdata.get("errors") or []))
+                out[s] = {"_error": "graphql_error" if has_error else "source_missing"}
+                if isinstance(obj, dict) and obj:
                     pledged = obj.get("pledged") or {}
                     goal = obj.get("goal") or {}
                     out[s] = {
+                        "_error": "graphql_error" if has_error else "source_missing",
                         "watchesCount": obj.get("watchesCount"),
                         "state": obj.get("state"),
                         "backersCount": obj.get("backersCount"),
-                        "pledged_amt": _num(pledged.get("amount")),
+                        "pledged_amt": number(pledged.get("amount")),
                         "pledged_currency": pledged.get("currency"),
                         "percentFunded": obj.get("percentFunded"),
-                        "goal_amt": _num(goal.get("amount")),
+                        "goal_amt": number(goal.get("amount")),
                         "deadlineAt": obj.get("deadlineAt"),
+                        "observed_at": timestamp(),
                     }
         if verbose:
             n_with = sum(
@@ -184,50 +195,38 @@ def apply_refresh(
     from .project import slug_from_pathname
 
     new_records: list[dict] = []
-    refreshed = 0
-    state_changes = 0
-    total_usd_delta = 0.0
-
+    refreshed = state_changes = 0
+    total_usd_delta = None  # computed exclusively by momentum with validated baselines
+    attempted = timestamp()
     for orig in project_records:
         path = orig.get("pathname")
         slug = slug_from_pathname(path) if path else None
         fresh = refresh_data.get(slug) or {}
-        new = dict(orig)
-
-        if fresh.get("watchesCount") is not None:
-            old_followers = new.get("followers") or 0
-            new["followers"] = int(fresh["watchesCount"])
-            new["delta_followers"] = new["followers"] - int(old_followers)
-            refreshed += 1
-
-        if fresh.get("state"):
-            mapped = STATE_MAP.get(fresh["state"])
-            if mapped and mapped != new.get("status"):
-                state_changes += 1
-            if mapped:
-                new["status"] = mapped
-
-        if fresh.get("backersCount") is not None:
-            old_backers = new.get("backers") or 0
-            new["backers"] = int(fresh["backersCount"])
-            new["delta_backers"] = new["backers"] - int(old_backers)
-
-        # Currency normalization: only update pledged_usd if returned value
-        # is USD. Otherwise keep yesterday's pledged_usd.
-        if (
-            fresh.get("pledged_currency") == "USD"
-            and fresh.get("pledged_amt") is not None
-        ):
-            old_pledged = _num(new.get("pledged_usd"))
-            new["pledged_usd"] = float(fresh["pledged_amt"])
-            d = new["pledged_usd"] - old_pledged
-            new["delta_pledged_usd"] = d
-            if new.get("status") == "live":
-                total_usd_delta += d
-
-        if fresh.get("percentFunded") is not None:
-            new["percent_funded"] = fresh["percentFunded"]
-
+        reason = fresh.get("_error", "source_missing" if fresh else "fetch_failed")
+        new = carry_row(orig, at=attempted, reason=reason)
+        at = fresh.get("observed_at") or attempted
+        any_fresh = False
+        for field, source_field in (("followers", "watchesCount"), ("backers", "backersCount"),
+                                    ("percent_funded", "percentFunded")):
+            any_fresh |= observe(new, field, fresh.get(source_field), at=at, source="ks_graphql")
+        currency = fresh.get("pledged_currency")
+        if currency:
+            observe(new, "pledged_native", fresh.get("pledged_amt"), at=at,
+                    source="ks_graphql", unit=currency, basis="native_pledged:" + currency)
+            rate = orig.get("static_usd_rate") if orig.get("native_currency") == currency else None
+            if currency == "USD":
+                rate = 1
+            amount = number(fresh.get("pledged_amt"))
+            if amount is not None and number(rate) is not None and number(rate) > 0:
+                observe(new, "pledged_usd", amount * rate, at=at, source="ks_graphql",
+                        basis="native_usd" if currency == "USD" else f"static_usd:{currency}:{rate}")
+                any_fresh = True
+        if fresh.get("state") in STATE_MAP:
+            mapped = STATE_MAP[fresh["state"]]
+            state_changes += mapped != orig.get("status")
+            new["status"] = mapped
+            new["status_observation"] = {"status": "fresh", "observed_at": at, "source": "ks_graphql"}
+        refreshed += bool(any_fresh)
         new_records.append(new)
 
     summary = {
@@ -240,14 +239,14 @@ def apply_refresh(
         print(
             f"  refresh applied: {refreshed}/{len(project_records)} fresh, "
             f"{state_changes} state changes, "
-            f"+${total_usd_delta:,.0f} live USD net"
+            "live USD net: computed later from comparable observations"
         )
     return new_records, summary
 
 
 def refresh_from_history(
     *,
-    transport: _Transport | None = None,
+    transport=_AUTO_TRANSPORT,
     verbose: bool = True,
 ) -> tuple[list[dict], dict] | None:
     """End-to-end: load yesterday's snapshot, fat-fetch, apply, return.

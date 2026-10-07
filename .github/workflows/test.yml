@@ -30,11 +30,8 @@ jobs:
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
-          # We don't need the scrape-time deps (curl_cffi, playwright) for unit
-          # tests — only PyYAML for classify.py + pytest itself. Keep the test
-          # install minimal so CI stays fast and doesn't break when the heavy
-          # deps have wheel issues on new Python versions.
-          pip install pytest pyyaml ruff
+          # Collector imports are exercised by isolated, network-disabled pipeline tests.
+          pip install pytest pyyaml ruff curl_cffi httpx selectolax playwright
 
       - name: Lint (ruff)
         run: ruff check scraper/

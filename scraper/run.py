@@ -31,13 +31,13 @@ from .api import write_api
 from .atomic import write_json_atomic, write_text_atomic
 from .banner import write_banner
 from .classify import classify
-from .cleanup import prune_archives
 from .diff import changes_to_markdown, diff_snapshots
 from .discover import DiscoverHit, crawl_discover
 from .email_notify import build_html as build_email_html
 from .email_notify import write_archive as write_email_archive
 from .feed import write_feed
 from .momentum import compute_deltas, compute_weekly_deltas
+from .observations import METRICS, FetchResults, carry, carry_row, observe
 from .pdf import render_today as render_pdf_today
 from .project import (
     fetch_pledge_minimums,
@@ -45,6 +45,7 @@ from .project import (
     open_transport,
     slug_from_pathname,
 )
+from .quality import assess
 from .report import REPORTS, make_report
 from .sitemap import write_sitemap
 from .social import generate_carousel
@@ -107,7 +108,7 @@ def build_row(hit: DiscoverHit, *, followers: int | None,
               blurb_zh: str | None,
               min_pledge_usd: float | None = None) -> dict:
     status = normalize_status(hit.state)
-    return {
+    row = {
         "pathname": hit.pathname,
         "url": hit.url,
         "title": hit.title,
@@ -140,12 +141,38 @@ def build_row(hit: DiscoverHit, *, followers: int | None,
         "matched_brand_zh": matched_brand_zh,
     }
 
+    at = hit.observed_at or now_iso()
+    row["native_currency"] = hit.raw.get("currency")
+    row["static_usd_rate"] = hit.raw.get("static_usd_rate")
+    for key in METRICS:
+        carry(row, {}, key, at=at, reason="source_missing")
+    for key, value in (("backers", hit.backers_count), ("goal_usd", hit.goal_usd),
+                       ("percent_funded", hit.percent_funded)):
+        observe(row, key, value, at=at, source="ks_discover")
+    currency = row["native_currency"]
+    rate = row["static_usd_rate"]
+    basis = "native_usd" if currency == "USD" else (
+        f"static_usd:{currency}:{rate}" if currency and rate else "ks_reported_usd")
+    observe(row, "pledged_usd", hit.pledged_usd, at=at, source="ks_discover", basis=basis)
+    observe(row, "pledged_native", hit.raw.get("pledged"), at=at, source="ks_discover",
+            basis=f"native_pledged:{currency}", unit=currency or "unknown")
+    observe(row, "followers", followers, at=now_iso(), source="ks_graphql")
+    observe(row, "min_pledge_usd", min_pledge_usd, at=now_iso(), source="ks_graphql")
+    row["status_observation"] = {"status": "fresh" if hit.state else "missing",
+                                  "observed_at": at if hit.state else None, "source": "ks_discover"}
+    return row
+
 
 def run() -> int:
     health.reset()  # fresh counter state for this run
     started = now_iso()
     print(f"[{started}] crawl discover ...")
-    hits = crawl_discover()
+    try:
+        hits = crawl_discover()
+    except Exception as exc:
+        health.fetch_error("discover", type(exc).__name__, 0)
+        print(f"  discover failed: {type(exc).__name__}; attempting known catalog")
+        hits = {}
     print(f"  → {len(hits)} candidate projects")
 
     # Discover catastrophe guard. Threshold lowered to 25 (was 50) now
@@ -154,7 +181,7 @@ def run() -> int:
     # still produce a usable snapshot. Only abort when discover is so
     # broken that we have no useful new-project signal at all.
     DISCOVER_FLOOR = 25
-    if len(hits) < DISCOVER_FLOOR:
+    if len(hits) < DISCOVER_FLOOR and not _refresh.latest_history_snapshot():
         print(
             f"FATAL: only {len(hits)} candidates (floor={DISCOVER_FLOOR}). "
             f"Most discover seeds were probably Cloudflare-blocked. "
@@ -204,43 +231,37 @@ def run() -> int:
     # pledge_min got 403'd on every chunk despite a successful seed.
     # Sharing the session collapses two suspicious patterns into one and
     # makes pledge_min ride watchesCount's already-warm cookie state.
-    ks_transport = open_transport(label="ks_graphql")
+    try:
+        ks_transport = open_transport(label="ks_graphql")
+    except Exception as exc:
+        health.fetch_error("graphql_seed", type(exc).__name__, len(slugs))
+        ks_transport = None
     try:
         print(f"  fetching watchesCount via GraphQL for {len(slugs)} projects ...")
-        watches = fetch_watches_counts(slugs, transport=ks_transport)
+        try:
+            watches = fetch_watches_counts(slugs, transport=ks_transport)
+        except Exception as exc:
+            health.fetch_error("watches", type(exc).__name__, len(slugs))
+            watches = FetchResults(slugs)
+            health.watches_done("failed", 0, len(slugs))
         n_with = sum(1 for v in watches.values() if v is not None)
         print(f"  got watchesCount for {n_with}/{len(slugs)}")
 
-        # Graceful degradation: if Cloudflare 403'd the GraphQL endpoint and we
-        # got <50% watchers coverage, fall back to the previous projects.json
-        # snapshot's followers numbers. Avoids sending an email full of zeros
-        # when the only thing wrong was a transient block. Δ deltas will read
-        # as 0 (truthful — we don't know today's change).
-        if len(slugs) and n_with < len(slugs) * 0.5:
-            print(f"  ⚠ watchers fetch coverage {n_with}/{len(slugs)} below 50%; reusing previous followers")
-            prev_path = DATA / "projects.json"
-            if prev_path.exists():
-                try:
-                    prev = json.loads(prev_path.read_text(encoding="utf-8"))
-                    prev_followers = {p.get("pathname"): p.get("followers")
-                                      for p in (prev.get("projects") or [])
-                                      if p.get("pathname") and p.get("followers") is not None}
-                    restored = 0
-                    for path, _, _ in classified_paths:
-                        slug = slug_from_pathname(path)
-                        if watches.get(slug) is None and prev_followers.get(path) is not None:
-                            watches[slug] = prev_followers[path]
-                            restored += 1
-                    print(f"  → restored {restored} followers from previous snapshot")
-                    health.watches_restored_from_prev(restored)
-                except Exception as e:
-                    print(f"  ! couldn't read previous snapshot for fallback: {e}")
-
         # Pledge tier minimums (起步价) — same transport, smaller chunks
         print("  fetching minimum pledge tiers via GraphQL ...")
-        pledge_mins = fetch_pledge_minimums(slugs, transport=ks_transport)
+        try:
+            pledge_mins = fetch_pledge_minimums(slugs, transport=ks_transport)
+        except Exception as exc:
+            health.fetch_error("minimum_pledge", type(exc).__name__, len(slugs))
+            pledge_mins = FetchResults(slugs)
+            health.pledge_done("failed", 0, len(slugs))
         n_pledge = sum(1 for v in pledge_mins.values() if v is not None)
         print(f"  got pledge minimum for {n_pledge}/{len(slugs)}")
+        try:
+            refresh_result = _refresh.refresh_from_history(transport=ks_transport, verbose=True)
+        except Exception as exc:
+            health.fetch_error("catalog_refresh", type(exc).__name__, 0)
+            refresh_result = None
     finally:
         # Close the shared transport regardless of either fetch's outcome
         if ks_transport is not None:
@@ -249,7 +270,7 @@ def run() -> int:
     rows: list[dict] = []
     for path, hit, cls in classified_paths:
         slug = slug_from_pathname(path)
-        rows.append(build_row(
+        row = build_row(
             hit,
             followers=watches.get(slug),
             confidence=cls.confidence,
@@ -258,43 +279,47 @@ def run() -> int:
             matched_brand_zh=cls.matched_brand_zh,
             blurb_zh=blurbs_zh.get(path),
             min_pledge_usd=pledge_mins.get(slug),
-        ))
+        )
+        for key, result in (("followers", watches), ("min_pledge_usd", pledge_mins)):
+            if result.get(slug) is not None:
+                row["observations"][key]["observed_at"] = getattr(result, "observed_at", {}).get(slug) or now_iso()
+            else:
+                row["observations"][key]["reason"] = getattr(result, "errors", {}).get(slug) or "fetch_failed"
+        rows.append(row)
     matched = sum(1 for r in rows if r.get("blurb_zh"))
     print(f"  classified {len(rows)} as China-background ({matched} with curated zh blurb)")
 
-    # ── Refresh supplement: carry forward yesterday's known projects that
-    # discover MISSED today. This is the resilience win: if discover blocks
-    # 50% of seeds, refresh.refresh_from_history() pulls those known
-    # pathnames from yesterday's snapshot and updates them via fat GraphQL
-    # (watchesCount + state + backersCount + pledged_usd + percentFunded).
-    # The sanity gate's "project count dropped" threshold can no longer
-    # fire on partial discover failures — we always have yesterday's
-    # baseline as a safety net.
-    refresh_result = None
-    try:
-        # Open a fresh transport so refresh doesn't reuse a possibly-tainted
-        # session from the discover crawl. (ks_transport is already closed
-        # above in the finally block.)
-        refresh_result = _refresh.refresh_from_history(verbose=True)
-    except Exception as e:
-        print(f"  refresh supplement skipped: {e}")
-    if refresh_result is not None:
-        refreshed_projects, _refresh_summary = refresh_result
-        existing_paths = {r.get("pathname") for r in rows}
-        supplement = []
-        for rp in refreshed_projects:
-            p = rp.get("pathname")
-            if not p or p in existing_paths:
-                continue  # already in today's discover output — skip
-            # Yesterday knew this project, today's discover missed it.
-            # Carry yesterday's record forward with refreshed dynamic fields.
-            supplement.append(rp)
-        if supplement:
-            rows.extend(supplement)
-            print(
-                f"  refresh: supplemented {len(supplement)} yesterday-known "
-                f"projects that today's discover missed"
-            )
+    # Merge per field: a fresh discovered amount must survive a failed GraphQL
+    # refresh, and a successful GraphQL watcher must survive a discover hit.
+    prior = _refresh.latest_history_snapshot() or {}
+    prior_by_path = {p.get("pathname"): p for p in prior.get("projects", [])}
+    refreshed = {p.get("pathname"): p for p in refresh_result[0]} if refresh_result else {}
+    restored = 0
+    for row in rows:
+        path = row["pathname"]
+        old = prior_by_path.get(path, {})
+        update = refreshed.pop(path, {})
+        for key in METRICS:
+            current_meta = row.get("observations", {}).get(key, {})
+            update_meta = update.get("observations", {}).get(key, {})
+            if update_meta.get("status") == "fresh" and (
+                current_meta.get("status") != "fresh" or
+                update_meta.get("observed_at", "") > current_meta.get("observed_at", "")
+            ):
+                row[key] = update[key]
+                row["observations"][key] = update_meta
+            elif current_meta.get("status") != "fresh":
+                carry(row, old, key, at=now_iso(), reason=current_meta.get("reason", "source_missing"))
+                restored += key == "followers" and row[key] is not None
+        if update.get("status_observation", {}).get("status") == "fresh":
+            row["status"] = update["status"]
+            row["status_observation"] = update["status_observation"]
+    existing = {p["pathname"] for p in rows}
+    for path, old in prior_by_path.items():
+        if path and path not in existing:
+            rows.append(refreshed.get(path) or carry_row(old, at=now_iso()))
+    health.watches_restored_from_prev(restored)
+    print(f"  retained {restored} historical watcher values with original observation times")
 
     # Auto-translate any rows still missing blurb_zh (no-op if no API key).
     # Mutates rows in-place to add blurb_zh; updates data/blurbs_zh.json.
@@ -305,14 +330,14 @@ def run() -> int:
     momentum_summary = compute_deltas(rows)
     if momentum_summary.get("delta_seconds"):
         hrs = momentum_summary["delta_seconds"] / 3600
-        n_with_delta = sum(1 for r in rows if "delta_pledged_usd" in r)
+        n_with_delta = sum(1 for r in rows if r.get("delta_pledged_usd") is not None)
         print(f"  computed Δ vs snapshot {hrs:.1f}h ago for {n_with_delta} projects")
 
     # Compute weekly Δ (7-day rolling window). Surfaces sustained growth
     # vs daily noise. No-op until history is at least 5 days old.
     weekly_summary = compute_weekly_deltas(rows)
     if weekly_summary.get("age_days"):
-        n_weekly = sum(1 for r in rows if "weekly_delta_pledged_usd" in r)
+        n_weekly = sum(1 for r in rows if r.get("weekly_delta_pledged_usd") is not None)
         print(
             f"  computed weekly Δ vs snapshot {weekly_summary['age_days']}d ago "
             f"for {n_weekly} projects"
@@ -320,6 +345,7 @@ def run() -> int:
 
     finished = now_iso()
     out = {
+        "schema_version": 2,
         "generated_at": finished,
         "started_at": started,
         "total_candidates": len(hits),
@@ -327,12 +353,21 @@ def run() -> int:
         "projects": rows,
     }
 
+    out["data_quality"] = assess(out)
+    health.set_quality(out["data_quality"])
+    if out["data_quality"]["status"] != "healthy":
+        print("DATA REFRESH DEGRADED: " + "; ".join(out["data_quality"]["issues"]))
+
     DATA.mkdir(parents=True, exist_ok=True)
     HISTORY.mkdir(parents=True, exist_ok=True)
 
     # Always write the history snapshot — useful for debugging even when the
     # main file is locked behind the safety guard.
     snap_path = HISTORY / f"{finished.replace(':', '-')}.json"
+    attempt = 1
+    while snap_path.exists():
+        snap_path = HISTORY / f"{finished.replace(':', '-')}_attempt{attempt:03d}.json"
+        attempt += 1
     write_json_atomic(snap_path, out)
 
     if len(rows) < MIN_KEPT_FLOOR:
@@ -358,7 +393,8 @@ def run() -> int:
                                   changes_to_markdown(diffs))
                 print(f"  wrote CHANGELOG.md with {len(diffs)} changes")
             else:
-                print("  no changes since last run")
+                write_text_atomic(REPO_ROOT / "CHANGELOG.md", changes_to_markdown([]))
+                print("  no comparable changes since last run")
         except Exception as e:
             print(f"  diff skipped: {e}")
 
@@ -419,15 +455,8 @@ def run() -> int:
     except Exception as e:
         print(f"  carousel skipped: {e}")
 
-    # Prune dated archives older than retention thresholds (keeps repo
-    # cloneable as the daily PNG/PDF/history archives accumulate).
-    try:
-        counts = prune_archives()
-        n = sum(counts.values())
-        if n > 0:
-            print(f"  cleanup: pruned {n} stale dated artifact(s)")
-    except Exception as e:
-        print(f"  cleanup skipped: {e}")
+    # Retention is deliberately separate from collection/recovery. A retry
+    # must never remove the evidence needed to diagnose an earlier attempt.
 
     # Generate today's Markdown report (compares against snaps[-2])
     try:

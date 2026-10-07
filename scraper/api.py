@@ -59,14 +59,20 @@ import json
 from pathlib import Path
 
 from ._common import edition_number
+from .observations import is_fresh
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 API_DIR = REPO_ROOT / "site" / "api"
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 
 # Whitelist of project fields exposed in the public API.
 # Adding a field is safe; removing one is a breaking change.
 PUBLIC_PROJECT_FIELDS = [
+    "observations",
+    "delta_meta",
+    "status_observation",
+    "native_currency",
+    "static_usd_rate",
     "pathname",
     "title",
     "blurb_zh",
@@ -125,7 +131,10 @@ def build_payload(curr: dict) -> dict:
     counts["total"] = len(projects)
     counts["pwl"] = pwl
 
+    if curr.get("schema_version", 1) >= 2 and any(not is_fresh(p, "pledged_usd") for p in projects if p.get("status") == "live"):
+        total_live_usd = None
     return {
+        "data_quality": curr.get("data_quality"),
         "schema_version": SCHEMA_VERSION,
         "generated_at": curr.get("generated_at")
             or dt.datetime.now(dt.UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),

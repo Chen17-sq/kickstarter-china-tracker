@@ -1,9 +1,22 @@
 """Tests for diff.py — snapshot diffing + changelog rendering."""
 from __future__ import annotations
 
+import datetime as dt
+
 import pytest
 
-from scraper.diff import changes_to_markdown, diff_snapshots
+from scraper.diff import changes_to_markdown
+from scraper.diff import diff_snapshots as real_diff_snapshots
+from scraper.observations import observe
+
+
+def diff_snapshots(prev, curr):
+    for days, snapshot in ((1, prev), (0, curr)):
+        at = (dt.datetime.now(dt.UTC) - dt.timedelta(days=days)).isoformat()
+        for p in snapshot["projects"]:
+            for key in ("followers", "backers"):
+                observe(p, key, p.get(key), at=at, source="fixture")
+    return real_diff_snapshots(prev, curr)
 
 
 def _snap(projects):
