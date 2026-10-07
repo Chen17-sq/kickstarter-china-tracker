@@ -74,3 +74,25 @@ def write_versioned_text(path: Path, content: str) -> Path:
     else:
         write_text_atomic(target, content)
     return target
+
+
+def archive_files(directory: Path, sources: list[Path]) -> Path:
+    """Immutable dated binary exports, with content-addressed rerun revisions."""
+    import shutil
+    files = {p.name: p.read_bytes() for p in sources}
+    def matches(target):
+        return target.exists() and {p.name: p.read_bytes() for p in target.iterdir() if p.is_file()} == files
+    if matches(directory):
+        return directory
+    if directory.exists():
+        digest = hashlib.sha256(b"".join(name.encode() + hashlib.sha256(data).digest()
+                                        for name, data in sorted(files.items()))).hexdigest()[:16]
+        directory = directory.with_name(directory.name + "-revision-" + digest)
+    if directory.exists():
+        if not matches(directory):
+            raise ValueError("archive revision collision; refusing to overwrite")
+        return directory
+    directory.mkdir(parents=True)
+    for source in sources:
+        shutil.copy2(source, directory / source.name)
+    return directory

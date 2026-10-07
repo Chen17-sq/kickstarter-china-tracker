@@ -49,6 +49,8 @@ def execute(scenario):
                     continue  # explicitly absent baseline
                 observe(row, key, value, at=at, source="fixture",
                         basis="native_usd" if key == "pledged_usd" else key)
+            if scenario == "currency" and i != 2:
+                observe(row, "pledged_native", 8000, at=at, source="fixture", unit="HKD", basis="native_pledged:HKD")
             row["delta_pledged_usd"] = 99999  # must not leak from carry-forward
             rows.append(row)
         snapshot = {"generated_at": at, "schema_version": 2, "projects": rows}
@@ -56,7 +58,7 @@ def execute(scenario):
     (run.DATA / "projects.json").write_text(json.dumps(snapshot))
 
     def crawl():
-        if scenario == "all-failed":
+        if scenario in {"all-failed", "currency"}:
             return {}
         hits = {}
         for i in range(30 if scenario in {"healthy", "recovery"} else 20):
@@ -85,12 +87,12 @@ def execute(scenario):
                     data[key] = None
                     continue
                 if body["operationName"] == "Pledges":
-                    data[key] = {"rewards": {"nodes": [{"amount": {"amount": 10, "currency": "USD"}}]}}
+                    data[key] = {"currency": "HKD" if scenario == "currency" else "USD", "usdExchangeRate": .13 if i == 1 else .125, "rewards": {"pageInfo": {"hasNextPage": False, "endCursor": None}, "nodes": [{"amount": {"amount": 80 if scenario == "currency" else 10, "currency": "HKD" if scenario == "currency" else "USD"}}]}}
                 else:
-                    data[key] = {"watchesCount": 100 if i == 0 else 110 + i,
+                    data[key] = {"currency": "HKD" if scenario == "currency" else "USD", "usdExchangeRate": .13 if i == 1 else .125, "watchesCount": 100 if i == 0 else 110 + i,
                                  "backersCount": 10 if i == 0 else 11 + i,
                                  "state": "LIVE" if i < 15 else "SUBMITTED",
-                                 "pledged": {"amount": 1000 if i == 0 else 1050 + i, "currency": "USD"},
+                                 "pledged": {"amount": (1000 if i == 0 else 1050 + i) * (8 if scenario == "currency" else 1), "currency": "HKD" if scenario == "currency" else "USD"},
                                  "percentFunded": 200}
             return 200, {"data": data, "errors": errors}
 
@@ -118,7 +120,7 @@ def execute(scenario):
         assert all(p["observations"]["pledged_usd"]["status"] != "fresh" for p in result["projects"])
     else:
         assert by_id["Fixture 00"]["delta_pledged_usd"] == 0
-        assert by_id["Fixture 01"]["delta_pledged_usd"] == 51
+        assert abs(by_id["Fixture 01"]["delta_pledged_usd"] - (53.04 if scenario == "currency" else 51)) < .00001
         assert by_id["Fixture 02"]["delta_pledged_usd"] is None
         if scenario == "partial":
             # Known project omitted by discovery must still refresh reward tiers.
@@ -131,7 +133,6 @@ def execute(scenario):
     assert email_notify.main(["--dry-run"]) == 0
     site = run.REPO_ROOT / "site"
     shutil.copytree(run.DATA, site / "data", dirs_exist_ok=True)
-    (site / "data" / "subscribers.json").write_text('{"subscribers": [], "fixture": true}')
     shutil.copy(run.DATA / ".tmp" / "email_preview.html", site / "email_preview.html")
     integrity = {**result, "projects": [by_id[f"Fixture {i:02d}"] for i in (0, 1, 2, 21)]}
     _, integrity_html = email_notify.build_html(integrity)
@@ -147,7 +148,7 @@ def execute(scenario):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--scenario", choices=["all-failed", "partial", "healthy", "recovery"], default="partial")
+    ap.add_argument("--scenario", choices=["all-failed", "partial", "healthy", "recovery", "currency"], default="partial")
     ap.add_argument("--output", type=Path)
     ap.add_argument("--execute-isolated", action="store_true", help=argparse.SUPPRESS)
     args = ap.parse_args()

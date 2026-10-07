@@ -170,10 +170,12 @@ function escapeHtml(s) {
 function freshMetric(d, key) {
   const m = (d.observations || {})[key] || {};
   const age = (Date.now() - Date.parse(m.observed_at)) / 3600000;
-  return m.status === "fresh" && Number.isFinite(age) && age >= 0 && age <= 30;
+  return m.status === "fresh" && Number.isFinite(age) && age >= 0 && age <= 30 && d[key] != null && Number.isFinite(Number(d[key]));
 }
 function metricValue(d, key) {
+  if (key === "min_pledge_usd" && ((d.observations || {})[key] || {}).reason === "no_rewards") return LANG === "zh" ? "暂无档位" : "No reward tiers";
   if (!freshMetric(d, key)) return LANG === "zh" ? "未更新" : "Not updated";
+  if (key === "min_pledge_usd") return new Intl.NumberFormat("en-US", {style: "currency", currency: "USD"}).format(d[key]);
   return key.endsWith("_usd") ? fmtUSD(d[key]) : fmtNum(d[key]);
 }
 function metricEvidence(d, key) {
@@ -190,10 +192,10 @@ function qualityBanner() {
   const metrics = [["followers", LANG === "zh" ? "预热关注" : "Prelaunch watchers", "prelaunch"], ["backers", LANG === "zh" ? "在筹支持人数" : "Live backers", "live"], ["pledged_usd", LANG === "zh" ? "在筹筹款" : "Live funds raised", "live"], ["min_pledge_usd", LANG === "zh" ? "最低支持档位" : "Minimum pledge tier", "live"]];
   const lines = metrics.map(([key, label, status]) => {
     const rows = DATA.filter(p => p.status === status);
-    return `${label}${LANG === "zh" ? "：本次有效刷新 " : ": refreshed "}${rows.filter(p => freshMetric(p, key)).length}/${rows.length}${LANG === "zh" ? "；可比日增量 " : "; comparable daily changes "}${rows.filter(p => freshMetric(p, key) && ((p.delta_meta || {})["delta_" + key] || {}).status === "valid").length}/${rows.length}`;
+    return `${label}${LANG === "zh" ? "：本次有效刷新 " : ": refreshed "}${rows.filter(p => freshMetric(p, key)).length}/${rows.length}${key === "min_pledge_usd" ? "" : (LANG === "zh" ? "；可比日增量 " : "; comparable daily changes ") + rows.filter(p => freshMetric(p, key) && ((p.delta_meta || {})["delta_" + key] || {}).status === "valid").length + "/" + rows.length}`;
   });
   const el = document.getElementById("data-quality");
-  if (el) el.innerHTML = `<h2 style="font-size:16px;margin:0">${LANG === "zh" ? "数据刷新与邮件送达分别统计" : "Data refresh and email delivery are separate"}</h2><br>${lines.join("<br>")}<br>${LANG === "zh" ? "未更新值仅为历史参考；生成时间不代表观测时间。" : "Old values are historical references. Build time is not observation time."}`;
+  if (el) el.innerHTML = `<h2 style="font-size:16px;margin:0">${LANG === "zh" ? "数据刷新与邮件送达分别统计" : "Data refresh and email delivery are separate"}</h2><br>${lines.join("<br>")}<br><a href="./corrections.html">历史日报勘误 / Historical corrections</a><br>${LANG === "zh" ? "未更新值仅为历史参考；生成时间不代表观测时间。跨币种增量按本次平台汇率折算原币变化。" : "Old values are historical references. Build time is not observation time. Cross-currency growth uses native changes at the current project USD rate."}`;
 }
 
 // $/watcher — meaningful for live + ended; null when no watchers data.
@@ -308,7 +310,7 @@ function rowHtml(d) {
   const cpwStr = (cpw && (d.status === "live" || d.status === "successful"))
     ? `${fmtUSD(cpw)}/W` : "";
   const projStr = proj ? `Proj. ${fmtUSD(proj)}` : "";
-  const priceStr = d.min_pledge_usd ? `起步价 ${metricValue(d, "min_pledge_usd")}` : "";
+  const priceStr = `起步价 ${metricValue(d, "min_pledge_usd")}`;
   const meta = [tl, company, loc, cat, priceStr, cpwStr, projStr].filter(Boolean).join(" · ");
   const b = blurbInfo(d);
   const blurbHtml = b.text
@@ -335,7 +337,7 @@ function rowHtml(d) {
       ${blurbHtml}
       <div class="cell-meta">${meta}</div>
     </td>
-    <td><span class="status ${status}">${escapeHtml(t().statuses[status] || status)}</span></td>
+    <td><span class="status ${status}">${escapeHtml(t().statuses[status] || status)}${((d.status_observation || {}).status !== "fresh" || !Number.isFinite(Date.parse(d.status_observation.observed_at)) || Date.now() - Date.parse(d.status_observation.observed_at) > 30*3600000) ? (LANG === "zh" ? " · 待确认" : " · Unverified") : ""}</span></td>
     <td class="hide-sm">
       <span class="conf ${d.china_confidence === "高" ? "high" : ""}">${escapeHtml(d.china_confidence || "?")}</span>
       <div class="country">${escapeHtml(countryLabel(d.country))}</div>
@@ -424,10 +426,11 @@ function renderHero() {
     langZh ? `共 ${totalPre} 项` : `${totalPre} TOTAL`;
   document.getElementById("heroLiveLabel").textContent =
     langZh ? "🔴 在筹中 · 已筹 Top 10" : "🔴 Live · Top 10 by USD Raised";
+  const liveUsdText = DATA.some(p => p.status === "live" && !freshMetric(p, "pledged_usd")) ? (langZh ? "未更新" : "Not updated") : fmtUSD(liveUsdTotal);
   document.getElementById("heroLiveMeta").textContent =
     langZh
-      ? `共 ${totalLive} 项 · 合计 ${fmtUSD(liveUsdTotal)}`
-      : `${totalLive} · ${fmtUSD(liveUsdTotal)} TOTAL`;
+      ? `共 ${totalLive} 项 · 合计 ${liveUsdText}`
+      : `${totalLive} · ${liveUsdText} TOTAL`;
 
   function story(rank, p, kind) {
     const url = escapeHtml(p.url || "#");
@@ -439,9 +442,7 @@ function renderHero() {
     const blurbHtml = blurb ? `<div class="blurb">${blurb}</div>` : "";
     const brand = escapeHtml(brandLabel(p));
     const country = escapeHtml(countryLabel(p.country));
-    const price = p.min_pledge_usd
-      ? `${langZh ? "起步价" : "MIN"} ${fmtUSD(p.min_pledge_usd)}`
-      : "";
+    const price = `${langZh ? "起步价" : "MIN"} ${metricValue(p, "min_pledge_usd")}`;
     const smeta = [brand, country, price].filter(Boolean).join(" · ");
     const smetaHtml = smeta ? `<div class="smeta">${smeta}</div>` : "";
 

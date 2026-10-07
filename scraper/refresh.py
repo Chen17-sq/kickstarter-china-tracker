@@ -11,6 +11,7 @@ from pathlib import Path
 
 from . import health
 from .graphql import CATALOG_BATCH_SIZE, fetch_projects
+from .money import observe_money, to_usd
 from .observations import carry_row, number, observe, timestamp
 from .project import (
     _open_transport,
@@ -37,11 +38,13 @@ STATE_MAP = {
 # per field) but bloats response size.
 FAT_QUERY_FIELDS = """
     watchesCount
+    currency
+    usdExchangeRate
     state
     backersCount
     pledged { amount currency }
     percentFunded
-    goal { amount }
+    goal { amount currency }
     deadlineAt
 """
 
@@ -110,12 +113,13 @@ def fetch_fat_graphql(
             goal = goal if isinstance(goal, dict) else {}
             out[slug] = {
                 "_error": response["error"],
+                "currency": obj.get("currency"), "usd_exchange_rate": number(obj.get("usdExchangeRate")),
                 "watchesCount": obj.get("watchesCount"), "state": obj.get("state"),
                 "backersCount": obj.get("backersCount"),
                 "pledged_amt": number(pledged.get("amount")),
                 "pledged_currency": pledged.get("currency"),
                 "percentFunded": obj.get("percentFunded"),
-                "goal_amt": number(goal.get("amount")), "deadlineAt": obj.get("deadlineAt"),
+                "goal_amt": number(goal.get("amount")), "goal_currency": goal.get("currency"), "deadlineAt": obj.get("deadlineAt"),
                 "observed_at": response.get("observed_at"),
             }
         if verbose:
@@ -161,14 +165,14 @@ def apply_refresh(
         if currency:
             observe(new, "pledged_native", fresh.get("pledged_amt"), at=at,
                     source="ks_graphql", unit=currency, basis="native_pledged:" + currency)
-            rate = orig.get("static_usd_rate") if orig.get("native_currency") == currency else None
-            if currency == "USD":
-                rate = 1
-            amount = number(fresh.get("pledged_amt"))
-            if amount is not None and number(rate) is not None and number(rate) > 0:
-                observe(new, "pledged_usd", amount * rate, at=at, source="ks_graphql",
-                        basis="native_usd" if currency == "USD" else f"static_usd:{currency}:{rate}")
-                any_fresh = True
+            converted = to_usd(fresh.get("pledged_amt"), currency,
+                               fresh.get("currency"), fresh.get("usd_exchange_rate"))
+            any_fresh |= observe_money(new, "pledged_usd", converted, at=at, source="ks_graphql")
+        if fresh.get("currency"):
+            new["native_currency"] = fresh["currency"]
+        any_fresh |= observe_money(new, "goal_usd", to_usd(
+            fresh.get("goal_amt"), fresh.get("goal_currency"), fresh.get("currency"),
+            fresh.get("usd_exchange_rate")), at=at, source="ks_graphql")
         if fresh.get("state") in STATE_MAP:
             mapped = STATE_MAP[fresh["state"]]
             state_changes += mapped != orig.get("status")

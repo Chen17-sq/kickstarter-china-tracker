@@ -26,8 +26,10 @@ import datetime as dt
 import json
 import shutil
 import sys
+import tempfile
 from pathlib import Path
 
+from .atomic import archive_files
 from .observations import metric_text
 from .quality import assess
 
@@ -273,7 +275,7 @@ def _detail_row(rank: int, p: dict, *, kind: str, hl_map: dict) -> str:
                color:{N500};letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px">
             {star}{brand} &nbsp;·&nbsp; {country}
           </div>
-          {f'<div style="font-family:Inter,sans-serif;font-size:11px;font-weight:700;color:{INK};letter-spacing:.04em;margin-bottom:8px">起步价 <span style="color:{RED}">{metric_text(p, "min_pledge_usd")}</span></div>' if p.get("min_pledge_usd") else ""}
+          {f'<div style="font-family:Inter,sans-serif;font-size:11px;font-weight:700;color:{INK};letter-spacing:.04em;margin-bottom:8px">起步价 <span style="color:{RED}">{metric_text(p, "min_pledge_usd")}</span></div>' if "min_pledge_usd" in p else ""}
           <h3 style="font-family:'Playfair Display',serif;font-size:24px;font-weight:900;
               line-height:1.15;letter-spacing:-.5px;color:{INK};margin:0 0 6px">{title}</h3>
           <div style="font-family:'Lora','Songti SC',serif;font-style:italic;font-size:14px;
@@ -600,33 +602,26 @@ def generate_carousel() -> list[Path] | None:
     ]
 
     latest_dir = SOCIAL / "latest"
-    latest_dir.mkdir(parents=True, exist_ok=True)
-    # Wipe old slides in latest/ so we don't keep stale ones
-    for old in latest_dir.glob("slide-*.png"):
-        old.unlink()
-
-    paths: list[Path] = []
-    htmls: list[str] = []
-    for num, html in slides:
-        p = latest_dir / f"slide-{num}.png"
-        paths.append(p)
-        htmls.append(html)
-
-    try:
-        asyncio.run(_render_pngs(htmls, paths))
-    except Exception as e:
-        print(f"  social: render failed ({e})", file=sys.stderr)
-        return None
-
-    # Also archive dated copy
-    dated_dir = SOCIAL / today
-    dated_dir.mkdir(parents=True, exist_ok=True)
-    for p in paths:
-        shutil.copy2(p, dated_dir / p.name)
-
-    # Build a Newsprint-styled index page that previews + links the 9 slides
+    with tempfile.TemporaryDirectory(prefix="ks-carousel-") as staging:
+        staged = [Path(staging) / f"slide-{num}.png" for num, _ in slides]
+        try:
+            asyncio.run(_render_pngs([html for _, html in slides], staged))
+            if not all(p.exists() and p.stat().st_size for p in staged):
+                raise ValueError("incomplete render")
+            archive_files(SOCIAL / today, staged)
+        except Exception as e:
+            print(f"  social: render failed ({e})", file=sys.stderr)
+            return None
+        # Publish only after every slide and its immutable archive are complete.
+        latest_dir.mkdir(parents=True, exist_ok=True)
+        for source in staged:
+            shutil.copy2(source, latest_dir / source.name)
+        expected = {p.name for p in staged}
+        for old in latest_dir.glob("slide-*.png"):
+            if old.name not in expected:
+                old.unlink()
+        paths = [latest_dir / p.name for p in staged]
     _write_carousel_index(latest_dir, today, edition, len(paths))
-
     return paths
 
 

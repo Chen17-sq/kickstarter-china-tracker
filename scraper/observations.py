@@ -61,9 +61,10 @@ def carry(row, previous, key, *, at, reason="fetch_failed"):
     if value is not None and key in ("followers", "backers"):
         value = int(value) if value.is_integer() else None
     row[key] = value
+    missing = reason in {"source_missing", "no_rewards", "currency_conversion_unavailable"}
     old.update(status="stale" if value is not None else (
-        "missing" if reason == "source_missing" else "failed"),
-        attempt_status="missing" if reason == "source_missing" else "failed",
+        "missing" if missing else "failed"),
+        attempt_status="missing" if missing else "failed",
         attempted_at=at, reason=reason)
     old.setdefault("observed_at", None)
     old.setdefault("source", "legacy_unknown")
@@ -96,6 +97,19 @@ def is_fresh(row, key, now=None):
 def comparable_delta(current, baseline, key, *, days=1, now=None):
     """Return (value, evidence). Missing/legacy/incomparable evidence yields None."""
     cm = (current.get("observations") or {}).get(key) or {}
+    conversion = cm.get("conversion") or {}
+    if key == "pledged_usd" and is_fresh(current, key, now) and conversion and conversion.get("currency") != "USD":
+        native_meta = current.get("observations", {}).get("pledged_native", {})
+        rate = number(conversion.get("rate"))
+        if (conversion.get("source") == "ks_project_usd_exchange_rate" and rate and
+                conversion.get("observed_at") == cm.get("observed_at") == native_meta.get("observed_at") and
+                conversion.get("currency") == native_meta.get("unit") and
+                number(conversion.get("native_amount")) == number(current.get("pledged_native"))):
+            value, evidence = comparable_delta(current, baseline, "pledged_native", days=days, now=now)
+            evidence.update(method="constant_currency", currency=conversion["currency"],
+                            usd_rate=rate, rate_observed_at=conversion["observed_at"])
+            return (None if value is None else value * rate), evidence
+
     bm = (baseline.get("observations") or {}).get(key) or {}
     evidence = {"status": "unavailable", "reason": None,
                 "from": bm.get("observed_at"), "to": cm.get("observed_at")}
@@ -122,9 +136,15 @@ def comparable_delta(current, baseline, key, *, days=1, now=None):
 
 
 def metric_text(row, key):
-    from ._common import fmt_int, fmt_usd
+    from ._common import fmt_int, fmt_pct, fmt_usd
+    if key == "min_pledge_usd" and row.get("observations", {}).get(key, {}).get("reason") == "no_rewards":
+        return "暂无档位"
     if not is_fresh(row, key):
         return "未更新"
+    if key == "min_pledge_usd":
+        return f"${row[key]:,.2f}"
+    if key == "percent_funded":
+        return fmt_pct(row[key])
     return (fmt_usd if key.endswith("_usd") else fmt_int)(row.get(key))
 
 
@@ -145,3 +165,4 @@ class FetchResults(dict):
         super().__init__((s, None) for s in slugs)
         self.errors = dict.fromkeys(slugs, "fetch_failed")
         self.observed_at = {}
+        self.money = {}

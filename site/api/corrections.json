@@ -1,0 +1,1580 @@
+{
+  "generated_at": "2026-10-07T11:27:43.610528+00:00",
+  "cutoff": "2026-10-07",
+  "policy": "originals_preserved_no_historical_growth_imputed",
+  "entries": [
+    {
+      "date": "2026-04-25",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-04-25.md"
+    },
+    {
+      "date": "2026-04-26",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-04-26.md"
+    },
+    {
+      "date": "2026-04-27",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-04-27.md"
+    },
+    {
+      "date": "2026-04-28",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-04-28.md"
+    },
+    {
+      "date": "2026-04-29",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-04-29.md"
+    },
+    {
+      "date": "2026-04-30",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-04-30.md"
+    },
+    {
+      "date": "2026-05-01",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-01.md"
+    },
+    {
+      "date": "2026-05-02",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-02.md"
+    },
+    {
+      "date": "2026-05-03",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-03.md"
+    },
+    {
+      "date": "2026-05-04",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-04.md"
+    },
+    {
+      "date": "2026-05-05",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-05.md"
+    },
+    {
+      "date": "2026-05-06",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-06.md"
+    },
+    {
+      "date": "2026-05-07",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-07.md"
+    },
+    {
+      "date": "2026-05-08",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-08.md"
+    },
+    {
+      "date": "2026-05-09",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-09.md"
+    },
+    {
+      "date": "2026-05-10",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-10.md"
+    },
+    {
+      "date": "2026-05-11",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-11.md"
+    },
+    {
+      "date": "2026-05-12",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-12.md"
+    },
+    {
+      "date": "2026-05-13",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-13.md"
+    },
+    {
+      "date": "2026-05-14",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-14.md"
+    },
+    {
+      "date": "2026-05-15",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-15.md"
+    },
+    {
+      "date": "2026-05-16",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-16.md"
+    },
+    {
+      "date": "2026-05-17",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-17.md"
+    },
+    {
+      "date": "2026-05-18",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-18.md"
+    },
+    {
+      "date": "2026-05-19",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-19.md"
+    },
+    {
+      "date": "2026-05-20",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-20.md"
+    },
+    {
+      "date": "2026-05-21",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-21.md"
+    },
+    {
+      "date": "2026-05-22",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-22.md"
+    },
+    {
+      "date": "2026-05-23",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-23.md"
+    },
+    {
+      "date": "2026-05-24",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-24.md"
+    },
+    {
+      "date": "2026-05-25",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-25.md"
+    },
+    {
+      "date": "2026-05-26",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-26.md"
+    },
+    {
+      "date": "2026-05-27",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-27.md"
+    },
+    {
+      "date": "2026-05-28",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-28.md"
+    },
+    {
+      "date": "2026-05-29",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-29.md"
+    },
+    {
+      "date": "2026-05-30",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-30.md"
+    },
+    {
+      "date": "2026-05-31",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-05-31.md"
+    },
+    {
+      "date": "2026-06-01",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-01.md"
+    },
+    {
+      "date": "2026-06-02",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-02.md"
+    },
+    {
+      "date": "2026-06-03",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-03.md"
+    },
+    {
+      "date": "2026-06-04",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-04.md"
+    },
+    {
+      "date": "2026-06-05",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-05.md"
+    },
+    {
+      "date": "2026-06-06",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-06.md"
+    },
+    {
+      "date": "2026-06-07",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-07.md"
+    },
+    {
+      "date": "2026-06-08",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-08.md"
+    },
+    {
+      "date": "2026-06-09",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-09.md"
+    },
+    {
+      "date": "2026-06-10",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-10.md"
+    },
+    {
+      "date": "2026-06-12",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-12.md"
+    },
+    {
+      "date": "2026-06-13",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-13.md"
+    },
+    {
+      "date": "2026-06-14",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-14.md"
+    },
+    {
+      "date": "2026-06-15",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-15.md"
+    },
+    {
+      "date": "2026-06-16",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-16.md"
+    },
+    {
+      "date": "2026-06-17",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-17.md"
+    },
+    {
+      "date": "2026-06-18",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-18.md"
+    },
+    {
+      "date": "2026-06-21",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-21.md"
+    },
+    {
+      "date": "2026-06-22",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-22.md"
+    },
+    {
+      "date": "2026-06-23",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-23.md"
+    },
+    {
+      "date": "2026-06-24",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-24.md"
+    },
+    {
+      "date": "2026-06-25",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-25.md"
+    },
+    {
+      "date": "2026-06-26",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-26.md"
+    },
+    {
+      "date": "2026-06-27",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-27.md"
+    },
+    {
+      "date": "2026-06-28",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-28.md"
+    },
+    {
+      "date": "2026-06-29",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-29.md"
+    },
+    {
+      "date": "2026-06-30",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-06-30.md"
+    },
+    {
+      "date": "2026-07-01",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-01.md"
+    },
+    {
+      "date": "2026-07-03",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-03.md"
+    },
+    {
+      "date": "2026-07-04",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-04.md"
+    },
+    {
+      "date": "2026-07-05",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-05.md"
+    },
+    {
+      "date": "2026-07-06",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-06.md"
+    },
+    {
+      "date": "2026-07-07",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-07.md"
+    },
+    {
+      "date": "2026-07-08",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-08.md"
+    },
+    {
+      "date": "2026-07-09",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-09.md"
+    },
+    {
+      "date": "2026-07-10",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-10.md"
+    },
+    {
+      "date": "2026-07-11",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-11.md"
+    },
+    {
+      "date": "2026-07-12",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-12.md"
+    },
+    {
+      "date": "2026-07-13",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-13.md"
+    },
+    {
+      "date": "2026-07-14",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-14.md"
+    },
+    {
+      "date": "2026-07-15",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-15.md"
+    },
+    {
+      "date": "2026-07-16",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-16.md"
+    },
+    {
+      "date": "2026-07-18",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-18.md"
+    },
+    {
+      "date": "2026-07-19",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-19.md"
+    },
+    {
+      "date": "2026-07-20",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-20.md"
+    },
+    {
+      "date": "2026-07-21",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-21.md"
+    },
+    {
+      "date": "2026-07-22",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-22.md"
+    },
+    {
+      "date": "2026-07-24",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-24.md"
+    },
+    {
+      "date": "2026-07-25",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-25.md"
+    },
+    {
+      "date": "2026-07-26",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-26.md"
+    },
+    {
+      "date": "2026-07-28",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-28.md"
+    },
+    {
+      "date": "2026-07-29",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-29.md"
+    },
+    {
+      "date": "2026-07-30",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-30.md"
+    },
+    {
+      "date": "2026-07-31",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-07-31.md"
+    },
+    {
+      "date": "2026-08-01",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-01.md"
+    },
+    {
+      "date": "2026-08-03",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-03.md"
+    },
+    {
+      "date": "2026-08-04",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-04.md"
+    },
+    {
+      "date": "2026-08-05",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-05.md"
+    },
+    {
+      "date": "2026-08-06",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-06.md"
+    },
+    {
+      "date": "2026-08-07",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-07.md"
+    },
+    {
+      "date": "2026-08-08",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-08.md",
+      "original_edition": "editions/2026-08-08.html"
+    },
+    {
+      "date": "2026-08-09",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-09.md",
+      "original_edition": "editions/2026-08-09.html"
+    },
+    {
+      "date": "2026-08-10",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-10.md",
+      "original_edition": "editions/2026-08-10.html"
+    },
+    {
+      "date": "2026-08-11",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-11.md",
+      "original_edition": "editions/2026-08-11.html"
+    },
+    {
+      "date": "2026-08-12",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-12.md",
+      "original_edition": "editions/2026-08-12.html"
+    },
+    {
+      "date": "2026-08-14",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-14.md",
+      "original_edition": "editions/2026-08-14.html"
+    },
+    {
+      "date": "2026-08-15",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-15.md",
+      "original_edition": "editions/2026-08-15.html"
+    },
+    {
+      "date": "2026-08-16",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-16.md",
+      "original_edition": "editions/2026-08-16.html"
+    },
+    {
+      "date": "2026-08-17",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-17.md",
+      "original_edition": "editions/2026-08-17.html"
+    },
+    {
+      "date": "2026-08-19",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-19.md",
+      "original_edition": "editions/2026-08-19.html"
+    },
+    {
+      "date": "2026-08-20",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-20.md",
+      "original_edition": "editions/2026-08-20.html"
+    },
+    {
+      "date": "2026-08-21",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-21.md",
+      "original_edition": "editions/2026-08-21.html"
+    },
+    {
+      "date": "2026-08-22",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-22.md",
+      "original_edition": "editions/2026-08-22.html"
+    },
+    {
+      "date": "2026-08-23",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-23.md",
+      "original_edition": "editions/2026-08-23.html"
+    },
+    {
+      "date": "2026-08-24",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-24.md",
+      "original_edition": "editions/2026-08-24.html"
+    },
+    {
+      "date": "2026-08-25",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-25.md",
+      "original_edition": "editions/2026-08-25.html"
+    },
+    {
+      "date": "2026-08-26",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-26.md",
+      "original_edition": "editions/2026-08-26.html"
+    },
+    {
+      "date": "2026-08-27",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-27.md",
+      "original_edition": "editions/2026-08-27.html"
+    },
+    {
+      "date": "2026-08-28",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-28.md",
+      "original_edition": "editions/2026-08-28.html"
+    },
+    {
+      "date": "2026-08-29",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-29.md",
+      "original_edition": "editions/2026-08-29.html"
+    },
+    {
+      "date": "2026-08-30",
+      "status": "observation_evidence_missing",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "缺少字段级原始观测时间，无法可靠重算日／周增长。",
+      "watches": [],
+      "catalog": [],
+      "original_report": "reports/2026-08-30.md",
+      "original_edition": "editions/2026-08-30.html"
+    },
+    {
+      "date": "2026-09-01",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "260/260"
+      ],
+      "catalog": [
+        "34/782"
+      ],
+      "original_report": "reports/2026-09-01.md",
+      "original_edition": "editions/2026-09-01.html"
+    },
+    {
+      "date": "2026-09-02",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "191/191"
+      ],
+      "catalog": [
+        "41/789"
+      ],
+      "original_report": "reports/2026-09-02.md",
+      "original_edition": "editions/2026-09-02.html"
+    },
+    {
+      "date": "2026-09-04",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "261/261"
+      ],
+      "catalog": [
+        "46/794"
+      ],
+      "original_report": "reports/2026-09-04.md",
+      "original_edition": "editions/2026-09-04.html"
+    },
+    {
+      "date": "2026-09-05",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "260/260"
+      ],
+      "catalog": [
+        "10/810"
+      ],
+      "original_report": "reports/2026-09-05.md",
+      "original_edition": "editions/2026-09-05.html"
+    },
+    {
+      "date": "2026-09-06",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "256/256"
+      ],
+      "catalog": [
+        "0/816"
+      ],
+      "original_report": "reports/2026-09-06.md",
+      "original_edition": "editions/2026-09-06.html"
+    },
+    {
+      "date": "2026-09-07",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "258/258"
+      ],
+      "catalog": [
+        "18/818"
+      ],
+      "original_report": "reports/2026-09-07.md",
+      "original_edition": "editions/2026-09-07.html"
+    },
+    {
+      "date": "2026-09-08",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "260/260"
+      ],
+      "catalog": [
+        "20/820"
+      ],
+      "original_report": "reports/2026-09-08.md",
+      "original_edition": "editions/2026-09-08.html"
+    },
+    {
+      "date": "2026-09-09",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "257/257"
+      ],
+      "catalog": [
+        "0/827"
+      ],
+      "original_report": "reports/2026-09-09.md",
+      "original_edition": "editions/2026-09-09.html"
+    },
+    {
+      "date": "2026-09-10",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "261/261"
+      ],
+      "catalog": [
+        "35/833"
+      ],
+      "original_report": "reports/2026-09-10.md",
+      "original_edition": "editions/2026-09-10.html"
+    },
+    {
+      "date": "2026-09-11",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "100/264"
+      ],
+      "catalog": [
+        "44/842"
+      ],
+      "original_report": "reports/2026-09-11.md",
+      "original_edition": "editions/2026-09-11.html"
+    },
+    {
+      "date": "2026-09-12",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "0/265"
+      ],
+      "catalog": [
+        "2/852"
+      ],
+      "original_report": "reports/2026-09-12.md",
+      "original_edition": "editions/2026-09-12.html"
+    },
+    {
+      "date": "2026-09-13",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "262/262"
+      ],
+      "catalog": [
+        "4/854"
+      ],
+      "original_report": "reports/2026-09-13.md",
+      "original_edition": "editions/2026-09-13.html"
+    },
+    {
+      "date": "2026-09-14",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "260/260"
+      ],
+      "catalog": [
+        "8/858"
+      ],
+      "original_report": "reports/2026-09-14.md",
+      "original_edition": "editions/2026-09-14.html"
+    },
+    {
+      "date": "2026-09-15",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "259/259"
+      ],
+      "catalog": [
+        "10/860"
+      ],
+      "original_report": "reports/2026-09-15.md",
+      "original_edition": "editions/2026-09-15.html"
+    },
+    {
+      "date": "2026-09-16",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "103/103"
+      ],
+      "catalog": [
+        "18/868"
+      ],
+      "original_report": "reports/2026-09-16.md",
+      "original_edition": "editions/2026-09-16.html"
+    },
+    {
+      "date": "2026-09-17",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "0/249"
+      ],
+      "catalog": [
+        "0/874"
+      ],
+      "original_report": "reports/2026-09-17.md",
+      "original_edition": "editions/2026-09-17.html"
+    },
+    {
+      "date": "2026-09-18",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "0/249"
+      ],
+      "catalog": [
+        "0/878"
+      ],
+      "original_report": "reports/2026-09-18.md",
+      "original_edition": "editions/2026-09-18.html"
+    },
+    {
+      "date": "2026-09-19",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "0/246"
+      ],
+      "catalog": [
+        "0/888"
+      ],
+      "original_report": "reports/2026-09-19.md",
+      "original_edition": "editions/2026-09-19.html"
+    },
+    {
+      "date": "2026-09-20",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "114/114"
+      ],
+      "catalog": [
+        "0/892"
+      ],
+      "original_report": "reports/2026-09-20.md",
+      "original_edition": "editions/2026-09-20.html"
+    },
+    {
+      "date": "2026-09-21",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "0/174"
+      ],
+      "catalog": [
+        "0/893"
+      ],
+      "original_report": "reports/2026-09-21.md",
+      "original_edition": "editions/2026-09-21.html"
+    },
+    {
+      "date": "2026-09-22",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "239/239"
+      ],
+      "catalog": [
+        "0/898"
+      ],
+      "original_report": "reports/2026-09-22.md",
+      "original_edition": "editions/2026-09-22.html"
+    },
+    {
+      "date": "2026-09-23",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "241/241"
+      ],
+      "catalog": [
+        "1/901"
+      ],
+      "original_report": "reports/2026-09-23.md",
+      "original_edition": "editions/2026-09-23.html"
+    },
+    {
+      "date": "2026-09-24",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "246/246"
+      ],
+      "catalog": [
+        "7/907"
+      ],
+      "original_report": "reports/2026-09-24.md",
+      "original_edition": "editions/2026-09-24.html"
+    },
+    {
+      "date": "2026-09-25",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "242/242"
+      ],
+      "catalog": [
+        "13/913"
+      ],
+      "original_report": "reports/2026-09-25.md",
+      "original_edition": "editions/2026-09-25.html"
+    },
+    {
+      "date": "2026-09-26",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "238/238"
+      ],
+      "catalog": [
+        "20/920"
+      ],
+      "original_report": "reports/2026-09-26.md",
+      "original_edition": "editions/2026-09-26.html"
+    },
+    {
+      "date": "2026-09-27",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "0/235"
+      ],
+      "catalog": [
+        "0/921"
+      ],
+      "original_report": "reports/2026-09-27.md",
+      "original_edition": "editions/2026-09-27.html"
+    },
+    {
+      "date": "2026-09-29",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "0/240"
+      ],
+      "catalog": [
+        "0/923"
+      ],
+      "original_report": "reports/2026-09-29.md",
+      "original_edition": "editions/2026-09-29.html"
+    },
+    {
+      "date": "2026-09-30",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "0/117"
+      ],
+      "catalog": [
+        "0/937"
+      ],
+      "original_report": "reports/2026-09-30.md",
+      "original_edition": "editions/2026-09-30.html"
+    },
+    {
+      "date": "2026-10-01",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "247/247"
+      ],
+      "catalog": [
+        "45/943"
+      ],
+      "original_report": "reports/2026-10-01.md",
+      "original_edition": "editions/2026-10-01.html"
+    },
+    {
+      "date": "2026-10-02",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "0/248"
+      ],
+      "catalog": [
+        "0/957"
+      ],
+      "original_report": "reports/2026-10-02.md",
+      "original_edition": "editions/2026-10-02.html"
+    },
+    {
+      "date": "2026-10-03",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "0/242"
+      ],
+      "catalog": [
+        "0/959"
+      ],
+      "original_report": "reports/2026-10-03.md",
+      "original_edition": "editions/2026-10-03.html"
+    },
+    {
+      "date": "2026-10-04",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "0/249"
+      ],
+      "catalog": [
+        "13/963"
+      ],
+      "original_report": "reports/2026-10-04.md",
+      "original_edition": "editions/2026-10-04.html"
+    },
+    {
+      "date": "2026-10-05",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "0/250"
+      ],
+      "catalog": [
+        "0/967"
+      ],
+      "original_report": "reports/2026-10-05.md",
+      "original_edition": "editions/2026-10-05.html"
+    },
+    {
+      "date": "2026-10-06",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "0/256"
+      ],
+      "catalog": [
+        "0/969"
+      ],
+      "original_report": "reports/2026-10-06.md",
+      "original_edition": "editions/2026-10-06.html"
+    },
+    {
+      "date": "2026-10-07",
+      "status": "collection_incomplete",
+      "daily_and_weekly_growth": "unverifiable",
+      "explanation": "采集日志确认目录刷新不完整；原刊零变化不能作为零增长证据。",
+      "watches": [
+        "0/248"
+      ],
+      "catalog": [
+        "0/980"
+      ],
+      "original_report": "reports/2026-10-07.md",
+      "original_edition": "editions/2026-10-07.html"
+    }
+  ]
+}

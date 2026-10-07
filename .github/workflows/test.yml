@@ -94,3 +94,23 @@ jobs:
         with:
           name: source-probe
           path: /tmp/source-probe.json
+
+  currency-readonly-probe:
+    # One public GraphQL query; no secrets, saved sessions, proxy discovery or data writes.
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright curl_cffi httpx selectolax pyyaml
+      - run: python -m playwright install --with-deps chromium
+      - run: python scripts/currency_probe.py --output /tmp/currency-probe.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: currency-probe
+          path: /tmp/currency-probe.json
