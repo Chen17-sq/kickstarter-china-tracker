@@ -48,7 +48,8 @@
 - `.venv/bin/python -m pytest -q`：**285 passed**，包括新增归档、PDF、独立报告入口回归。
 - `.venv/bin/ruff check scraper`、`git diff --check`通过。
 - 四次隔离全链路回放全部失败/部分失败/健康/恢复重跑：网络0、邮件0，见 `offline-results.json`。
-- 线上首页/统计页已验证新版代码、降级提示及390px布局；刷新后的数据与归档修订版上线后再次核验。
+- 线上首页、统计页、latest日报及归档索引均已复测，390px无横向溢出，修订标题正常换行。公网JSON生成时间与本次快照一致；快照、原版HTML、修订HTML、latest、索引的SHA256均与合并版本一致。
+- PR #8已合并为`38a1745d239b3d0ff69ed4463acaaf002fc563ce`；[最终Pages部署](https://github.com/Chen17-sq/kickstarter-china-tracker/actions/runs/37610031336)成功；[最终四项CI](https://github.com/Chen17-sq/kickstarter-china-tracker/actions/runs/37609815116)通过。既有stats订阅者JSON 404与本次数据链路无关，未将私有订阅者资料公开以消除此错误。
 - 真实邮件服务和Gmail/Outlook客户端未发信验证；HTML预览不能代替客户端认证。
 
 历史范围与勘误建议仍见 README：9/1–10/7的35次完成运行目录均部分失效，其中14天watches为零；更早的保留快照缺少观测证据。保留原日报，仅新增勘误索引或版本修订；不回填无法证明的每日增长，也不自动补发。

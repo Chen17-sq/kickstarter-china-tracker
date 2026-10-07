@@ -636,5 +636,39 @@
         "result": "response"
       }
     ]
+  },
+  "release_commit": "38a1745d239b3d0ff69ed4463acaaf002fc563ce",
+  "pages_run": 37610031336,
+  "public_verification": [
+    {
+      "path": "data/projects.json",
+      "http_status": 200,
+      "matches_deployed_commit": true
+    },
+    {
+      "path": "editions/2026-10-07.html",
+      "http_status": 200,
+      "matches_deployed_commit": true
+    },
+    {
+      "path": "editions/latest.html",
+      "http_status": 200,
+      "matches_deployed_commit": true
+    },
+    {
+      "path": "editions/2026-10-07-revision-e942ac4d0d2c717b.html",
+      "http_status": 200,
+      "matches_deployed_commit": true
+    },
+    {
+      "path": "editions/index.html",
+      "http_status": 200,
+      "matches_deployed_commit": true
+    }
+  ],
+  "original_dated_editions_preserved": {
+    "reports/2026-10-07.md": true,
+    "site/editions/2026-10-07.html": true,
+    "site/editions/2026-10-07.pdf": true
   }
 }
