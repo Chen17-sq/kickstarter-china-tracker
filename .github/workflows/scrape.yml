@@ -27,6 +27,9 @@ jobs:
     # any pathology that would otherwise burn 6h of GH minutes silently.
     # Healthy run: 3-4 min. Outlier with Playwright fallback: ~6 min.
     timeout-minutes: 20
+    env:
+      # Defaults preserve current policy; owner enables gates/pauses delivery.
+      KS_QUALITY_POLICY: ${{ vars.KS_QUALITY_POLICY || 'observe' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -144,7 +147,7 @@ jobs:
         continue-on-error: true
 
       - name: Email notify (optional)
-        if: steps.dedupe.outputs.skip != 'true' && steps.dedupe.outputs.had_snapshot != 'true' && inputs.refresh_only != true && env.RESEND_API_KEY != '' && env.NOTIFY_EMAIL_TO != ''
+        if: steps.dedupe.outputs.skip != 'true' && steps.dedupe.outputs.had_snapshot != 'true' && inputs.refresh_only != true && vars.KS_EMAIL_DELIVERY != 'paused' && env.RESEND_API_KEY != '' && env.NOTIFY_EMAIL_TO != ''
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           NOTIFY_EMAIL_TO: ${{ secrets.NOTIFY_EMAIL_TO }}

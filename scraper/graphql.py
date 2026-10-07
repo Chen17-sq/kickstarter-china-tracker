@@ -54,7 +54,7 @@ def fetch_projects(slugs, *, transport, fields, operation, batch_size, source):
             # Stop this shared session. A smaller query does not cure access
             # denial or rate limiting; do not switch identity or retry here.
             transport._ks_blocked_status = status
-        if status == 200 and isinstance(response, dict):
+        if status in (200, 400) and isinstance(response, dict):
             errors = response.get("errors") or []
             if not isinstance(errors, list) or any(not isinstance(e, dict) for e in errors):
                 errors = [{"message": "invalid errors shape"}]
@@ -66,6 +66,12 @@ def fetch_projects(slugs, *, transport, fields, operation, batch_size, source):
                 midpoint = len(chunk) // 2
                 fetch(chunk[:midpoint])
                 fetch(chunk[midpoint:])
+                return
+            if status == 400:
+                health.fetch_error(source, "http_400", len(chunk))
+                health.graphql_batch(source, len(chunk), 0, "http_400")
+                for slug in chunk:
+                    result[slug]["error"] = "http_400"
                 return
             if isinstance(data, dict):
                 count = 0

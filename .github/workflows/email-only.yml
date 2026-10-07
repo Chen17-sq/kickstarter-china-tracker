@@ -17,6 +17,9 @@ jobs:
   email-only:
     runs-on: ubuntu-latest
     timeout-minutes: 8
+    env:
+      # Defaults preserve current policy; owner enables gates/pauses delivery.
+      KS_QUALITY_POLICY: ${{ vars.KS_QUALITY_POLICY || 'observe' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -35,6 +38,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Send email
+        if: vars.KS_EMAIL_DELIVERY != 'paused'
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           NOTIFY_EMAIL_TO: ${{ secrets.NOTIFY_EMAIL_TO }}

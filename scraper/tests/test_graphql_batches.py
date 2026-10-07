@@ -113,3 +113,22 @@ def test_nodriver_deserializes_explicit_json_string():
         assert transport.post_graphql({}) == (200, {'data': {'p0': {'watchesCount': 0}}})
     finally:
         transport.close()
+
+
+def test_http_400_explicit_complexity_can_split_but_schema_error_cannot():
+    class Server(LimitedServer):
+        def post_graphql(self, body):
+            status, data = super().post_graphql(body)
+            return (400, data) if data.get('errors') else (status, data)
+    limited = Server(limit=10)
+    data = refresh.fetch_fat_graphql([str(i) for i in range(21)], transport=limited, verbose=False)
+    assert all(v['watchesCount'] is not None for v in data.values())
+    class BadSchema:
+        calls = 0
+        def post_graphql(self, body):
+            self.calls += 1
+            return 400, {'errors': [{'message': 'Unknown field'}]}
+    schema = BadSchema()
+    result = refresh.fetch_fat_graphql(['1', '2'], transport=schema, verbose=False)
+    assert schema.calls == 1
+    assert all(v['watchesCount'] is None for v in result.values())
