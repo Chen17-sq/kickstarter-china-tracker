@@ -73,9 +73,10 @@ jobs:
           python -m playwright install --with-deps chromium
           python -m patchright install chromium || echo "patchright install skipped"
           python - <<'PYBROWSER' >> "$GITHUB_ENV"
+          import shutil
           from playwright.sync_api import sync_playwright
           with sync_playwright() as p:
-              print("KS_BROWSER_EXECUTABLE=" + p.chromium.executable_path)
+              print("KS_BROWSER_EXECUTABLE=" + (shutil.which("google-chrome") or p.chromium.executable_path))
           PYBROWSER
 
       # Restore CF session cookies from previous run — the biggest single

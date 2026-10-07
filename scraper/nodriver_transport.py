@@ -152,6 +152,7 @@ def open_nodriver_transport(
     loop = asyncio.new_event_loop()
 
     async def _boot() -> NodriverTransport | None:
+        registered_before = set(nd.util.get_registered_instances())
         try:
             args = [
                 "--lang=en-US",
@@ -172,9 +173,22 @@ def open_nodriver_transport(
                 user_data_dir=None,  # ephemeral profile per run
                 browser_args=args,
             )
-        except Exception as e:
+        except Exception:
+            # nd.start registers the process before the CDP handshake. Failed
+            # starts otherwise leave orphan Chromium processes behind.
+            reason = "browser_start_failed"
+            for instance in set(nd.util.get_registered_instances()) - registered_before:
+                process = getattr(instance, "_process", None)
+                if process and process.stderr:
+                    try:
+                        stderr = (await asyncio.wait_for(process.stderr.read(4096), timeout=1)).decode(errors="replace")
+                        if any(word in stderr.lower() for word in ("sandbox", "apparmor", "user namespace")):
+                            reason = "browser_sandbox_unavailable"
+                    except (TimeoutError, OSError):
+                        pass
+                instance.stop()
             if verbose:
-                print(f"  ! nodriver browser.start failed: {e}")
+                print(f"  ! nodriver browser.start failed: {reason}")
             return None
 
         try:

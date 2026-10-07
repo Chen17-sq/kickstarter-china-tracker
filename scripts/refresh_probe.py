@@ -11,6 +11,7 @@ import contextlib
 import datetime as dt
 import json
 import os
+import shutil
 import sys
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -56,7 +57,7 @@ def browser_probe():
     try:
         with sync_playwright() as pw:
             executable = pw.chromium.executable_path
-            os.environ["KS_BROWSER_EXECUTABLE"] = executable
+            os.environ["KS_BROWSER_EXECUTABLE"] = shutil.which("google-chrome") or executable
             browser = pw.chromium.launch()
             ctx = browser.new_context()
             page = ctx.new_page()
