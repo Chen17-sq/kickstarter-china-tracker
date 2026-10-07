@@ -71,6 +71,10 @@ done
 
 结果：**330 passed**；Ruff、JS语法与diff检查通过。六种隔离全链路回放均网络0、发信0，覆盖全部失败、部分失败、旧值恢复、缺基线、真零、非零、恢复重跑、币种和别名。网站/HTML邮件预览检查了字段状态、小额价格、榜内唯一性和390px显示，未发现请求或脚本错误。
 
+最终公网浏览器核实时间戳精确匹配12:31:31Z：LightMake在首页live榜、表格、统计榜及latest邮件各模块均仅一次；官方ID/alias证据可追溯，实际档位HKD8610按平台汇率折为$1,097.11。970项目、覆盖分母、9待确认及paused/enforce均与JSON一致。三页390px文档宽均390；HTTP错误、请求失败、console与JS错误均为0。公网projects JSON、API today、latest HTML、stats及app.js字节与仓库一致。
+
+截图：[最终首页](ks-production-home-final.png)、[最终邮件预览](ks-production-email-final.png)。
+
 关键文件：`scraper/{observations,quality,money,identity,graphql,refresh,project,run,momentum,diff,anomalies,weekly,report,email_notify,api,atomic,social}.py`；`site/{app.js,stats.html,corrections.html}`；`.github/workflows/{scrape,scrape-retry,test,deploy}.yml`；`scripts/{dry_run,build_corrections,currency_probe}.py`及相关回归测试。各PR提供完整差异。
 
 ## 当前边界与后续处理

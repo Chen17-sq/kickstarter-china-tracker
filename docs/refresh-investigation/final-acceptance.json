@@ -514,5 +514,60 @@
     "got pledge minimum for 213/439",
     "verified project identities: 970 projects; 21 preserved aliases",
     "DATA REFRESH DEGRADED: followers: comparable daily baseline 0/225 below 80%; backers: comparable daily baseline 0/143 below 80%; pledged_usd: comparable daily baseline 0/143 below 80%"
+  ],
+  "public_browser": {
+    "generated_at": "2026-10-07T12:31:31Z",
+    "independent_projects": 970,
+    "aliases": 21,
+    "verified_ids": 961,
+    "lightmake_project_id": 206217094,
+    "lightmake_instances_per_ranking": 1,
+    "viewport_width": 390,
+    "document_widths": [
+      390,
+      390,
+      390
+    ],
+    "http_errors": [],
+    "request_failures": [],
+    "console_errors": [],
+    "page_errors": [],
+    "delivery_policy": "paused",
+    "quality_mode": "enforce",
+    "proposed_send_allowed": false,
+    "evidence": "result-0ed4ec33.json"
+  },
+  "public_file_checks": [
+    {
+      "url": "/data/projects.json",
+      "status": 200,
+      "sha256": "7cd3778bf20bbf4190e786042735efaf7a2c0508cf2f84165cb814c0192d9474",
+      "matches_repository": true,
+      "generated_at": "2026-10-07T12:31:31Z"
+    },
+    {
+      "url": "/api/today.json",
+      "status": 200,
+      "sha256": "9117703b3e86045e864519607a3ed0009b973fb60fcd0165cb8261be92469528",
+      "matches_repository": true
+    },
+    {
+      "url": "/editions/latest.html",
+      "status": 200,
+      "sha256": "dce0725c611c9677f928ebd42beb758350b8623dc1ef8e60477aab58fa5ac99d",
+      "matches_repository": true
+    },
+    {
+      "url": "/stats.html",
+      "status": 200,
+      "sha256": "1d686ebdb186561e9bacf571d532a9e1aa6aeaa49e2b1be9309e44c8289af4df",
+      "matches_repository": true
+    },
+    {
+      "url": "/app.js",
+      "status": 200,
+      "sha256": "15c6663b71e7df91109f80eb4415af693c8c2e0b52aa71b564fb41c0ddd39c32",
+      "matches_repository": true
+    }
   ]
 }
