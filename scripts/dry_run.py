@@ -46,6 +46,8 @@ def execute(scenario):
                    "status": "live" if i < 15 else "prelaunch", "china_confidence": "高",
                    "native_currency": "USD", "static_usd_rate": 1.0, "blurb_zh": "离线回归样例"}
             for key, value in (("followers", 100), ("backers", 10), ("pledged_usd", 1000), ("min_pledge_usd", 10)):
+                if scenario == "aliases" and i == 1 and key == "pledged_usd":
+                    value = 1949  # alias sample ranks first while preserving +$51
                 if i == 2 and key == "pledged_usd":
                     continue  # explicitly absent baseline
                 observe(row, key, value, at=at, source="fixture",
@@ -70,7 +72,7 @@ def execute(scenario):
             hit = _hit_from_proj({"urls": {"web": {"project": f"https://www.kickstarter.com/projects/fixture/fixture-{i}"}},
                                  "name": f"Fixture {i:02d}", "state": "live" if i < 15 else "submitted",
                                  "currency": "USD", "static_usd_rate": 1.0,
-                                 "usd_pledged": 1000 if i == 0 else 1050 + i,
+                                 "usd_pledged": 2000 if scenario == "aliases" and i == 1 else 1000 if i == 0 else 1050 + i,
                                  "backers_count": 10 if i == 0 else 11 + i,
                                  "goal": 500, "percent_funded": 200})
             hits[hit.pathname] = hit
@@ -97,7 +99,7 @@ def execute(scenario):
                     data[key] = {"pid": i + 1, "url": f"https://www.kickstarter.com/projects/fixture/fixture-{i}", "currency": "HKD" if scenario == "currency" else "USD", "usdExchangeRate": .13 if i == 1 else .125, "watchesCount": 100 if i == 0 else 110 + i,
                                  "backersCount": 10 if i == 0 else 11 + i,
                                  "state": "LIVE" if i < 15 else "SUBMITTED",
-                                 "pledged": {"amount": (1000 if i == 0 else 1050 + i) * (8 if scenario == "currency" else 1), "currency": "HKD" if scenario == "currency" else "USD"},
+                                 "pledged": {"amount": (2000 if scenario == "aliases" and i == 1 else 1000 if i == 0 else 1050 + i) * (8 if scenario == "currency" else 1), "currency": "HKD" if scenario == "currency" else "USD"},
                                  "percentFunded": 200}
             return 200, {"data": data, "errors": errors}
 
