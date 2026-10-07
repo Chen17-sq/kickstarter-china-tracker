@@ -1,0 +1,518 @@
+{
+  "run_id": 37620201034,
+  "generated_at": "2026-10-07T12:31:31Z",
+  "previous_generated_at": "2026-10-07T12:15:49Z",
+  "delivery_policy": "paused",
+  "projects": 970,
+  "states": {
+    "live": 143,
+    "successful": 497,
+    "prelaunch": 225,
+    "canceled": 36,
+    "failed": 56,
+    "suspended": 13
+  },
+  "data_quality": {
+    "status": "degraded",
+    "metrics": {
+      "followers": {
+        "eligible": 225,
+        "fresh": 217,
+        "coverage": 0.9644444444444444,
+        "comparable": 0,
+        "zero_changes": 0,
+        "oldest_observation_hours": 0.06,
+        "unknown_observation_time": 8,
+        "statuses": {
+          "fresh": 217,
+          "stale": 8,
+          "missing": 0,
+          "failed": 0
+        }
+      },
+      "backers": {
+        "eligible": 143,
+        "fresh": 142,
+        "coverage": 0.993006993006993,
+        "comparable": 0,
+        "zero_changes": 0,
+        "oldest_observation_hours": 0.06,
+        "unknown_observation_time": 1,
+        "statuses": {
+          "fresh": 142,
+          "stale": 1,
+          "missing": 0,
+          "failed": 0
+        }
+      },
+      "pledged_usd": {
+        "eligible": 143,
+        "fresh": 142,
+        "coverage": 0.993006993006993,
+        "comparable": 0,
+        "zero_changes": 0,
+        "oldest_observation_hours": 0.06,
+        "unknown_observation_time": 1,
+        "statuses": {
+          "fresh": 142,
+          "stale": 1,
+          "missing": 0,
+          "failed": 0
+        }
+      },
+      "min_pledge_usd": {
+        "eligible": 143,
+        "fresh": 142,
+        "coverage": 0.993006993006993,
+        "comparable": 0,
+        "zero_changes": 0,
+        "oldest_observation_hours": 0.02,
+        "unknown_observation_time": 1,
+        "statuses": {
+          "fresh": 142,
+          "stale": 1,
+          "missing": 0,
+          "failed": 0
+        }
+      }
+    },
+    "active_states": {
+      "total": 368,
+      "unverified": 9
+    },
+    "issues": [
+      "followers: comparable daily baseline 0/225 below 80%",
+      "backers: comparable daily baseline 0/143 below 80%",
+      "pledged_usd: comparable daily baseline 0/143 below 80%"
+    ],
+    "proposed_send_allowed": false,
+    "policy_mode": "enforce",
+    "thresholds": {
+      "core_coverage": 0.9,
+      "delta_coverage": 0.8,
+      "zero_ratio": 0.95,
+      "zero_min_sample": 20,
+      "max_age_hours": 30
+    },
+    "evaluated_at": "2026-10-07T12:31:31.772966+00:00"
+  },
+  "previous_data_quality": {
+    "status": "degraded",
+    "metrics": {
+      "followers": {
+        "eligible": 228,
+        "fresh": 220,
+        "coverage": 0.9649122807017544,
+        "comparable": 0,
+        "zero_changes": 0,
+        "oldest_observation_hours": 0.05,
+        "unknown_observation_time": 8,
+        "statuses": {
+          "fresh": 220,
+          "stale": 8,
+          "missing": 0,
+          "failed": 0
+        }
+      },
+      "backers": {
+        "eligible": 150,
+        "fresh": 149,
+        "coverage": 0.9933333333333333,
+        "comparable": 0,
+        "zero_changes": 0,
+        "oldest_observation_hours": 0.05,
+        "unknown_observation_time": 1,
+        "statuses": {
+          "fresh": 149,
+          "stale": 1,
+          "missing": 0,
+          "failed": 0
+        }
+      },
+      "pledged_usd": {
+        "eligible": 150,
+        "fresh": 149,
+        "coverage": 0.9933333333333333,
+        "comparable": 0,
+        "zero_changes": 0,
+        "oldest_observation_hours": 0.05,
+        "unknown_observation_time": 1,
+        "statuses": {
+          "fresh": 149,
+          "stale": 1,
+          "missing": 0,
+          "failed": 0
+        }
+      },
+      "min_pledge_usd": {
+        "eligible": 150,
+        "fresh": 149,
+        "coverage": 0.9933333333333333,
+        "comparable": 0,
+        "zero_changes": 0,
+        "oldest_observation_hours": 0.01,
+        "unknown_observation_time": 1,
+        "statuses": {
+          "fresh": 149,
+          "stale": 1,
+          "missing": 0,
+          "failed": 0
+        }
+      }
+    },
+    "active_states": {
+      "total": 378,
+      "unverified": 9
+    },
+    "issues": [
+      "followers: comparable daily baseline 0/228 below 80%",
+      "backers: comparable daily baseline 0/150 below 80%",
+      "pledged_usd: comparable daily baseline 0/150 below 80%"
+    ],
+    "proposed_send_allowed": false,
+    "policy_mode": "enforce",
+    "thresholds": {
+      "core_coverage": 0.9,
+      "delta_coverage": 0.8,
+      "zero_ratio": 0.95,
+      "zero_min_sample": 20,
+      "max_age_hours": 30
+    },
+    "evaluated_at": "2026-10-07T12:15:49.800211+00:00"
+  },
+  "protected_files_checked": 660,
+  "changed_or_deleted_protected_files": [],
+  "new_history": [
+    "data/history/2026-10-07T12-31-31Z.json"
+  ],
+  "conversion_counts": {
+    "pledged_usd:SGD": 2,
+    "min_pledge_usd:SGD": 1,
+    "goal_usd:SGD": 2,
+    "pledged_usd:HKD": 667,
+    "min_pledge_usd:HKD": 183,
+    "goal_usd:HKD": 667,
+    "pledged_usd:GBP": 7,
+    "min_pledge_usd:GBP": 2,
+    "goal_usd:GBP": 7,
+    "pledged_usd:USD": 69,
+    "min_pledge_usd:USD": 21,
+    "goal_usd:USD": 69,
+    "pledged_usd:CAD": 3,
+    "min_pledge_usd:CAD": 3,
+    "goal_usd:CAD": 3,
+    "pledged_usd:JPY": 6,
+    "min_pledge_usd:JPY": 2,
+    "goal_usd:JPY": 6,
+    "pledged_usd:EUR": 2,
+    "min_pledge_usd:EUR": 1,
+    "goal_usd:EUR": 2
+  },
+  "conversion_errors": [],
+  "live_minimum_unavailable_reasons": {
+    "source_missing": 1
+  },
+  "samples": [
+    {
+      "pathname": "/projects/jiligulu/original-ip-collectibles-and-blind-boxes",
+      "title": "Original IP Collectibles and Blind Boxes",
+      "pledged_native": 0.0,
+      "pledged_usd": 0.0,
+      "min_pledge_usd": 68.80617391999999,
+      "delta_pledged_usd": null,
+      "pledged_evidence": {
+        "status": "fresh",
+        "attempt_status": "success",
+        "observed_at": "2026-10-07T12:28:05Z",
+        "attempted_at": "2026-10-07T12:28:05Z",
+        "source": "ks_graphql",
+        "unit": "USD",
+        "basis": "ks_project_usd:SGD",
+        "conversion": {
+          "native_amount": 0.0,
+          "currency": "SGD",
+          "rate": 0.78188834,
+          "source": "ks_project_usd_exchange_rate",
+          "observed_at": "2026-10-07T12:28:05Z"
+        }
+      },
+      "minimum_evidence": {
+        "status": "fresh",
+        "attempt_status": "success",
+        "observed_at": "2026-10-07T12:30:22Z",
+        "attempted_at": "2026-10-07T12:30:22Z",
+        "source": "ks_graphql",
+        "unit": "USD",
+        "basis": "ks_project_usd:SGD",
+        "conversion": {
+          "native_amount": 88.0,
+          "currency": "SGD",
+          "rate": 0.78188834,
+          "source": "ks_project_usd_exchange_rate",
+          "observed_at": "2026-10-07T12:30:22Z"
+        }
+      },
+      "delta_evidence": {
+        "status": "unavailable",
+        "reason": "baseline_missing_or_unverified",
+        "from": null,
+        "to": "2026-10-07T12:28:05Z",
+        "method": "constant_currency",
+        "currency": "SGD",
+        "usd_rate": 0.78188834,
+        "rate_observed_at": "2026-10-07T12:28:05Z"
+      }
+    },
+    {
+      "pathname": "/projects/tracin/kick-the-mobility-copilot-for-your-wheeled-ski-bag",
+      "title": "KICK — The Mobility Copilot for Your Wheeled Ski Bag",
+      "pledged_native": 25775.0,
+      "pledged_usd": 3284.3097824999995,
+      "min_pledge_usd": 77.72760299999999,
+      "delta_pledged_usd": null,
+      "pledged_evidence": {
+        "status": "fresh",
+        "attempt_status": "success",
+        "observed_at": "2026-10-07T12:28:05Z",
+        "attempted_at": "2026-10-07T12:28:05Z",
+        "source": "ks_graphql",
+        "unit": "USD",
+        "basis": "ks_project_usd:HKD",
+        "conversion": {
+          "native_amount": 25775.0,
+          "currency": "HKD",
+          "rate": 0.1274223,
+          "source": "ks_project_usd_exchange_rate",
+          "observed_at": "2026-10-07T12:28:05Z"
+        }
+      },
+      "minimum_evidence": {
+        "status": "fresh",
+        "attempt_status": "success",
+        "observed_at": "2026-10-07T12:30:22Z",
+        "attempted_at": "2026-10-07T12:30:22Z",
+        "source": "ks_graphql",
+        "unit": "USD",
+        "basis": "ks_project_usd:HKD",
+        "conversion": {
+          "native_amount": 610.0,
+          "currency": "HKD",
+          "rate": 0.1274223,
+          "source": "ks_project_usd_exchange_rate",
+          "observed_at": "2026-10-07T12:30:22Z"
+        }
+      },
+      "delta_evidence": {
+        "status": "unavailable",
+        "reason": "baseline_missing_or_unverified",
+        "from": null,
+        "to": "2026-10-07T12:28:05Z",
+        "method": "constant_currency",
+        "currency": "HKD",
+        "usd_rate": 0.1274223,
+        "rate_observed_at": "2026-10-07T12:28:05Z"
+      }
+    },
+    {
+      "pathname": "/projects/harndsknife/harnds-sidekick-4-in-1-edc-folding-knife",
+      "title": "Harnds Sidekick: ALL in 1 EDC Folding Knife",
+      "pledged_native": 115702.0,
+      "pledged_usd": 14743.0149546,
+      "min_pledge_usd": 23.955392399999997,
+      "delta_pledged_usd": null,
+      "pledged_evidence": {
+        "status": "fresh",
+        "attempt_status": "success",
+        "observed_at": "2026-10-07T12:28:05Z",
+        "attempted_at": "2026-10-07T12:28:05Z",
+        "source": "ks_graphql",
+        "unit": "USD",
+        "basis": "ks_project_usd:HKD",
+        "conversion": {
+          "native_amount": 115702.0,
+          "currency": "HKD",
+          "rate": 0.1274223,
+          "source": "ks_project_usd_exchange_rate",
+          "observed_at": "2026-10-07T12:28:05Z"
+        }
+      },
+      "minimum_evidence": {
+        "status": "fresh",
+        "attempt_status": "success",
+        "observed_at": "2026-10-07T12:30:22Z",
+        "attempted_at": "2026-10-07T12:30:22Z",
+        "source": "ks_graphql",
+        "unit": "USD",
+        "basis": "ks_project_usd:HKD",
+        "conversion": {
+          "native_amount": 188.0,
+          "currency": "HKD",
+          "rate": 0.1274223,
+          "source": "ks_project_usd_exchange_rate",
+          "observed_at": "2026-10-07T12:30:22Z"
+        }
+      },
+      "delta_evidence": {
+        "status": "unavailable",
+        "reason": "baseline_missing_or_unverified",
+        "from": null,
+        "to": "2026-10-07T12:28:05Z",
+        "method": "constant_currency",
+        "currency": "HKD",
+        "usd_rate": 0.1274223,
+        "rate_observed_at": "2026-10-07T12:28:05Z"
+      }
+    },
+    {
+      "pathname": "/projects/socopper/socopper-pen-functional-art-in-openwork-brass",
+      "title": "SoCopper Pen: Functional Art In Lost-Wax Cast Openwork Brass",
+      "pledged_native": 78920.0,
+      "pledged_usd": 10056.167915999999,
+      "min_pledge_usd": 49.694697,
+      "delta_pledged_usd": null,
+      "pledged_evidence": {
+        "status": "fresh",
+        "attempt_status": "success",
+        "observed_at": "2026-10-07T12:28:05Z",
+        "attempted_at": "2026-10-07T12:28:05Z",
+        "source": "ks_graphql",
+        "unit": "USD",
+        "basis": "ks_project_usd:HKD",
+        "conversion": {
+          "native_amount": 78920.0,
+          "currency": "HKD",
+          "rate": 0.1274223,
+          "source": "ks_project_usd_exchange_rate",
+          "observed_at": "2026-10-07T12:28:05Z"
+        }
+      },
+      "minimum_evidence": {
+        "status": "fresh",
+        "attempt_status": "success",
+        "observed_at": "2026-10-07T12:30:22Z",
+        "attempted_at": "2026-10-07T12:30:22Z",
+        "source": "ks_graphql",
+        "unit": "USD",
+        "basis": "ks_project_usd:HKD",
+        "conversion": {
+          "native_amount": 390.0,
+          "currency": "HKD",
+          "rate": 0.1274223,
+          "source": "ks_project_usd_exchange_rate",
+          "observed_at": "2026-10-07T12:30:22Z"
+        }
+      },
+      "delta_evidence": {
+        "status": "unavailable",
+        "reason": "baseline_missing_or_unverified",
+        "from": null,
+        "to": "2026-10-07T12:28:05Z",
+        "method": "constant_currency",
+        "currency": "HKD",
+        "usd_rate": 0.1274223,
+        "rate_observed_at": "2026-10-07T12:28:05Z"
+      }
+    }
+  ],
+  "identities": {
+    "verified_projects": 961,
+    "duplicate_ids": [],
+    "preserved_aliases": 21,
+    "missing_previous_paths": []
+  },
+  "snapshot_commit": "37d46d8",
+  "code_commit": "3002ef1",
+  "tests": {
+    "pytest": "330 passed",
+    "ruff": "passed",
+    "ci_run": 37619896826,
+    "isolated_scenarios": [
+      "all-failed",
+      "partial",
+      "healthy",
+      "recovery",
+      "currency",
+      "aliases"
+    ],
+    "network_calls": 0,
+    "emails_sent": 0
+  },
+  "remaining_unverified_projects": [
+    {
+      "pathname": "/projects/secheal/secheal-the-four-axis-training-simulator-for-men",
+      "status": "prelaunch",
+      "reason": "source_missing"
+    },
+    {
+      "pathname": "/projects/1811898042/raven-remain-undetected",
+      "status": "prelaunch",
+      "reason": "source_missing"
+    },
+    {
+      "pathname": "/projects/fuci/silas-all-in",
+      "status": "live",
+      "reason": "source_missing"
+    },
+    {
+      "pathname": "/projects/cinomadistbackpack/cinimadist-cadence-backpack-40l",
+      "status": "prelaunch",
+      "reason": "source_missing"
+    },
+    {
+      "pathname": "/projects/2141945855/waveone-smarter-cordless-cleaning-for-your-pool",
+      "status": "prelaunch",
+      "reason": "source_missing"
+    },
+    {
+      "pathname": "/projects/1378608199/heritage-sonic-vintage-all-in-one-music-player",
+      "status": "prelaunch",
+      "reason": "source_missing"
+    },
+    {
+      "pathname": "/projects/plantsrobot/plantmulti-all-in-one-gardening-tool-for-every-plant-lover",
+      "status": "prelaunch",
+      "reason": "source_missing"
+    },
+    {
+      "pathname": "/projects/portaloutdoors/portal-nomis-onetm-inflatable-rooftop-tent",
+      "status": "prelaunch",
+      "reason": "source_missing"
+    },
+    {
+      "pathname": "/projects/shuisle/shuisle",
+      "status": "prelaunch",
+      "reason": "source_missing"
+    }
+  ],
+  "workflow": {
+    "status": "completed",
+    "conclusion": "success",
+    "notification_steps": [
+      {
+        "name": "Slack / Discord notify (optional)",
+        "status": "completed",
+        "conclusion": "skipped"
+      },
+      {
+        "name": "Email notify (optional)",
+        "status": "completed",
+        "conclusion": "skipped"
+      }
+    ]
+  },
+  "catalog_batches": {
+    "count": 49,
+    "unique_requested": 970,
+    "returned": 961,
+    "results": [
+      "response"
+    ]
+  },
+  "safe_log_summary": [
+    "refresh applied: 982/991 fresh, 0 state changes, live USD net: computed later from comparable observations",
+    "got watchesCount for 430/439 (known active + discovered)",
+    "got pledge minimum for 213/439",
+    "verified project identities: 970 projects; 21 preserved aliases",
+    "DATA REFRESH DEGRADED: followers: comparable daily baseline 0/225 below 80%; backers: comparable daily baseline 0/143 below 80%; pledged_usd: comparable daily baseline 0/143 below 80%"
+  ]
+}
