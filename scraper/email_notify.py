@@ -257,7 +257,7 @@ def _detail_card(p: dict, *, kind: str, hl_map: dict, rank: int) -> str:
 
     # Price line — render right after the brand·country row when present
     price_line = ""
-    if p.get("min_pledge_usd"):
+    if "min_pledge_usd" in p:
         price_line = (
             f'<div style="font-family:{MONO};font-size:12px;font-weight:700;color:{INK};'
             f'letter-spacing:.04em;margin-bottom:8px">'

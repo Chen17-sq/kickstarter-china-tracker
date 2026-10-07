@@ -175,6 +175,7 @@ function freshMetric(d, key) {
 function metricValue(d, key) {
   if (key === "min_pledge_usd" && ((d.observations || {})[key] || {}).reason === "no_rewards") return LANG === "zh" ? "暂无档位" : "No reward tiers";
   if (!freshMetric(d, key)) return LANG === "zh" ? "未更新" : "Not updated";
+  if (key === "min_pledge_usd") return new Intl.NumberFormat("en-US", {style: "currency", currency: "USD"}).format(d[key]);
   return key.endsWith("_usd") ? fmtUSD(d[key]) : fmtNum(d[key]);
 }
 function metricEvidence(d, key) {
@@ -309,7 +310,7 @@ function rowHtml(d) {
   const cpwStr = (cpw && (d.status === "live" || d.status === "successful"))
     ? `${fmtUSD(cpw)}/W` : "";
   const projStr = proj ? `Proj. ${fmtUSD(proj)}` : "";
-  const priceStr = d.min_pledge_usd ? `起步价 ${metricValue(d, "min_pledge_usd")}` : "";
+  const priceStr = `起步价 ${metricValue(d, "min_pledge_usd")}`;
   const meta = [tl, company, loc, cat, priceStr, cpwStr, projStr].filter(Boolean).join(" · ");
   const b = blurbInfo(d);
   const blurbHtml = b.text
@@ -425,10 +426,11 @@ function renderHero() {
     langZh ? `共 ${totalPre} 项` : `${totalPre} TOTAL`;
   document.getElementById("heroLiveLabel").textContent =
     langZh ? "🔴 在筹中 · 已筹 Top 10" : "🔴 Live · Top 10 by USD Raised";
+  const liveUsdText = DATA.some(p => p.status === "live" && !freshMetric(p, "pledged_usd")) ? (langZh ? "未更新" : "Not updated") : fmtUSD(liveUsdTotal);
   document.getElementById("heroLiveMeta").textContent =
     langZh
-      ? `共 ${totalLive} 项 · 合计 ${fmtUSD(liveUsdTotal)}`
-      : `${totalLive} · ${fmtUSD(liveUsdTotal)} TOTAL`;
+      ? `共 ${totalLive} 项 · 合计 ${liveUsdText}`
+      : `${totalLive} · ${liveUsdText} TOTAL`;
 
   function story(rank, p, kind) {
     const url = escapeHtml(p.url || "#");
@@ -440,9 +442,7 @@ function renderHero() {
     const blurbHtml = blurb ? `<div class="blurb">${blurb}</div>` : "";
     const brand = escapeHtml(brandLabel(p));
     const country = escapeHtml(countryLabel(p.country));
-    const price = p.min_pledge_usd
-      ? `${langZh ? "起步价" : "MIN"} ${fmtUSD(p.min_pledge_usd)}`
-      : "";
+    const price = `${langZh ? "起步价" : "MIN"} ${metricValue(p, "min_pledge_usd")}`;
     const smeta = [brand, country, price].filter(Boolean).join(" · ");
     const smetaHtml = smeta ? `<div class="smeta">${smeta}</div>` : "";
 

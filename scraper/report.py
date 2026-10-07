@@ -15,7 +15,7 @@ import json
 from pathlib import Path
 
 from .atomic import write_text_atomic, write_versioned_text
-from .observations import delta_text, metric_text
+from .observations import delta_text, is_fresh, metric_text
 from .quality import quality_lines
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -25,7 +25,7 @@ PROJECTS = REPO_ROOT / "data" / "projects.json"
 
 PWL = "✦"
 
-from ._common import edition_number, fmt_int, fmt_pct, fmt_usd  # noqa: E402  shared
+from ._common import edition_number, fmt_usd  # noqa: E402  shared
 
 
 def days_since(epoch) -> int | None:
@@ -172,7 +172,7 @@ def make_report(curr: dict, prev: dict | None) -> str:
     out.append("")
     out.append("| Tracked | Prelaunch | Live | Funded | Editor's | Pledged |")
     out.append("| ---: | ---: | ---: | ---: | ---: | ---: |")
-    out.append(f"| **{len(projects)}** | {counts['prelaunch']} | {counts['live']} | {counts['successful']} | {PWL} {pwl_count} | {(fmt_usd(total_live_usd) + "（历史参考合计，可能含未更新值）")} |")
+    out.append(f"| **{len(projects)}** | {counts['prelaunch']} | {counts['live']} | {counts['successful']} | {PWL} {pwl_count} | {(fmt_usd(total_live_usd) if all(is_fresh(p, "pledged_usd") for p in projects if p.get("status") == "live") else "未更新")} |")
     out.append("")
     out.append(f"_中国背景置信度高 · **{high}** / {len(projects)}_")
     out.append("")
@@ -243,10 +243,10 @@ def make_report(curr: dict, prev: dict | None) -> str:
             stat_parts_pre = [
                 f"**{brand}**",
                 country,
-                f"**{fmt_int(p.get('followers'))}** watchers",
+                f"**{metric_text(p, 'followers')}** watchers",
             ]
-            if p.get("min_pledge_usd"):
-                stat_parts_pre.append(f"起步价 **{fmt_usd(p['min_pledge_usd'])}**")
+            if "min_pledge_usd" in p:
+                stat_parts_pre.append(f"起步价 **{metric_text(p, 'min_pledge_usd')}**")
             stat_parts_pre.append(timeline_text(p))
             out.append(" · ".join(s for s in stat_parts_pre if s))
             out.append("")
@@ -275,7 +275,7 @@ def make_report(curr: dict, prev: dict | None) -> str:
                 brand = p.get("matched_brand_zh") or p.get("matched_brand") or p.get("creator_name") or ""
                 out.append(
                     f"| {i:02d} {star} | {project_link(p)} | {brand} | {p.get('country','?')} "
-                    f"| {fmt_int(p.get('followers'))} | {timeline_text(p)} |"
+                    f"| {metric_text(p, 'followers')} | {timeline_text(p)} |"
                 )
             out.append("")
             if len(prelaunch) > 10:
@@ -309,15 +309,14 @@ def make_report(curr: dict, prev: dict | None) -> str:
                 out.append("")
             cpw = conversion_per_watcher(p)
             proj = projected_total(p)
-            d_p = p.get("delta_pledged_usd")
             stat_parts = [
                 f"**{brand}** · {country}",
-                f"已筹 **{fmt_usd(p.get('pledged_usd'))}**" + (f" *(+{fmt_usd(d_p)})*" if d_p and d_p > 0 else ""),
-                f"{fmt_int(p.get('backers'))} backers",
-                f"完成率 **{fmt_pct(p.get('percent_funded'))}**",
+                f"已筹 **{metric_text(p, 'pledged_usd')}**" + f" · 日增量 {delta_text(p, 'pledged_usd')}",
+                f"{metric_text(p, 'backers')} backers",
+                f"完成率 **{metric_text(p, 'percent_funded')}**",
             ]
-            if p.get("min_pledge_usd"):
-                stat_parts.append(f"起步价 **{fmt_usd(p['min_pledge_usd'])}**")
+            if "min_pledge_usd" in p:
+                stat_parts.append(f"起步价 **{metric_text(p, 'min_pledge_usd')}**")
             if cpw is not None:
                 stat_parts.append(f"\\${cpw:.0f}/watcher")
             if proj is not None:
@@ -347,14 +346,12 @@ def make_report(curr: dict, prev: dict | None) -> str:
             out.append("| ---: | --- | ---: | ---: | ---: | --- |")
             for i, p in enumerate(live[3:10], start=4):
                 star = PWL if p.get("project_we_love") else ""
-                d_p = p.get("delta_pledged_usd")
-                pledged_cell = fmt_usd(p.get("pledged_usd"))
-                if d_p and d_p > 0:
-                    pledged_cell += f" *(+{fmt_usd(d_p)})*"
+                pledged_cell = metric_text(p, "pledged_usd")
+                pledged_cell += f" · 日增量 {delta_text(p, 'pledged_usd')}"
                 out.append(
                     f"| {i:02d} {star} | {project_link(p)} | {pledged_cell} | "
-                    f"{fmt_int(p.get('backers'))} | "
-                    f"{fmt_pct(p.get('percent_funded'))} | "
+                    f"{metric_text(p, 'backers')} | "
+                    f"{metric_text(p, 'percent_funded')} | "
                     f"{timeline_text(p)} |"
                 )
             out.append("")
@@ -378,9 +375,9 @@ def make_report(curr: dict, prev: dict | None) -> str:
             cpw = conversion_per_watcher(p)
             cpw_cell = fmt_usd(cpw) if cpw else "—"
             out.append(
-                f"| {i:02d} | {project_link(p)} | {fmt_usd(p.get('pledged_usd'))} | "
-                f"{fmt_int(p.get('backers'))} | {cpw_cell} | "
-                f"{fmt_pct(p.get('percent_funded'))} | "
+                f"| {i:02d} | {project_link(p)} | {metric_text(p, 'pledged_usd')} | "
+                f"{metric_text(p, 'backers')} | {cpw_cell} | "
+                f"{metric_text(p, 'percent_funded')} | "
                 f"{timeline_text(p)} |"
             )
         out.append("")
@@ -419,12 +416,12 @@ def make_report(curr: dict, prev: dict | None) -> str:
                 country,
             ]
             if status == "live":
-                line_parts.append(f"已筹 **{fmt_usd(p.get('pledged_usd'))}**")
-                line_parts.append(f"完成率 **{fmt_pct(p.get('percent_funded'))}**")
+                line_parts.append(f"已筹 **{metric_text(p, 'pledged_usd')}**")
+                line_parts.append(f"完成率 **{metric_text(p, 'percent_funded')}**")
             elif status == "prelaunch":
-                line_parts.append(f"**{fmt_int(p.get('followers'))}** watchers")
+                line_parts.append(f"**{metric_text(p, 'followers')}** watchers")
             elif status == "successful":
-                line_parts.append(f"已筹 **{fmt_usd(p.get('pledged_usd'))}**")
+                line_parts.append(f"已筹 **{metric_text(p, 'pledged_usd')}**")
             out.append(" · ".join(s for s in line_parts if s))
             out.append("")
             out.append(f"**▸ 选中原因：{reason}**")

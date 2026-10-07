@@ -275,7 +275,7 @@ def _detail_row(rank: int, p: dict, *, kind: str, hl_map: dict) -> str:
                color:{N500};letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px">
             {star}{brand} &nbsp;·&nbsp; {country}
           </div>
-          {f'<div style="font-family:Inter,sans-serif;font-size:11px;font-weight:700;color:{INK};letter-spacing:.04em;margin-bottom:8px">起步价 <span style="color:{RED}">{metric_text(p, "min_pledge_usd")}</span></div>' if p.get("min_pledge_usd") else ""}
+          {f'<div style="font-family:Inter,sans-serif;font-size:11px;font-weight:700;color:{INK};letter-spacing:.04em;margin-bottom:8px">起步价 <span style="color:{RED}">{metric_text(p, "min_pledge_usd")}</span></div>' if "min_pledge_usd" in p else ""}
           <h3 style="font-family:'Playfair Display',serif;font-size:24px;font-weight:900;
               line-height:1.15;letter-spacing:-.5px;color:{INK};margin:0 0 6px">{title}</h3>
           <div style="font-family:'Lora','Songti SC',serif;font-style:italic;font-size:14px;

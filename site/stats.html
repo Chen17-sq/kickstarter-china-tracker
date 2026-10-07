@@ -324,6 +324,13 @@ function observedValue(p, key) {
   const age = (Date.now() - Date.parse(m.observed_at)) / 3600000;
   return m.status === "fresh" && Number.isFinite(age) && age >= 0 && age <= 30 && p[key] != null && Number.isFinite(Number(p[key])) ? p[key] : null;
 }
+function minimumPrice(p) {
+  if (((p.observations || {}).min_pledge_usd || {}).reason === "no_rewards") return "暂无档位";
+  return observedValue(p, "min_pledge_usd") == null ? "未更新" : fmtPrice(p.min_pledge_usd);
+}
+function fmtPrice(n) {
+  return new Intl.NumberFormat("en-US", {style:"currency",currency:"USD"}).format(n);
+}
 function fmtUSD(n) {
   if (n == null || !Number.isFinite(Number(n))) return "—";
   const v = Number(n);
@@ -417,7 +424,7 @@ function storyHtml(p, i) {
   const blurb = escapeHtml(p.blurb_zh || p.blurb || "");
   const brand = escapeHtml(p.matched_brand_zh || p.matched_brand || p.creator || "");
   const country = escapeHtml(p.country || "");
-  const price = p.min_pledge_usd ? `起步价 ${observedValue(p, "min_pledge_usd") == null ? "未更新" : fmtUSD(p.min_pledge_usd)}` : "";
+  const price = `起步价 ${minimumPrice(p)}`;
   const meta = [brand, country, price].filter(Boolean).join(" · ");
   return `<div class="story">
     <span class="rank">${String(i + 1).padStart(2, "0")}</span>
@@ -437,7 +444,7 @@ function storyHtmlPre(p, i) {
   const blurb = escapeHtml(p.blurb_zh || p.blurb || "");
   const brand = escapeHtml(p.matched_brand_zh || p.matched_brand || p.creator || "");
   const country = escapeHtml(p.country || "");
-  const price = p.min_pledge_usd ? `起步价 ${observedValue(p, "min_pledge_usd") == null ? "未更新" : fmtUSD(p.min_pledge_usd)}` : "";
+  const price = `起步价 ${minimumPrice(p)}`;
   const meta = [brand, country, price].filter(Boolean).join(" · ");
   return `<div class="story">
     <span class="rank">${String(i + 1).padStart(2, "0")}</span>

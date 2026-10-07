@@ -136,11 +136,15 @@ def comparable_delta(current, baseline, key, *, days=1, now=None):
 
 
 def metric_text(row, key):
-    from ._common import fmt_int, fmt_usd
+    from ._common import fmt_int, fmt_pct, fmt_usd
     if key == "min_pledge_usd" and row.get("observations", {}).get(key, {}).get("reason") == "no_rewards":
         return "暂无档位"
     if not is_fresh(row, key):
         return "未更新"
+    if key == "min_pledge_usd":
+        return f"${row[key]:,.2f}"
+    if key == "percent_funded":
+        return fmt_pct(row[key])
     return (fmt_usd if key.endswith("_usd") else fmt_int)(row.get(key))
 
 

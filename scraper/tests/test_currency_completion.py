@@ -130,3 +130,26 @@ def test_exact_state_coverage_threshold_and_conversion_overflow():
     rows.extend([{"status": "live"}, {"status": "live"}])
     assert not any("project status" in issue for issue in assess({"projects": rows}, now=NOW)["issues"])
     assert to_usd(1e300, 'HKD', 'HKD', 1e300) is None
+
+
+def test_fractional_reward_price_never_rounds_to_zero_or_whole_dollars():
+    record = {}
+    observe(record, "min_pledge_usd", .13, at=NOW.isoformat(), source="fixture")
+    assert metric_text(record, "min_pledge_usd") == "$0.13"
+    observe(record, "min_pledge_usd", 10.4, at=NOW.isoformat(), source="fixture")
+    assert metric_text(record, "min_pledge_usd") == "$10.40"
+
+
+def test_every_report_section_rejects_stale_featured_values():
+    from scraper.report import make_report
+    rows = []
+    for i, status in enumerate(['prelaunch'] * 5 + ['live'] * 5 + ['successful'] * 2):
+        rows.append({'pathname': f'/projects/example/item-{i}', 'url': f'https://example.com/{i}',
+                     'title': f'Item {i}', 'status': status, 'followers': 1234567,
+                     'backers': 7654321, 'pledged_usd': 98765432, 'min_pledge_usd': 10.4,
+                     'percent_funded': 999, 'delta_pledged_usd': 9999,
+                     'china_confidence': '高'})
+    result = make_report({'projects': rows, 'generated_at': NOW.isoformat()}, None)
+    for false_current in ('$98.77M', '1,234,567', '7,654,321', '$10.40', '999%'):
+        assert false_current not in result
+    assert '未更新' in result and '无法计算' in result
