@@ -2,6 +2,8 @@
 
 当前状态：本地修复及离线回归已完成，线上采集仍待受控验证。未部署、未改生产数据、未删除历史、未发送或重发邮件。质量拦截策略默认 **observe**，生产是否启用 `KS_QUALITY_POLICY=enforce` 由仓库所有者确认。
 
+第二轮新增批次规律、真实浏览器协议和runner诊断，见[继续修复记录](CONTINUED-REPAIR.md)。
+
 ## 证据与结论
 
 检查基线：`950be97e6ae45677e9acc390cd8fe8dd400e6419`。主要一手证据：
@@ -117,6 +119,6 @@
 ## 尚未验证
 
 - GitHub 托管 runner 的真实采集成功率、当前 Kickstarter 挑战能否解除；没有运行生产采集 workflow，也没有变更会话、代理或生产凭据。
-- nodriver 使用安装路径后在 GitHub runner 的真实启动；本次验证了 API（nodriver 0.50.5）及生命周期回归，不能替代线上 smoke test。
+- nodriver 已增加GitHub runner本机fixture的真实启动／查询测试，结果见第二轮记录；这仍不能代替Kickstarter真实采集验收。
 - 新字段上线前的历史基线缺失将使初期日／周增量不可算；至少需要两次时间窗口合适的成功观测。不会为让首日报表好看而接受旧格式假基线。
 - 真实邮件服务和收件客户端渲染未发信测试；本地 HTML 浏览器预览不等于 Gmail/Outlook 全客户端认证。

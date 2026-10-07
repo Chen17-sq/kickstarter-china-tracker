@@ -72,11 +72,11 @@ def validate_for_send(curr: dict, prev: Optional[dict] = None) -> tuple[bool, li
         dupes = len(pathnames) - len(set(pathnames))
         issues.append(f"{dupes} duplicate pathnames in snapshot — discover dedup may have broken")
 
-    if curr.get("schema_version", 1) >= 2:
+    mode = os.environ.get("KS_QUALITY_POLICY", "observe")
+    if mode not in {"observe", "enforce"}:
+        return False, [*issues, "unknown KS_QUALITY_POLICY; expected observe or enforce"]
+    if curr.get("schema_version", 1) >= 2 or mode == "enforce":
         q = assess(curr)
-        mode = os.environ.get("KS_QUALITY_POLICY", "observe")
-        if mode not in {"observe", "enforce"}:
-            return False, [*issues, "unknown KS_QUALITY_POLICY; expected observe or enforce"]
         allowed = not issues and (q["proposed_send_allowed"] if mode == "enforce" else True)
         return allowed, issues + q["issues"]
 

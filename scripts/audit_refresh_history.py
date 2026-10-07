@@ -32,6 +32,7 @@ def audit(root, logs, output):
                        "watches_fetched": match(r"got watchesCount for (\d+/\d+)"),
                        "minimum_pledge_fetched": match(r"got pledge minimum for (\d+/\d+)"),
                        "catalog_refresh": match(r"refresh applied: (\d+/\d+) fresh"),
+                       "catalog_raw_objects": match(r"refresh: got fat data for (\d+/\d+) slugs"),
                        "restored_followers": match(r"restored (\d+) followers"),
                        "emails_sent": match(r"Email broadcast: sent=(\d+)"),
                        "browser_csrf_failures": log.count("CSRF token not found"),
@@ -44,7 +45,16 @@ def audit(root, logs, output):
         writer.writeheader()
         writer.writerows(result)
     logged = [r for r in result if r["watches_fetched"]]
-    summary = {"snapshots": len(result), "range": [result[0]["date"], result[-1]["date"]],
+    positive_catalog = []
+    for record in logged:
+        if record["catalog_raw_objects"]:
+            fetched, requested = map(int, record["catalog_raw_objects"].split("/"))
+            if fetched:
+                positive_catalog.append({"date": record["date"], "returned": fetched,
+                                         "requested": requested, "remainder_50": requested % 50})
+    summary = {"positive_catalog_batches": positive_catalog,
+               "tail_batch_only_pattern": bool(positive_catalog) and all(r["returned"] == r["remainder_50"] for r in positive_catalog),
+               "snapshots": len(result), "range": [result[0]["date"], result[-1]["date"]],
                "logs_checked": len(logged),
                "zero_watch_days": [r["date"] for r in logged if r["watches_fetched"].startswith("0/")],
                "partial_or_full_watch_days": [{"date": r["date"], "coverage": r["watches_fetched"]} for r in logged if not r["watches_fetched"].startswith("0/")],

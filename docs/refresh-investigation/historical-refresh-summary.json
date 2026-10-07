@@ -1,4 +1,121 @@
 {
+  "positive_catalog_batches": [
+    {
+      "date": "2026-09-01",
+      "returned": 32,
+      "requested": 782,
+      "remainder_50": 32
+    },
+    {
+      "date": "2026-09-02",
+      "returned": 39,
+      "requested": 789,
+      "remainder_50": 39
+    },
+    {
+      "date": "2026-09-04",
+      "returned": 44,
+      "requested": 794,
+      "remainder_50": 44
+    },
+    {
+      "date": "2026-09-05",
+      "returned": 10,
+      "requested": 810,
+      "remainder_50": 10
+    },
+    {
+      "date": "2026-09-07",
+      "returned": 18,
+      "requested": 818,
+      "remainder_50": 18
+    },
+    {
+      "date": "2026-09-08",
+      "returned": 20,
+      "requested": 820,
+      "remainder_50": 20
+    },
+    {
+      "date": "2026-09-10",
+      "returned": 33,
+      "requested": 833,
+      "remainder_50": 33
+    },
+    {
+      "date": "2026-09-11",
+      "returned": 42,
+      "requested": 842,
+      "remainder_50": 42
+    },
+    {
+      "date": "2026-09-12",
+      "returned": 2,
+      "requested": 852,
+      "remainder_50": 2
+    },
+    {
+      "date": "2026-09-13",
+      "returned": 4,
+      "requested": 854,
+      "remainder_50": 4
+    },
+    {
+      "date": "2026-09-14",
+      "returned": 8,
+      "requested": 858,
+      "remainder_50": 8
+    },
+    {
+      "date": "2026-09-15",
+      "returned": 10,
+      "requested": 860,
+      "remainder_50": 10
+    },
+    {
+      "date": "2026-09-16",
+      "returned": 18,
+      "requested": 868,
+      "remainder_50": 18
+    },
+    {
+      "date": "2026-09-23",
+      "returned": 1,
+      "requested": 901,
+      "remainder_50": 1
+    },
+    {
+      "date": "2026-09-24",
+      "returned": 7,
+      "requested": 907,
+      "remainder_50": 7
+    },
+    {
+      "date": "2026-09-25",
+      "returned": 13,
+      "requested": 913,
+      "remainder_50": 13
+    },
+    {
+      "date": "2026-09-26",
+      "returned": 20,
+      "requested": 920,
+      "remainder_50": 20
+    },
+    {
+      "date": "2026-10-01",
+      "returned": 43,
+      "requested": 943,
+      "remainder_50": 43
+    },
+    {
+      "date": "2026-10-04",
+      "returned": 13,
+      "requested": 963,
+      "remainder_50": 13
+    }
+  ],
+  "tail_batch_only_pattern": true,
   "snapshots": 82,
   "range": [
     "2026-07-09",
@@ -139,6 +256,7 @@
     "watches_fetched": "0/248",
     "minimum_pledge_fetched": "0/248",
     "catalog_refresh": "0/980",
+    "catalog_raw_objects": "",
     "restored_followers": "218",
     "emails_sent": "9",
     "browser_csrf_failures": 4,

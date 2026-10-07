@@ -1,9 +1,9 @@
 # 验证记录
 
-- Python 3.12.14；`python -m pytest -q`：**263 passed**（含4次隔离全链路回放）。
+- Python 3.12.14；`python -m pytest -q`：**281 passed**（含4次隔离全链路回放）。
 - `ruff check scraper scripts/dry_run.py scripts/audit_refresh_history.py`：通过。
 - `python -m compileall -q scraper`、`git diff --check`：通过。
-- scrape / scrape-retry / test workflow YAML：本地解析通过。
+- scrape / scrape-retry / email-only / test workflow YAML：本地解析通过。
 - `git diff --quiet -- data reports assets site/editions site/api site/weekly site/social`：通过；生产快照、旧日报及发布产物未修改。
 - 四次回放的计数见 `offline-results.json`；每次运行在新建目录，socket连接与邮件发送被强制拒绝，实际请求0、发送0。恢复场景保留4份历史（7天前、昨日、今日失败、今日恢复）。
 
@@ -26,3 +26,7 @@
 ## 在线验证边界
 
 只读浏览器访问 Kickstarter Discover 得到200及CSRF meta，但一条公开项目GraphQL查询仍为403挑战页。没有运行生产采集、没有部署、没有发信、没有修改账号或挑战状态。不能把离线回放的成功覆盖率解释为生产采集已恢复。
+
+第二轮多批次、已知项目覆盖、基线恢复、真实runner浏览器与只读源诊断见[继续修复记录](CONTINUED-REPAIR.md)。
+
+GitHub runner真实浏览器fixture：[通过记录](https://github.com/Chen17-sq/kickstarter-china-tracker/actions/runs/37606495758)。两种浏览器各连续查询2次，nodriver loop_closed=true；Kickstarter普通源探针仍为403，不属于采集恢复证明。

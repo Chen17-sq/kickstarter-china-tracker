@@ -311,3 +311,20 @@ def test_old_editor_draft_cannot_leak_into_new_edition(tmp_path, monkeypatch):
     (tmp_path / 'data').mkdir()
     (tmp_path / 'data/.editor_drafts.json').write_text(json.dumps({'snapshot_at': 'old', 'drafts': [{'text': 'old growth'}]}))
     assert email_notify._load_editor_drafts({'generated_at': 'new', 'projects': [row()]}) is None
+
+
+def test_enforcement_cannot_be_bypassed_by_legacy_schema(monkeypatch):
+    monkeypatch.setenv('KS_QUALITY_POLICY', 'enforce')
+    legacy = {'projects': [{'pathname': '/a', 'status': 'live', 'followers': 100, 'backers': 10, 'pledged_usd': 1000}]}
+    allowed, issues = validate_for_send(legacy)
+    assert not allowed
+    assert any('fresh 0/' in issue for issue in issues)
+
+
+def test_delivery_pause_applies_before_any_reads_or_writes(tmp_path, monkeypatch):
+    from scraper import email_notify
+    monkeypatch.setenv('KS_EMAIL_DELIVERY', 'paused')
+    monkeypatch.setattr(email_notify, 'REPO_ROOT', tmp_path)
+    monkeypatch.setattr(email_notify, 'PROJECTS', tmp_path / 'missing.json')
+    assert email_notify.main([]) == 0
+    assert list(tmp_path.iterdir()) == []

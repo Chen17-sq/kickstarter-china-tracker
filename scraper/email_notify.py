@@ -986,6 +986,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--dry-run", action="store_true",
                     help="Build the email, write a preview HTML, no POST.")
     args = ap.parse_args(argv)
+    if not args.dry_run and os.environ.get("KS_EMAIL_DELIVERY") == "paused":
+        print("Email delivery PAUSED; no archive write, recipient lookup or sending")
+        return 0
 
     if not PROJECTS.exists():
         print("data/projects.json not found", file=sys.stderr)

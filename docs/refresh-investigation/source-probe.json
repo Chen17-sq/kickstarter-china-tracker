@@ -1,0 +1,14 @@
+{
+  "status": "source_access_unavailable",
+  "requests": 1,
+  "stages": [
+    {
+      "stage": "discover",
+      "http_status": 403,
+      "content_type": "text/html"
+    }
+  ],
+  "emails_sent": 0,
+  "mode": "source",
+  "checked_at": "2026-10-07T10:08:41.085122+00:00"
+}
