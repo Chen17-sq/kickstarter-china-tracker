@@ -1,5 +1,7 @@
 # 验证记录
 
+最新：含同日归档补漏共285项通过；生产已上线并完成真实刷新，见[上线验收](ROLLOUT.md)。以下保留上线前验证记录。
+
 - Python 3.12.14；`python -m pytest -q`：**281 passed**（含4次隔离全链路回放）。
 - `ruff check scraper scripts/dry_run.py scripts/audit_refresh_history.py`：通过。
 - `python -m compileall -q scraper`、`git diff --check`：通过。
