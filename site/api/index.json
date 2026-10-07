@@ -5,6 +5,10 @@
     "2026-10-07",
     "2026-05-16"
   ],
+  "latest_revision": "2026-10-07-revision-b21df6acd36cb108.json",
+  "revisions": [
+    "2026-10-07-revision-b21df6acd36cb108.json"
+  ],
   "endpoints": {
     "latest": "/api/today.json",
     "by_date": "/api/<YYYY-MM-DD>.json",
