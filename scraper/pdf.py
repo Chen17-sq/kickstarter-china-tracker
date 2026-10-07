@@ -27,6 +27,8 @@ import shutil
 import sys
 from pathlib import Path
 
+from .atomic import versioned_text_path
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 EDITIONS = REPO_ROOT / "site" / "editions"
 
@@ -57,6 +59,9 @@ def render_today() -> Path | None:
     """Render today's edition HTML to PDF. Returns path on success, None on skip."""
     today = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
     html = EDITIONS / f"{today}.html"
+    latest = EDITIONS / "latest.html"
+    if latest.exists():
+        html = versioned_text_path(html, latest.read_text(encoding="utf-8"))
     if not html.exists():
         print(f"  pdf: {html.name} missing — run email_notify first", file=sys.stderr)
         return None
@@ -66,7 +71,10 @@ def render_today() -> Path | None:
         print("  pdf: playwright not installed — skipping", file=sys.stderr)
         return None
 
-    pdf = EDITIONS / f"{today}.pdf"
+    pdf = html.with_suffix(".pdf")
+    if pdf.exists():
+        shutil.copy2(pdf, EDITIONS / "latest.pdf")
+        return pdf
     try:
         asyncio.run(_render_pdf(f"file://{html.absolute()}", pdf))
     except Exception as e:

@@ -9,6 +9,7 @@ old file or the new file, never half of one.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import tempfile
@@ -55,3 +56,21 @@ def write_json_atomic(path: Path, obj: Any, *, indent: int = 2) -> None:
         path,
         json.dumps(obj, ensure_ascii=False, indent=indent) + "\n",
     )
+
+
+def versioned_text_path(path: Path, content: str) -> Path:
+    """Keep the first dated edition; identical reruns reuse their revision."""
+    if not path.exists() or path.read_text(encoding="utf-8") == content:
+        return path
+    digest = hashlib.sha256(content.encode("utf-8")).hexdigest()[:16]
+    return path.with_name(f"{path.stem}-revision-{digest}{path.suffix}")
+
+
+def write_versioned_text(path: Path, content: str) -> Path:
+    target = versioned_text_path(path, content)
+    if target.exists():
+        if target.read_text(encoding="utf-8") != content:
+            raise ValueError("edition revision collision; refusing to overwrite")
+    else:
+        write_text_atomic(target, content)
+    return target

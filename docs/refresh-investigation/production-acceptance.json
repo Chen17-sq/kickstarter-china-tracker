@@ -1,0 +1,640 @@
+{
+  "generated_at": "2026-10-07T10:43:23Z",
+  "previous_generated_at": "2026-10-07T03:27:27Z",
+  "schema_version": 2,
+  "projects": 991,
+  "old_history_files": 82,
+  "changed_or_deleted_old_history": [],
+  "added_history_files": [
+    "data/history/2026-10-07T10-43-23Z.json"
+  ],
+  "data_quality": {
+    "status": "degraded",
+    "metrics": {
+      "followers": {
+        "eligible": 228,
+        "fresh": 220,
+        "coverage": 0.9649122807017544,
+        "comparable": 0,
+        "zero_changes": 0,
+        "oldest_observation_hours": 0.1,
+        "unknown_observation_time": 8,
+        "statuses": {
+          "fresh": 220,
+          "stale": 8,
+          "missing": 0,
+          "failed": 0
+        }
+      },
+      "backers": {
+        "eligible": 151,
+        "fresh": 150,
+        "coverage": 0.9933774834437086,
+        "comparable": 0,
+        "zero_changes": 0,
+        "oldest_observation_hours": 0.1,
+        "unknown_observation_time": 1,
+        "statuses": {
+          "fresh": 150,
+          "stale": 1,
+          "missing": 0,
+          "failed": 0
+        }
+      },
+      "pledged_usd": {
+        "eligible": 151,
+        "fresh": 85,
+        "coverage": 0.5629139072847682,
+        "comparable": 0,
+        "zero_changes": 0,
+        "oldest_observation_hours": 0.18,
+        "unknown_observation_time": 66,
+        "statuses": {
+          "fresh": 85,
+          "stale": 59,
+          "missing": 7,
+          "failed": 0
+        }
+      },
+      "min_pledge_usd": {
+        "eligible": 151,
+        "fresh": 10,
+        "coverage": 0.06622516556291391,
+        "comparable": 0,
+        "zero_changes": 0,
+        "oldest_observation_hours": 0.06,
+        "unknown_observation_time": 141,
+        "statuses": {
+          "fresh": 10,
+          "stale": 30,
+          "missing": 111,
+          "failed": 0
+        }
+      }
+    },
+    "issues": [
+      "followers: comparable daily baseline 0/228 below 80%",
+      "backers: comparable daily baseline 0/151 below 80%",
+      "pledged_usd: fresh 85/151 below 90%",
+      "pledged_usd: comparable daily baseline 0/151 below 80%"
+    ],
+    "proposed_send_allowed": false,
+    "policy_mode": "enforce",
+    "thresholds": {
+      "core_coverage": 0.9,
+      "delta_coverage": 0.8,
+      "zero_ratio": 0.95,
+      "zero_min_sample": 20,
+      "max_age_hours": 30
+    },
+    "evaluated_at": "2026-10-07T10:45:00.859317+00:00"
+  },
+  "daily_delta_valid": {
+    "followers": 0,
+    "backers": 0,
+    "pledged_usd": 0
+  },
+  "daily_delta_unknown": {
+    "followers": 991,
+    "backers": 991,
+    "pledged_usd": 991
+  },
+  "checked_at": "2026-10-07T10:45:00.862034+00:00",
+  "acceptance": {
+    "history_preserved": true,
+    "new_snapshot": true,
+    "schema_v2": true,
+    "normal_growth_report_allowed": false
+  },
+  "editions": [
+    {
+      "original": "reports/2026-10-07.md",
+      "revision": "reports/2026-10-07-revision-6af05f584b01793c.md"
+    },
+    {
+      "original": "site/editions/2026-10-07.html",
+      "revision": "site/editions/2026-10-07-revision-e942ac4d0d2c717b.html"
+    }
+  ],
+  "delivery": {
+    "email": "skipped",
+    "slack_discord": "skipped",
+    "policy": "paused"
+  },
+  "run": "https://github.com/Chen17-sq/kickstarter-china-tracker/actions/runs/37607807624",
+  "collection": {
+    "summary": [
+      "→ 700 candidate projects",
+      "refresh: got fat data for 957/987 slugs",
+      "refresh applied: 978/987 fresh, 487 state changes, live USD net: computed later from comparable observations",
+      "got watchesCount for 828/837 (known active + discovered)",
+      "got pledge minimum for 36/837"
+    ],
+    "batches": [
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 19,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 19,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 19,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 18,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 19,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 19,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 19,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 19,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 20,
+        "returned": 20,
+        "result": "response"
+      },
+      {
+        "source": "catalog_refresh",
+        "requested": 6,
+        "returned": 6,
+        "result": "response"
+      },
+      {
+        "source": "watches",
+        "requested": 13,
+        "returned": 4,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 24,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 24,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 24,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 23,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 24,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 24,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 24,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 24,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 25,
+        "returned": 25,
+        "result": "response"
+      },
+      {
+        "source": "minimum_pledge",
+        "requested": 12,
+        "returned": 12,
+        "result": "response"
+      }
+    ]
+  }
+}
