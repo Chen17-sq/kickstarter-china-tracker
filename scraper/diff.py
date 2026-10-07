@@ -6,6 +6,7 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
 
+from .identity import align_snapshot
 from .observations import comparable_delta
 
 
@@ -22,6 +23,7 @@ def _by_path(snapshot: dict) -> dict[str, dict]:
 
 
 def diff_snapshots(prev: dict, curr: dict) -> list[Change]:
+    prev = align_snapshot(prev, curr)
     out: list[Change] = []
     a, b = _by_path(prev), _by_path(curr)
 

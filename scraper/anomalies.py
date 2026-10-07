@@ -24,6 +24,7 @@ import json
 from pathlib import Path
 from typing import Optional
 
+from .identity import align_snapshot
 from .observations import comparable_delta, parse_time
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -84,6 +85,7 @@ def detect(curr: dict, prev: Optional[dict] = None) -> dict:
     if prev is None:
         return out
     out["_meta"]["prev_at"] = prev.get("generated_at")
+    prev = align_snapshot(prev, curr)
 
     curr_by_path = {
         p.get("pathname"): p for p in (curr.get("projects") or []) if p.get("pathname")
@@ -130,6 +132,7 @@ def detect(curr: dict, prev: Optional[dict] = None) -> dict:
     # Reach back N history snapshots to compare
     week_old = _load_history_snapshot(STUCK_DAYS)
     if week_old:
+        week_old = align_snapshot(week_old, curr)
         week_by_path = {
             p.get("pathname"): p
             for p in (week_old.get("projects") or [])

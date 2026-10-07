@@ -8,6 +8,7 @@ Only source responses, classification and optional remote media/translation are 
 from __future__ import annotations
 
 import argparse
+import copy
 import datetime as dt
 import json
 import os
@@ -53,6 +54,10 @@ def execute(scenario):
                 observe(row, "pledged_native", 8000, at=at, source="fixture", unit="HKD", basis="native_pledged:HKD")
             row["delta_pledged_usd"] = 99999  # must not leak from carry-forward
             rows.append(row)
+        if scenario == "aliases":
+            alias = copy.deepcopy(rows[1])
+            alias['pathname'] = '/projects/123/fixture-1'
+            rows.append(alias)
         snapshot = {"generated_at": at, "schema_version": 2, "projects": rows}
         (history / f"{at.replace(':', '-')}.json").write_text(json.dumps(snapshot))
     (run.DATA / "projects.json").write_text(json.dumps(snapshot))
@@ -61,7 +66,7 @@ def execute(scenario):
         if scenario in {"all-failed", "currency"}:
             return {}
         hits = {}
-        for i in range(30 if scenario in {"healthy", "recovery"} else 20):
+        for i in range(30 if scenario in {"healthy", "recovery", "aliases"} else 20):
             hit = _hit_from_proj({"urls": {"web": {"project": f"https://www.kickstarter.com/projects/fixture/fixture-{i}"}},
                                  "name": f"Fixture {i:02d}", "state": "live" if i < 15 else "submitted",
                                  "currency": "USD", "static_usd_rate": 1.0,
@@ -89,7 +94,7 @@ def execute(scenario):
                 if body["operationName"] == "Pledges":
                     data[key] = {"currency": "HKD" if scenario == "currency" else "USD", "usdExchangeRate": .13 if i == 1 else .125, "rewards": {"pageInfo": {"hasNextPage": False, "endCursor": None}, "nodes": [{"amount": {"amount": 80 if scenario == "currency" else 10, "currency": "HKD" if scenario == "currency" else "USD"}}]}}
                 else:
-                    data[key] = {"currency": "HKD" if scenario == "currency" else "USD", "usdExchangeRate": .13 if i == 1 else .125, "watchesCount": 100 if i == 0 else 110 + i,
+                    data[key] = {"pid": i + 1, "url": f"https://www.kickstarter.com/projects/fixture/fixture-{i}", "currency": "HKD" if scenario == "currency" else "USD", "usdExchangeRate": .13 if i == 1 else .125, "watchesCount": 100 if i == 0 else 110 + i,
                                  "backersCount": 10 if i == 0 else 11 + i,
                                  "state": "LIVE" if i < 15 else "SUBMITTED",
                                  "pledged": {"amount": (1000 if i == 0 else 1050 + i) * (8 if scenario == "currency" else 1), "currency": "HKD" if scenario == "currency" else "USD"},
@@ -114,6 +119,10 @@ def execute(scenario):
     assert run.run() == 0
     result = json.loads((run.DATA / "projects.json").read_text())
     assert len(result["projects"]) == 30
+    if scenario == "aliases":
+        assert len(result['project_aliases']) == 1
+        assert result['project_aliases'][0]['pathname'] == '/projects/123/fixture-1'
+        assert result['data_quality']['metrics']['pledged_usd']['eligible'] == 15
     by_id = {p["title"]: p for p in result["projects"]}
     if scenario == "all-failed":
         assert all(p["delta_pledged_usd"] is None for p in result["projects"])
@@ -148,7 +157,7 @@ def execute(scenario):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--scenario", choices=["all-failed", "partial", "healthy", "recovery", "currency"], default="partial")
+    ap.add_argument("--scenario", choices=["all-failed", "partial", "healthy", "recovery", "currency", "aliases"], default="partial")
     ap.add_argument("--output", type=Path)
     ap.add_argument("--execute-isolated", action="store_true", help=argparse.SUPPRESS)
     args = ap.parse_args()

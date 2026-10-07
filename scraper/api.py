@@ -70,6 +70,7 @@ SCHEMA_VERSION = 2
 # Whitelist of project fields exposed in the public API.
 # Adding a field is safe; removing one is a breaking change.
 PUBLIC_PROJECT_FIELDS = [
+    "project_id", "identity_observation", "aliases",
     "observations",
     "delta_meta",
     "status_observation",

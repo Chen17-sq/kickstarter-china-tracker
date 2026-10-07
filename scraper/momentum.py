@@ -5,6 +5,7 @@ import datetime as dt
 import json
 from pathlib import Path
 
+from .identity import verified_id
 from .observations import clear_deltas, comparable_delta, is_fresh, parse_time
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -65,8 +66,11 @@ def _compute(rows, ref, ref_ts, days, now=None):
         clear_deltas(row, prefix)
         row["delta_meta"] = {k: v for k, v in old_meta.items() if not k.startswith(prefix)}
         for key in ("followers", "backers", "pledged_usd"):
+            baseline_rows = [baseline for path in [row.get("pathname"), *row.get("aliases", [])]
+                             for baseline in by_path.get(path, [])
+                             if not (verified_id(row) and verified_id(baseline) and verified_id(row) != verified_id(baseline))]
             candidates = [comparable_delta(row, baseline, key, days=days, now=now)
-                          for baseline in by_path.get(row.get("pathname"), [{}])]
+                          for baseline in baseline_rows or [{}]]
             valid = [item for item in candidates if item[0] is not None]
             value, evidence = (min(valid, key=lambda item: abs(item[1]["seconds"] - days * 86400))
                                if valid else candidates[0])

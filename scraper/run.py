@@ -36,6 +36,7 @@ from .discover import DiscoverHit, crawl_discover
 from .email_notify import build_html as build_email_html
 from .email_notify import write_archive as write_email_archive
 from .feed import write_feed
+from .identity import deduplicate_projects, observe_identity, verified_id
 from .momentum import compute_deltas, compute_weekly_deltas
 from .money import observe_money
 from .observations import METRICS, FetchResults, carry, carry_row, is_fresh, observe
@@ -143,6 +144,7 @@ def build_row(hit: DiscoverHit, *, followers: int | None,
     }
 
     at = hit.observed_at or now_iso()
+    observe_identity(row, hit.raw.get("id"), hit.url, at=at, source="ks_discover")
     row["native_currency"] = hit.raw.get("currency")
     row["static_usd_rate"] = hit.raw.get("static_usd_rate")
     for key in METRICS:
@@ -324,6 +326,13 @@ def run() -> int:
         path = row["pathname"]
         old = prior_by_path.get(path, {})
         update = refreshed.pop(path, {})
+        identities = [r for r in (row, update, old) if verified_id(r)]
+        if identities:
+            identity_row = max(identities, key=lambda r: r['identity_observation']['observed_at'])
+            for key in ("project_id", "identity_observation"):
+                row[key] = identity_row[key]
+            row['aliases'] = sorted({alias for r in identities if verified_id(r) == verified_id(row)
+                                     for alias in r.get('aliases', [])})
         for key in METRICS:
             current_meta = row.get("observations", {}).get(key, {})
             update_meta = update.get("observations", {}).get(key, {})
@@ -338,6 +347,7 @@ def run() -> int:
                 restored += key == "followers" and row[key] is not None
         if update.get("status_observation", {}).get("status") == "fresh":
             row["status"] = update["status"]
+            row["raw_state"] = update.get("raw_state")
             row["status_observation"] = update["status_observation"]
     existing = {p["pathname"] for p in rows}
     for path, old in prior_by_path.items():
@@ -345,6 +355,9 @@ def run() -> int:
             rows.append(refreshed.get(path) or carry_row(old, at=now_iso()))
     health.watches_restored_from_prev(restored)
     print(f"  retained {restored} historical watcher values with original observation times")
+
+    rows, aliases = deduplicate_projects(rows)
+    print(f"  verified project identities: {len(rows)} projects; {len(aliases)} preserved aliases")
 
     # Auto-translate any rows still missing blurb_zh (no-op if no API key).
     # Mutates rows in-place to add blurb_zh; updates data/blurbs_zh.json.
@@ -377,6 +390,7 @@ def run() -> int:
         "total_candidates": len(hits),
         "kept": len(rows),
         "projects": rows,
+        "project_aliases": aliases,
     }
 
     out["data_quality"] = assess(out)
