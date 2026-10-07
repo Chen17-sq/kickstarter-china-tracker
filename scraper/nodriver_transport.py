@@ -61,9 +61,9 @@ class NodriverTransport:
                         credentials: 'include',
                       }});
                       const text = await r.text();
-                      return {{ status: r.status, text: text }};
+                      return JSON.stringify({{ status: r.status, text: text }});
                     }} catch (e) {{
-                      return {{ status: -1, text: String(e) }};
+                      return JSON.stringify({{ status: -1, text: String(e) }});
                     }}
                   }})()
                 """
@@ -75,6 +75,13 @@ class NodriverTransport:
                 result = await self._page.evaluate(expr, await_promise=True)
             except Exception:
                 return -1, None
+            # nodriver deep-serializes JS objects as CDP key/value arrays,
+            # not ordinary Python dicts. A JSON string is stable across versions.
+            if isinstance(result, str):
+                try:
+                    result = json.loads(result)
+                except ValueError:
+                    return -1, None
             if not isinstance(result, dict):
                 return -1, None
             status = int(result.get("status", -1))

@@ -94,3 +94,22 @@ def test_invalid_shapes_do_not_crash_or_reinvent_values():
     result = fetch_projects(['a'], transport=Bad(), fields='watchesCount', operation='Watches', batch_size=20, source='test')
     assert result['a']['data'] == {}
     assert result['a']['error'] == 'graphql_error'
+
+
+def test_nodriver_deserializes_explicit_json_string():
+    import asyncio
+    import json
+
+    from scraper.nodriver_transport import NodriverTransport
+    class Page:
+        async def evaluate(self, expression, **kwargs):
+            assert 'JSON.stringify' in expression
+            return json.dumps({'status': 200, 'text': '{"data":{"p0":{"watchesCount":0}}}'})
+    class Browser:
+        def stop(self):
+            pass
+    transport = NodriverTransport(Browser(), Page(), 'fixture', loop=asyncio.new_event_loop())
+    try:
+        assert transport.post_graphql({}) == (200, {'data': {'p0': {'watchesCount': 0}}})
+    finally:
+        transport.close()
