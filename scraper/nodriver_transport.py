@@ -195,9 +195,17 @@ def open_nodriver_transport(
             port = int(ready.read_text().splitlines()[0])
             browser = await nd.start(host="127.0.0.1", port=port, browser_executable_path=executable)
             page = await browser.get(seed_url)
-            csrf = await page.evaluate(
-                "document.querySelector('meta[name=\"csrf-token\"]')?.content || null"
-            )
+            csrf = None
+            dom_deadline = loop.time() + 5
+            # browser.get may return before the new document has replaced
+            # about:blank. Wait for the expected DOM, not a fixed sleep.
+            while loop.time() < dom_deadline:
+                csrf = await page.evaluate(
+                    "document.querySelector('meta[name=\"csrf-token\"]')?.content || null"
+                )
+                if isinstance(csrf, str) and csrf:
+                    break
+                await asyncio.sleep(0.1)
             if not isinstance(csrf, str) or not csrf:
                 raise RuntimeError("csrf_missing")
             if verbose:
