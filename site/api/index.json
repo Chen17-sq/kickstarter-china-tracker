@@ -1,7 +1,8 @@
 {
-  "schema_version": 1,
-  "latest": "2026-05-16",
+  "schema_version": 2,
+  "latest": "2026-10-07",
   "dates": [
+    "2026-10-07",
     "2026-05-16"
   ],
   "endpoints": {
