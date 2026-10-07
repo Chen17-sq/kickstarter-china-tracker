@@ -31,6 +31,7 @@ from pathlib import Path
 
 import httpx
 
+from .atomic import write_text_atomic, write_versioned_text
 from .momentum import conversion_per_watcher, projected_total
 from .notify import (
     LATEST_URL,
@@ -873,7 +874,7 @@ def build_plaintext(curr: dict) -> str:
     return "\n".join(quality_lines(curr) + [""] + lines + [f"{p.get('title', '?')}: 日增量 {delta_text(p, 'followers' if p.get('status') == 'prelaunch' else 'pledged_usd')}" for p in curr.get("projects", [])])
 
 
-def write_archive(html: str) -> None:
+def write_archive(html: str) -> Path:
     """Save today's HTML edition to site/editions/ + rebuild the index page.
 
     Pages URL pattern:
@@ -884,10 +885,11 @@ def write_archive(html: str) -> None:
     today = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
     out_dir = REPO_ROOT / "site" / "editions"
     out_dir.mkdir(parents=True, exist_ok=True)
-    (out_dir / f"{today}.html").write_text(html, encoding="utf-8")
-    (out_dir / "latest.html").write_text(html, encoding="utf-8")
+    edition_path = write_versioned_text(out_dir / f"{today}.html", html)
+    write_text_atomic(out_dir / "latest.html", html)
     # Rebuild the directory index from disk so it always matches the file list
     _write_editions_index(out_dir)
+    return edition_path
 
 
 def _write_editions_index(out_dir: Path) -> None:
@@ -903,7 +905,7 @@ def _write_editions_index(out_dir: Path) -> None:
             label = d.strftime("%A · %B %d, %Y")
             edition = (d - dt.datetime(2026, 4, 25)).days + 1
         except ValueError:
-            label = stem
+            label = stem.replace("-revision-", " · 修订预览 / Revision ")
             edition = "—"
         rows.append(
             f'<li style="display:flex;justify-content:space-between;align-items:baseline;'

@@ -14,6 +14,7 @@ import datetime as dt
 import json
 from pathlib import Path
 
+from .atomic import write_text_atomic, write_versioned_text
 from .observations import delta_text, metric_text
 from .quality import quality_lines
 
@@ -457,10 +458,9 @@ def write_today() -> Path:
     md = make_report(curr, prev)
     REPORTS.mkdir(parents=True, exist_ok=True)
     today = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
-    out_path = REPORTS / f"{today}.md"
-    out_path.write_text(md, encoding="utf-8")
+    out_path = write_versioned_text(REPORTS / f"{today}.md", md)
     # Also write a stable-URL copy so a bookmark always points at today.
-    (REPORTS / "latest.md").write_text(md, encoding="utf-8")
+    write_text_atomic(REPORTS / "latest.md", md)
     return out_path
 
 

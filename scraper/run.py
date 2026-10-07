@@ -28,7 +28,7 @@ from . import brand_candidates as _brand_candidates
 from . import health
 from . import refresh as _refresh
 from .api import write_api
-from .atomic import write_json_atomic, write_text_atomic
+from .atomic import write_json_atomic, write_text_atomic, write_versioned_text
 from .banner import write_banner
 from .classify import classify
 from .diff import changes_to_markdown, diff_snapshots
@@ -421,9 +421,8 @@ def run() -> int:
     # Pages serves it permanently at /editions/<date>.html.
     try:
         _, archive_html = build_email_html(out)
-        write_email_archive(archive_html)
-        today_date = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
-        print(f"  archived site/editions/{today_date}.html (+ latest.html)")
+        archive_path = write_email_archive(archive_html)
+        print(f"  archived {archive_path.name} (+ latest.html)")
     except Exception as e:
         print(f"  archive skipped: {e}")
 
@@ -481,11 +480,10 @@ def run() -> int:
                 prev_for_report = None
         md = make_report(out, prev_for_report)
         today = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
-        report_path = REPORTS / f"{today}.md"
-        write_text_atomic(report_path, md)
+        report_path = write_versioned_text(REPORTS / f"{today}.md", md)
         # Stable URL — bookmark this once
         write_text_atomic(REPORTS / "latest.md", md)
-        print(f"  wrote reports/{today}.md (and reports/latest.md)")
+        print(f"  wrote reports/{report_path.name} (and reports/latest.md)")
     except Exception as e:
         print(f"  report skipped: {e}")
 
