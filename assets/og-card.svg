@@ -36,12 +36,12 @@
         font-weight="700" fill="#737373" letter-spacing="3">PRELAUNCH</text>
 
   <text x="600" y="544" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="64"
-        font-weight="900" fill="#111111" letter-spacing="-2">151</text>
+        font-weight="900" fill="#111111" letter-spacing="-2">150</text>
   <text x="600" y="582" text-anchor="middle" font-family="Inter, Helvetica, sans-serif" font-size="13"
         font-weight="700" fill="#737373" letter-spacing="3">LIVE</text>
 
   <text x="820" y="544" text-anchor="middle" font-family="Playfair Display, Times New Roman, serif" font-size="64"
-        font-weight="900" fill="#111111" letter-spacing="-2">506</text>
+        font-weight="900" fill="#111111" letter-spacing="-2">507</text>
   <text x="820" y="582" text-anchor="middle" font-family="Inter, Helvetica, sans-serif" font-size="13"
         font-weight="700" fill="#737373" letter-spacing="3">FUNDED</text>
 
