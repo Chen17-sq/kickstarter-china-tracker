@@ -122,3 +122,11 @@ def test_unverified_project_states_are_visible_and_cannot_shrink_denominator():
     assert q["active_states"] == {"total": 20, "unverified": 20}
     assert any("project status" in issue for issue in q["issues"])
     assert q["metrics"]["pledged_usd"]["eligible"] == 20
+
+
+def test_exact_state_coverage_threshold_and_conversion_overflow():
+    from scraper.quality import assess
+    rows = [{"status": "live", "status_observation": {"status": "fresh", "observed_at": NOW.isoformat()}} for _ in range(18)]
+    rows.extend([{"status": "live"}, {"status": "live"}])
+    assert not any("project status" in issue for issue in assess({"projects": rows}, now=NOW)["issues"])
+    assert to_usd(1e300, 'HKD', 'HKD', 1e300) is None

@@ -44,7 +44,7 @@ def assess(snapshot, *, now=None):
     state_unknown = sum(not (m.get("status") == "fresh" and parse_time(m.get("observed_at"))
                             and 0 <= (now - parse_time(m["observed_at"])).total_seconds() <= 30 * 3600)
                         for p in active for m in [p.get("status_observation", {})])
-    if active and state_unknown / len(active) > 1 - POLICY["core_coverage"]:
+    if active and (len(active) - state_unknown) / len(active) < POLICY["core_coverage"]:
         issues.append(f"project status: unverified {state_unknown}/{len(active)} above 10%")
     return {"status": "degraded" if issues else "healthy", "metrics": metrics,
             "active_states": {"total": len(active), "unverified": state_unknown},
