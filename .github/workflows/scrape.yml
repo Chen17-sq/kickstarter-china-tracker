@@ -6,7 +6,12 @@ on:
     # ~1-2 min deploy means Pages refreshes by ~08:10. Reader opens at
     # 9 AM and sees today's edition fully published. One snapshot/day.
     - cron: "0 0 * * *"
-  workflow_dispatch:        # manual run from Actions tab
+  workflow_dispatch:
+    inputs:
+      refresh_only:
+        description: Refresh data without email (recovery/re-run)
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -22,25 +27,30 @@ jobs:
     # any pathology that would otherwise burn 6h of GH minutes silently.
     # Healthy run: 3-4 min. Outlier with Playwright fallback: ~6 min.
     timeout-minutes: 20
+    env:
+      # Defaults preserve current policy; owner enables gates/pauses delivery.
+      KS_QUALITY_POLICY: ${{ vars.KS_QUALITY_POLICY || 'observe' }}
     steps:
       - uses: actions/checkout@v4
 
-      # ── Idempotency guard ───────────────────────────────────────────
-      # Today's snapshot already exists? GH-cron, CC-backup, and manual
-      # workflow_dispatch all use the same workflow, so duplicate triggers
-      # are common. We treat the presence of a `data/history/<today-UTC>T*.json`
-      # file as the canonical "today already ran" marker — single source of
-      # truth for the whole pipeline. Subsequent steps gated on this.
-      - name: Check if today's snapshot already exists
+      # Recovery retains all attempts. A second run may refresh data but must
+      # not automatically re-send an edition already attempted today.
+      - name: Check scrape and delivery state independently
         id: dedupe
+        env:
+          REFRESH_ONLY: ${{ inputs.refresh_only }}
         run: |
           today_utc=$(date -u +%Y-%m-%d)
           if ls "data/history/${today_utc}T"*.json >/dev/null 2>&1; then
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "✓ today's snapshot ${today_utc} already exists — skipping scrape + email"
+            echo "had_snapshot=true" >> "$GITHUB_OUTPUT"
+            if [ "$REFRESH_ONLY" != "true" ] && jq -e '.data_quality.status == "healthy"' data/projects.json >/dev/null; then
+              echo "skip=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "skip=false" >> "$GITHUB_OUTPUT"
+            fi
           else
+            echo "had_snapshot=false" >> "$GITHUB_OUTPUT"
             echo "skip=false" >> "$GITHUB_OUTPUT"
-            echo "→ no snapshot yet for ${today_utc} — proceeding"
           fi
 
       - uses: actions/setup-python@v5
@@ -65,6 +75,12 @@ jobs:
         run: |
           python -m playwright install --with-deps chromium
           python -m patchright install chromium || echo "patchright install skipped"
+          python - <<'PYBROWSER' >> "$GITHUB_ENV"
+          import shutil
+          from playwright.sync_api import sync_playwright
+          with sync_playwright() as p:
+              print("KS_BROWSER_EXECUTABLE=" + (shutil.which("google-chrome") or p.chromium.executable_path))
+          PYBROWSER
 
       # Restore CF session cookies from previous run — the biggest single
       # CF-pass-rate improvement (turns "fresh stranger from a flagged IP"
@@ -93,7 +109,7 @@ jobs:
         run: |
           git config user.name "ks-tracker-bot"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/ reports/ assets/ site/editions/ site/social/ site/sitemap.xml site/robots.txt
+          git add data/ reports/ assets/ site/editions/ site/social/ site/api/ site/feed.xml site/sitemap.xml site/robots.txt
           [ -f CHANGELOG.md ] && git add CHANGELOG.md || true
           if git diff --staged --quiet; then
             echo "No changes."
@@ -103,7 +119,7 @@ jobs:
           git push
 
       - name: Slack / Discord notify (optional)
-        if: steps.dedupe.outputs.skip != 'true' && (env.SLACK_WEBHOOK != '' || env.DISCORD_WEBHOOK != '')
+        if: steps.dedupe.outputs.skip != 'true' && inputs.refresh_only != true && (env.SLACK_WEBHOOK != '' || env.DISCORD_WEBHOOK != '')
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
@@ -131,7 +147,7 @@ jobs:
         continue-on-error: true
 
       - name: Email notify (optional)
-        if: steps.dedupe.outputs.skip != 'true' && env.RESEND_API_KEY != '' && env.NOTIFY_EMAIL_TO != ''
+        if: steps.dedupe.outputs.skip != 'true' && steps.dedupe.outputs.had_snapshot != 'true' && inputs.refresh_only != true && vars.KS_EMAIL_DELIVERY != 'paused' && env.RESEND_API_KEY != '' && env.NOTIFY_EMAIL_TO != ''
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           NOTIFY_EMAIL_TO: ${{ secrets.NOTIFY_EMAIL_TO }}

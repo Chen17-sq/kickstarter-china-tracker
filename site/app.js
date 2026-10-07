@@ -166,8 +166,39 @@ function escapeHtml(s) {
   }[c]));
 }
 
+// Observation evidence is shared with email/API; generated_at is only build time.
+function freshMetric(d, key) {
+  const m = (d.observations || {})[key] || {};
+  const age = (Date.now() - Date.parse(m.observed_at)) / 3600000;
+  return m.status === "fresh" && Number.isFinite(age) && age >= 0 && age <= 30;
+}
+function metricValue(d, key) {
+  if (!freshMetric(d, key)) return LANG === "zh" ? "未更新" : "Not updated";
+  return key.endsWith("_usd") ? fmtUSD(d[key]) : fmtNum(d[key]);
+}
+function metricEvidence(d, key) {
+  const m = (d.observations || {})[key] || {};
+  const last = d[key] == null ? "" : ` · ${LANG === "zh" ? "旧值" : "Last value"} ${key.endsWith("_usd") ? fmtUSD(d[key]) : fmtNum(d[key])}`;
+  return `<small style="display:block;font-size:11px;white-space:normal;overflow-wrap:anywhere">${LANG === "zh" ? "观测" : "Observed"} ${escapeHtml(m.observed_at || (LANG === "zh" ? "未知" : "unknown"))}${!freshMetric(d, key) ? last : ""}</small>`;
+}
+function metricDelta(d, key) {
+  const name = "delta_" + key, m = (d.delta_meta || {})[name] || {}, v = d[name];
+  if (!freshMetric(d, key) || m.status !== "valid" || v == null) return LANG === "zh" ? "无法计算" : "Unavailable";
+  return (v > 0 ? "+" : v < 0 ? "−" : "") + (key.endsWith("_usd") ? fmtUSD(Math.abs(v)) : fmtNum(Math.abs(v)));
+}
+function qualityBanner() {
+  const metrics = [["followers", LANG === "zh" ? "预热关注" : "Prelaunch watchers", "prelaunch"], ["backers", LANG === "zh" ? "在筹支持人数" : "Live backers", "live"], ["pledged_usd", LANG === "zh" ? "在筹筹款" : "Live funds raised", "live"], ["min_pledge_usd", LANG === "zh" ? "最低支持档位" : "Minimum pledge tier", "live"]];
+  const lines = metrics.map(([key, label, status]) => {
+    const rows = DATA.filter(p => p.status === status);
+    return `${label}${LANG === "zh" ? "：本次有效刷新 " : ": refreshed "}${rows.filter(p => freshMetric(p, key)).length}/${rows.length}${LANG === "zh" ? "；可比日增量 " : "; comparable daily changes "}${rows.filter(p => freshMetric(p, key) && ((p.delta_meta || {})["delta_" + key] || {}).status === "valid").length}/${rows.length}`;
+  });
+  const el = document.getElementById("data-quality");
+  if (el) el.innerHTML = `<h2 style="font-size:16px;margin:0">${LANG === "zh" ? "数据刷新与邮件送达分别统计" : "Data refresh and email delivery are separate"}</h2><br>${lines.join("<br>")}<br>${LANG === "zh" ? "未更新值仅为历史参考；生成时间不代表观测时间。" : "Old values are historical references. Build time is not observation time."}`;
+}
+
 // $/watcher — meaningful for live + ended; null when no watchers data.
 function conversionPerWatcher(d) {
+  if (!freshMetric(d, "followers") || !freshMetric(d, "pledged_usd")) return null;
   const f = Number(d.followers || 0);
   const p = Number(d.pledged_usd || 0);
   if (f <= 0 || p <= 0) return null;
@@ -176,7 +207,7 @@ function conversionPerWatcher(d) {
 
 // Naïve linear projection for live: $/day × total_campaign_days.
 function projectedTotal(d) {
-  if (d.status !== "live") return null;
+  if (d.status !== "live" || !freshMetric(d, "pledged_usd")) return null;
   const launched = Number(d.launched_at || 0);
   const deadline = Number(d.deadline || 0);
   const pledged = Number(d.pledged_usd || 0);
@@ -277,7 +308,7 @@ function rowHtml(d) {
   const cpwStr = (cpw && (d.status === "live" || d.status === "successful"))
     ? `${fmtUSD(cpw)}/W` : "";
   const projStr = proj ? `Proj. ${fmtUSD(proj)}` : "";
-  const priceStr = d.min_pledge_usd ? `起步价 ${fmtUSD(d.min_pledge_usd)}` : "";
+  const priceStr = d.min_pledge_usd ? `起步价 ${metricValue(d, "min_pledge_usd")}` : "";
   const meta = [tl, company, loc, cat, priceStr, cpwStr, projStr].filter(Boolean).join(" · ");
   const b = blurbInfo(d);
   const blurbHtml = b.text
@@ -291,9 +322,9 @@ function rowHtml(d) {
   const url = d.url || "";
 
   // Inline deltas (red, JetBrains Mono, only when positive)
-  const dPledged = fmtDeltaUSD(d.delta_pledged_usd);
-  const dBackers = fmtDeltaInt(d.delta_backers);
-  const dFollowers = fmtDeltaInt(d.delta_followers);
+  const dPledged = metricDelta(d, "pledged_usd");
+  const dBackers = metricDelta(d, "backers");
+  const dFollowers = metricDelta(d, "followers");
   const dPledgedHtml = dPledged ? ` <span class="delta">${dPledged}</span>` : "";
   const dBackersHtml = dBackers ? ` <span class="delta">${dBackers}</span>` : "";
   const dFollowersHtml = dFollowers ? ` <span class="delta">${dFollowers}</span>` : "";
@@ -310,12 +341,12 @@ function rowHtml(d) {
       <div class="country">${escapeHtml(countryLabel(d.country))}</div>
     </td>
     <td class="num">
-      <div class="dollar">${fmtUSD(d.pledged_usd)}${dPledgedHtml}</div>
-      ${d.goal_usd ? `<div class="goal">/ ${fmtUSD(d.goal_usd)}</div>` : ""}
+      <div class="dollar">${metricValue(d, "pledged_usd")}${dPledgedHtml}${metricEvidence(d, "pledged_usd")}</div>
+      ${d.goal_usd ? `<div class="goal">/ ${metricValue(d, "goal_usd")}</div>` : ""}
     </td>
-    <td class="num hide-md">${fmtNum(d.backers)}${dBackersHtml}</td>
-    <td class="num hide-md">${fmtNum(d.followers)}${dFollowersHtml}</td>
-    <td class="num hide-md"><span class="${pctCls}">${fmtPct(d.percent_funded)}</span></td>
+    <td class="num hide-md">${metricValue(d, "backers")}${dBackersHtml}${metricEvidence(d, "backers")}</td>
+    <td class="num hide-md">${metricValue(d, "followers")}${dFollowersHtml}${metricEvidence(d, "followers")}</td>
+    <td class="num hide-md"><span class="${pctCls}">${freshMetric(d, "percent_funded") ? fmtPct(d.percent_funded) : (LANG === "zh" ? "未更新" : "Not updated")}</span></td>
     <td>${url ? `<a class="link" href="${escapeHtml(url)}" target="_blank" rel="noopener">KS →</a>` : ""}</td>
   </tr>`;
 }
@@ -416,17 +447,17 @@ function renderHero() {
 
     let valHtml = "";
     if (kind === "prelaunch") {
-      const dF = Number(p.delta_followers || 0);
+      const dF = p.delta_followers;
       const dHtml = dF > 0
         ? ` <span class="delta" style="font-size:10px;margin-left:2px">+${dF.toLocaleString()}</span>`
         : "";
-      valHtml = `<div class="v">${fmtNum(p.followers)}${dHtml}</div><div class="l">${langZh ? "关注" : "WATCH"}</div>`;
+      valHtml = `<div class="v">${metricValue(p, "followers")}</div><small>${LANG === "zh" ? "日增量" : "Daily change"} ${metricDelta(p, "followers")}</small>${metricEvidence(p, "followers")}<div class="l">${langZh ? "关注" : "WATCH"}</div>`;
     } else {
-      const dP = Number(p.delta_pledged_usd || 0);
+      const dP = p.delta_pledged_usd;
       const dHtml = dP > 0
         ? ` <span class="delta" style="font-size:10px;margin-left:2px">+${escapeHtml(fmtUSD(dP))}</span>`
         : "";
-      valHtml = `<div class="v">${fmtUSD(p.pledged_usd)}${dHtml}</div><div class="l">${fmtNum(p.backers)} ${langZh ? "支持" : "BACK"}</div>`;
+      valHtml = `<div class="v">${metricValue(p, "pledged_usd")}</div><small>${LANG === "zh" ? "日增量" : "Daily change"} ${metricDelta(p, "pledged_usd")}</small>${metricEvidence(p, "pledged_usd")}<div class="l">${metricValue(p, "backers")} ${langZh ? "支持" : "BACK"}</div>`;
     }
     return `<div class="hero-story">
       <span class="rank">${String(rank).padStart(2, "0")}</span>
@@ -470,7 +501,7 @@ function renderKpis() {
       <div class="delta">${escapeHtml(k.prelaunchDelta)}</div></div>
     <div class="kpi is-live"><div class="label">${escapeHtml(k.live)}</div>
       <div class="num">${counts.live}</div>
-      <div class="delta">${escapeHtml(k.liveDelta(fmtUSD(totalUsd)))}</div></div>
+      <div class="delta">${escapeHtml(k.liveDelta((DATA.some(p => p.status === "live" && !freshMetric(p, "pledged_usd")) ? "未更新" : fmtUSD(totalUsd))))}</div></div>
     <div class="kpi"><div class="label">${escapeHtml(k.success)}</div>
       <div class="num">${counts.successful}</div>
       <div class="delta">${escapeHtml(k.successDelta)}</div></div>
@@ -573,6 +604,7 @@ function applyChrome() {
 function setLang(lang) {
   if (lang === LANG) return;
   LANG = lang;
+  qualityBanner();
   localStorage.setItem(LANG_KEY, LANG);
   applyChrome(); buildChips(); renderHero(); renderKpis(); render();
 }
@@ -588,6 +620,8 @@ async function load() {
     const j = await r.json();
     DATA = j.projects || [];
     GENERATED_AT = j.generated_at || "";
+    document.body.insertAdjacentHTML("afterbegin", '<div id="data-quality" role="status" style="max-width:1200px;margin:16px auto;padding:16px;border:2px solid #cc0000;line-height:1.6"></div>');
+    qualityBanner();
     applySort();
     applyChrome(); boot();
   } catch (e) {

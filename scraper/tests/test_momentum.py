@@ -14,12 +14,22 @@ from scraper.momentum import (
     projected_total,
     top_movers_from_rows,
 )
+from scraper.observations import observe
+
+
+def verified(rows, days=0):
+    at = (dt.datetime.now(dt.UTC) - dt.timedelta(days=days)).isoformat()
+    for row in rows:
+        for key in ("followers", "backers", "pledged_usd"):
+            observe(row, key, row.get(key), at=at, source="fixture")
+    return rows
+
 
 # ── conversion_per_watcher ────────────────────────────────────────
 
 def test_cpw_basic():
     p = {"followers": 1000, "pledged_usd": 50_000}
-    assert conversion_per_watcher(p) == 50.0
+    assert conversion_per_watcher(verified([p])[0]) == 50.0
 
 
 def test_cpw_zero_followers_returns_none():
@@ -36,7 +46,7 @@ def test_cpw_bad_types_returns_none():
 
 def test_cpb_basic():
     p = {"backers": 100, "pledged_usd": 50_000}
-    assert conversion_per_backer(p) == 500.0
+    assert conversion_per_backer(verified([p])[0]) == 500.0
 
 
 def test_cpb_zero_backers_returns_none():
@@ -94,7 +104,7 @@ def test_projected_total_extrapolates_linearly():
         "deadline": deadline,
         "pledged_usd": 5000.0,
     }
-    proj = projected_total(p)
+    proj = projected_total(verified([p])[0])
     assert proj is not None
     # 5 days in → $1000/day → 30 days × $1000 = $30K
     assert 29_000 < proj < 31_000, f"got {proj}"
@@ -127,7 +137,7 @@ def test_compute_deltas_no_prev_returns_empty(monkeypatch):
     summary = compute_deltas(rows)
     assert summary["prev_at"] is None
     assert summary["top_followers"] == []
-    assert "delta_followers" not in rows[0]
+    assert rows[0].get("delta_followers") is None
 
 
 def test_compute_deltas_basic(monkeypatch):
@@ -145,6 +155,8 @@ def test_compute_deltas_basic(monkeypatch):
         {"pathname": "/a", "followers": 150, "backers": 0, "pledged_usd": 0},  # +50 followers
         {"pathname": "/b", "followers": 200, "backers": 15, "pledged_usd": 250.0},  # +10 backers, +$150
     ]
+    verified(prev_snap["projects"], days=1)
+    verified(rows)
     summary = compute_deltas(rows)
     assert rows[0]["delta_followers"] == 50
     assert rows[1]["delta_backers"] == 10
@@ -161,7 +173,7 @@ def test_compute_deltas_new_project_no_delta(monkeypatch):
     monkeypatch.setattr("scraper.momentum.find_prev_snapshot", lambda: (prev_snap, prev_ts))
     rows = [{"pathname": "/new", "followers": 50}]
     summary = compute_deltas(rows)
-    assert "delta_followers" not in rows[0]
+    assert rows[0].get("delta_followers") is None
     assert summary["top_followers"] == []
 
 
@@ -188,7 +200,7 @@ def test_weekly_no_ref_snapshot_returns_empty(monkeypatch):
     summary = compute_weekly_deltas(rows)
     assert summary["ref_at"] is None
     assert summary["age_days"] is None
-    assert "weekly_delta_followers" not in rows[0]
+    assert rows[0].get("weekly_delta_followers") is None
 
 
 def test_weekly_computes_followers_pledged_backers_delta(monkeypatch):
@@ -204,6 +216,8 @@ def test_weekly_computes_followers_pledged_backers_delta(monkeypatch):
     rows = [
         {"pathname": "/a", "followers": 300, "backers": 75, "pledged_usd": 1500.0},
     ]
+    verified(ref["projects"], days=7)
+    verified(rows)
     summary = compute_weekly_deltas(rows)
     assert rows[0]["weekly_delta_followers"] == 200
     assert rows[0]["weekly_delta_backers"] == 25
@@ -221,7 +235,7 @@ def test_weekly_new_project_gets_no_delta(monkeypatch):
     monkeypatch.setattr("scraper.momentum.find_week_ago_snapshot", lambda: (ref, ref_ts))
     rows = [{"pathname": "/new", "followers": 50}]
     compute_weekly_deltas(rows)
-    assert "weekly_delta_followers" not in rows[0]
+    assert rows[0].get("weekly_delta_followers") is None
 
 
 def test_weekly_only_positive_movers_in_top():

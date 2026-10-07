@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "backends": {
+    "playwright": {
+      "status": "passed",
+      "queries": 2
+    },
+    "nodriver": {
+      "status": "passed",
+      "queries": 2,
+      "loop_closed": true
+    }
+  },
+  "public_requests": 0,
+  "emails_sent": 0,
+  "mode": "browser",
+  "checked_at": "2026-10-07T10:19:31.204653+00:00"
+}

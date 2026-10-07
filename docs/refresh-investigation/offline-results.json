@@ -1,0 +1,38 @@
+{
+  "pytest": "262 passed",
+  "ruff": "passed",
+  "dry_runs": [
+    {
+      "scenario": "all-failed",
+      "network_calls": 0,
+      "emails_sent": 0,
+      "project_count": 30,
+      "daily_delta_valid": 0,
+      "history_attempts": 3
+    },
+    {
+      "scenario": "partial",
+      "network_calls": 0,
+      "emails_sent": 0,
+      "project_count": 30,
+      "daily_delta_valid": 24,
+      "history_attempts": 3
+    },
+    {
+      "scenario": "healthy",
+      "network_calls": 0,
+      "emails_sent": 0,
+      "project_count": 30,
+      "daily_delta_valid": 29,
+      "history_attempts": 3
+    },
+    {
+      "scenario": "recovery",
+      "network_calls": 0,
+      "emails_sent": 0,
+      "project_count": 30,
+      "daily_delta_valid": 29,
+      "history_attempts": 4
+    }
+  ]
+}

@@ -1,37 +1,17 @@
-"""nodriver — Tier 3 heavy artillery for KS GraphQL when patchright fails.
+"""Browser GraphQL transport owning a single bounded asyncio lifecycle.
 
-nodriver (https://github.com/ultrafunkamsterdam/nodriver) is the actively-
-maintained successor to undetected-chromedriver, by the same author. It
-talks raw Chrome DevTools Protocol — NO Playwright shim — and is the
-benchmark leader (90.3% pass) against modern CF detection as of May 2026.
-
-We use it as Tier 3, after curl_cffi (Tier 1) and patchright/playwright
-(Tier 2) have both failed. The cost is a slower startup (~5s vs
-patchright's ~3s) and async-only API (we bridge to sync via asyncio.run).
-
-Architecture:
-  Tier 1: curl_cffi with rotated TLS impersonations (fastest)
-  Tier 2: patchright headless Chromium via page.evaluate(fetch())
-  Tier 3: nodriver raw CDP — last resort
-
-This module exposes one function: `open_nodriver_transport(label)`,
-which returns the same `_Transport`-shaped object (post_graphql + close)
-that project.py expects. Drop-in.
-
-Bridge strategy: nodriver is async-only. We wrap every call in
-asyncio.run() so the rest of project.py stays sync. This is acceptable
-because we open the transport once per cron run; the overhead is
-amortized across many GraphQL chunks.
-
-If `nodriver` isn't installed (it's listed as `>=0.50` in requirements
-but optional in practice), open_nodriver_transport returns None and
-the caller falls back gracefully (today's case: skip pledge_min, keep
-yesterday's value).
+CI verifies startup, two queries and cleanup against a local HTTP fixture.
+A successful local browser test does not establish Kickstarter access.
 """
 from __future__ import annotations
 
 import asyncio
+import inspect
 import json
+import os
+import shutil
+import tempfile
+from pathlib import Path
 from typing import Any
 
 GRAPH_URL = "https://www.kickstarter.com/graph"
@@ -48,11 +28,15 @@ class NodriverTransport:
       .csrf = <token>
     """
 
-    def __init__(self, browser: Any, page: Any, csrf: str):
+    def __init__(self, browser: Any, page: Any, csrf: str, loop=None, graph_url=GRAPH_URL, process=None, profile=None):
+        self._loop = loop or asyncio.new_event_loop()
         self._browser = browser
         self._page = page
         self.csrf = csrf
         self.mode = "nodriver"
+        self.graph_url = graph_url
+        self._process = process
+        self._profile = profile
 
     def post_graphql(self, body: dict) -> tuple[int, dict | None]:
         """POST a GraphQL query via the in-browser fetch — like patchright
@@ -81,20 +65,27 @@ class NodriverTransport:
                         credentials: 'include',
                       }});
                       const text = await r.text();
-                      return {{ status: r.status, text: text }};
+                      return JSON.stringify({{ status: r.status, text: text }});
                     }} catch (e) {{
-                      return {{ status: -1, text: String(e) }};
+                      return JSON.stringify({{ status: -1, text: String(e) }});
                     }}
                   }})()
                 """
                 expr = expr_template.format(
-                    url=json.dumps(GRAPH_URL),
+                    url=json.dumps(self.graph_url),
                     headers=json.dumps(headers),
                     body=json.dumps(payload),
                 )
                 result = await self._page.evaluate(expr, await_promise=True)
             except Exception:
                 return -1, None
+            # nodriver deep-serializes JS objects as CDP key/value arrays,
+            # not ordinary Python dicts. A JSON string is stable across versions.
+            if isinstance(result, str):
+                try:
+                    result = json.loads(result)
+                except ValueError:
+                    return -1, None
             if not isinstance(result, dict):
                 return -1, None
             status = int(result.get("status", -1))
@@ -106,7 +97,10 @@ class NodriverTransport:
             except Exception:
                 return status, None
 
-        return asyncio.run(_do())
+        try:
+            return self._loop.run_until_complete(asyncio.wait_for(_do(), timeout=30))
+        except TimeoutError:
+            return -1, None
 
     def close(self) -> None:
         """Shut down the browser. Safe to call multiple times."""
@@ -114,19 +108,36 @@ class NodriverTransport:
             return
         async def _do() -> None:
             try:
-                await self._browser.stop()
+                result = self._browser.stop()
+                if inspect.isawaitable(result):
+                    await result
             except Exception:
                 pass
+            await _stop_process(self._process)
+            if self._profile:
+                shutil.rmtree(self._profile, ignore_errors=True)
         try:
-            asyncio.run(_do())
+            self._loop.run_until_complete(_do())
         except Exception:
             pass
         self._browser = None
         self._page = None
+        _close_loop(self._loop)
+
+
+def _close_loop(loop):
+    async def cleanup():
+        pending = asyncio.all_tasks(loop) - {asyncio.current_task()}
+        for task in pending:
+            task.cancel()
+        if pending:
+            await asyncio.gather(*pending, return_exceptions=True)
+    loop.run_until_complete(cleanup())
+    loop.close()
 
 
 def open_nodriver_transport(
-    label: str = "nodriver", *, verbose: bool = True
+    label: str = "nodriver", *, verbose: bool = True, seed_url=SEED_URL, graph_url=GRAPH_URL
 ) -> NodriverTransport | None:
     """Boot a nodriver browser, fetch CSRF, return a NodriverTransport.
 
@@ -147,59 +158,93 @@ def open_nodriver_transport(
     from .http import pick_proxy
     proxy_url = pick_proxy()
 
-    async def _boot() -> NodriverTransport | None:
-        try:
-            args = [
-                "--lang=en-US",
-                "--disable-blink-features=AutomationControlled",
-            ]
-            if proxy_url:
-                # Strip any embedded credentials — Chromium reads
-                # --proxy-server as URL only; auth is handled separately.
-                from urllib.parse import urlparse
-                p = urlparse(proxy_url)
-                clean = f"{p.scheme}://{p.hostname}:{p.port}" if p.hostname else proxy_url
-                args.append(f"--proxy-server={clean}")
-                if verbose:
-                    print(f"  nodriver routing through KS_PROXY ({p.hostname})")
-            browser = await nd.start(
-                headless=True,
-                user_data_dir=None,  # ephemeral profile per run
-                browser_args=args,
-            )
-        except Exception as e:
-            if verbose:
-                print(f"  ! nodriver browser.start failed: {e}")
-            return None
+    executable = os.environ.get("KS_BROWSER_EXECUTABLE") or nd.Config().browser_executable_path
+    if not executable or not Path(executable).is_file():
+        if verbose:
+            print("  nodriver: Chromium executable does not exist")
+        return None
+    loop = asyncio.new_event_loop()
 
+    async def _boot():
+        profile = tempfile.mkdtemp(prefix="ks-chromium-")
+        browser = process = None
+        stderr_path = Path(profile) / "browser.stderr"
         try:
-            page = await browser.get(SEED_URL)
-            # Wait briefly for any CF challenge to clear
-            await asyncio.sleep(2.5)
-            # Extract CSRF the same way Playwright does
-            csrf = await page.evaluate(
-                "document.querySelector('meta[name=\"csrf-token\"]')?.content || null"
-            )
-            if not csrf or not isinstance(csrf, str):
-                if verbose:
-                    print("  ! nodriver: no CSRF found on seed page")
-                await browser.stop()
-                return None
+            # Own the process and wait for its ready file, rather than relying
+            # on nodriver's fixed ~3-second startup polling window.
+            args = ["--headless=new", "--remote-debugging-address=127.0.0.1",
+                    "--remote-debugging-port=0", "--no-first-run", "--lang=en-US",
+                    f"--user-data-dir={profile}"]
+            if proxy_url:
+                from urllib.parse import urlparse
+                proxy = urlparse(proxy_url)
+                if proxy.hostname:
+                    args.append(f"--proxy-server={proxy.scheme}://{proxy.hostname}:{proxy.port}")
+            with stderr_path.open("wb") as stderr:
+                process = await asyncio.create_subprocess_exec(executable, *args, "about:blank",
+                                                               stdout=asyncio.subprocess.DEVNULL, stderr=stderr)
+            ready = Path(profile) / "DevToolsActivePort"
+            deadline = loop.time() + 30
+            while not ready.exists():
+                if process.returncode is not None or loop.time() >= deadline:
+                    stderr = stderr_path.read_text(errors="replace")
+                    reason = "browser_sandbox_unavailable" if any(w in stderr.lower() for w in (
+                        "sandbox", "apparmor", "user namespace")) else "browser_not_ready"
+                    raise RuntimeError(reason)
+                await asyncio.sleep(0.2)
+            port = int(ready.read_text().splitlines()[0])
+            browser = await nd.start(host="127.0.0.1", port=port, browser_executable_path=executable)
+            page = await browser.get(seed_url)
+            csrf = None
+            dom_deadline = loop.time() + 5
+            # browser.get may return before the new document has replaced
+            # about:blank. Wait for the expected DOM, not a fixed sleep.
+            while loop.time() < dom_deadline:
+                csrf = await page.evaluate(
+                    "document.querySelector('meta[name=\"csrf-token\"]')?.content || null"
+                )
+                if isinstance(csrf, str) and csrf:
+                    break
+                await asyncio.sleep(0.1)
+            if not isinstance(csrf, str) or not csrf:
+                raise RuntimeError("csrf_missing")
             if verbose:
-                print(f"  {label} ✅ seeded via nodriver (csrf len={len(csrf)})")
-            return NodriverTransport(browser=browser, page=page, csrf=csrf)
-        except Exception as e:
+                print(f"  {label}: browser started and CSRF found")
+            return NodriverTransport(browser, page, csrf, loop=loop, graph_url=graph_url,
+                                     process=process, profile=profile)
+        except (Exception, asyncio.CancelledError) as exc:
+            if browser:
+                browser.stop()
+            await _stop_process(process)
+            shutil.rmtree(profile, ignore_errors=True)
+            if isinstance(exc, asyncio.CancelledError):
+                raise
             if verbose:
-                print(f"  ! nodriver seed exception: {e}")
-            try:
-                await browser.stop()
-            except Exception:
-                pass
+                reason = str(exc) if isinstance(exc, RuntimeError) else type(exc).__name__
+                print(f"  ! nodriver boot failed: {reason}")
             return None
 
     try:
-        return asyncio.run(_boot())
-    except Exception as e:
+        result = loop.run_until_complete(asyncio.wait_for(_boot(), timeout=60))
+        if result is None:
+            _close_loop(loop)
+        return result
+    except Exception as exc:
+        if not loop.is_closed():
+            _close_loop(loop)
         if verbose:
-            print(f"  ! nodriver asyncio bridge failed: {e}")
+            print(f"  ! nodriver bridge failed: {type(exc).__name__}")
         return None
+
+
+async def _stop_process(process):
+    if process is None or process.returncode is not None:
+        return
+    try:
+        process.terminate()
+        await asyncio.wait_for(process.wait(), timeout=5)
+    except TimeoutError:
+        process.kill()
+        await process.wait()
+    except ProcessLookupError:
+        pass

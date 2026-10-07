@@ -6,6 +6,7 @@ import json
 
 import pytest
 
+from scraper.observations import observe
 from scraper.weekly import (
     _load_snapshots_for_week,
     build_html,
@@ -30,6 +31,9 @@ def _proj(path, status="prelaunch", followers=0, pledged=0.0, backers=0,
 
 
 def _snap(projects, when: dt.datetime):
+    for p in projects:
+        for key in ("followers", "backers", "pledged_usd"):
+            observe(p, key, p.get(key), at=when.isoformat(), source="fixture")
     return (when, {
         "generated_at": when.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "projects": projects,
@@ -92,7 +96,7 @@ def test_new_in_discovery_detected():
     week = [
         _snap([_proj("/a", followers=100)], _wk(7)),
         _snap([_proj("/a"), _proj("/b", followers=50)], _wk(4)),  # /b new
-        _snap([_proj("/a"), _proj("/b"), _proj("/c", followers=200)], _wk(1)),  # /c new
+        _snap([_proj("/a"), _proj("/b"), _proj("/c", followers=200)], _wk(0)),  # /c new
     ]
     out = compute_weekly_stats(week)
     paths = {p["pathname"] for p in out["new_in_discovery"]}
@@ -105,7 +109,7 @@ def test_status_transition_prelaunch_to_live():
     """A project that was prelaunch at week-start, live at week-end."""
     week = [
         _snap([_proj("/a", status="prelaunch")], _wk(7)),
-        _snap([_proj("/a", status="live", pledged=5000.0, backers=20)], _wk(1)),
+        _snap([_proj("/a", status="live", pledged=5000.0, backers=20)], _wk(0)),
     ]
     out = compute_weekly_stats(week)
     assert len(out["newly_live"]) == 1
@@ -117,7 +121,7 @@ def test_status_transition_prelaunch_to_live():
 def test_status_transition_to_successful():
     week = [
         _snap([_proj("/a", status="live", pledged=5000.0)], _wk(7)),
-        _snap([_proj("/a", status="successful", pledged=50000.0, backers=200)], _wk(1)),
+        _snap([_proj("/a", status="successful", pledged=50000.0, backers=200)], _wk(0)),
     ]
     out = compute_weekly_stats(week)
     assert len(out["newly_successful"]) == 1
@@ -128,7 +132,7 @@ def test_top_follower_gainers():
         _snap([_proj("/a", followers=100), _proj("/b", followers=200), _proj("/c", followers=300)],
               _wk(7)),
         _snap([_proj("/a", followers=500), _proj("/b", followers=210), _proj("/c", followers=310)],
-              _wk(1)),
+              _wk(0)),
     ]
     out = compute_weekly_stats(week)
     # /a gained +400, /c gained +10, /b gained +10
@@ -139,7 +143,7 @@ def test_top_follower_gainers():
 def test_top_usd_gainers():
     week = [
         _snap([_proj("/a", pledged=1000.0), _proj("/b", pledged=500.0)], _wk(7)),
-        _snap([_proj("/a", pledged=8000.0), _proj("/b", pledged=600.0)], _wk(1)),
+        _snap([_proj("/a", pledged=8000.0), _proj("/b", pledged=600.0)], _wk(0)),
     ]
     out = compute_weekly_stats(week)
     assert out["top_usd_gainers"][0]["pathname"] == "/a"
@@ -157,7 +161,7 @@ def test_total_live_usd_change_sums_only_live_projects():
             _proj("/live1", status="live", pledged=3000.0),  # +2000
             _proj("/done", status="successful", pledged=10000.0),
             _proj("/pre", status="prelaunch"),
-        ], _wk(1)),
+        ], _wk(0)),
     ]
     out = compute_weekly_stats(week)
     assert out["total_live_usd_change"] == pytest.approx(2000.0)
@@ -170,7 +174,7 @@ def test_pledged_usd_string_normalized():
     Pin behavior so the weekly digest can't trip over the same thing."""
     week = [
         _snap([_proj("/a", pledged="1000.0")], _wk(7)),    # string
-        _snap([_proj("/a", pledged=5000.0)], _wk(1)),
+        _snap([_proj("/a", pledged=5000.0)], _wk(0)),
     ]
     out = compute_weekly_stats(week)
     # Should not crash, and the delta should be computed
@@ -185,7 +189,7 @@ def test_build_html_includes_populated_sections_only():
     populated sections always render."""
     week = [
         _snap([_proj("/a")], _wk(7)),
-        _snap([_proj("/a"), _proj("/b", followers=100)], _wk(1)),
+        _snap([_proj("/a"), _proj("/b", followers=100)], _wk(0)),
     ]
     stats = compute_weekly_stats(week)
     subject, html = build_html(stats)
@@ -201,7 +205,7 @@ def test_build_html_includes_populated_sections_only():
 def test_build_html_subject_includes_counts():
     week = [
         _snap([_proj("/a", status="prelaunch")], _wk(7)),
-        _snap([_proj("/a", status="live"), _proj("/b", followers=50)], _wk(1)),
+        _snap([_proj("/a", status="live"), _proj("/b", followers=50)], _wk(0)),
     ]
     stats = compute_weekly_stats(week)
     subject, _ = build_html(stats)
@@ -218,7 +222,7 @@ def test_build_plaintext_contains_all_sections():
         _snap([
             _proj("/a", followers=500, pledged=5000.0, status="live"),
             _proj("/b", followers=200),
-        ], _wk(1)),
+        ], _wk(0)),
     ]
     stats = compute_weekly_stats(week)
     text = build_plaintext(stats)
@@ -233,7 +237,7 @@ def test_build_plaintext_includes_urls_for_screen_readers():
     week = [
         _snap([_proj("/a")], _wk(7)),
         _snap([_proj("/a", followers=200), _proj("/b", followers=300,
-                    title="New thing", pwl=True)], _wk(1)),
+                    title="New thing", pwl=True)], _wk(0)),
     ]
     stats = compute_weekly_stats(week)
     text = build_plaintext(stats)

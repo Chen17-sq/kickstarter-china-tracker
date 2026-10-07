@@ -28,6 +28,9 @@ import shutil
 import sys
 from pathlib import Path
 
+from .observations import metric_text
+from .quality import assess
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SOCIAL = REPO_ROOT / "site" / "social"
 PROJECTS = REPO_ROOT / "data" / "projects.json"
@@ -64,7 +67,7 @@ PAGES_URL = "chen17-sq.github.io/kickstarter-china-tracker"
 
 
 # Number formatters live in _common.py — see "Number formatters" section there.
-from ._common import fmt_int, fmt_usd  # noqa: E402
+
 
 
 def _esc(s: str) -> str:
@@ -228,12 +231,12 @@ def _detail_row(rank: int, p: dict, *, kind: str, hl_map: dict) -> str:
     )
 
     if kind == "prelaunch":
-        big_value = fmt_int(p.get("followers"))
+        big_value = metric_text(p, "followers")
         big_label = "Watchers · 关注"
         big_color = RED
     else:  # live
-        big_value = fmt_usd(p.get("pledged_usd"))
-        big_label = f'{fmt_int(p.get("backers"))} Backers'
+        big_value = metric_text(p, "pledged_usd")
+        big_label = f'{metric_text(p, "backers")} Backers'
         big_color = INK
 
     # object-fit:contain → preserves entire product image with no crop;
@@ -270,7 +273,7 @@ def _detail_row(rank: int, p: dict, *, kind: str, hl_map: dict) -> str:
                color:{N500};letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px">
             {star}{brand} &nbsp;·&nbsp; {country}
           </div>
-          {f'<div style="font-family:Inter,sans-serif;font-size:11px;font-weight:700;color:{INK};letter-spacing:.04em;margin-bottom:8px">起步价 <span style="color:{RED}">{fmt_usd(p.get("min_pledge_usd"))}</span></div>' if p.get("min_pledge_usd") else ""}
+          {f'<div style="font-family:Inter,sans-serif;font-size:11px;font-weight:700;color:{INK};letter-spacing:.04em;margin-bottom:8px">起步价 <span style="color:{RED}">{metric_text(p, "min_pledge_usd")}</span></div>' if p.get("min_pledge_usd") else ""}
           <h3 style="font-family:'Playfair Display',serif;font-size:24px;font-weight:900;
               line-height:1.15;letter-spacing:-.5px;color:{INK};margin:0 0 6px">{title}</h3>
           <div style="font-family:'Lora','Songti SC',serif;font-style:italic;font-size:14px;
@@ -357,14 +360,14 @@ def _list_row(rank: int, p: dict, *, kind: str) -> str:
     star = ('<span style="color:'+RED+';font-family:Playfair Display;'
             'font-weight:900;margin-right:5px">✦</span>') if p.get("project_we_love") else ""
     if kind == "prelaunch":
-        right = f'{fmt_int(p.get("followers"))}'
+        right = f'{metric_text(p, "followers")}'
         right_lbl = "Watchers"
     elif kind == "live":
-        right = f'{fmt_usd(p.get("pledged_usd"))}'
-        right_lbl = f'{fmt_int(p.get("backers"))} backers'
+        right = f'{metric_text(p, "pledged_usd")}'
+        right_lbl = f'{metric_text(p, "backers")} backers'
     else:  # successful
-        right = f'{fmt_usd(p.get("pledged_usd"))}'
-        right_lbl = f'{fmt_int(p.get("backers"))} backers'
+        right = f'{metric_text(p, "pledged_usd")}'
+        right_lbl = f'{metric_text(p, "backers")} backers'
     # Compact row sizing — must fit 10 rows in 1080×1350 portrait
     return f"""
     <div style="display:flex;gap:16px;padding:11px 0;border-bottom:1px solid {INK};align-items:flex-start">
@@ -566,7 +569,13 @@ def generate_carousel() -> list[Path] | None:
     today = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
     today_long = dt.datetime.now(dt.UTC).strftime("%a, %b %d, %Y").upper()
     edition = edition_number()
-    wrap = lambda body: slide_html(body, today_long=today_long, edition=edition)
+    quality_notice = (
+        '<div style="position:absolute;bottom:72px;left:56px;right:56px;'
+        'font-size:18px;color:#CC0000;background:#F9F9F7;padding:8px">'
+        '数据部分未更新；排名仅供历史参考。生成时间不代表观测时间。</div>'
+        if assess(curr)["status"] == "degraded" else ""
+    )
+    wrap = lambda body: slide_html(body + quality_notice, today_long=today_long, edition=edition)
 
     # 9 slides (small-red-book convention is 9 per post):
     #   01 cover (KPI + masthead)

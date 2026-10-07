@@ -330,6 +330,11 @@ const EPOCH = new Date("2026-04-25T00:00:00Z");
 function editionNumber() {
   return Math.max(1, Math.floor((Date.now() - EPOCH) / 86400000) + 1);
 }
+function observedValue(p, key) {
+  const m = (p.observations || {})[key] || {};
+  const age = (Date.now() - Date.parse(m.observed_at)) / 3600000;
+  return m.status === "fresh" && Number.isFinite(age) && age >= 0 && age <= 30 ? p[key] : null;
+}
 function fmtUSD(n) {
   if (!n || isNaN(Number(n))) return "—";
   const v = Number(n);
@@ -399,7 +404,7 @@ async function load() {
       if (p.china_confidence === "高") high++;
       if (p.matched_brand) brands.add(p.matched_brand);
     }
-    document.getElementById("hsPledged").textContent = fmtUSD(totalLive);
+    document.getElementById("hsPledged").textContent = (projects.some(p => p.status === "live" && observedValue(p, "pledged_usd") == null) ? "未更新" : fmtUSD(totalLive));
     document.getElementById("kPre").textContent = pre;
     document.getElementById("kLive").textContent = live;
     document.getElementById("kSucc").textContent = succ;
@@ -433,7 +438,7 @@ function storyHtml(p, i) {
   const blurb = escapeHtml(p.blurb_zh || p.blurb || "");
   const brand = escapeHtml(p.matched_brand_zh || p.matched_brand || p.creator || "");
   const country = escapeHtml(p.country || "");
-  const price = p.min_pledge_usd ? `起步价 ${fmtUSD(p.min_pledge_usd)}` : "";
+  const price = p.min_pledge_usd ? `起步价 ${observedValue(p, "min_pledge_usd") == null ? "未更新" : fmtUSD(p.min_pledge_usd)}` : "";
   const meta = [brand, country, price].filter(Boolean).join(" · ");
   return `<div class="story">
     <span class="rank">${String(i + 1).padStart(2, "0")}</span>
@@ -443,8 +448,8 @@ function storyHtml(p, i) {
       <div class="meta">${meta}</div>
     </div>
     <div class="right">
-      <div class="v">${fmtUSD(p.pledged_usd)}</div>
-      <div class="l">${fmtNum(p.backers)} BACKERS</div>
+      <div class="v">${(observedValue(p, "pledged_usd") == null ? "未更新" : fmtUSD(p.pledged_usd))}</div>
+      <div class="l">${observedValue(p, "backers") == null ? "未更新" : fmtNum(p.backers)} BACKERS</div>
     </div>
   </div>`;
 }
@@ -487,7 +492,7 @@ function storyHtmlPre(p, i) {
   const blurb = escapeHtml(p.blurb_zh || p.blurb || "");
   const brand = escapeHtml(p.matched_brand_zh || p.matched_brand || p.creator || "");
   const country = escapeHtml(p.country || "");
-  const price = p.min_pledge_usd ? `起步价 ${fmtUSD(p.min_pledge_usd)}` : "";
+  const price = p.min_pledge_usd ? `起步价 ${observedValue(p, "min_pledge_usd") == null ? "未更新" : fmtUSD(p.min_pledge_usd)}` : "";
   const meta = [brand, country, price].filter(Boolean).join(" · ");
   return `<div class="story">
     <span class="rank">${String(i + 1).padStart(2, "0")}</span>
@@ -497,7 +502,7 @@ function storyHtmlPre(p, i) {
       <div class="meta">${meta}</div>
     </div>
     <div class="right">
-      <div class="v">${fmtNum(p.followers)}</div>
+      <div class="v">${(observedValue(p, "followers") == null ? "未更新" : fmtNum(p.followers))}</div>
       <div class="l">WATCHERS</div>
     </div>
   </div>`;

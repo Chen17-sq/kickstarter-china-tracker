@@ -28,6 +28,9 @@ from pathlib import Path
 
 import httpx
 
+from .observations import is_fresh, metric_text
+from .quality import quality_lines
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 PROJECTS = REPO_ROOT / "data" / "projects.json"
 CHANGELOG = REPO_ROOT / "CHANGELOG.md"
@@ -38,7 +41,8 @@ LATEST_URL = "https://github.com/Chen17-sq/kickstarter-china-tracker/blob/main/r
 
 # Number formatters live in _common.py — re-exported for backwards compat
 # with `from .notify import fmt_usd, fmt_int` at all old call sites.
-from ._common import fmt_int, fmt_usd  # noqa: E402  (intentional re-export below module body)
+from ._common import fmt_int as fmt_int  # noqa: E402  (intentional re-export below module body)
+from ._common import fmt_usd as fmt_usd  # noqa: E402
 
 
 def project_label(p: dict) -> str:
@@ -127,6 +131,10 @@ def get_summary_data(curr: dict) -> dict:
         key=lambda x: -float(x.get("pledged_usd") or 0),
     )
 
+    if curr.get("schema_version", 1) >= 2 and any(
+        not is_fresh(p, "pledged_usd") for p in projects if p.get("status") == "live"
+    ):
+        total_live_usd = None
     return {
         "today": today,
         "total": len(projects),
@@ -155,12 +163,12 @@ def build_summary(curr: dict, *, dialect: str = "slack") -> str:
 
     fmt_link = link if dialect == "slack" else discord_link
 
-    lines: list[str] = []
+    lines: list[str] = quality_lines(curr)
     lines.append(f"*📊 Kickstarter China Tracker · {today}*")
     lines.append(
         f"`{data['total']}` 项追踪 · "
         f"`{counts['prelaunch']}` 未发布 · "
-        f"`{counts['live']}` 在筹 ({fmt_usd(total_live_usd)} 合计) · "
+        f"`{counts['live']}` 在筹 ({(fmt_usd(total_live_usd) if total_live_usd is not None else "未更新")} 合计) · "
         f"`{counts['successful']}` 成功 · "
         f"★ `{pwl}` KS 精选"
     )
@@ -170,7 +178,7 @@ def build_summary(curr: dict, *, dialect: str = "slack") -> str:
         lines.append("*⏳ Prelaunch · Top 10 by followers*")
         for p in prelaunch[:10]:
             star = "★ " if p.get("project_we_love") else ""
-            lines.append(f"• {star}{fmt_link(p)} · {fmt_int(p.get('followers'))} followers")
+            lines.append(f"• {star}{fmt_link(p)} · {metric_text(p, 'followers')} followers")
 
     if live:
         lines.append("")
@@ -178,8 +186,8 @@ def build_summary(curr: dict, *, dialect: str = "slack") -> str:
         for p in live[:10]:
             star = "★ " if p.get("project_we_love") else ""
             lines.append(
-                f"• {star}{fmt_link(p)} · {fmt_usd(p.get('pledged_usd'))} · "
-                f"{fmt_int(p.get('backers'))} backers"
+                f"• {star}{fmt_link(p)} · {metric_text(p, 'pledged_usd')} · "
+                f"{metric_text(p, 'backers')} backers"
             )
 
     lines.append("")

@@ -40,6 +40,7 @@ from typing import Optional
 from curl_cffi import requests as cc_requests
 
 from . import backoff, health, session_state, tier_metrics
+from .graphql import fetch_projects
 from .http import (
     DEFAULT_COOKIES,
     IMPERSONATE_ROTATION,
@@ -47,6 +48,9 @@ from .http import (
     pick_proxy,
     playwright_proxy,
 )
+from .observations import FetchResults, number
+
+_AUTO_TRANSPORT = object()
 
 GRAPH_URL = "https://www.kickstarter.com/graph"
 SEED_URL = "https://www.kickstarter.com/discover/advanced?state=upcoming"
@@ -166,6 +170,9 @@ class _Transport:
 
     def close(self) -> None:
         """Release any external resources. Safe to call multiple times."""
+        if self._cc is not None:
+            self._cc.close()
+            self._cc = None
         if self._pw_runtime is None:
             return
         try:
@@ -235,6 +242,7 @@ def _try_curl_cffi_seed(
         except Exception as e:
             if verbose:
                 print(f"  {label} seed attempt {attempt_idx+1} ({impersonate}): exception {e}")
+            client.close()
             bo.sleep_and_retry()
             attempt_idx += 1
             continue
@@ -250,6 +258,7 @@ def _try_curl_cffi_seed(
                 print(f"  {label} seed attempt {attempt_idx+1} ({impersonate}): 200 but no CSRF token")
         elif verbose:
             print(f"  {label} seed attempt {attempt_idx+1} ({impersonate}): status {r.status_code}")
+        client.close()
         bo.sleep_and_retry()
         attempt_idx += 1
     return None
@@ -290,7 +299,10 @@ def _open_playwright_transport(label: str, verbose: bool) -> _Transport | None:
     page = None
     try:
         pw = sync_playwright().start()
+        import os
         launch_kwargs = {}
+        if os.environ.get("KS_BROWSER_EXECUTABLE"):
+            launch_kwargs["executable_path"] = os.environ["KS_BROWSER_EXECUTABLE"]
         pxy = playwright_proxy(pick_proxy())
         if pxy:
             launch_kwargs["proxy"] = pxy
@@ -330,14 +342,14 @@ def _open_playwright_transport(label: str, verbose: bool) -> _Transport | None:
         except Exception as e:
             if verbose:
                 print(f"  ! warmup GET failed ({e}); proceeding to seed URL")
-        page.goto(SEED_URL, wait_until="domcontentloaded", timeout=30_000)
+        seed_response = page.goto(SEED_URL, wait_until="domcontentloaded", timeout=30_000)
         # Give Cloudflare's interactive challenge a beat to clear
         page.wait_for_timeout(800)
         csrf = page.evaluate(
             "() => { const m = document.querySelector('meta[name=\"csrf-token\"]'); return m ? m.content : null; }"
         )
         if not csrf:
-            raise RuntimeError("CSRF token not found after Playwright navigation")
+            raise RuntimeError(f"CSRF token missing: status={seed_response.status if seed_response else None}, title={page.title()[:80]!r}")
         # IMPORTANT: keep the page open. We use page.evaluate('fetch(...)')
         # for the subsequent GraphQL POSTs so each request gets the real
         # browser TLS fingerprint + sec-ch-ua headers. Closing the page
@@ -454,7 +466,7 @@ def fetch_watches_counts(
     slugs: list[str],
     *,
     verbose: bool = True,
-    transport: _Transport | None = None,
+    transport=_AUTO_TRANSPORT,
 ) -> dict[str, Optional[int]]:
     """Batch-fetch `watchesCount` for project slugs via KS GraphQL.
 
@@ -467,11 +479,11 @@ def fetch_watches_counts(
     If `transport` is provided, use it and DO NOT close it (caller owns
     lifecycle). Otherwise open + close internally.
     """
-    out: dict[str, Optional[int]] = {s: None for s in slugs}
+    out = FetchResults(slugs)
     if not slugs:
         return out
 
-    own_transport = transport is None
+    own_transport = transport is _AUTO_TRANSPORT
     if own_transport:
         transport = _open_transport(label="watchesCount", verbose=verbose)
         if transport is None:
@@ -480,36 +492,19 @@ def fetch_watches_counts(
             health.watches_done(path="failed", fetched=0, requested=len(slugs))
             return out
 
-    try:
-        # Chunked batch GraphQL query, one round trip per ~50 slugs.
-        for i in range(0, len(slugs), CHUNK_SIZE):
-            # Jittered pause between chunks — fixed delays are a
-            # fingerprint, "1.0s between every chunk" is bot-shaped.
-            # Skip on first chunk (no prior request to be paced from).
-            if i > 0:
-                backoff.chunk_pause(1.0, 3.5)
-            chunk = slugs[i : i + CHUNK_SIZE]
-            # Build aliased query: p0: project(slug: $s0) { watchesCount } …
-            # Use variables (not interpolated strings) — safer + cacheable.
-            var_decls = ", ".join(f"$s{j}: String!" for j in range(len(chunk)))
-            fields = "\n  ".join(
-                f"p{j}: project(slug: $s{j}) {{ watchesCount }}"
-                for j in range(len(chunk))
-            )
-            query = f"query Watches({var_decls}) {{\n  {fields}\n}}"
-            variables = {f"s{j}": s for j, s in enumerate(chunk)}
-            body = {"operationName": "Watches", "variables": variables, "query": query}
+    if transport is None:
+        health.watches_done(path="failed", fetched=0, requested=len(slugs))
+        return out
 
-            status, jdata = transport.post_graphql(body)
-            if status != 200:
-                if verbose:
-                    print(f"  watchesCount chunk {i//CHUNK_SIZE+1}: status {status}")
-                continue
-            data = (jdata or {}).get("data") or {}
-            for j, s in enumerate(chunk):
-                obj = data.get(f"p{j}")
-                if isinstance(obj, dict) and "watchesCount" in obj:
-                    out[s] = obj["watchesCount"]
+    try:
+        responses = fetch_projects(slugs, transport=transport, fields="watchesCount",
+                                   operation="Watches", batch_size=CHUNK_SIZE, source="watches")
+        for slug, response in responses.items():
+            value = number(response["data"].get("watchesCount"))
+            out[slug] = int(value) if value is not None and value.is_integer() else None
+            out.errors[slug] = None if out[slug] is not None else response["error"]
+            if out[slug] is not None:
+                out.observed_at[slug] = response["observed_at"]
         # Record which transport actually carried the data
         fetched = sum(1 for v in out.values() if v is not None)
         health.watches_done(path=transport.mode, fetched=fetched, requested=len(slugs))
@@ -524,7 +519,7 @@ def fetch_pledge_minimums(
     slugs: list[str],
     *,
     verbose: bool = True,
-    transport: _Transport | None = None,
+    transport=_AUTO_TRANSPORT,
 ) -> dict[str, Optional[float]]:
     """Batch-fetch minimum pledge tier (in USD) for project slugs.
 
@@ -538,17 +533,17 @@ def fetch_pledge_minimums(
     it as the minimum because the user-facing display formats $1 fine
     and editorial nuance can be handled in the UI layer.
 
-    Currency is forced to USD via the `currency` cookie (set in
-    DEFAULT_COOKIES), so amounts come back already converted.
+    Only explicit USD amounts are accepted; a currency cookie is not evidence
+    that the response uses USD.
 
     If `transport` is provided, use it and DO NOT close it (caller owns
     lifecycle). Otherwise open + close internally.
     """
-    out: dict[str, Optional[float]] = {s: None for s in slugs}
+    out = FetchResults(slugs)
     if not slugs:
         return out
 
-    own_transport = transport is None
+    own_transport = transport is _AUTO_TRANSPORT
     if own_transport:
         transport = _open_transport(label="pledge_min", verbose=verbose)
         if transport is None:
@@ -557,41 +552,30 @@ def fetch_pledge_minimums(
             health.pledge_done(path="failed", fetched=0, requested=len(slugs))
             return out
 
-    try:
-        for i in range(0, len(slugs), PLEDGE_CHUNK_SIZE):
-            # Jittered pause between chunks (same rationale as watchesCount)
-            if i > 0:
-                backoff.chunk_pause(1.0, 3.5)
-            chunk = slugs[i : i + PLEDGE_CHUNK_SIZE]
-            var_decls = ", ".join(f"$s{j}: String!" for j in range(len(chunk)))
-            fields = "\n  ".join(
-                f"p{j}: project(slug: $s{j}) {{ rewards(first: 30) {{ nodes {{ amount {{ amount currency }} }} }} }}"
-                for j in range(len(chunk))
-            )
-            query = f"query Pledges({var_decls}) {{\n  {fields}\n}}"
-            variables = {f"s{j}": s for j, s in enumerate(chunk)}
-            body = {"operationName": "Pledges", "variables": variables, "query": query}
+    if transport is None:
+        health.pledge_done(path="failed", fetched=0, requested=len(slugs))
+        return out
 
-            status, jdata = transport.post_graphql(body)
-            if status != 200:
-                if verbose:
-                    print(f"  pledge_min chunk {i//PLEDGE_CHUNK_SIZE+1}: status {status}")
-                continue
-            data = (jdata or {}).get("data") or {}
-            for j, s in enumerate(chunk):
-                obj = data.get(f"p{j}") or {}
-                rewards = (obj.get("rewards") or {}).get("nodes") or []
-                amounts: list[float] = []
-                for node in rewards:
-                    amt_obj = node.get("amount") or {}
-                    try:
-                        amt = float(amt_obj.get("amount") or 0)
-                        if amt > 0:
-                            amounts.append(amt)
-                    except (TypeError, ValueError):
-                        pass
-                if amounts:
-                    out[s] = min(amounts)
+    try:
+        responses = fetch_projects(slugs, transport=transport,
+                                   fields="rewards(first: 30) { nodes { amount { amount currency } } }",
+                                   operation="Pledges", batch_size=PLEDGE_CHUNK_SIZE, source="minimum_pledge")
+        for slug, response in responses.items():
+            rewards = response["data"].get("rewards")
+            nodes = rewards.get("nodes") if isinstance(rewards, dict) else None
+            amounts = []
+            for node in nodes if isinstance(nodes, list) else []:
+                obj = node.get("amount") if isinstance(node, dict) else None
+                if not isinstance(obj, dict):
+                    continue
+                amount = number(obj.get("amount"))
+                if amount is not None and amount > 0 and obj.get("currency") == "USD":
+                    amounts.append(amount)
+            out.errors[slug] = response["error"]
+            if amounts:
+                out[slug] = min(amounts)
+                out.errors[slug] = None
+                out.observed_at[slug] = response["observed_at"]
         fetched = sum(1 for v in out.values() if v is not None)
         health.pledge_done(path=transport.mode, fetched=fetched, requested=len(slugs))
         tier_metrics.record("pledge", transport.mode if fetched else "failed")

@@ -176,10 +176,33 @@ def format_digest_lines(state: dict | None = None) -> list[str]:
     pr = pl.get("requested", 0) or 0
     pf = pl.get("fetched", 0) or 0
     p_pct = (100.0 * pf / pr) if pr else 0
-    lines.append(f"  pledge:    {pf}/{pr} ({p_pct:.1f}%) via {pl.get('path','unknown')}")
+    lines.append(f"  minimum pledge tier (not funds raised): {pf}/{pr} ({p_pct:.1f}%) via {pl.get('path','unknown')}")
 
     # classified line
     if s.get("classified"):
         lines.append(f"  classified: {s['classified']} China-background kept")
 
+    if s.get("data_quality"):
+        q = s["data_quality"]
+        lines.append(f"Data refresh: {q['status']}; proposed gate: {q['proposed_send_allowed']} ({q.get('policy_mode', 'observe')} mode)")
+        lines.extend("  " + issue for issue in q["issues"])
     return lines
+
+
+def set_quality(quality):
+    _state["data_quality"] = quality
+
+
+def refresh_done(*, fetched, requested):
+    _state["catalog_refresh"] = {"fetched": fetched, "requested": requested}
+
+
+def fetch_error(source, status, affected):
+    _state.setdefault("fetch_errors", []).append({"source": source, "status": status, "affected": affected})
+
+
+def graphql_batch(source, requested, returned, result):
+    """Safe diagnostics only: no response bodies, cookies or tokens."""
+    event = {"source": source, "requested": requested, "returned": returned, "result": result}
+    _state.setdefault("graphql_batches", []).append(event)
+    print(f"  graphql batch: source={source} requested={requested} returned={returned} result={result}")
