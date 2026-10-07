@@ -39,6 +39,35 @@ def test_catalog_refresh_uses_current_rate_and_updates_goal_without_legacy_guess
     assert rows[0]['native_currency']=='HKD'
 
 
+@pytest.mark.parametrize('state,expected', [
+    ('STARTED', 'prelaunch'), ('SUBMITTED', 'prelaunch'), ('LIVE', 'live'),
+    ('CANCELED', 'canceled'), ('SUSPENDED', 'suspended'), ('PURGED', 'suspended'),
+    ('SUCCESSFUL', 'successful'), ('FAILED', 'failed')])
+def test_all_official_project_states_refresh_observation_and_raw_state(state, expected):
+    class Source:
+        def post_graphql(self, body):
+            return 200, {'data': {'p0': {'state': state, 'watchesCount': 17}}}
+    fresh = refresh.fetch_fat_graphql(['example'], transport=Source(), verbose=False)
+    rows, _ = refresh.apply_refresh([{'pathname': '/projects/a/example', 'status': 'live',
+                                     'raw_state': 'live'}], fresh, verbose=False)
+    assert rows[0]['status'] == expected
+    assert rows[0]['raw_state'] == state.lower()
+    assert rows[0]['status_observation'] == {
+        'status': 'fresh', 'observed_at': fresh['example']['observed_at'],
+        'source': 'ks_graphql', 'raw_state': state}
+
+
+def test_unrecognized_state_does_not_invent_fresh_status():
+    at = (NOW - dt.timedelta(days=1)).isoformat()
+    before = {'pathname': '/projects/a/example', 'status': 'prelaunch', 'raw_state': 'started',
+              'status_observation': {'status': 'fresh', 'observed_at': at}}
+    rows, _ = refresh.apply_refresh([before], {'example': {'state': 'UNKNOWN', 'watchesCount': 12}}, verbose=False)
+    assert rows[0]['status'] == 'prelaunch'
+    assert rows[0]['status_observation']['status'] == 'stale'
+    assert rows[0]['status_observation']['observed_at'] == at
+    assert rows[0]['observations']['followers']['status'] == 'fresh'
+
+
 @pytest.mark.parametrize('native,expected',[(100,0),(110,1.3),(90,-1.3)])
 def test_currency_delta_excludes_fx_changes_and_can_use_verified_native_baseline(native,expected):
     baseline,current={},{}

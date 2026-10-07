@@ -19,6 +19,15 @@ Kickstarter官方Android客户端[schema定义](https://github.com/kickstarter/a
 .venv/bin/python scripts/currency_probe.py --output /tmp/new-currency-probe.json
 ```
 
+五种隔离回放可单独复现（输出目录必须新建；脚本强制阻断网络与发信）：
+
+```sh
+replay_root=$(mktemp -d /tmp/ks-replay.XXXXXX)
+for scenario in all-failed partial healthy recovery currency; do
+  .venv/bin/python scripts/dry_run.py --scenario "$scenario" --output "$replay_root/$scenario"
+done
+```
+
 最后一项只读探针最多一条公开GraphQL查询，查询三种已有项目币种，不使用邮件、生产数据写入、保存会话或代理发现；失败状态不等于源恢复。原来四种禁网／禁发信隔离全链路回放继续由测试执行；新增currency场景验证全链路汇率变化：原币不变为$0，Fixture01总额$1093.04但可比筹款增量仅$53.04，缺原币基线仍无法计算。五种场景网络请求与发送均为0。
 
 无保存会话的runner只读币种探针（run 37614450157）在浏览器seed阶段不可访问，查询0；绿色表示诊断完成，不能证明真实接口成功。生产仍需通过已获授权的refresh_only运行验收。
@@ -28,3 +37,19 @@ Kickstarter官方Android客户端[schema定义](https://github.com/kickstarter/a
 本地最终回归309项通过，包含五种隔离全链路回放。浏览器验证首页、专项邮件、stats、153项勘误、归档索引：390px无溢出，跨币种样例正确，stats已暂停且不再读取订阅名单。
 
 最终展示审计还修复了Markdown精选卡片、紧凑榜单和网站头版小计绕过观测契约的问题。最低奖励价格保留两位小数，缺失／暂无档位也明确展示。陈旧Fixture03的金额和档位均为未更新，旧金额只出现在明确参考文案；状态标待确认。原404已由HTTP日志确定为favicon.ico，补齐图标后全量监听4xx、console、JS异常均为0；首页与邮件390px复测通过。
+
+## 真实生产验收（11:58 UTC）
+
+[PR #9](https://github.com/Chen17-sq/kickstarter-china-tracker/pull/9)已合并为`ee49c69`，五项CI通过。用户授权的[不发信刷新](https://github.com/Chen17-sq/kickstarter-china-tracker/actions/runs/37616410548)成功，快照`2026-10-07T11:58:12Z`，提交`a476329`。Email与Slack/Discord步骤均skipped；生产保持paused/enforce。
+
+| 指标 | 10:43 UTC第一次恢复 | 11:58 UTC补齐汇率后 |
+|---|---:|---:|
+| 预热关注新鲜 | 220/228 | 220/228 |
+| 在筹支持人数新鲜 | 150/151 | 150/151 |
+| 在筹USD筹款新鲜 | 85/151 | 150/151 |
+| 在筹最低档位新鲜 | 10/151 | 150/151 |
+| 核心可比日增量 | 0 | 0（时间窗口尚不足） |
+
+实际转换包含HKD、GBP、SGD、CAD、JPY、EUR及显式USD，逐字段核对原币×汇率全部一致。632个既有历史文件SHA256全部保持一致，新增1份采集快照及独立报告/API/图像修订版。机器可读证据见[completion-acceptance.json](completion-acceptance.json)。
+
+本次验收还发现18个`STARTED`项目关注数据新鲜但状态未映射。官方ProjectState定义明确为“Created and preparing for launch”，现补充映射prelaunch；PURGED按官方隐藏暂停含义映射suspended，并保存本次raw_state。全部8种官方状态和未知状态均增加回归，未知状态继续保留旧时间，不能把字段成功当作状态刷新成功。此补漏后测试为318项通过。

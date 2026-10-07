@@ -24,12 +24,13 @@ HISTORY_DIR = REPO_ROOT / "data" / "history"
 
 # Map KS GraphQL state → our internal status field
 STATE_MAP = {
+    "STARTED": "prelaunch",
     "SUBMITTED": "prelaunch",
     "LIVE": "live",
     "SUCCESSFUL": "successful",
     "FAILED": "failed",
     "CANCELED": "canceled",
-    "PURGED": "failed",
+    "PURGED": "suspended",
     "SUSPENDED": "suspended",
 }
 
@@ -177,7 +178,9 @@ def apply_refresh(
             mapped = STATE_MAP[fresh["state"]]
             state_changes += mapped != orig.get("status")
             new["status"] = mapped
-            new["status_observation"] = {"status": "fresh", "observed_at": at, "source": "ks_graphql"}
+            new["raw_state"] = fresh["state"].lower()
+            new["status_observation"] = {"status": "fresh", "observed_at": at,
+                                         "source": "ks_graphql", "raw_state": fresh["state"]}
         refreshed += bool(any_fresh)
         new_records.append(new)
 
