@@ -336,7 +336,7 @@ function rowHtml(d) {
       ${blurbHtml}
       <div class="cell-meta">${meta}</div>
     </td>
-    <td><span class="status ${status}">${escapeHtml(t().statuses[status] || status)}</span></td>
+    <td><span class="status ${status}">${escapeHtml(t().statuses[status] || status)}${((d.status_observation || {}).status !== "fresh" || !Number.isFinite(Date.parse(d.status_observation.observed_at)) || Date.now() - Date.parse(d.status_observation.observed_at) > 30*3600000) ? (LANG === "zh" ? " · 待确认" : " · Unverified") : ""}</span></td>
     <td class="hide-sm">
       <span class="conf ${d.china_confidence === "高" ? "high" : ""}">${escapeHtml(d.china_confidence || "?")}</span>
       <div class="country">${escapeHtml(countryLabel(d.country))}</div>

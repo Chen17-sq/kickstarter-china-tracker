@@ -40,7 +40,14 @@ def assess(snapshot, *, now=None):
                 issues.append(f"{key}: suspicious zero changes {zeros}/{len(comparable)}; review required")
     if not rows:
         issues.append("empty_snapshot")
+    active = [p for p in rows if p.get("status") in {"prelaunch", "live"}]
+    state_unknown = sum(not (m.get("status") == "fresh" and parse_time(m.get("observed_at"))
+                            and 0 <= (now - parse_time(m["observed_at"])).total_seconds() <= 30 * 3600)
+                        for p in active for m in [p.get("status_observation", {})])
+    if active and state_unknown / len(active) > 1 - POLICY["core_coverage"]:
+        issues.append(f"project status: unverified {state_unknown}/{len(active)} above 10%")
     return {"status": "degraded" if issues else "healthy", "metrics": metrics,
+            "active_states": {"total": len(active), "unverified": state_unknown},
             "issues": issues, "proposed_send_allowed": not issues,
             "policy_mode": os.environ.get("KS_QUALITY_POLICY", "observe"), "thresholds": POLICY, "evaluated_at": now.isoformat()}
 
@@ -54,6 +61,9 @@ def quality_lines(snapshot):
         if key != "min_pledge_usd":
             line += f"；可比日增量 {m['comparable']}/{m['eligible']}"
         lines.append(line)
+    states = q.get("active_states", {})
+    if states.get("unverified"):
+        lines.append(f"{states['unverified']}个项目当前状态未确认，沿用最近记录；未从覆盖率分母移除。")
     lines.append("跨币种筹款增量按本次平台汇率折算原币变化，不将汇率变动计为增长。")
     lines.append("未更新值仅为历史参考；生成时间不代表观测时间。邮件送达另行统计。")
     return lines

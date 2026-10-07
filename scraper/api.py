@@ -56,9 +56,11 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import re
 from pathlib import Path
 
 from ._common import edition_number
+from .atomic import write_versioned_text
 from .observations import is_fresh
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -195,8 +197,7 @@ def write_api(curr: dict) -> list[Path]:
     body = json.dumps(payload, indent=2, ensure_ascii=False)
 
     paths: list[Path] = []
-    today_path = API_DIR / f"{today}.json"
-    today_path.write_text(body, encoding="utf-8")
+    today_path = write_versioned_text(API_DIR / f"{today}.json", body)
     paths.append(today_path)
 
     alias = API_DIR / "today.json"
@@ -217,7 +218,7 @@ def write_api(curr: dict) -> list[Path]:
     dated = sorted(
         [
             f.stem for f in API_DIR.glob("*.json")
-            if f.stem not in ("today", "index", "sleepers")
+            if re.fullmatch(r"\d{4}-\d{2}-\d{2}", f.stem)
         ],
         reverse=True,
     )
@@ -225,6 +226,8 @@ def write_api(curr: dict) -> list[Path]:
         "schema_version": SCHEMA_VERSION,
         "latest": dated[0] if dated else None,
         "dates": dated,
+        "latest_revision": today_path.name,
+        "revisions": sorted(p.name for p in API_DIR.glob("????-??-??-revision-*.json")),
         "endpoints": {
             "latest": "/api/today.json",
             "by_date": "/api/<YYYY-MM-DD>.json",

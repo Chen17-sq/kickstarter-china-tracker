@@ -113,3 +113,12 @@ def test_correction_index_is_additive_and_labels_no_log_dates(tmp_path):
     assert result['entries'][0]['status']=='observation_evidence_missing'
     assert result['entries'][1]['status']=='collection_incomplete'
     assert hashlib.sha256(original.read_bytes()).hexdigest()==digest
+
+
+def test_unverified_project_states_are_visible_and_cannot_shrink_denominator():
+    from scraper.quality import assess
+    rows = [{"status": "live", "status_observation": {"status": "stale"}} for _ in range(20)]
+    q = assess({"projects": rows})
+    assert q["active_states"] == {"total": 20, "unverified": 20}
+    assert any("project status" in issue for issue in q["issues"])
+    assert q["metrics"]["pledged_usd"]["eligible"] == 20
