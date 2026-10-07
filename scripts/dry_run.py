@@ -85,7 +85,7 @@ def execute(scenario):
                     data[key] = None
                     continue
                 if body["operationName"] == "Pledges":
-                    data[key] = {"rewards": {"nodes": [{"amount": {"amount": 10, "currency": "USD"}}]}}
+                    data[key] = {"rewards": {"pageInfo": {"hasNextPage": False, "endCursor": None}, "nodes": [{"amount": {"amount": 10, "currency": "USD"}}]}}
                 else:
                     data[key] = {"watchesCount": 100 if i == 0 else 110 + i,
                                  "backersCount": 10 if i == 0 else 11 + i,

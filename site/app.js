@@ -170,9 +170,10 @@ function escapeHtml(s) {
 function freshMetric(d, key) {
   const m = (d.observations || {})[key] || {};
   const age = (Date.now() - Date.parse(m.observed_at)) / 3600000;
-  return m.status === "fresh" && Number.isFinite(age) && age >= 0 && age <= 30;
+  return m.status === "fresh" && Number.isFinite(age) && age >= 0 && age <= 30 && d[key] != null && Number.isFinite(Number(d[key]));
 }
 function metricValue(d, key) {
+  if (key === "min_pledge_usd" && ((d.observations || {})[key] || {}).reason === "no_rewards") return LANG === "zh" ? "暂无档位" : "No reward tiers";
   if (!freshMetric(d, key)) return LANG === "zh" ? "未更新" : "Not updated";
   return key.endsWith("_usd") ? fmtUSD(d[key]) : fmtNum(d[key]);
 }
@@ -190,10 +191,10 @@ function qualityBanner() {
   const metrics = [["followers", LANG === "zh" ? "预热关注" : "Prelaunch watchers", "prelaunch"], ["backers", LANG === "zh" ? "在筹支持人数" : "Live backers", "live"], ["pledged_usd", LANG === "zh" ? "在筹筹款" : "Live funds raised", "live"], ["min_pledge_usd", LANG === "zh" ? "最低支持档位" : "Minimum pledge tier", "live"]];
   const lines = metrics.map(([key, label, status]) => {
     const rows = DATA.filter(p => p.status === status);
-    return `${label}${LANG === "zh" ? "：本次有效刷新 " : ": refreshed "}${rows.filter(p => freshMetric(p, key)).length}/${rows.length}${LANG === "zh" ? "；可比日增量 " : "; comparable daily changes "}${rows.filter(p => freshMetric(p, key) && ((p.delta_meta || {})["delta_" + key] || {}).status === "valid").length}/${rows.length}`;
+    return `${label}${LANG === "zh" ? "：本次有效刷新 " : ": refreshed "}${rows.filter(p => freshMetric(p, key)).length}/${rows.length}${key === "min_pledge_usd" ? "" : (LANG === "zh" ? "；可比日增量 " : "; comparable daily changes ") + rows.filter(p => freshMetric(p, key) && ((p.delta_meta || {})["delta_" + key] || {}).status === "valid").length + "/" + rows.length}`;
   });
   const el = document.getElementById("data-quality");
-  if (el) el.innerHTML = `<h2 style="font-size:16px;margin:0">${LANG === "zh" ? "数据刷新与邮件送达分别统计" : "Data refresh and email delivery are separate"}</h2><br>${lines.join("<br>")}<br>${LANG === "zh" ? "未更新值仅为历史参考；生成时间不代表观测时间。" : "Old values are historical references. Build time is not observation time."}`;
+  if (el) el.innerHTML = `<h2 style="font-size:16px;margin:0">${LANG === "zh" ? "数据刷新与邮件送达分别统计" : "Data refresh and email delivery are separate"}</h2><br>${lines.join("<br>")}<br><a href="./corrections.html">历史日报勘误 / Historical corrections</a><br>${LANG === "zh" ? "未更新值仅为历史参考；生成时间不代表观测时间。跨币种增量按本次平台汇率折算原币变化。" : "Old values are historical references. Build time is not observation time. Cross-currency growth uses native changes at the current project USD rate."}`;
 }
 
 // $/watcher — meaningful for live + ended; null when no watchers data.

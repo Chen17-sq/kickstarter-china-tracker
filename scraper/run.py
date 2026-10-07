@@ -37,6 +37,7 @@ from .email_notify import build_html as build_email_html
 from .email_notify import write_archive as write_email_archive
 from .feed import write_feed
 from .momentum import compute_deltas, compute_weekly_deltas
+from .money import observe_money
 from .observations import METRICS, FetchResults, carry, carry_row, is_fresh, observe
 from .pdf import render_today as render_pdf_today
 from .project import (
@@ -276,7 +277,14 @@ def run() -> int:
             slug = slug_from_pathname(p["pathname"])
             for key, values in (("followers", watches), ("min_pledge_usd", pledge_mins)):
                 if values.get(slug) is not None:
-                    observe(p, key, values[slug], at=getattr(values, "observed_at", {}).get(slug) or now_iso(), source="ks_graphql")
+                    at = getattr(values, "observed_at", {}).get(slug) or now_iso()
+                    money = getattr(values, "money", {}).get(slug)
+                    if money:
+                        observe_money(p, key, money, at=at, source="ks_graphql")
+                    else:
+                        observe(p, key, values[slug], at=at, source="ks_graphql")
+                else:
+                    carry(p, p, key, at=now_iso(), reason=getattr(values, "errors", {}).get(slug) or "fetch_failed")
     finally:
         if ks_transport is not None:
             ks_transport.close()
@@ -296,7 +304,12 @@ def run() -> int:
         )
         for key, result in (("followers", watches), ("min_pledge_usd", pledge_mins)):
             if result.get(slug) is not None:
-                row["observations"][key]["observed_at"] = getattr(result, "observed_at", {}).get(slug) or now_iso()
+                at = getattr(result, "observed_at", {}).get(slug) or now_iso()
+                money = getattr(result, "money", {}).get(slug)
+                if money:
+                    observe_money(row, key, money, at=at, source="ks_graphql")
+                else:
+                    row["observations"][key]["observed_at"] = at
             else:
                 row["observations"][key]["reason"] = getattr(result, "errors", {}).get(slug) or "fetch_failed"
         rows.append(row)
@@ -358,6 +371,7 @@ def run() -> int:
     finished = now_iso()
     out = {
         "schema_version": 2,
+        "delivery_policy": os.environ.get("KS_EMAIL_DELIVERY", "unknown"),
         "generated_at": finished,
         "started_at": started,
         "total_candidates": len(hits),

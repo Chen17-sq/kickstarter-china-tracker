@@ -903,6 +903,8 @@ def _write_editions_index(out_dir: Path) -> None:
         try:
             d = dt.datetime.strptime(stem, "%Y-%m-%d")
             label = d.strftime("%A · %B %d, %Y")
+            if stem <= "2026-10-07":
+                label += " · 原刊增量未经验证（见勘误）"
             edition = (d - dt.datetime(2026, 4, 25)).days + 1
         except ValueError:
             label = stem.replace("-revision-", " · 修订预览 / Revision ")
@@ -965,13 +967,14 @@ ul{{list-style:none;margin:0;padding:0 28px}}
   <div class="tag">
     <span style="padding:0 14px">Editions Archive</span>
     <span class="center">All The Crowd-Funded Hardware Fit To Print</span>
-    <span style="padding:0 14px">{len(dated)} 期已发刊</span>
+    <span style="padding:0 14px">{len(dated)} 个归档版本</span>
   </div>
 </header>
 <div class="section-h">
   <div class="label">SECTION · BACK ISSUES</div>
   <h2>过往日报 · Daily Editions</h2>
 </div>
+<p style="padding:16px 28px"><a href="../corrections.html">历史日报逐日勘误：原刊增量和状态存在已知可靠性问题</a>。归档数量包含修订预览，不代表邮件发送数量。</p>
 <ul>{items}</ul>
 <footer class="foot">
   <a href="../">完整看板</a> &nbsp;·&nbsp;

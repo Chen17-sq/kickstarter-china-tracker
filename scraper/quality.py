@@ -50,6 +50,10 @@ def quality_lines(snapshot):
     lines = ["数据刷新：" + ("正常" if q["status"] == "healthy" else "部分未更新／增量无法计算")]
     labels = {"followers": "预热关注", "backers": "在筹支持人数", "pledged_usd": "在筹筹款", "min_pledge_usd": "最低支持档位"}
     for key, m in q["metrics"].items():
-        lines.append(f"{labels[key]}：本次有效刷新 {m['fresh']}/{m['eligible']}；可比日增量 {m['comparable']}/{m['eligible']}")
+        line = f"{labels[key]}：本次有效刷新 {m['fresh']}/{m['eligible']}"
+        if key != "min_pledge_usd":
+            line += f"；可比日增量 {m['comparable']}/{m['eligible']}"
+        lines.append(line)
+    lines.append("跨币种筹款增量按本次平台汇率折算原币变化，不将汇率变动计为增长。")
     lines.append("未更新值仅为历史参考；生成时间不代表观测时间。邮件送达另行统计。")
     return lines

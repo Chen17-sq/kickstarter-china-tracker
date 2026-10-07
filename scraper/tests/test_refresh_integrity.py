@@ -158,7 +158,7 @@ def test_failed_shared_transport_does_not_open_three_more(monkeypatch):
 
 
 def test_reward_currency_is_explicit():
-    body = {"data": {"p0": {"rewards": {"nodes": [{"amount": {"amount": 10, "currency": "HKD"}}]}}}}
+    body = {"data": {"p0": {"rewards": {"pageInfo": {"hasNextPage": False, "endCursor": None}, "nodes": [{"amount": {"amount": 10, "currency": "HKD"}}]}}}}
     assert project.fetch_pledge_minimums(["test"], transport=FakeTransport((200, body)))["test"] is None
 
 

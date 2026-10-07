@@ -533,8 +533,8 @@ def fetch_pledge_minimums(
     it as the minimum because the user-facing display formats $1 fine
     and editorial nuance can be handled in the UI layer.
 
-    Only explicit USD amounts are accepted; a currency cookie is not evidence
-    that the response uses USD.
+    USD conversion uses the explicit project currency and usdExchangeRate.
+    All reward pages must be complete; a partial list cannot establish a minimum.
 
     If `transport` is provided, use it and DO NOT close it (caller owns
     lifecycle). Otherwise open + close internally.
@@ -557,25 +557,61 @@ def fetch_pledge_minimums(
         return out
 
     try:
+        from .money import to_usd
+        reward_fields = "rewards(first: 30%s) { nodes { amount { amount currency } } pageInfo { hasNextPage endCursor } }"
         responses = fetch_projects(slugs, transport=transport,
-                                   fields="rewards(first: 30) { nodes { amount { amount currency } } }",
+                                   fields="currency usdExchangeRate " + reward_fields % "",
                                    operation="Pledges", batch_size=PLEDGE_CHUNK_SIZE, source="minimum_pledge")
         for slug, response in responses.items():
-            rewards = response["data"].get("rewards")
-            nodes = rewards.get("nodes") if isinstance(rewards, dict) else None
-            amounts = []
-            for node in nodes if isinstance(nodes, list) else []:
-                obj = node.get("amount") if isinstance(node, dict) else None
-                if not isinstance(obj, dict):
-                    continue
-                amount = number(obj.get("amount"))
-                if amount is not None and amount > 0 and obj.get("currency") == "USD":
-                    amounts.append(amount)
-            out.errors[slug] = response["error"]
-            if amounts:
-                out[slug] = min(amounts)
+            obj = response["data"]
+            rewards = obj.get("rewards")
+            amounts, complete, seen = [], False, set()
+            at = response.get("observed_at")
+            reason = response["error"]
+            for _ in range(10):
+                nodes = rewards.get("nodes") if isinstance(rewards, dict) else None
+                if not isinstance(nodes, list):
+                    break
+                invalid = False
+                for node in nodes:
+                    money = node.get("amount") if isinstance(node, dict) else None
+                    value = number(money.get("amount")) if isinstance(money, dict) else None
+                    if value == 0:
+                        continue  # optional no-reward support is not a positive reward tier
+                    converted = to_usd(value, money.get("currency") if isinstance(money, dict) else None,
+                                       obj.get("currency"), obj.get("usdExchangeRate"))
+                    if converted is None:
+                        invalid = True
+                        break
+                    amounts.append(converted)
+                if invalid:
+                    reason = "currency_conversion_unavailable"
+                    break
+                info = rewards.get("pageInfo") or {}
+                if info.get("hasNextPage") is False:
+                    complete = True
+                    break
+                cursor = info.get("endCursor")
+                reason = "reward_pagination_incomplete"
+                if info.get("hasNextPage") is not True or not isinstance(cursor, str) or cursor in seen:
+                    break
+                seen.add(cursor)
+                page = fetch_projects([slug], transport=transport,
+                                      fields=reward_fields % (", after: " + json.dumps(cursor)),
+                                      operation="Pledges", batch_size=1, source="minimum_pledge_page")[slug]
+                rewards = page["data"].get("rewards")
+                if not rewards:
+                    reason = page["error"]
+                    break
+            out.errors[slug] = reason
+            if complete and amounts:
+                minimum = min(amounts, key=lambda m: m["amount"])
+                out[slug] = minimum["amount"]
+                out.money[slug] = minimum
                 out.errors[slug] = None
-                out.observed_at[slug] = response["observed_at"]
+                out.observed_at[slug] = at
+            elif complete:
+                out.errors[slug] = "no_rewards"
         fetched = sum(1 for v in out.values() if v is not None)
         health.pledge_done(path=transport.mode, fetched=fetched, requested=len(slugs))
         tier_metrics.record("pledge", transport.mode if fetched else "failed")

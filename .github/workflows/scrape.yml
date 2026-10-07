@@ -30,6 +30,7 @@ jobs:
     env:
       # Defaults preserve current policy; owner enables gates/pauses delivery.
       KS_QUALITY_POLICY: ${{ vars.KS_QUALITY_POLICY || 'observe' }}
+      KS_EMAIL_DELIVERY: ${{ vars.KS_EMAIL_DELIVERY || 'enabled' }}
     steps:
       - uses: actions/checkout@v4
 

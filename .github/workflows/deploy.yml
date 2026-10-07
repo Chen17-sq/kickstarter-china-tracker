@@ -32,6 +32,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Assemble pages bundle
         run: |
+          python scripts/build_corrections.py
           mkdir -p _site
           cp -r site/* _site/
           # data/ — projects.json + slices + subscribers + blurbs (stats.html reads these)
@@ -39,7 +40,6 @@ jobs:
           cp data/projects.json _site/data/
           cp data/prelaunch.json _site/data/ 2>/dev/null || true
           cp data/live.json _site/data/ 2>/dev/null || true
-          cp data/subscribers.json _site/data/ 2>/dev/null || true
           cp data/blurbs_zh.json _site/data/ 2>/dev/null || true
           # assets/ — banner / snapshot / og-card SVGs (og:image meta points here)
           mkdir -p _site/assets

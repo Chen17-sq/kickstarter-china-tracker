@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Stats · Kickstarter China Tracker</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Public stats for Kickstarter China Tracker — subscribers, projects tracked, total pledged, top live and pre-launch projects.">
+<meta name="description" content="Public stats for Kickstarter China Tracker — delivery policy, projects tracked, total pledged, top live and pre-launch projects.">
 <meta name="keywords" content="kickstarter, china, tracker, stats, subscribers, 数据">
 <link rel="canonical" href="https://chen17-sq.github.io/kickstarter-china-tracker/stats.html">
 
@@ -19,7 +19,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="By The Numbers · Kickstarter China Tracker">
-<meta name="twitter:description" content="Live stats: subscribers, tracked projects, USD raised, top movers.">
+<meta name="twitter:description" content="Live stats: delivery policy, tracked projects, USD raised, top movers.">
 <meta name="twitter:image" content="https://chen17-sq.github.io/kickstarter-china-tracker/assets/og-card.svg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -220,9 +220,9 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
   <!-- Hero stats: 4 huge numbers -->
   <section class="hero-stats">
     <div class="hero-stat is-pre">
-      <div class="v" id="hsSubscribers">—</div>
-      <div class="l">Subscribers</div>
-      <div class="sub">订阅者总数</div>
+      <div class="v" id="hsDelivery">—</div>
+      <div class="l">Email Delivery</div>
+      <div class="sub">邮件发送策略</div>
     </div>
     <div class="hero-stat">
       <div class="v" id="hsTracked">—</div>
@@ -236,8 +236,8 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
     </div>
     <div class="hero-stat">
       <div class="v" id="hsEditions">—</div>
-      <div class="l">Editions Printed</div>
-      <div class="sub">已发刊期</div>
+      <div class="l">Days Tracked</div>
+      <div class="sub">追踪天数</div>
     </div>
   </section>
 
@@ -283,27 +283,16 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
   </div>
   <section class="stories" id="topPre"></section>
 
-  <!-- Subscribers (masked) -->
-  <div class="section-head">
-    <span class="label">SECTION D</span>
-    <h2>📬 订阅者 · Subscribers</h2>
-  </div>
   <section style="padding:20px 28px 32px">
-    <p style="font-family:'Lora',serif;font-style:italic;font-size:13px;color:var(--n500);margin:0 0 18px">
-      邮箱已脱敏（保留首字母 + 域名）— 完整信息只在仓库私有数据里。
-    </p>
-    <ul id="subList" style="list-style:none;margin:0;padding:0;
-        display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px 24px"></ul>
-    <p id="subEmpty" style="display:none;font-family:'Lora',serif;font-style:italic;color:var(--n400);text-align:center;padding:24px 0">
-      暂无订阅者 · Be the first.
-    </p>
+    <p>订阅名单保存在私有系统，不公开收件人信息。数据刷新和邮件发送分别统计。</p>
+    <p><a href="./corrections.html">历史日报勘误与数据可靠性说明</a></p>
   </section>
 
   <!-- Subscribe CTA -->
   <div class="cta">
     <div class="kicker">SUBSCRIBE · 订阅每日邮件</div>
     <h2>每日清晨送达，免费订阅。</h2>
-    <p>每天 08:00 北京时间，一份完整的 Kickstarter 中国硬件日报送到你的邮箱。</p>
+    <p>数据按日刷新；质量门槛未通过时暂停普通增长日报。</p>
     <a class="btn" href="./subscribe.html">订阅 / Subscribe →</a>
   </div>
 
@@ -333,10 +322,10 @@ function editionNumber() {
 function observedValue(p, key) {
   const m = (p.observations || {})[key] || {};
   const age = (Date.now() - Date.parse(m.observed_at)) / 3600000;
-  return m.status === "fresh" && Number.isFinite(age) && age >= 0 && age <= 30 ? p[key] : null;
+  return m.status === "fresh" && Number.isFinite(age) && age >= 0 && age <= 30 && p[key] != null && Number.isFinite(Number(p[key])) ? p[key] : null;
 }
 function fmtUSD(n) {
-  if (!n || isNaN(Number(n))) return "—";
+  if (n == null || !Number.isFinite(Number(n))) return "—";
   const v = Number(n);
   if (v >= 1e9) return "$" + (v / 1e9).toFixed(2) + "B";
   if (v >= 1e6) return "$" + (v / 1e6).toFixed(1).replace(/\.0$/, "") + "M";
@@ -372,21 +361,11 @@ async function load() {
   document.getElementById("editionNo").textContent = ed;
   document.getElementById("hsEditions").textContent = ed;
 
-  // Subscribers — count + masked list
-  try {
-    const sr = await fetch("./data/subscribers.json", { cache: "no-store" });
-    if (sr.ok) {
-      const sj = await sr.json();
-      const subs = sj.subscribers || [];
-      document.getElementById("hsSubscribers").textContent = subs.length;
-      renderSubscribers(subs);
-    }
-  } catch (e) {}
-
   try {
     const r = await fetch("./data/projects.json", { cache: "no-store" });
     if (!r.ok) throw new Error("HTTP " + r.status);
     const j = await r.json();
+    document.getElementById("hsDelivery").textContent = j.delivery_policy === "paused" ? "已暂停" : j.delivery_policy === "enabled" ? "按质量门槛" : "状态未知";
     const projects = j.projects || [];
     document.getElementById("hsTracked").textContent = projects.length;
     document.getElementById("updated").textContent = fmtBeijing(j.generated_at);
@@ -453,40 +432,6 @@ function storyHtml(p, i) {
     </div>
   </div>`;
 }
-function maskEmail(email) {
-  const at = (email || "").indexOf("@");
-  if (at < 1) return "***";
-  const user = email.slice(0, at);
-  const domain = email.slice(at + 1);
-  // Keep first char of user, mask the rest, keep domain intact
-  const head = user[0];
-  const stars = "*".repeat(Math.min(5, Math.max(2, user.length - 1)));
-  return `${head}${stars}@${domain}`;
-}
-
-function renderSubscribers(subs) {
-  const list = document.getElementById("subList");
-  const empty = document.getElementById("subEmpty");
-  if (!subs.length) {
-    list.style.display = "none";
-    empty.style.display = "block";
-    return;
-  }
-  // Sort by added_at desc; fall back to nickname
-  subs.sort((a, b) => (b.added_at || "").localeCompare(a.added_at || ""));
-  list.innerHTML = subs.map((s) => {
-    const nick = (s.nickname || "").toString().replace(/[<>"]/g, "").slice(0, 30);
-    const masked = maskEmail(s.email || "");
-    return `<li style="display:flex;justify-content:space-between;align-items:baseline;
-                gap:8px;padding:8px 0;border-bottom:1px solid var(--muted);min-width:0">
-      <span style="font-family:'Playfair Display',serif;font-weight:700;font-size:14px;color:var(--ink);
-            white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${nick || "(anon)"}</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--n500);
-            letter-spacing:.04em;flex:none">${masked}</span>
-    </li>`;
-  }).join("");
-}
-
 function storyHtmlPre(p, i) {
   const star = p.project_we_love ? '<span style="color:#CC0000;font-family:Playfair Display;font-weight:900;margin-right:5px">✦</span>' : "";
   const blurb = escapeHtml(p.blurb_zh || p.blurb || "");
