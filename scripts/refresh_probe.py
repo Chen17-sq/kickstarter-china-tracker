@@ -77,7 +77,7 @@ def browser_probe():
         original_pick = http.pick_proxy
         http.pick_proxy = lambda: None
         try:
-            transport = nodriver_transport.open_nodriver_transport(verbose=False, seed_url=origin, graph_url=origin + "/graph")
+            transport = nodriver_transport.open_nodriver_transport(verbose=True, seed_url=origin, graph_url=origin + "/graph")
             assert transport is not None, "nodriver failed local startup/CSRF"
             try:
                 for _ in range(2):
@@ -98,7 +98,7 @@ def browser_probe():
 
 def source_probe():
     import httpx
-    from selectolax.parser import HTMLParser
+    from selectolax.lexbor import LexborHTMLParser as HTMLParser
 
     from scraper.graphql import CATALOG_BATCH_SIZE, fetch_projects
 
@@ -171,7 +171,7 @@ def main():
     except Exception as exc:
         # Exception messages can contain URLs/tokens; retain only type.
         result = {"status": "probe_error", "exception_type": type(exc).__name__}
-        if args.mode == "browser":
+        if args.mode == "browser" or isinstance(exc, ImportError):
             result["local_fixture_error"] = str(exc)[:600]
         code = 1
     result.update(mode=args.mode, checked_at=dt.datetime.now(dt.UTC).isoformat())

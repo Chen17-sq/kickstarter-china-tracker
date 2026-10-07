@@ -46,7 +46,7 @@ def test_cpw_bad_types_returns_none():
 
 def test_cpb_basic():
     p = {"backers": 100, "pledged_usd": 50_000}
-    assert conversion_per_backer(p) == 500.0
+    assert conversion_per_backer(verified([p])[0]) == 500.0
 
 
 def test_cpb_zero_backers_returns_none():

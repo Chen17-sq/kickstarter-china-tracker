@@ -43,7 +43,21 @@ def find_week_ago_snapshot():
 def _compute(rows, ref, ref_ts, days, now=None):
     now = now or dt.datetime.now(dt.UTC)
     prefix = "weekly_delta_" if days == 7 else "delta_"
-    by_path = {p.get("pathname"): p for p in (ref or {}).get("projects", [])}
+    by_path = {}
+    snapshots = [ref] if ref else []
+    # A failed attempt nearest the target must not hide a successful rerun
+    # from the same window. The field's own observation time decides validity.
+    for path in sorted(HISTORY.glob("*.json")):
+        try:
+            snap = json.loads(path.read_text(encoding="utf-8"))
+            at = parse_time(snap.get("generated_at"))
+            if at and now - dt.timedelta(days=days, hours=18) <= at < now:
+                snapshots.append(snap)
+        except (ValueError, OSError):
+            continue
+    for snapshot in snapshots:
+        for baseline in snapshot.get("projects", []):
+            by_path.setdefault(baseline.get("pathname"), []).append(baseline)
     movers = {k: [] for k in ("followers", "backers", "pledged")}
     for row in rows:
         # Re-runs must never retain deltas copied from an earlier snapshot.
@@ -51,7 +65,11 @@ def _compute(rows, ref, ref_ts, days, now=None):
         clear_deltas(row, prefix)
         row["delta_meta"] = {k: v for k, v in old_meta.items() if not k.startswith(prefix)}
         for key in ("followers", "backers", "pledged_usd"):
-            value, evidence = comparable_delta(row, by_path.get(row.get("pathname"), {}), key, days=days, now=now)
+            candidates = [comparable_delta(row, baseline, key, days=days, now=now)
+                          for baseline in by_path.get(row.get("pathname"), [{}])]
+            valid = [item for item in candidates if item[0] is not None]
+            value, evidence = (min(valid, key=lambda item: abs(item[1]["seconds"] - days * 86400))
+                               if valid else candidates[0])
             row[prefix + key] = value
             row["delta_meta"][prefix + key] = evidence
             if value is not None and value > 0:
@@ -91,7 +109,9 @@ def conversion_per_watcher(p: dict) -> float | None:
 
 
 def conversion_per_backer(p: dict) -> float | None:
-    """Average pledge per backer."""
+    """Average pledge per backer from fresh comparable current metrics."""
+    if not is_fresh(p, "backers") or not is_fresh(p, "pledged_usd"):
+        return None
     try:
         backers = int(p.get("backers") or 0)
         pledged = float(p.get("pledged_usd") or 0)

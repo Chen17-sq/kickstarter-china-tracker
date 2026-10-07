@@ -37,7 +37,7 @@ from .email_notify import build_html as build_email_html
 from .email_notify import write_archive as write_email_archive
 from .feed import write_feed
 from .momentum import compute_deltas, compute_weekly_deltas
-from .observations import METRICS, FetchResults, carry, carry_row, observe
+from .observations import METRICS, FetchResults, carry, carry_row, is_fresh, observe
 from .pdf import render_today as render_pdf_today
 from .project import (
     fetch_pledge_minimums,
@@ -153,6 +153,8 @@ def build_row(hit: DiscoverHit, *, followers: int | None,
     rate = row["static_usd_rate"]
     basis = "native_usd" if currency == "USD" else (
         f"static_usd:{currency}:{rate}" if currency and rate else "ks_reported_usd")
+    if hit.raw.get("usd_pledged") is None and hit.raw.get("converted_pledged_amount") is not None:
+        basis = f"ks_converted_usd:{currency or 'unknown'}"
     observe(row, "pledged_usd", hit.pledged_usd, at=at, source="ks_discover", basis=basis)
     observe(row, "pledged_native", hit.raw.get("pledged"), at=at, source="ks_discover",
             basis=f"native_pledged:{currency}", unit=currency or "unknown")
@@ -221,49 +223,61 @@ def run() -> int:
                 "china_confidence": "未知",
             })
 
-    slugs = [slug_from_pathname(path) for path, _, _ in classified_paths]
-    health.classified(len(slugs))
-
-    # Open ONE GraphQL transport, share between watchesCount + pledge_min.
-    # Why: opening two separate Playwright sessions back-to-back trips CF's
-    # "burst of fresh sessions" detector — observed on 2026-05-24 cron where
-    # watchesCount succeeded via curl_cffi but the *second* session for
-    # pledge_min got 403'd on every chunk despite a successful seed.
-    # Sharing the session collapses two suspicious patterns into one and
-    # makes pledge_min ride watchesCount's already-warm cookie state.
+    prior = _refresh.latest_history_snapshot() or {}
+    prior_by_path = {p.get("pathname"): p for p in prior.get("projects", [])}
+    slugs = list(dict.fromkeys(
+        [slug_from_pathname(path) for path, _, _ in classified_paths] +
+        [slug_from_pathname(p["pathname"]) for p in prior.get("projects", [])
+         if p.get("pathname") and p.get("status") in {"prelaunch", "live"}]
+    ))
+    health.classified(len(classified_paths))
     try:
         ks_transport = open_transport(label="ks_graphql")
     except Exception as exc:
         health.fetch_error("graphql_seed", type(exc).__name__, len(slugs))
         ks_transport = None
+    refresh_result = None
+    watches, pledge_mins = FetchResults(slugs), FetchResults(slugs)
     try:
-        print(f"  fetching watchesCount via GraphQL for {len(slugs)} projects ...")
+        # Core known-catalog fields have priority over optional reward expansion.
         try:
-            watches = fetch_watches_counts(slugs, transport=ks_transport)
+            refresh_result = _refresh.refresh_from_history(transport=ks_transport, verbose=True)
         except Exception as exc:
-            health.fetch_error("watches", type(exc).__name__, len(slugs))
-            watches = FetchResults(slugs)
-            health.watches_done("failed", 0, len(slugs))
-        n_with = sum(1 for v in watches.values() if v is not None)
-        print(f"  got watchesCount for {n_with}/{len(slugs)}")
-
-        # Pledge tier minimums (起步价) — same transport, smaller chunks
-        print("  fetching minimum pledge tiers via GraphQL ...")
+            health.fetch_error("catalog_refresh", type(exc).__name__, len(prior_by_path))
+        refreshed_rows = refresh_result[0] if refresh_result else [carry_row(p, at=now_iso()) for p in prior_by_path.values()]
+        for p in refreshed_rows:
+            slug = slug_from_pathname(p["pathname"])
+            if slug in watches and is_fresh(p, "followers"):
+                watches[slug] = p["followers"]
+                watches.errors[slug] = None
+                watches.observed_at[slug] = p["observations"]["followers"]["observed_at"]
+        missing = [slug for slug in slugs if watches[slug] is None]
+        try:
+            additional = fetch_watches_counts(missing, transport=ks_transport)
+            for slug in missing:
+                watches[slug] = additional.get(slug)
+                watches.errors[slug] = getattr(additional, "errors", {}).get(slug)
+                if watches[slug] is not None:
+                    watches.observed_at[slug] = getattr(additional, "observed_at", {}).get(slug) or now_iso()
+        except Exception as exc:
+            health.fetch_error("watches", type(exc).__name__, len(missing))
+        n_with = sum(value is not None for value in watches.values())
+        health.watches_done(getattr(ks_transport, "mode", "failed"), n_with, len(slugs))
+        print(f"  got watchesCount for {n_with}/{len(slugs)} (known active + discovered)")
         try:
             pledge_mins = fetch_pledge_minimums(slugs, transport=ks_transport)
         except Exception as exc:
             health.fetch_error("minimum_pledge", type(exc).__name__, len(slugs))
-            pledge_mins = FetchResults(slugs)
             health.pledge_done("failed", 0, len(slugs))
-        n_pledge = sum(1 for v in pledge_mins.values() if v is not None)
-        print(f"  got pledge minimum for {n_pledge}/{len(slugs)}")
-        try:
-            refresh_result = _refresh.refresh_from_history(transport=ks_transport, verbose=True)
-        except Exception as exc:
-            health.fetch_error("catalog_refresh", type(exc).__name__, 0)
-            refresh_result = None
+        print(f"  got pledge minimum for {sum(v is not None for v in pledge_mins.values())}/{len(slugs)}")
+        # Apply supplemental successes to known projects even when Discover
+        # did not return them; original times remain on any failed fields.
+        for p in refreshed_rows:
+            slug = slug_from_pathname(p["pathname"])
+            for key, values in (("followers", watches), ("min_pledge_usd", pledge_mins)):
+                if values.get(slug) is not None:
+                    observe(p, key, values[slug], at=getattr(values, "observed_at", {}).get(slug) or now_iso(), source="ks_graphql")
     finally:
-        # Close the shared transport regardless of either fetch's outcome
         if ks_transport is not None:
             ks_transport.close()
 
@@ -291,9 +305,7 @@ def run() -> int:
 
     # Merge per field: a fresh discovered amount must survive a failed GraphQL
     # refresh, and a successful GraphQL watcher must survive a discover hit.
-    prior = _refresh.latest_history_snapshot() or {}
-    prior_by_path = {p.get("pathname"): p for p in prior.get("projects", [])}
-    refreshed = {p.get("pathname"): p for p in refresh_result[0]} if refresh_result else {}
+    refreshed = {p.get("pathname"): p for p in refreshed_rows}
     restored = 0
     for row in rows:
         path = row["pathname"]

@@ -121,6 +121,9 @@ def execute(scenario):
         assert by_id["Fixture 01"]["delta_pledged_usd"] == 51
         assert by_id["Fixture 02"]["delta_pledged_usd"] is None
         if scenario == "partial":
+            # Known project omitted by discovery must still refresh reward tiers.
+            assert by_id["Fixture 20"]["min_pledge_usd"] == 10
+            assert by_id["Fixture 20"]["observations"]["min_pledge_usd"]["status"] == "fresh"
             assert by_id["Fixture 21"]["delta_pledged_usd"] is None
             assert by_id["Fixture 21"]["observations"]["pledged_usd"]["observed_at"] == stamp(now - dt.timedelta(days=1))
     if scenario == "recovery":

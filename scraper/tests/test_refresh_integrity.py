@@ -260,3 +260,54 @@ def test_export_cards_do_not_present_carried_values_as_current():
         assert "未更新" in html
         assert "$1.0K" not in html
     assert "$1.0K" in _list_row(1, row(), kind="live")
+
+
+def test_baseline_uses_successful_rerun_when_nearest_attempt_failed(tmp_path, monkeypatch):
+    monkeypatch.setattr(momentum, "HISTORY", tmp_path)
+    failed_at = NOW - dt.timedelta(days=1)
+    success_at = failed_at + dt.timedelta(hours=2)
+    for label, at, project_row in [
+        ('failed', failed_at, {"pathname": row()["pathname"], "pledged_usd": 123}),
+        ('recovered', success_at, row(success_at, pledged_usd=900)),
+    ]:
+        (tmp_path / f'{label}.json').write_text(json.dumps({'generated_at': at.isoformat(), 'projects': [project_row]}))
+    current = row()
+    momentum.compute_deltas([current], now=NOW)
+    assert current['delta_pledged_usd'] == 100
+    assert current['delta_meta']['delta_pledged_usd']['from'] == success_at.isoformat()
+
+
+def test_expired_valid_delta_does_not_count_as_comparable():
+    p = row(NOW - dt.timedelta(days=2))
+    p['delta_pledged_usd'] = 0
+    p['delta_meta'] = {'delta_pledged_usd': {'status': 'valid'}}
+    q = assess({'projects': [p]}, now=NOW)
+    assert q['metrics']['pledged_usd']['fresh'] == 0
+    assert q['metrics']['pledged_usd']['comparable'] == 0
+    assert momentum.conversion_per_backer(p) is None
+
+
+def test_auxiliary_notifications_and_ai_context_reject_stale_metrics(tmp_path, monkeypatch):
+    from scraper import notify
+    from scripts import draft_editor_note
+    stale = carry_row(row(NOW - dt.timedelta(days=1)), at=NOW.isoformat())
+    snapshot = {'schema_version': 2, 'projects': [stale]}
+    path = tmp_path / 'projects.json'
+    path.write_text(json.dumps(snapshot))
+    monkeypatch.setattr(draft_editor_note, 'PROJECTS_FILE', path)
+    monkeypatch.setattr(draft_editor_note, 'HIGHLIGHTS_FILE', tmp_path / 'absent')
+    text = draft_editor_note.build_context()
+    assert 'raised: 未更新' in text
+    assert 'raised: $1,000' not in text
+    for dialect in ('slack', 'discord'):
+        summary = notify.build_summary(snapshot, dialect=dialect)
+        assert '未更新' in summary
+        assert '$1.0K' not in summary
+
+
+def test_old_editor_draft_cannot_leak_into_new_edition(tmp_path, monkeypatch):
+    from scraper import email_notify
+    monkeypatch.setattr(email_notify, 'REPO_ROOT', tmp_path)
+    (tmp_path / 'data').mkdir()
+    (tmp_path / 'data/.editor_drafts.json').write_text(json.dumps({'snapshot_at': 'old', 'drafts': [{'text': 'old growth'}]}))
+    assert email_notify._load_editor_drafts({'generated_at': 'new', 'projects': [row()]}) is None

@@ -46,6 +46,11 @@ from pathlib import Path
 import httpx
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT))
+
+from scraper.observations import metric_text  # noqa: E402
+from scraper.quality import quality_lines  # noqa: E402
+
 PROJECTS_FILE = REPO_ROOT / "data" / "projects.json"
 HIGHLIGHTS_FILE = REPO_ROOT / "data" / "highlights_zh.json"
 LOCAL_KEY_FILE = REPO_ROOT / ".deepseek_key"  # gitignored
@@ -191,13 +196,13 @@ def _render_project(p: dict, highlights: dict, *, status_view: str) -> str:
     creator = p.get("creator_name") or "?"
     if status_view == "prelaunch":
         lines.append(
-            f"    watchers: {p.get('followers', 0)} · country: {country} · creator: {creator}"
+            f"    watchers: {metric_text(p, 'followers')} · country: {country} · creator: {creator}"
         )
     else:
         lines.append(
-            f"    raised: ${_to_float(p.get('pledged_usd')):,.0f}"
-            f" · backers: {p.get('backers', 0)}"
-            f" · % funded: {int(p.get('percent_funded', 0) or 0)}%"
+            f"    raised: {metric_text(p, 'pledged_usd')}"
+            f" · backers: {metric_text(p, 'backers')}"
+            f" · % funded: {metric_text(p, 'percent_funded')}"
             f" · country: {country}"
         )
     if p.get("_sleeper_reason"):
@@ -250,7 +255,7 @@ def build_context() -> str:
         sleepers = []
 
     today = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
-    parts: list[str] = []
+    parts: list[str] = [*quality_lines(curr), "仅引用本次新鲜观测；未更新值不得写成今日增长或市场趋势。"]
     parts.append(f"今日（{today}）KPI:")
     parts.append(
         f"  追踪 {len(projects)} 项 · "
@@ -259,7 +264,7 @@ def build_context() -> str:
         f"{len(successful)} successful"
     )
     parts.append(
-        f"  在筹累计 ${sum(_to_float(p.get('pledged_usd')) for p in live):,.0f}"
+        "  质量不完整时不提供全目录在筹合计；排名仅供历史参考。"
     )
     parts.append(
         f"  KS Editor's Pick {sum(1 for p in projects if p.get('project_we_love'))} 项"
@@ -429,6 +434,7 @@ def main(argv: list[str] | None = None) -> int:
         json_path = args.json_out.resolve()
         json_path.parent.mkdir(parents=True, exist_ok=True)
         payload = {
+            "snapshot_at": json.loads(PROJECTS_FILE.read_text()).get("generated_at"),
             "generated_at": dt.datetime.now(dt.UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "model": args.model,
             "context_chars": len(ctx),

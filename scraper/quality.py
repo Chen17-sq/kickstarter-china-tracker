@@ -17,7 +17,7 @@ def assess(snapshot, *, now=None):
         eligible = [p for p in rows if (p.get("status") == "prelaunch" if key == "followers"
                     else p.get("status") == "live")]
         fresh = sum(is_fresh(p, key, now) for p in eligible)
-        comparable = [p for p in eligible if (p.get("delta_meta", {}).get("delta_" + key) or {}).get("status") == "valid"]
+        comparable = [p for p in eligible if is_fresh(p, key, now) and (p.get("delta_meta", {}).get("delta_" + key) or {}).get("status") == "valid"]
         zeros = sum(p.get("delta_" + key) == 0 for p in comparable)
         ages = [(now - parse_time(m["observed_at"])).total_seconds() / 3600
                 for p in eligible if (m := p.get("observations", {}).get(key, {}))
