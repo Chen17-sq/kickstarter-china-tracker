@@ -215,7 +215,7 @@ def test_legacy_history_does_not_make_changelog_growth():
     assert not any(c.kind == "followers_delta" for c in diff_snapshots(before, after))
 
 
-@pytest.mark.parametrize("scenario,valid,attempts", [("all-failed", 0, 3), ("partial", 24, 3), ("healthy", 29, 3), ("recovery", 29, 4)])
+@pytest.mark.parametrize("scenario,valid,attempts", [("all-failed", 0, 3), ("partial", 24, 3), ("healthy", 29, 3), ("recovery", 29, 4), ("currency", 29, 3)])
 def test_isolated_pipeline_never_sends_or_changes_source(tmp_path, scenario, valid, attempts):
     import hashlib
     import subprocess
