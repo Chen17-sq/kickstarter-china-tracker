@@ -1,38 +1,7 @@
 {
-  "candidates": [
-    {
-      "creator_slug": "hermanpeng",
-      "title": "Hidetoshi Nakayama’s Gennai Pen SL01: Steampunk EDC Pen",
-      "location": "Tokyo, Japan",
-      "country": "HK",
-      "status": "live",
-      "followers": 0,
-      "pledged_usd": 101711.85156922,
-      "project_we_love": false,
-      "url": "https://www.kickstarter.com/projects/hermanpeng/the-gennai-pen-mechanical-edc-art-by-nakayama",
-      "china_confidence": "未知",
-      "reasons": [
-        "pledged >= $5,000"
-      ]
-    },
-    {
-      "creator_slug": "morphgears",
-      "title": "MorphGears: 14-in-1 Modular EDC Card",
-      "location": "San Francisco, CA",
-      "country": "HK",
-      "status": "live",
-      "followers": 0,
-      "pledged_usd": 55348.61140386,
-      "project_we_love": false,
-      "url": "https://www.kickstarter.com/projects/morphgears/morphgears-14-in-1-modular-titanium-edc-card",
-      "china_confidence": "未知",
-      "reasons": [
-        "pledged >= $5,000"
-      ]
-    }
-  ],
+  "candidates": [],
   "_meta": {
-    "generated_at": "2026-10-07T12:31:52.661672+00:00",
+    "generated_at": "2026-10-09T03:47:54.951283+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
