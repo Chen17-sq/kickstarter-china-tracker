@@ -1,12 +1,13 @@
 {
   "schema_version": 2,
-  "latest": "2026-10-09",
+  "latest": "2026-10-10",
   "dates": [
+    "2026-10-10",
     "2026-10-09",
     "2026-10-07",
     "2026-05-16"
   ],
-  "latest_revision": "2026-10-09-revision-2a7fc58d1dd3259c.json",
+  "latest_revision": "2026-10-10.json",
   "revisions": [
     "2026-10-07-revision-3cf88706b65eb869.json",
     "2026-10-07-revision-9117703b3e86045e.json",
