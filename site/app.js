@@ -422,7 +422,7 @@ function renderHero() {
   document.getElementById("heroLiveLabel").textContent =
     langZh ? "🔴 在筹中 · 已筹 Top 10" : "🔴 Live · Top 10 by USD Raised";
   document.getElementById("heroLiveMeta").textContent =
-    KSFunds.livePledgedText(KSFunds.livePledgedTotals(DATA), LANG, fmtUSD);
+    KSFunds.livePledgedText(KSFunds.livePledgedTotals(DATA), LANG);
 
   function story(rank, p, kind) {
     const url = escapeHtml(p.url || "#");
@@ -493,7 +493,7 @@ function renderKpis() {
       <div class="delta">${escapeHtml(k.prelaunchDelta)}</div></div>
     <div class="kpi is-live"><div class="label">${escapeHtml(k.live)}</div>
       <div class="num">${counts.live}</div>
-      <div class="delta">${escapeHtml(KSFunds.livePledgedText(KSFunds.livePledgedTotals(DATA), LANG, fmtUSD))}</div></div>
+      <div class="delta">${escapeHtml(KSFunds.livePledgedText(KSFunds.livePledgedTotals(DATA), LANG))}</div></div>
     <div class="kpi"><div class="label">${escapeHtml(k.success)}</div>
       <div class="num">${counts.successful}</div>
       <div class="delta">${escapeHtml(k.successDelta)}</div></div>

@@ -90,7 +90,7 @@ for (const item of cases) {
   const result = livePledgedTotals(item.rows, Date.parse('2026-10-10T04:00:00Z'));
   assert.deepEqual(result, item.expected);
   for (const lang of ['zh', 'en']) {
-    const text = livePledgedText(result, lang, n => '$' + n);
+    const text = livePledgedText(result, lang);
     assert.ok(text.includes(`${result.live_usd_coverage.verified}/${result.live_usd_coverage.total}`));
     if (result.total_live_usd === null) assert.ok(text.includes(lang === 'en' ? 'full total not updated' : '全量合计未更新'));
     if (result.verified_live_usd_subtotal === null) assert.ok(!text.includes('$0'));
@@ -139,3 +139,11 @@ def test_recovery_and_rerun_preserve_original_observation():
     assert live_pledged_totals(rows, now=NOW + dt.timedelta(hours=1)) == first
     assert rows[1]["observations"]["pledged_usd"]["observed_at"] == NOW.isoformat()
     assert live_pledged_totals(rows, now=NOW + dt.timedelta(hours=31))["verified_live_usd_subtotal"] is None
+
+
+def test_browser_and_report_amount_precision():
+    from scraper._common import fmt_usd
+    amounts = [0, 2.5, 3.5, 1000, 10500, 11500, 1e6, 1.2e6, 17017406.82772803, 1e9]
+    script = "const f=require('./site/funds.js'); console.log(JSON.stringify(" + json.dumps(amounts) + ".map(f.fmtUSD)))"
+    result = subprocess.run(["node", "-e", script], cwd=ROOT, check=True, text=True, capture_output=True)
+    assert json.loads(result.stdout) == [fmt_usd(amount) for amount in amounts]

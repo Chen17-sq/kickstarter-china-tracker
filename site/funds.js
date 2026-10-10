@@ -39,7 +39,15 @@
       live_usd_coverage: {verified: values.length, total: live.length},
     };
   }
-  function livePledgedText(totals, lang, fmtUSD) {
+  function fmtUSD(value) {
+    // Match the report formatter, including ties-to-even integer rounding.
+    const round = n => n % 1 === 0.5 ? 2 * Math.round(n / 2) : Math.round(n);
+    if (value >= 1e6) return ("$" + (value / 1e6).toFixed(2) + "M").replace(/\.00M$/, "M");
+    if (value >= 1e4) return "$" + round(value / 1e3) + "K";
+    if (value >= 1e3) return "$" + (value / 1e3).toFixed(1) + "K";
+    return "$" + round(value).toLocaleString("en-US");
+  }
+  function livePledgedText(totals, lang) {
     const {verified, total} = totals.live_usd_coverage;
     const full = totals.total_live_usd, subtotal = totals.verified_live_usd_subtotal;
     const count = `${verified}/${total}`;
@@ -50,7 +58,7 @@
     if (full !== null) return `全量合计 ${fmtUSD(full)}，${count} 项`;
     return `已验证小计 ${subtotal === null ? "未更新" : fmtUSD(subtotal)}，${count} 项；全量合计未更新`;
   }
-  const api = {livePledgedTotals, livePledgedText};
+  const api = {livePledgedTotals, livePledgedText, fmtUSD};
   root.KSFunds = api;
   if (typeof module !== "undefined") module.exports = api;
 })(globalThis);

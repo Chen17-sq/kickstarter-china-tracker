@@ -42,7 +42,7 @@ node --check site/app.js
 git diff --check
 ```
 
-Local results: **380 pytest passed**, **Ruff passed**, **17 Worker tests passed**,
+Local results: **381 pytest passed**, **Ruff passed**, **17 Worker tests passed**,
 Worker esbuild bundle passed, JavaScript syntax checks and diff whitespace checks
 passed. The first offline esbuild attempt lacked a cached package; rerunning with
 an isolated temporary npm cache completed successfully.
@@ -69,3 +69,18 @@ it must evaluate the observation timestamps again before calling values fresh.
 Web pages evaluate freshness at rendering time. This change cannot reconstruct
 missing historical observations or verify source collection; it only reports the
 available evidence without losing valid partial coverage.
+
+## Browser verification boundary
+
+Expect launched a real browser and verified the actual snapshot's Chinese home
+page hero and KPI ($17.02M, 131/132, full total unavailable). A real desktop stats
+probe exposed the old one-decimal formatter displaying $17M. Aggregate displays
+now use one shared browser formatter, with backend/browser amount precision tests.
+Those tests additionally found and fixed the backend formatter removing an integer
+zero from $1000M. These changes do not alter the underlying amount or coverage.
+
+Subsequent desktop/mobile, English and routed edge-case browser actions repeatedly
+failed to return through Expect, including a minimal navigation without screenshots.
+No complete screenshot/visual pass is claimed. Automated Node tests do cover both
+languages and boundary cases; they are not a substitute for final visual inspection.
+No subscription form was submitted and no message was sent.

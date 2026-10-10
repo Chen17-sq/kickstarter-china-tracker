@@ -394,9 +394,9 @@ async function load() {
     const lang = localStorage.getItem("ks-tracker-lang") === "en" ? "en" : "zh";
     const full = funds.total_live_usd !== null;
     const amount = funds.verified_live_usd_subtotal;
-    document.getElementById("hsPledged").textContent = amount === null ? (lang === "en" ? "Not updated" : "未更新") : fmtUSD(amount);
+    document.getElementById("hsPledged").textContent = amount === null ? (lang === "en" ? "Not updated" : "未更新") : KSFunds.fmtUSD(amount);
     document.getElementById("hsPledgedLabel").textContent = lang === "en" ? (full ? "Full total" : "Verified subtotal") : (full ? "全量合计" : "已验证小计");
-    document.getElementById("hsPledgedCoverage").textContent = KSFunds.livePledgedText(funds, lang, fmtUSD);
+    document.getElementById("hsPledgedCoverage").textContent = KSFunds.livePledgedText(funds, lang);
     document.getElementById("kPre").textContent = pre;
     document.getElementById("kLive").textContent = live;
     document.getElementById("kSucc").textContent = succ;
