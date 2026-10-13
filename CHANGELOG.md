@@ -1,47 +1,61 @@
 # Kickstarter China Tracker — diff
 
-## new (2)
-- **UFO: The Front-Rotor Skeleton Automatic Watch** — Discovered (prelaunch, 7 followers)  
-  `/projects/etops/ufo-the-front-rotor-skeleton-automatic-watch`
-- **FANAUE: Magnetic Quick-Release Lanyard for Everyday Carry** — Discovered (prelaunch, 0 followers)  
-  `/projects/fanaue/fanaue-magnetic-quick-release-lanyard-for-everyday-carry`
+## new (5)
+- **Titaner Monolith: Titanium & Meteorite Lighter** — Discovered (prelaunch, 1 followers)  
+  `/projects/271024582/titaner-monolith-titanium-and-meteorite-lighter`
+- **Smart Auto-Eject Charger: Disconnects When Fully Charged** — Discovered (live, 17 followers)  
+  `/projects/zhanyuyu/smart-auto-eject-charger-disconnects-when-fully-charged`
+- **Multifunctional Meal Bag** — Discovered (prelaunch, 0 followers)  
+  `/projects/1598264868/multifunctional-meal-bag`
+- **GLINT: A Wearable Magic Device for Instant Card Changes** — Discovered (prelaunch, 1 followers)  
+  `/projects/apexplayingcards/glint-a-wearable-magic-device-for-instant-card-changes`
+- **《The Women Who Halted the Rise of Empires》** — Discovered (live, 0 followers)  
+  `/projects/chasinmeng/the-women-who-halted-the-rise-of-empires`
 
-## status_change (3)
-- **Velitag: Self-Powered Bike Taillight with Find My Tracking** — live → failed  
-  `/projects/velitag/velitag-self-powered-bike-taillight-with-find-my-tracking`
-- **SR1 ：Auto Feed. Live View. Smarter Soldering.** — live → successful  
-  `/projects/2126782539/sr1-smart-iron-live-hd-camera-and-50x-mag`
-- **OSIMT: The Microwave-Safe Titanium Storage System** — live → successful  
-  `/projects/osimt/osimt-the-microwave-safe-titanium-storage-system`
-
-## followers_delta (13)
-- **AI WUKONG: Your First AI Humanoid Robot That Does It All** — +64 followers (517 → 581)  
-  `/projects/aiwukong/ai-wukong-your-first-ai-humanoid-robot-that-does-it-all`
-- **RheoFit A1 Lite: The Hands-Free Automatic Foam Roller** — +56 followers (808 → 864)  
+## followers_delta (15)
+- **Awekeys RGB | Full Metal Shine Through Keycaps for keyboards** — +56 followers (567 → 623)  
+  `/projects/awekeys/awekeys-rgb-full-metal-shine-through-keycaps-for-keyboards`
+- **SLogic32U3 – The World's First 10Gbps USB3.2 Logic Analyzer** — +53 followers (1242 → 1295)  
+  `/projects/sipeed/slogic32u3-the-worlds-first-10gbps-usb32-logic-analyzer`
+- **RheoFit A1 Lite: The Hands-Free Automatic Foam Roller** — +69 followers (864 → 933)  
   `/projects/rheofit-a1/rheofit-a1-lite-fully-automatic-foam-roller`
-- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +228 followers (4507 → 4735)  
-  `/projects/xgimititannoir/xgimi-aura-3-series-the-ultimate-4k-rgb-laser-tv`
-- **LightMake L4: 1st 4-Head Color 3D Printer with Linear Motors** — +61 followers (4704 → 4765)  
-  `/projects/lightmake/lightmake-l4-1st-4-head-color-3d-printer-with-linear-motor`
-- **MakerPi Tiruler 2.0: Do More, Carry Less** — +92 followers (2541 → 2633)  
-  `/projects/soongon/makerpi-tiruler-20-do-more-carry-less`
-- **GmTron X1 — Your Personal Gym Studio, Anywhere** — +59 followers (245 → 304)  
-  `/projects/gmtron168/gmtron-x1-your-personal-gym-studio-anywhere`
-- **VAULT: modular stacking toolbox system** — +236 followers (8483 → 8719)  
-  `/projects/ussa/vault-modular-stacking-toolbox-system`
-- **Inkanva: The World's First Self-Charging E-Ink Canvas** — +51 followers (7111 → 7162)  
-  `/projects/inkanva/inkanva`
-- **AESISENSE | Reconnect with your body's natural rhythm** — +116 followers (805 → 921)  
-  `/projects/aesisense/aesisense-reconnect-with-your-bodys-natural-rhythm`
-- **Lucy AI Studio: A Dedicated Computer for Your AI Agents** — +73 followers (1277 → 1350)  
-  `/projects/744045479/cephalon-ondevice-ai-with-a-selfevolving-ecosystem`
-- **RolTine2.0: The Titanium Skeleton Tape Measure & Fidget Tool** — +86 followers (1169 → 1255)  
+- **AI WUKONG: Your First AI Humanoid Robot That Does It All** — +64 followers (581 → 645)  
+  `/projects/aiwukong/ai-wukong-your-first-ai-humanoid-robot-that-does-it-all`
+- **RolTine2.0: The Titanium Skeleton Tape Measure & Fidget Tool** — +70 followers (1255 → 1325)  
   `/projects/comandi-corres/roltine-the-titanium-skeleton-tape-measure-and-fidget-tool`
-- **abxylute M6/M5: Rethinking Mobile Gaming Controllers** — +67 followers (2864 → 2931)  
-  `/projects/abxylute/abxylute-m6-m5-rethinking-mobile-gaming-controllers`
-- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +80 followers (8747 → 8827)  
+- **MakerPi Tiruler 2.0: Do More, Carry Less** — +73 followers (2633 → 2706)  
+  `/projects/soongon/makerpi-tiruler-20-do-more-carry-less`
+- **Inkanva: The World's First Self-Charging E-Ink Canvas** — +64 followers (7162 → 7226)  
+  `/projects/inkanva/inkanva`
+- **Full-Surface Standing Desk with 148 Wireless Charging Zones** — +56 followers (357 → 413)  
+  `/projects/1467765675/full-surface-standing-desk-with-148-wireless-charging-zones`
+- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +62 followers (8827 → 8889)  
   `/projects/bvio/violoop-plug-in-ai-for-your-computer`
+- **LightMake L4: 1st 4-Head Color 3D Printer with Linear Motors** — +64 followers (4765 → 4829)  
+  `/projects/lightmake/lightmake-l4-1st-4-head-color-3d-printer-with-linear-motor`
+- **VAULT: modular stacking toolbox system** — +268 followers (8719 → 8987)  
+  `/projects/ussa/vault-modular-stacking-toolbox-system`
+- **GmTron X1 — Your Personal Gym Studio, Anywhere** — +52 followers (304 → 356)  
+  `/projects/gmtron168/gmtron-x1-your-personal-gym-studio-anywhere`
+- **abxylute M6/M5: Rethinking Mobile Gaming Controllers** — +54 followers (2931 → 2985)  
+  `/projects/abxylute/abxylute-m6-m5-rethinking-mobile-gaming-controllers`
+- **Twelvetooo:FHD immersive 3D scene projector** — +62 followers (336 → 398)  
+  `/projects/twelvetooo/twelvetooo-fhd-immersive-3d-scene-projector`
+- **Lucy AI Studio: A Dedicated Computer for Your AI Agents** — +78 followers (1350 → 1428)  
+  `/projects/744045479/cephalon-ondevice-ai-with-a-selfevolving-ecosystem`
+
+## status_change (5)
+- **UH100 MAX: World’s First MagSafe Encrypted Touchscreen SSD** — live → successful  
+  `/projects/754944490/uh100-max-worlds-first-magsafe-encrypted-touchscreen-ssd`
+- **Apanmeker: DL-210 Industrial CNC Power in a Desktop Lathe** — live → successful  
+  `/projects/apanmeker/apanmeker-dl-210-industrial-cnc-power-in-a-desktop-lathe`
+- **ResQNet — Safety Internet for No-Signal Zones** — live → canceled  
+  `/projects/resqnet/resqnet-safety-internet-for-no-signal-zones`
+- **Hildors 3D Holographic Fan| POV LED Floating Display** — live → successful  
+  `/projects/524065776/hildors-naked-eye-3d-holographic-display`
+- **FernSnap: AI Plant Time-Lapse Camera** — live → successful  
+  `/projects/fernsnapgrowlight/fernsnap-time-lapse-grow-light-for-plant-parents`
 
 ## backers_delta (1)
-- **VAULT: modular stacking toolbox system** — +276 backers (4879 → 5155)  
+- **VAULT: modular stacking toolbox system** — +269 backers (5155 → 5424)  
   `/projects/ussa/vault-modular-stacking-toolbox-system`
