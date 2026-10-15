@@ -1,95 +1,75 @@
 # Kickstarter China Tracker — diff
 
-## new (11)
-- **GOTO:The First L-Shaped Precision Electric Screwdriver** — Discovered (prelaunch, 4 followers)  
-  `/projects/redantintelligent/goto-the-first-l-shaped-precision-electric-screwdriver`
-- **World's First 6.13" Color E‑ink Phone Monitor** — Discovered (prelaunch, 4 followers)  
-  `/projects/dasung/worlds-first-613-color-eink-phone-monitor`
-- **The Smart Titanium Tumbler That Keeps Your Drink at 140°F.** — Discovered (live, 16 followers)  
-  `/projects/1549708294/the-smart-titanium-tumbler-that-keeps-your-drink-at-140f`
-- **The Journey Continues: A New Chapter of Tool Pen** — Discovered (live, 40 followers)  
-  `/projects/mininch/the-journey-continues-a-new-chapter-of-tool-pen`
-- **S10：Noisy World. Clearer Conversations.** — Discovered (prelaunch, 0 followers)  
-  `/projects/2072157257/s10-noisy-world-clearer-conversations`
-- **VACELUX ：All-in-1 Tech Cleaning Station** — Discovered (prelaunch, 0 followers)  
-  `/projects/611306678/vacelux-all-in-1-tech-cleaning-station`
-- **AROTI R1 ：Your Look. Your Life. A Little Smarter** — Discovered (prelaunch, 12 followers)  
-  `/projects/aroti/aroti-r1-your-look-your-life-a-little-smarter`
-- **PA2-S Retro Cassette Visual Bluetooth Speaker** — Discovered (prelaunch, 1 followers)  
-  `/projects/1248473915/pa2-s-retro-cassette-visual-bluetooth-speaker`
-- **ResQNet - Safety Internet for No-Signal Zones** — Discovered (prelaunch, 2 followers)  
-  `/projects/resqnet/resqnet-safety-internet-for-no-signal-zones-0`
-- **L1：Create Coffee Art in Just 2 Seconds** — Discovered (prelaunch, 1 followers)  
-  `/projects/1585331415/l1-create-coffee-art-in-just-2-seconds`
-- **Moera Smart Climate Mattress Cover** — Discovered (prelaunch, 28 followers)  
-  `/projects/moerasleep/moera-smart-climate-mattress-cover`
+## new (3)
+- **NEXUS ONE: Secure USB Android PC with VPN Support** — Discovered (prelaunch, 4 followers)  
+  `/projects/1544912006/nexus-one-secure-usb-android-pc-with-vpn-support`
+- **ARANIX — The World's First 4WD+4WS All-Terrain Robotic Mower** — Discovered (prelaunch, 108 followers)  
+  `/projects/airseekers/aranix-the-worlds-first-4wd-4ws-all-terrain-robotic-mower`
+- **BERNY Automatic Diver Watch: Domed Two-Tone Ceramic Bezel** — Discovered (prelaunch, 9 followers)  
+  `/projects/bernywatches/berny-automatic-diver-watch-domed-two-tone-ceramic-bezel`
 
-## status_change (16)
-- **STYLEPIE STRAP CABLE: The Fast-Charging Cable You Can Wear** — prelaunch → live  
-  `/projects/stylepie-c92/stylepie-c92-strong-fast-charging-lanyard-cable-0`
-- **Star Ring Tesla Ambient Light** — prelaunch → live  
-  `/projects/starring/star-ring-tesla-ambient-light`
-- **GHome Smart KD10F: 3D Face Recognition Smart Lock** — prelaunch → live  
-  `/projects/ghome-kd10f/kd10f-a-smart-lock-with-reliable-3d-face-recognition`
-- **Twelvetooo:FHD immersive 3D scene projector** — prelaunch → live  
-  `/projects/twelvetooo/twelvetooo-fhd-immersive-3d-scene-projector`
-- **NYX60, World's First Light-Guided RT Optical Keyboard** — live → successful  
-  `/projects/rawm/nyx60-worlds-first-adjustable-pre-travel-optical-keyboard`
-- **HMC Watch Co: The Mirrored Salar de Uyuni Geometric Watch** — live → successful  
-  `/projects/bitcoinwatch/hmc-watch-co-the-mirrored-salar-de-uyuni-mechanical-watch`
-- **Honor Choice：Your Movie Theater Follows You -1080P Projector** — prelaunch → live  
-  `/projects/1359176178/honor-choice-your-movie-theater-follows-you-1080p-projector`
-- **ZOSRAY MP17 Modular Mech Pack Define Your Daily Freedom** — live → successful  
-  `/projects/zosray/mp17`
-- **Awekeys RGB | Full Metal Shine Through Keycaps for keyboards** — prelaunch → live  
-  `/projects/awekeys/awekeys-rgb-full-metal-shine-through-keycaps-for-keyboards`
-- **StepTimer: A walking timer buddy for your desk** — prelaunch → live  
-  `/projects/palmblock/steptimer-a-walking-timer-buddy-for-your-desk`
-- **PACE Ti: A Modern Tritium-Core Titanium Pocket Fountain Pen** — live → successful  
-  `/projects/814668681/pace-ti-a-modern-tritium-core-titanium-pocket-fountain-pen`
-- **Syvols: Camera-Free 3D Body Intelligence Scale** — live → successful  
-  `/projects/syvols/syvols-a-camera-free-3d-body-and-body-composition-tracker`
-- **COKAFEGO: Cordless Coffee Station for Every Adventure** — prelaunch → live  
-  `/projects/1894547884/cokafego-cordless-coffee-station-for-every-adventure`
-- **HOZO Hobby Knife — A Classic, Reinvented for Makers** — prelaunch → live  
-  `/projects/hozodesign/hozo-hobby-knife`
-- **ArcBlue C42: First Smart Full-Frame Astrophotography System** — prelaunch → live  
-  `/projects/arcblue/arcblue-c42-smart-full-frame-astrophotography-system`
-- **Voltiva Pro: Modular 5-in-1 Power Bank with 100W Output.** — live → successful  
-  `/projects/voltivago/voltiva-pro-modular-5-in-1-power-bank-with-100w-output`
-
-## followers_delta (10)
-- **MakerPi Tiruler 2.0: Do More, Carry Less** — +78 followers (2706 → 2784)  
-  `/projects/soongon/makerpi-tiruler-20-do-more-carry-less`
-- **Twelvetooo:FHD immersive 3D scene projector** — +66 followers (398 → 464)  
-  `/projects/twelvetooo/twelvetooo-fhd-immersive-3d-scene-projector`
-- **Nexra: Extend Your Manual Coffee Grinder. Keep the Ritual.** — +63 followers (435 → 498)  
-  `/projects/nexra/nexra-the-electric-module-for-comandante-c40`
-- **AESISENSE | Reconnect with your body's natural rhythm** — +63 followers (945 → 1008)  
-  `/projects/aesisense/aesisense-reconnect-with-your-bodys-natural-rhythm`
-- **Awekeys RGB | Full Metal Shine Through Keycaps for keyboards** — +59 followers (623 → 682)  
-  `/projects/awekeys/awekeys-rgb-full-metal-shine-through-keycaps-for-keyboards`
-- **StepTimer: A walking timer buddy for your desk** — +66 followers (180 → 246)  
-  `/projects/palmblock/steptimer-a-walking-timer-buddy-for-your-desk`
-- **VAULT: modular stacking toolbox system** — +204 followers (8987 → 9191)  
-  `/projects/ussa/vault-modular-stacking-toolbox-system`
-- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +113 followers (8889 → 9002)  
+## followers_delta (16)
+- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +63 followers (9002 → 9065)  
   `/projects/bvio/violoop-plug-in-ai-for-your-computer`
-- **RolTine2.0: The Titanium Skeleton Tape Measure & Fidget Tool** — +73 followers (1325 → 1398)  
-  `/projects/comandi-corres/roltine-the-titanium-skeleton-tape-measure-and-fidget-tool`
-- **HOZO Hobby Knife — A Classic, Reinvented for Makers** — +280 followers (2773 → 3053)  
-  `/projects/hozodesign/hozo-hobby-knife`
-
-## backers_delta (6)
-- **Twelvetooo:FHD immersive 3D scene projector** — +111 backers (0 → 111)  
-  `/projects/twelvetooo/twelvetooo-fhd-immersive-3d-scene-projector`
-- **Awekeys RGB | Full Metal Shine Through Keycaps for keyboards** — +158 backers (0 → 158)  
-  `/projects/awekeys/awekeys-rgb-full-metal-shine-through-keycaps-for-keyboards`
-- **StepTimer: A walking timer buddy for your desk** — +115 backers (0 → 115)  
+- **S1 - The world's first AI screwdriver with eyes and a brain** — +108 followers (28 → 136)  
+  `/projects/arrowmax/the-worlds-first-ai-screwdriver-with-eyes-and-brain`
+- **SnowPod: Real Metal 3D Printing on Your Desktop** — +80 followers (371 → 451)  
+  `/projects/snowx/snowpod-real-metal-3d-printing-on-your-desktop`
+- **Moera Smart Climate Mattress Cover** — +190 followers (28 → 218)  
+  `/projects/moerasleep/moera-smart-climate-mattress-cover`
+- **StepTimer: A walking timer buddy for your desk** — +76 followers (246 → 322)  
   `/projects/palmblock/steptimer-a-walking-timer-buddy-for-your-desk`
-- **VAULT: modular stacking toolbox system** — +296 backers (5424 → 5720)  
+- **MakerPi Tiruler 2.0: Do More, Carry Less** — +84 followers (2784 → 2868)  
+  `/projects/soongon/makerpi-tiruler-20-do-more-carry-less`
+- **AXILOOP MC8 — 8 Independent Tool Head Multi-Color 3D Printer** — +53 followers (566 → 619)  
+  `/projects/axiloop/axiloop-mc8-8-independent-tool-head-multi-color-3d-printer`
+- **COOLGEEK P1 — The Cassette Player, Reimagined** — +113 followers (112 → 225)  
+  `/projects/coolgeekaudio/coolgeek-p1-the-cassette-player-reimagined`
+- **AI WUKONG: Your First AI Humanoid Robot That Does It All** — +55 followers (685 → 740)  
+  `/projects/aiwukong/ai-wukong-your-first-ai-humanoid-robot-that-does-it-all`
+- **VAULT: modular stacking toolbox system** — +203 followers (9191 → 9394)  
   `/projects/ussa/vault-modular-stacking-toolbox-system`
-- **HOZO Hobby Knife — A Classic, Reinvented for Makers** — +1176 backers (0 → 1176)  
+- **abxylute M6/M5: Rethinking Mobile Gaming Controllers** — +51 followers (3025 → 3076)  
+  `/projects/abxylute/abxylute-m6-m5-rethinking-mobile-gaming-controllers`
+- **RolTine2.0: The Titanium Skeleton Tape Measure & Fidget Tool** — +75 followers (1398 → 1473)  
+  `/projects/comandi-corres/roltine-the-titanium-skeleton-tape-measure-and-fidget-tool`
+- **Twelvetooo:FHD immersive 3D scene projector** — +70 followers (464 → 534)  
+  `/projects/twelvetooo/twelvetooo-fhd-immersive-3d-scene-projector`
+- **HOZO Hobby Knife — A Classic, Reinvented for Makers** — +234 followers (3053 → 3287)  
   `/projects/hozodesign/hozo-hobby-knife`
-- **ArcBlue C42: First Smart Full-Frame Astrophotography System** — +139 backers (0 → 139)  
+- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +265 followers (5196 → 5461)  
+  `/projects/xgimititannoir/xgimi-aura-3-series-the-ultimate-4k-rgb-laser-tv`
+- **ArcBlue C42: First Smart Full-Frame Astrophotography System** — +69 followers (691 → 760)  
   `/projects/arcblue/arcblue-c42-smart-full-frame-astrophotography-system`
+
+## status_change (11)
+- **Momokit: The USB-C Powered Vacuum Travel Bag** — prelaunch → live  
+  `/projects/260160255/momokit-the-usb-c-powered-vacuum-travel-bag`
+- **GritPlex: The Desktop Sandblaster & Zero‑Dust Work Cell** — live → successful  
+  `/projects/gritplex/gritplex-the-desktop-sandblaster-and-zerodust-work-cell`
+- **MBOX D69: Smart Quantum Display & Extended Screen** — live → successful  
+  `/projects/ds21/mbox-d69-smart-quantum-display-and-extended-screen`
+- **PiLY – The Wrist-Worn AI Notetaker with 24/7 Health Tracking** — prelaunch → live  
+  `/projects/piteam/pily-smart-band`
+- **APEXEL 210° Full-Screen Fisheye Lens** — live → successful  
+  `/projects/399608471/apexel-210-fisheye-lens`
+- **TITANBOLT — Three Metals. One Mechanical Pen.** — prelaunch → live  
+  `/projects/1098410811/titanbolt-three-metals-one-mechanical-pen`
+- **oLand | The Holographic AI Pet for Stress Relief** — live → successful  
+  `/projects/alltimelab/oland`
+- **Vulko: AI Stroker with Dual Pressure Control & Video Sync** — prelaunch → live  
+  `/projects/metaxsire/vulko-ai-stroker-with-dual-pressure-control-and-video-sync`
+- **Nexra: Extend Your Manual Coffee Grinder. Keep the Ritual.** — prelaunch → live  
+  `/projects/nexra/nexra-the-electric-module-for-comandante-c40`
+- **Zen Wood Mind: Celestial Power—Lightning-Struck Jujube Wood** — prelaunch → live  
+  `/projects/js-studio/zen-wood-mind-celestial-powerlightning-struck-jujube-wood`
+- **EGIOZR: 10-in-1 Pocket Docking Station with Detachable Shell** — live → successful  
+  `/projects/619280132/egiozr-10-in-1-pocket-docking-station-with-detachable-shell`
+
+## backers_delta (3)
+- **StepTimer: A walking timer buddy for your desk** — +100 backers (115 → 215)  
+  `/projects/palmblock/steptimer-a-walking-timer-buddy-for-your-desk`
+- **VAULT: modular stacking toolbox system** — +447 backers (5720 → 6167)  
+  `/projects/ussa/vault-modular-stacking-toolbox-system`
+- **HOZO Hobby Knife — A Classic, Reinvented for Makers** — +266 backers (1176 → 1442)  
+  `/projects/hozodesign/hozo-hobby-knife`
