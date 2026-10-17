@@ -409,11 +409,6 @@ function renderHero() {
     .slice(0, HERO_N);
 
   const totalPre = DATA.filter((p) => p.status === "prelaunch").length;
-  const totalLive = DATA.filter((p) => p.status === "live").length;
-  const liveUsdTotal = DATA
-    .filter((p) => p.status === "live")
-    .reduce((s, p) => s + Number(p.pledged_usd || 0), 0);
-
   const langZh = LANG === "zh";
   document.getElementById("heroLabel").textContent =
     langZh ? "今日头版 · 自动生成" : "TODAY'S FRONT PAGE · AUTO-GENERATED";
@@ -426,11 +421,8 @@ function renderHero() {
     langZh ? `共 ${totalPre} 项` : `${totalPre} TOTAL`;
   document.getElementById("heroLiveLabel").textContent =
     langZh ? "🔴 在筹中 · 已筹 Top 10" : "🔴 Live · Top 10 by USD Raised";
-  const liveUsdText = DATA.some(p => p.status === "live" && !freshMetric(p, "pledged_usd")) ? (langZh ? "未更新" : "Not updated") : fmtUSD(liveUsdTotal);
   document.getElementById("heroLiveMeta").textContent =
-    langZh
-      ? `共 ${totalLive} 项 · 合计 ${liveUsdText}`
-      : `${totalLive} · ${liveUsdText} TOTAL`;
+    KSFunds.livePledgedText(KSFunds.livePledgedTotals(DATA), LANG);
 
   function story(rank, p, kind) {
     const url = escapeHtml(p.url || "#");
@@ -485,12 +477,11 @@ function renderHero() {
 
 function renderKpis() {
   const counts = { prelaunch: 0, live: 0, successful: 0, failed: 0 };
-  let pwl = 0, high = 0, totalUsd = 0;
+  let pwl = 0, high = 0;
   DATA.forEach((d) => {
     counts[d.status] = (counts[d.status] || 0) + 1;
     if (d.project_we_love) pwl++;
     if (d.china_confidence === "高") high++;
-    if (d.status === "live") totalUsd += Number(d.pledged_usd || 0);
   });
   const k = t().kpi;
   $("#kpis").innerHTML = `
@@ -502,7 +493,7 @@ function renderKpis() {
       <div class="delta">${escapeHtml(k.prelaunchDelta)}</div></div>
     <div class="kpi is-live"><div class="label">${escapeHtml(k.live)}</div>
       <div class="num">${counts.live}</div>
-      <div class="delta">${escapeHtml(k.liveDelta((DATA.some(p => p.status === "live" && !freshMetric(p, "pledged_usd")) ? "未更新" : fmtUSD(totalUsd))))}</div></div>
+      <div class="delta">${escapeHtml(KSFunds.livePledgedText(KSFunds.livePledgedTotals(DATA), LANG))}</div></div>
     <div class="kpi"><div class="label">${escapeHtml(k.success)}</div>
       <div class="num">${counts.successful}</div>
       <div class="delta">${escapeHtml(k.successDelta)}</div></div>
