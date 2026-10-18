@@ -1,51 +1,49 @@
 # Kickstarter China Tracker — diff
 
-## new (6)
-- **Ocean Fantasy — Larimar: The Incomparable Blue** — Discovered (prelaunch, 4 followers)  
-  `/projects/1902464305/ocean-fantasy-larimar-the-incomparable-blue`
-- **TaroTag: Pocket E-Ink Canvas Meets AI Tarot** — Discovered (prelaunch, 2 followers)  
-  `/projects/tarotag/tarotag-pocket-e-ink-canvas-meets-ai-tarot`
-- **Raya: Crystallized Ti& M390 Cutting Tool, Only the Essential** — Discovered (prelaunch, 1 followers)  
-  `/projects/1682863290/raya-crystallized-tiand-m390-cutting-tool-only-the-essential`
-- **FORGE & FOLD—A pocket knife that looks like it has a story** — Discovered (prelaunch, 2 followers)  
-  `/projects/jellyedc/forge-and-folda-pocket-knife-that-looks-like-it-has-a-story`
-- **Memdock: Revive Your Music Ritual with a Portable CD Player** — Discovered (prelaunch, 25 followers)  
-  `/projects/758873559/memdock-revive-your-music-ritual-with-a-portable-cd-player`
-- **LUMVERIS: On-Device AI & True 4K Full Color in Pitch-Black** — Discovered (prelaunch, 1 followers)  
-  `/projects/lumveris/lumveris-on-device-ai-and-true-4k-full-color-in-pitch-black`
+## new (3)
+- **LifeSmart:Your Private Fully Adjustable Smart Home Trainer** — Discovered (prelaunch, 0 followers)  
+  `/projects/snailcle/lifesmart-your-private-fully-adjustable-smart-home-trainer`
+- **NEX1.0-Built by subtraction. A knife for subtraction** — Discovered (prelaunch, 5 followers)  
+  `/projects/jellyedc/nex10-built-by-subtraction-a-knife-for-subtraction`
+- **Rollsmith V2: The 2-in-1 Mechanical Metal Dice** — Discovered (prelaunch, 1 followers)  
+  `/projects/rollsmith/rollsmith-v2-the-2-in-1-mechanical-metal-dice`
 
-## followers_delta (7)
-- **Twelvetooo:FHD immersive 3D scene projector** — +65 followers (608 → 673)  
-  `/projects/twelvetooo/twelvetooo-fhd-immersive-3d-scene-projector`
-- **VAULT: modular stacking toolbox system** — +79 followers (9536 → 9615)  
-  `/projects/ussa/vault-modular-stacking-toolbox-system`
-- **MakerPi Tiruler 2.0: Do More, Carry Less** — +77 followers (2937 → 3014)  
-  `/projects/soongon/makerpi-tiruler-20-do-more-carry-less`
-- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +94 followers (9127 → 9221)  
-  `/projects/bvio/violoop-plug-in-ai-for-your-computer`
-- **HOZO Hobby Knife — A Classic, Reinvented for Makers** — +173 followers (3468 → 3641)  
+## followers_delta (12)
+- **PexarBolt: The Thunderbolt 5 Dock that Shows Your Workflow** — +57 followers (2885 → 2942)  
+  `/projects/1293510277/pexarbolt-the-thunderbolt-5-dock-that-shows-your-workflow`
+- **SnowPod: Real Metal 3D Printing on Your Desktop** — +81 followers (585 → 666)  
+  `/projects/snowx/snowpod-real-metal-3d-printing-on-your-desktop`
+- **InfiMech MX 3D Printer: 8X More Efficiency. 8X Less Waste.** — +53 followers (11452 → 11505)  
+  `/projects/infimech-mx-series/infimech-mx-3d-printer-8x-more-efficiency-8x-less-waste`
+- **HOZO Hobby Knife — A Classic, Reinvented for Makers** — +179 followers (3641 → 3820)  
   `/projects/hozodesign/hozo-hobby-knife`
-- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +261 followers (5689 → 5950)  
+- **World's First AI Electric Screwdriver With Eyes And Brain** — +67 followers (181 → 248)  
+  `/projects/arrowmax/the-worlds-first-ai-screwdriver-with-eyes-and-brain`
+- **TonoCard: The AI Card That Picks Up Calls While You're Busy** — +51 followers (259 → 310)  
+  `/projects/tonocard/tonocard-the-ai-card-that-picks-up-calls-while-youre-busy`
+- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +102 followers (9221 → 9323)  
+  `/projects/bvio/violoop-plug-in-ai-for-your-computer`
+- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +378 followers (5950 → 6328)  
   `/projects/xgimititannoir/xgimi-aura-3-series-the-ultimate-4k-rgb-laser-tv`
-- **RolTine2.0: The Titanium Skeleton Tape Measure & Fidget Tool** — +64 followers (1526 → 1590)  
+- **RolTine2.0: The Titanium Skeleton Tape Measure & Fidget Tool** — +53 followers (1590 → 1643)  
   `/projects/comandi-corres/roltine-the-titanium-skeleton-tape-measure-and-fidget-tool`
+- **MakerPi Tiruler 2.0: Do More, Carry Less** — +66 followers (3014 → 3080)  
+  `/projects/soongon/makerpi-tiruler-20-do-more-carry-less`
+- **QIVIKA: Turn Your Phone Into a Smart Scope** — +55 followers (3847 → 3902)  
+  `/projects/qivika/turn-your-phone-into-a-smart-scope`
+- **Twelvetooo:FHD immersive 3D scene projector** — +72 followers (673 → 745)  
+  `/projects/twelvetooo/twelvetooo-fhd-immersive-3d-scene-projector`
 
-## status_change (6)
-- **Not Just a Storage Box. A Little Light for Your Coffee Ritua** — live → failed  
-  `/projects/3a58/coffee-light-box-a-better-place-for-your-coffee-corner`
-- **VAULT: modular stacking toolbox system** — live → successful  
-  `/projects/ussa/vault-modular-stacking-toolbox-system`
-- **Morelink PRAYTECH S1: 76-Lumen DLP Projector Smartphone** — live → failed  
-  `/projects/morelink/morelink-praytech-s1-76-lumen-dlp-projector-smartphone`
-- **Atlas - E-ink Smart Chessboard for Online & Offline Play** — live → successful  
-  `/projects/1482571777/atlas-e-ink-smart-chessboard-for-online-and-offline-play`
-- **Vision Master: One Scope for All Your Birding Needs** — live → successful  
-  `/projects/gobirding/vision-master-smart-ai-spotting-scope`
-- **X1 LITE: World's First Home Use Pen & Torch Laser Machine** — live → successful  
-  `/projects/xlaserlab/x1-lite-worlds-first-pen-and-torch-laser-workstation`
+## status_change (3)
+- **TiForge: Heavy-Duty Titanium Modular Quick-Release System** — live → successful  
+  `/projects/comandi-cc/tiforge-heavy-duty-titanium-modular-quick-release-system`
+- **KICK — The Mobility Copilot for Your Wheeled Ski Bag** — live → successful  
+  `/projects/tracin/kick-the-mobility-copilot-for-your-wheeled-ski-bag`
+- **OssiAir : Clip-on cartilage conduction OWS for Every Move** — live → successful  
+  `/projects/ossiair/ossiair-stereo-sports-open-ear-cartilage-conduction-clip`
 
 ## backers_delta (2)
-- **VAULT: modular stacking toolbox system** — +419 backers (6598 → 7017)  
-  `/projects/ussa/vault-modular-stacking-toolbox-system`
-- **HOZO Hobby Knife — A Classic, Reinvented for Makers** — +175 backers (1658 → 1833)  
+- **HOZO Hobby Knife — A Classic, Reinvented for Makers** — +133 backers (1833 → 1966)  
   `/projects/hozodesign/hozo-hobby-knife`
+- **VAULT: modular stacking toolbox system** — +157 backers (7017 → 7174)  
+  `/projects/ussa/vault-modular-stacking-toolbox-system`
