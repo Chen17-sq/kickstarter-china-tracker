@@ -1,49 +1,49 @@
 # Kickstarter China Tracker — diff
 
 ## new (3)
-- **LifeSmart:Your Private Fully Adjustable Smart Home Trainer** — Discovered (prelaunch, 0 followers)  
-  `/projects/snailcle/lifesmart-your-private-fully-adjustable-smart-home-trainer`
-- **NEX1.0-Built by subtraction. A knife for subtraction** — Discovered (prelaunch, 5 followers)  
-  `/projects/jellyedc/nex10-built-by-subtraction-a-knife-for-subtraction`
-- **Rollsmith V2: The 2-in-1 Mechanical Metal Dice** — Discovered (prelaunch, 1 followers)  
-  `/projects/rollsmith/rollsmith-v2-the-2-in-1-mechanical-metal-dice`
+- **KRONOZURI: Three Ways to Read Time — Mechanical Watches** — Discovered (prelaunch, 3 followers)  
+  `/projects/zurvantimepieces/kronozuri-three-ways-to-read-time-mechanical-watches`
+- **NEXMax1.0-Built by subtraction. A knife for subtraction** — Discovered (prelaunch, 2 followers)  
+  `/projects/jellyedc/nexmax10-built-by-subtraction-a-knife-for-subtraction`
+- **A Painting Puzzle——A Concerto of Human Creativity and AI** — Discovered (live, 0 followers)  
+  `/projects/weakeye/a-painting-puzzlea-concerto-of-human-creativity-and-ai`
 
-## followers_delta (12)
-- **PexarBolt: The Thunderbolt 5 Dock that Shows Your Workflow** — +57 followers (2885 → 2942)  
-  `/projects/1293510277/pexarbolt-the-thunderbolt-5-dock-that-shows-your-workflow`
-- **SnowPod: Real Metal 3D Printing on Your Desktop** — +81 followers (585 → 666)  
-  `/projects/snowx/snowpod-real-metal-3d-printing-on-your-desktop`
-- **InfiMech MX 3D Printer: 8X More Efficiency. 8X Less Waste.** — +53 followers (11452 → 11505)  
-  `/projects/infimech-mx-series/infimech-mx-3d-printer-8x-more-efficiency-8x-less-waste`
-- **HOZO Hobby Knife — A Classic, Reinvented for Makers** — +179 followers (3641 → 3820)  
-  `/projects/hozodesign/hozo-hobby-knife`
-- **World's First AI Electric Screwdriver With Eyes And Brain** — +67 followers (181 → 248)  
-  `/projects/arrowmax/the-worlds-first-ai-screwdriver-with-eyes-and-brain`
-- **TonoCard: The AI Card That Picks Up Calls While You're Busy** — +51 followers (259 → 310)  
-  `/projects/tonocard/tonocard-the-ai-card-that-picks-up-calls-while-youre-busy`
-- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +102 followers (9221 → 9323)  
+## status_change (5)
+- **Vimow: Wire-Free Vision AI Robot Lawn Mower** — live → canceled  
+  `/projects/vimow/vimow-wire-free-vision-ai-robot-lawn-mower`
+- **FURVUE X2 Pro:2.7K Stable Pet Camera Built for How Pets Move** — live → successful  
+  `/projects/865059318/furvue-x2-2k-60fps-pet-pov-camera`
+- **Jitrainno:E-Ink Canvas Breathes Living Art from Whispers** — live → successful  
+  `/projects/jitrainno/worlds-first-ai-powered-color-e-ink-art-frame`
+- **Xuffy：Your Magnetic Shoulder Companion** — live → successful  
+  `/projects/sutoys/xuffy`
+- **Weekly Pill Organizer V2: Bigger, Bolder, Built to last** — live → successful  
+  `/projects/klimtechnologies/weekly-pill-organizer-v2-bigger-bolder-built-to-last`
+
+## followers_delta (10)
+- **The World’s First Desktop Robotic Terminal** — +50 followers (8276 → 8326)  
+  `/projects/cybopal/cybopal-worlds-first-active-tracking-ai-robotic-monitor`
+- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +68 followers (9323 → 9391)  
   `/projects/bvio/violoop-plug-in-ai-for-your-computer`
-- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +378 followers (5950 → 6328)  
-  `/projects/xgimititannoir/xgimi-aura-3-series-the-ultimate-4k-rgb-laser-tv`
-- **RolTine2.0: The Titanium Skeleton Tape Measure & Fidget Tool** — +53 followers (1590 → 1643)  
-  `/projects/comandi-corres/roltine-the-titanium-skeleton-tape-measure-and-fidget-tool`
-- **MakerPi Tiruler 2.0: Do More, Carry Less** — +66 followers (3014 → 3080)  
+- **MakerPi Tiruler 2.0: Do More, Carry Less** — +77 followers (3080 → 3157)  
   `/projects/soongon/makerpi-tiruler-20-do-more-carry-less`
-- **QIVIKA: Turn Your Phone Into a Smart Scope** — +55 followers (3847 → 3902)  
-  `/projects/qivika/turn-your-phone-into-a-smart-scope`
-- **Twelvetooo:FHD immersive 3D scene projector** — +72 followers (673 → 745)  
+- **SnowPod: Real Metal 3D Printing on Your Desktop** — +81 followers (666 → 747)  
+  `/projects/snowx/snowpod-real-metal-3d-printing-on-your-desktop`
+- **PexarBolt: The Thunderbolt 5 Dock that Shows Your Workflow** — +53 followers (2942 → 2995)  
+  `/projects/1293510277/pexarbolt-the-thunderbolt-5-dock-that-shows-your-workflow`
+- **abxylute M6/M5: Rethinking Mobile Gaming Controllers** — +57 followers (3221 → 3278)  
+  `/projects/abxylute/abxylute-m6-m5-rethinking-mobile-gaming-controllers`
+- **HOZO Hobby Knife — A Classic, Reinvented for Makers** — +155 followers (3820 → 3975)  
+  `/projects/hozodesign/hozo-hobby-knife`
+- **RolTine2.0: The Titanium Skeleton Tape Measure & Fidget Tool** — +62 followers (1643 → 1705)  
+  `/projects/comandi-corres/roltine-the-titanium-skeleton-tape-measure-and-fidget-tool`
+- **WUBEN G6 | Ultra Slim Multi-Use Keychain Light** — +57 followers (456 → 513)  
+  `/projects/wubenlight/wuben-g6-ultra-slim-multi-use-keychain-light`
+- **Twelvetooo:FHD immersive 3D scene projector** — +52 followers (745 → 797)  
   `/projects/twelvetooo/twelvetooo-fhd-immersive-3d-scene-projector`
 
-## status_change (3)
-- **TiForge: Heavy-Duty Titanium Modular Quick-Release System** — live → successful  
-  `/projects/comandi-cc/tiforge-heavy-duty-titanium-modular-quick-release-system`
-- **KICK — The Mobility Copilot for Your Wheeled Ski Bag** — live → successful  
-  `/projects/tracin/kick-the-mobility-copilot-for-your-wheeled-ski-bag`
-- **OssiAir : Clip-on cartilage conduction OWS for Every Move** — live → successful  
-  `/projects/ossiair/ossiair-stereo-sports-open-ear-cartilage-conduction-clip`
-
 ## backers_delta (2)
-- **HOZO Hobby Knife — A Classic, Reinvented for Makers** — +133 backers (1833 → 1966)  
-  `/projects/hozodesign/hozo-hobby-knife`
-- **VAULT: modular stacking toolbox system** — +157 backers (7017 → 7174)  
+- **VAULT: modular stacking toolbox system** — +152 backers (7174 → 7326)  
   `/projects/ussa/vault-modular-stacking-toolbox-system`
+- **HOZO Hobby Knife — A Classic, Reinvented for Makers** — +122 backers (1966 → 2088)  
+  `/projects/hozodesign/hozo-hobby-knife`
