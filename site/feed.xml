@@ -5,13 +5,21 @@
   <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/"/>
   <link rel="self" type="application/atom+xml" href="https://ks.aldrich.fyi/feed.xml"/>
   <id>https://ks.aldrich.fyi/</id>
-  <updated>2026-10-22T00:00:00Z</updated>
+  <updated>2026-10-23T00:00:00Z</updated>
   <author>
     <name>Aldrich Chen · 陈思蕲</name>
     <uri>https://aldrich.fyi</uri>
   </author>
   <rights>© Kickstarter China Tracker. Project data © Kickstarter, PBC.</rights>
   <generator uri="https://github.com/Chen17-sq/kickstarter-china-tracker">scraper.feed</generator>
+  <entry>
+    <title>[Vol. 1, No. 182] 2026-10-23 · 1060 项 · 129 在筹 · 245 未发布</title>
+    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-10-23.html"/>
+    <id>https://ks.aldrich.fyi/editions/2026-10-23</id>
+    <updated>2026-10-23T00:00:00Z</updated>
+    <published>2026-10-23T00:00:00Z</published>
+    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
+  </entry>
   <entry>
     <title>[Vol. 1, No. 181] 2026-10-22 · 1056 项 · 125 在筹 · 252 未发布</title>
     <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-10-22.html"/>
@@ -242,14 +250,6 @@
     <id>https://ks.aldrich.fyi/editions/2026-09-22</id>
     <updated>2026-09-22T00:00:00Z</updated>
     <published>2026-09-22T00:00:00Z</published>
-    <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
-  </entry>
-  <entry>
-    <title>[Vol. 1, No. 150] 2026-09-21 · 898 项 · 536 在筹 · 226 未发布</title>
-    <link rel="alternate" type="text/html" href="https://ks.aldrich.fyi/editions/2026-09-21.html"/>
-    <id>https://ks.aldrich.fyi/editions/2026-09-21</id>
-    <updated>2026-09-21T00:00:00Z</updated>
-    <published>2026-09-21T00:00:00Z</published>
     <summary type="text">Daily edition of the Kickstarter China Tracker.</summary>
   </entry>
 </feed>

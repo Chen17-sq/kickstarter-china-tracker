@@ -1,85 +1,81 @@
 # Kickstarter China Tracker — diff
 
-## new (16)
-- **"Swoosh" — insert, roller locks. "Swoosh" — pull, release.** — Discovered (prelaunch, 2 followers)  
-  `/projects/fegve68/swoosh-insert-roller-locks-swoosh-pull-release`
-- **Fu Lu in Pocket, — Ice Crystal & Bronze Inlay Mini Lighter** — Discovered (prelaunch, 2 followers)  
-  `/projects/fegve68/fu-lu-in-pocket-ice-crystal-and-bronze-inlay-mini-lighter`
-- **Titanium Panther Clip — Sculpted Wildness in Your Pocket** — Discovered (prelaunch, 1 followers)  
-  `/projects/fegve68/titanium-panther-clip-sculpted-wildness-in-your-pocket`
-- **PICX-Smaller than a toothpick. Stronger than a SIM ejector.** — Discovered (prelaunch, 2 followers)  
-  `/projects/fegve68/picx-smaller-than-a-toothpick-stronger-than-a-sim-ejector`
-- **Eternal Flame, Forged in Titanium & Copper** — Discovered (prelaunch, 2 followers)  
-  `/projects/fegve68/eternal-flame-forged-in-titanium-and-copper`
-- **"Titan Pulse" Mastery in Miniature: Where Edge Meets Zen** — Discovered (prelaunch, 1 followers)  
-  `/projects/fegve68/titan-pulse-mastery-in-miniature-where-edge-meets-zen`
-- **TitanClip Pro Titanium EDC, Forged for Quick Release&Hidden** — Discovered (prelaunch, 1 followers)  
-  `/projects/fegve68/titanclip-pro-titanium-edc-forged-for-quick-releaseandhidden`
-- **Titanium Pivot Lock — 360° Tangle-Free EDC Connector** — Discovered (prelaunch, 1 followers)  
-  `/projects/fegve68/titanium-pivot-lock-360-tangle-free-edc-connector`
-- **Ti-Radish Pry / Pivot Fidget Prybar- Pocket Mecha, Snap &Pry** — Discovered (prelaunch, 2 followers)  
-  `/projects/fegve68/ti-radish-pry-pivot-fidget-prybar-pocket-mecha-snap-andpry`
-- **MAGTECS：Two Tech Gadgets, One Snap** — Discovered (prelaunch, 2 followers)  
-  `/projects/1518250351/magtecs-two-tech-gadgets-one-snap`
-- **HEMLIX – Your All-Season Laundry Sidekick** — Discovered (prelaunch, 0 followers)  
-  `/projects/1739854384/hemlix-your-all-season-laundry-sidekick`
-- **A keychain that see"Vision" — a mechanical eye for your EDC.** — Discovered (prelaunch, 1 followers)  
-  `/projects/fegve68/a-keychain-that-seevision-a-mechanical-eye-for-your-edc`
-- **GIMBAL KEY-Split. Release. Snap Back. Better.Zero Drop Risk.** — Discovered (prelaunch, 2 followers)  
-  `/projects/fegve68/gimbal-key-split-release-snap-back-betterzero-drop-risk`
-- **Ti-Blade EDC Cutter Titanium Edge Utility Knife (TE-Utility)** — Discovered (prelaunch, 2 followers)  
-  `/projects/fegve68/ti-blade-edc-cutter-titanium-edge-utility-knife-te-utility`
-- **ClearX: Fully Automated Shoe Care: Wash, Dry & Sanitize** — Discovered (prelaunch, 9 followers)  
-  `/projects/clearx/brolan-clearx-automated-shoe-care-wash-dry-and-sanitize`
-- **Ti-Radish Mini: Pocket Mecha Fidget** — Discovered (prelaunch, 3 followers)  
-  `/projects/fegve68/ti-radish-mini-pocket-mecha-fidget`
+## new (4)
+- **Turret 360** — Discovered (live, 2 followers)  
+  `/projects/1726302347/turret-360`
+- **Qilin Shattered Jade — Inspired by the Mythical Qilin** — Discovered (live, 32 followers)  
+  `/projects/1662040240/ember-vein-the-copper-damascus-santoku`
+- **DWSTN CERATOPS: M390 & TC4 Titanium EDC Pocket Knife** — Discovered (prelaunch, 3 followers)  
+  `/projects/dwstnedc/dwstn-ceratops-m390-and-tc4-titanium-edc-pocket-knife`
+- **Bincoo DM11：Smart Electric Coffee Grinder** — Discovered (live, 1 followers)  
+  `/projects/bincoo/bincoo-dm11-electric-coffee-grinder`
 
-## status_change (5)
-- **Pool Audio System: Dive into Underwater Sound** — prelaunch → live  
-  `/projects/poolaudio/pool-audio-system-dive-into-underwater-sound`
-- **SoPeren ECO Tree:A More Sustainable Christmas Tree** — live → successful  
-  `/projects/2033927165/soperen-h-11-a-modern-christmas-tree-that-lasts-for-years`
-- **Aurora 03-MEMS +1DD +3BA TribridIn-Ear Monitors** — prelaunch → live  
-  `/projects/1260682820/106215502`
-- **Memdock: Revive Your Music Ritual with a Portable CD Player** — prelaunch → live  
-  `/projects/758873559/memdock-revive-your-music-ritual-with-a-portable-cd-player`
-- **Loved by 60,000+ Home Cooks. Turnula's Back with New Colors!** — live → successful  
-  `/projects/turnula/turnula-new-colors`
-
-## followers_delta (15)
-- **World's First AI Electric Screwdriver With Eyes And Brain** — +99 followers (437 → 536)  
-  `/projects/arrowmax/the-worlds-first-ai-screwdriver-with-eyes-and-brain`
-- **BangBang VPR8: Feel Every Shot. Real Recoil. Real Immersion.** — +58 followers (99 → 157)  
-  `/projects/klimtechnologies/bangbang-vpr8-feel-every-shot-real-recoil-real-immersion`
-- **StepTimer: A walking timer buddy for your desk** — +53 followers (571 → 624)  
-  `/projects/palmblock/steptimer-a-walking-timer-buddy-for-your-desk`
-- **SnowPod: Real Metal 3D Printing on Your Desktop** — +60 followers (881 → 941)  
-  `/projects/snowx/snowpod-real-metal-3d-printing-on-your-desktop`
-- **FR-NIA: The World's First Portable Expressive Robot** — +65 followers (1062 → 1127)  
-  `/projects/figurobot-nia/fr-nia-the-worlds-first-portable-expressive-robot`
-- **PlugMate Pro: Your Thumb-Sized Privacy Computer** — +66 followers (12 → 78)  
-  `/projects/trustkernel/trustkernel-plugmate-pro-your-thumb-sized-privacy-computer`
-- **Twelvetooo:FHD immersive 3D scene projector** — +53 followers (888 → 941)  
-  `/projects/twelvetooo/twelvetooo-fhd-immersive-3d-scene-projector`
-- **XAIStack: The World's First Modular AI Workstation NAS** — +54 followers (560 → 614)  
-  `/projects/xaistack/xaistack`
-- **Memdock: Revive Your Music Ritual with a Portable CD Player** — +105 followers (37 → 142)  
-  `/projects/758873559/memdock-revive-your-music-ritual-with-a-portable-cd-player`
-- **iMicro XL15 - A pocket-sized micro exploration studio.** — +87 followers (874 → 961)  
-  `/projects/uchart/imicro-xl15-a-pocket-sized-micro-exploration-studio`
-- **Moera Smart Climate Mattress Cover** — +127 followers (332 → 459)  
-  `/projects/moerasleep/moera-smart-climate-mattress-cover`
-- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +191 followers (8457 → 8648)  
-  `/projects/xgimititannoir/xgimi-aura-3-series-the-ultimate-4k-rgb-laser-tv`
-- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +86 followers (9536 → 9622)  
-  `/projects/bvio/violoop-plug-in-ai-for-your-computer`
-- **WUBEN G6 | Ultra Slim Multi-Use Keychain Light** — +324 followers (1155 → 1479)  
+## status_change (15)
+- **Pitoneer｜Titanium Magnetic EDC Multitool Carabiner** — live → successful  
+  `/projects/pitonner/pitoneer-magnetic-titanium-titanium-keychain-edc-tool`
+- **AntBelt T1: Fully Enclosed Galvo Engraver from $149** — live → successful  
+  `/projects/1299122000/antbelt-t1-149-fully-enclosed-galvo-laser-engraver`
+- **TapDock: The Desktop Hub with One-Touch Shortcuts** — live → successful  
+  `/projects/1037359518/tapdock-the-desktop-hub-with-one-touch-shortcuts`
+- **ICUKTAA：3-in-1 Humidifier, Scent Diffuser & Air Treatment** — prelaunch → live  
+  `/projects/icuktaa/icuktaa-personal-air-and-mood-companion`
+- **Anchor: A Keychain That Never Gets Lost. No Bulky Rings** — live → successful  
+  `/projects/titaner-gxh/titaner-anchor-one-press-titanium-belt-keychain`
+- **K-BOX | Modular Mini PC for Makers & IoT** — live → failed  
+  `/projects/youyeetoo/k-box`
+- **WUBEN G6 | Ultra Slim Multi-Use Keychain Light** — prelaunch → live  
   `/projects/wubenlight/wuben-g6-ultra-slim-multi-use-keychain-light`
-- **HOZO Hobby Knife — A Classic, Reinvented for Makers** — +139 followers (4266 → 4405)  
-  `/projects/hozodesign/hozo-hobby-knife`
+- **Wear a Distant World: EXOP Titanium Swiss Automatic Watch** — prelaunch → live  
+  `/projects/caughtwatches/wear-a-distant-world-exop-titanium-swiss-automatic-watch`
+- **NEXMax1.0-Built by subtraction. A knife for subtraction** — prelaunch → live  
+  `/projects/jellyedc/nexmax10-built-by-subtraction-a-knife-for-subtraction`
+- **Petyfun JDB1: Smart Rolling Dog Ball for Interactive Play** — prelaunch → live  
+  `/projects/1282633043/petyfun-jdb1-smart-interactive-dog-ball`
+- **Tofu Shifu: Masters of Spices | Expansion & Base game** — prelaunch → live  
+  `/projects/ayiboardgamecraft/tofu-shifu-masters-of-spices`
+- **Coffee Watch In Motion --Mechanical Chronograph | ST 1901** — live → successful  
+  `/projects/chronofuns/coffee-watch-in-motion-mechanical-chronograph-st-1901`
+- **HOHOTIME - The 4-Arm Smart Home Gym for Full-Body Training** — prelaunch → live  
+  `/projects/919738415/hohotime-4-arm-ai-strength-station-for-full-body-training`
+- **S+ Nail Clippers: A Samurai-Sharp Gift, Made in Japan** — live → successful  
+  `/projects/sunshingtaiwan/two-brand-new-designs-kitsune-and-leopard-cats`
+- **UniFormation S10: First Automated Desktop Resin 3D Printer** — prelaunch → live  
+  `/projects/uniformations10/uniformation-s10-first-desktop-automated-resin-3d-printer`
 
-## backers_delta (2)
-- **iMicro XL15 - A pocket-sized micro exploration studio.** — +122 backers (364 → 486)  
-  `/projects/uchart/imicro-xl15-a-pocket-sized-micro-exploration-studio`
-- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +855 backers (5341 → 6196)  
+## followers_delta (13)
+- **SnowPod: Real Metal 3D Printing on Your Desktop** — +81 followers (941 → 1022)  
+  `/projects/snowx/snowpod-real-metal-3d-printing-on-your-desktop`
+- **WUBEN G6 | Ultra Slim Multi-Use Keychain Light** — +368 followers (1479 → 1847)  
+  `/projects/wubenlight/wuben-g6-ultra-slim-multi-use-keychain-light`
+- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +116 followers (8648 → 8764)  
   `/projects/xgimititannoir/xgimi-aura-3-series-the-ultimate-4k-rgb-laser-tv`
+- **iMicro XL15 - A pocket-sized micro exploration studio.** — +61 followers (961 → 1022)  
+  `/projects/uchart/imicro-xl15-a-pocket-sized-micro-exploration-studio`
+- **MakerPi Tiruler 2.0: Do More, Carry Less** — +50 followers (3342 → 3392)  
+  `/projects/soongon/makerpi-tiruler-20-do-more-carry-less`
+- **PlugMate Pro: Your Thumb-Sized Privacy Computer** — +72 followers (78 → 150)  
+  `/projects/trustkernel/trustkernel-plugmate-pro-your-thumb-sized-privacy-computer`
+- **Tofu Shifu: Masters of Spices | Expansion & Base game** — +71 followers (305 → 376)  
+  `/projects/ayiboardgamecraft/tofu-shifu-masters-of-spices`
+- **World's First AI Electric Screwdriver With Eyes And Brain** — +104 followers (536 → 640)  
+  `/projects/arrowmax/the-worlds-first-ai-screwdriver-with-eyes-and-brain`
+- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +50 followers (9622 → 9672)  
+  `/projects/bvio/violoop-plug-in-ai-for-your-computer`
+- **BangBang VPR8: Feel Every Shot. Real Recoil. Real Immersion.** — +69 followers (157 → 226)  
+  `/projects/klimtechnologies/bangbang-vpr8-feel-every-shot-real-recoil-real-immersion`
+- **HOZO Hobby Knife — A Classic, Reinvented for Makers** — +107 followers (4405 → 4512)  
+  `/projects/hozodesign/hozo-hobby-knife`
+- **Memdock: Revive Your Music Ritual with a Portable CD Player** — +60 followers (142 → 202)  
+  `/projects/758873559/memdock-revive-your-music-ritual-with-a-portable-cd-player`
+- **UniFormation S10: First Automated Desktop Resin 3D Printer** — +100 followers (1307 → 1407)  
+  `/projects/uniformations10/uniformation-s10-first-desktop-automated-resin-3d-printer`
+
+## backers_delta (4)
+- **WUBEN G6 | Ultra Slim Multi-Use Keychain Light** — +1271 backers (0 → 1271)  
+  `/projects/wubenlight/wuben-g6-ultra-slim-multi-use-keychain-light`
+- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +505 backers (6196 → 6701)  
+  `/projects/xgimititannoir/xgimi-aura-3-series-the-ultimate-4k-rgb-laser-tv`
+- **Tofu Shifu: Masters of Spices | Expansion & Base game** — +163 backers (0 → 163)  
+  `/projects/ayiboardgamecraft/tofu-shifu-masters-of-spices`
+- **UniFormation S10: First Automated Desktop Resin 3D Printer** — +233 backers (0 → 233)  
+  `/projects/uniformations10/uniformation-s10-first-desktop-automated-resin-3d-printer`
