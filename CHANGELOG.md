@@ -1,91 +1,87 @@
 # Kickstarter China Tracker — diff
 
-## new (6)
-- **MiaoLab RadarGuard: The Radar-Sensing Safety Outlet** — Discovered (prelaunch, 0 followers)  
-  `/projects/ml-thermostatic-set/miaolab-radarguard-the-radar-sensing-safety-outlet`
-- **BAIKANG: Cooling & Warming Wet Food Feeder** — Discovered (prelaunch, 1 followers)  
-  `/projects/137646437/baikang-2c-cooling-and-even-warming-wet-food-feeder`
-- **biaXbew Genesis01: The light is yours to define – Genesis.** — Discovered (prelaunch, 0 followers)  
-  `/projects/615557761/biaxbew-genesis01-the-light-is-yours-to-define-genesis`
-- **Duoado: World's First AI-Powered Fitness System for Dogs** — Discovered (prelaunch, 0 followers)  
-  `/projects/duoado/duoado-worlds-first-ai-powered-fitness-system-for-dogs`
-- **TyreSpin Tunnel Display** — Discovered (live, 5 followers)  
-  `/projects/raindesign/tyrespin-tunnel-display`
-- **VIVIFoCAL S1: All-Sight Smart Adaptive Eyewear** — Discovered (prelaunch, 12 followers)  
-  `/projects/vivifocal/vivifocal-s1-all-sight-smart-adaptive-eyewear`
+## new (9)
+- **RainLoop: A Home for Wet Umbrellas, Rain for Plants** — Discovered (prelaunch, 1 followers)  
+  `/projects/1017475010/rainloop-a-home-for-wet-umbrellas-rain-for-plants`
+- **GALUDU: The Smart Cat Door for a More Connected Home** — Discovered (prelaunch, 3 followers)  
+  `/projects/galudu/galudu-the-smart-cat-door-for-a-more-connected-home`
+- **Arduview: the fully see-through retro game console** — Discovered (live, 48 followers)  
+  `/projects/arduview/arduview`
+- **Pagett VX-1: A Vacuum-Tube Speaker Shelf with Open Design** — Discovered (prelaunch, 5 followers)  
+  `/projects/pagettaudio/pagett-vx-1-a-vacuum-tube-speaker-shelf-with-open-design`
+- **POQ01: Your Water Flosser, Minus the Bulk** — Discovered (live, 15 followers)  
+  `/projects/1527221708/poqflo-the-pocket-sized-retractable-water-flosser`
+- **MELTORA: Your All-in-One Homemade Gummy & Drink Maker** — Discovered (live, 18 followers)  
+  `/projects/1292134876/meltora-your-all-in-one-homemade-gummy-and-drink-maker`
+- **SynKor Smart Interactive Device for Men** — Discovered (live, 37 followers)  
+  `/projects/lpcore/synkor-smart-wellness-device-motion-and-media-sync`
+- **MagPro:25W Qi2.2 3-in-1 Foldable Wireless Charger for Duo** — Discovered (live, 14 followers)  
+  `/projects/1420522884/magpro-25w-qi2-3-in-1-foldable-wireless-charger-for-duo`
+- **Merino Wool x Lyocell Reversible Waterproof Windbreak Jacket** — Discovered (live, 12 followers)  
+  `/projects/1490581194/merino-wool-x-lyocell-reversible-waterproof-windbreak-jacket`
 
-## status_change (11)
-- **Goodbye Cold Feet:Original-Design Wireless Foot Massager** — prelaunch → live  
-  `/projects/zizaixing/goodbye-cold-feet-original-design-wireless-foot-massager`
-- **D2D Essential Backpack Pro | D2D Sling Pouch** — live → successful  
-  `/projects/add1d/d2d-essential-backpack-pro`
-- **Portable Dice Spinner EDC** — prelaunch → live  
-  `/projects/lizgamezone/portable-dice-spinner`
-- **SONOMER: The World's First 2-in-1 Home Ultrasonic Marinator** — live → suspended  
-  `/projects/sonomer/sonomer-the-worlds-firstever-ultrasonic-marinator-for-hom`
-- **Full-Surface Standing Desk with 148 Wireless Charging Zones** — prelaunch → live  
-  `/projects/roytask/full-surface-standing-desk-with-148-wireless-charging-zones`
-- **RheoFit A1 Lite: The Hands-Free Automatic Foam Roller** — prelaunch → live  
-  `/projects/rheofit-a1/rheofit-a1-lite-fully-automatic-foam-roller`
-- **Titaner Vesta: One Titanium Pot for Every Way You Cook** — prelaunch → live  
-  `/projects/titanerwy/titaner-vesta-titanium-everyday-pot-with-micro-pressure`
-- **AttaEle A02: The Smart Fan-Assisted Candle Warmer** — prelaunch → live  
-  `/projects/attaelelife/attaele-a02-the-smart-fan-assisted-candle-warmer`
-- **Vulko: AI Stroker with Dual Pressure Control & Video Sync** — live → suspended  
-  `/projects/metaxsire/vulko-ai-stroker-with-dual-pressure-control-and-video-sync`
-- **YUEDAO RoboLite: Modular Hybrid Power System for Off-Grid** — live → successful  
-  `/projects/yuedaopower/yuedao-robolite-the-5-in-1-camping-light-and-power-station`
-- **BESTSUIT 3D MaxGlass: Glasses-Free 3D for iPhone** — live → failed  
-  `/projects/bestsuit/bestsuit-3d-maxglass-glasses-free-3d-for-iphone`
-
-## followers_delta (19)
-- **World's First AI Electric Screwdriver With Eyes And Brain** — +98 followers (955 → 1053)  
-  `/projects/arrowmax/the-worlds-first-ai-screwdriver-with-eyes-and-brain`
-- **QIVIKA: Turn Your Phone Into a Smart Scope** — +72 followers (4376 → 4448)  
-  `/projects/qivika/turn-your-phone-into-a-smart-scope`
-- **InfiMech MX 3D Printer: 8X More Efficiency. 8X Less Waste.** — +52 followers (11806 → 11858)  
-  `/projects/infimech-mx-series/infimech-mx-3d-printer-8x-more-efficiency-8x-less-waste`
-- **WUBEN G6 | Ultra Slim Multi-Use Keychain Light** — +174 followers (2507 → 2681)  
-  `/projects/wubenlight/wuben-g6-ultra-slim-multi-use-keychain-light`
-- **Fotorgear Campix: Look Down, Good Things Start with One Roll** — +70 followers (660 → 730)  
-  `/projects/fotorgear/fotorgear-campix-look-down-good-things-start-with-one-roll`
-- **HOZO Hobby Knife — A Classic, Reinvented for Makers** — +128 followers (4916 → 5044)  
+## followers_delta (18)
+- **HOZO Hobby Knife — A Classic, Reinvented for Makers** — +90 followers (5044 → 5134)  
   `/projects/hozodesign/hozo-hobby-knife`
-- **UniFormation S10: First Automated Desktop Resin 3D Printer** — +60 followers (1766 → 1826)  
-  `/projects/uniformations10/uniformation-s10-first-desktop-automated-resin-3d-printer`
-- **MakerPi Tiruler 2.0: Do More, Carry Less** — +57 followers (3609 → 3666)  
-  `/projects/soongon/makerpi-tiruler-20-do-more-carry-less`
-- **Titaner Vesta: One Titanium Pot for Every Way You Cook** — +79 followers (110 → 189)  
-  `/projects/titanerwy/titaner-vesta-titanium-everyday-pot-with-micro-pressure`
-- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +74 followers (9153 → 9227)  
-  `/projects/xgimititannoir/xgimi-aura-3-series-the-ultimate-4k-rgb-laser-tv`
-- **SnowPod: Real Metal 3D Printing on Your Desktop** — +110 followers (1259 → 1369)  
+- **SnowPod: Real Metal 3D Printing on Your Desktop** — +112 followers (1369 → 1481)  
   `/projects/snowx/snowpod-real-metal-3d-printing-on-your-desktop`
-- **ORIONER M-Grip: Palm-Sized Aluminum EDC Magnetic Mount** — +69 followers (77 → 146)  
-  `/projects/orionersx2/orioner-m-grip-palm-sized-aluminum-edc-magnetic-mount`
-- **COMAN T1 MINI: World’s First One-Click Travel Tripod** — +77 followers (494 → 571)  
-  `/projects/coman/coman-t1-mini-worlds-first-one-click-travel-tripod`
-- **RolTine2.0: The Titanium Skeleton Tape Measure & Fidget Tool** — +50 followers (2055 → 2105)  
-  `/projects/comandi-corres/roltine-the-titanium-skeleton-tape-measure-and-fidget-tool`
-- **BangBang VPR8: Feel Every Shot. Real Recoil. Real Immersion.** — +63 followers (516 → 579)  
-  `/projects/klimtechnologies/bangbang-vpr8-feel-every-shot-real-recoil-real-immersion`
-- **XAIStack: The World's First Modular AI Workstation NAS** — +63 followers (897 → 960)  
-  `/projects/xaistack/xaistack`
-- **iMicro XL15 - A pocket-sized micro exploration studio.** — +69 followers (1246 → 1315)  
-  `/projects/uchart/imicro-xl15-a-pocket-sized-micro-exploration-studio`
-- **COOLGEEK P1 — The Cassette Player, Reimagined** — +82 followers (596 → 678)  
-  `/projects/coolgeekaudio/coolgeek-p1-the-cassette-player-reimagined`
-- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +101 followers (9951 → 10052)  
+- **VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER** — +85 followers (10052 → 10137)  
   `/projects/bvio/violoop-plug-in-ai-for-your-computer`
-
-## backers_delta (5)
-- **WUBEN G6 | Ultra Slim Multi-Use Keychain Light** — +162 backers (2195 → 2357)  
-  `/projects/wubenlight/wuben-g6-ultra-slim-multi-use-keychain-light`
-- **HOZO Hobby Knife — A Classic, Reinvented for Makers** — +100 backers (2677 → 2777)  
-  `/projects/hozodesign/hozo-hobby-knife`
-- **RheoFit A1 Lite: The Hands-Free Automatic Foam Roller** — +145 backers (0 → 145)  
-  `/projects/rheofit-a1/rheofit-a1-lite-fully-automatic-foam-roller`
-- **Titaner Vesta: One Titanium Pot for Every Way You Cook** — +165 backers (0 → 165)  
-  `/projects/titanerwy/titaner-vesta-titanium-everyday-pot-with-micro-pressure`
-- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +108 backers (7520 → 7628)  
+- **QIVIKA: Turn Your Phone Into a Smart Scope** — +52 followers (4448 → 4500)  
+  `/projects/qivika/turn-your-phone-into-a-smart-scope`
+- **InfiMech MX 3D Printer: 8X More Efficiency. 8X Less Waste.** — +66 followers (11858 → 11924)  
+  `/projects/infimech-mx-series/infimech-mx-3d-printer-8x-more-efficiency-8x-less-waste`
+- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +95 followers (9227 → 9322)  
   `/projects/xgimititannoir/xgimi-aura-3-series-the-ultimate-4k-rgb-laser-tv`
+- **COMAN T1 MINI: World’s First One-Click Travel Tripod** — +133 followers (571 → 704)  
+  `/projects/coman/coman-t1-mini-worlds-first-one-click-travel-tripod`
+- **World's First AI Electric Screwdriver With Eyes And Brain** — +113 followers (1053 → 1166)  
+  `/projects/arrowmax/the-worlds-first-ai-screwdriver-with-eyes-and-brain`
+- **iMicro XL15 - A pocket-sized micro exploration studio.** — +66 followers (1315 → 1381)  
+  `/projects/uchart/imicro-xl15-a-pocket-sized-micro-exploration-studio`
+- **Moera Smart Climate Mattress Cover** — +60 followers (548 → 608)  
+  `/projects/moerasleep/moera-smart-climate-mattress-cover`
+- **UniFormation S10: First Automated Desktop Resin 3D Printer** — +52 followers (1826 → 1878)  
+  `/projects/uniformations10/uniformation-s10-first-desktop-automated-resin-3d-printer`
+- **COOLGEEK P1 — The Cassette Player, Reimagined** — +68 followers (678 → 746)  
+  `/projects/coolgeekaudio/coolgeek-p1-the-cassette-player-reimagined`
+- **Titaner Vesta: One Titanium Pot for Every Way You Cook** — +68 followers (189 → 257)  
+  `/projects/titanerwy/titaner-vesta-titanium-everyday-pot-with-micro-pressure`
+- **XAIStack: The World's First Modular AI Workstation NAS** — +69 followers (960 → 1029)  
+  `/projects/xaistack/xaistack`
+- **Fotorgear Campix: Look Down, Good Things Start with One Roll** — +159 followers (730 → 889)  
+  `/projects/fotorgear/fotorgear-campix-look-down-good-things-start-with-one-roll`
+- **SilkyWave — Hands-Free Barista Microfoamer** — +58 followers (1158 → 1216)  
+  `/projects/2115481410/abslow-milkyway-absolutely-hands-free-barista-microfoam`
+- **WUBEN G6 | Ultra Slim Multi-Use Keychain Light** — +138 followers (2681 → 2819)  
+  `/projects/wubenlight/wuben-g6-ultra-slim-multi-use-keychain-light`
+- **BangBang VPR8: Feel Every Shot. Real Recoil. Real Immersion.** — +62 followers (579 → 641)  
+  `/projects/klimtechnologies/bangbang-vpr8-feel-every-shot-real-recoil-real-immersion`
+
+## backers_delta (4)
+- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +102 backers (7628 → 7730)  
+  `/projects/xgimititannoir/xgimi-aura-3-series-the-ultimate-4k-rgb-laser-tv`
+- **COMAN T1 MINI: World’s First One-Click Travel Tripod** — +189 backers (0 → 189)  
+  `/projects/coman/coman-t1-mini-worlds-first-one-click-travel-tripod`
+- **Fotorgear Campix: Look Down, Good Things Start with One Roll** — +506 backers (0 → 506)  
+  `/projects/fotorgear/fotorgear-campix-look-down-good-things-start-with-one-roll`
+- **WUBEN G6 | Ultra Slim Multi-Use Keychain Light** — +129 backers (2357 → 2486)  
+  `/projects/wubenlight/wuben-g6-ultra-slim-multi-use-keychain-light`
+
+## status_change (8)
+- **KR-S MARK: Retro Suitcase-Style All-In-One CD Music Player** — prelaunch → live  
+  `/projects/13941229/kr-s-mark-retro-suitcase-style-all-in-one-cd-music-player`
+- **Cordless Boil & Brew - A Café On The Go.** — prelaunch → live  
+  `/projects/edelin/cordless-boil-and-brew-a-cafe-on-the-go`
+- **AI WUKONG: Your First AI Humanoid Robot That Does It All** — prelaunch → live  
+  `/projects/aiwukong/ai-wukong-your-first-ai-humanoid-robot-that-does-it-all`
+- **One of a Kind, Like a Starry Night — A Handcrafted Resin Pen** — live → successful  
+  `/projects/witisan/one-of-a-kind-like-a-starry-night-a-handcrafted-resin-pen`
+- **COMAN T1 MINI: World’s First One-Click Travel Tripod** — prelaunch → live  
+  `/projects/coman/coman-t1-mini-worlds-first-one-click-travel-tripod`
+- **Moreclaren: Liquid Fuel for Tabletop & Outdoor Cooking** — live → successful  
+  `/projects/1451275461/moreclaren-calm-blue-flame-no-pressurized-gas-canister`
+- **Equora RC1 AI Monitor: Stay Ahead of Horse Health Risks** — prelaunch → live  
+  `/projects/equora/equora-rc1-ai-powered-non-contact-horse-stall-monitor`
+- **Fotorgear Campix: Look Down, Good Things Start with One Roll** — prelaunch → live  
+  `/projects/fotorgear/fotorgear-campix-look-down-good-things-start-with-one-roll`
