@@ -7,6 +7,7 @@ SCHEMA_VERSION in api.py and document the change.
 """
 from __future__ import annotations
 
+import datetime as dt
 import json
 
 from scraper.api import (
@@ -40,6 +41,8 @@ def _full_project(**kw):
         "followers": 1000,
         "backers": 500,
         "pledged_usd": 50000.0,
+        "observations": {"pledged_usd": {"status": "fresh", "unit": "USD",
+            "observed_at": dt.datetime.now(dt.UTC).isoformat()}},
         "goal_usd": 30000.0,
         "percent_funded": 166,
         "deadline": "2026-06-01T12:00:00Z",
@@ -150,14 +153,16 @@ def test_payload_sums_live_usd_only():
 
 
 def test_payload_handles_bad_pledged_usd_types():
-    """Non-numeric pledged_usd should be silently treated as 0, not crash."""
+    """Invalid values remain in coverage and cannot masquerade as a full total."""
     projects = [
         _full_project(pathname="/a", status="live", pledged_usd="garbage"),
         _full_project(pathname="/b", status="live", pledged_usd=None),
         _full_project(pathname="/c", status="live", pledged_usd=5000.0),
     ]
     payload = build_payload(_curr(projects))
-    assert payload["total_live_usd"] == 5000.0
+    assert payload["total_live_usd"] is None
+    assert payload["verified_live_usd_subtotal"] == 5000.0
+    assert payload["live_usd_coverage"] == {"verified": 1, "total": 3}
 
 
 def test_payload_preserves_generated_at():
