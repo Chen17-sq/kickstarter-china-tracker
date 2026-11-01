@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 58292.95643101,
+      "pledged_usd": 69775.40263785,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/1898992953/noxti-tri-heirloom-triple-core-tritium-edc-keychain-pendant",
       "china_confidence": "未知",
@@ -17,7 +17,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-10-31T03:27:51.383537+00:00",
+    "generated_at": "2026-11-01T03:25:34.480726+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
