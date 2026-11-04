@@ -231,8 +231,8 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
     </div>
     <div class="hero-stat">
       <div class="v" id="hsPledged">—</div>
-      <div class="l">Live USD Raised</div>
-      <div class="sub">在筹合计</div>
+      <div class="l" id="hsPledgedLabel">Live USD Raised</div>
+      <div class="sub" id="hsPledgedCoverage">在筹合计</div>
     </div>
     <div class="hero-stat">
       <div class="v" id="hsEditions">—</div>
@@ -314,6 +314,7 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
   </footer>
 
 </div>
+<script src="./funds.js"></script>
 <script>
 const EPOCH = new Date("2026-04-25T00:00:00Z");
 function editionNumber() {
@@ -377,20 +378,25 @@ async function load() {
     document.getElementById("hsTracked").textContent = projects.length;
     document.getElementById("updated").textContent = fmtBeijing(j.generated_at);
 
-    let pre = 0, live = 0, succ = 0, pwl = 0, high = 0, totalLive = 0;
+    let pre = 0, live = 0, succ = 0, pwl = 0, high = 0;
     const brands = new Set();
     for (const p of projects) {
       if (p.status === "prelaunch") pre++;
       if (p.status === "live") {
         live++;
-        totalLive += Number(p.pledged_usd || 0);
       }
       if (p.status === "successful") succ++;
       if (p.project_we_love) pwl++;
       if (p.china_confidence === "高") high++;
       if (p.matched_brand) brands.add(p.matched_brand);
     }
-    document.getElementById("hsPledged").textContent = (projects.some(p => p.status === "live" && observedValue(p, "pledged_usd") == null) ? "未更新" : fmtUSD(totalLive));
+    const funds = KSFunds.livePledgedTotals(projects);
+    const lang = localStorage.getItem("ks-tracker-lang") === "en" ? "en" : "zh";
+    const full = funds.total_live_usd !== null;
+    const amount = funds.verified_live_usd_subtotal;
+    document.getElementById("hsPledged").textContent = amount === null ? (lang === "en" ? "Not updated" : "未更新") : KSFunds.fmtUSD(amount);
+    document.getElementById("hsPledgedLabel").textContent = lang === "en" ? (full ? "Full total" : "Verified subtotal") : (full ? "全量合计" : "已验证小计");
+    document.getElementById("hsPledgedCoverage").textContent = KSFunds.livePledgedText(funds, lang);
     document.getElementById("kPre").textContent = pre;
     document.getElementById("kLive").textContent = live;
     document.getElementById("kSucc").textContent = succ;
