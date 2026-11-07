@@ -7,7 +7,7 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 111236.80313544,
+      "pledged_usd": 117005.5608583,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/1898992953/noxti-tri-heirloom-triple-core-tritium-edc-keychain-pendant",
       "china_confidence": "未知",
@@ -22,24 +22,9 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 40352.22194796,
+      "pledged_usd": 45006.34059376,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/1451952642/tobenone-magnetic-modular-wireless-triple-screen-display",
-      "china_confidence": "未知",
-      "reasons": [
-        "pledged >= $5,000"
-      ]
-    },
-    {
-      "creator_slug": "reazenable",
-      "title": "Living Energy: Interactive 3D Plasma Light for Your Home",
-      "location": "Toronto, Canada",
-      "country": "HK",
-      "status": "live",
-      "followers": 0,
-      "pledged_usd": 17747.09777545,
-      "project_we_love": false,
-      "url": "https://www.kickstarter.com/projects/reazenable/reazenable-a300-real-3d-light-for-your-home",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -52,9 +37,24 @@
       "country": "HK",
       "status": "live",
       "followers": 0,
-      "pledged_usd": 15499.31983344,
+      "pledged_usd": 19618.52738496,
       "project_we_love": false,
       "url": "https://www.kickstarter.com/projects/vfip/tacs-automatic-cassette-ii-back-to-the-80s",
+      "china_confidence": "未知",
+      "reasons": [
+        "pledged >= $5,000"
+      ]
+    },
+    {
+      "creator_slug": "reazenable",
+      "title": "Living Energy: Interactive 3D Plasma Light for Your Home",
+      "location": "Toronto, Canada",
+      "country": "HK",
+      "status": "live",
+      "followers": 0,
+      "pledged_usd": 18640.60268015,
+      "project_we_love": false,
+      "url": "https://www.kickstarter.com/projects/reazenable/reazenable-a300-real-3d-light-for-your-home",
       "china_confidence": "未知",
       "reasons": [
         "pledged >= $5,000"
@@ -62,7 +62,7 @@
     }
   ],
   "_meta": {
-    "generated_at": "2026-11-06T04:19:06.862991+00:00",
+    "generated_at": "2026-11-07T03:53:24.467575+00:00",
     "thresholds": {
       "followers": 200,
       "pledged_usd": 5000
