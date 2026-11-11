@@ -31,6 +31,7 @@ from pathlib import Path
 
 import httpx
 
+from .aggregates import live_pledged_text
 from .atomic import write_text_atomic, write_versioned_text
 from .momentum import conversion_per_watcher, projected_total
 from .notify import (
@@ -422,7 +423,7 @@ def build_html(curr: dict) -> tuple[str, str]:
             f"今日头条：{top_pre.get('title','?')[:40]} · {metric_text(top_pre, 'followers')} watchers"
         )
     preheader_bits.append(
-        f"在筹合计 {(fmt_usd(d['total_live_usd']) if d['total_live_usd'] is not None else '未更新')} · ✦ KS Pick {d['pwl']}"
+        f"{live_pledged_text(d)} · ✦ KS Pick {d['pwl']}"
     )
     preheader_text = " · ".join(quality_lines(curr)[:1] + preheader_bits)
 
@@ -432,7 +433,7 @@ def build_html(curr: dict) -> tuple[str, str]:
         f"其中 <strong style=\"color:{RED}\">{counts['prelaunch']}</strong> 个 prelaunch、"
         f"<strong>{counts['live']}</strong> 个 live、"
         f"<strong>{counts['successful']}</strong> 个 successful。"
-        f"在筹合计已筹 <strong>{(fmt_usd(d['total_live_usd']) if d['total_live_usd'] is not None else '未更新')}</strong>，"
+        f"<strong>{live_pledged_text(d)}</strong>，"
         f"中国背景置信度高 <strong>{d['high']}</strong> / {d['total']}，"
         f"获 KS Editor's Pick 标签 <strong>{d['pwl']}</strong> 项。"
     )
@@ -584,7 +585,7 @@ def build_html(curr: dict) -> tuple[str, str]:
     "name": "Aldrich Chen",
     "url": "https://aldrich.fyi"
   }},
-  "description": "Daily edition: {d['total']} China-background hardware projects tracked · {counts['prelaunch']} prelaunch · {counts['live']} live ({(fmt_usd(d['total_live_usd']) if d['total_live_usd'] is not None else '未更新')})."
+  "description": "Daily edition: {d['total']} China-background hardware projects tracked · {counts['prelaunch']} prelaunch · {counts['live']} live ({live_pledged_text(d, lang='en')})."
 }}
 </script>
 
@@ -647,7 +648,7 @@ td, div, span {{ overflow-wrap:anywhere; }}
                        letter-spacing:0;text-transform:none;font-size:13px">
             All The Crowd-Funded Hardware Fit To Print
           </span>
-          <span style="padding:0 4px">PLEDGED · {(fmt_usd(d['total_live_usd']) if d['total_live_usd'] is not None else '未更新')}</span>
+          <span style="padding:0 4px">PLEDGED · {live_pledged_text(d, lang='en')}</span>
         </div>
         <p style="margin:18px auto 0;max-width:50ch;font-family:{BODY};font-style:italic;
                   font-size:14.5px;color:{N700};line-height:1.5">
@@ -820,7 +821,7 @@ def build_plaintext(curr: dict) -> str:
     lines.append(rule)
     lines.append(
         f"{d['total']} 项追踪 · {counts['prelaunch']} prelaunch · "
-        f"{counts['live']} live ({(fmt_usd(d['total_live_usd']) if d['total_live_usd'] is not None else '未更新')}) · "
+        f"{counts['live']} live ({live_pledged_text(d, lang='en')}) · "
         f"{counts['successful']} successful · ✦ KS Pick {d['pwl']}"
     )
     lines.append(rule)
@@ -1232,7 +1233,7 @@ def main(argv: list[str] | None = None) -> int:
             f"  prelaunch:      {digest_counts.get('prelaunch','?')}",
             f"  live:           {digest_counts.get('live','?')}",
             f"  successful:     {digest_counts.get('successful','?')}",
-            f"  pledged USD:    {fmt_usd(digest_d.get('total_live_usd', 0))}",
+            f"  pledged USD:    {live_pledged_text(digest_d)}",
             f"  high confidence: {digest_d.get('high','?')}",
             f"  ✦ KS picks:     {digest_d.get('pwl','?')}",
             "",
