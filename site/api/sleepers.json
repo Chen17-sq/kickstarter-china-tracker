@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-13T04:14:08Z",
-  "edition": 203,
+  "generated_at": "2026-11-14T04:11:13Z",
+  "edition": 204,
   "count": 5,
   "projects": [
     {
@@ -20,26 +20,27 @@
           "status": "stale",
           "attempt_status": "failed",
           "observed_at": "2026-11-13T04:12:23Z",
-          "attempted_at": "2026-11-13T04:13:52Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "count",
           "basis": "followers",
           "reason": "fetch_failed"
         },
         "backers": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:12:23Z",
-          "attempted_at": "2026-11-13T04:12:23Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "count",
-          "basis": "backers"
+          "basis": "backers",
+          "reason": "fetch_failed"
         },
         "pledged_usd": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:12:23Z",
-          "attempted_at": "2026-11-13T04:12:23Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "USD",
           "basis": "ks_project_usd:HKD",
@@ -49,12 +50,13 @@
             "rate": 0.1274348,
             "source": "ks_project_usd_exchange_rate",
             "observed_at": "2026-11-13T04:12:23Z"
-          }
+          },
+          "reason": "fetch_failed"
         },
         "min_pledge_usd": {
           "status": "failed",
           "attempt_status": "failed",
-          "attempted_at": "2026-11-13T04:13:52Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "reason": "fetch_failed",
           "observed_at": null,
           "source": "legacy_unknown",
@@ -62,10 +64,10 @@
           "basis": null
         },
         "goal_usd": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:12:23Z",
-          "attempted_at": "2026-11-13T04:12:23Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "USD",
           "basis": "ks_project_usd:HKD",
@@ -75,79 +77,70 @@
             "rate": 0.1274348,
             "source": "ks_project_usd_exchange_rate",
             "observed_at": "2026-11-13T04:12:23Z"
-          }
+          },
+          "reason": "fetch_failed"
         },
         "percent_funded": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:12:23Z",
-          "attempted_at": "2026-11-13T04:12:23Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "count",
-          "basis": "percent_funded"
+          "basis": "percent_funded",
+          "reason": "fetch_failed"
         },
         "pledged_native": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:12:23Z",
-          "attempted_at": "2026-11-13T04:12:23Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "HKD",
-          "basis": "native_pledged:HKD"
+          "basis": "native_pledged:HKD",
+          "reason": "fetch_failed"
         }
       },
       "delta_meta": {
         "delta_followers": {
           "status": "unavailable",
           "reason": "current_not_fresh",
-          "from": "2026-11-12T05:05:20Z",
+          "from": "2026-11-13T04:12:23Z",
           "to": "2026-11-13T04:12:23Z"
         },
         "delta_backers": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-12T05:05:20Z",
-          "to": "2026-11-13T04:12:23Z",
-          "seconds": 83223.0
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-13T04:12:23Z",
+          "to": "2026-11-13T04:12:23Z"
         },
         "delta_pledged_usd": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-12T05:05:20Z",
-          "to": "2026-11-13T04:12:23Z",
-          "seconds": 83223.0,
-          "method": "constant_currency",
-          "currency": "HKD",
-          "usd_rate": 0.1274348,
-          "rate_observed_at": "2026-11-13T04:12:23Z"
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-13T04:12:23Z",
+          "to": "2026-11-13T04:12:23Z"
         },
         "weekly_delta_followers": {
           "status": "unavailable",
           "reason": "current_not_fresh",
-          "from": "2026-11-06T04:17:00Z",
+          "from": "2026-11-07T03:51:25Z",
           "to": "2026-11-13T04:12:23Z"
         },
         "weekly_delta_backers": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-06T04:17:00Z",
-          "to": "2026-11-13T04:12:23Z",
-          "seconds": 604523.0
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-07T03:51:25Z",
+          "to": "2026-11-13T04:12:23Z"
         },
         "weekly_delta_pledged_usd": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-06T04:17:00Z",
-          "to": "2026-11-13T04:12:23Z",
-          "seconds": 604523.0,
-          "method": "constant_currency",
-          "currency": "HKD",
-          "usd_rate": 0.1274348,
-          "rate_observed_at": "2026-11-13T04:12:23Z"
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-07T03:51:25Z",
+          "to": "2026-11-13T04:12:23Z"
         }
       },
       "status_observation": {
-        "status": "fresh",
+        "status": "stale",
         "observed_at": "2026-11-13T04:12:23Z",
         "source": "ks_graphql",
         "raw_state": "SUCCESSFUL"
@@ -170,11 +163,11 @@
       "project_we_love": false,
       "china_confidence": "高",
       "delta_followers": null,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0,
+      "delta_backers": null,
+      "delta_pledged_usd": null,
       "weekly_delta_followers": null,
-      "weekly_delta_backers": 0,
-      "weekly_delta_pledged_usd": 0.0,
+      "weekly_delta_backers": null,
+      "weekly_delta_pledged_usd": null,
       "_sleeper_reason": "AI 硬件 · 超募 5× · 小众粉丝盘 $26K · 连续 2 天上榜",
       "_sleeper_score": 590
     },
@@ -192,26 +185,27 @@
           "status": "stale",
           "attempt_status": "failed",
           "observed_at": "2026-11-13T04:12:09Z",
-          "attempted_at": "2026-11-13T04:13:52Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "count",
           "basis": "followers",
           "reason": "fetch_failed"
         },
         "backers": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:12:09Z",
-          "attempted_at": "2026-11-13T04:12:09Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "count",
-          "basis": "backers"
+          "basis": "backers",
+          "reason": "fetch_failed"
         },
         "pledged_usd": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:12:09Z",
-          "attempted_at": "2026-11-13T04:12:09Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "USD",
           "basis": "ks_project_usd:HKD",
@@ -221,12 +215,13 @@
             "rate": 0.12754533,
             "source": "ks_project_usd_exchange_rate",
             "observed_at": "2026-11-13T04:12:09Z"
-          }
+          },
+          "reason": "fetch_failed"
         },
         "min_pledge_usd": {
           "status": "stale",
           "attempt_status": "failed",
-          "attempted_at": "2026-11-13T04:13:52Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "reason": "fetch_failed",
           "observed_at": null,
           "source": "legacy_unknown",
@@ -234,10 +229,10 @@
           "basis": null
         },
         "goal_usd": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:12:09Z",
-          "attempted_at": "2026-11-13T04:12:09Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "USD",
           "basis": "ks_project_usd:HKD",
@@ -247,79 +242,70 @@
             "rate": 0.12754533,
             "source": "ks_project_usd_exchange_rate",
             "observed_at": "2026-11-13T04:12:09Z"
-          }
+          },
+          "reason": "fetch_failed"
         },
         "percent_funded": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:12:09Z",
-          "attempted_at": "2026-11-13T04:12:09Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "count",
-          "basis": "percent_funded"
+          "basis": "percent_funded",
+          "reason": "fetch_failed"
         },
         "pledged_native": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:12:09Z",
-          "attempted_at": "2026-11-13T04:12:09Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "HKD",
-          "basis": "native_pledged:HKD"
+          "basis": "native_pledged:HKD",
+          "reason": "fetch_failed"
         }
       },
       "delta_meta": {
         "delta_followers": {
           "status": "unavailable",
           "reason": "current_not_fresh",
-          "from": "2026-11-12T05:05:07Z",
+          "from": "2026-11-13T04:12:09Z",
           "to": "2026-11-13T04:12:09Z"
         },
         "delta_backers": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-12T05:05:07Z",
-          "to": "2026-11-13T04:12:09Z",
-          "seconds": 83222.0
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-13T04:12:09Z",
+          "to": "2026-11-13T04:12:09Z"
         },
         "delta_pledged_usd": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-12T05:05:07Z",
-          "to": "2026-11-13T04:12:09Z",
-          "seconds": 83222.0,
-          "method": "constant_currency",
-          "currency": "HKD",
-          "usd_rate": 0.12754533,
-          "rate_observed_at": "2026-11-13T04:12:09Z"
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-13T04:12:09Z",
+          "to": "2026-11-13T04:12:09Z"
         },
         "weekly_delta_followers": {
           "status": "unavailable",
           "reason": "current_not_fresh",
-          "from": "2026-11-06T04:16:47Z",
+          "from": "2026-11-07T03:51:11Z",
           "to": "2026-11-13T04:12:09Z"
         },
         "weekly_delta_backers": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-06T04:16:47Z",
-          "to": "2026-11-13T04:12:09Z",
-          "seconds": 604522.0
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-07T03:51:11Z",
+          "to": "2026-11-13T04:12:09Z"
         },
         "weekly_delta_pledged_usd": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-06T04:16:47Z",
-          "to": "2026-11-13T04:12:09Z",
-          "seconds": 604522.0,
-          "method": "constant_currency",
-          "currency": "HKD",
-          "usd_rate": 0.12754533,
-          "rate_observed_at": "2026-11-13T04:12:09Z"
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-07T03:51:11Z",
+          "to": "2026-11-13T04:12:09Z"
         }
       },
       "status_observation": {
-        "status": "fresh",
+        "status": "stale",
         "observed_at": "2026-11-13T04:12:09Z",
         "source": "ks_graphql",
         "raw_state": "SUCCESSFUL"
@@ -342,11 +328,11 @@
       "project_we_love": false,
       "china_confidence": "高",
       "delta_followers": null,
-      "delta_backers": 0,
-      "delta_pledged_usd": 0.0,
+      "delta_backers": null,
+      "delta_pledged_usd": null,
       "weekly_delta_followers": null,
-      "weekly_delta_backers": 0,
-      "weekly_delta_pledged_usd": 0.0,
+      "weekly_delta_backers": null,
+      "weekly_delta_pledged_usd": null,
       "_sleeper_reason": "AI 硬件 · 小盘高溢价 · 18× / $23K · 连续 2 天上榜",
       "_sleeper_score": 490
     },
@@ -364,26 +350,27 @@
           "status": "stale",
           "attempt_status": "failed",
           "observed_at": "2026-11-13T04:12:55Z",
-          "attempted_at": "2026-11-13T04:13:52Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "count",
           "basis": "followers",
           "reason": "fetch_failed"
         },
         "backers": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:12:55Z",
-          "attempted_at": "2026-11-13T04:12:55Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "count",
-          "basis": "backers"
+          "basis": "backers",
+          "reason": "fetch_failed"
         },
         "pledged_usd": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:12:55Z",
-          "attempted_at": "2026-11-13T04:12:55Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "USD",
           "basis": "ks_project_usd:HKD",
@@ -393,12 +380,13 @@
             "rate": 0.1276211,
             "source": "ks_project_usd_exchange_rate",
             "observed_at": "2026-11-13T04:12:55Z"
-          }
+          },
+          "reason": "fetch_failed"
         },
         "min_pledge_usd": {
           "status": "stale",
           "attempt_status": "failed",
-          "attempted_at": "2026-11-13T04:13:52Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "reason": "fetch_failed",
           "observed_at": null,
           "source": "legacy_unknown",
@@ -406,10 +394,10 @@
           "basis": null
         },
         "goal_usd": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:12:55Z",
-          "attempted_at": "2026-11-13T04:12:55Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "USD",
           "basis": "ks_project_usd:HKD",
@@ -419,79 +407,70 @@
             "rate": 0.1276211,
             "source": "ks_project_usd_exchange_rate",
             "observed_at": "2026-11-13T04:12:55Z"
-          }
+          },
+          "reason": "fetch_failed"
         },
         "percent_funded": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:12:55Z",
-          "attempted_at": "2026-11-13T04:12:55Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "count",
-          "basis": "percent_funded"
+          "basis": "percent_funded",
+          "reason": "fetch_failed"
         },
         "pledged_native": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:12:55Z",
-          "attempted_at": "2026-11-13T04:12:55Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "HKD",
-          "basis": "native_pledged:HKD"
+          "basis": "native_pledged:HKD",
+          "reason": "fetch_failed"
         }
       },
       "delta_meta": {
         "delta_followers": {
           "status": "unavailable",
           "reason": "current_not_fresh",
-          "from": "2026-11-12T05:05:53Z",
+          "from": "2026-11-13T04:12:55Z",
           "to": "2026-11-13T04:12:55Z"
         },
         "delta_backers": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-12T05:05:53Z",
-          "to": "2026-11-13T04:12:55Z",
-          "seconds": 83222.0
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-13T04:12:55Z",
+          "to": "2026-11-13T04:12:55Z"
         },
         "delta_pledged_usd": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-12T05:05:53Z",
-          "to": "2026-11-13T04:12:55Z",
-          "seconds": 83222.0,
-          "method": "constant_currency",
-          "currency": "HKD",
-          "usd_rate": 0.1276211,
-          "rate_observed_at": "2026-11-13T04:12:55Z"
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-13T04:12:55Z",
+          "to": "2026-11-13T04:12:55Z"
         },
         "weekly_delta_followers": {
           "status": "unavailable",
           "reason": "current_not_fresh",
-          "from": "2026-11-06T04:17:33Z",
+          "from": "2026-11-07T03:51:50Z",
           "to": "2026-11-13T04:12:55Z"
         },
         "weekly_delta_backers": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-06T04:17:33Z",
-          "to": "2026-11-13T04:12:55Z",
-          "seconds": 604522.0
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-07T03:51:50Z",
+          "to": "2026-11-13T04:12:55Z"
         },
         "weekly_delta_pledged_usd": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-06T04:17:33Z",
-          "to": "2026-11-13T04:12:55Z",
-          "seconds": 604522.0,
-          "method": "constant_currency",
-          "currency": "HKD",
-          "usd_rate": 0.1276211,
-          "rate_observed_at": "2026-11-13T04:12:55Z"
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-07T03:51:50Z",
+          "to": "2026-11-13T04:12:55Z"
         }
       },
       "status_observation": {
-        "status": "fresh",
+        "status": "stale",
         "observed_at": "2026-11-13T04:12:55Z",
         "source": "ks_graphql",
         "raw_state": "SUCCESSFUL"
@@ -514,193 +493,13 @@
       "project_we_love": true,
       "china_confidence": "高",
       "delta_followers": null,
-      "delta_backers": 1,
-      "delta_pledged_usd": 1630.9976579999998,
+      "delta_backers": null,
+      "delta_pledged_usd": null,
       "weekly_delta_followers": null,
-      "weekly_delta_backers": 2,
-      "weekly_delta_pledged_usd": 3432.2418633999996,
+      "weekly_delta_backers": null,
+      "weekly_delta_pledged_usd": null,
       "_sleeper_reason": "AI 硬件 · 连续 2 天上榜",
       "_sleeper_score": 460
-    },
-    {
-      "project_id": 107581811,
-      "identity_observation": {
-        "project_id": 107581811,
-        "source": "ks_graphql",
-        "observed_at": "2026-11-13T04:11:14Z",
-        "canonical_pathname": "/projects/metaxring/memo-the-next-gen-ai-recording-ring"
-      },
-      "aliases": [],
-      "observations": {
-        "followers": {
-          "status": "fresh",
-          "attempt_status": "success",
-          "observed_at": "2026-11-13T04:11:14Z",
-          "attempted_at": "2026-11-13T04:13:52Z",
-          "source": "ks_graphql",
-          "unit": "count",
-          "basis": "followers"
-        },
-        "backers": {
-          "status": "fresh",
-          "attempt_status": "success",
-          "observed_at": "2026-11-13T04:11:14Z",
-          "attempted_at": "2026-11-13T04:11:14Z",
-          "source": "ks_graphql",
-          "unit": "count",
-          "basis": "backers"
-        },
-        "pledged_usd": {
-          "status": "fresh",
-          "attempt_status": "success",
-          "observed_at": "2026-11-13T04:11:14Z",
-          "attempted_at": "2026-11-13T04:11:14Z",
-          "source": "ks_graphql",
-          "unit": "USD",
-          "basis": "ks_project_usd:HKD",
-          "conversion": {
-            "native_amount": 52117.0,
-            "currency": "HKD",
-            "rate": 0.12748315,
-            "source": "ks_project_usd_exchange_rate",
-            "observed_at": "2026-11-13T04:11:14Z"
-          }
-        },
-        "min_pledge_usd": {
-          "status": "fresh",
-          "attempt_status": "success",
-          "observed_at": "2026-11-13T04:13:23Z",
-          "attempted_at": "2026-11-13T04:13:23Z",
-          "source": "ks_graphql",
-          "unit": "USD",
-          "basis": "ks_project_usd:HKD",
-          "conversion": {
-            "native_amount": 1480.0,
-            "currency": "HKD",
-            "rate": 0.12748315,
-            "source": "ks_project_usd_exchange_rate",
-            "observed_at": "2026-11-13T04:13:23Z"
-          }
-        },
-        "goal_usd": {
-          "status": "fresh",
-          "attempt_status": "success",
-          "observed_at": "2026-11-13T04:11:14Z",
-          "attempted_at": "2026-11-13T04:11:14Z",
-          "source": "ks_graphql",
-          "unit": "USD",
-          "basis": "ks_project_usd:HKD",
-          "conversion": {
-            "native_amount": 10000.0,
-            "currency": "HKD",
-            "rate": 0.12748315,
-            "source": "ks_project_usd_exchange_rate",
-            "observed_at": "2026-11-13T04:11:14Z"
-          }
-        },
-        "percent_funded": {
-          "status": "fresh",
-          "attempt_status": "success",
-          "observed_at": "2026-11-13T04:11:14Z",
-          "attempted_at": "2026-11-13T04:11:14Z",
-          "source": "ks_graphql",
-          "unit": "count",
-          "basis": "percent_funded"
-        },
-        "pledged_native": {
-          "status": "fresh",
-          "attempt_status": "success",
-          "observed_at": "2026-11-13T04:11:14Z",
-          "attempted_at": "2026-11-13T04:11:14Z",
-          "source": "ks_graphql",
-          "unit": "HKD",
-          "basis": "native_pledged:HKD"
-        }
-      },
-      "delta_meta": {
-        "delta_followers": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-12T05:04:24Z",
-          "to": "2026-11-13T04:11:14Z",
-          "seconds": 83210.0
-        },
-        "delta_backers": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-12T05:04:24Z",
-          "to": "2026-11-13T04:11:14Z",
-          "seconds": 83210.0
-        },
-        "delta_pledged_usd": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-12T05:04:24Z",
-          "to": "2026-11-13T04:11:14Z",
-          "seconds": 83210.0,
-          "method": "constant_currency",
-          "currency": "HKD",
-          "usd_rate": 0.12748315,
-          "rate_observed_at": "2026-11-13T04:11:14Z"
-        },
-        "weekly_delta_followers": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-06T04:16:22Z",
-          "to": "2026-11-13T04:11:14Z",
-          "seconds": 604492.0
-        },
-        "weekly_delta_backers": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-06T04:16:22Z",
-          "to": "2026-11-13T04:11:14Z",
-          "seconds": 604492.0
-        },
-        "weekly_delta_pledged_usd": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-06T04:16:22Z",
-          "to": "2026-11-13T04:11:14Z",
-          "seconds": 604492.0,
-          "method": "constant_currency",
-          "currency": "HKD",
-          "usd_rate": 0.12748315,
-          "rate_observed_at": "2026-11-13T04:11:14Z"
-        }
-      },
-      "status_observation": {
-        "status": "fresh",
-        "observed_at": "2026-11-13T04:11:14Z",
-        "source": "ks_graphql",
-        "raw_state": "LIVE"
-      },
-      "native_currency": "HKD",
-      "static_usd_rate": 0.12749874,
-      "pathname": "/projects/metaxring/memo-the-next-gen-ai-recording-ring",
-      "title": "Magic Ring: 10-in-1 AI Smart Ring for Work, Health & Control",
-      "blurb_zh": null,
-      "status": "live",
-      "url": "https://www.kickstarter.com/projects/metaxring/memo-the-next-gen-ai-recording-ring",
-      "country": "HK",
-      "creator": "metaXring",
-      "followers": 97,
-      "backers": 28,
-      "pledged_usd": 6644.0393285499995,
-      "goal_usd": 1274.8315,
-      "percent_funded": 521.0,
-      "deadline": 1797426675,
-      "launched_at": 1794402675,
-      "project_we_love": false,
-      "china_confidence": "高",
-      "delta_followers": 25,
-      "delta_backers": 14,
-      "delta_pledged_usd": 3232.33526825,
-      "weekly_delta_followers": 56,
-      "weekly_delta_backers": 28,
-      "weekly_delta_pledged_usd": 6644.0393285499995,
-      "_sleeper_reason": "AI 标签 · 5 倍超募 · 总盘仅 $7K · 连续 2 天上榜",
-      "_sleeper_score": 370
     },
     {
       "project_id": 1597946967,
@@ -713,28 +512,30 @@
       "aliases": [],
       "observations": {
         "followers": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:11:11Z",
-          "attempted_at": "2026-11-13T04:13:52Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "count",
-          "basis": "followers"
+          "basis": "followers",
+          "reason": "fetch_failed"
         },
         "backers": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:11:11Z",
-          "attempted_at": "2026-11-13T04:11:11Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "count",
-          "basis": "backers"
+          "basis": "backers",
+          "reason": "fetch_failed"
         },
         "pledged_usd": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:11:11Z",
-          "attempted_at": "2026-11-13T04:11:11Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "USD",
           "basis": "ks_project_usd:HKD",
@@ -744,13 +545,14 @@
             "rate": 0.12748315,
             "source": "ks_project_usd_exchange_rate",
             "observed_at": "2026-11-13T04:11:11Z"
-          }
+          },
+          "reason": "fetch_failed"
         },
         "min_pledge_usd": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:13:21Z",
-          "attempted_at": "2026-11-13T04:13:21Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "USD",
           "basis": "ks_project_usd:HKD",
@@ -760,13 +562,14 @@
             "rate": 0.12748315,
             "source": "ks_project_usd_exchange_rate",
             "observed_at": "2026-11-13T04:13:21Z"
-          }
+          },
+          "reason": "fetch_failed"
         },
         "goal_usd": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:11:11Z",
-          "attempted_at": "2026-11-13T04:11:11Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "USD",
           "basis": "ks_project_usd:HKD",
@@ -776,81 +579,70 @@
             "rate": 0.12748315,
             "source": "ks_project_usd_exchange_rate",
             "observed_at": "2026-11-13T04:11:11Z"
-          }
+          },
+          "reason": "fetch_failed"
         },
         "percent_funded": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:11:11Z",
-          "attempted_at": "2026-11-13T04:11:11Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "count",
-          "basis": "percent_funded"
+          "basis": "percent_funded",
+          "reason": "fetch_failed"
         },
         "pledged_native": {
-          "status": "fresh",
-          "attempt_status": "success",
+          "status": "stale",
+          "attempt_status": "failed",
           "observed_at": "2026-11-13T04:11:11Z",
-          "attempted_at": "2026-11-13T04:11:11Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
           "source": "ks_graphql",
           "unit": "HKD",
-          "basis": "native_pledged:HKD"
+          "basis": "native_pledged:HKD",
+          "reason": "fetch_failed"
         }
       },
       "delta_meta": {
         "delta_followers": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-12T05:04:12Z",
-          "to": "2026-11-13T04:11:11Z",
-          "seconds": 83219.0
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-13T04:11:11Z",
+          "to": "2026-11-13T04:11:11Z"
         },
         "delta_backers": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-12T05:04:12Z",
-          "to": "2026-11-13T04:11:11Z",
-          "seconds": 83219.0
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-13T04:11:11Z",
+          "to": "2026-11-13T04:11:11Z"
         },
         "delta_pledged_usd": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-12T05:04:12Z",
-          "to": "2026-11-13T04:11:11Z",
-          "seconds": 83219.0,
-          "method": "constant_currency",
-          "currency": "HKD",
-          "usd_rate": 0.12748315,
-          "rate_observed_at": "2026-11-13T04:11:11Z"
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-13T04:11:11Z",
+          "to": "2026-11-13T04:11:11Z"
         },
         "weekly_delta_followers": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-06T04:15:57Z",
-          "to": "2026-11-13T04:11:11Z",
-          "seconds": 604514.0
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-07T03:50:21Z",
+          "to": "2026-11-13T04:11:11Z"
         },
         "weekly_delta_backers": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-06T04:15:57Z",
-          "to": "2026-11-13T04:11:11Z",
-          "seconds": 604514.0
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-07T03:50:21Z",
+          "to": "2026-11-13T04:11:11Z"
         },
         "weekly_delta_pledged_usd": {
-          "status": "valid",
-          "reason": null,
-          "from": "2026-11-06T04:15:57Z",
-          "to": "2026-11-13T04:11:11Z",
-          "seconds": 604514.0,
-          "method": "constant_currency",
-          "currency": "HKD",
-          "usd_rate": 0.12748315,
-          "rate_observed_at": "2026-11-13T04:11:11Z"
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-07T03:50:21Z",
+          "to": "2026-11-13T04:11:11Z"
         }
       },
       "status_observation": {
-        "status": "fresh",
+        "status": "stale",
         "observed_at": "2026-11-13T04:11:11Z",
         "source": "ks_graphql",
         "raw_state": "LIVE"
@@ -873,13 +665,178 @@
       "launched_at": 1792495081,
       "project_we_love": false,
       "china_confidence": "高",
-      "delta_followers": 14,
-      "delta_backers": 0,
-      "delta_pledged_usd": 383.59679835,
-      "weekly_delta_followers": 57,
-      "weekly_delta_backers": -4,
-      "weekly_delta_pledged_usd": -2001.9953875999997,
+      "delta_followers": null,
+      "delta_backers": null,
+      "delta_pledged_usd": null,
+      "weekly_delta_followers": null,
+      "weekly_delta_backers": null,
+      "weekly_delta_pledged_usd": null,
       "_sleeper_reason": "机器人 · 小盘高溢价 · 9× / $92K · 连续 2 天上榜",
+      "_sleeper_score": 340
+    },
+    {
+      "project_id": 123376257,
+      "identity_observation": {
+        "project_id": 123376257,
+        "source": "ks_graphql",
+        "observed_at": "2026-11-13T04:12:02Z",
+        "canonical_pathname": "/projects/piteam/pily"
+      },
+      "aliases": [],
+      "observations": {
+        "followers": {
+          "status": "stale",
+          "attempt_status": "failed",
+          "observed_at": "2026-11-13T04:12:02Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
+          "source": "ks_graphql",
+          "unit": "count",
+          "basis": "followers",
+          "reason": "fetch_failed"
+        },
+        "backers": {
+          "status": "stale",
+          "attempt_status": "failed",
+          "observed_at": "2026-11-13T04:12:02Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
+          "source": "ks_graphql",
+          "unit": "count",
+          "basis": "backers",
+          "reason": "fetch_failed"
+        },
+        "pledged_usd": {
+          "status": "stale",
+          "attempt_status": "failed",
+          "observed_at": "2026-11-13T04:12:02Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
+          "source": "ks_graphql",
+          "unit": "USD",
+          "basis": "ks_project_usd:HKD",
+          "conversion": {
+            "native_amount": 159960.0,
+            "currency": "HKD",
+            "rate": 0.12747197,
+            "source": "ks_project_usd_exchange_rate",
+            "observed_at": "2026-11-13T04:12:02Z"
+          },
+          "reason": "fetch_failed"
+        },
+        "min_pledge_usd": {
+          "status": "failed",
+          "attempt_status": "failed",
+          "attempted_at": "2026-11-14T04:10:59Z",
+          "reason": "fetch_failed",
+          "observed_at": null,
+          "source": "legacy_unknown",
+          "unit": "USD",
+          "basis": null
+        },
+        "goal_usd": {
+          "status": "stale",
+          "attempt_status": "failed",
+          "observed_at": "2026-11-13T04:12:02Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
+          "source": "ks_graphql",
+          "unit": "USD",
+          "basis": "ks_project_usd:HKD",
+          "conversion": {
+            "native_amount": 30000.0,
+            "currency": "HKD",
+            "rate": 0.12747197,
+            "source": "ks_project_usd_exchange_rate",
+            "observed_at": "2026-11-13T04:12:02Z"
+          },
+          "reason": "fetch_failed"
+        },
+        "percent_funded": {
+          "status": "stale",
+          "attempt_status": "failed",
+          "observed_at": "2026-11-13T04:12:02Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
+          "source": "ks_graphql",
+          "unit": "count",
+          "basis": "percent_funded",
+          "reason": "fetch_failed"
+        },
+        "pledged_native": {
+          "status": "stale",
+          "attempt_status": "failed",
+          "observed_at": "2026-11-13T04:12:02Z",
+          "attempted_at": "2026-11-14T04:10:59Z",
+          "source": "ks_graphql",
+          "unit": "HKD",
+          "basis": "native_pledged:HKD",
+          "reason": "fetch_failed"
+        }
+      },
+      "delta_meta": {
+        "delta_followers": {
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-13T04:12:02Z",
+          "to": "2026-11-13T04:12:02Z"
+        },
+        "delta_backers": {
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-13T04:12:02Z",
+          "to": "2026-11-13T04:12:02Z"
+        },
+        "delta_pledged_usd": {
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-13T04:12:02Z",
+          "to": "2026-11-13T04:12:02Z"
+        },
+        "weekly_delta_followers": {
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-07T03:51:05Z",
+          "to": "2026-11-13T04:12:02Z"
+        },
+        "weekly_delta_backers": {
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-07T03:51:05Z",
+          "to": "2026-11-13T04:12:02Z"
+        },
+        "weekly_delta_pledged_usd": {
+          "status": "unavailable",
+          "reason": "current_not_fresh",
+          "from": "2026-11-07T03:51:05Z",
+          "to": "2026-11-13T04:12:02Z"
+        }
+      },
+      "status_observation": {
+        "status": "stale",
+        "observed_at": "2026-11-13T04:12:02Z",
+        "source": "ks_graphql",
+        "raw_state": "CANCELED"
+      },
+      "native_currency": "HKD",
+      "pathname": "/projects/piteam/pily",
+      "title": "PiLY – World's First AI Voice-Note Smart Health Band",
+      "blurb_zh": null,
+      "status": "canceled",
+      "url": "https://www.kickstarter.com/projects/piteam/pily",
+      "country": "HK",
+      "creator": "PiLY",
+      "followers": 233,
+      "backers": 162,
+      "pledged_usd": 20390.4163212,
+      "goal_usd": 3824.1591,
+      "percent_funded": 533.0,
+      "deadline": 1793277771,
+      "launched_at": 1788957771,
+      "project_we_love": false,
+      "china_confidence": "高",
+      "delta_followers": null,
+      "delta_backers": null,
+      "delta_pledged_usd": null,
+      "weekly_delta_followers": null,
+      "weekly_delta_backers": null,
+      "weekly_delta_pledged_usd": null,
+      "_sleeper_reason": "AI 标签 · 超募 5× · 小众粉丝盘 $20K · 连续 2 天上榜",
       "_sleeper_score": 340
     }
   ]
