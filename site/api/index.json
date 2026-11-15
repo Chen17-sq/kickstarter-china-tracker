@@ -1,7 +1,8 @@
 {
   "schema_version": 2,
-  "latest": "2026-11-14",
+  "latest": "2026-11-15",
   "dates": [
+    "2026-11-15",
     "2026-11-14",
     "2026-11-13",
     "2026-11-12",
@@ -42,7 +43,7 @@
     "2026-10-07",
     "2026-05-16"
   ],
-  "latest_revision": "2026-11-14-revision-bfd7926d6751b865.json",
+  "latest_revision": "2026-11-15.json",
   "revisions": [
     "2026-10-07-revision-3cf88706b65eb869.json",
     "2026-10-07-revision-9117703b3e86045e.json",
