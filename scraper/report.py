@@ -14,8 +14,9 @@ import datetime as dt
 import json
 from pathlib import Path
 
+from .aggregates import live_pledged_text, live_pledged_totals, usd_number
 from .atomic import write_text_atomic, write_versioned_text
-from .observations import delta_text, is_fresh, metric_text
+from .observations import delta_text, metric_text
 from .quality import quality_lines
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -122,7 +123,6 @@ def make_report(curr: dict, prev: dict | None) -> str:
 
     counts = {"prelaunch": 0, "live": 0, "successful": 0, "failed": 0}
     pwl_count = high = 0
-    total_live_usd = 0.0
     for p in projects:
         st = p.get("status")
         if st in counts:
@@ -131,12 +131,8 @@ def make_report(curr: dict, prev: dict | None) -> str:
             pwl_count += 1
         if p.get("china_confidence") == "高":
             high += 1
-        if st == "live":
-            try:
-                total_live_usd += float(p.get("pledged_usd") or 0)
-            except (TypeError, ValueError):
-                pass
 
+    totals = live_pledged_totals(projects)
     new_today = []
     status_changes = []
     if prev_by_path:
@@ -175,7 +171,9 @@ def make_report(curr: dict, prev: dict | None) -> str:
     out.append("")
     out.append("| Tracked | Prelaunch | Live | Funded | Editor's | Pledged |")
     out.append("| ---: | ---: | ---: | ---: | ---: | ---: |")
-    out.append(f"| **{len(projects)}** | {counts['prelaunch']} | {counts['live']} | {counts['successful']} | {PWL} {pwl_count} | {(fmt_usd(total_live_usd) if all(is_fresh(p, "pledged_usd") for p in projects if p.get("status") == "live") else "未更新")} |")
+    out.append(f"| **{len(projects)}** | {counts['prelaunch']} | {counts['live']} | {counts['successful']} | {PWL} {pwl_count} | {(fmt_usd(totals["total_live_usd"]) if totals["total_live_usd"] is not None else "未更新")} |")
+    out.append("")
+    out.append(live_pledged_text(totals))
     out.append("")
     out.append(f"_中国背景置信度高 · **{high}** / {len(projects)}_")
     out.append("")
@@ -190,7 +188,7 @@ def make_report(curr: dict, prev: dict | None) -> str:
             new_today,
             key=lambda x: (
                 0 if x.get("status") == "prelaunch" else 1,
-                -float(x.get("pledged_usd") or 0),
+                -(usd_number(x.get("pledged_usd")) or 0),
             ),
         )
         for p in new_today_sorted[:30]:
@@ -215,14 +213,14 @@ def make_report(curr: dict, prev: dict | None) -> str:
             x.get("title") or "",
         ),
     )
-    if prelaunch:
-        # Load curated 4-bullet Chinese highlights for the top-3 detail blocks
-        try:
-            from .social import load_highlights_zh as _load_zh
-            hl_map = _load_zh()
-        except Exception:
-            hl_map = {}
+    # Load curated 4-bullet Chinese highlights for the top-3 detail blocks
+    try:
+        from .social import load_highlights_zh as _load_zh
+        hl_map = _load_zh()
+    except Exception:
+        hl_map = {}
 
+    if prelaunch:
         out.append("✦ &nbsp; ✦ &nbsp; ✦")
         out.append("")
         out.append("## Section C · ⏳ Prelaunch · Top 10")
@@ -287,7 +285,7 @@ def make_report(curr: dict, prev: dict | None) -> str:
 
     live = sorted(
         [p for p in projects if p.get("status") == "live"],
-        key=lambda x: -float(x.get("pledged_usd") or 0),
+        key=lambda x: -(usd_number(x.get("pledged_usd")) or 0),
     )
     if live:
         from .momentum import conversion_per_watcher, projected_total
@@ -364,7 +362,7 @@ def make_report(curr: dict, prev: dict | None) -> str:
 
     successful = sorted(
         [p for p in projects if p.get("status") == "successful"],
-        key=lambda x: -float(x.get("pledged_usd") or 0),
+        key=lambda x: -(usd_number(x.get("pledged_usd")) or 0),
     )
     if successful:
         from .momentum import conversion_per_watcher

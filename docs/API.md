@@ -33,7 +33,7 @@ Top-level:
 
 ```json
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "generated_at": "2026-05-16T02:06:14Z",
   "edition": 22,
   "counts": {
@@ -45,6 +45,8 @@ Top-level:
     "pwl": 59
   },
   "total_live_usd": 33246672.98,
+  "verified_live_usd_subtotal": 33246672.98,
+  "live_usd_coverage": {"verified": 76, "total": 76},
   "projects": [ ... ]
 }
 ```
@@ -81,6 +83,34 @@ other fields may be absent):
 Sleeper annotations (`_sleeper_reason`, `_sleeper_score`) are only
 present on the 5 sleeper picks per day, not on every project. Filter
 on `_sleeper_reason` being non-null to get just the day's picks.
+
+---
+
+## Live fundraising coverage
+
+`total_live_usd` is the **complete** live-project total, or `null` when any live
+project lacks a valid fresh USD observation. Never substitute a partial sum for it.
+`verified_live_usd_subtotal` adds only verified fresh USD amounts, or is `null`
+when there are no valid amounts. A genuine observed zero contributes to coverage
+and can produce a numeric zero subtotal or complete total.
+
+`live_usd_coverage.verified` counts qualifying projects; `.total` counts **all**
+projects whose stored status is `live`, including missing, stale and invalid rows.
+For incomplete coverage, display for example: “Verified subtotal $17.02M · 131/132
+projects; full total not updated”. This example is not a fixed production value.
+
+Qualifying values must be finite, non-negative JSON numbers (not booleans or
+numeric strings), with `observations.pledged_usd.status = fresh`, `unit = USD`, and
+an explicit timezone in `observed_at`. Observation age must be between zero and
+30 hours inclusive at evaluation time. Neither `generated_at` nor a historical
+value establishes freshness. No live projects means both amounts are `null`.
+All amounts are in USD; coverage is a count of projects, not an estimate of the
+percentage of money captured. The subtotal does not change project status or
+observation metadata. Arithmetic overflow also yields `null`, never infinity.
+
+Static API output reflects freshness when generated; clients that retain a
+payload must re-evaluate observation timestamps before calling its amounts fresh.
+The website recomputes these fields from the source observations when rendering.
 
 ---
 

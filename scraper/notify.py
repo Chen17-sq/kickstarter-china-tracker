@@ -28,7 +28,8 @@ from pathlib import Path
 
 import httpx
 
-from .observations import is_fresh, metric_text
+from .aggregates import live_pledged_text, live_pledged_totals, usd_number
+from .observations import metric_text
 from .quality import quality_lines
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -104,7 +105,6 @@ def get_summary_data(curr: dict) -> dict:
 
     counts = {"prelaunch": 0, "live": 0, "successful": 0, "failed": 0}
     pwl = high = 0
-    total_live_usd = 0.0
     for p in projects:
         st = p.get("status")
         if st in counts:
@@ -113,11 +113,6 @@ def get_summary_data(curr: dict) -> dict:
             pwl += 1
         if p.get("china_confidence") == "高":
             high += 1
-        if st == "live":
-            try:
-                total_live_usd += float(p.get("pledged_usd") or 0)
-            except (TypeError, ValueError):
-                pass
 
     prelaunch = sorted(
         [p for p in projects if p.get("status") == "prelaunch"],
@@ -128,20 +123,16 @@ def get_summary_data(curr: dict) -> dict:
     )
     live = sorted(
         [p for p in projects if p.get("status") == "live"],
-        key=lambda x: -float(x.get("pledged_usd") or 0),
+        key=lambda x: -(usd_number(x.get("pledged_usd")) or 0),
     )
 
-    if curr.get("schema_version", 1) >= 2 and any(
-        not is_fresh(p, "pledged_usd") for p in projects if p.get("status") == "live"
-    ):
-        total_live_usd = None
     return {
         "today": today,
         "total": len(projects),
         "counts": counts,
         "pwl": pwl,
         "high": high,
-        "total_live_usd": total_live_usd,
+        **live_pledged_totals(projects),
         "prelaunch": prelaunch,
         "live": live,
         "signals": parse_changelog_signals(),
@@ -159,7 +150,6 @@ def build_summary(curr: dict, *, dialect: str = "slack") -> str:
     prelaunch = data["prelaunch"]
     live = data["live"]
     pwl = data["pwl"]
-    total_live_usd = data["total_live_usd"]
 
     fmt_link = link if dialect == "slack" else discord_link
 
@@ -168,7 +158,7 @@ def build_summary(curr: dict, *, dialect: str = "slack") -> str:
     lines.append(
         f"`{data['total']}` 项追踪 · "
         f"`{counts['prelaunch']}` 未发布 · "
-        f"`{counts['live']}` 在筹 ({(fmt_usd(total_live_usd) if total_live_usd is not None else "未更新")} 合计) · "
+        f"`{counts['live']}` 在筹 ({live_pledged_text(data)}) · "
         f"`{counts['successful']}` 成功 · "
         f"★ `{pwl}` KS 精选"
     )

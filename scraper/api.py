@@ -14,12 +14,14 @@ Layout on disk:
 
 Schema (versioned via top-level `schema_version`):
   {
-    "schema_version": 1,
+    "schema_version": 2,
     "generated_at": "2026-05-15T02:00:00Z",
     "edition": 21,
     "counts": {"prelaunch": 86, "live": 76, "successful": 72, "failed": 0,
                "total": 234, "pwl": 59},
     "total_live_usd": 33250000.0,
+    "verified_live_usd_subtotal": 33250000.0,
+    "live_usd_coverage": {"verified": 76, "total": 76},
     "projects": [
       {
         "pathname": "/projects/.../widget",
@@ -60,8 +62,8 @@ import re
 from pathlib import Path
 
 from ._common import edition_number
+from .aggregates import live_pledged_totals
 from .atomic import write_versioned_text
-from .observations import is_fresh
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 API_DIR = REPO_ROOT / "site" / "api"
@@ -119,23 +121,15 @@ def build_payload(curr: dict) -> dict:
     projects = curr.get("projects") or []
     counts = {"prelaunch": 0, "live": 0, "successful": 0, "failed": 0}
     pwl = 0
-    total_live_usd = 0.0
     for p in projects:
         st = p.get("status")
         if st in counts:
             counts[st] += 1
         if p.get("project_we_love"):
             pwl += 1
-        if st == "live":
-            try:
-                total_live_usd += float(p.get("pledged_usd") or 0)
-            except (TypeError, ValueError):
-                pass
     counts["total"] = len(projects)
     counts["pwl"] = pwl
 
-    if curr.get("schema_version", 1) >= 2 and any(not is_fresh(p, "pledged_usd") for p in projects if p.get("status") == "live"):
-        total_live_usd = None
     return {
         "data_quality": curr.get("data_quality"),
         "schema_version": SCHEMA_VERSION,
@@ -143,7 +137,7 @@ def build_payload(curr: dict) -> dict:
             or dt.datetime.now(dt.UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "edition": edition_number(),
         "counts": counts,
-        "total_live_usd": total_live_usd,
+        **live_pledged_totals(projects),
         "projects": [_slim_project(p) for p in projects],
     }
 

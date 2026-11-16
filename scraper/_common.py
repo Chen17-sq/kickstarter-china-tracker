@@ -63,8 +63,8 @@ def fmt_usd(n) -> str:
         return "—"
     if v >= 1_000_000:
         s = f"${v/1e6:.2f}M"
-        # Trim: $1.00M → $1M, $1.20M → $1.2M (only when ending in 00M)
-        return s.replace(".00M", "M").replace("0M", "M") if s.endswith("00M") else s
+        # Remove only the decimal suffix; never remove zeros from the amount.
+        return s.replace(".00M", "M")
     if v >= 10_000:
         return f"${round(v/1e3)}K"
     if v >= 1_000:
