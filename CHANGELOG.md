@@ -1,41 +1,39 @@
 # Kickstarter China Tracker — diff
 
-## followers_delta (12)
-- **XAIStack: Modular AI Workstation NAS, Built to Grow** — +144 followers (3016 → 3160)  
-  `/projects/xaistack/xaistack`
-- **World's First AI Electric Screwdriver With Eyes And Brain** — +63 followers (2298 → 2361)  
-  `/projects/arrowmax/the-worlds-first-ai-screwdriver-with-eyes-and-brain`
-- **SilkyWave — Hands-Free Barista Microfoamer** — +50 followers (1985 → 2035)  
-  `/projects/2115481410/abslow-milkyway-absolutely-hands-free-barista-microfoam`
-- **Fotorgear Campix: Look Down, Good Things Start with One Roll** — +59 followers (1751 → 1810)  
-  `/projects/fotorgear/fotorgear-campix-look-down-good-things-start-with-one-roll`
-- **InfiMech MX 3D Printer: 8X More Efficient. 8X Less Waste.** — +64 followers (13929 → 13993)  
-  `/projects/infimech-mx-series/infimech-mx-3d-printer-8x-more-efficiency-8x-less-waste`
-- **AROTI R1: The Essential AI Glasses** — +79 followers (434 → 513)  
-  `/projects/aroti/aroti-r1-your-look-your-life-a-little-smarter`
-- **PlugMate Pro: Your Thumb-Sized Privacy Computer** — +57 followers (1087 → 1144)  
-  `/projects/trustkernel/trustkernel-plugmate-pro-your-thumb-sized-privacy-computer`
-- **COOLGEEK P1 — The Cassette Player, Reimagined** — +99 followers (2558 → 2657)  
-  `/projects/coolgeekaudio/coolgeek-p1-the-cassette-player-reimagined`
-- **Inkanva: The World's First Self-Charging E-Ink Canvas** — +58 followers (8612 → 8670)  
-  `/projects/inkanva/inkanva`
-- **SnowPod: Real Metal 3D Printing on Your Desktop** — +112 followers (3484 → 3596)  
-  `/projects/snowx/snowpod-real-metal-3d-printing-on-your-desktop`
-- **VIVIFoCAL S1: All-Sight Smart Adaptive Eyewear** — +56 followers (221 → 277)  
-  `/projects/vivifocal/vivifocal-s1-all-sight-smart-adaptive-eyewear`
-- **ClearX: Fully Automated Shoe Care: Wash, Dry & Sanitize** — +70 followers (999 → 1069)  
-  `/projects/clearx/brolan-clearx-automated-shoe-care-wash-dry-and-sanitize`
+## new (4)
+- **PRALOX: Modular Laptop Stand With Built‑In Docking Hub** — Discovered (prelaunch, 3 followers)  
+  `/projects/930779395/pralox-modular-laptop-stand-with-builtin-docking-hub`
+- **JETBeam E27: One Light. More Possibility.** — Discovered (prelaunch, 3 followers)  
+  `/projects/jetbeam/jetbeam-e27-one-light-more-possibility`
+- **PREDATOR ：Zero Point Hand Warmer — Heavyweight Warmth** — Discovered (live, 45 followers)  
+  `/projects/predatorcn/predator-zero-point-hand-warmer-heavyweight-warmth`
+- **ROCK—Double locking system, redefining the world of knives.** — Discovered (prelaunch, 195 followers)  
+  `/projects/jellyedc/rockdouble-locking-system-redefining-the-world-of-knives`
 
-## status_change (6)
-- **SUPERBANK 15 - Best Buddy for your Daily Shoot** — live → successful  
-  `/projects/ztraw/superbank-15-best-buddy-for-your-daily-shoot`
-- **M1 Outdoor Multi-functional Portable Power Bank** — live → failed  
-  `/projects/1691134195/m1-outdoor-multi-functional-portable-power-bank`
-- **Aerfold: More Space with Hangable Vacuum Compression Bags** — live → successful  
-  `/projects/vacugo/vacugo-hangable-electric-vacuum-compression-bags`
-- **SN for Tesla Model 3/Y All-Aluminum Magnetic Phone Mount** — live → successful  
-  `/projects/324386321/sn-all-aluminum-magnetic-phone-mount-for-tesla-model-3-y`
-- **FluxPin Portable Precision Soldering Tweezers** — live → successful  
-  `/projects/592352763/fluxpin-portable-precision-soldering-tweezers`
-- **Nexdualsync: The USB4 80Gbps Cable with Dual Power Display** — live → successful  
-  `/projects/1642794717/usb4-80gbps-cable-with-dual-power-display`
+## followers_delta (9)
+- **COOLGEEK P1 — The Cassette Player, Reimagined** — +103 followers (2657 → 2760)  
+  `/projects/coolgeekaudio/coolgeek-p1-the-cassette-player-reimagined`
+- **SnowPod: Real Metal 3D Printing on Your Desktop** — +84 followers (3596 → 3680)  
+  `/projects/snowx/snowpod-real-metal-3d-printing-on-your-desktop`
+- **Moera Smart Climate Mattress Cover: Fast Cooling. Zero Fees.** — +50 followers (1454 → 1504)  
+  `/projects/moerasleep/moera-smart-climate-mattress-cover`
+- **InfiMech MX 3D Printer: 8X More Efficient. 8X Less Waste.** — +72 followers (13993 → 14065)  
+  `/projects/infimech-mx-series/infimech-mx-3d-printer-8x-more-efficiency-8x-less-waste`
+- **XAIStack: Modular AI Workstation NAS, Built to Grow** — +88 followers (3160 → 3248)  
+  `/projects/xaistack/xaistack`
+- **AROTI R1: The Essential AI Glasses** — +67 followers (513 → 580)  
+  `/projects/aroti/aroti-r1-your-look-your-life-a-little-smarter`
+- **Fotorgear Campix: Look Down, Good Things Start with One Roll** — +60 followers (1810 → 1870)  
+  `/projects/fotorgear/fotorgear-campix-look-down-good-things-start-with-one-roll`
+- **ClearX: Fully Automated Shoe Care: Wash, Dry & Sanitize** — +66 followers (1069 → 1135)  
+  `/projects/clearx/brolan-clearx-automated-shoe-care-wash-dry-and-sanitize`
+- **World's First AI Electric Screwdriver With Eyes And Brain** — +75 followers (2361 → 2436)  
+  `/projects/arrowmax/the-worlds-first-ai-screwdriver-with-eyes-and-brain`
+
+## status_change (3)
+- **Inkanva: The World's First Self-Charging E-Ink Canvas** — live → successful  
+  `/projects/inkanva/inkanva`
+- **abxylute M6/M5: Rethinking Mobile Gaming Controllers** — live → successful  
+  `/projects/abxylute/abxylute-m6-m5-rethinking-mobile-gaming-controllers`
+- **RainLoop: A Home for Wet Umbrellas, Rain for Plants** — live → canceled  
+  `/projects/1017475010/rainloop-a-home-for-wet-umbrellas-rain-for-plants`
