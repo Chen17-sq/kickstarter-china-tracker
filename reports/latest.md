@@ -1,21 +1,21 @@
 ```
-VOL. 1 · NO. 206                                    BEIJING EDITION
-DAILY · LIVE EDITION · MONDAY, NOVEMBER 16, 2026
+VOL. 1 · NO. 207                                    BEIJING EDITION
+DAILY · LIVE EDITION · TUESDAY, NOVEMBER 17, 2026
 ```
 
 # Kickstarter China Tracker
 
-> *All The Crowd-Funded Hardware Fit To Print* — Vol. 1, No. 206 · 2026-11-16
+> *All The Crowd-Funded Hardware Fit To Print* — Vol. 1, No. 207 · 2026-11-17
 
-_Auto-generated at 2026-11-16T04:02:18Z · [完整看板](https://chen17-sq.github.io/kickstarter-china-tracker/) · [JSON](../data/projects.json)_
+_Auto-generated at 2026-11-17T05:55:16Z · [完整看板](https://chen17-sq.github.io/kickstarter-china-tracker/) · [JSON](../data/projects.json)_
 
 ---
 
 数据刷新：正常
-预热关注：本次有效刷新 252/268；可比日增量 249/268
-在筹支持人数：本次有效刷新 126/127；可比日增量 125/127
-在筹筹款：本次有效刷新 126/127；可比日增量 125/127
-最低支持档位：本次有效刷新 126/127
+预热关注：本次有效刷新 258/274；可比日增量 249/274
+在筹支持人数：本次有效刷新 130/131；可比日增量 128/131
+在筹筹款：本次有效刷新 130/131；可比日增量 128/131
+最低支持档位：本次有效刷新 130/131
 17个项目当前状态未确认，沿用最近记录；未从覆盖率分母移除。
 跨币种筹款增量按本次平台汇率折算原币变化，不将汇率变动计为增长。
 未更新值仅为历史参考；生成时间不代表观测时间。邮件送达另行统计。
@@ -24,24 +24,32 @@ _Auto-generated at 2026-11-16T04:02:18Z · [完整看板](https://chen17-sq.gith
 
 | Tracked | Prelaunch | Live | Funded | Editor's | Pledged |
 | ---: | ---: | ---: | ---: | ---: | ---: |
-| **1182** | 268 | 127 | 638 | ✦ 152 | 未更新 |
+| **1193** | 274 | 131 | 638 | ✦ 152 | 未更新 |
 
-_中国背景置信度高 · **1180** / 1182_
+_中国背景置信度高 · **1191** / 1193_
 
 ✦ &nbsp; ✦ &nbsp; ✦
 
-## Section B · 🆕 今日新增 · 4 项
+## Section B · 🆕 今日新增 · 11 项
 
-- **`prelaunch`** · [JETBeam E27: One Light. More Possibility.](https://www.kickstarter.com/projects/jetbeam/jetbeam-e27-one-light-more-possibility) · HK
-- **`prelaunch`** · [ROCK—Double locking system, redefining the world of knives.](https://www.kickstarter.com/projects/jellyedc/rockdouble-locking-system-redefining-the-world-of-knives) · HK
-- **`prelaunch`** · [PRALOX: Modular Laptop Stand With Built‑In Docking Hub](https://www.kickstarter.com/projects/930779395/pralox-modular-laptop-stand-with-builtin-docking-hub) · HK
-- **`live`** · [PREDATOR ：Zero Point Hand Warmer — Heavyweight Warmth](https://www.kickstarter.com/projects/predatorcn/predator-zero-point-hand-warmer-heavyweight-warmth) · HK
+- **`prelaunch`** · [NOVAIR: The Travel Folio That Keeps Every Paper in Order](https://www.kickstarter.com/projects/novair-folio/novair-travel-folio) · MX
+- **`prelaunch`** · [Breeeeeeze: A Playful Bee-Shaped Watering Can](https://www.kickstarter.com/projects/breeeeeeeze/breeeeeeze-a-playful-bee-shaped-watering-can) · US
+- **`prelaunch`** · [OUKITEL RG14-P: World's First Solar Rugged Laptop](https://www.kickstarter.com/projects/1006830823/oukitel-rg14-p-worlds-first-solar-powered-rugged-laptop) · HK
+- **`prelaunch`** · [ArcLock: Mini Titanium Mechanical Lock](https://www.kickstarter.com/projects/mecharkgadget/arclock-mini-titanium-mechanical-lock) · HK
+- **`prelaunch`** · [SHADOW DANCE: Multi‑Scenario AI Exoskeleton That Learns You](https://www.kickstarter.com/projects/eulon/shadow-dance-multiscenario-ai-exoskeleton-that-learns-you) · HK
+- **`prelaunch`** · [Titaner RatchetCard: World's Thinnest EDC Ratchet Tool](https://www.kickstarter.com/projects/1699178293/titaner-ratchetcard-worlds-thinnest-edc-ratchet-tool) · HK
+- **`prelaunch`** · [Aquarise NestPure — The First-Ever Nested RO Water System](https://www.kickstarter.com/projects/aquarise/nestpure) · US
+- **`prelaunch`** · [SYLVA "Frond" — Where the Wild Meets the Mirror](https://www.kickstarter.com/projects/firsredc/sylva-frond-where-the-wild-meets-the-mirror) · HK
+- **`prelaunch`** · [ZERA Wave - The Everyday Razor Cleaning Center](https://www.kickstarter.com/projects/zerawave/zerawave) · HK
+- **`live`** · [The Art of Slow Living: A Relaxed Linen-Cotton Coat](https://www.kickstarter.com/projects/slowlinenstudio/the-art-of-slow-living-a-relaxed-linen-cotton-coat) · US
+- **`live`** · [Off the Rails: A Card Game for Daily Commute Survivors](https://www.kickstarter.com/projects/priscillamorrinzon/off-the-rails-a-card-game-for-daily-commute-survivors) · MX
 
-## Section B · 🔄 状态变化 · 3 项
+## Section B · 🔄 状态变化 · 4 项
 
-- [Inkanva: The World's First Self-Charging E-Ink Canvas](https://www.kickstarter.com/projects/inkanva/inkanva): `live` → `successful`
-- [abxylute M6/M5: Rethinking Mobile Gaming Controllers](https://www.kickstarter.com/projects/abxylute/abxylute-m6-m5-rethinking-mobile-gaming-controllers): `live` → `successful`
-- [RainLoop: A Home for Wet Umbrellas, Rain for Plants](https://www.kickstarter.com/projects/1017475010/rainloop-a-home-for-wet-umbrellas-rain-for-plants): `live` → `canceled`
+- [MAGTECS：Two Tech Gadgets, One Snap](https://www.kickstarter.com/projects/1518250351/magtecs-two-tech-gadgets-one-snap): `prelaunch` → `live`
+- [Passionhold Castle](https://www.kickstarter.com/projects/-howcat2025/passionhold-castle): `prelaunch` → `live`
+- [XK01 Clean the Air. Light Up the Night.](https://www.kickstarter.com/projects/246993741/airglow-air-purifier-and-starlight-projector): `prelaunch` → `live`
+- [AESISENSE | Men’s Sensory Calibration Device](https://www.kickstarter.com/projects/1514190952/aesisense-reconnect-with-your-bodys-natural-rhythm): `live` → `canceled`
 
 ✦ &nbsp; ✦ &nbsp; ✦
 
@@ -51,7 +59,7 @@ _中国背景置信度高 · **1180** / 1182_
 
 <img src="https://i.kickstarter.com/assets/051/916/987/c4cea8d808f4f59950adc2f7d4a91925_original.jpeg?anim=false&fit=cover&gravity=auto&height=315&origin=ugc&q=92&v=1765367779&width=560&sig=T%2BHqFCgRmquLOy%2BjjQ9nqF%2B3hbY5WV07srh0vpH8aTE%3D" alt="" width="360" />
 
-**AYANEO** · HK · **9,465** watchers · 起步价 **暂无档位** · 已预热 331 天
+**AYANEO** · HK · **9,469** watchers · 起步价 **暂无档位** · 已预热 332 天
 
 *安卓掌机 + 手机二合一（侧滑实体按键）*
 
@@ -68,7 +76,7 @@ _中国背景置信度高 · **1180** / 1182_
 
 <img src="https://i.kickstarter.com/assets/055/611/707/38bd85e7cb4ceb7c8a4bab311386f850_original.jpg?anim=false&fit=cover&gravity=auto&height=315&origin=ugc&q=92&v=1792649526&width=560&sig=ujj6OzdE9wW3O58cCGUznMU%2FqpslnVBzDNpulVNhfeA%3D" alt="" width="360" />
 
-**SnowX** · HK · **3,680** watchers · 起步价 **暂无档位** · 已预热 56 天
+**SnowX** · HK · **3,864** watchers · 起步价 **暂无档位** · 已预热 57 天
 
 - ▸ SLM/LPBF Technology
 - ▸ 40μm Fine Laser Spot
@@ -83,7 +91,7 @@ _中国背景置信度高 · **1180** / 1182_
 
 <img src="https://i.kickstarter.com/assets/055/856/636/08ebd4fce8e7b0bde55e65b4970de509_original.png?anim=false&fit=cover&gravity=auto&height=315&origin=ugc&q=92&v=1794393744&width=560&sig=sNSZPCiSxhd769pdbDl7D%2FLSdehXpMccuWpGQpsd%2F24%3D" alt="" width="360" />
 
-**XAIStack** · HK · **3,248** watchers · 起步价 **暂无档位** · 已预热 82 天
+**XAIStack** · HK · **3,337** watchers · 起步价 **暂无档位** · 已预热 83 天
 
 - ▸ Opus 4.6 and GPT 5.6 Sol-Class Local AI, 224TB Storage, Dual 10GbE, Dual USB4, PCIe 5.0 GPU Slot, 4 PCIe 4.0 M.2, Open Models and OS.
 
@@ -95,15 +103,15 @@ _中国背景置信度高 · **1180** / 1182_
 
 | # | 项目 / 一句话 | 公司 | 国家 | Followers | 时间 |
 | ---: | --- | --- | --- | ---: | --- |
-| 04 ✦ | [UGREEN HomeAgent: A Living Local Intelligence for Your Home](https://www.kickstarter.com/projects/ugreen/ugreen-homeagent-a-living-local-intelligence-for-your-home) | 绿联 | US | 1,078 | 已预热 83 天 |
-| 05 ✦ | [ARANIX — The World's First 4WD+4WS All-Terrain Robotic Mower](https://www.kickstarter.com/projects/airseekers/aranix-the-worlds-first-4wd-4ws-all-terrain-robotic-mower) | Airseekers | HK | 799 | 已预热 36 天 |
-| 06 ✦ | [Tenniix OMNI:The World's First AI Multi-Racket Robot](https://www.kickstarter.com/projects/tenniix/tenniix-omni-the-worlds-first-ai-multi-racket-robot) | Tenniix | HK | 730 | 已预热 174 天 |
-| 07 ✦ | [A Guidebook of Babel: An Afterlife Adventure — 蝴蝶效应主题点击式冒险解谜游戏](https://www.kickstarter.com/projects/aguidebookofbabel/a-guidebook-of-babel-an-afterlife-adventure) | StarryStarry | US | 512 | 已预热 1746 天 |
-| 08 ✦ | [VIVIFoCAL S1: All-Sight Smart Adaptive Eyewear](https://www.kickstarter.com/projects/vivifocal/vivifocal-s1-all-sight-smart-adaptive-eyewear) | VIVIFoCAL | HK | 304 | 已预热 25 天 |
-| 09 ✦ | [Oepicus: Patchable Guitar Pedals](https://www.kickstarter.com/projects/1voct/oepicus-patchable-guitar-pedals) | 1V/Oct | HK | 94 | 已预热 286 天 |
-| 10 ✦ | [TaroTag: Pocket E-Ink Canvas Meets AI Tarot](https://www.kickstarter.com/projects/tarotag/tarotag-pocket-e-ink-canvas-meets-ai-tarot) | Phototag | HK | 85 | 已预热 32 天 |
+| 04 ✦ | [UGREEN HomeAgent: A Living Local Intelligence for Your Home](https://www.kickstarter.com/projects/ugreen/ugreen-homeagent-a-living-local-intelligence-for-your-home) | 绿联 | US | 1,083 | 已预热 84 天 |
+| 05 ✦ | [ARANIX — The World's First 4WD+4WS All-Terrain Robotic Mower](https://www.kickstarter.com/projects/airseekers/aranix-the-worlds-first-4wd-4ws-all-terrain-robotic-mower) | Airseekers | HK | 829 | 已预热 37 天 |
+| 06 ✦ | [Tenniix OMNI:The World's First AI Multi-Racket Robot](https://www.kickstarter.com/projects/tenniix/tenniix-omni-the-worlds-first-ai-multi-racket-robot) | Tenniix | HK | 730 | 已预热 175 天 |
+| 07 ✦ | [A Guidebook of Babel: An Afterlife Adventure — 蝴蝶效应主题点击式冒险解谜游戏](https://www.kickstarter.com/projects/aguidebookofbabel/a-guidebook-of-babel-an-afterlife-adventure) | StarryStarry | US | 512 | 已预热 1747 天 |
+| 08 ✦ | [VIVIFoCAL S1: All-Sight Smart Adaptive Eyewear](https://www.kickstarter.com/projects/vivifocal/vivifocal-s1-all-sight-smart-adaptive-eyewear) | VIVIFoCAL | HK | 339 | 已预热 26 天 |
+| 09 ✦ | [Oepicus: Patchable Guitar Pedals](https://www.kickstarter.com/projects/1voct/oepicus-patchable-guitar-pedals) | 1V/Oct | HK | 94 | 已预热 288 天 |
+| 10 ✦ | [TaroTag: Pocket E-Ink Canvas Meets AI Tarot](https://www.kickstarter.com/projects/tarotag/tarotag-pocket-e-ink-canvas-meets-ai-tarot) | Phototag | HK | 85 | 已预热 33 天 |
 
-_…还有 258 个 prelaunch 项目，完整看板见 [Pages](https://chen17-sq.github.io/kickstarter-china-tracker/) 或 [JSON](../data/projects.json)_
+_…还有 264 个 prelaunch 项目，完整看板见 [Pages](https://chen17-sq.github.io/kickstarter-china-tracker/) 或 [JSON](../data/projects.json)_
 
 ✦ &nbsp; ✦ &nbsp; ✦
 
@@ -113,7 +121,7 @@ _…还有 258 个 prelaunch 项目，完整看板见 [Pages](https://chen17-sq.
 
 <img src="https://i.kickstarter.com/assets/055/410/550/6088d8c2df36dc98464c5e157488a692_original.jpg?anim=false&fit=cover&gravity=auto&height=315&origin=ugc&q=92&v=1791315303&width=560&sig=QPgOBiUWNH1BLf6ZDo12uZNmnDLunXkuiDPNtf3Qw3M%3D" alt="" width="360" />
 
-**极米** · US · 已筹 **$24.35M** · 日增量 +$250K · 9,405 backers · 完成率 **244× goal** · 起步价 **$2,199.00** · \$2194/watcher
+**极米** · US · 已筹 **$24.62M** · 日增量 +$265K · 9,508 backers · 完成率 **246× goal** · 起步价 **$2,199.00** · \$2198/watcher
 
 - ▸ 5700 ISO Lumens
 - ▸ 8000:1 Native Contrast
@@ -128,7 +136,7 @@ _…还有 258 个 prelaunch 项目，完整看板见 [Pages](https://chen17-sq.
 
 <img src="https://i.kickstarter.com/assets/055/890/158/5d2d755cd04abafb6dc7567b41c6d703_original.jpg?anim=false&fit=cover&gravity=auto&height=315&origin=ugc&q=92&v=1794639358&width=560&sig=lW8AXv3%2BlMK2aPQIywrV%2Bpmwx3wmNmLupMfnxu4TH%2Fg%3D" alt="" width="360" />
 
-**InfiMech** · HK · 已筹 **$2.31M** · 日增量 +$48K · 3,096 backers · 完成率 **4,523%** · 起步价 **$299.40** · \$164/watcher · 预计总额 $12.47M · 上线 5 天 · 剩 24 天
+**InfiMech** · HK · 已筹 **$2.33M** · 日增量 +$27K · 3,129 backers · 完成率 **4,575%** · 起步价 **$299.39** · \$165/watcher · 预计总额 $10.56M · 上线 6 天 · 剩 23 天
 
 - ▸ 8 Tools
 - ▸ Wireless Heating
@@ -143,7 +151,7 @@ _…还有 258 个 prelaunch 项目，完整看板见 [Pages](https://chen17-sq.
 
 <img src="https://i.kickstarter.com/assets/055/878/523/70e80261786ccdf15f36d6a3d7d9684f_original.png?anim=false&fit=cover&gravity=auto&height=315&origin=ugc&q=92&v=1794538125&width=560&sig=4nH7MqJ1DIHJ7QFi3Jw3pl6HwHMA9ZAmn6CDkjfzlB8%3D" alt="" width="360" />
 
-**Moera** · HK · 已筹 **$1.59M** · 日增量 +$30K · 1,660 backers · 完成率 **3,175%** · 起步价 **$998.51** · \$1056/watcher · 预计总额 $5.40M · 上线 5 天 · 剩 13 天
+**Moera** · HK · 已筹 **$1.61M** · 日增量 +$24K · 1,683 backers · 完成率 **3,224%** · 起步价 **$998.46** · \$1029/watcher · 预计总额 $4.59M · 上线 6 天 · 剩 12 天
 
 - ▸ Noticeable Cooling in 5 Min
 - ▸ 50–120°F Range
@@ -158,15 +166,15 @@ _…还有 258 个 prelaunch 项目，完整看板见 [Pages](https://chen17-sq.
 
 | # | 项目 / 一句话 | 已筹 | Backers | 完成率 | 时间 |
 | ---: | --- | ---: | ---: | ---: | --- |
-| 04 ✦ | [The World’s First Desktop Robotic Terminal — 6 轴机械臂 4K AI 触控显示器](https://www.kickstarter.com/projects/cybopal/cybopal-worlds-first-active-tracking-ai-robotic-monitor) | $1.18M · 日增量 +$6.0K | 522 | 116× goal | 上线 54 天 · 剩 5 天 |
-| 05 ✦ | [ArcBlue C42: First Smart Full-Frame Astrophotography System](https://www.kickstarter.com/projects/arcblue/arcblue-c42-smart-full-frame-astrophotography-system) | $959K · 日增量 +$4.7K | 254 | 1,881% | 上线 33 天 · 剩 26 天 |
-| 06 ✦ | [AREX | AR Dive Computer Mask & AI Marine Life Identification](https://www.kickstarter.com/projects/arex/arex-ar-dive-computer-mask-and-marine-life-identification) | $927K · 日增量 +$11K | 560 | 7,271% | 上线 54 天 · 剩 5 天 |
-| 07 ✦ | [AXILOOP MC8 — 8 Independent Tool Head Multi-Color 3D Printer](https://www.kickstarter.com/projects/axiloop/axiloop-mc8-8-independent-tool-head-multi-color-3d-printer) | $652K · 日增量 +$10K | 435 | 1,304% | 上线 3 天 · 剩 41 天 |
-| 08 ✦ | [UniFormation S10: First Automated Desktop Resin 3D Printer](https://www.kickstarter.com/projects/uniformations10/uniformation-s10-first-desktop-automated-resin-3d-printer) | $640K · 日增量 −$9.0K | 454 | 1,281% | 上线 24 天 · 剩 15 天 |
-| 09 ✦ | [Lucy AI Studio: A Dedicated Computer for Your AI Agents](https://www.kickstarter.com/projects/744045479/cephalon-ondevice-ai-with-a-selfevolving-ecosystem) | $353K · 日增量 +$20K | 168 | 277× goal | 上线 26 天 · 剩 8 天 |
-| 10 ✦ | [COMAN T1 MINI: World’s First One-Click Travel Tripod](https://www.kickstarter.com/projects/coman/coman-t1-mini-worlds-first-one-click-travel-tripod) | $327K · 日增量 +$7.8K | 1,015 | 2,567% | 上线 18 天 · 剩 11 天 |
+| 04 ✦ | [The World’s First Desktop Robotic Terminal — 6 轴机械臂 4K AI 触控显示器](https://www.kickstarter.com/projects/cybopal/cybopal-worlds-first-active-tracking-ai-robotic-monitor) | $1.22M · 日增量 +$40K | 523 | 120× goal | 上线 55 天 · 剩 4 天 |
+| 05 ✦ | [ArcBlue C42: First Smart Full-Frame Astrophotography System](https://www.kickstarter.com/projects/arcblue/arcblue-c42-smart-full-frame-astrophotography-system) | $963K · 日增量 +$3.8K | 256 | 1,888% | 上线 34 天 · 剩 25 天 |
+| 06 ✦ | [AREX | AR Dive Computer Mask & AI Marine Life Identification](https://www.kickstarter.com/projects/arex/arex-ar-dive-computer-mask-and-marine-life-identification) | $940K · 日增量 +$13K | 567 | 7,374% | 上线 55 天 · 剩 4 天 |
+| 07 ✦ | [AXILOOP MC8 — 8 Independent Tool Head Multi-Color 3D Printer](https://www.kickstarter.com/projects/axiloop/axiloop-mc8-8-independent-tool-head-multi-color-3d-printer) | $663K · 日增量 +$10K | 441 | 1,325% | 上线 4 天 · 剩 40 天 |
+| 08 ✦ | [UniFormation S10: First Automated Desktop Resin 3D Printer](https://www.kickstarter.com/projects/uniformations10/uniformation-s10-first-desktop-automated-resin-3d-printer) | $648K · 日增量 +$8.0K | 459 | 1,297% | 上线 25 天 · 剩 14 天 |
+| 09 ✦ | [Lucy AI Studio: A Dedicated Computer for Your AI Agents](https://www.kickstarter.com/projects/744045479/cephalon-ondevice-ai-with-a-selfevolving-ecosystem) | $376K · 日增量 +$23K | 191 | 295× goal | 上线 27 天 · 剩 7 天 |
+| 10 ✦ | [ClearX: Fully Automated Shoe Care: Wash, Dry & Sanitize](https://www.kickstarter.com/projects/clearx/brolan-clearx-automated-shoe-care-wash-dry-and-sanitize) | $347K · 日增量 +$23K | 584 | 1,362% | 上线 6 天 · 剩 53 天 |
 
-_…还有 117 个 live 项目，完整看板见 [Pages](https://chen17-sq.github.io/kickstarter-china-tracker/) 或 [JSON](../data/projects.json)_
+_…还有 121 个 live 项目，完整看板见 [Pages](https://chen17-sq.github.io/kickstarter-china-tracker/) 或 [JSON](../data/projects.json)_
 
 ✦ &nbsp; ✦ &nbsp; ✦
 
@@ -179,11 +187,11 @@ _…还有 117 个 live 项目，完整看板见 [Pages](https://chen17-sq.githu
 | 03 | [AEKE S1 Pro FULL-BODY AI HOME GYM — 全身式 AI 家用智能健身器材](https://www.kickstarter.com/projects/aeke/aeke-s1-pro-full-body-ai-home-gym) | $5.87M | 1,885 | — | 587× goal | 结束于 2026-06-29 |
 | 04 | [xTool WonderPress: The Most Creative 3D Auto Heat Press Ever — 3D 升华 + 自动热转印模块化创作机](https://www.kickstarter.com/projects/makeblock/xtool-wonderpress-the-most-creative-3d-auto-heat-press-ever) | $5.19M | 9,251 | — | 5,191% | 结束于 2026-06-25 |
 | 05 | [Lumos Ultra World's First One-stop UV+MOPA Laser — UV + MOPA 双光路一体激光雕刻打标机](https://www.kickstarter.com/projects/wecreat/lumos-ultra-worlds-first-one-stop-uv-mopa-laser) | $4.99M | 701 | — | 4,989% | 结束于 2026-06-01 |
-| 06 | [InfiMaker K1: The Pro-Grade Desktop 5-Axis CNC](https://www.kickstarter.com/projects/infimaker/infimaker-k1-the-pro-grade-desktop-5-axis-cnc) | $4.80M | 854 | — | 9,599% | 50 天前结束 |
+| 06 | [InfiMaker K1: The Pro-Grade Desktop 5-Axis CNC](https://www.kickstarter.com/projects/infimaker/infimaker-k1-the-pro-grade-desktop-5-axis-cnc) | $4.81M | 855 | — | 9,622% | 51 天前结束 |
 | 07 | [Titan 2 Elite: The 5G Keyboard Phone You’ve Been Waiting For — QWERTY 实体键盘 + 5G 安卓 16 商务智能手机](https://www.kickstarter.com/projects/jellyphone/titan-2-elite-the-5g-keyboard-phone-youve-been-waiting-for) | $4.08M | 8,836 | $667 | 4,076% | 结束于 2026-05-13 |
 | 08 | [Pongbot Aura-The First Ultralight AI Coach Multi-Sport Robot — 7kg 便携 AI 网球 / 匹克球训练机器人](https://www.kickstarter.com/projects/pongbot/aura-the-worlds-first-ultra-light-ai-multi-sport-robot) | $4.01M | 4,836 | — | 201× goal | 结束于 2026-07-03 |
 | 09 | [Gweike MCore Desktop 400W Fiber and 80W CO2 Laser Cutter — 桌面级 400W 光纤 + 80W CO₂ 双激光切割机](https://www.kickstarter.com/projects/gweikelaser/gweike-mcore-desktop-400w-fiber-and-80w-co2-laser-cutter) | $3.63M | 636 | — | 4,706% | 结束于 2026-06-25 |
-| 10 | [VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER](https://www.kickstarter.com/projects/bvio/violoop-plug-in-ai-for-your-computer) | $3.46M | 5,905 | — | 346× goal | 16 天前结束 |
+| 10 | [VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER](https://www.kickstarter.com/projects/bvio/violoop-plug-in-ai-for-your-computer) | $3.46M | 5,908 | — | 346× goal | 17 天前结束 |
 
 ✦ &nbsp; ✦ &nbsp; ✦
 
@@ -233,7 +241,7 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 
 <img src="https://i.kickstarter.com/assets/055/599/007/f416de7c31839f916d967f7ebe45b68e_original.png?anim=false&fit=cover&gravity=auto&height=315&origin=ugc&q=92&v=1792568589&width=560&sig=BcQd2brLHE4AiO2DrhFTQfYQ59ApIXB6yUG5I09vmek%3D" alt="" width="280" />
 
-`live` · **Figurobot** · HK · 已筹 **$89K** · 完成率 **894%**
+`live` · **Figurobot** · HK · 已筹 **$89K** · 完成率 **887%**
 
 **▸ 选中原因：机器人 · 小盘高溢价 · 9× / $89K · 连续 2 天上榜**
 
@@ -259,72 +267,76 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 
 *All the news that's fit to print, every morning at 08:00 Beijing.*
 
-<sub>Vol. 1 · No. 206 · Auto-generated by `scraper/report.py` · 中文一句话见 [`data/blurbs_zh.json`](../data/blurbs_zh.json)（欢迎 PR）· 架构见 [ARCHITECTURE.md](../ARCHITECTURE.md)</sub>
+<sub>Vol. 1 · No. 207 · Auto-generated by `scraper/report.py` · 中文一句话见 [`data/blurbs_zh.json`](../data/blurbs_zh.json)（欢迎 PR）· 架构见 [ARCHITECTURE.md](../ARCHITECTURE.md)</sub>
 
 ## 观测与可比增量
 
 | 项目 | 当前筹款 | 日增量 | 关注 | 关注日增量 |
 |---|---|---|---|---|
-| GW-B1: Industrial Power for Everyday Use | $718 | $0 | 29 | +8 |
-| ClearX: Fully Automated Shoe Care: Wash, Dry & Sanitize | $325K | +$29K | 1,135 | +66 |
-| A1-Meet Your New Interactive Pet | $853 | $0 | 84 | +2 |
-| WǍN Silk Jewelry: Made by Hand, Petal by Petal | $30 | $0 | 21 | 0 |
-| The Ascendant Loong Tourbillon — The Art of Power in Motion | $6.3K | $0 | 280 | +2 |
-| Meet E-PUROS: 2-in-1 Oral Care Water Filter | $5.8K | $0 | 307 | 0 |
-| Pagett VX-1: A Vacuum-Tube Speaker Shelf with Open Design | $5.5K | $0 | 36 | 0 |
-| FANAUE: Magnetic Quick-Release Lanyard for Everyday Carry | $3.9K | +$243 | 186 | +1 |
-| TyreSpin Tunnel Display | $309 | $0 | 11 | +1 |
-| Tofu Shifu: Masters of Spices | Expansion & Base game | $21K | +$255 | 1,156 | +18 |
-| iMicro XL15 - A pocket-sized micro exploration studio. | $94K | +$2.5K | 1,987 | +23 |
-| A Painting Puzzle——A Concerto of Human Creativity and AI | $0 | $0 | 6 | +1 |
+| Off the Rails: A Card Game for Daily Commute Survivors | $74 | 无法计算 | 2 | 无法计算 |
+| The Art of Slow Living: A Relaxed Linen-Cotton Coat | $111 | 无法计算 | 2 | 无法计算 |
+| GW-B1: Industrial Power for Everyday Use | $1.4K | +$699 | 33 | +4 |
+| ClearX: Fully Automated Shoe Care: Wash, Dry & Sanitize | $347K | +$23K | 1,216 | +81 |
+| A1-Meet Your New Interactive Pet | $853 | $0 | 86 | +2 |
+| WǍN Silk Jewelry: Made by Hand, Petal by Petal | $105 | +$75 | 22 | +1 |
+| The Ascendant Loong Tourbillon — The Art of Power in Motion | $6.3K | $0 | 280 | 0 |
+| Meet E-PUROS: 2-in-1 Oral Care Water Filter | $5.8K | $0 | 308 | +1 |
+| Pagett VX-1: A Vacuum-Tube Speaker Shelf with Open Design | $5.5K | $0 | 37 | +1 |
+| FANAUE: Magnetic Quick-Release Lanyard for Everyday Carry | $4.1K | +$244 | 196 | +10 |
+| TyreSpin Tunnel Display | $309 | $0 | 11 | 0 |
+| Tofu Shifu: Masters of Spices | Expansion & Base game | $21K | +$561 | 1,185 | +29 |
+| iMicro XL15 - A pocket-sized micro exploration studio. | $94K | +$220 | 2,013 | +26 |
+| A Painting Puzzle——A Concerto of Human Creativity and AI | $17 | +$17 | 6 | 0 |
 | 《The Women Who Halted the Rise of Empires》 | $0 | $0 | 0 | 0 |
 | SoCopper Pen: Functional Art In Lost-Wax Cast Openwork Brass | $10K | $0 | 167 | 0 |
 | DetyX: Long-Range Digital Night Vision | $4.2K | $0 | 92 | 0 |
-| Piston V | Dual-OS Gaming Beast in a Gadget Form Factor | $387K | $0 | 2,596 | 0 |
+| Piston V | Dual-OS Gaming Beast in a Gadget Form Factor | $387K | $0 | 2,595 | −1 |
 | Zephyra: A Titanium Spinning Top That Diffuses Scent | $29K | $0 | 362 | 0 |
-| Blizwheel F0.5: 0.5-meter foldable e-scooter fits your bag | $511K | $0 | 2,772 | +1 |
+| Blizwheel F0.5: 0.5-meter foldable e-scooter fits your bag | $511K | $0 | 2,772 | 0 |
 | Titaner Verso: Modular Titanium MagSafe Wallet | $88K | $0 | 994 | 0 |
-| Qi2 25W The First Semi-Solid State Cooling Power Bank | $42K | $0 | 697 | 0 |
-| eButlr : Your Plug-and-Play 24/7 Personal AI Butler | $87K | $0 | 630 | +1 |
+| Qi2 25W The First Semi-Solid State Cooling Power Bank | $42K | $0 | 696 | −1 |
+| eButlr : Your Plug-and-Play 24/7 Personal AI Butler | $87K | $0 | 630 | 0 |
 | Lone City | $1.7K | $0 | 71 | 0 |
 | Sun Tzu's Art of War — The Lost Chapter | $91K | $0 | 1,306 | 0 |
 | Golden Fortune: The Cyber-Talisman for 2026 Year of Horse | $638 | $0 | 4 | 0 |
 | μBible - Hold the Whole Bible in Your Hand | $19K | $0 | 1,139 | 0 |
 | Fu Lamp: Reviving 500 Years of Imperial Porcelain Craft | $11K | $0 | 149 | 0 |
 | Kamingo: Turn Your Bike into a 750W E-bike in 10 Sec | $1.81M | $0 | 7,327 | 0 |
-| iMicro Q3p: A 1200x Polarizing Fingertip Microscope | $270K | $0 | 3,490 | 0 |
+| iMicro Q3p: A 1200x Polarizing Fingertip Microscope | $270K | $0 | 3,489 | −1 |
 | Dear Kankan | Stop-Motion Animated Short Film | $10K | $0 | 13 | 0 |
-| JETBeam E27: One Light. More Possibility. | 未更新 | 无法计算 | 3 | 无法计算 |
+| NOVAIR: The Travel Folio That Keeps Every Paper in Order | 未更新 | 无法计算 | 0 | 无法计算 |
+| Breeeeeeze: A Playful Bee-Shaped Watering Can | 未更新 | 无法计算 | 1 | 无法计算 |
+| JETBeam E27: One Light. More Possibility. | 未更新 | 无法计算 | 4 | +1 |
 | NoCatch: Save Turtles with Self-Charging Lights | 未更新 | 无法计算 | 6 | 0 |
 | LOON: Modular Sunglasses, One Frame, Endless You | 未更新 | 无法计算 | 2 | 0 |
-| The ESP32 S31-TINY | 未更新 | 无法计算 | 5 | +2 |
+| The ESP32 S31-TINY | 未更新 | 无法计算 | 18 | +13 |
 | Horror PC Game - Lunar Chrysalis | 未更新 | 无法计算 | 4 | 0 |
-| ZeroPlain: Mechanical Beetles, Built by You | 未更新 | 无法计算 | 29 | +3 |
-| AMATERAZ: Wearable Sunscreen Bands for Every Adventure | 未更新 | 无法计算 | 3 | 0 |
-| Lumur LTF-1500: The New Five-In-One Tower Fan Experience | $0 | $0 | 3 | +1 |
-| One Thing Club — Focus Today, Freedom Tomorrow | 未更新 | 无法计算 | 55 | 0 |
-| UFO: The Front-Rotor Skeleton Automatic Watch | 未更新 | 无法计算 | 806 | +1 |
-| AGELOCER｜"Ice Never Melts" Manta Tourbillon Limited Watch | 未更新 | 无法计算 | 410 | +2 |
-| QOi X1: 3-Light-Source EDC Flashlight — White, UV & Green Li | 未更新 | 无法计算 | 43 | +2 |
+| ZeroPlain: Mechanical Beetles, Built by You | 未更新 | 无法计算 | 34 | +5 |
+| AMATERAZ: Wearable Sunscreen Bands for Every Adventure | 未更新 | 无法计算 | 4 | +1 |
+| Lumur LTF-1500: The New Five-In-One Tower Fan Experience | $0 | $0 | 3 | 0 |
+| One Thing Club — Focus Today, Freedom Tomorrow | 未更新 | 无法计算 | 60 | +5 |
+| UFO: The Front-Rotor Skeleton Automatic Watch | 未更新 | 无法计算 | 806 | 0 |
+| AGELOCER｜"Ice Never Melts" Manta Tourbillon Limited Watch | 未更新 | 无法计算 | 411 | +1 |
+| QOi X1: 3-Light EDC Flashlight — White, UV & Green Light | 未更新 | 无法计算 | 43 | 0 |
 | Captain Keep Upright: A Pirate Push-Your-Luck Card Game | 未更新 | 无法计算 | 15 | 0 |
 | The Artisan Mystery Box: Minimalist Merino Wool Sculptures | 未更新 | 无法计算 | 12 | 0 |
 | Monster Fantasy – Action RPG, Cozy Life Sim & Taming | 未更新 | 无法计算 | 784 | 0 |
 | Circle Mountain Circle Sea | $0 | $0 | 5 | 0 |
-| AYANEO Pocket Play：Mobile Phone and Gaming Handheld in One | 未更新 | 无法计算 | 9,465 | +8 |
-| ApexNub: One Device. Unlimited Control. | 未更新 | 无法计算 | 40 | 0 |
+| AYANEO Pocket Play：Mobile Phone and Gaming Handheld in One | 未更新 | 无法计算 | 9,469 | +4 |
+| ApexNub: One Device. Unlimited Control. | 未更新 | 无法计算 | 41 | +1 |
 | ELEGANCE RE-IMAGINED | 未更新 | 无法计算 | 509 | 0 |
-| La Seine Espresso Machine: Complete Extraction Freedom | 未更新 | 无法计算 | 5,162 | 0 |
+| La Seine Espresso Machine: Complete Extraction Freedom | 未更新 | 无法计算 | 5,163 | +1 |
 | Twirling Puppies | 未更新 | 无法计算 | 55 | 0 |
 | Litchi Town | 未更新 | 无法计算 | 798 | 0 |
 | blafili B3: True Hi-Fi USB DAC with Bluetooth v5.1 Receiver | $0 | $0 | 593 | 0 |
 | A Guidebook of Babel: An Afterlife Adventure | $0 | $0 | 512 | 0 |
 | Breaking Box – Create Your Own 3D Platformer Stages | 未更新 | 无法计算 | 111 | 0 |
-| Deoum Z2 - Fast Precision Laser Marking Machine | $0 | $0 | 2,197 | +1 |
+| Deoum Z2 - Fast Precision Laser Marking Machine | $0 | $0 | 2,198 | +1 |
 | leagend JS300 PRO: One System. Two Ways to Start. | $5.2K | $0 | 45 | 0 |
 | KICK — The Mobility Copilot for Your Wheeled Ski Bag | $4.6K | $0 | 122 | 0 |
 | A Traditional Yengisar Knife, Born on the Silk Road. | $1.1K | $0 | 12 | 0 |
-| Harnds Sidekick: ALL in 1 EDC Folding Knife | $16K | $0 | 269 | −1 |
-| SEIVOID: via GENiEX, A Brand New Way to Experience the Story | $183K | $0 | 4,185 | −2 |
+| Harnds Sidekick: ALL in 1 EDC Folding Knife | $16K | $0 | 269 | 0 |
+| SEIVOID: via GENiEX, A Brand New Way to Experience the Story | $183K | $0 | 4,184 | −1 |
 | AGELOCER｜Aero Ti Grade 5 In-house Movement Tourbillon Watch | $176K | $0 | 972 | 0 |
 | IDO-EVB6208 | $1.7K | $0 | 56 | 0 |
 | Bronze Afterglow: A Bronze-Inspired Artistic Chef’s Knife | $2.1K | $0 | 46 | 0 |
@@ -338,300 +350,310 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | TiSnap: Nano-Hardened Titanium EDC Quick-Release Connector | $14K | $0 | 407 | 0 |
 | Kiwi Ears Halcyon: World’s First MEMS+1DD+3BA Tribrid IEM | $239K | $0 | 1,648 | 0 |
 | EVERKEY EDC: The TC4 Keychain Knife That Outlasts Your Keys | $3.6K | $0 | 124 | 0 |
-| AGELOCER | In-House Movement Premium Petite Seconde Watch | $144K | $0 | 1,121 | −1 |
+| AGELOCER | In-House Movement Premium Petite Seconde Watch | $144K | $0 | 1,121 | 0 |
 | Shark-Fin Blade EDC Pocket Knife in Titanium & Damascus | $16K | $0 | 385 | 0 |
 | Master Zhiyang:Ancient Xun Music for Inner Harmony | $15K | $0 | 196 | 0 |
-| Titan 2 Elite: The 5G Keyboard Phone You’ve Been Waiting For | $4.08M | $0 | 6,113 | −1 |
+| Titan 2 Elite: The 5G Keyboard Phone You’ve Been Waiting For | $4.08M | $0 | 6,113 | 0 |
 | Catoptra EDC Knife - Mirror-Polished M398 Blade & TC4 Handle | $8.5K | $0 | 180 | 0 |
 | MANETTA：A 3-in-1 Modular Camera Bag | $2.0K | $0 | 69 | 0 |
-| CubeFIX: Unfold the All-in-One Home & Precision Toolkit | $110K | $0 | 1,830 | −1 |
-| eGryphon: Desktop Class Portable eGPU Thunderbolt 5+OCuLink | $363K | $0 | 1,683 | 0 |
+| CubeFIX: Unfold the All-in-One Home & Precision Toolkit | $110K | $0 | 1,831 | +1 |
+| eGryphon: Desktop Class Portable eGPU Thunderbolt 5+OCuLink | $363K | $0 | 1,682 | −1 |
 | South China Sea War: The War No One Should Want [Relaunch] | $505 | $0 | 0 | 0 |
 | THIEAUDIO Cypher | Flagship Dynamic Driver Headphones | $130K | $0 | 1,169 | 0 |
-| RetroVa: Turn Your iPhone Into a Vintage Camera System | $188K | $0 | 2,342 | 0 |
-| Chawke U2, 3-in-1 Ultrasonic Workstation for Precision Work | $191K | $0 | 2,551 | −1 |
-| MaixCAM2: Build Your Next-Gen 4K AI Camera | $55K | $0 | 559 | −1 |
+| RetroVa: Turn Your iPhone Into a Vintage Camera System | $188K | $0 | 2,341 | −1 |
+| Chawke U2, 3-in-1 Ultrasonic Workstation for Precision Work | $191K | $0 | 2,551 | 0 |
+| MaixCAM2: Build Your Next-Gen 4K AI Camera | $55K | $0 | 559 | 0 |
 | Cyansky Hammer---Nail It Down With This Sure Flashlight | $3.5K | $0 | 80 | 0 |
 | GrafNoct 150mm F1.6 VSF 4x5Large Format Lens | $14K | $0 | 100 | 0 |
 | The ESP32-Cx TINY | $2.7K | $0 | 90 | 0 |
 | Vacuum & Blower in One — Balanced Massive Suction & Airflow | $8.0K | $0 | 241 | 0 |
-| Keebmon : Powerful Core + Touch Screen + Mechanical Keyboard | $851K | $0 | 4,008 | −2 |
+| Keebmon : Powerful Core + Touch Screen + Mechanical Keyboard | $851K | $0 | 4,007 | −1 |
 | SnakeSword Ti Utility Knife, Your One and Only Utility Knife | $1.4K | $0 | 78 | 0 |
-| Vtiger S2--Compact and lightweight EDC Flat Flashlight | $22K | $0 | 431 | 0 |
-| AGELOCER｜Free-sprung Balance Manta Tourbillon Watch | $306K | $0 | 1,289 | 0 |
-| AquaTouch: Built-in Transparent Touch Screen ITX Mini PC | $157K | $0 | 908 | 0 |
-| The Triple Tourbillon Watch | $17K | $0 | 312 | 0 |
-| SnowPod: Real Metal 3D Printing on Your Desktop | 未更新 | 无法计算 | 3,680 | +84 |
-| XAIStack: Modular AI Workstation NAS, Built to Grow | 未更新 | 无法计算 | 3,248 | +88 |
-| Revopoint MIRACO 2 Standalone 3D Scanner | $0 | $0 | 602 | +21 |
-| AROTI R1: The Essential AI Glasses | 未更新 | 无法计算 | 580 | +67 |
-| VIVIFoCAL S1: All-Sight Smart Adaptive Eyewear | 未更新 | 无法计算 | 304 | +27 |
-| PlugMate Pro: Your Thumb-Sized Privacy Computer | 未更新 | 无法计算 | 1,191 | +47 |
-| Zorkeythos N96: Your All-in-One Control Console Keyboard | 未更新 | 无法计算 | 453 | +33 |
-| CORNMI R1: A Wearable Air Mouse for Every Screen | 未更新 | 无法计算 | 141 | +26 |
-| FA3D DIO X: The World's First Full-Color FDM+UV 3D Printer | 未更新 | 无法计算 | 211 | +17 |
-| LITEFAR M1: The Remote-Controlled Wagon That Folds Small | 未更新 | 无法计算 | 135 | +17 |
-| XPOLAR F1：Next-gen Recovery Hub | 未更新 | 无法计算 | 369 | +13 |
-| TadCALO G4: Compact 20Gbps Bidirectional USB-C KVM Switch | 未更新 | 无法计算 | 53 | +7 |
-| Pilo: Private Voice Input for Everyday AI | 未更新 | 无法计算 | 389 | +25 |
-| ARANIX — The World's First 4WD+4WS All-Terrain Robotic Mower | 未更新 | 无法计算 | 799 | +12 |
-| Noetix Boomy: Your First Programmable Humanoid Robot | 未更新 | 无法计算 | 67 | +9 |
-| XDen: The All-in-One Climate Habitat for Reptiles | 未更新 | 无法计算 | 1,817 | +17 |
-| Hanakuto: Open Smart Litter Box | 未更新 | 无法计算 | 149 | +12 |
-| CYBERBOARD AI: AI Mechanical Keyboard with Voice Control | 未更新 | 无法计算 | 27 | +5 |
-| INNOGOGGLE SG-V10: Smart HUD Ski Goggles with Group Talk | 未更新 | 无法计算 | 38 | +5 |
-| Keysible 69: Every Key Is a Screen. Real Mechanical Keyboard | 未更新 | 无法计算 | 74 | +5 |
-| LifeSmart VECTOR: Motorized Auto-Fold Smart Home Gym Trainer | 未更新 | 无法计算 | 49 | +3 |
-| TOP.E R1 - The 5-Axis 3D Printer That Understands You | 未更新 | 无法计算 | 1,150 | +5 |
-| VIGX π6 X: The Pocket-Sized Al Exoskeleton | 未更新 | 无法计算 | 73 | +3 |
-| Intiwave, Haptic Renderer That Turns Sound Into Touch | 未更新 | 无法计算 | 61 | +1 |
-| UGREEN HomeAgent: A Living Local Intelligence for Your Home | $0 | $0 | 1,078 | +1 |
-| Unisky: World’s First 3-in-1 Smart Dog Collar, $0 GPS Fees | 未更新 | 无法计算 | 59 | +2 |
-| XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV | $24.35M | +$250K | 11,098 | 无法计算 |
-| InfiMech MX 3D Printer: 8X More Efficient. 8X Less Waste. | $2.31M | +$48K | 14,065 | +72 |
-| Moera Smart Climate Mattress Cover: Fast Cooling. Zero Fees. | $1.59M | +$30K | 1,504 | +50 |
-| The World’s First Desktop Robotic Terminal | $1.18M | +$6.0K | 9,001 | +15 |
-| ArcBlue C42: First Smart Full-Frame Astrophotography System | $959K | +$4.7K | 1,207 | +16 |
-| AREX | AR Dive Computer Mask & AI Marine Life Identification | $927K | +$11K | 1,990 | +18 |
-| AXILOOP MC8 — 8 Independent Tool Head Multi-Color 3D Printer | $652K | +$10K | 2,076 | +38 |
-| UniFormation S10: First Automated Desktop Resin 3D Printer | $640K | −$9.0K | 2,470 | +20 |
-| Lucy AI Studio: A Dedicated Computer for Your AI Agents | $353K | +$20K | 2,181 | +23 |
-| COMAN T1 MINI: World’s First One-Click Travel Tripod | $327K | +$7.8K | 1,338 | +24 |
-| Titaner Monolith: Titanium & Meteorite Lighter | 未更新 | 无法计算 | 544 | +8 |
-| KeyLatch: Titanium Quick-Release Keychain with Secure Lock | 未更新 | 无法计算 | 511 | +26 |
-| Phantom, World's THINNEST titanium utility knife. No Really. | 未更新 | 无法计算 | 226 | +14 |
-| Orbit: The EDC Knife That Spins When Closed | 未更新 | 无法计算 | 215 | +9 |
-| Caracara: Titanium EDC Cutting Tool, Nothing Stops the Cut | 未更新 | 无法计算 | 89 | +5 |
-| Mltertom:Transparent 80Gbps Magnetic NVMe SSD Enclosure | 未更新 | 无法计算 | 26 | +10 |
-| ROUTEPACK — Modular Denim Travel Bags for Family Road Trips | 未更新 | 无法计算 | 131 | +9 |
-| The Cosmic Archer Jumping Hour Watch | 未更新 | 无法计算 | 27 | +4 |
-| ROCK—Double locking system, redefining the world of knives. | 未更新 | 无法计算 | 195 | 无法计算 |
-| WeighMaster Mini: The Smallest Modular Coffee Scale | 未更新 | 无法计算 | 232 | +2 |
-| DISC TWO Watch — by ANGLES | 未更新 | 无法计算 | 35 | +3 |
-| Saccater Moment 2: Dual-Membrane Noise-Reducing Earplugs | 未更新 | 无法计算 | 180 | +4 |
-| Panda Dorf: Celadon Bamboo Fountain Pen | Architect Nib | 未更新 | 无法计算 | 44 | +1 |
-| Philips Swivel: Aim the light. Keep both hands free. | 未更新 | 无法计算 | 62 | +1 |
-| Pulsar Folding Knife —ZircuTi Damascus & M390 EDC by MOROX | 未更新 | 无法计算 | 30 | +2 |
-| TaroTag: Pocket E-Ink Canvas Meets AI Tarot | 未更新 | 无法计算 | 85 | +3 |
-| A Classic Vintage Hourly Chime Watch with Character | 未更新 | 无法计算 | 28 | +3 |
-| PRALOX: Modular Laptop Stand With Built‑In Docking Hub | 未更新 | 无法计算 | 3 | 无法计算 |
-| ORBITRIX | A Watch That Redefines Orbital Timekeeping | 未更新 | 无法计算 | 857 | +2 |
-| TiPlect: Titanium Guitar Pick, Reimagined | 未更新 | 无法计算 | 40 | +1 |
-| World's First AI Electric Screwdriver With Eyes And Brain | $283K | +$6.1K | 2,436 | +75 |
-| COOLGEEK P1 — The Cassette Player, Reimagined | $226K | +$8.6K | 2,760 | +103 |
-| EVA NIXIE WATCH: A Real Nixie Glow, Reimagined for the Wrist | $132K | +$2.9K | 897 | +38 |
-| GmTron X1 — Your Personal Gym Studio, Anywhere | $77K | −$1.9K | 949 | +14 |
-| FORTUNA N06: First Spherical Wandering Hour Watch | $73K | +$399 | 988 | +13 |
-| Raya: Titanium & M390 EDC Folding Knife, Only the Essentials | $67K | +$3.8K | 363 | +30 |
-| Titaner Vesta: One Titanium Pot for Every Way You Cook | $49K | +$510 | 432 | +11 |
-| PiLY – The Wrist-Worn AI Notetaker with 24/7 Health Tracking | $44K | +$372 | 623 | +12 |
-| Edge of The North: CNC Machined Titanium Folding Fan | $42K | +$804 | 341 | +12 |
-| L2 — Waterproof Wick Lighter. 20 Days per Fill. | $35K | +$394 | 495 | +10 |
-| Merino Wool x Lyocell Reversible Waterproof Windbreak Jacket | $33K | +$2.0K | 403 | +23 |
-| PREDATOR ：Zero Point Hand Warmer — Heavyweight Warmth | $4.7K | 无法计算 | 45 | 无法计算 |
-| Ultra-Light Foldable 4-Wheel Scooter | Redefine Urban Trips | $7.0K | −$636 | 305 | +14 |
-| Ragnarok-The Last Hymn of Thunde 1:12 Norse Action Figures | $6.5K | +$1.1K | 132 | +12 |
-| VibroShield: Shock-Isolated Armor Sapphire Mechanical Watch | $16K | −$1.9K | 115 | +4 |
-| Domobi Plush Car Toy | $0 | $0 | 3 | +1 |
-| Walking Perfume: Millennia-Buried Sandalwood | $2.7K | +$153 | 42 | −1 |
-| KittyBOT: Automatic Can-Opening Wet Food Feeder for Cats | $3.7K | +$388 | 152 | +4 |
-| LAVISILK—A Reversible Lavender Silk Cooling Blanket for Summ | $413 | +$76 | 19 | 0 |
-| LUNAR WITCH - A Magical Wooden Music Box | $389 | $0 | 18 | 0 |
-| GAMU® — The world looks better different | $0 | $0 | 2 | 0 |
+| OUKITEL RG14-P: World's First Solar Rugged Laptop | 未更新 | 无法计算 | 0 | 无法计算 |
+| ArcLock: Mini Titanium Mechanical Lock | 未更新 | 无法计算 | 2 | 无法计算 |
+| SHADOW DANCE: Multi‑Scenario AI Exoskeleton That Learns You | 未更新 | 无法计算 | 1 | 无法计算 |
 | AISDA. Local AI for the computer you already own. | 未更新 | 无法计算 | 1 | 0 |
-| WAVNEX: Next Gen Swappable Battery Foldable Pressure Washer | 未更新 | 无法计算 | 1 | 0 |
-| Aotorobo A1 Dash: CarPlay Screen & 4K Dash Cam, All in One | 未更新 | 无法计算 | 7 | 0 |
-| Weld Navigator: Anti-Glare Handheld Weld Pool Camera | $0 | $0 | 3 | +1 |
-| Passionhold Castle | 未更新 | 无法计算 | 2 | +1 |
+| WAVNEX: Next Gen Swappable Battery Foldable Pressure Washer | 未更新 | 无法计算 | 2 | +1 |
+| Aotorobo A1 Dash: CarPlay Screen & 4K Dash Cam, All in One | 未更新 | 无法计算 | 8 | +1 |
+| TadCALO G4: Compact 20Gbps Bidirectional USB-C KVM Switch | 未更新 | 无法计算 | 55 | +2 |
+| HiBREW H4C Pro:Portable Espresso Machine for Home & Outdoors | 未更新 | 无法计算 | 6 | +2 |
+| Ringpo: The AI Device That Makes and Takes Your Calls | 未更新 | 无法计算 | 3 | 0 |
+| AI Suit: The iPhone Case with AI Control & Voice Recording | 未更新 | 无法计算 | 8 | +2 |
+| INNOGOGGLE SG-V10: Smart HUD Ski Goggles with Group Talk | 未更新 | 无法计算 | 39 | +1 |
+| Revopoint MIRACO 2 Standalone 3D Scanner | $0 | $0 | 754 | +152 |
+| CYBERBOARD AI: AI Mechanical Keyboard with Voice Control | 未更新 | 无法计算 | 35 | +8 |
+| SONOMER: The World's First 2-in-1 Home Ultrasonic Marinator | 未更新 | 无法计算 | 17 | 0 |
+| Noetix Boomy: Your First Programmable Humanoid Robot | 未更新 | 无法计算 | 73 | +6 |
+| 13mm Bone Sleep Speaker, Leak-Free Private Audio | 未更新 | 无法计算 | 3 | 0 |
+| The electronic brain for 3D prints | 未更新 | 无法计算 | 8 | +1 |
+| LITEFAR M1: The Remote-Controlled Wagon That Folds Small | 未更新 | 无法计算 | 160 | +25 |
+| XPOLAR F1：Next-gen Recovery Hub | 未更新 | 无法计算 | 377 | +8 |
+| MiraBox CC1: A Customizable Creative Controller | 未更新 | 无法计算 | 1 | 0 |
+| Nori: A Screen You Wear | 未更新 | 无法计算 | 8 | +2 |
+| TRAKSIFY PACK: The GPS Tracker for Active Dogs | 未更新 | 无法计算 | 4 | +1 |
+| Keysible 69: Every Key Is a Screen. Real Mechanical Keyboard | 未更新 | 无法计算 | 79 | +5 |
+| FurFlow : Cordless Pet Grooming Vacuum. Less Brush Cleaning | 未更新 | 无法计算 | 16 | +1 |
+| XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV | $24.62M | +$265K | 11,202 | +104 |
+| InfiMech MX 3D Printer: 8X More Efficient. 8X Less Waste. | $2.33M | +$27K | 14,111 | +46 |
+| Moera Smart Climate Mattress Cover: Fast Cooling. Zero Fees. | $1.61M | +$24K | 1,566 | +62 |
+| The World’s First Desktop Robotic Terminal | $1.22M | +$40K | 9,020 | +19 |
+| ArcBlue C42: First Smart Full-Frame Astrophotography System | $963K | +$3.8K | 1,218 | +11 |
+| AREX | AR Dive Computer Mask & AI Marine Life Identification | $940K | +$13K | 2,008 | +18 |
+| AXILOOP MC8 — 8 Independent Tool Head Multi-Color 3D Printer | $663K | +$10K | 2,098 | +22 |
+| UniFormation S10: First Automated Desktop Resin 3D Printer | $648K | +$8.0K | 2,508 | +38 |
+| Lucy AI Studio: A Dedicated Computer for Your AI Agents | $376K | +$23K | 2,201 | +20 |
+| COMAN T1 MINI: World’s First One-Click Travel Tripod | $335K | +$7.4K | 1,357 | +19 |
+| Fotorgear Campix: Look Down, Good Things Start with One Roll | $319K | +$5.7K | 1,938 | +68 |
+| WUBEN G6 | Ultra Slim Multi-Use Keychain Light | $227K | +$1.3K | 4,097 | +27 |
+| RheoFit A1 Lite: The Hands-Free Automatic Foam Roller | $108K | +$3.4K | 1,792 | +16 |
+| TurboX Pro: Cordless Smart Air Compressor | Only 3.9lbs | $101K | +$3.0K | 486 | +10 |
+| FR-NIA: The World's First Portable Expressive Robot | $89K | −$642 | 1,426 | +11 |
+| Memdock: Revive Your Music Ritual with a Portable CD Player | $40K | +$603 | 990 | +32 |
+| Arduview: the fully see-through retro game console | $37K | +$543 | 222 | +8 |
+| TonoCard: The AI Card That Picks Up Calls While You're Busy | $35K | −$666 | 795 | +16 |
+| CalmNook: Compact 10‑in‑1 Multi‑Function BluRay Drive Hub | $35K | +$126 | 561 | +23 |
+| SilkyWave — Hands-Free Barista Microfoamer | $27K | +$2.1K | 2,126 | +42 |
+| ORIONER M-Grip: Palm-Sized Aluminum EDC Magnetic Mount | $25K | +$809 | 501 | +18 |
+| JollyNet: AI-Powered 3D Video Projection Light | $21K | +$316 | 358 | +12 |
+| WindAid:From Bike to E-Bike with Display&Throttle in Seconds | $18K | $0 | 277 | +5 |
+| THE WORLD'S FIRST ULTRA-LIGHT OFFLINE AI NIGHT VISION | $18K | $0 | 323 | +4 |
+| Aurora 03-MEMS +1DD +3BA TribridIn-Ear Monitors | $16K | +$151 | 359 | +1 |
+| MAGTECS：Two Tech Gadgets, One Snap | $1.4K | +$1.4K | 20 | +13 |
+| Weld Navigator: Anti-Glare Handheld Weld Pool Camera | $0 | $0 | 3 | 0 |
+| L1：Create Coffee Art in Just 2 Seconds | $290 | $0 | 21 | +1 |
+| Magic Ring: 10-in-1 AI Smart Ring for Work, Health & Control | $11K | +$1.2K | 134 | +10 |
+| 3D Holographic Bladeless Heating & Cooling Fan | $995 | $0 | 35 | +2 |
+| BOOSTER TF64 A7: A New Twist on the Handheld Blower | $629 | $0 | 11 | 0 |
+| LumiPure:The Portable Travel Dryer for Wrinkle‑Free Clothes. | $6.9K | +$158 | 116 | +6 |
+| Makvona™ ModelPop: Paint Markers Designed for 3D Prints | $5.6K | +$1.1K | 117 | +10 |
+| Fixora XF10: 3-in-1 DIY Electric Multi-Tool with 170 Bits | $7.6K | +$525 | 128 | +18 |
+| A Classic Vintage Hourly Chime Watch with Character | 未更新 | 无法计算 | 80 | +52 |
+| Titaner Monolith: Titanium & Meteorite Lighter | 未更新 | 无法计算 | 569 | +25 |
+| Phantom, World's THINNEST titanium utility knife. No Really. | 未更新 | 无法计算 | 247 | +21 |
+| KeyLatch: Titanium Quick-Release Keychain with Secure Lock | 未更新 | 无法计算 | 523 | +12 |
+| ROCK—Double locking system, redefining the world of knives. | 未更新 | 无法计算 | 217 | +22 |
+| Orbit: The EDC Knife That Spins When Closed | 未更新 | 无法计算 | 227 | +12 |
+| Titaner Caracara: Titanium EDC Cutter. Nothing Stops the Cut | 未更新 | 无法计算 | 100 | +11 |
+| The Cosmic Archer Jumping Hour Watch | 未更新 | 无法计算 | 40 | +13 |
+| Mltertom:Transparent 80Gbps Magnetic NVMe SSD Enclosure | 未更新 | 无法计算 | 30 | +4 |
+| ROUTEPACK — Modular Denim Travel Bags for Family Road Trips | 未更新 | 无法计算 | 137 | +6 |
+| Panda Dorf: Celadon Bamboo Fountain Pen | Architect Nib | 未更新 | 无法计算 | 49 | +5 |
+| WeighMaster Mini: The Smallest Modular Coffee Scale | 未更新 | 无法计算 | 236 | +4 |
+| DISC TWO Watch — by ANGLES | 未更新 | 无法计算 | 39 | +4 |
+| Saccater Moment 2: Dual-Membrane Noise-Reducing Earplugs | 未更新 | 无法计算 | 183 | +3 |
+| Pulsar Folding Knife —ZircuTi Damascus & M390 EDC by MOROX | 未更新 | 无法计算 | 33 | +3 |
+| TiPlect: Titanium Guitar Pick, Reimagined | 未更新 | 无法计算 | 43 | +3 |
+| Philips Swivel: Aim the light. Keep both hands free. | 未更新 | 无法计算 | 63 | +1 |
+| U Stand | Silicone MagSafe iPhone Stand | 未更新 | 无法计算 | 4 | +2 |
+| DWSTN XENCORE: M390 Powder Steel Blade / TC4 Titanium Handle | 未更新 | 无法计算 | 48 | +1 |
+| PODOO: Folding Electric Utility Wagon with Swappable Battery | 未更新 | 无法计算 | 5 | +1 |
+| Titaner RatchetCard: World's Thinnest EDC Ratchet Tool | 未更新 | 无法计算 | 3 | 无法计算 |
+| TaroTag: Pocket E-Ink Canvas Meets AI Tarot | 未更新 | 无法计算 | 85 | 0 |
+| Aquarise NestPure — The First-Ever Nested RO Water System | 未更新 | 无法计算 | 0 | 无法计算 |
+| SYLVA "Frond" — Where the Wild Meets the Mirror | 未更新 | 无法计算 | 1 | 无法计算 |
+| ZERA Wave - The Everyday Razor Cleaning Center | 未更新 | 无法计算 | 1 | 无法计算 |
+| PRALOX: Modular Laptop Stand With Built‑In Docking Hub | 未更新 | 无法计算 | 4 | +1 |
 | Cozy Pea Lamp: Transform Room Vibe in One Second | 未更新 | 无法计算 | 3 | 0 |
-| PODOO: Folding Electric Utility Wagon with Swappable Battery | 未更新 | 无法计算 | 4 | +2 |
 | FOLDR: Every Feature Kept. And It Still Folds | 未更新 | 无法计算 | 1 | 0 |
-| Glimmer in the Mud:Guarding Ukraine’s Legendary Baltic Amber | 未更新 | 无法计算 | 5 | +1 |
+| Glimmer in the Mud:Guarding Ukraine’s Legendary Baltic Amber | 未更新 | 无法计算 | 5 | 0 |
 | NoirKar Duet XL: 27° Multi-Position Memory Foam Wedge Pillow | 未更新 | 无法计算 | 0 | 0 |
 | D2D Horizon Pouch: Streamline Your Daily Carry | 未更新 | 无法计算 | 4 | 0 |
-| All-Titanium Bolt Action Pen | 未更新 | 无法计算 | 8 | 0 |
+| All-Titanium Bolt Action Pen | 未更新 | 无法计算 | 10 | +2 |
 | Apex-Bite: The Flagship Tactical Folder | 未更新 | 无法计算 | 6 | 0 |
-| Latch-Glow：Bolt-Action Toothpick. Hidden Blade. 25-Year Trit | 未更新 | 无法计算 | 7 | 0 |
-| The Capsule Tool: Big Utility in a Tiny Shell. | 未更新 | 无法计算 | 9 | 0 |
-| U Stand | Silicone MagSafe iPhone Stand | 未更新 | 无法计算 | 2 | 0 |
+| Latch-Glow：Bolt-Action Toothpick. Hidden Blade. 25-Year Trit | 未更新 | 无法计算 | 8 | +1 |
+| The Capsule Tool: Big Utility in a Tiny Shell. | 未更新 | 无法计算 | 10 | +1 |
+| MAX VACUUM: Two Dedicated Modules for Cleaning & Compression | 未更新 | 无法计算 | 121 | 0 |
+| World's First AI Electric Screwdriver With Eyes And Brain | $289K | +$5.6K | 2,505 | +69 |
+| COOLGEEK P1 — The Cassette Player, Reimagined | $231K | +$5.1K | 2,846 | +86 |
+| EVA NIXIE WATCH: A Real Nixie Glow, Reimagined for the Wrist | $133K | +$1.6K | 934 | +37 |
+| GmTron X1 — Your Personal Gym Studio, Anywhere | $81K | +$4.1K | 956 | +7 |
+| FORTUNA N06: First Spherical Wandering Hour Watch | $72K | −$1.4K | 998 | +10 |
+| Raya: Titanium & M390 EDC Folding Knife, Only the Essentials | $72K | +$5.1K | 386 | +23 |
+| Titaner Vesta: One Titanium Pot for Every Way You Cook | $49K | +$42 | 435 | +3 |
+| PiLY – The Wrist-Worn AI Notetaker with 24/7 Health Tracking | $45K | +$983 | 629 | +6 |
+| Edge of The North: CNC Machined Titanium Folding Fan | $43K | +$523 | 348 | +7 |
+| L2 — Waterproof Wick Lighter. 20 Days per Fill. | $36K | +$571 | 512 | +17 |
+| Merino Wool x Lyocell Reversible Waterproof Windbreak Jacket | $34K | +$1.1K | 424 | +21 |
+| BERNY Automatic Diver Watch: Domed Two-Tone Ceramic Bezel | $21K | −$375 | 174 | −3 |
+| RAVEN-T: Precision-Machined Titanium EDC Knife-Built to Last | $20K | −$10 | 329 | +5 |
+| Passionhold Castle | $1.1K | +$1.1K | 8 | +6 |
+| XK01 Clean the Air. Light Up the Night. | $728 | +$728 | 15 | +14 |
+| PREDATOR ：Zero Point Hand Warmer — Heavyweight Warmth | $5.5K | +$795 | 73 | +28 |
+| Ultra-Light Foldable 4-Wheel Scooter | Redefine Urban Trips | $7.5K | +$479 | 319 | +14 |
+| Ragnarok-The Last Hymn of Thunde 1:12 Norse Action Figures | $7.4K | +$938 | 141 | +9 |
+| VibroShield: Shock-Isolated Armor Sapphire Mechanical Watch | $14K | −$1.9K | 119 | +4 |
+| Domobi Plush Car Toy | $0 | $0 | 3 | 0 |
+| Walking Perfume: Millennia-Buried Sandalwood | $2.7K | $0 | 43 | +1 |
+| KittyBOT: Automatic Can-Opening Wet Food Feeder for Cats | $3.7K | $0 | 156 | +4 |
+| LAVISILK—A Reversible Lavender Silk Cooling Blanket for Summ | $413 | $0 | 19 | 0 |
+| LUNAR WITCH - A Magical Wooden Music Box | $429 | +$40 | 20 | +2 |
+| GAMU® — The world looks better different | $0 | $0 | 2 | 0 |
+| Nibbles Fish~Always Hungry. Always Clicking.Feed your finger | $3.3K | −$224 | 134 | +6 |
+| Vtiger S2--Compact and lightweight EDC Flat Flashlight | $22K | $0 | 未更新 | 无法计算 |
+| AGELOCER｜Free-sprung Balance Manta Tourbillon Watch | $306K | $0 | 未更新 | 无法计算 |
+| AquaTouch: Built-in Transparent Touch Screen ITX Mini PC | $157K | $0 | 未更新 | 无法计算 |
+| The Triple Tourbillon Watch | $17K | $0 | 未更新 | 无法计算 |
+| SnowPod: Real Metal 3D Printing on Your Desktop | 未更新 | 无法计算 | 3,864 | +184 |
+| XAIStack: Modular AI Workstation NAS, Built to Grow | 未更新 | 无法计算 | 3,337 | +89 |
+| AROTI R1: The Essential AI Glasses | 未更新 | 无法计算 | 621 | +41 |
+| VIVIFoCAL S1: All-Sight Smart Adaptive Eyewear | 未更新 | 无法计算 | 339 | +35 |
+| PlugMate Pro: Your Thumb-Sized Privacy Computer | 未更新 | 无法计算 | 1,230 | +39 |
+| Zorkeythos N96: Your All-in-One Control Console Keyboard | 未更新 | 无法计算 | 479 | +26 |
+| CORNMI R1: A Wearable Air Mouse for Every Screen | 未更新 | 无法计算 | 172 | +31 |
+| FA3D DIO X: The World's First Full-Color FDM+UV 3D Printer | 未更新 | 无法计算 | 226 | +15 |
+| Pilo: Private Voice Input for Everyday AI | 未更新 | 无法计算 | 415 | +26 |
+| ARANIX — The World's First 4WD+4WS All-Terrain Robotic Mower | 未更新 | 无法计算 | 829 | +30 |
+| XDen: The All-in-One Climate Habitat for Reptiles | 未更新 | 无法计算 | 1,833 | +16 |
+| Hanakuto: Open Smart Litter Box | 未更新 | 无法计算 | 158 | +9 |
+| LifeSmart VECTOR: Motorized Auto-Fold Smart Home Gym Trainer | 未更新 | 无法计算 | 63 | +14 |
+| TOP.E R1 - The 5-Axis 3D Printer That Understands You | 未更新 | 无法计算 | 1,153 | +3 |
+| VIGX π6 X: The Pocket-Sized Al Exoskeleton | 未更新 | 无法计算 | 73 | 0 |
+| Intiwave, Haptic Renderer That Turns Sound Into Touch | 未更新 | 无法计算 | 65 | +4 |
+| UGREEN HomeAgent: A Living Local Intelligence for Your Home | $0 | $0 | 1,083 | +5 |
+| Unisky: World’s First 3-in-1 Smart Dog Collar, $0 GPS Fees | 未更新 | 无法计算 | 62 | +3 |
+| ORBITRIX | A Watch That Redefines Orbital Timekeeping | 未更新 | 无法计算 | 857 | 0 |
 | OSIMT: A Kitchen Knife Honed by 1200 Years of Craftsmanship | $7.5K | $0 | 未更新 | 无法计算 |
 | All-in-One Blower & Vacuum with 19,800Pa Suction Power | $17K | $0 | 未更新 | 无法计算 |
 | Kernelcom: Type, Touch, Compute All-in-One Smart Keyboard | $173K | $0 | 未更新 | 无法计算 |
 | Duoado: World's First AI-Powered Fitness System for Dogs | 未更新 | 无法计算 | 46 | 0 |
-| SONOMER: The World's First 2-in-1 Home Ultrasonic Marinator | 未更新 | 无法计算 | 17 | 0 |
-| FurFlow : Cordless Pet Grooming Vacuum. Less Brush Cleaning | 未更新 | 无法计算 | 15 | 0 |
 | Skincare Faucet Filter: Cleaner Water for Your Daily Routine | 未更新 | 无法计算 | 139 | 0 |
-| HiBREW H4C Pro:Portable Espresso Machine for Home & Outdoors | 未更新 | 无法计算 | 4 | 0 |
-| Ringpo: The AI Device That Makes and Takes Your Calls | 未更新 | 无法计算 | 3 | +1 |
-| VibeSay AI Suit: The iPhone Case with AI Voice Recording | 未更新 | 无法计算 | 6 | 0 |
-| SleepBone — Under-Pillow Bone Conduction Sleep Music Box | 未更新 | 无法计算 | 3 | 0 |
-| The electronic brain for 3D prints | 未更新 | 无法计算 | 7 | 0 |
-| MiraBox CC1: A Customizable Creative Controller | 未更新 | 无法计算 | 1 | 0 |
-| Nori: A Screen You Wear | 未更新 | 无法计算 | 6 | 0 |
-| TRAKSIFY PACK: The GPS Tracker for Active Dogs | 未更新 | 无法计算 | 3 | 0 |
 | JoneR Smart Home Alarm System & SOS Emergency Call Device | 未更新 | 无法计算 | 5 | 0 |
-| Inkanva: The World's First Self-Charging E-Ink Canvas | $517K | +$23K | 8,675 | +5 |
-| Fotorgear Campix: Look Down, Good Things Start with One Roll | $313K | +$8.2K | 1,870 | +60 |
-| abxylute M6/M5: Rethinking Mobile Gaming Controllers | $262K | +$4.4K | 4,038 | 0 |
-| WUBEN G6 | Ultra Slim Multi-Use Keychain Light | $225K | +$1.7K | 4,070 | +37 |
-| RheoFit A1 Lite: The Hands-Free Automatic Foam Roller | $105K | +$3.7K | 1,776 | +23 |
-| FR-NIA: The World's First Portable Expressive Robot | $89K | +$290 | 1,415 | +4 |
-| TurboX Pro: Cordless Smart Air Compressor | Only 3.9lbs | $98K | +$4.1K | 476 | +15 |
-| TonoCard: The AI Card That Picks Up Calls While You're Busy | $36K | −$169 | 779 | +5 |
-| Arduview: the fully see-through retro game console | $37K | +$605 | 214 | +12 |
-| Memdock: Revive Your Music Ritual with a Portable CD Player | $39K | +$2.9K | 958 | +36 |
-| CalmNook：10‑in‑1 Multi‑Function BluRay Drive Hub | $35K | +$659 | 538 | +25 |
-| ORIONER M-Grip: Palm-Sized Aluminum EDC Magnetic Mount | $24K | +$673 | 483 | +15 |
-| JollyNet: AI-Powered 3D Video Projection Light | $21K | −$474 | 346 | +6 |
-| WindAid:From Bike to E-Bike with Display&Throttle in Seconds | $18K | $0 | 272 | +3 |
-| THE WORLD'S FIRST ULTRA-LIGHT OFFLINE AI NIGHT VISION | $18K | +$971 | 319 | +5 |
-| SilkyWave — Hands-Free Barista Microfoamer | $25K | +$3.0K | 2,084 | +49 |
-| Aurora 03-MEMS +1DD +3BA TribridIn-Ear Monitors | $16K | +$169 | 358 | +2 |
-| L1：Create Coffee Art in Just 2 Seconds | $290 | −$78 | 20 | +3 |
-| Magic Ring: 10-in-1 AI Smart Ring for Work, Health & Control | $9.5K | +$1.5K | 124 | +8 |
-| 3D Holographic Bladeless Heating & Cooling Fan | $995 | $0 | 33 | +4 |
-| BOOSTER TF64 A7: A New Twist on the Handheld Blower | $629 | $0 | 11 | 0 |
-| LumiPure:The Portable Travel Dryer for Wrinkle‑Free Clothes. | $6.7K | +$79 | 110 | +3 |
-| Makvona™ ModelPop: Paint Markers Designed for 3D Prints | $4.5K | +$663 | 107 | +8 |
-| Fixora XF10: 3-in-1 DIY Electric Multi-Tool with 170 Bits | $7.1K | +$1.2K | 110 | +19 |
-| FlexiFold 2.0 | Easily Enjoy Life In Wild With Lighter Gear | 未更新 | 无法计算 | 21 | 0 |
-| PyroDock: Your 9-in-1 Desktop Soldering Workstation | 未更新 | 无法计算 | 97 | 0 |
+| Inkanva: The World's First Self-Charging E-Ink Canvas | $518K | +$590 | 未更新 | 无法计算 |
+| abxylute M6/M5: Rethinking Mobile Gaming Controllers | $262K | +$255 | 未更新 | 无法计算 |
+| FlexiFold 2.0 | Easily Enjoy Life In Wild With Lighter Gear | 未更新 | 无法计算 | 22 | +1 |
+| PyroDock: Your 9-in-1 Desktop Soldering Workstation | 未更新 | 无法计算 | 98 | +1 |
 | DWSTN CERATOPS: M390 & TC4 Titanium EDC Pocket Littel Knife | 未更新 | 无法计算 | 31 | 0 |
-| Fu Lu in Pocket, — Ice Crystal & Bronze Inlay Mini Lighter | 未更新 | 无法计算 | 15 | 0 |
-| SOON: The Tuning Fork Knife — A Blade That Rings with Certai | 未更新 | 无法计算 | 21 | +1 |
+| Fu Lu in Pocket, — Ice Crystal & Bronze Inlay Mini Lighter | 未更新 | 无法计算 | 16 | +1 |
+| SOON: The Tuning Fork Knife — A Blade That Rings with Certai | 未更新 | 无法计算 | 21 | 0 |
 | TITAN HIVE"The 3-Gram Titanium Keychain That Redefines EDC." | 未更新 | 无法计算 | 25 | 0 |
 | fegve Titanium Multi-Tool Ruler / "Tiangong Scale" | 未更新 | 无法计算 | 14 | 0 |
-| MAX VACUUM: Two Dedicated Modules for Cleaning & Compression | 未更新 | 无法计算 | 121 | 0 |
 | Vulcan | Forged in Fire, Balanced in Hand | $56K | $0 | 未更新 | 无法计算 |
-| SUPERBANK 15 - Best Buddy for your Daily Shoot | $42K | +$57 | 未更新 | 无法计算 |
+| SUPERBANK 15 - Best Buddy for your Daily Shoot | $42K | $0 | 未更新 | 无法计算 |
 | TitanBolt — Titanium, Brass & Zirconium Bolt Action Pen | $34K | $0 | 未更新 | 无法计算 |
 | Nexra: Turn Your C40 Coffee Grinder Electric | $28K | $0 | 未更新 | 无法计算 |
-| BERNY Automatic Diver Watch: Domed Two-Tone Ceramic Bezel | $22K | +$655 | 177 | +3 |
-| RAVEN-T: Precision-Machined Titanium EDC Knife-Built to Last | $20K | −$139 | 324 | 0 |
-| RainLoop: A Home for Wet Umbrellas, Rain for Plants | $158 | $0 | 23 | +2 |
-| Nibbles Fish~Always Hungry. Always Clicking.Feed your finger | $3.5K | $0 | 128 | +2 |
-| MecArmy CMP3 — A Compass Worth Carrying | $3.7K | +$30 | 87 | +3 |
-| iLM. — The Minimalist Felt Cat Scratch Mat | $95 | $0 | 0 | 0 |
-| WayLithe : The 3-in-1 Modular Travel Bag | $1.3K | $0 | 159 | +5 |
-| TrailPact P01 Solar Picnic Cooler Bag | Built-in Speaker | $977 | $0 | 32 | +1 |
-| Reven: Copper Damascus Kitchen Knives | $3.0K | −$304 | 42 | +3 |
+| RainLoop: A Home for Wet Umbrellas, Rain for Plants | $158 | $0 | 未更新 | 无法计算 |
+| MecArmy CMP3 — A Compass Worth Carrying | $3.7K | $0 | 92 | +5 |
+| iLM. — The Minimalist Felt Cat Scratch Mat | $136 | +$41 | 1 | +1 |
+| WayLithe : The 3-in-1 Modular Travel Bag | $1.3K | $0 | 165 | +6 |
+| TrailPact P01 Solar Picnic Cooler Bag | Built-in Speaker | $977 | $0 | 33 | +1 |
+| Reven: Copper Damascus Kitchen Knives | $3.0K | $0 | 45 | +3 |
 | Cerafang Necklace — Fire Starter & Line Cutter Pendant | $209 | $0 | 未更新 | 无法计算 |
-| Twelvetooo:FHD immersive 3D scene projector | $164K | +$169 | 未更新 | 无法计算 |
-| StepTimer: A walking timer buddy for your desk | $116K | +$1.3K | 未更新 | 无法计算 |
-| Lumi 1 AI: A Safer, Distraction-Free First Phone for Kids | $3.6K | +$678 | 163 | +5 |
-| NEXUS ONE: Your Private Android & Linux Pocket Computer | $11K | +$129 | 310 | +7 |
-| HOZO Hobby Knife — A Classic, Reinvented for Makers | $540K | +$1.1K | 未更新 | 无法计算 |
+| Twelvetooo:FHD immersive 3D scene projector | $164K | $0 | 未更新 | 无法计算 |
+| StepTimer: A walking timer buddy for your desk | $117K | +$1.1K | 未更新 | 无法计算 |
+| Lumi 1 AI: A Safer, Distraction-Free First Phone for Kids | $3.4K | −$174 | 171 | +8 |
+| NEXUS ONE: Your Private Android & Linux Pocket Computer | $12K | +$129 | 328 | +18 |
+| HOZO Hobby Knife — A Classic, Reinvented for Makers | $541K | +$564 | 未更新 | 无法计算 |
 | BangBang VPR8: Feel Every Shot. Real Recoil. Real Immersion. | $60K | $0 | 未更新 | 无法计算 |
 | Smart Auto-Eject Charger: Disconnects When Fully Charged | $506 | $0 | 未更新 | 无法计算 |
 | GHome Smart KD10F: 3D Face Recognition Smart Lock | $15K | $0 | 未更新 | 无法计算 |
-| Umitec — The First 4-in-1 Red Light Therapy Massage Belt | $568 | $0 | 24 | +2 |
-| BAIKANG: Cooling & Warming Wet Food Feeder for Cats & Dogs | $1.8K | $0 | 26 | +1 |
-| The World’s First Foldable Guitar Amp with Pedal Storage | $2.9K | +$4 | 182 | +2 |
-| iPulsefire Aura7 Headset | $413 | $0 | 21 | 0 |
-| ZH Smoker: Instantly Infuse Whiskey & Food with Rich Smoke | $8.4K | +$271 | 95 | +4 |
-| A|P THE LEGEND AFFORDABLE SWISS AUTOMATIC A CLASS A PART | 未更新 | 无法计算 | 101 | 0 |
+| Umitec — The First 4-in-1 Red Light Therapy Massage Belt | $701 | +$133 | 27 | +3 |
+| BAIKANG: Cooling & Warming Wet Food Feeder for Cats & Dogs | $1.8K | $0 | 28 | +2 |
+| The World’s First Foldable Guitar Amp with Pedal Storage | $2.9K | $0 | 182 | 0 |
+| iPulsefire Aura7 Headset | $413 | $0 | 22 | +1 |
+| ZH Smoker: Instantly Infuse Whiskey & Food with Rich Smoke | $9.6K | +$1.2K | 112 | +17 |
+| A|P THE LEGEND AFFORDABLE SWISS AUTOMATIC A CLASS A PART | 未更新 | 无法计算 | 100 | −1 |
 | Legends of Tibet： Tibetan Beads | 未更新 | 无法计算 | 48 | 0 |
 | BAANFOTO: One-Click Pro Tripod with Hidden Mini-Tripod | 未更新 | 无法计算 | 42 | 0 |
-| Zlim | Credit Card & ID Carrier | 未更新 | 无法计算 | 62 | 0 |
+| Zlim | Credit Card & ID Carrier | 未更新 | 无法计算 | 64 | +2 |
 | B01:Foldable 6-Pocket Organizer: Store More, Carry Less | 未更新 | 无法计算 | 3 | 0 |
 | HOHOTIME - The 4-Arm Smart Home Gym for Full-Body Training | $31K | $0 | 未更新 | 无法计算 |
-| Coffee Knock Box: Knock. Close. Keep It Clean. | $191 | +$39 | 7 | 0 |
-| Preso slim : Minimalist wallet automatically fan out cards ! | $4.1K | +$86 | 124 | +1 |
-| FOSA VacGlass: The All-Glass Vacuum Food Storage System | $3.6K | +$237 | 128 | +6 |
-| KRIYOVV: 3-Axis Desktop CNC for Real Parts | 未更新 | 无法计算 | 53 | 0 |
-| NEXTSolid: 25W MagSafe solid-state power bank with Qi2.2 | 未更新 | 无法计算 | 393 | +1 |
-| Sam&Johnny CDP 1: Frame Your CDs. Play Your Favorites. | 未更新 | 无法计算 | 18 | +1 |
-| JOULE: World's 1st EDC Crank Light — Endless Light in Dark | 未更新 | 无法计算 | 13 | +2 |
-| The First Smart Weighing Bowl for Birds | $14K | $0 | 121 | 0 |
-| iGOREST CF688: AI 8-Electrode Body Composition Scale | $4.5K | −$40 | 63 | 0 |
+| Coffee Knock Box: Knock. Close. Keep It Clean. | $191 | $0 | 7 | 0 |
+| Preso slim : Minimalist wallet automatically fan out cards ! | $4.3K | +$165 | 129 | +5 |
+| FOSA VacGlass: The All-Glass Vacuum Food Storage System | $3.9K | +$241 | 128 | 0 |
+| KRIYOVV: 3-Axis Desktop CNC for Real Parts | 未更新 | 无法计算 | 58 | +5 |
+| NEXTSolid: 25W MagSafe solid-state power bank with Qi2.2 | 未更新 | 无法计算 | 394 | +1 |
+| Sam&Johnny CDP 1: Frame Your CDs. Play Your Favorites. | 未更新 | 无法计算 | 20 | +2 |
+| JOULE: World's 1st EDC Crank Light — Endless Light in Dark | 未更新 | 无法计算 | 13 | 0 |
+| The First Smart Weighing Bowl for Birds | $14K | $0 | 122 | +1 |
+| iGOREST CF688: AI 8-Electrode Body Composition Scale | $4.4K | −$139 | 64 | +1 |
 | Dap — Post. Like. Play. Unlock Gear. | $624 | $0 | 2 | 0 |
 | EmberRelief: EMS Wrist Massager with Heat & Cooling | $8.0K | $0 | 未更新 | 无法计算 |
-| VOIDFORM LAB: Ghost, Phantom, Hexa | $1.0K | $0 | 34 | 0 |
-| HEMLIX – Your All-Season Laundry Sidekick | $1.7K | $0 | 68 | 0 |
-| GALUDU: The Smart Cat Door for a More Connected Home | $291 | $0 | 29 | +1 |
+| VOIDFORM LAB: Ghost, Phantom, Hexa | $1.1K | +$94 | 35 | +1 |
+| HEMLIX – Your All-Season Laundry Sidekick | $1.6K | −$100 | 72 | +4 |
+| GALUDU: The Smart Cat Door for a More Connected Home | $291 | $0 | 33 | +4 |
 | Traditional Yingjisha Folding Knives, Born on the Silk Road | 未更新 | 无法计算 | 未更新 | 无法计算 |
 | MakerPi Tiruler 2.0: Do More, Carry Less | $260K | $0 | 未更新 | 无法计算 |
 | Cordless Boil & Brew - A Café On The Go. | $1.2K | $0 | 未更新 | 无法计算 |
 | ZAVAZAMOO: The Heated Meditation Cushion, Reengineered | $297 | $0 | 未更新 | 无法计算 |
-| Ready for Physical AI? Build with Mini Pupper 4. | 未更新 | 无法计算 | 81 | +1 |
+| Ready for Physical AI? Build with Mini Pupper 4. | 未更新 | 无法计算 | 81 | 0 |
 | EmbNova S1 : Your Desktop Embroidery Workshop | 未更新 | 无法计算 | 231 | 0 |
-| Nycto M6 Ultra: All-in-One Wide & Tele Night Vision | 未更新 | 无法计算 | 68 | 0 |
-| Sanvive S1: World's 1st Smart Towel Capsule Machine | 未更新 | 无法计算 | 914 | +1 |
-| PexarBolt: The Thunderbolt 5 Dock that Shows Your Workflow | $736K | +$2.0K | 未更新 | 无法计算 |
-| SLogic32U3 – The World's First 10Gbps USB3.2 Logic Analyzer | $353K | +$671 | 未更新 | 无法计算 |
+| Nycto M6 Ultra: All-in-One Wide & Tele Night Vision | 未更新 | 无法计算 | 70 | +2 |
+| Sanvive S1: World's 1st Smart Towel Capsule Machine | 未更新 | 无法计算 | 919 | +5 |
+| PexarBolt: The Thunderbolt 5 Dock that Shows Your Workflow | $738K | +$2.0K | 未更新 | 无法计算 |
+| SLogic32U3 – The World's First 10Gbps USB3.2 Logic Analyzer | $353K | $0 | 未更新 | 无法计算 |
 | DSPIXELKEY:Your Keyboard Becomes the AI Command Center. | $111K | $0 | 未更新 | 无法计算 |
 | NOOKK | Protect your Private Files | $40K | $0 | 未更新 | 无法计算 |
-| Rinse & See: Nasal Rinsing with a Live Camera View | $179 | $0 | 18 | +1 |
-| S10: Take Clear Calls Even in Chaos. | $5.5K | $0 | 111 | +1 |
+| Rinse & See: Nasal Rinsing with a Live Camera View | $179 | $0 | 18 | 0 |
+| S10: Take Clear Calls Even in Chaos. | $5.6K | +$99 | 113 | +2 |
 | ZORTHI Smart Thermos — Lock Your Sip | 未更新 | 无法计算 | 2 | 0 |
-| Ultra Slim Flatpack Camp Set：Quick-Set Foldable Table&Chair | $0 | $0 | 18 | 0 |
+| Ultra Slim Flatpack Camp Set：Quick-Set Foldable Table&Chair | $0 | $0 | 20 | +2 |
 | DWSTN Whale Song: Ti EDC Folding Knife with 4 Tuning Forks | $6.9K | $0 | 未更新 | 无法计算 |
 | biaXbew Genesis01: The light is yours to define – Genesis. | 未更新 | 无法计算 | 25 | 0 |
-| MiaoLab RadarGuard: The Radar-Sensing Wall Outlet | 未更新 | 无法计算 | 29 | +4 |
+| MiaoLab RadarGuard: The Radar-Sensing Wall Outlet | 未更新 | 无法计算 | 32 | +3 |
 | REACH: World's First Open-Source Modular Sports GPS Computer | $169K | $0 | 未更新 | 无法计算 |
 | COLOLIGHT CHIMERA Headset: No Headband, No Pressure. | $91K | $0 | 未更新 | 无法计算 |
 | BABOOU: Your 5-in-1 AI Smart Atmosphere Companion | $2.1K | $0 | 未更新 | 无法计算 |
 | HoliPan 10.25" Cast Iron Deep Skillet | $0 | $0 | 29 | 0 |
-| THE CONFINED: A Handcrafted Wooden Kinetic Sculpture | $22K | $0 | 235 | +3 |
+| THE CONFINED: A Handcrafted Wooden Kinetic Sculpture | $22K | $0 | 235 | 0 |
 | Smart UVC + Plasma Toothbrush Sanitizer UV Holder | 未更新 | 无法计算 | 未更新 | 无法计算 |
 | Umik: Slim and Curved Smartwatch. Crown-free Design | $3.8K | $0 | 未更新 | 无法计算 |
-| SynKor: Sync with Your Favorite Content. Feel Every Beat. | $15K | +$1.1K | 128 | −1 |
+| SynKor: Sync with Your Favorite Content. Feel Every Beat. | $15K | +$308 | 125 | −3 |
 | WUBEN X1Pro — Compact Power, Redefined. | $384K | $0 | 未更新 | 无法计算 |
 | All Rounder Urban & Adventure by Graphene-X | $168K | $0 | 未更新 | 无法计算 |
 | Awekeys RGB | Full Metal Shine Through Keycaps for keyboards | $96K | $0 | 未更新 | 无法计算 |
 | The Case of the Celadon Jade | $54 | $0 | 未更新 | 无法计算 |
 | LetPot LPH-Home: 2-Tier Smart Indoor Garden | $61K | $0 | 未更新 | 无法计算 |
-| VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER | $3.46M | +$2.6K | 未更新 | 无法计算 |
-| QIVIKA: Turn Your Phone Into a Smart Scope | $593K | +$1.6K | 未更新 | 无法计算 |
+| VIOLOOP - PLUG-IN AI FOR YOUR COMPUTER | $3.46M | +$1.5K | 未更新 | 无法计算 |
+| QIVIKA: Turn Your Phone Into a Smart Scope | $594K | +$791 | 未更新 | 无法计算 |
 | AI WUKONG: Your First AI Humanoid Robot That Does It All | $36K | $0 | 未更新 | 无法计算 |
-| Equora RC1 AI Monitor: Stay Ahead of Horse Health Risks | $11K | $0 | 70 | 0 |
-| POQ01: Your Water Flosser, Minus the Bulk | $2.8K | $0 | 61 | 0 |
-| MagPro:25W Qi2.2 3-in-1 Foldable Wireless Charger for Duo | $2.8K | $0 | 43 | 0 |
-| Full-Surface Standing Desk with 148 Wireless Charging Zones | $12K | $0 | 935 | +14 |
+| Equora RC1 AI Monitor: Stay Ahead of Horse Health Risks | $11K | $0 | 71 | +1 |
+| POQ01: Your Water Flosser, Minus the Bulk | $2.8K | +$42 | 61 | 0 |
+| MagPro:25W Qi2.2 3-in-1 Foldable Wireless Charger for Duo | $2.8K | $0 | 46 | +3 |
+| Full-Surface Standing Desk with 148 Wireless Charging Zones | $12K | $0 | 944 | +9 |
 | MELTORA: Your All-in-One Homemade Gummy & Drink Maker | $760 | $0 | 未更新 | 无法计算 |
-| ResQNet - Safety Internet for No-Signal Zones | $1.1K | $0 | 41 | +2 |
-| TET Portable Power Cooking Station | $1.2K | $0 | 58 | 0 |
-| First L-Shaped Precision Driver: Corners. Deep. One Tool | $3.0K | +$59 | 80 | +1 |
-| AESISENSE | Men’s Sensory Calibration Device | $535 | $0 | 1,148 | +1 |
+| ResQNet - Safety Internet for No-Signal Zones | $1.1K | $0 | 45 | +4 |
+| TET Portable Power Cooking Station | $1.2K | $0 | 60 | +2 |
+| First L-Shaped Precision Driver: Corners. Deep. One Tool | $3.1K | +$118 | 87 | +7 |
+| AESISENSE | Men’s Sensory Calibration Device | $535 | $0 | 1,149 | +1 |
 | Pool Audio System: Dive into Underwater Sound | $6.9K | $0 | 未更新 | 无法计算 |
 | ORBIT-A Full Toolbox on Your Keyring Carry Less. Do More. | 未更新 | 无法计算 | 13 | 0 |
 | FEGVE CARVED GUARDIAN-CNC-Carved of Fortune,on Your Keys. | 未更新 | 无法计算 | 13 | 0 |
 | TitanClip Pro Titanium EDC, Forged for Quick Release&Hidden | 未更新 | 无法计算 | 13 | 0 |
-| fegve "Titanium Vibe" Artistic Titanium Utility Knife - Hand | 未更新 | 无法计算 | 22 | 0 |
+| fegve "Titanium Vibe" Artistic Titanium Utility Knife - Hand | 未更新 | 无法计算 | 23 | +1 |
 | PICX-Smaller than a toothpick. Stronger than a SIM ejector. | 未更新 | 无法计算 | 9 | 0 |
 | A keychain that see"Vision" — a mechanical eye for your EDC. | 未更新 | 无法计算 | 16 | 0 |
 | Ti-Radish Pry / Pivot Fidget Prybar- Pocket Mecha, Snap &Pry | 未更新 | 无法计算 | 12 | 0 |
 | Ti-Radish Mini: Pocket Mecha Fidget | 未更新 | 无法计算 | 16 | 0 |
-| RolTine2.0: The Titanium Skeleton Tape Measure & Fidget Tool | $157K | $0 | 未更新 | 无法计算 |
-| ED08 2.0 | The World’s First 5-Color Coin-Sized Flashlight | $47K | +$102 | 未更新 | 无法计算 |
+| RolTine2.0: The Titanium Skeleton Tape Measure & Fidget Tool | $157K | +$79 | 未更新 | 无法计算 |
+| ED08 2.0 | The World’s First 5-Color Coin-Sized Flashlight | $47K | $0 | 未更新 | 无法计算 |
 | GeoLink: A Refined Titanium Ruler That Follows Your Ideas | $39K | $0 | 未更新 | 无法计算 |
 | Pen L-01 - a minimalist pen, physics-inspired. | $32K | $0 | 未更新 | 无法计算 |
 | IDEAEDC LockClip: A Powerful Clip keychain, Locks Tight | $31K | $0 | 未更新 | 无法计算 |
-| AttaEle A02: The Smart Fan-Assisted Candle Warmer Lamp | $6.5K | +$451 | 311 | +1 |
-| Goodbye Cold Feet:Original-Design Wireless Foot Massager | $10K | +$147 | 228 | +10 |
+| AttaEle A02: The Smart Fan-Assisted Candle Warmer Lamp | $6.5K | +$46 | 312 | +1 |
+| Goodbye Cold Feet:Original-Design Wireless Foot Massager | $10K | +$316 | 243 | +15 |
 | Ocean Fantasy — Larimar: The Incomparable Blue | $1 | $0 | 未更新 | 无法计算 |
 | BONESONG — A Magnetic EDC Slider with a Brass Voice. | $1.5K | $0 | 未更新 | 无法计算 |
-| Bincoo DM11：Smart Electric Coffee Grinder | $1.1K | $0 | 31 | 0 |
-| Wear a Distant World: EXOP Titanium Swiss Automatic Watch | $13K | −$631 | 325 | 0 |
-| Turret 360 | $4.2K | −$103 | 45 | 0 |
-| Petyfun JDB1: Smart Rolling Dog Ball for Interactive Play | $15K | +$441 | 194 | +10 |
+| Bincoo DM11：Smart Electric Coffee Grinder | $719 | −$359 | 34 | +3 |
+| Wear a Distant World: EXOP Titanium Swiss Automatic Watch | $13K | $0 | 326 | +1 |
+| Turret 360 | $4.4K | +$235 | 44 | −1 |
+| Petyfun JDB1: Smart Rolling Dog Ball for Interactive Play | $15K | +$152 | 202 | +8 |
 | Qilin Shattered Jade — Inspired by the Mythical Qilin | $1.3K | $0 | 未更新 | 无法计算 |
 | NEXMax1.0-Built by subtraction. A knife for subtraction | $7.6K | $0 | 未更新 | 无法计算 |
-| ICUKTAA：3-in-1 Humidifier, Scent Diffuser & Air Treatment | $1.3K | $0 | 82 | +1 |
+| ICUKTAA：3-in-1 Humidifier, Scent Diffuser & Air Treatment | $1.3K | $0 | 83 | +1 |
 | Makera Z1 Desktop CNC: Entry-level CNC, Pro-level Power | $12.41M | $0 | 未更新 | 无法计算 |
 | Palatti Gooseneck Electric Kettle | $210K | $0 | 未更新 | 无法计算 |
 | Xhorse3D Xmachine WM-100 Desktop Simultaneous 5-Axis CNC | $2.96M | $0 | 未更新 | 无法计算 |
-| NEX1.0-Built by subtraction. A knife for subtraction | 未更新 | 无法计算 | 22 | +1 |
+| NEX1.0-Built by subtraction. A knife for subtraction | 未更新 | 无法计算 | 22 | 0 |
 | K10: The Last Bike Saddle You’ll Ever Buy | 未更新 | 无法计算 | 7 | 0 |
 | SONOMER: The World's First 2-in-1 Home Ultrasonic Marinator | $33K | $0 | 未更新 | 无法计算 |
-| GLINT: A Wearable Magic Device for Instant Card Changes | $422 | −$109 | 30 | 0 |
+| GLINT: A Wearable Magic Device for Instant Card Changes | $735 | +$313 | 31 | +1 |
 | The Chef Knife Woven with Copper & Damascus | $299 | $0 | 未更新 | 无法计算 |
 | VACELUX: The 22-in-1 Mini Vacuum & Tech Cleaning Kit | $905 | $0 | 未更新 | 无法计算 |
 | SN for Tesla Model 3/Y All-Aluminum Magnetic Phone Mount | $978 | $0 | 未更新 | 无法计算 |
 | Cational Meographic | $5.3K | $0 | 未更新 | 无法计算 |
 | REAL YOUNG | Transforming Earphones into Timeless Jewelry | $91K | $0 | 未更新 | 无法计算 |
-| World's First 6.13" Color E‑ink Phone Monitor | 未更新 | 无法计算 | 45 | +1 |
-| PomTum Pal 1: A Pocket Computer You Can Rebuild | 未更新 | 无法计算 | 206 | +2 |
+| World's First 6.13" Color E‑ink Phone Monitor | 未更新 | 无法计算 | 47 | +2 |
+| PomTum Pal 1: A Pocket Computer You Can Rebuild | 未更新 | 无法计算 | 207 | +1 |
 | EYVORIQ: Camera-Free AI Recording Glasses | 未更新 | 无法计算 | 26 | 0 |
 | PA2-S Retro Cassette Visual Bluetooth Speaker | 未更新 | 无法计算 | 8 | 0 |
 | ChatField J28: Smart Team Communicator Beyond Cell Coverage | 未更新 | 无法计算 | 11 | 0 |
@@ -640,37 +662,35 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | Vulko: AI Stroker with Dual Pressure Control & Video Sync | $29K | $0 | 未更新 | 无法计算 |
 | LUMIVAR：See The Invisible. Protect Your Privacy. | $25K | $0 | 未更新 | 无法计算 |
 | LumiSleep D1: An EEG Sleep Headband with Adaptive Sound. | $25K | $0 | 未更新 | 无法计算 |
-| Redragon: Tri-Mode Gasket Mounted Mechanical Gaming Keyboard | $9.4K | −$358 | 201 | +4 |
+| Redragon: Tri-Mode Gasket Mounted Mechanical Gaming Keyboard | $9.1K | −$211 | 206 | +5 |
 | LOKMAT APPLLP 7 Pro: Android 15 4G Smartwatch | $917 | $0 | 21 | 0 |
-| Vantex V1: The Keyboard with a Built-In Touchscreen | $7.1K | +$132 | 320 | +5 |
-| UniShape: The Better AI-Powered Training System You Deserve | $10K | $0 | 444 | −1 |
-| The Next-Generation Airbag E-Ink Display Phone Case | $2.2K | −$44 | 147 | +2 |
+| Vantex V1: The Keyboard with a Built-In Touchscreen | $7.1K | $0 | 326 | +6 |
+| UniShape: The Better AI-Powered Training System You Deserve | $9.7K | −$524 | 444 | 0 |
+| The Next-Generation Airbag E-Ink Display Phone Case | $2.2K | −$44 | 149 | +2 |
 | Momokit: The USB-C Powered Vacuum Travel Bag | $10K | $0 | 未更新 | 无法计算 |
 | KRONOZURI: Three Ways to Read Time — Mechanical Watches | 未更新 | 无法计算 | 未更新 | 无法计算 |
-| FORGE & FOLD—A pocket knife that looks like it has a story | 未更新 | 无法计算 | 24 | +1 |
+| FORGE & FOLD—A pocket knife that looks like it has a story | 未更新 | 无法计算 | 25 | +1 |
 | Nine Apertures — M398 & TC4，lightweight folding knife | 未更新 | 无法计算 | 未更新 | 无法计算 |
-| XUANSHU: M390 Powder Steel Blade / TC4 Titanium Alloy Handle | 未更新 | 无法计算 | 47 | +1 |
-| Magic Eye- an EDC knife that gazes into the abyss limited200 | 未更新 | 无法计算 | 78 | 0 |
+| Magic Eye- an EDC knife that gazes into the abyss limited200 | 未更新 | 无法计算 | 79 | +1 |
 | Titanium Quick-Release Zipper Pull — One-Click Swap For All | 未更新 | 无法计算 | 13 | 0 |
 | Master Craft: Intertwined Vine Pattern Thin-Walled Jade Pot | 未更新 | 无法计算 | 13 | 0 |
-| Ignis- The ember that never dies. Titanium Glow Pendant | 未更新 | 无法计算 | 25 | +2 |
+| Ignis- The ember that never dies. Titanium Glow Pendant | 未更新 | 无法计算 | 26 | +1 |
 | Porcelain artisan dial with titanium watch case, mechanical | 未更新 | 无法计算 | 705 | 0 |
 | Titanium Pivot Lock — 360° Tangle-Free EDC Connector | 未更新 | 无法计算 | 13 | 0 |
 | Ti-Blade EDC Cutter Titanium Edge Utility Knife (TE-Utility) | 未更新 | 无法计算 | 15 | 0 |
 | Titanium Panther Clip — Sculpted Wildness in Your Pocket | 未更新 | 无法计算 | 6 | 0 |
 | Eternal Flame, Forged in Titanium & Copper | 未更新 | 无法计算 | 19 | 0 |
-| "Titan Pulse" Mastery in Miniature: Where Edge Meets Zen | 未更新 | 无法计算 | 10 | +1 |
-| "Swoosh" — insert, roller locks. "Swoosh" — pull, release. | 未更新 | 无法计算 | 9 | −1 |
-| MAGTECS：Two Tech Gadgets, One Snap | 未更新 | 无法计算 | 7 | 0 |
+| "Titan Pulse" Mastery in Miniature: Where Edge Meets Zen | 未更新 | 无法计算 | 11 | +1 |
+| "Swoosh" — insert, roller locks. "Swoosh" — pull, release. | 未更新 | 无法计算 | 9 | 0 |
 | GIMBAL KEY-Split. Release. Snap Back. Better.Zero Drop Risk. | 未更新 | 无法计算 | 6 | 0 |
 | CAPSULE TITANIUM PRY RULER | 未更新 | 无法计算 | 16 | 0 |
 | Titanium Key Carabiner-Dual Roller Latch EDC Key Holder | 未更新 | 无法计算 | 15 | 0 |
-| Rollsmith V2: The 2-in-1 Mechanical Metal Dice | 未更新 | 无法计算 | 6 | +1 |
+| Rollsmith V2: The 2-in-1 Mechanical Metal Dice | 未更新 | 无法计算 | 6 | 0 |
 | SYNCBUFF Node: A Desk Companion for Style & Hand Comfort | 未更新 | 无法计算 | 4 | 0 |
-| Nexdualsync: The USB4 80Gbps Cable with Dual Power Display | $10K | +$36 | 未更新 | 无法计算 |
+| Nexdualsync: The USB4 80Gbps Cable with Dual Power Display | $10K | $0 | 未更新 | 无法计算 |
 | Aerfold: More Space with Hangable Vacuum Compression Bags | $7.0K | $0 | 未更新 | 无法计算 |
 | The 1st AI Diode Laser Engraver with Built-in Camera | 未更新 | 无法计算 | 625 | 0 |
-| Aperture: A Pocket Knife You Can Carry on Your Keychain； | 未更新 | 无法计算 | 25 | 0 |
+| Aperture: A Pocket Knife You Can Carry on Your Keychain； | 未更新 | 无法计算 | 26 | +1 |
 | Coffee Watch In Motion --Mechanical Chronograph | ST 1901 | $39K | $0 | 未更新 | 无法计算 |
 | King of Amber—— Blue Amber | $0 | $0 | 未更新 | 无法计算 |
 | NEXORA — EDC Titanium 2-in-1 Pocket Knife & Screwdriver | $763 | $0 | 未更新 | 无法计算 |
@@ -682,23 +702,23 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | Zen Wood Mind: Celestial Power—Lightning-Struck Jujube Wood | $4.0K | $0 | 未更新 | 无法计算 |
 | WhisPrompt: AI Workflow Controller | 未更新 | 无法计算 | 510 | 0 |
 | REZE FLOW: The World’s First All-in-One Smart Curtain Rod | $49K | $0 | 未更新 | 无法计算 |
-| Honor Choice：Your Movie Theater Follows You -1080P Projector | $917 | $0 | 28 | +1 |
+| Honor Choice：Your Movie Theater Follows You -1080P Projector | $917 | $0 | 28 | 0 |
 | 🌊SeasNomad: LED Magic Squid Jig – Ocean Power | 未更新 | 无法计算 | 60 | 0 |
-| THREE-WINGED HRAFN — A New Form of FPS Mouse | 未更新 | 无法计算 | 202 | +1 |
+| THREE-WINGED HRAFN — A New Form of FPS Mouse | 未更新 | 无法计算 | 202 | 0 |
 | Unlock More Productivity With a Workspace Built for Focus. | $0 | $0 | 未更新 | 无法计算 |
 | Tool Pen: The World's Only "Pop-A-Point" Screwdriver | $14K | $0 | 未更新 | 无法计算 |
-| Star Ring Tesla Ambient Light | $4.5K | +$846 | 82 | 0 |
+| Star Ring Tesla Ambient Light | $4.5K | $0 | 82 | 0 |
 | COKAFEGO: The Cordless Coffee Station, More Cups to Share | $6.0K | $0 | 120 | 0 |
 | The Smart Titanium Tumbler That Keeps Your Drink at 140°F. | $2.9K | $0 | 未更新 | 无法计算 |
 | Music Pillow - A Comfortable Night's Sleep | 未更新 | 无法计算 | 4 | 0 |
 | FLY-T-Mini Land-Air Bounce Car: Land & Air RC | $27K | $0 | 未更新 | 无法计算 |
-| YIMO Flex: 270° Rotating 1080P Portable LED Smart Projector | 未更新 | 无法计算 | 398 | 0 |
+| YIMO Flex: 270° Rotating 1080P Portable LED Smart Projector | 未更新 | 无法计算 | 399 | +1 |
 | CK2-MX1: Quick-Release Motorcycle Phone Mount | 未更新 | 无法计算 | 547 | 0 |
 | I-Revive: EMS + TENS Active Recovery Footwear | 未更新 | 无法计算 | 14 | 0 |
 | Jitrainno:E-Ink Canvas Breathes Living Art from Whispers | $300K | $0 | 未更新 | 无法计算 |
 | FURVUE X2 Pro:2.7K Stable Pet Camera Built for How Pets Move | $13K | $0 | 未更新 | 无法计算 |
 | NiniQuu: Living Plush Pet | $4.8K | $0 | 未更新 | 无法计算 |
-| KR-S MARK: Retro Suitcase-Style All-In-One CD Music Player | $2.1K | $0 | 116 | 0 |
+| KR-S MARK: Retro Suitcase-Style All-In-One CD Music Player | $2.1K | $0 | 117 | +1 |
 | GRASSHOPPER Masterclass || RHINO 3D | 未更新 | 无法计算 | 297 | 0 |
 | Weekly Pill Organizer V2: Bigger, Bolder, Built to last | $121K | $0 | 未更新 | 无法计算 |
 | NIMO Holo-Optical Glasses.Truly great eyewear. Truly useful. | 未更新 | 无法计算 | 222 | 0 |
@@ -710,20 +730,20 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | X1 LITE: World's First Home Use Pen & Torch Laser Machine | $1.30M | $0 | 未更新 | 无法计算 |
 | Vision Master: One Scope for All Your Birding Needs | $232K | $0 | 未更新 | 无法计算 |
 | Atlas - E-ink Smart Chessboard for Online & Offline Play | $221K | $0 | 未更新 | 无法计算 |
-| CWNAS Pocket AI NAS: The All-Flash Portable AI NAS | $2.4K | $0 | 241 | +2 |
+| CWNAS Pocket AI NAS: The All-Flash Portable AI NAS | $2.4K | $0 | 241 | 0 |
 | Exsoul｜The Portable See-Through Chain-Driven Herb Grinder | 未更新 | 无法计算 | 7 | 0 |
 | ZENORA G8: TESLA NCM+1100°C Fireproof & Soundproof Armor Mat | 未更新 | 无法计算 | 15 | 0 |
-| VAULT: modular stacking toolbox system | $768K | +$3.0K | 未更新 | 无法计算 |
+| VAULT: modular stacking toolbox system | $770K | +$2.7K | 未更新 | 无法计算 |
 | Roll in Roll out Bicycle wheel cleaner | $582 | $0 | 未更新 | 无法计算 |
 | Original IP Collectibles and Blind Boxes | $0 | $0 | 未更新 | 无法计算 |
 | Photography of Man-Made Beauty | $21K | $0 | 未更新 | 无法计算 |
 | LightMake L4: 1st 4-Head Color 3D Printer with Linear Motors | $2.99M | $0 | 未更新 | 无法计算 |
-| GritPlex: The Desktop Sandblaster & Zero‑Dust Work Cell | $541K | $0 | 未更新 | 无法计算 |
+| GritPlex: The Desktop Sandblaster & Zero‑Dust Work Cell | $542K | +$899 | 未更新 | 无法计算 |
 | StationPC DA400:Your Next-Gen AI NAS & Local AI Cloud | $54K | $0 | 未更新 | 无法计算 |
 | oLand | The Holographic AI Pet for Stress Relief | $40K | $0 | 未更新 | 无法计算 |
 | SANJINZY G5：Upgrade Your Workstation-2M Thunderbolt 5 Cable | $23K | $0 | 未更新 | 无法计算 |
 | MBOX D69: Smart Quantum Display & Extended Screen | $20K | $0 | 未更新 | 无法计算 |
-| MakerPi Tiwrench: Hold it. Lock it. Make it. | $68K | +$166 | 未更新 | 无法计算 |
+| MakerPi Tiwrench: Hold it. Lock it. Make it. | $68K | +$419 | 未更新 | 无法计算 |
 | Cinomadist Cadence: Other Bags Say No, We Say Pack It All. | $61K | $0 | 未更新 | 无法计算 |
 | MESTOV PrepTop: Less Prep, Less Mess, Dinner Easier | $18K | $0 | 未更新 | 无法计算 |
 | DAYCUBE — A Transformable Pill Organizer | $2.2K | $0 | 未更新 | 无法计算 |
@@ -739,11 +759,11 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | ResQNet — Safety Internet for No-Signal Zones | $15 | $0 | 未更新 | 无法计算 |
 | Sound. Light. Scent. One Calmer Nighttime Ritual | $1 | $0 | 未更新 | 无法计算 |
 | GlacierX丨Master the Game with Magnetic Power. | $11K | $0 | 未更新 | 无法计算 |
-| OSIMT TiRinse: The Titanium Rinse System | 未更新 | 无法计算 | 40 | 0 |
+| OSIMT TiRinse: The Titanium Rinse System | 未更新 | 无法计算 | 41 | +1 |
 | PACE Ti: A Modern Tritium-Core Titanium Pocket Fountain Pen | $46K | $0 | 未更新 | 无法计算 |
 | Anchor: A Keychain That Never Gets Lost. No Bulky Rings | $19K | $0 | 未更新 | 无法计算 |
 | ARCVE: Pickleball Paddles, Apparel and Gear Built to Last. | $61 | $0 | 未更新 | 无法计算 |
-| Jiminy: Titanium Keychain Pry Bar that REALLY GRIPS! | $12K | +$46 | 未更新 | 无法计算 |
+| Jiminy: Titanium Keychain Pry Bar that REALLY GRIPS! | $12K | $0 | 未更新 | 无法计算 |
 | Pocket G1 Coffee Grinder : One‑Click Fold, Grind Anywhere | $1.8K | $0 | 未更新 | 无法计算 |
 | Mr.HE-The best tool you own is the one with scratches on it. | $1.9K | $0 | 未更新 | 无法计算 |
 | AIR-REST PRO | $548 | $0 | 未更新 | 无法计算 |
@@ -753,11 +773,11 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | Wee Beastie : 4.75L Super Mini Fishtank Gaming & Ai PC | $209K | $0 | 未更新 | 无法计算 |
 | AGELOCER | Rare Space Meteorite: 29.51-day Moon Phase Watch | $78K | $0 | 未更新 | 无法计算 |
 | Cutesonic: A Smart Companion for Comfort & Wellness | 未更新 | 无法计算 | 122 | 0 |
-| TiNova U: A Titanium EDC Cutting Tool That Keeps You Playing | 未更新 | 无法计算 | 30 | +2 |
+| TiNova U: A Titanium EDC Cutting Tool That Keeps You Playing | 未更新 | 无法计算 | 30 | 0 |
 | OSIMT: The Microwave-Safe Titanium Storage System | $474K | $0 | 未更新 | 无法计算 |
 | SpeeDisk C2: 18‑in‑1 Docking Station-Up to 5‑Monitor Support | $10K | $0 | 未更新 | 无法计算 |
 | Morpho: The iPad Folio That Adapts to You | 未更新 | 无法计算 | 30 | 0 |
-| DeskON | A Connected 3D-Printable Desktop Workshop Ecosystem | 未更新 | 无法计算 | 65 | 0 |
+| DeskON | A Connected 3D-Printable Desktop Workshop Ecosystem | 未更新 | 无法计算 | 67 | +2 |
 | LaserCyber L1 Series & C1 CNC: Intelligent Metal Workshop | $1.26M | $0 | 未更新 | 无法计算 |
 | Wooask TransNote:World's 1st Dual-Screen AI Translation Hub | $21K | $0 | 未更新 | 无法计算 |
 | CORE POWER BANK S - Light to Carry. Safe to Trust | $146K | $0 | 未更新 | 无法计算 |
@@ -767,18 +787,17 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | Xone — Smart Sleep Mask with AI Insights, Audio & Auto Stop | $17K | $0 | 未更新 | 无法计算 |
 | FluxPin Portable Precision Soldering Tweezers | $8.6K | $0 | 未更新 | 无法计算 |
 | The ESP32-P461-S1 | $3.7K | $0 | 未更新 | 无法计算 |
-| Prism | The First Light Through the Dark. | 未更新 | 无法计算 | 37 | +1 |
-| Portable Dice Spinner EDC | $2.2K | $0 | 97 | +2 |
-| XK01 Clean the Air. Light Up the Night. | 未更新 | 无法计算 | 1 | 0 |
+| Prism | The First Light Through the Dark. | 未更新 | 无法计算 | 38 | +1 |
+| Portable Dice Spinner EDC | $2.2K | +$86 | 99 | +2 |
 | Where Architecture Meets Sound: AA01 Concrete Speaker | $69K | $0 | 未更新 | 无法计算 |
-| KRONOSTI STRATA GMT – Titanium Natural Stone Dial Watch | $74K | +$535 | 未更新 | 无法计算 |
+| KRONOSTI STRATA GMT – Titanium Natural Stone Dial Watch | $74K | $0 | 未更新 | 无法计算 |
 | SyntaCharging 200W Multi-functional 7-in-1 Charging Station. | $48K | $0 | 未更新 | 无法计算 |
 | FlameMage: 4-Level Heat-Control Titanium Cooking System | $25K | $0 | 未更新 | 无法计算 |
-| Linen-Tencel™4-Season Thermoregulating, Ironing-free Apparel | $25K | +$357 | 未更新 | 无法计算 |
-| Alex L1 :0.9kg backpack stands like suitcase. 1 bag travel:) | $5.5K | $0 | 141 | −1 |
+| Linen-Tencel™4-Season Thermoregulating, Ironing-free Apparel | $25K | $0 | 未更新 | 无法计算 |
+| Alex L1 :0.9kg backpack stands like suitcase. 1 bag travel:) | $5.4K | −$100 | 144 | +3 |
 | TETHYS BOTANICAL: 3-Step Botanical Skin Comfort Routine | $592 | $0 | 未更新 | 无法计算 |
 | RugOne Xsnap 7 Pro: Rugged Phone + Detachable Action Camera | $60K | $0 | 未更新 | 无法计算 |
-| VaCu Pro: Next-Gen Stainless Steel Vacuum Container | $2.7K | $0 | 83 | +2 |
+| VaCu Pro: Next-Gen Stainless Steel Vacuum Container | $2.7K | $0 | 84 | +1 |
 | iHave F12: Portable UVC Toothbrush Sanitizer, Magnetic Mount | $347 | $0 | 未更新 | 无法计算 |
 | MechaCable: 40Gbps 240W 4-in-1 Mecha-Style USB4 Cable | $21K | $0 | 未更新 | 无法计算 |
 | ATuMan FL2: The All-in-One EDC Flashlight | $10K | $0 | 未更新 | 无法计算 |
@@ -788,20 +807,20 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | LumaViva: The Self-Powered Companion Light | 未更新 | 无法计算 | 未更新 | 无法计算 |
 | Edison: White Ceramic Daydream Sculpture | $0 | $0 | 未更新 | 无法计算 |
 | NEVILO Universal 200W Travel Charger – One Charger for 200+ | $10K | $0 | 未更新 | 无法计算 |
-| Pocket Knife丨Smaller Than Your Thumb. Built for Every Day | $21K | $0 | 未更新 | 无法计算 |
+| Pocket Knife丨Smaller Than Your Thumb. Built for Every Day | $21K | +$52 | 未更新 | 无法计算 |
 | One-Touch Electric Umbrella: Open, Close & Retract | $9.4K | $0 | 未更新 | 无法计算 |
 | WUBEN E8 Gets Smarter – 3 Side LEDs & Magnetic Shell | $99K | $0 | 未更新 | 无法计算 |
 | MeoWorld Assassin's Creed Edward Kenway Figurine | $29K | $0 | 未更新 | 无法计算 |
-| Brightin Star: Made for Leica M. Ready for more. | $79K | $0 | 未更新 | 无法计算 |
+| Brightin Star: Made for Leica M. Ready for more. | $80K | +$779 | 未更新 | 无法计算 |
 | Thinnest Semi-Solid-State Power Bank with Temp Display | $50K | $0 | 未更新 | 无法计算 |
 | The World's Smallest AI Calorie Scale in Your Pocket | $14K | $0 | 未更新 | 无法计算 |
-| RocXZoom, World's First Robotic Extreme Zoom Camera | $467K | +$611 | 未更新 | 无法计算 |
+| RocXZoom, World's First Robotic Extreme Zoom Camera | $467K | $0 | 未更新 | 无法计算 |
 | TBK N1: The 6-in-1 Touchscreen Soldering & Repair Station | $145K | $0 | 未更新 | 无法计算 |
-| Wokyis G7&G5, Most Powerful Dock for Your Mac Studio & mini | $90K | +$229 | 未更新 | 无法计算 |
+| Wokyis G7&G5, Most Powerful Dock for Your Mac Studio & mini | $90K | +$119 | 未更新 | 无法计算 |
 | Pixie: A Speaker That Turns Your Desk Into Pixel Art | $203 | $0 | 未更新 | 无法计算 |
 | ScanMax 320: The Portable A2 Scanner Reinvented | $220K | $0 | 未更新 | 无法计算 |
-| Outdoor Adventure Multitool Set | 未更新 | 无法计算 | 657 | +1 |
-| VisaUltra 250W: The Most Powerful Travel Adapter Ever Built | $280K | +$231 | 未更新 | 无法计算 |
+| Outdoor Adventure Multitool Set | 未更新 | 无法计算 | 656 | −1 |
+| VisaUltra 250W: The Most Powerful Travel Adapter Ever Built | $280K | $0 | 未更新 | 无法计算 |
 | XGO-mini2SW: Reinforcement Learning Wheeled-Legged Robot Dog | $128K | $0 | 未更新 | 无法计算 |
 | BirdSnap Cam 1: Built for Backyard Birdwatching | $1.6K | $0 | 未更新 | 无法计算 |
 | Moreclaren: Liquid Fuel for Tabletop & Outdoor Cooking | $4.6K | $0 | 未更新 | 无法计算 |
@@ -813,11 +832,11 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | 5 in 1 Swappable‑Battery Modular Magnetic Wireless PowerBank | $2.3K | $0 | 未更新 | 无法计算 |
 | D2D Essential Backpack Pro | D2D Sling Pouch | $8.5K | $0 | 未更新 | 无法计算 |
 | Hearts ruffled Ita bag | $66 | $0 | 未更新 | 无法计算 |
-| The First Smart Ring Built for Personalization.Star Ring | 未更新 | 无法计算 | 24 | +1 |
+| The First Smart Ring Built for Personalization.Star Ring | 未更新 | 无法计算 | 24 | 0 |
 | ViewX 15.6" & 27" Glasses-Free Spatial AI 3D Displays | $81K | $0 | 未更新 | 无法计算 |
 | JETROX: The Waterproof 130,000 RPM Pocket Turbo Blower | $830 | $0 | 未更新 | 无法计算 |
 | Clip-On Open Earbuds for Exercise, Music & What’s Around You | $5.3K | $0 | 未更新 | 无法计算 |
-| AntBelt T1: Fully Enclosed Galvo Engraver from $149 | $11K | +$697 | 未更新 | 无法计算 |
+| AntBelt T1: Fully Enclosed Galvo Engraver from $149 | $11K | $0 | 未更新 | 无法计算 |
 | Pitoneer｜Titanium Magnetic EDC Multitool Carabiner | $1.8K | $0 | 未更新 | 无法计算 |
 | TapDock: The Desktop Hub with One-Touch Shortcuts | $1.8K | $0 | 未更新 | 无法计算 |
 | Lady Godiva's Silk Textiles | $240 | $0 | 未更新 | 无法计算 |
@@ -826,19 +845,19 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | OssiAir : Clip-on cartilage conduction OWS for Every Move | $7.1K | $0 | 未更新 | 无法计算 |
 | Morelink PRAYTECH S1: 76-Lumen DLP Projector Smartphone | $15 | $0 | 未更新 | 无法计算 |
 | Echo Box : The Smart Sound & Display Showcase | 未更新 | 无法计算 | 28 | 0 |
-| BEAM PUMP - The Backpacking Pump Lantern | $117K | $0 | 未更新 | 无法计算 |
-| InfiMaker K1: The Pro-Grade Desktop 5-Axis CNC | $4.80M | +$6.6K | 未更新 | 无法计算 |
+| BEAM PUMP - The Backpacking Pump Lantern | $117K | +$98 | 未更新 | 无法计算 |
+| InfiMaker K1: The Pro-Grade Desktop 5-Axis CNC | $4.81M | +$11K | 未更新 | 无法计算 |
 | Xuffy：Your Magnetic Shoulder Companion | $1.1K | $0 | 未更新 | 无法计算 |
 | TICKEY: A Customizable Clip-On Color E-Paper Card | $895K | $0 | 未更新 | 无法计算 |
 | X3 | The World's First Solution to Turn Your PC into a NAS | $246K | $0 | 未更新 | 无法计算 |
-| HubKey: 16-in-1 Dual 4K Docking Station with 2" Touchscreen | $36K | $0 | 未更新 | 无法计算 |
+| HubKey: 16-in-1 Dual 4K Docking Station with 2" Touchscreen | $36K | +$153 | 未更新 | 无法计算 |
 | TiTern: A Titanium & Carbon Guitar Pick, Your Grip Redefined | $19K | $0 | 未更新 | 无法计算 |
 | SecHeal: World’s First Four-Motion Real-Time AI Companion | 未更新 | 无法计算 | 未更新 | 无法计算 |
 | HoneyEdge — A Cybersecurity Decoy for Your Network | $0 | $0 | 36 | 0 |
 | Safesight: The World's First Privacy Protection Camera | 未更新 | 无法计算 | 106 | 0 |
 | BSCOBBER OmniPump: Lightweight Portable outdoor Pump 10-in-1 | $12K | $0 | 未更新 | 无法计算 |
-| AeroVox: The Titanium Tool That Doesn't Look Like One | $0 | $0 | 19 | +1 |
-| ChewJoy: The Treat Ball That Cleans Teeth While Dogs Play | 未更新 | 无法计算 | 5 | 0 |
+| AeroVox: The Titanium Tool That Doesn't Look Like One | $0 | $0 | 19 | 0 |
+| ChewJoy: The Treat Ball That Cleans Teeth While Dogs Play | 未更新 | 无法计算 | 6 | +1 |
 | CYBER-HT: Pocket Orbital Fidget with a Sealed Track | 未更新 | 无法计算 | 6 | 0 |
 | VALIMOR: 60-Hour Limited-Edition Forged Gemstone Watches | $36K | $0 | 未更新 | 无法计算 |
 | EZY BACK: Travel, Compressed Into One Backpack | $29K | $0 | 未更新 | 无法计算 |
@@ -847,8 +866,8 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | Titaner Matrix: The 3-Level Keychain Security System | $147K | $0 | 未更新 | 无法计算 |
 | metaXring AI Smart Ring: Understands Nights. Improves Days. | $2.2K | $0 | 未更新 | 无法计算 |
 | Eck Design K1: The Quick-Access Titanium Carry Clip | $67K | $0 | 未更新 | 无法计算 |
-| Panda.MoRE: The World's Softest Robot, an Panda Companion | 未更新 | 无法计算 | 81 | +1 |
-| DIISEAPLUS M5 CORDLESS FLOOR CLEANER | 未更新 | 无法计算 | 19 | 0 |
+| Panda.MoRE: The World's Softest Robot, an Panda Companion | 未更新 | 无法计算 | 82 | +1 |
+| DIISEAPLUS M5 CORDLESS FLOOR CLEANER | 未更新 | 无法计算 | 20 | +1 |
 | TENGPAI H1: 5G Keyboard Phone Designed For Focus | $55K | $0 | 未更新 | 无法计算 |
 | Slumbera: earbud with UV light care and white noise | $1 | $0 | 未更新 | 无法计算 |
 | APEXEL 210° Full-Screen Fisheye Lens | $5.2K | $0 | 未更新 | 无法计算 |
@@ -861,20 +880,20 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | Coinax VG10 Damascus Camp Knife | Leather Grip | $4.9K | $0 | 未更新 | 无法计算 |
 | Hilight Pivot: Adjustable Desk Light with Wireless Charging | $3.4K | $0 | 未更新 | 无法计算 |
 | Titaner Razorbill: Titanium 3D CNC Tanto EDC Cutting Tool | $108K | $0 | 未更新 | 无法计算 |
-| MetaBunny Y1: Your Ideas, Running on Your Desk | 未更新 | 无法计算 | 134 | 0 |
-| ARDIX: 7 mm Card-Thin Foldable Mouse | 未更新 | 无法计算 | 22 | 0 |
+| MetaBunny Y1: Your Ideas, Running on Your Desk | 未更新 | 无法计算 | 135 | +1 |
+| ARDIX: 7 mm Card-Thin Foldable Mouse | 未更新 | 无法计算 | 24 | +2 |
 | Diiwell:19” 4K 144Hz Monitors–Two Models,One Powerful Screen | $17K | $0 | 未更新 | 无法计算 |
-| DOWELTRON: Ultimate cabinet builder | 未更新 | 无法计算 | 193 | 0 |
+| DOWELTRON: Ultimate cabinet builder | 未更新 | 无法计算 | 194 | +1 |
 | Raven: Minimalist folding knife. | 未更新 | 无法计算 | 未更新 | 无法计算 |
 | The World's First Retro Water Drop Ambient Player | $39K | $0 | 未更新 | 无法计算 |
 | WoodNFC Design: Crafted by Nature. Made to Connect. | $306 | $0 | 未更新 | 无法计算 |
-| Sweekar: The AI Pocket Pet That Physically Grows With You | $678K | +$183 | 未更新 | 无法计算 |
-| Zenith X VISE : Quick Adjustments, Stronger Clamping | 未更新 | 无法计算 | 998 | 0 |
+| Sweekar: The AI Pocket Pet That Physically Grows With You | $678K | +$169 | 未更新 | 无法计算 |
+| Zenith X VISE : Quick Adjustments, Stronger Clamping | 未更新 | 无法计算 | 999 | +1 |
 | Areson Origin Series: A Worldtimer Watch Tracks 24 Cultures | $178K | $0 | 未更新 | 无法计算 |
 | TroVico: Smart Shoe Washing. No Hand Scrubbing, Every Time. | $33K | $0 | 未更新 | 无法计算 |
 | PiLY – World's First AI Voice-Note Smart Health Band | $20K | $0 | 未更新 | 无法计算 |
 | HMC Watch Co: The Mirrored Salar de Uyuni Geometric Watch | $11K | $0 | 未更新 | 无法计算 |
-| One of a Kind, Like a Starry Night — A Handcrafted Resin Pen | $3.6K | $0 | 未更新 | 无法计算 |
+| One of a Kind, Like a Starry Night — A Handcrafted Resin Pen | $3.7K | +$126 | 未更新 | 无法计算 |
 | Raymoto A1: Cordless Handheld Galvo Laser Engraver | $97K | $0 | 未更新 | 无法计算 |
 | Nimbo X1：World’s Lightest SiC Color Display AR Glasses | $26K | $0 | 未更新 | 无法计算 |
 | SR1 ：Auto Feed. Live View. Smarter Soldering. | $12K | $0 | 未更新 | 无法计算 |
@@ -892,7 +911,7 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | VibeNos A Real IN-12 Nixie Tube Clock, Reimagined | $5.8K | $0 | 未更新 | 无法计算 |
 | AmoPaw: The World's 1st Contactless Health Tracker for Pets | 未更新 | 无法计算 | 55 | 0 |
 | A07:9 in 1Your Pocket-Sized Repair Shop. | $569 | $0 | 未更新 | 无法计算 |
-| XTAND Libra: Smart Lumbar Support That Adapts as You Sit | 未更新 | 无法计算 | 12 | +1 |
+| XTAND Libra: Smart Lumbar Support That Adapts as You Sit | 未更新 | 无法计算 | 12 | 0 |
 | Rainbean - Best Smart Birdhouse On The Market | $27K | $0 | 未更新 | 无法计算 |
 | PlantMulti: The Smart Gardening Multi-Tool for Plant Parents | $13K | $0 | 未更新 | 无法计算 |
 | Vogatiki: The USB4 80Gbps Cable with Real-Time Power Display | $12K | $0 | 未更新 | 无法计算 |
@@ -927,7 +946,7 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | NYX60, World's First Light-Guided RT Optical Keyboard | $10K | $0 | 未更新 | 无法计算 |
 | Vault X1 — A Cinematic Showcase for Action Figures | $2.1K | $0 | 未更新 | 无法计算 |
 | Ellite V1: A Modular Knife Holder Built for Lasting | $1.1K | $0 | 未更新 | 无法计算 |
-| Petaboo Litter Box: All-Ages AI Cat Health Monitoring | 未更新 | 无法计算 | 263 | 0 |
+| Petaboo Litter Box: All-Ages AI Cat Health Monitoring | 未更新 | 无法计算 | 264 | +1 |
 | DockTech ES4: 15-in-1 Thunderbolt™ 5 Super Docking Station | $17K | $0 | 未更新 | 无法计算 |
 | ChargeUnie：Not just a wireless charger — Your Personal Audio | $1.9K | $0 | 未更新 | 无法计算 |
 | UH100 MAX: World’s First MagSafe Encrypted Touchscreen SSD | $3.6K | $0 | 未更新 | 无法计算 |
@@ -937,7 +956,7 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | TREKVOLT: Starlink‑Priority Car Charger, Zero Road Reboots | $810 | $0 | 未更新 | 无法计算 |
 | Foldable Travel Handheld Steamer | $166 | $0 | 未更新 | 无法计算 |
 | Gpetfeel:AI Pet Emotion & Behavior Analyzer | $4.3K | $0 | 未更新 | 无法计算 |
-| Powster X: Smart Sport Glasses with Dial-controlled Tint | 未更新 | 无法计算 | 24 | +1 |
+| Powster X: Smart Sport Glasses with Dial-controlled Tint | 未更新 | 无法计算 | 24 | 0 |
 | ARSK: All-in-One Power Station plus Premium Audio | $19K | $0 | 未更新 | 无法计算 |
 | Ti-Toucan: A Titanium EDC Folding Knife–Big Beak, Sharp Edge | $15K | $0 | 未更新 | 无法计算 |
 | Solar Glow T01 — A New Shape Of Solar Light. | $4.4K | $0 | 未更新 | 无法计算 |
@@ -950,7 +969,7 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | VELTRO — A Refined Crossbar-Lock Folding Knife | $4.8K | $0 | 未更新 | 无法计算 |
 | ORION TWIN‑Compact Titanium EDC Knife | 14C28N Blade | $2.8K | $0 | 未更新 | 无法计算 |
 | BESTSUIT 3D MaxGlass: Glasses-Free 3D for iPhone | $51 | $0 | 未更新 | 无法计算 |
-| CodingWand: Voice Keyboard & Macro Pad for AI & Vibe Coding | 未更新 | 无法计算 | 34 | 0 |
+| CodingWand: Voice Keyboard & Macro Pad for AI & Vibe Coding | 未更新 | 无法计算 | 35 | +1 |
 | CocktailPro – World's First Gamified Cocktails & Light Show | $6.0K | $0 | 未更新 | 无法计算 |
 | Melbase: 14-in-1 Video & Audio Dock - Clean Up Your Desktop | $4.8K | $0 | 未更新 | 无法计算 |
 | Ti Beacon — A Tiny Survival EDC Pendant | 未更新 | 无法计算 | 未更新 | 无法计算 |
@@ -970,7 +989,7 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | TOPFAB TF500 5-Axis AI CNC: Your Desktop. Your Fabrication. | $0 | $0 | 未更新 | 无法计算 |
 | ZiXSOON: First Fully Automatic Eyeglass Cleaner Machine | $9.6K | $0 | 未更新 | 无法计算 |
 | The Vanishing Masters of Shadow Puppetry | $882 | $0 | 未更新 | 无法计算 |
-| 4URPC: 15.6" Slim Wireless Touchscreen Monitor | $345K | $0 | 未更新 | 无法计算 |
+| 4URPC: 15.6" Slim Wireless Touchscreen Monitor | $345K | +$13 | 未更新 | 无法计算 |
 | Capexkit:Electric Knife Sharpener with Thermometer&Timer | $8.6K | $0 | 未更新 | 无法计算 |
 | PetYoYo: 5-in-1 AI Pet Camera-Robot for Health & Companion | $7.8K | $0 | 未更新 | 无法计算 |
 | KairoGlo: The Perpetual 10" AI Frame | Frame Your Kairos | $799 | $0 | 未更新 | 无法计算 |
@@ -983,7 +1002,7 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | Portable Red Light Therapy: Full-Body Muscle Relaxation | $24K | $0 | 未更新 | 无法计算 |
 | WaveOne: Smarter Cordless Cleaning for Your Pool | 未更新 | 无法计算 | 未更新 | 无法计算 |
 | VK01: The Foldable Gear Protection System | $146 | $0 | 未更新 | 无法计算 |
-| LATTICE by Graphene-X: Watch Straps Woven With Graphene | $59K | $0 | 未更新 | 无法计算 |
+| LATTICE by Graphene-X: Watch Straps Woven With Graphene | $59K | +$175 | 未更新 | 无法计算 |
 | OLLIE: The World's First Detachable Figure Bluetooth Speaker | $24K | $0 | 未更新 | 无法计算 |
 | Norbu Made Dawn 30 — The Modular Expandable Camera Backpack | $8.1K | $0 | 未更新 | 无法计算 |
 | Zealwellar:3-Layer Leak-Proof Trash Bag Dispenser | $3.0K | $0 | 未更新 | 无法计算 |
@@ -1004,7 +1023,7 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | KRYN Shark: Titanium Guitar Pick & Everyday Carry Pandant | $5.5K | $0 | 未更新 | 无法计算 |
 | TKP4: Gravity-Actuated Modular Pen | $1.9K | $0 | 未更新 | 无法计算 |
 | HOOTUU: Handheld Infrared Therapy for Deep Pain Relief | $15K | $0 | 未更新 | 无法计算 |
-| Havergo M1 Series E-Scooter That You Can Take Anywhere | 未更新 | 无法计算 | 1,038 | +1 |
+| Havergo M1 Series E-Scooter That You Can Take Anywhere | 未更新 | 无法计算 | 1,038 | 0 |
 | Sovol M1D IDEX Tool-Changing 3D Printer | $3.24M | $0 | 未更新 | 无法计算 |
 | MemoMind One: The Most Natural AI Display Glasses! | $1.33M | $0 | 未更新 | 无法计算 |
 | QIHUBO X1: AI-Powered HD Wireless Transmitter & Receiver | $7.4K | $0 | 未更新 | 无法计算 |
@@ -1013,7 +1032,7 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | The Retractable 240W & Full-Featured USB 4 Cable | $6.7K | $0 | 未更新 | 无法计算 |
 | CISleep Pillow：From Faster Sleep to True Snore-Free Mornings | 未更新 | 无法计算 | 114 | 0 |
 | Mini 3-in-1 Desktop Craft Workshop | $28K | $0 | 未更新 | 无法计算 |
-| Grinista Tempo: Waterproof Smart Coffee Scale | $41K | $0 | 未更新 | 无法计算 |
+| Grinista Tempo: Waterproof Smart Coffee Scale | $41K | +$49 | 未更新 | 无法计算 |
 | Glocandy- Contactless 60GHz mm Wave Radar Smart Baby Monitor | $7.2K | $0 | 未更新 | 无法计算 |
 | Wally-Bot GEN2: The Chair that Walks, Stands, and Rests. | $2.4K | $0 | 未更新 | 无法计算 |
 | Redefine Your Power Supply——Multi Functional Charging Tower | 未更新 | 无法计算 | 85 | 0 |
@@ -1029,7 +1048,7 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | World’s First 80FPS Large Dual-Screen E-Ink Smartphone | $185K | $0 | 未更新 | 无法计算 |
 | MUNING RING: The World's First Smart Ring for Family Care | $935 | $0 | 未更新 | 无法计算 |
 | AI Haptic Vest | $0 | $0 | 未更新 | 无法计算 |
-| All-Metal Reusable Dental Floss & Stress Relief EDC Tool | $106K | $0 | 未更新 | 无法计算 |
+| All-Metal Reusable Dental Floss & Stress Relief EDC Tool | $106K | +$53 | 未更新 | 无法计算 |
 | OSHID HIVE Mechanical Keycaps | Giving Light a Physical Form | $2.2K | $0 | 未更新 | 无法计算 |
 | EdgeForm Azure: Artisan Damascus Knife for Every Home Chef | $8.0K | $0 | 未更新 | 无法计算 |
 | Titan 2 - The Latest 5G QWERTY Physical Keyboard Smartphone | $2.08M | $0 | 未更新 | 无法计算 |
@@ -1041,12 +1060,12 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | ChargeUltra G4: 7-in-1 Wireless Charger with Ambient Clock | $15K | $0 | 未更新 | 无法计算 |
 | HushNest — Bone-Conduction Audio for Quiet Bedtime Listening | $8.1K | $0 | 未更新 | 无法计算 |
 | Sea at Sunset — An Impressionist Chef’s Knife | 未更新 | 无法计算 | 35 | 0 |
-| Deep Sea: A Chef’s Knife Where Ocean Meets Flame | 未更新 | 无法计算 | 25 | +1 |
+| Deep Sea: A Chef’s Knife Where Ocean Meets Flame | 未更新 | 无法计算 | 25 | 0 |
 | Nebula Art Folding Knife | Zirconium Damascus Limited EDC | $9.8K | $0 | 未更新 | 无法计算 |
 | XWasher: Smart Toy Care System | 未更新 | 无法计算 | 140 | 0 |
 | SleepHalo H1: The AI-Powered Smart Sleep Companion | $63K | $0 | 未更新 | 无法计算 |
 | 【GOGOCHINA】Reality Travel Show | $0 | $0 | 未更新 | 无法计算 |
-| GoLight AI Sports Glasses for Cycling、Running and more | 未更新 | 无法计算 | 82 | 0 |
+| GoLight AI Sports Glasses for Cycling、Running and more | 未更新 | 无法计算 | 83 | +1 |
 | TIMECAPSULE G3: A Tiny AI Time Machine for Your Desk | $178K | $0 | 未更新 | 无法计算 |
 | Nexo: AI Night Vision That Recognizes What You See | $12K | $0 | 未更新 | 无法计算 |
 | OpenFrame: Agentic AI Workstation for Vibe Coding | 未更新 | 无法计算 | 150 | 0 |
@@ -1065,7 +1084,7 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | DeskON | A Connected 3D-Printable Desktop Workshop Ecosystem | $2.1K | $0 | 未更新 | 无法计算 |
 | GlowHint KT75: Hall Effect Rapid Trigger Magnetic Keyboard | $4.3K | $0 | 未更新 | 无法计算 |
 | LOERDA Aurora Cube — Button-Control Puzzle Desk Ambient Ligh | $5.0K | $0 | 未更新 | 无法计算 |
-| WITISAN — The Best-Fit Leather Pen Sleeve | 未更新 | 无法计算 | 11 | 0 |
+| WITISAN — The Best-Fit Leather Pen Sleeve | 未更新 | 无法计算 | 12 | +1 |
 | ZKSCool CoolHeat: One Lunch Box. Every Temperature. | $11K | $0 | 未更新 | 无法计算 |
 | NoirKar: The Modular Dog Toy Kit for Endless Play | $0 | $0 | 未更新 | 无法计算 |
 | MagDual: Magnetic Phone Grip & Kickstand System | $793 | $0 | 未更新 | 无法计算 |
@@ -1076,7 +1095,7 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | N POWER — Turn Any Cold Brew into Silky, Creamy Nitro Coffee | $5.3K | $0 | 未更新 | 无法计算 |
 | Caretta - A Mechanical Work of Art That Comes Alive | 未更新 | 无法计算 | 14 | 0 |
 | ITEHIL E02 — Electric Outdoor Water Filter Straw | $15K | $0 | 未更新 | 无法计算 |
-| Labyrinth Magic Dice: Seven Rolls, One Metal Disc | $2.4K | $0 | 297 | +2 |
+| Labyrinth Magic Dice: Seven Rolls, One Metal Disc | $2.4K | $0 | 298 | +1 |
 | The Tiny Thunderbolt 5 eGPU | Unleash RTX Power on Mac & PC | $199K | $0 | 未更新 | 无法计算 |
 | Transformable Three-Screen Display. Built for Every Workflow | $130K | $0 | 未更新 | 无法计算 |
 | KOIBOT Rola: World's First Lifelike Robot for Personal Bonds | $26K | $0 | 未更新 | 无法计算 |
@@ -1107,17 +1126,17 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | Vibrant Landscapes: Rural Serenity in Oil Painting | $114 | $0 | 未更新 | 无法计算 |
 | EB01-Tri-Fold Cruiser: 3‑Way Fold to 47lbs | 30‑40km Range | $28K | $0 | 未更新 | 无法计算 |
 | Welder Gen2: The Pocket-Sized, Instant-Heat Soldering Iron | $24K | $0 | 未更新 | 无法计算 |
-| Magic Screen: The First Snap-On Touchscreen for Your MacBook | $279K | +$759 | 未更新 | 无法计算 |
+| Magic Screen: The First Snap-On Touchscreen for Your MacBook | $279K | +$3 | 未更新 | 无法计算 |
 | RearGo: 11" Wireless CarPlay & True Wire-Free 4-CH DVR | $27K | $0 | 未更新 | 无法计算 |
 | Oriental Gift Series: “Wushi” pendant(Christmas Gift) | 未更新 | 无法计算 | 43 | 0 |
 | Primordial Divine Arms：Xuanyuan Sword | 未更新 | 无法计算 | 39 | 0 |
 | DeLast: Full-Metal Wireless Ergonomic Mechanical Keyboard | $1.3K | $0 | 未更新 | 无法计算 |
-| ECOFORGE E4:Swappable Battery System for Compact Maker Tools | 未更新 | 无法计算 | 15 | +1 |
+| ECOFORGE E4:Swappable Battery System for Compact Maker Tools | 未更新 | 无法计算 | 16 | +1 |
 | OMNI X1: Beyond Real Strength All-in-One Smart Gym Machine | $2.36M | $0 | 未更新 | 无法计算 |
 | Jetro: Keep Freshness Longer | $89K | $0 | 未更新 | 无法计算 |
 | XBAND: Smart Innovation, Timeless Elegance | $44K | $0 | 未更新 | 无法计算 |
 | CtrlVibe: AI Workflow Console for Coders & Creators | $10K | $0 | 未更新 | 无法计算 |
-| EXPOXE | a self-modifiable Titanium watch for all adventures | 未更新 | 无法计算 | 2,518 | 0 |
+| EXPOXE | a self-modifiable Titanium watch for all adventures | 未更新 | 无法计算 | 2,517 | −1 |
 | A Lock Watch, 5 Ways To Wear It - Multi-Scene Fine Jewelry | 未更新 | 无法计算 | 4 | 0 |
 | OUROPROXY: CYBORG SOUL│ EXO | $26K | $0 | 未更新 | 无法计算 |
 | Starry Sky SM100-50 Years of Rust Free Cutting Tool EDCknife | $3.0K | $0 | 未更新 | 无法计算 |
@@ -1137,7 +1156,7 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | 1.618 φ Beauty Unearthed 1.5 - The Golden Ratio Paperclip | $6.6K | $0 | 未更新 | 无法计算 |
 | VistAI — The World's First Action Camera With Real-Time View | $9.5K | $0 | 未更新 | 无法计算 |
 | NEXGRIND PRO: 240-Step Smart Touchscreen Coffee Grinder | $9.1K | $0 | 未更新 | 无法计算 |
-| SpinDeck™: 3-in-1 Dice RPG Dice Spinner | 未更新 | 无法计算 | 31 | +1 |
+| SpinDeck™: 3-in-1 Dice RPG Dice Spinner | 未更新 | 无法计算 | 31 | 0 |
 | Klyvo: A Versatile 13-in-1 EDC Tool for Everyday Carry | $395 | $0 | 未更新 | 无法计算 |
 | LiftVue: The Portable Monitor That Meets You at Eye Level | $4.7K | $0 | 未更新 | 无法计算 |
 | Exlicon L Black- Stainless Steel Golden Ratio Ruler for Art | $53K | $0 | 未更新 | 无法计算 |
@@ -1155,16 +1174,16 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | NanoKVM-Go: World's First AI-Native 4K USB-C KVM | $525K | $0 | 未更新 | 无法计算 |
 | PlantSenso — A Digital Companion That Grows With Your Plants | $71K | $0 | 未更新 | 无法计算 |
 | PowerRider: GPT-5 Powered Presenter, Endless Possibilities. | $22K | $0 | 未更新 | 无法计算 |
-| Vixmi Print S1 : Mini desktop color label printer | 未更新 | 无法计算 | 80 | +1 |
+| Vixmi Print S1 : Mini desktop color label printer | 未更新 | 无法计算 | 80 | 0 |
 | Vortex H1 : Smart Helmet with 4k Camera & Sensor Light | 未更新 | 无法计算 | 45 | 0 |
 | VoxMeta H1 Pro: Metrology-Grade 3D Scanner | $181K | $0 | 未更新 | 无法计算 |
 | Zensy Ring:Smart Ring Designed for Anxiety, Stress and Sleep | $59K | $0 | 未更新 | 无法计算 |
 | PlantMulti: The Smart Gardening Multi-Tool for Plant Parents | 未更新 | 无法计算 | 未更新 | 无法计算 |
-| Magic Shot: A Mirror Screen Grip That Makes Rear-Cam Selfie | 未更新 | 无法计算 | 206 | 0 |
+| Magic Shot: A Mirror Screen Grip That Makes Rear-Cam Selfie | 未更新 | 无法计算 | 207 | +1 |
 | LYVOR: Turn Your Desk Into an Invisible Wireless Charger | $27K | $0 | 未更新 | 无法计算 |
 | HT06: 360° Warmth Meets Modern Living | $6.4K | $0 | 未更新 | 无法计算 |
-| NorN Motion Analysis for Golf Training | 未更新 | 无法计算 | 151 | +1 |
-| SmartClaw Digital Employee | 未更新 | 无法计算 | 23 | 0 |
+| NorN Motion Analysis for Golf Training | 未更新 | 无法计算 | 152 | +1 |
+| SmartClaw Digital Employee | 未更新 | 无法计算 | 24 | +1 |
 | WARSUN T9 Pro: 4-in-1 Magnetic EDC Light with UV & Laser | $1.3K | $0 | 未更新 | 无法计算 |
 | Lumur LTF-1500: World’s First Five-In-One Tower Fan | $3.9K | $0 | 未更新 | 无法计算 |
 | KE3: Cordless Ultrasonic Cutter knife for Evolved Makers | $702 | $0 | 未更新 | 无法计算 |
@@ -1174,13 +1193,13 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | 九龍城寨 Kowloon Walled City Concrete Miniature | $23K | $0 | 未更新 | 无法计算 |
 | Eco PCM Dual Comfort Petpad | $0 | $0 | 未更新 | 无法计算 |
 | SerenLuna 2nd RestRidge Pillow:Neck Support for Back Sleeper | $180 | $0 | 未更新 | 无法计算 |
-| PCDOCK: The World’s First Fully Illuminated Desk Mat | 未更新 | 无法计算 | 44 | +1 |
+| PCDOCK: The World’s First Fully Illuminated Desk Mat | 未更新 | 无法计算 | 44 | 0 |
 | Nyxara Nightclaw, Catfolk Rogue | $435 | $0 | 未更新 | 无法计算 |
-| PingPal - World's 1st Multi-Content AI Interactive Kids Toy | 未更新 | 无法计算 | 57 | 0 |
+| PingPal - World's 1st Multi-Content AI Interactive Kids Toy | 未更新 | 无法计算 | 58 | +1 |
 | Spoon and Sticks Concerto Plus | $1.5K | $0 | 未更新 | 无法计算 |
 | Xtand Orion 01 - AI-Powered Adaptive Knee Support System | 未更新 | 无法计算 | 94 | 0 |
 | TadCALO Gen3: 14-in-1 Dual-Display KVM Docking Station | $52K | $0 | 未更新 | 无法计算 |
-| TiNexus: The Titanium EDC Ratchet System — Always Ready | $141K | +$209 | 未更新 | 无法计算 |
+| TiNexus: The Titanium EDC Ratchet System — Always Ready | $141K | $0 | 未更新 | 无法计算 |
 | MecArmy TPX11 Modular Bolt-Action Pen | $16K | $0 | 未更新 | 无法计算 |
 | LUCKYHARVEY Hand-Brushed Dial Titanium Visible Chiming Watch | $72K | $0 | 未更新 | 无法计算 |
 | Axmac A1: Your Ultimate Smart Macro Dock | $5.6K | $0 | 未更新 | 无法计算 |
@@ -1230,7 +1249,7 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | RugOne Xlink 7, AI Sports Walkie-Talkie, LTE Walkie-Talkie | $9.8K | $0 | 未更新 | 无法计算 |
 | The Hong Kong Urban Explorer Kit | 未更新 | 无法计算 | 11 | 0 |
 | ARKY A30-Nylon Hidden Belt with Dual Side Secret Pockets | $4.1K | $0 | 未更新 | 无法计算 |
-| THE JUNCO Rolling Ita Bag | $5.3K | $0 | 未更新 | 无法计算 |
+| THE JUNCO Rolling Ita Bag | $5.5K | +$200 | 未更新 | 无法计算 |
 | Weipin Modular Car Organizer: Multi-function Storage Bag | $125 | $0 | 未更新 | 无法计算 |
 | Linyo H1: Cordless All-in-one Car wash machine | $434K | $0 | 未更新 | 无法计算 |
 | Aether: The AI Interactive Male Sex Toy Tuned to Your Body | $125K | $0 | 未更新 | 无法计算 |
@@ -1279,7 +1298,7 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | Fortune Toad Incense Holder | $0 | $0 | 未更新 | 无法计算 |
 | Retro FC Console Replica: Relive 8-bit Childhood Gaming | $58 | $0 | 未更新 | 无法计算 |
 | GTPlayer: Zoned-Tilt 4-Motor Ergonomic Smart Standing Desk. | $36K | $0 | 未更新 | 无法计算 |
-| AXYFUZ : CoreXY-Derived Motion System. | 未更新 | 无法计算 | 46 | −1 |
+| AXYFUZ : CoreXY-Derived Motion System. | 未更新 | 无法计算 | 49 | +3 |
 | Layro: Movable Divider Organizer, Flexible Storage. | $12K | $0 | 未更新 | 无法计算 |
 | SAKURA WITHIN -Ocean creatures Enamel pins and Shirt- | $1.2K | $0 | 未更新 | 无法计算 |
 | AIRBOT: World's First AI Sleep Guardian & Radon Detector | 未更新 | 无法计算 | 188 | 0 |
@@ -1355,10 +1374,10 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | PhantomX: Four-Arm Rotating Seconds & Hidden Hours Watch | $94K | $0 | 未更新 | 无法计算 |
 | EZY Travel Kit:Better Sleep,Anytime, Anywhere. | $41K | $0 | 未更新 | 无法计算 |
 | Chrono Tri-Core — Wandering Hour Mechanical Watch | $30K | $0 | 未更新 | 无法计算 |
-| Vastnaut One: World's First AI-Powered 4x4 Exoskeleton | $1.39M | +$1.8K | 未更新 | 无法计算 |
+| Vastnaut One: World's First AI-Powered 4x4 Exoskeleton | $1.39M | $0 | 未更新 | 无法计算 |
 | RoboBooster Panther: World First 4-in-1 Lawn Care Robot | $229K | $0 | 未更新 | 无法计算 |
 | Hyperapid 350W — The Most Powerful 12-in-1 GaN Charging Hub | $182K | $0 | 未更新 | 无法计算 |
-| TangUU: No-Charge Insulin Cooler Reimagined | 未更新 | 无法计算 | 30 | 0 |
+| TangUU: No-Charge Insulin Cooler Reimagined | 未更新 | 无法计算 | 31 | +1 |
 | INMO GO3: Powerful AI Translation Glasses for All Day Wear | $1.07M | $0 | 未更新 | 无法计算 |
 | AxiGlide: Next-gen Pivoting Vise for Smooth, Precise Control | $655K | $0 | 未更新 | 无法计算 |
 | FARTISSIMO: The Rhythm-Roguelite of Musical Farts | $112 | $0 | 未更新 | 无法计算 |
@@ -1393,7 +1412,7 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | TaiChi Micro | The Ultimate Titanium Mechanism EDC Knife | $2.4K | $0 | 未更新 | 无法计算 |
 | Magtame One-Click Freedom | $9.1K | $0 | 未更新 | 无法计算 |
 | World’s First Smart Path Pool Surface Cleaner | $429 | $0 | 未更新 | 无法计算 |
-| New! XpreSole® Sherpa | Waterproof Boots Made from Coffee | $0 | $0 | 88 | 0 |
+| New! XpreSole® Sherpa | Waterproof Boots Made from Coffee | $0 | $0 | 89 | +1 |
 | iRe5 Gen 2: Bring Expandable Storage Back to Smartphones | $56K | $0 | 未更新 | 无法计算 |
 | Carbon-based Life Form Ti Alloy Foldable Nail Clipper | $13K | $0 | 未更新 | 无法计算 |
 | Lumos Ultra World's First One-stop UV+MOPA Laser | $4.99M | $0 | 未更新 | 无法计算 |
@@ -1422,10 +1441,10 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | Nacria: The AI Spectroscopic Analysis Platform for Everyone | $691 | $0 | 未更新 | 无法计算 |
 | Cyberstars Robodogs-Multi-use, Heartwarming, Fun Unlimited! | $2.7K | $0 | 未更新 | 无法计算 |
 | World Cup Fan Party Kit | 3D Printed Glasses & Coasters | $0 | $0 | 未更新 | 无法计算 |
-| NeuroHUD: The Heads-Up Display Tesla Forgot | $611K | +$529 | 未更新 | 无法计算 |
+| NeuroHUD: The Heads-Up Display Tesla Forgot | $611K | $0 | 未更新 | 无法计算 |
 | Coolwill Ice Pop Maker - Redefining How Ice Pops Are Made | $73K | $0 | 未更新 | 无法计算 |
 | Moka E-Ink Album: Privacy-First Smart Display Companion | $39K | $0 | 未更新 | 无法计算 |
-| Sensereo: Smart Air Monitoring for Creative Spaces | 未更新 | 无法计算 | 416 | +1 |
+| Sensereo: Smart Air Monitoring for Creative Spaces | 未更新 | 无法计算 | 417 | +1 |
 | Finally! The Holy Grail of Spatulas Is Here. Meet Turnula. | $127K | $0 | 未更新 | 无法计算 |
 | Phi Ruler x TATOU: Golden Ratio Sketch Book Kit Set | $7.1K | $0 | 未更新 | 无法计算 |
 | AGELOCER｜Major Breakthrough: 29.51-day Moon Phase Watch | $190K | $0 | 未更新 | 无法计算 |
@@ -1440,7 +1459,7 @@ _AI / 机器人 / 全球首款 / 新材料 / 单日 momentum — 命中任意一
 | JK-9X: The 73-in-1 Precision Pen That Lives in Your Pocket | $37K | $0 | 未更新 | 无法计算 |
 | MateTable DuoLite: World’s First Nested Dual-Folding Table | $9.8K | $0 | 未更新 | 无法计算 |
 | Zensbuds AI: Real-Time Translation for Calls and Meetings | $10K | $0 | 未更新 | 无法计算 |
-| Viblite Electric Toothbrush: Future of Oral Care Simplify | 未更新 | 无法计算 | 115 | 0 |
+| Viblite Electric Toothbrush: Future of Oral Care Simplify | 未更新 | 无法计算 | 116 | +1 |
 | Nomadix Pro Roof Box-Designed for a Smooth Smart Experience | $117K | $0 | 未更新 | 无法计算 |
 | Hyzen, World's First Mechanical Magnetic Keyboard | $1.79M | $0 | 未更新 | 无法计算 |
 | COZYTIME LUMO: First AI Infrared Indoor Grill, Smoke-Free | $450K | $0 | 未更新 | 无法计算 |
