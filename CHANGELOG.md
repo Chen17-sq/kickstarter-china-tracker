@@ -1,61 +1,53 @@
 # Kickstarter China Tracker — diff
 
 ## new (11)
-- **SYLVA "Frond" — Where the Wild Meets the Mirror** — Discovered (prelaunch, 1 followers)  
-  `/projects/firsredc/sylva-frond-where-the-wild-meets-the-mirror`
-- **NOVAIR: The Travel Folio That Keeps Every Paper in Order** — Discovered (prelaunch, 0 followers)  
-  `/projects/novair-folio/novair-travel-folio`
-- **Titaner RatchetCard: World's Thinnest EDC Ratchet Tool** — Discovered (prelaunch, 3 followers)  
-  `/projects/1699178293/titaner-ratchetcard-worlds-thinnest-edc-ratchet-tool`
-- **ZERA Wave - The Everyday Razor Cleaning Center** — Discovered (prelaunch, 1 followers)  
-  `/projects/zerawave/zerawave`
-- **The Art of Slow Living: A Relaxed Linen-Cotton Coat** — Discovered (live, 2 followers)  
-  `/projects/slowlinenstudio/the-art-of-slow-living-a-relaxed-linen-cotton-coat`
-- **OUKITEL RG14-P: World's First Solar Rugged Laptop** — Discovered (prelaunch, 0 followers)  
-  `/projects/1006830823/oukitel-rg14-p-worlds-first-solar-powered-rugged-laptop`
-- **Breeeeeeze: A Playful Bee-Shaped Watering Can** — Discovered (prelaunch, 1 followers)  
-  `/projects/breeeeeeeze/breeeeeeze-a-playful-bee-shaped-watering-can`
-- **Aquarise NestPure — The First-Ever Nested RO Water System** — Discovered (prelaunch, 0 followers)  
-  `/projects/aquarise/nestpure`
-- **Off the Rails: A Card Game for Daily Commute Survivors** — Discovered (live, 2 followers)  
-  `/projects/priscillamorrinzon/off-the-rails-a-card-game-for-daily-commute-survivors`
-- **ArcLock: Mini Titanium Mechanical Lock** — Discovered (prelaunch, 2 followers)  
-  `/projects/mecharkgadget/arclock-mini-titanium-mechanical-lock`
-- **SHADOW DANCE: Multi‑Scenario AI Exoskeleton That Learns You** — Discovered (prelaunch, 1 followers)  
-  `/projects/eulon/shadow-dance-multiscenario-ai-exoskeleton-that-learns-you`
+- **Keychron Orca echo: Split Keyboard with Built-In Trackball** — Discovered (prelaunch, 未更新 followers)  
+  `/projects/keytron/keychron-orca-echo-split-keyboard-with-built-in-trackball`
+- **Bloom Reaper: Artisan Foldable Cigar Cutter** — Discovered (prelaunch, 未更新 followers)  
+  `/projects/jellyedc/bloom-reaper-artisan-foldable-cigar-cutter`
+- **KRONOZURI HORA -The Art of Jumping Time** — Discovered (prelaunch, 未更新 followers)  
+  `/projects/zurvantimepieces/kronozuri-hora-the-art-of-jumping-time`
+- **STELLAR: Precision Mechanical EDC Folder Sleek profile** — Discovered (prelaunch, 未更新 followers)  
+  `/projects/fegve68/stellar-precision-mechanical-edc-folder-sleek-profile`
+- **iPulsefire Aura7 Gaming Headset** — Discovered (prelaunch, 未更新 followers)  
+  `/projects/1576612630/ipulsefire-aura7-gaming-headset`
+- **Judge Judge Lawyer Lawyer** — Discovered (prelaunch, 未更新 followers)  
+  `/projects/judgej-lawyerl/judge-judge-lawyer-lawyer`
+- **ASTRAL-Push, Reveal, Conquer.The Morphing Tarot Coin Knife** — Discovered (prelaunch, 未更新 followers)  
+  `/projects/fegve/astral-push-reveal-conquerthe-morphing-tarot-coin-knife`
+- **Off the Rails: A Card Game for Daily Commute Survivors** — Discovered (prelaunch, 未更新 followers)  
+  `/projects/priscillamorrinzon/off-the-rails-a-card-game-for-daily-commute-survivors-0`
+- **VORTEX Carbon Folder-The Carbon Fiber Precision Folder** — Discovered (prelaunch, 未更新 followers)  
+  `/projects/fegve68/vortex-carbon-folder-the-carbon-fiber-precision-folder`
+- **ACCK ErgoFlow: Next-Gen Posture Support — All Day Comfort** — Discovered (live, 未更新 followers)  
+  `/projects/acckdesign/acck-ergoflow-next-gen-posture-support-all-day-comfort`
+- **Kora Saddle | Sit-On Kegel Trainer** — Discovered (prelaunch, 未更新 followers)  
+  `/projects/42605201/kora-saddle-sit-on-kegel-trainer`
 
-## followers_delta (10)
-- **A Classic Vintage Hourly Chime Watch with Character** — +52 followers (28 → 80)  
-  `/projects/luckyharveywatch/a-classic-vintage-hourly-chime-watch-with-character`
-- **Fotorgear Campix: Look Down, Good Things Start with One Roll** — +68 followers (1870 → 1938)  
-  `/projects/fotorgear/fotorgear-campix-look-down-good-things-start-with-one-roll`
-- **Revopoint MIRACO 2 Standalone 3D Scanner** — +152 followers (602 → 754)  
-  `/projects/revopoint3d/revopoint-miraco-2-standalone-3d-scanner`
-- **COOLGEEK P1 — The Cassette Player, Reimagined** — +86 followers (2760 → 2846)  
-  `/projects/coolgeekaudio/coolgeek-p1-the-cassette-player-reimagined`
-- **XAIStack: Modular AI Workstation NAS, Built to Grow** — +89 followers (3248 → 3337)  
-  `/projects/xaistack/xaistack`
-- **SnowPod: Real Metal 3D Printing on Your Desktop** — +184 followers (3680 → 3864)  
-  `/projects/snowx/snowpod-real-metal-3d-printing-on-your-desktop`
-- **Moera Smart Climate Mattress Cover: Fast Cooling. Zero Fees.** — +62 followers (1504 → 1566)  
-  `/projects/moerasleep/moera-smart-climate-mattress-cover`
-- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +104 followers (11098 → 11202)  
-  `/projects/xgimititannoir/xgimi-aura-3-series-the-ultimate-4k-rgb-laser-tv`
-- **World's First AI Electric Screwdriver With Eyes And Brain** — +69 followers (2436 → 2505)  
-  `/projects/arrowmax/the-worlds-first-ai-screwdriver-with-eyes-and-brain`
-- **ClearX: Fully Automated Shoe Care: Wash, Dry & Sanitize** — +81 followers (1135 → 1216)  
-  `/projects/clearx/brolan-clearx-automated-shoe-care-wash-dry-and-sanitize`
+## status_change (9)
+- **ARANIX — The World's First 4WD+4WS All-Terrain Robotic Mower** — prelaunch → live  
+  `/projects/airseekers/aranix-the-worlds-first-4wd-4ws-all-terrain-robotic-mower`
+- **UFO: The Front-Rotor Skeleton Automatic Watch** — prelaunch → live  
+  `/projects/etops/ufo-the-front-rotor-skeleton-automatic-watch`
+- **NoirKar Duet XL: 27° Multi-Position Memory Foam Wedge Pillow** — prelaunch → live  
+  `/projects/noirkar/noirkar-duet-xl-27-multi-position-memory-foam-wedge-pillow`
+- **Titaner Monolith: Titanium & Meteorite Lighter** — prelaunch → live  
+  `/projects/271024582/titaner-monolith-titanium-and-meteorite-lighter`
+- **HT"Dual-Sphere Mechanical Fidget Toy with Tactile Feedback** — prelaunch → live  
+  `/projects/cyber-ht/cyber-ht-pocket-orbital-fidget-with-a-sealed-track`
+- **VIVIFoCAL S1: All-Sight Smart Adaptive Eyewear** — prelaunch → live  
+  `/projects/vivifocal/vivifocal-s1-all-sight-smart-adaptive-eyewear`
+- **TiPlect: Titanium Guitar Pick, Reimagined** — prelaunch → live  
+  `/projects/tihaven-hk/tiplect-titanium-guitar-pick-reimagined`
+- **SONOMER: The World's First 2-in-1 Home Ultrasonic Marinator** — prelaunch → live  
+  `/projects/sonomer/sonomer-the-worlds-first-2-in-1-home-ultrasonic-marinator`
+- **Philips Swivel: Aim the light. Keep both hands free.** — prelaunch → live  
+  `/projects/philipsflashlight/philips-swivel-hands-free-all-direction-lighting-solution`
 
-## status_change (4)
-- **XK01 Clean the Air. Light Up the Night.** — prelaunch → live  
-  `/projects/246993741/airglow-air-purifier-and-starlight-projector`
-- **MAGTECS：Two Tech Gadgets, One Snap** — prelaunch → live  
-  `/projects/1518250351/magtecs-two-tech-gadgets-one-snap`
-- **AESISENSE | Men’s Sensory Calibration Device** — live → canceled  
-  `/projects/1514190952/aesisense-reconnect-with-your-bodys-natural-rhythm`
-- **Passionhold Castle** — prelaunch → live  
-  `/projects/-howcat2025/passionhold-castle`
-
-## backers_delta (1)
-- **XGIMI AURA 3 Series: The Ultimate 4K RGB Laser TV** — +103 backers (9405 → 9508)  
-  `/projects/xgimititannoir/xgimi-aura-3-series-the-ultimate-4k-rgb-laser-tv`
+## backers_delta (3)
+- **ARANIX — The World's First 4WD+4WS All-Terrain Robotic Mower** — +330 backers (0 → 330)  
+  `/projects/airseekers/aranix-the-worlds-first-4wd-4ws-all-terrain-robotic-mower`
+- **Titaner Monolith: Titanium & Meteorite Lighter** — +168 backers (0 → 168)  
+  `/projects/271024582/titaner-monolith-titanium-and-meteorite-lighter`
+- **VIVIFoCAL S1: All-Sight Smart Adaptive Eyewear** — +225 backers (0 → 225)  
+  `/projects/vivifocal/vivifocal-s1-all-sight-smart-adaptive-eyewear`
