@@ -1,49 +1,29 @@
 # Kickstarter China Tracker — diff
 
-## status_change (11)
-- **XAIStack: Modular AI Workstation NAS That Grows With You** — prelaunch → live  
-  `/projects/xaistack/xaistack`
-- **QOi X1: 3-Light EDC Flashlight — White, UV & Green Light** — prelaunch → live  
-  `/projects/qoi1/qoi-x1-master-modern-lighting-enhancement`
-- **PlugMate Pro: Your Thumb-Sized Privacy Computer** — prelaunch → live  
-  `/projects/trustkernel/trustkernel-plugmate-pro-your-thumb-sized-privacy-computer`
-- **GmTron X1 — Your Personal Gym Studio, Anywhere** — live → successful  
-  `/projects/gmtron168/gmtron-x1-your-personal-gym-studio-anywhere`
-- **Vantex V1: The Keyboard with a Built-In Touchscreen** — live → successful  
-  `/projects/536816625/vantex-v1-the-keyboard-with-a-built-in-touchscreen`
-- **DWSTN CERATOPS: M390 & TC4 Titanium EDC Pocket Littel Knife** — prelaunch → live  
-  `/projects/dwstnedc/dwstn-ceratops-m390-and-tc4-titanium-edc-pocket-knife`
-- **ROUTEPACK — Modular Denim Travel Bags for Family Road Trips** — prelaunch → live  
-  `/projects/acabra-nova/routepack-modular-denim-travel-bags-for-family-road-trips`
-- **K10: The Last Bike Saddle You’ll Ever Buy** — prelaunch → live  
-  `/projects/968665569/k10-the-last-bike-saddle-youll-ever-buy`
-- **Redragon: Tri-Mode Gasket Mounted Mechanical Gaming Keyboard** — live → successful  
-  `/projects/334020914/redragon-tri-mode-gasket-mounted-mechanical-keyboard`
-- **EYVORIQ: Camera-Free AI Recording Glasses** — prelaunch → live  
-  `/projects/eyvoriq/eyvoriq-149g-open-ear-ai-audio-glasses`
-- **FR-NIA: The World's First Portable Expressive Robot** — live → successful  
-  `/projects/figurobot-nia/fr-nia-the-worlds-first-portable-expressive-robot`
+## status_change (3)
+- **13mm Bone Sleep Speaker, Leak-Free Private Audio** — prelaunch → live  
+  `/projects/235518024/sleepbone-under-pillow-bone-conduction-sleep-music-box`
+- **Memdock: Revive Your Music Ritual with a Portable CD Player** — live → successful  
+  `/projects/758873559/memdock-revive-your-music-ritual-with-a-portable-cd-player`
+- **Horror PC Game - Lunar Chrysalis** — prelaunch → live  
+  `/projects/1264566273/horror-pc-game-lunar-chrysalis`
 
-## followers_delta (8)
-- **XAIStack: Modular AI Workstation NAS That Grows With You** — +95 followers (3551 → 3646)  
-  `/projects/xaistack/xaistack`
-- **World's First AI Electric Screwdriver With Eyes And Brain** — +100 followers (2648 → 2748)  
-  `/projects/arrowmax/the-worlds-first-ai-screwdriver-with-eyes-and-brain`
-- **Keychron Orca echo: Split Keyboard with Built-In Trackball** — +262 followers (981 → 1243)  
-  `/projects/keytron/keychron-orca-echo-split-keyboard-with-built-in-trackball`
-- **Titaner Monolith: Titanium & Meteorite Lighter** — +63 followers (747 → 810)  
-  `/projects/271024582/titaner-monolith-titanium-and-meteorite-lighter`
-- **SnowPod: Real Metal 3D Printing on Your Desktop** — +82 followers (4062 → 4144)  
+## followers_delta (7)
+- **SnowPod: Real Metal 3D Printing on Your Desktop** — +74 followers (4144 → 4218)  
   `/projects/snowx/snowpod-real-metal-3d-printing-on-your-desktop`
-- **InfiMech MX 3D Printer: 8X More Efficient. 8X Less Waste.** — +63 followers (14248 → 14311)  
-  `/projects/infimech-mx-series/infimech-mx-3d-printer-8x-more-efficiency-8x-less-waste`
-- **Revopoint MIRACO 2 Standalone 3D Scanner** — +81 followers (1033 → 1114)  
+- **VIVIFoCAL S1: All-Sight Smart Adaptive Eyewear** — +56 followers (564 → 620)  
+  `/projects/vivifocal/vivifocal-s1-all-sight-smart-adaptive-eyewear`
+- **XAIStack: Modular AI Workstation NAS That Grows With You** — +62 followers (3646 → 3708)  
+  `/projects/xaistack/xaistack`
+- **Keychron Orca echo: Split Keyboard with Built-In Trackball** — +304 followers (1243 → 1547)  
+  `/projects/keytron/keychron-orca-echo-split-keyboard-with-built-in-trackball`
+- **World's First AI Electric Screwdriver With Eyes And Brain** — +56 followers (2748 → 2804)  
+  `/projects/arrowmax/the-worlds-first-ai-screwdriver-with-eyes-and-brain`
+- **Revopoint MIRACO 2 Standalone 3D Scanner** — +67 followers (1114 → 1181)  
   `/projects/revopoint3d/revopoint-miraco-2-standalone-3d-scanner`
-- **COOLGEEK P1 — The Cassette Player, Reimagined** — +82 followers (3068 → 3150)  
+- **COOLGEEK P1 — The Cassette Player, Reimagined** — +69 followers (3150 → 3219)  
   `/projects/coolgeekaudio/coolgeek-p1-the-cassette-player-reimagined`
 
-## backers_delta (2)
-- **XAIStack: Modular AI Workstation NAS That Grows With You** — +123 backers (0 → 123)  
-  `/projects/xaistack/xaistack`
-- **Keychron Orca echo: Split Keyboard with Built-In Trackball** — +1517 backers (4235 → 5752)  
+## backers_delta (1)
+- **Keychron Orca echo: Split Keyboard with Built-In Trackball** — +1121 backers (5752 → 6873)  
   `/projects/keytron/keychron-orca-echo-split-keyboard-with-built-in-trackball`
