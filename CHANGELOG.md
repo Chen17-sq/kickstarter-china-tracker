@@ -1,89 +1,89 @@
 # Kickstarter China Tracker — diff
 
-## new (23)
-- **Twiddle ONE: Vibe-Build Your Own Effects Pedal** — Discovered (prelaunch, 3 followers)  
-  `/projects/twiddle-ai/twiddle-one-vibe-build-your-own-effects-pedal`
-- **FEGVE EXO-Pry: The Titanium Pocket Multi-Tool** — Discovered (prelaunch, 1 followers)  
-  `/projects/fegve68/fegve-exo-pry-the-titanium-pocket-multi-tool`
-- **ST1- Titanium Travel Razor with Single Blade & Portable Case** — Discovered (prelaunch, 0 followers)  
+## new (21)
+- **Dooreemee DF01 AirTag Case - Enhanced Sound & LED Alerts** — Discovered (prelaunch, 0 followers)  
+  `/projects/dooreemee/dooreemee-df01-airtag-case-enhanced-sound-and-led-alerts`
+- **Terra-Gear Mechanical Trio. Weather at a Glance.** — Discovered (prelaunch, 1 followers)  
+  `/projects/firsredc/terra-gear-mechanical-trio-weather-at-a-glance`
+- **Ukrainian Mariverse Plush - Wave 3** — Discovered (prelaunch, 10 followers)  
+  `/projects/atlwonders/ukrainian-mariverse-plush-wave-3`
+- **Magic Creative Printer** — Discovered (prelaunch, 5 followers)  
+  `/projects/wiseday/magic-creative-printer`
+- **Neon Phantom Multifaceted K9 Crystal Flying Tourbillon Watch** — Discovered (prelaunch, 12 followers)  
+  `/projects/haofa-tourbillon/neon-phantom-multifaceted-k9-crystal-flying-tourbillon-watch`
+- **An auto follow camera Robot-Guttenman** — Discovered (prelaunch, 0 followers)  
+  `/projects/guttenman/an-auto-follow-camera-robot-guttenman`
+- **Bincoo PO01 Automatic Pourover Coffee Machine** — Discovered (prelaunch, 3 followers)  
+  `/projects/bincoo/bincoo-po01-automatic-pourover-coffee-machine`
+- **Plidépli — Boost Your Indoor Cell Signal Instantly** — Discovered (live, 15 followers)  
+  `/projects/397412038/plidepli-boost-your-indoor-cell-signal-instantly`
+- **Ancient Relics Tarot by 52 MUSÉE & 无理生长** — Discovered (prelaunch, 10 followers)  
+  `/projects/1591648033/ancient-relics-tarot`
+- **YK ULTRA 120 | Hand-Built Flat Burr Coffee Grinder** — Discovered (live, 2 followers)  
+  `/projects/194669315/yk-ultra-120-hand-built-flat-burr-coffee-grinder`
+- **World’s First Jacket Made with Polyimide PIP95 Super Aerogel** — Discovered (prelaunch, 224 followers)  
+  `/projects/hiabor/worlds-first-jacket-made-with-pip95-super-aerogel-material`
+- **Noty slim : RFID travel canvas minimal slim passport wallet** — Discovered (live, 49 followers)  
+  `/projects/newminicapwallet/noty-slim-rfid-travel-canvas-minimal-slim-passport-wallet`
+- **AcePick Air: Titanium Quick-Release Toothpick—More Than Ever** — Discovered (prelaunch, 1 followers)  
+  `/projects/1042964145/acepick-air-titanium-quick-release-toothpickmore-than-ever`
+- **The Sweat Bag: Your Gym Bag Shouldn’t Smell Like Your Socks** — Discovered (prelaunch, 0 followers)  
+  `/projects/thesweatbag/the-sweat-bag-your-gym-bag-shouldnt-smell-like-your-socks`
+- **Timi Robot: An Expressive AI Desktop Companion** — Discovered (prelaunch, 3 followers)  
+  `/projects/timitobot/timi-robot-an-expressive-ai-desktop-companion-0`
+- **veydrio: A Smarter Dash Cam with Blind Spot Alerts** — Discovered (prelaunch, 1 followers)  
+  `/projects/veydrio/veydrio-a-smarter-dash-cam-with-blind-spot-alerts`
+- **Tokkey: The Smallest Key to Bigger Local AI Models. Boost PC** — Discovered (prelaunch, 7 followers)  
+  `/projects/1781856042/tokkey-the-smallest-key-to-bigger-local-ai-models-boost-pc`
+- **GlowHint: 9-in-1 Foldable Keyboard with 4K Touchscreen** — Discovered (live, 101 followers)  
+  `/projects/732362830/glowhint-9-in-1-foldable-keyboard-with-4k-touchscreen`
+- **EXO-Halo: The Invisible Edge Around Your Neck** — Discovered (prelaunch, 4 followers)  
+  `/projects/firsredc/exo-halo-the-invisible-edge-around-your-neck`
+- **Cirvuo : Our First Meeting Camera with Speaker Tracking** — Discovered (prelaunch, 1 followers)  
+  `/projects/cirvuo/cirvuo-our-first-meeting-camera-with-speaker-tracking`
+- **CAMPRAY: The All-in-One Light for Camping & Work** — Discovered (live, 14 followers)  
+  `/projects/1288952947/campray-the-all-in-one-light-for-camping-and-work`
+
+## status_change (21)
+- **Master Craft: Intertwined Vine Pattern Thin-Walled Jade Pot** — prelaunch → live  
+  `/projects/1828670441/master-craft-chinese-floral-eggshell-teapot`
+- **FOLDR: Every Feature Kept. And It Still Folds** — prelaunch → live  
+  `/projects/airofold/foldr-every-feature-kept-and-it-still-folds`
+- **Portable Dice Spinner EDC** — live → failed  
+  `/projects/lizgamezone/portable-dice-spinner`
+- **Navio: Your Mouse & Remote in One Handheld Touchpad** — prelaunch → live  
+  `/projects/metaxsire/navio-your-digital-world-at-your-fingertips`
+- **ST1- Titanium Safety Razor with Single Blade & Portable Case** — prelaunch → live  
   `/projects/trowellhk/st1-titanium-travel-razor-with-single-blade-and-portable-case`
-- **3 Layers -13°F to +68°F All-year Adaptive Jacket System** — Discovered (live, 57 followers)  
-  `/projects/trisphere/tripshere-3-layer-urban-and-country-adaptive-jacket-system`
-- **EXO-Obsidian The Dark Damascus & Black Pearl EDC** — Discovered (prelaunch, 1 followers)  
-  `/projects/jellyedc/exo-obsidian-the-dark-damascus-and-black-pearl-edc`
-- **PitchOff: The Party Game Where Talk Wins** — Discovered (prelaunch, 0 followers)  
-  `/projects/pitchoffgame/pitchoff-the-party-game-where-talk-wins`
-- **JOJO Chibi Rubber Charm Keychain Collection** — Discovered (live, 3 followers)  
-  `/projects/dokidokihk/jojo-chibi-rubber-charm-keychain-collection`
-- **EXO-Pearl: The Pearl Inlay Titanium Art Knife** — Discovered (prelaunch, 0 followers)  
-  `/projects/jellyedc/exo-pearl-the-pearl-inlay-titanium-art-knife`
-- **EXO-Timascus The Timascus Titanium EDC Folding Knife** — Discovered (prelaunch, 1 followers)  
-  `/projects/jellyedc/exo-timascus-the-timascus-titanium-edc-folding-knife`
-- **Ember-Wearable Energy Vessel Carrying the Light of Embers** — Discovered (prelaunch, 1 followers)  
-  `/projects/firsredc/ember-wearable-energy-vessel-carrying-the-light-of-embers`
-- **Turret 361** — Discovered (live, 3 followers)  
-  `/projects/1726302347/turret-361`
-- **NIVO — Mini Folding Knife with Titanium & Damascus Steel** — Discovered (live, 17 followers)  
-  `/projects/876498673/nivo-mini-folding-knife-with-titanium-and-damascus-steel`
-- **CUVIA: Hybrid Massage Cupping, Made Easier** — Discovered (prelaunch, 1 followers)  
-  `/projects/murray-icupping/cuvia-hybrid-massage-cupping-made-easier`
-- **FEGVE EXO-Ruler: The Ultimate Titanium EDC Multi-Tool** — Discovered (prelaunch, 1 followers)  
-  `/projects/fegve68/fegve-exo-ruler-the-ultimate-titanium-edc-multi-tool`
-- **The Genesis Framework 1.0: 2.5-Hour Cognitive Activation** — Discovered (live, 0 followers)  
-  `/projects/thegenesisframework/the-genesis-framework-10-25-hour-cognitive-activation`
-- **YanZhi Tarot: A Cinematic Journey Through 78 Cards** — Discovered (prelaunch, 2 followers)  
-  `/projects/gangan/yanzhi-tarot-a-cinematic-journey-through-78-cards`
-- **G10：82-in-1 Precision Ratchet Screwdriver Kit—Product Page** — Discovered (prelaunch, 0 followers)  
-  `/projects/1598108287/49-in-1-precision-ratchet-screwdriver-kitproduct-page`
-- **M2 Portable Wind-Solar Power Station** — Discovered (prelaunch, 0 followers)  
-  `/projects/1691134195/m2-portable-wind-solar-power-station`
-- **EXO-Fang: The Aero Titanium EDC Folding Knife Pure Titanium** — Discovered (prelaunch, 3 followers)  
-  `/projects/fegve68/exo-fang-the-aero-titanium-edc-folding-knife-pure-titanium`
-- **FEGVE Blade-R TC4 Titanium Folding Utility Knife** — Discovered (prelaunch, 1 followers)  
-  `/projects/fegve68/fegve-blade-r-tc4-titanium-folding-utility-knife`
-- **Titanium Air Sunglasses: Perfect Vision, Engineered** — Discovered (prelaunch, 5 followers)  
-  `/projects/1932270744/titanium-air-perfect-vision-engineered`
-- **A White Drama:The Tale of an Imagined Kin-Killing** — Discovered (prelaunch, 0 followers)  
+- **Alex L1 :0.9kg backpack stands like suitcase. 1 bag travel:)** — live → successful  
+  `/projects/alanbackpack101/alex-l1-09kg-backpack-stands-like-suitcase-1-bag-travel`
+- **Zlim | Credit Card & ID Carrier** — prelaunch → live  
+  `/projects/minuteobjects/zlim-card-carrier`
+- **A White Drama:The Tale of an Imagined Kin-Killing** — prelaunch → live  
   `/projects/awhitedrama/a-white-drama-the-tale-of-an-imagined-kin-killing`
-- **CIND Accounting - Game-Like Management & Bookkeeping Web App** — Discovered (prelaunch, 0 followers)  
-  `/projects/cind/cind-accounting-game-like-management-and-bookkeeping-web-app`
-
-## followers_delta (9)
-- **SnowPod: Real Metal 3D Printing on Your Desktop** — +108 followers (4437 → 4545)  
-  `/projects/snowx/snowpod-real-metal-3d-printing-on-your-desktop`
-- **QuadCreate15: Four Screens. One Foldable Workspac** — +59 followers (1 → 60)  
-  `/projects/832262630/quadcreate15-four-screens-one-foldable-workspac`
-- **Revopoint MIRACO 2 Standalone 3D Scanner** — +50 followers (1254 → 1304)  
-  `/projects/revopoint3d/revopoint-miraco-2-standalone-3d-scanner`
-- **TaroTag: Pocket E-Ink Canvas Meets AI Tarot** — +97 followers (217 → 314)  
-  `/projects/tarotag/tarotag-pocket-e-ink-canvas-meets-ai-tarot`
-- **CalmNook: Compact 10‑in‑1 Multi‑Function BluRay Drive Hub** — +94 followers (804 → 898)  
-  `/projects/1753825339/calmnook-10in1-multifunction-bluray-drive-hub`
-- **COOLGEEK P1 — The Cassette Player, Reimagined** — +100 followers (3395 → 3495)  
-  `/projects/coolgeekaudio/coolgeek-p1-the-cassette-player-reimagined`
-- **ClearX: Fully Automated Shoe Care: Wash, Dry & Sanitize** — +51 followers (1510 → 1561)  
-  `/projects/clearx/brolan-clearx-automated-shoe-care-wash-dry-and-sanitize`
-- **Keychron Orca echo: Split Keyboard with Built-In Trackball** — +208 followers (1959 → 2167)  
-  `/projects/keytron/keychron-orca-echo-split-keyboard-with-built-in-trackball`
-- **Makvona™ ModelPop: Paint Markers Designed for 3D Prints** — +64 followers (203 → 267)  
-  `/projects/makvona/makvona-modelpop-paint-markers-designed-for-3d-prints`
-
-## status_change (6)
-- **HEMLIX – Your All-Season Laundry Sidekick** — live → successful  
-  `/projects/1739854384/hemlix-your-all-season-laundry-sidekick`
-- **QuadCreate15: Four Screens. One Foldable Workspac** — prelaunch → live  
-  `/projects/832262630/quadcreate15-four-screens-one-foldable-workspac`
-- **LifeChair —3-Zone Adaptive Lumbar 105°–165° | AllDay Comfort** — prelaunch → live  
-  `/projects/ethai/lifechair-3-zone-adaptive-lumbar-105165-allday-comfort`
-- **FORTUNA N06: First Spherical Wandering Hour Watch** — live → successful  
-  `/projects/1416660488/fortuna-n06-first-spherical-wandering-hour-watch`
-- **Orbit: The EDC Knife That Spins When Closed** — prelaunch → live  
-  `/projects/kniclad-orbit/orbit-the-edc-knife-that-spins-when-closed`
-- **Mlertom: The Transparent 80Gbps Magnetic NVMe SSD Enclosure** — prelaunch → live  
-  `/projects/737820157/mltertom-transparent-80gbps-magnetic-nvme-ssd-enclosure`
-
-## backers_delta (2)
-- **Keychron Orca echo: Split Keyboard with Built-In Trackball** — +482 backers (7907 → 8389)  
-  `/projects/keytron/keychron-orca-echo-split-keyboard-with-built-in-trackball`
-- **Makvona™ ModelPop: Paint Markers Designed for 3D Prints** — +101 backers (291 → 392)  
-  `/projects/makvona/makvona-modelpop-paint-markers-designed-for-3d-prints`
+- **GLINT: A Wearable Magic Device for Instant Card Changes** — live → failed  
+  `/projects/apexplayingcards/glint-a-wearable-magic-device-for-instant-card-changes`
+- **ORIONER M-Grip: Palm-Sized Aluminum EDC Magnetic Mount** — live → successful  
+  `/projects/orionersx2/orioner-m-grip-palm-sized-aluminum-edc-magnetic-mount`
+- **One Thing Club — Focus Today, Freedom Tomorrow** — prelaunch → live  
+  `/projects/768616536/one-thing-club-focus-today-freedom-tomorrow`
+- **Noetix Boomy: Your First Programmable Humanoid Robot** — prelaunch → live  
+  `/projects/noetixrobotics/noetix-boomy-your-first-programmable-humanoid-robot`
+- **FurFlow : Cordless Pet Grooming Vacuum. Less Brush Cleaning** — prelaunch → live  
+  `/projects/petstz/furflow-cordless-pet-grooming-vacuum-less-brush-cleaning`
+- **MiaoLab RadarGuard: Two Layers of Wall Outlet Protection** — prelaunch → live  
+  `/projects/miaolab/miaolab-radarguard-the-radar-sensing-safety-outlet`
+- **PyroDock: Your 9-in-1 Desktop Soldering Workstation** — prelaunch → live  
+  `/projects/icatch-pyrodcok/pyrodock-your-9-in-1-desktop-soldering-workstation`
+- **Lucy AI Studio: A Dedicated Computer for Your AI Agents** — live → successful  
+  `/projects/744045479/cephalon-ondevice-ai-with-a-selfevolving-ecosystem`
+- **LITEFAR M1: The Remote-Controlled Wagon That Folds Small** — prelaunch → live  
+  `/projects/litefar/litefar-m1-the-remote-controlled-wagon-that-folds-small`
+- **The ESP32 S31-TINY** — prelaunch → live  
+  `/projects/c-h/the-esp32-s31-tiny`
+- **GW-B1: Industrial Power for Everyday Use** — live → canceled  
+  `/projects/454123234/gw-b-plus-the-fanless-pc-built-for-industry`
+- **LOKMAT APPLLP 7 Pro: Android 15 4G Smartwatch** — live → failed  
+  `/projects/lokmat/lokmat-appllp-7-pro-smart-watch-mtk6769-android-15-system`
+- **AI Suit: The iPhone Case with AI Control. Just say the word.** — prelaunch → live  
+  `/projects/vibesay/vibesay-ai-suit-the-iphone-case-with-ai-voice-recording`
