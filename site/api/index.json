@@ -55,7 +55,7 @@
     "2026-10-07",
     "2026-05-16"
   ],
-  "latest_revision": "2026-11-28.json",
+  "latest_revision": "2026-11-28-revision-49325d55cef3b357.json",
   "revisions": [
     "2026-10-07-revision-3cf88706b65eb869.json",
     "2026-10-07-revision-9117703b3e86045e.json",
@@ -63,7 +63,8 @@
     "2026-10-09-revision-2a7fc58d1dd3259c.json",
     "2026-11-14-revision-bfd7926d6751b865.json",
     "2026-11-15-revision-647aed72292628f2.json",
-    "2026-11-18-revision-23862386d15851c2.json"
+    "2026-11-18-revision-23862386d15851c2.json",
+    "2026-11-28-revision-49325d55cef3b357.json"
   ],
   "endpoints": {
     "latest": "/api/today.json",
